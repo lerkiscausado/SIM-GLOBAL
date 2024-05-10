@@ -22,6 +22,7 @@ Public Class frmPatologiaGeneral
     Dim _DEspecialista As New SIM___GLOBAL.Controles.DEspecialista
     Dim _EstudiosGenerados As New SIM___GLOBAL.Modelo.EstudiosGenerados
     Dim _DEstudiosGenerados As New SIM___GLOBAL.Controles.DEstudiosGenerados
+    Dim _DEspecimenes As New SIM___GLOBAL.Controles.DEspecimenes
     Dim _IdUsuario As Integer
     Dim _ClickGrilla As String
     Dim _ClickIdEstudiosAnteriores As String
@@ -113,6 +114,7 @@ Public Class frmPatologiaGeneral
         cboDiagnosticos.Text = _Patologia.CodigoDiagnostico
         cboDiagnostico.Text = _Patologia.CodigoPatologia
 
+        cboEspecimen.ItemIndex = cboEspecimen.Properties.GetDataSourceRowIndex("ID", _ordenes.IdEspecimen)
         'Lllenar grilla estudios anteriores
         GrillaEstudiosAnteriores()
 
@@ -150,6 +152,7 @@ Public Class frmPatologiaGeneral
         _Patologia.FechaSalida = DateTime.Now
         _Patologia.CodigoPatologia = cboDiagnostico.Text
         _DPatologia.Guardar(_Patologia)
+        _dOrdenes.ActualizarEspecimen(lblConsecutivoOrden.Text, cboEspecimen.EditValue)
         bbiGuardar.Enabled = False
     End Sub
     Private Sub GuardarEstudioGenerado()
@@ -193,6 +196,15 @@ Public Class frmPatologiaGeneral
         cboDiagnosticos.Properties.DataSource = _ds.Tables(0)
         cboDiagnosticos.Properties.DisplayMember = _ds.Tables(0).Columns(0).Caption
         cboDiagnosticos.Properties.ValueMember = _ds.Tables(0).Columns(0).Caption
+
+
+        'Cargar especimenes
+        _ds = New DataSet()
+        _ds = _DEspecimenes.Listar()
+        cboEspecimen.Properties.DataSource = _ds.Tables(0)
+        cboEspecimen.Properties.DisplayMember = _ds.Tables(0).Columns(1).Caption
+        cboEspecimen.Properties.ValueMember = _ds.Tables(0).Columns(0).Caption
+        cboEspecimen.ItemIndex = 0
     End Sub
 
     Private Sub bbiNuevo_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles bbiNuevo.ItemClick

@@ -23,7 +23,6 @@ Partial Class frmPatologiaGeneral
         Dim OptionsSpelling9 As DevExpress.XtraSpellChecker.OptionsSpelling = New DevExpress.XtraSpellChecker.OptionsSpelling()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmPatologiaGeneral))
         Dim OptionsSpelling6 As DevExpress.XtraSpellChecker.OptionsSpelling = New DevExpress.XtraSpellChecker.OptionsSpelling()
-        Dim OptionsSpelling7 As DevExpress.XtraSpellChecker.OptionsSpelling = New DevExpress.XtraSpellChecker.OptionsSpelling()
         Dim OptionsSpelling4 As DevExpress.XtraSpellChecker.OptionsSpelling = New DevExpress.XtraSpellChecker.OptionsSpelling()
         Dim OptionsSpelling3 As DevExpress.XtraSpellChecker.OptionsSpelling = New DevExpress.XtraSpellChecker.OptionsSpelling()
         Dim SpellCheckerOpenOfficeDictionary1 As DevExpress.XtraSpellChecker.SpellCheckerOpenOfficeDictionary = New DevExpress.XtraSpellChecker.SpellCheckerOpenOfficeDictionary()
@@ -45,6 +44,7 @@ Partial Class frmPatologiaGeneral
         Dim TileViewItemElement10 As DevExpress.XtraGrid.Views.Tile.TileViewItemElement = New DevExpress.XtraGrid.Views.Tile.TileViewItemElement()
         Dim TileViewItemElement11 As DevExpress.XtraGrid.Views.Tile.TileViewItemElement = New DevExpress.XtraGrid.Views.Tile.TileViewItemElement()
         Dim TileViewItemElement12 As DevExpress.XtraGrid.Views.Tile.TileViewItemElement = New DevExpress.XtraGrid.Views.Tile.TileViewItemElement()
+        Dim OptionsSpelling7 As DevExpress.XtraSpellChecker.OptionsSpelling = New DevExpress.XtraSpellChecker.OptionsSpelling()
         Me.colFoto = New DevExpress.XtraGrid.Columns.TileViewColumn()
         Me.TileViewColumn3 = New DevExpress.XtraGrid.Columns.TileViewColumn()
         Me.colApellidos = New DevExpress.XtraGrid.Columns.TileViewColumn()
@@ -104,7 +104,6 @@ Partial Class frmPatologiaGeneral
         Me.GCPacientesAtender = New DevExpress.XtraGrid.GridControl()
         Me.LabelControl4 = New DevExpress.XtraEditors.LabelControl()
         Me.txtSitioLesion = New DevExpress.XtraEditors.TextEdit()
-        Me.txtTipoMuestra = New DevExpress.XtraEditors.TextEdit()
         Me.LabelControl33 = New DevExpress.XtraEditors.LabelControl()
         Me.Bar1 = New DevExpress.XtraBars.Bar()
         Me.XtraTabPage4 = New DevExpress.XtraTab.XtraTabPage()
@@ -155,13 +154,14 @@ Partial Class frmPatologiaGeneral
         Me.LabelControl2 = New DevExpress.XtraEditors.LabelControl()
         Me.dtFecha = New DevExpress.XtraEditors.DateEdit()
         Me.lblConsecutivo = New DevExpress.XtraEditors.LabelControl()
+        Me.cboEspecimen = New DevExpress.XtraEditors.LookUpEdit()
+        Me.txtTipoMuestra = New DevExpress.XtraEditors.TextEdit()
         CType(Me.lblConsecutivoOrden.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BarManager1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chkProcesado.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GVPacientesAtender, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GCPacientesAtender, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtSitioLesion.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtTipoMuestra.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.XtraTabPage4.SuspendLayout()
         CType(Me.txtObservaciones.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.XtraTabPage3.SuspendLayout()
@@ -190,6 +190,8 @@ Partial Class frmPatologiaGeneral
         CType(Me.TVDatosUsuarios, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dtFecha.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dtFecha.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.cboEspecimen.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtTipoMuestra.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'colFoto
@@ -275,7 +277,7 @@ Partial Class frmPatologiaGeneral
         Me.lblConsecutivoOrden.Properties.Appearance.Options.UseFont = True
         Me.lblConsecutivoOrden.Properties.ReadOnly = True
         Me.scOrtografia.SetShowSpellCheckMenu(Me.lblConsecutivoOrden, True)
-        Me.lblConsecutivoOrden.Size = New System.Drawing.Size(190, 24)
+        Me.lblConsecutivoOrden.Size = New System.Drawing.Size(190, 22)
         Me.scOrtografia.SetSpellCheckerOptions(Me.lblConsecutivoOrden, OptionsSpelling9)
         Me.lblConsecutivoOrden.TabIndex = 87
         '
@@ -341,7 +343,7 @@ Partial Class frmPatologiaGeneral
         Me.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top
         Me.barDockControlTop.Location = New System.Drawing.Point(0, 0)
         Me.barDockControlTop.Manager = Me.BarManager1
-        Me.barDockControlTop.Size = New System.Drawing.Size(1276, 25)
+        Me.barDockControlTop.Size = New System.Drawing.Size(1276, 24)
         '
         'barDockControlBottom
         '
@@ -355,17 +357,17 @@ Partial Class frmPatologiaGeneral
         '
         Me.barDockControlLeft.CausesValidation = False
         Me.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left
-        Me.barDockControlLeft.Location = New System.Drawing.Point(0, 25)
+        Me.barDockControlLeft.Location = New System.Drawing.Point(0, 24)
         Me.barDockControlLeft.Manager = Me.BarManager1
-        Me.barDockControlLeft.Size = New System.Drawing.Size(0, 602)
+        Me.barDockControlLeft.Size = New System.Drawing.Size(0, 603)
         '
         'barDockControlRight
         '
         Me.barDockControlRight.CausesValidation = False
         Me.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right
-        Me.barDockControlRight.Location = New System.Drawing.Point(1276, 25)
+        Me.barDockControlRight.Location = New System.Drawing.Point(1276, 24)
         Me.barDockControlRight.Manager = Me.BarManager1
-        Me.barDockControlRight.Size = New System.Drawing.Size(0, 602)
+        Me.barDockControlRight.Size = New System.Drawing.Size(0, 603)
         '
         'bbiAbrir
         '
@@ -534,7 +536,7 @@ Partial Class frmPatologiaGeneral
         Me.chkProcesado.Name = "chkProcesado"
         Me.chkProcesado.Properties.Caption = "Firmar"
         Me.chkProcesado.Properties.GlyphAlignment = DevExpress.Utils.HorzAlignment.Far
-        Me.chkProcesado.Size = New System.Drawing.Size(75, 21)
+        Me.chkProcesado.Size = New System.Drawing.Size(75, 20)
         Me.chkProcesado.TabIndex = 81
         '
         'colESTUDIO
@@ -622,11 +624,11 @@ Partial Class frmPatologiaGeneral
         'GCPacientesAtender
         '
         Me.GCPacientesAtender.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.GCPacientesAtender.Location = New System.Drawing.Point(2, 25)
+        Me.GCPacientesAtender.Location = New System.Drawing.Point(2, 23)
         Me.GCPacientesAtender.MainView = Me.GVPacientesAtender
         Me.GCPacientesAtender.MenuManager = Me.BarManager1
         Me.GCPacientesAtender.Name = "GCPacientesAtender"
-        Me.GCPacientesAtender.Size = New System.Drawing.Size(550, 229)
+        Me.GCPacientesAtender.Size = New System.Drawing.Size(550, 231)
         Me.GCPacientesAtender.TabIndex = 1
         Me.GCPacientesAtender.UseEmbeddedNavigator = True
         Me.GCPacientesAtender.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GVPacientesAtender})
@@ -651,22 +653,9 @@ Partial Class frmPatologiaGeneral
         Me.scOrtografia.SetSpellCheckerOptions(Me.txtSitioLesion, OptionsSpelling6)
         Me.txtSitioLesion.TabIndex = 82
         '
-        'txtTipoMuestra
-        '
-        Me.txtTipoMuestra.Location = New System.Drawing.Point(338, 181)
-        Me.txtTipoMuestra.MenuManager = Me.BarManager1
-        Me.txtTipoMuestra.Name = "txtTipoMuestra"
-        Me.txtTipoMuestra.Properties.Appearance.BackColor = System.Drawing.Color.LemonChiffon
-        Me.txtTipoMuestra.Properties.Appearance.Options.UseBackColor = True
-        Me.txtTipoMuestra.Properties.ReadOnly = True
-        Me.scOrtografia.SetShowSpellCheckMenu(Me.txtTipoMuestra, True)
-        Me.txtTipoMuestra.Size = New System.Drawing.Size(336, 20)
-        Me.scOrtografia.SetSpellCheckerOptions(Me.txtTipoMuestra, OptionsSpelling7)
-        Me.txtTipoMuestra.TabIndex = 74
-        '
         'LabelControl33
         '
-        Me.LabelControl33.Location = New System.Drawing.Point(338, 162)
+        Me.LabelControl33.Location = New System.Drawing.Point(231, 160)
         Me.LabelControl33.Name = "LabelControl33"
         Me.LabelControl33.Size = New System.Drawing.Size(141, 13)
         Me.LabelControl33.TabIndex = 75
@@ -694,7 +683,7 @@ Partial Class frmPatologiaGeneral
         Me.LabelControl7.Appearance.Options.UseFont = True
         Me.LabelControl7.Location = New System.Drawing.Point(9, 17)
         Me.LabelControl7.Name = "LabelControl7"
-        Me.LabelControl7.Size = New System.Drawing.Size(160, 14)
+        Me.LabelControl7.Size = New System.Drawing.Size(151, 13)
         Me.LabelControl7.TabIndex = 114
         Me.LabelControl7.Text = "Descripcion Observaciones"
         '
@@ -776,7 +765,7 @@ Partial Class frmPatologiaGeneral
         Me.XtraTabControl1.Location = New System.Drawing.Point(10, 259)
         Me.XtraTabControl1.Name = "XtraTabControl1"
         Me.XtraTabControl1.SelectedTabPage = Me.XtraTabPage1
-        Me.XtraTabControl1.Size = New System.Drawing.Size(667, 303)
+        Me.XtraTabControl1.Size = New System.Drawing.Size(667, 304)
         Me.XtraTabControl1.TabIndex = 76
         Me.XtraTabControl1.TabPages.AddRange(New DevExpress.XtraTab.XtraTabPage() {Me.XtraTabPage1, Me.XtraTabPage2, Me.XtraTabPage3, Me.XtraTabPage4, Me.XtraTabPage5, Me.XtraTabPage6})
         '
@@ -785,7 +774,7 @@ Partial Class frmPatologiaGeneral
         Me.XtraTabPage1.Controls.Add(Me.txtMacro)
         Me.XtraTabPage1.Controls.Add(Me.LabelControl9)
         Me.XtraTabPage1.Name = "XtraTabPage1"
-        Me.XtraTabPage1.Size = New System.Drawing.Size(665, 278)
+        Me.XtraTabPage1.Size = New System.Drawing.Size(665, 279)
         Me.XtraTabPage1.Text = "Descripcion Macroscopica"
         '
         'txtMacro
@@ -806,7 +795,7 @@ Partial Class frmPatologiaGeneral
         Me.txtMacro.Options.Export.Html.ExportRootTag = DevExpress.XtraRichEdit.Export.Html.ExportRootTag.Body
         Me.txtMacro.Options.HorizontalScrollbar.Visibility = DevExpress.XtraRichEdit.RichEditScrollbarVisibility.Hidden
         Me.txtMacro.Options.Printing.PrintPreviewFormKind = DevExpress.XtraRichEdit.PrintPreviewFormKind.Bars
-        Me.txtMacro.Size = New System.Drawing.Size(654, 238)
+        Me.txtMacro.Size = New System.Drawing.Size(654, 239)
         Me.txtMacro.SpellChecker = Me.scOrtografia
         Me.scOrtografia.SetSpellCheckerOptions(Me.txtMacro, OptionsSpelling1)
         Me.txtMacro.TabIndex = 116
@@ -817,7 +806,7 @@ Partial Class frmPatologiaGeneral
         Me.LabelControl9.Appearance.Options.UseFont = True
         Me.LabelControl9.Location = New System.Drawing.Point(9, 17)
         Me.LabelControl9.Name = "LabelControl9"
-        Me.LabelControl9.Size = New System.Drawing.Size(154, 14)
+        Me.LabelControl9.Size = New System.Drawing.Size(145, 13)
         Me.LabelControl9.TabIndex = 114
         Me.LabelControl9.Text = "Descripcion Macroscopica"
         '
@@ -858,7 +847,7 @@ Partial Class frmPatologiaGeneral
         Me.LabelControl8.Appearance.Options.UseFont = True
         Me.LabelControl8.Location = New System.Drawing.Point(9, 17)
         Me.LabelControl8.Name = "LabelControl8"
-        Me.LabelControl8.Size = New System.Drawing.Size(150, 14)
+        Me.LabelControl8.Size = New System.Drawing.Size(141, 13)
         Me.LabelControl8.TabIndex = 114
         Me.LabelControl8.Text = "Descripcion Microscopica"
         '
@@ -887,7 +876,7 @@ Partial Class frmPatologiaGeneral
         Me.LabelControl10.Appearance.Options.UseFont = True
         Me.LabelControl10.Location = New System.Drawing.Point(9, 17)
         Me.LabelControl10.Name = "LabelControl10"
-        Me.LabelControl10.Size = New System.Drawing.Size(160, 14)
+        Me.LabelControl10.Size = New System.Drawing.Size(151, 13)
         Me.LabelControl10.TabIndex = 115
         Me.LabelControl10.Text = "Descripcion Observaciones"
         '
@@ -924,13 +913,13 @@ Partial Class frmPatologiaGeneral
         '
         'txtSolicitado
         '
-        Me.txtSolicitado.Location = New System.Drawing.Point(10, 181)
+        Me.txtSolicitado.Location = New System.Drawing.Point(8, 179)
         Me.txtSolicitado.MenuManager = Me.BarManager1
         Me.txtSolicitado.Name = "txtSolicitado"
         Me.txtSolicitado.Properties.Appearance.BackColor = System.Drawing.Color.White
         Me.txtSolicitado.Properties.Appearance.Options.UseBackColor = True
         Me.scOrtografia.SetShowSpellCheckMenu(Me.txtSolicitado, True)
-        Me.txtSolicitado.Size = New System.Drawing.Size(322, 20)
+        Me.txtSolicitado.Size = New System.Drawing.Size(217, 20)
         Me.scOrtografia.SetSpellCheckerOptions(Me.txtSolicitado, OptionsSpelling5)
         Me.txtSolicitado.TabIndex = 113
         '
@@ -945,7 +934,7 @@ Partial Class frmPatologiaGeneral
         Me.txtConsecutivo.Properties.Appearance.Options.UseFont = True
         Me.txtConsecutivo.Properties.ReadOnly = True
         Me.scOrtografia.SetShowSpellCheckMenu(Me.txtConsecutivo, True)
-        Me.txtConsecutivo.Size = New System.Drawing.Size(190, 24)
+        Me.txtConsecutivo.Size = New System.Drawing.Size(190, 22)
         Me.scOrtografia.SetSpellCheckerOptions(Me.txtConsecutivo, OptionsSpelling8)
         Me.txtConsecutivo.TabIndex = 12
         '
@@ -955,7 +944,7 @@ Partial Class frmPatologiaGeneral
         Me.LabelControl5.Appearance.Options.UseFont = True
         Me.LabelControl5.Location = New System.Drawing.Point(9, 17)
         Me.LabelControl5.Name = "LabelControl5"
-        Me.LabelControl5.Size = New System.Drawing.Size(145, 14)
+        Me.LabelControl5.Size = New System.Drawing.Size(134, 13)
         Me.LabelControl5.TabIndex = 113
         Me.LabelControl5.Text = "Descripcion Diagnostico"
         '
@@ -1020,12 +1009,13 @@ Partial Class frmPatologiaGeneral
         'SplitContainerControl1
         '
         Me.SplitContainerControl1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.SplitContainerControl1.Location = New System.Drawing.Point(0, 25)
+        Me.SplitContainerControl1.Location = New System.Drawing.Point(0, 24)
         Me.SplitContainerControl1.Name = "SplitContainerControl1"
         Me.SplitContainerControl1.Panel1.Controls.Add(Me.btVistaEstudios)
         Me.SplitContainerControl1.Panel1.Controls.Add(Me.GroupControl2)
         Me.SplitContainerControl1.Panel1.Controls.Add(Me.GroupControl1)
         Me.SplitContainerControl1.Panel1.Text = "Panel1"
+        Me.SplitContainerControl1.Panel2.Controls.Add(Me.cboEspecimen)
         Me.SplitContainerControl1.Panel2.Controls.Add(Me.cboDiagnostico)
         Me.SplitContainerControl1.Panel2.Controls.Add(Me.LabelControl11)
         Me.SplitContainerControl1.Panel2.Controls.Add(Me.txtSolicitado)
@@ -1045,7 +1035,7 @@ Partial Class frmPatologiaGeneral
         Me.SplitContainerControl1.Panel2.Controls.Add(Me.LabelControl2)
         Me.SplitContainerControl1.Panel2.Controls.Add(Me.dtFecha)
         Me.SplitContainerControl1.Panel2.Text = "Panel2"
-        Me.SplitContainerControl1.Size = New System.Drawing.Size(1276, 602)
+        Me.SplitContainerControl1.Size = New System.Drawing.Size(1276, 603)
         Me.SplitContainerControl1.SplitterPosition = 577
         Me.SplitContainerControl1.TabIndex = 6
         Me.SplitContainerControl1.Text = "SplitContainerControl1"
@@ -1054,7 +1044,7 @@ Partial Class frmPatologiaGeneral
         '
         Me.btVistaEstudios.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btVistaEstudios.ImageOptions.Image = CType(resources.GetObject("btVistaEstudios.ImageOptions.Image"), System.Drawing.Image)
-        Me.btVistaEstudios.Location = New System.Drawing.Point(539, 539)
+        Me.btVistaEstudios.Location = New System.Drawing.Point(539, 540)
         Me.btVistaEstudios.Name = "btVistaEstudios"
         Me.btVistaEstudios.Size = New System.Drawing.Size(26, 23)
         Me.btVistaEstudios.TabIndex = 19
@@ -1068,18 +1058,18 @@ Partial Class frmPatologiaGeneral
         Me.GroupControl2.Controls.Add(Me.GCEstudiosAnteriores)
         Me.GroupControl2.Location = New System.Drawing.Point(11, 268)
         Me.GroupControl2.Name = "GroupControl2"
-        Me.GroupControl2.Size = New System.Drawing.Size(554, 265)
+        Me.GroupControl2.Size = New System.Drawing.Size(554, 266)
         Me.GroupControl2.TabIndex = 1
         Me.GroupControl2.Text = "Estudios Anteriores"
         '
         'GCEstudiosAnteriores
         '
         Me.GCEstudiosAnteriores.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.GCEstudiosAnteriores.Location = New System.Drawing.Point(2, 25)
+        Me.GCEstudiosAnteriores.Location = New System.Drawing.Point(2, 23)
         Me.GCEstudiosAnteriores.MainView = Me.gvEstudiosAnteriores
         Me.GCEstudiosAnteriores.MenuManager = Me.BarManager1
         Me.GCEstudiosAnteriores.Name = "GCEstudiosAnteriores"
-        Me.GCEstudiosAnteriores.Size = New System.Drawing.Size(550, 238)
+        Me.GCEstudiosAnteriores.Size = New System.Drawing.Size(550, 241)
         Me.GCEstudiosAnteriores.TabIndex = 2
         Me.GCEstudiosAnteriores.UseEmbeddedNavigator = True
         Me.GCEstudiosAnteriores.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.gvEstudiosAnteriores})
@@ -1320,10 +1310,39 @@ Partial Class frmPatologiaGeneral
         Me.lblConsecutivo.Appearance.Options.UseForeColor = True
         Me.lblConsecutivo.Location = New System.Drawing.Point(889, 9)
         Me.lblConsecutivo.Name = "lblConsecutivo"
-        Me.lblConsecutivo.Size = New System.Drawing.Size(9, 17)
+        Me.lblConsecutivo.Size = New System.Drawing.Size(8, 16)
         Me.lblConsecutivo.TabIndex = 16
         Me.lblConsecutivo.Text = "1"
         Me.lblConsecutivo.Visible = False
+        '
+        'cboEspecimen
+        '
+        Me.cboEspecimen.Location = New System.Drawing.Point(231, 179)
+        Me.cboEspecimen.MenuManager = Me.BarManager1
+        Me.cboEspecimen.Name = "cboEspecimen"
+        Me.cboEspecimen.Properties.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFitResizePopup
+        Me.cboEspecimen.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.cboEspecimen.Properties.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ID", "ID", 20, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.[Default], DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("NOMBRE", "NOMBRE"), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ESTADO", "ESTADO", 20, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.[Default], DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default])})
+        Me.cboEspecimen.Properties.NullText = ""
+        Me.cboEspecimen.Properties.PopupFilterMode = DevExpress.XtraEditors.PopupFilterMode.Contains
+        Me.cboEspecimen.Properties.PopupWidth = 600
+        Me.cboEspecimen.Properties.ShowHeader = False
+        Me.cboEspecimen.Size = New System.Drawing.Size(446, 20)
+        Me.cboEspecimen.TabIndex = 184
+        '
+        'txtTipoMuestra
+        '
+        Me.txtTipoMuestra.Location = New System.Drawing.Point(475, 223)
+        Me.txtTipoMuestra.MenuManager = Me.BarManager1
+        Me.txtTipoMuestra.Name = "txtTipoMuestra"
+        Me.txtTipoMuestra.Properties.Appearance.BackColor = System.Drawing.Color.LemonChiffon
+        Me.txtTipoMuestra.Properties.Appearance.Options.UseBackColor = True
+        Me.txtTipoMuestra.Properties.ReadOnly = True
+        Me.scOrtografia.SetShowSpellCheckMenu(Me.txtTipoMuestra, True)
+        Me.txtTipoMuestra.Size = New System.Drawing.Size(177, 20)
+        Me.scOrtografia.SetSpellCheckerOptions(Me.txtTipoMuestra, OptionsSpelling7)
+        Me.txtTipoMuestra.TabIndex = 74
+        Me.txtTipoMuestra.Visible = False
         '
         'frmPatologiaGeneral
         '
@@ -1347,7 +1366,6 @@ Partial Class frmPatologiaGeneral
         CType(Me.GVPacientesAtender, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GCPacientesAtender, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtSitioLesion.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtTipoMuestra.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.XtraTabPage4.ResumeLayout(False)
         Me.XtraTabPage4.PerformLayout()
         CType(Me.txtObservaciones.Properties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1381,6 +1399,8 @@ Partial Class frmPatologiaGeneral
         CType(Me.TVDatosUsuarios, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dtFecha.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dtFecha.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.cboEspecimen.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtTipoMuestra.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1418,7 +1438,6 @@ Partial Class frmPatologiaGeneral
     Friend WithEvents XtraTabPage3 As DevExpress.XtraTab.XtraTabPage
     Friend WithEvents XtraTabPage4 As DevExpress.XtraTab.XtraTabPage
     Friend WithEvents txtObservaciones As DevExpress.XtraEditors.MemoEdit
-    Friend WithEvents txtTipoMuestra As DevExpress.XtraEditors.TextEdit
     Friend WithEvents LabelControl33 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents lblConsecutivo As DevExpress.XtraEditors.LabelControl
     Friend WithEvents txtConsecutivo As DevExpress.XtraEditors.TextEdit
@@ -1496,4 +1515,6 @@ Partial Class frmPatologiaGeneral
     Friend WithEvents XtraTabPage6 As DevExpress.XtraTab.XtraTabPage
     Friend WithEvents LabelControl11 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents cboDiagnostico As DevExpress.XtraEditors.ComboBoxEdit
+    Friend WithEvents cboEspecimen As DevExpress.XtraEditors.LookUpEdit
+    Friend WithEvents txtTipoMuestra As DevExpress.XtraEditors.TextEdit
 End Class
