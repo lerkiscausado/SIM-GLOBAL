@@ -136,4 +136,8 @@ Public Class frmConsultarCitoPato
             MessageBox.Show("Reportes Exportados Con Exito", "Exportar Reportes", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End If
     End Sub
+
+    Private Sub tsm2024_Click(sender As Object, e As EventArgs) Handles tsm2024.Click
+        Recargar("2024")
+    End Sub
 End Class

@@ -93,7 +93,7 @@ Partial Class frmTarifas
         Me.chkEstado.MenuManager = Me.BarManager1
         Me.chkEstado.Name = "chkEstado"
         Me.chkEstado.Properties.Caption = "Activo"
-        Me.chkEstado.Size = New System.Drawing.Size(59, 19)
+        Me.chkEstado.Size = New System.Drawing.Size(59, 20)
         Me.chkEstado.TabIndex = 5
         '
         'BarManager1
@@ -159,7 +159,7 @@ Partial Class frmTarifas
         Me.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top
         Me.barDockControlTop.Location = New System.Drawing.Point(0, 0)
         Me.barDockControlTop.Manager = Me.BarManager1
-        Me.barDockControlTop.Size = New System.Drawing.Size(637, 31)
+        Me.barDockControlTop.Size = New System.Drawing.Size(637, 24)
         '
         'barDockControlBottom
         '
@@ -173,17 +173,17 @@ Partial Class frmTarifas
         '
         Me.barDockControlLeft.CausesValidation = False
         Me.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left
-        Me.barDockControlLeft.Location = New System.Drawing.Point(0, 31)
+        Me.barDockControlLeft.Location = New System.Drawing.Point(0, 24)
         Me.barDockControlLeft.Manager = Me.BarManager1
-        Me.barDockControlLeft.Size = New System.Drawing.Size(0, 570)
+        Me.barDockControlLeft.Size = New System.Drawing.Size(0, 577)
         '
         'barDockControlRight
         '
         Me.barDockControlRight.CausesValidation = False
         Me.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right
-        Me.barDockControlRight.Location = New System.Drawing.Point(637, 31)
+        Me.barDockControlRight.Location = New System.Drawing.Point(637, 24)
         Me.barDockControlRight.Manager = Me.BarManager1
-        Me.barDockControlRight.Size = New System.Drawing.Size(0, 570)
+        Me.barDockControlRight.Size = New System.Drawing.Size(0, 577)
         '
         'bbiEditar
         '
@@ -259,6 +259,9 @@ Partial Class frmTarifas
         '
         'GCConsultar
         '
+        Me.GCConsultar.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.GCConsultar.Location = New System.Drawing.Point(14, 420)
         Me.GCConsultar.MainView = Me.GVConsultar
         Me.GCConsultar.MenuManager = Me.BarManager1
@@ -344,6 +347,8 @@ Partial Class frmTarifas
         '
         'GCDetalleTarifa
         '
+        Me.GCDetalleTarifa.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.GCDetalleTarifa.Location = New System.Drawing.Point(14, 176)
         Me.GCDetalleTarifa.MainView = Me.GVDetalleTarifa
         Me.GCDetalleTarifa.MenuManager = Me.BarManager1
@@ -555,7 +560,7 @@ Partial Class frmTarifas
         Me.Controls.Add(Me.barDockControlRight)
         Me.Controls.Add(Me.barDockControlBottom)
         Me.Controls.Add(Me.barDockControlTop)
-        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.IconOptions.Icon = CType(resources.GetObject("frmTarifas.IconOptions.Icon"), System.Drawing.Icon)
         Me.Name = "frmTarifas"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Tarifas"

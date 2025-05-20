@@ -96,4 +96,8 @@ Public Class frmEspecimenes
     Private Sub chkEstado_EditValueChanged(sender As Object, e As EventArgs) Handles chkEstado.EditValueChanged
         bbiGuardar.Enabled = True
     End Sub
+
+    Private Sub bbiAbrir_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles bbiAbrir.ItemClick
+
+    End Sub
 End Class

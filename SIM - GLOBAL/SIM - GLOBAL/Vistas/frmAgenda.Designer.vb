@@ -228,7 +228,8 @@ Partial Class frmAgenda
         Me.DNFecha.CalendarAppearance.DayCellSpecial.Options.UseFont = True
         Me.DNFecha.CalendarTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.DNFecha.CalendarView = DevExpress.XtraEditors.Repository.CalendarView.[Default]
-        Me.DNFecha.FirstDayOfWeek = System.DayOfWeek.Sunday
+        Me.DNFecha.Enabled = False
+        Me.DNFecha.FirstDayOfWeek = System.DayOfWeek.Monday
         Me.DNFecha.Location = New System.Drawing.Point(6, 32)
         Me.DNFecha.Name = "DNFecha"
         Me.DNFecha.SelectionMode = DevExpress.XtraEditors.Repository.CalendarSelectionMode.[Single]

@@ -7,11 +7,11 @@ Namespace Controles
         Shared _conn As New OdbcConnection
         Shared _ds As DataSet
         Shared _adapter As DataAdapter
-        Public Function ExisteDia(ByVal filtro As Date) As Boolean
+        Public Function ExisteDia(idEspecialista As Integer, filtro As Date) As Boolean
 
             Try
                 Dim query As String =
-                        String.Format("SELECT id FROM agenda WHERE fecha='" & Format(filtro, "yyyy/MM/dd") & "'")
+                        String.Format("SELECT id FROM agenda WHERE id_especialista='" & idEspecialista & "' and fecha='" & Format(filtro, "yyyy/MM/dd") & "'")
                 _conn = ConexionODBC.Open()
                 Dim comando = New OdbcCommand(query, _conn)
                 Dim reader As OdbcDataReader
@@ -28,23 +28,38 @@ Namespace Controles
             End Try
             Return Nothing
         End Function
-        Public Sub Dia(ByVal filtro As Date)
+        Public Sub Dia(idEspecialista As Integer, idEmpleado As Integer, filtro As Date)
             Try
-                Dim query As String = "INSERT INTO agenda (ID,FEChA,hora,nota,empleado,estado)" _
-                    & "VALUES ('','" & Format(filtro, "yyyy/MM/dd") & "','06:00:00','','','DISPONIBLE')," _
-                    & " ('','" & Format(filtro, "yyyy/MM/dd") & "','06:30:00','','','DISPONIBLE'),('','" & Format(filtro, "yyyy/MM/dd") & "','07:00:00','','','DISPONIBLE'),	('','" & Format(filtro, "yyyy/MM/dd") & "','07:30:00','','','DISPONIBLE')," _
-                    & "	('','" & Format(filtro, "yyyy/MM/dd") & "','08:00:00','','','DISPONIBLE'),('','" & Format(filtro, "yyyy/MM/dd") & "','08:30:00','','','DISPONIBLE'),  ('','" & Format(filtro, "yyyy/MM/dd") & "','09:00:00','','','DISPONIBLE')," _
-                    & "	('','" & Format(filtro, "yyyy/MM/dd") & "','09:30:00','','','DISPONIBLE'),('','" & Format(filtro, "yyyy/MM/dd") & "','10:00:00','','','DISPONIBLE'),  ('','" & Format(filtro, "yyyy/MM/dd") & "','10:30:00','','','DISPONIBLE')," _
-                    & "	('','" & Format(filtro, "yyyy/MM/dd") & "','11:00:00','','','DISPONIBLE'),('','" & Format(filtro, "yyyy/MM/dd") & "','11:30:00','','','DISPONIBLE'),  ('','" & Format(filtro, "yyyy/MM/dd") & "','12:00:00','','','DISPONIBLE')," _
-                    & " ('','" & Format(filtro, "yyyy/MM/dd") & "','12:30:00','','','DISPONIBLE'),('','" & Format(filtro, "yyyy/MM/dd") & "','13:00:00','','','DISPONIBLE'),	('','" & Format(filtro, "yyyy/MM/dd") & "','13:30:00','','','DISPONIBLE'), " _
-                    & "	('','" & Format(filtro, "yyyy/MM/dd") & "','14:00:00','','','DISPONIBLE'),('','" & Format(filtro, "yyyy/MM/dd") & "','14:30:00','','','DISPONIBLE'),	('','" & Format(filtro, "yyyy/MM/dd") & "','15:00:00','','','DISPONIBLE')," _
-                    & "	('','" & Format(filtro, "yyyy/MM/dd") & "','15:30:00','','','DISPONIBLE'),('','" & Format(filtro, "yyyy/MM/dd") & "','16:00:00','','','DISPONIBLE'),  ('','" & Format(filtro, "yyyy/MM/dd") & "','16:30:00','','','DISPONIBLE')," _
-                    & "	('','" & Format(filtro, "yyyy/MM/dd") & "','17:00:00','','','DISPONIBLE'),('','" & Format(filtro, "yyyy/MM/dd") & "','17:30:00','','','DISPONIBLE'),	('','" & Format(filtro, "yyyy/MM/dd") & "','18:00:00','','','DISPONIBLE')," _
-                    & "	('','" & Format(filtro, "yyyy/MM/dd") & "','18:30:00','','','DISPONIBLE'),('','" & Format(filtro, "yyyy/MM/dd") & "','19:00:00','','','DISPONIBLE'),	('','" & Format(filtro, "yyyy/MM/dd") & "','19:30:00','','','DISPONIBLE')," _
-                    & "	('','" & Format(filtro, "yyyy/MM/dd") & "','20:00:00','','','DISPONIBLE'),('','" & Format(filtro, "yyyy/MM/dd") & "','20:30:00','','','DISPONIBLE'),	('','" & Format(filtro, "yyyy/MM/dd") & "','21:00:00','','','DISPONIBLE')," _
-                    & "	('','" & Format(filtro, "yyyy/MM/dd") & "','21:30:00','','','DISPONIBLE'),	('','" & Format(filtro, "yyyy/MM/dd") & "','22:00:00','','','DISPONIBLE')"
-                'query = "insert into agenda values('" & _Agenda.Id & "','" &
-                ' Format(_Agenda.Fecha, "yyyy/MM/dd") & "','" & _Agenda.Hora & "','" & _Agenda.Nota & "','" & _Agenda.Estado & "')"
+                Dim query As String = "INSERT INTO agenda (FECHA, FECHA_AGENDA, FECHA_SOLICITADA, HORA, ID_TIPO_ESTUDIO, ID_CONTRATO, ID_ESPECIALISTA, ID_ORDEN, NOTA, ID_EMPLEADO, ESTADO, CODIGO_CUPS, NOMBRE_CUPS) VALUES " _
+                    & "('" & Format(filtro, "yyyy/MM/dd") & "','" & Format(filtro, "yyyy/MM/dd") & "','" & Format(filtro, "yyyy/MM/dd") & "','06:00:00',1,1,'" & idEspecialista & "',1,'','" & idEmpleado & "','DISPONIBLE','C001','Consulta general')," _
+                    & "('" & Format(filtro, "yyyy/MM/dd") & "','" & Format(filtro, "yyyy/MM/dd") & "','" & Format(filtro, "yyyy/MM/dd") & "','06:30:00',1,1,'" & idEspecialista & "',1,'','" & idEmpleado & "','DISPONIBLE','C001','Consulta general')," _
+                    & "('" & Format(filtro, "yyyy/MM/dd") & "','" & Format(filtro, "yyyy/MM/dd") & "','" & Format(filtro, "yyyy/MM/dd") & "','07:00:00',1,1,'" & idEspecialista & "',1,'','" & idEmpleado & "','DISPONIBLE','C001','Consulta general')," _
+                    & "('" & Format(filtro, "yyyy/MM/dd") & "','" & Format(filtro, "yyyy/MM/dd") & "','" & Format(filtro, "yyyy/MM/dd") & "','07:30:00',1,1,'" & idEspecialista & "',1,'','" & idEmpleado & "','DISPONIBLE','C001','Consulta general')," _
+                    & "('" & Format(filtro, "yyyy/MM/dd") & "','" & Format(filtro, "yyyy/MM/dd") & "','" & Format(filtro, "yyyy/MM/dd") & "','08:00:00',1,1,'" & idEspecialista & "',1,'','" & idEmpleado & "','DISPONIBLE','C001','Consulta general')," _
+                    & "('" & Format(filtro, "yyyy/MM/dd") & "','" & Format(filtro, "yyyy/MM/dd") & "','" & Format(filtro, "yyyy/MM/dd") & "','08:30:00',1,1,'" & idEspecialista & "',1,'','" & idEmpleado & "','DISPONIBLE','C001','Consulta general')," _
+                    & "('" & Format(filtro, "yyyy/MM/dd") & "','" & Format(filtro, "yyyy/MM/dd") & "','" & Format(filtro, "yyyy/MM/dd") & "','09:00:00',1,1,'" & idEspecialista & "',1,'','" & idEmpleado & "','DISPONIBLE','C001','Consulta general')," _
+                    & "('" & Format(filtro, "yyyy/MM/dd") & "','" & Format(filtro, "yyyy/MM/dd") & "','" & Format(filtro, "yyyy/MM/dd") & "','09:30:00',1,1,'" & idEspecialista & "',1,'','" & idEmpleado & "','DISPONIBLE','C001','Consulta general')," _
+                    & "('" & Format(filtro, "yyyy/MM/dd") & "','" & Format(filtro, "yyyy/MM/dd") & "','" & Format(filtro, "yyyy/MM/dd") & "','10:00:00',1,1,'" & idEspecialista & "',1,'','" & idEmpleado & "','DISPONIBLE','C001','Consulta general')," _
+                    & "('" & Format(filtro, "yyyy/MM/dd") & "','" & Format(filtro, "yyyy/MM/dd") & "','" & Format(filtro, "yyyy/MM/dd") & "','10:30:00',1,1,'" & idEspecialista & "',1,'','" & idEmpleado & "','DISPONIBLE','C001','Consulta general')," _
+                    & "('" & Format(filtro, "yyyy/MM/dd") & "','" & Format(filtro, "yyyy/MM/dd") & "','" & Format(filtro, "yyyy/MM/dd") & "','11:00:00',1,1,'" & idEspecialista & "',1,'','" & idEmpleado & "','DISPONIBLE','C001','Consulta general')," _
+                    & "('" & Format(filtro, "yyyy/MM/dd") & "','" & Format(filtro, "yyyy/MM/dd") & "','" & Format(filtro, "yyyy/MM/dd") & "','11:30:00',1,1,'" & idEspecialista & "',1,'','" & idEmpleado & "','DISPONIBLE','C001','Consulta general')," _
+                    & "('" & Format(filtro, "yyyy/MM/dd") & "','" & Format(filtro, "yyyy/MM/dd") & "','" & Format(filtro, "yyyy/MM/dd") & "','12:00:00',1,1,'" & idEspecialista & "',1,'','" & idEmpleado & "','DISPONIBLE','C001','Consulta general')," _
+                    & "('" & Format(filtro, "yyyy/MM/dd") & "','" & Format(filtro, "yyyy/MM/dd") & "','" & Format(filtro, "yyyy/MM/dd") & "','12:30:00',1,1,'" & idEspecialista & "',1,'','" & idEmpleado & "','DISPONIBLE','C001','Consulta general')," _
+                    & "('" & Format(filtro, "yyyy/MM/dd") & "','" & Format(filtro, "yyyy/MM/dd") & "','" & Format(filtro, "yyyy/MM/dd") & "','13:00:00',1,1,'" & idEspecialista & "',1,'','" & idEmpleado & "','DISPONIBLE','C001','Consulta general')," _
+                    & "('" & Format(filtro, "yyyy/MM/dd") & "','" & Format(filtro, "yyyy/MM/dd") & "','" & Format(filtro, "yyyy/MM/dd") & "','13:30:00',1,1,'" & idEspecialista & "',1,'','" & idEmpleado & "','DISPONIBLE','C001','Consulta general')," _
+                    & "('" & Format(filtro, "yyyy/MM/dd") & "','" & Format(filtro, "yyyy/MM/dd") & "','" & Format(filtro, "yyyy/MM/dd") & "','14:00:00',1,1,'" & idEspecialista & "',1,'','" & idEmpleado & "','DISPONIBLE','C001','Consulta general')," _
+                    & "('" & Format(filtro, "yyyy/MM/dd") & "','" & Format(filtro, "yyyy/MM/dd") & "','" & Format(filtro, "yyyy/MM/dd") & "','14:30:00',1,1,'" & idEspecialista & "',1,'','" & idEmpleado & "','DISPONIBLE','C001','Consulta general')," _
+                    & "('" & Format(filtro, "yyyy/MM/dd") & "','" & Format(filtro, "yyyy/MM/dd") & "','" & Format(filtro, "yyyy/MM/dd") & "','15:00:00',1,1,'" & idEspecialista & "',1,'','" & idEmpleado & "','DISPONIBLE','C001','Consulta general')," _
+                    & "('" & Format(filtro, "yyyy/MM/dd") & "','" & Format(filtro, "yyyy/MM/dd") & "','" & Format(filtro, "yyyy/MM/dd") & "','15:30:00',1,1,'" & idEspecialista & "',1,'','" & idEmpleado & "','DISPONIBLE','C001','Consulta general')," _
+                    & "('" & Format(filtro, "yyyy/MM/dd") & "','" & Format(filtro, "yyyy/MM/dd") & "','" & Format(filtro, "yyyy/MM/dd") & "','16:00:00',1,1,'" & idEspecialista & "',1,'','" & idEmpleado & "','DISPONIBLE','C001','Consulta general')," _
+                    & "('" & Format(filtro, "yyyy/MM/dd") & "','" & Format(filtro, "yyyy/MM/dd") & "','" & Format(filtro, "yyyy/MM/dd") & "','16:30:00',1,1,'" & idEspecialista & "',1,'','" & idEmpleado & "','DISPONIBLE','C001','Consulta general')," _
+                    & "('" & Format(filtro, "yyyy/MM/dd") & "','" & Format(filtro, "yyyy/MM/dd") & "','" & Format(filtro, "yyyy/MM/dd") & "','17:00:00',1,1,'" & idEspecialista & "',1,'','" & idEmpleado & "','DISPONIBLE','C001','Consulta general')," _
+                    & "('" & Format(filtro, "yyyy/MM/dd") & "','" & Format(filtro, "yyyy/MM/dd") & "','" & Format(filtro, "yyyy/MM/dd") & "','17:30:00',1,1,'" & idEspecialista & "',1,'','" & idEmpleado & "','DISPONIBLE','C001','Consulta general')," _
+                    & "('" & Format(filtro, "yyyy/MM/dd") & "','" & Format(filtro, "yyyy/MM/dd") & "','" & Format(filtro, "yyyy/MM/dd") & "','18:00:00',1,1,'" & idEspecialista & "',1,'','" & idEmpleado & "','DISPONIBLE','C001','Consulta general')," _
+                    & "('" & Format(filtro, "yyyy/MM/dd") & "','" & Format(filtro, "yyyy/MM/dd") & "','" & Format(filtro, "yyyy/MM/dd") & "','18:30:00',1,1,'" & idEspecialista & "',1,'','" & idEmpleado & "','DISPONIBLE','C001','Consulta general')," _
+                    & "('" & Format(filtro, "yyyy/MM/dd") & "','" & Format(filtro, "yyyy/MM/dd") & "','" & Format(filtro, "yyyy/MM/dd") & "','19:00:00',1,1,'" & idEspecialista & "',1,'','" & idEmpleado & "','DISPONIBLE','C001','Consulta general')," _
+                    & "('" & Format(filtro, "yyyy/MM/dd") & "','" & Format(filtro, "yyyy/MM/dd") & "','" & Format(filtro, "yyyy/MM/dd") & "','19:30:00',1,1,'" & idEspecialista & "',1,'','" & idEmpleado & "','DISPONIBLE','C001','Consulta general')," _
+                    & "('" & Format(filtro, "yyyy/MM/dd") & "','" & Format(filtro, "yyyy/MM/dd") & "','" & Format(filtro, "yyyy/MM/dd") & "','20:00:00',1,1,'" & idEspecialista & "',1,'','" & idEmpleado & "','DISPONIBLE','C001','Consulta general')"
 
                 _conn = ConexionODBC.Open()
                 Dim comando = New OdbcCommand(query, _conn)
@@ -53,6 +68,7 @@ Namespace Controles
             Catch ex As Exception
                 MessageBox.Show(ex.ToString())
             End Try
+
         End Sub
         Public Sub Guardar(ByVal _Agenda As Agenda)
             Try
@@ -157,7 +173,7 @@ Namespace Controles
                                                   & "CONCAT(usuarios.id_tipo_identificacion,usuarios.identificacion) AS IDENTIFICACION, " _
                                                   & "CONCAT(`usuarios`.`PRIMER_NOMBRE`,' ',`usuarios`.`SEGUNDO_NOMBRE`,' ', `usuarios`.`PRIMER_APELLIDO`,' ',`usuarios`.`SEGUNDO_APELLIDO`) AS PACIENTE " _
                                                   & ",TIMESTAMPDIFF(YEAR,usuarios.`FECHA_NACIMIENTO`,CURDATE()) AS EDAD,usuarios.`SEXO` AS SEXO, usuarios.`TELEFONO` AS TELEFONO, `agenda`.`nombre_cups` AS ESTUDIO , `agenda`.`NOTA` AS ENTIDAD, `empleados`.`NOMBRE_EMPLEADO` AS ASIGNADO " _
-                                                  & ", `especialistas`.`NOMBRE` AS ESPECIALISTA , `agenda`.`ESTADO` FROM `agenda` INNER JOIN `usuarios` " _
+                                                  & ", `especialistas`.`NOMBRE` AS ESPECIALISTA , `agenda`.`ESTADO` FROM `agenda` LEFT JOIN `usuarios` " _
                                                   & " ON (`agenda`.`ID_USUARIO` = `usuarios`.`ID`) " _
                                                   & " INNER JOIN `empleados` ON (`agenda`.`ID_EMPLEADO` = `empleados`.`ID`) INNER JOIN `especialistas` " _
                                                   & "ON (`agenda`.`ID_ESPECIALISTA` = `especialistas`.`ID`)  WHERE agenda.`ID_ESPECIALISTA`='" & filtro & "' and agenda.`FECHA` = '" & fecha & "' ORDER BY `agenda`.`HORA` ")

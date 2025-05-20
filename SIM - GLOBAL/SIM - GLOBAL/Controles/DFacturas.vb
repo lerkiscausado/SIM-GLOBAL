@@ -1,5 +1,6 @@
 ﻿Imports SIM___GLOBAL.Modelo
 Imports SIM___GLOBAL.My.Controles
+Imports Newtonsoft.Json
 Imports System.Data.Common
 Imports System.Data.Odbc
 Namespace Controles
@@ -155,8 +156,92 @@ Namespace Controles
                 MessageBox.Show(ex.Message)
                 Return Nothing
             End Try
-
         End Function
+
+
+        Public Function ObtenerCabecera(ByVal idFactura As String) As DataSet
+            Try
+                ' Consulta SQL para obtener los datos de la cabecera
+                Dim query As String =
+            "SELECT facturas.id, licencias.identificacion AS numDocumentoIdObligado, " &
+            "facturas.factura AS numFactura, 'NC' AS tipoNota, '123456789' AS numNota " &
+            "FROM facturas " &
+            "INNER JOIN licencias ON facturas.id_licencia = licencias.id " &
+            "WHERE facturas.factura = ?"
+
+                ' Abre la conexión a la base de datos
+                _conn = ConexionODBC.Open()
+
+                ' Crear un comando SQL
+                Using comando As New OdbcCommand(query, _conn)
+                    ' Agregar parámetro a la consulta
+                    comando.Parameters.AddWithValue("?", idFactura)
+
+                    ' Ejecutar la consulta y llenar el DataSet
+                    _adapter = New OdbcDataAdapter(comando)
+                    _ds = New DataSet()
+                    _adapter.Fill(_ds)
+                End Using
+
+                ' Retornar el DataSet con los datos de la cabecera
+                Return _ds
+
+            Catch ex As Exception
+                ' Mostrar un mensaje de error en caso de excepción
+                MessageBox.Show($"Error: {ex.Message}{Environment.NewLine}Detalle: {ex.StackTrace}")
+                Return Nothing
+            Finally
+                ' Cierra la conexión si está abierta
+                If _conn IsNot Nothing AndAlso _conn.State = ConnectionState.Open Then
+                    ConexionODBC.Close(_conn)
+                End If
+            End Try
+        End Function
+
+        Public Function UsuariosRipsJson(ByVal idFactura As String) As DataSet
+            Try
+                ' Consulta SQL para obtener los datos de los usuarios
+                Dim query As String =
+            "SELECT usuarios.id_tipo_identificacion AS tipoDocumentoIdentificacion, " &
+            "usuarios.identificacion AS numDocumentoIdentificacion, usuarios.codigo_tipo_usuario as tipoUsuario, " &
+            "usuarios.fecha_nacimiento AS fechaNacimiento, CASE WHEN usuarios.sexo = 'M' THEN 'H' WHEN usuarios.sexo = 'F' THEN 'M' ELSE usuarios.sexo END AS codSexo, " &
+            "'COL' as codPaisResidencia, usuarios.codigo_municipio as codMunicipioResidencia, " &
+            "CASE WHEN usuarios.zona = 'U' THEN '01' WHEN usuarios.zona = 'R' THEN '02' ELSE usuarios.zona END AS codZonaTerritorialResidencia, " &
+            "'NO' as incapacidad, ROW_NUMBER() OVER(ORDER BY usuarios.identificacion) AS consecutivo, '57' as codPaisOrigen " &
+            "FROM ordenes INNER JOIN usuarios ON ordenes.id_usuario = usuarios.id WHERE id_factura = ?"
+
+                ' Abre la conexión a la base de datos
+                _conn = ConexionODBC.Open()
+
+                ' Crear un comando SQL
+                Using comando As New OdbcCommand(query, _conn)
+                    ' Agregar parámetro a la consulta
+                    comando.Parameters.AddWithValue("?", idFactura)
+
+                    ' Ejecutar la consulta y llenar el DataSet
+                    _adapter = New OdbcDataAdapter(comando)
+                    _ds = New DataSet()
+                    _adapter.Fill(_ds)
+                End Using
+
+                ' Retornar el DataSet con los datos de los usuarios
+                Return _ds
+
+            Catch ex As Exception
+                ' Mostrar un mensaje de error en caso de excepción
+                MessageBox.Show($"Error: {ex.Message}{Environment.NewLine}Detalle: {ex.StackTrace}")
+                Return Nothing
+            Finally
+                ' Cierra la conexión si está abierta
+                If _conn IsNot Nothing AndAlso _conn.State = ConnectionState.Open Then
+                    ConexionODBC.Close(_conn)
+                End If
+            End Try
+        End Function
+
+
+
+
         Public Function ListarFacturaProductos() As DataSet
             Try
                 Dim query As String =

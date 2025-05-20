@@ -304,4 +304,8 @@
     Private Sub tsm2023_Click(sender As Object, e As EventArgs) Handles tsm2023.Click
         ListarGrillaOrdenes("2023")
     End Sub
+
+    Private Sub tsm2024_Click(sender As Object, e As EventArgs) Handles tsm2024.Click
+        ListarGrillaOrdenes("2024")
+    End Sub
 End Class

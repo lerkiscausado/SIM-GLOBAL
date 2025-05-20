@@ -21,12 +21,12 @@ Partial Class frmConsultarCitoPato
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmConsultarCitoPato))
-        Dim GridFormatRule1 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
-        Dim FormatConditionRuleValue1 As DevExpress.XtraEditors.FormatConditionRuleValue = New DevExpress.XtraEditors.FormatConditionRuleValue()
-        Dim GridFormatRule2 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
-        Dim FormatConditionRuleValue2 As DevExpress.XtraEditors.FormatConditionRuleValue = New DevExpress.XtraEditors.FormatConditionRuleValue()
-        Dim GridFormatRule3 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
-        Dim FormatConditionRuleValue3 As DevExpress.XtraEditors.FormatConditionRuleValue = New DevExpress.XtraEditors.FormatConditionRuleValue()
+        Dim GridFormatRule4 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
+        Dim FormatConditionRuleValue4 As DevExpress.XtraEditors.FormatConditionRuleValue = New DevExpress.XtraEditors.FormatConditionRuleValue()
+        Dim GridFormatRule5 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
+        Dim FormatConditionRuleValue5 As DevExpress.XtraEditors.FormatConditionRuleValue = New DevExpress.XtraEditors.FormatConditionRuleValue()
+        Dim GridFormatRule6 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
+        Dim FormatConditionRuleValue6 As DevExpress.XtraEditors.FormatConditionRuleValue = New DevExpress.XtraEditors.FormatConditionRuleValue()
         Me.colESTADO = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colESTUDIO = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GCConsultar = New DevExpress.XtraGrid.GridControl()
@@ -46,6 +46,7 @@ Partial Class frmConsultarCitoPato
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.tsmExportarExcel = New System.Windows.Forms.ToolStripMenuItem()
         Me.tsmExportarPDF = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ImprimirListadoPDFToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.GVConsultar = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.colORDEN = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colFECHA_INGRESO = New DevExpress.XtraGrid.Columns.GridColumn()
@@ -61,7 +62,7 @@ Partial Class frmConsultarCitoPato
         Me.colCOMENTARIOS = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colEspecimenes = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.sfdRuta = New System.Windows.Forms.SaveFileDialog()
-        Me.ImprimirListadoPDFToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.tsm2024 = New System.Windows.Forms.ToolStripMenuItem()
         CType(Me.GCConsultar, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.cmsGrid.SuspendLayout()
         CType(Me.GVConsultar, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -111,127 +112,134 @@ Partial Class frmConsultarCitoPato
         '
         'FiltrarPorAñoToolStripMenuItem
         '
-        Me.FiltrarPorAñoToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsm2023, Me.tsm2022, Me.tsm2021, Me.tsm2020, Me.tsm2019, Me.tsm2018, Me.tsm2017})
+        Me.FiltrarPorAñoToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsm2024, Me.tsm2023, Me.tsm2022, Me.tsm2021, Me.tsm2020, Me.tsm2019, Me.tsm2018, Me.tsm2017})
         Me.FiltrarPorAñoToolStripMenuItem.Image = CType(resources.GetObject("FiltrarPorAñoToolStripMenuItem.Image"), System.Drawing.Image)
         Me.FiltrarPorAñoToolStripMenuItem.Name = "FiltrarPorAñoToolStripMenuItem"
-        Me.FiltrarPorAñoToolStripMenuItem.Size = New System.Drawing.Size(200, 24)
+        Me.FiltrarPorAñoToolStripMenuItem.Size = New System.Drawing.Size(202, 24)
         Me.FiltrarPorAñoToolStripMenuItem.Text = "Filtrar por Año"
         '
         'tsm2023
         '
         Me.tsm2023.Name = "tsm2023"
-        Me.tsm2023.Size = New System.Drawing.Size(98, 22)
+        Me.tsm2023.Size = New System.Drawing.Size(180, 22)
         Me.tsm2023.Text = "2023"
         '
         'tsm2022
         '
         Me.tsm2022.Name = "tsm2022"
-        Me.tsm2022.Size = New System.Drawing.Size(98, 22)
+        Me.tsm2022.Size = New System.Drawing.Size(180, 22)
         Me.tsm2022.Text = "2022"
         '
         'tsm2021
         '
         Me.tsm2021.Name = "tsm2021"
-        Me.tsm2021.Size = New System.Drawing.Size(98, 22)
+        Me.tsm2021.Size = New System.Drawing.Size(180, 22)
         Me.tsm2021.Text = "2021"
         '
         'tsm2020
         '
         Me.tsm2020.Name = "tsm2020"
-        Me.tsm2020.Size = New System.Drawing.Size(98, 22)
+        Me.tsm2020.Size = New System.Drawing.Size(180, 22)
         Me.tsm2020.Text = "2020"
         '
         'tsm2019
         '
         Me.tsm2019.Name = "tsm2019"
-        Me.tsm2019.Size = New System.Drawing.Size(98, 22)
+        Me.tsm2019.Size = New System.Drawing.Size(180, 22)
         Me.tsm2019.Text = "2019"
         '
         'tsm2018
         '
         Me.tsm2018.Name = "tsm2018"
-        Me.tsm2018.Size = New System.Drawing.Size(98, 22)
+        Me.tsm2018.Size = New System.Drawing.Size(180, 22)
         Me.tsm2018.Text = "2018"
         '
         'tsm2017
         '
         Me.tsm2017.Name = "tsm2017"
-        Me.tsm2017.Size = New System.Drawing.Size(98, 22)
+        Me.tsm2017.Size = New System.Drawing.Size(180, 22)
         Me.tsm2017.Text = "2017"
         '
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(197, 6)
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(199, 6)
         '
         'tsmVistaPrevia
         '
         Me.tsmVistaPrevia.Image = CType(resources.GetObject("tsmVistaPrevia.Image"), System.Drawing.Image)
         Me.tsmVistaPrevia.Name = "tsmVistaPrevia"
-        Me.tsmVistaPrevia.Size = New System.Drawing.Size(200, 24)
+        Me.tsmVistaPrevia.Size = New System.Drawing.Size(202, 24)
         Me.tsmVistaPrevia.Text = "Vista Previa Reporte"
         '
         'tsmImprimir
         '
         Me.tsmImprimir.Image = CType(resources.GetObject("tsmImprimir.Image"), System.Drawing.Image)
         Me.tsmImprimir.Name = "tsmImprimir"
-        Me.tsmImprimir.Size = New System.Drawing.Size(200, 24)
+        Me.tsmImprimir.Size = New System.Drawing.Size(202, 24)
         Me.tsmImprimir.Text = "Imprimir Reporte"
         '
         'ToolStripSeparator2
         '
         Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
-        Me.ToolStripSeparator2.Size = New System.Drawing.Size(197, 6)
+        Me.ToolStripSeparator2.Size = New System.Drawing.Size(199, 6)
         '
         'tsmExportarExcel
         '
         Me.tsmExportarExcel.Image = CType(resources.GetObject("tsmExportarExcel.Image"), System.Drawing.Image)
         Me.tsmExportarExcel.Name = "tsmExportarExcel"
-        Me.tsmExportarExcel.Size = New System.Drawing.Size(200, 24)
+        Me.tsmExportarExcel.Size = New System.Drawing.Size(202, 24)
         Me.tsmExportarExcel.Text = "Exportar Listado a Excel"
         '
         'tsmExportarPDF
         '
         Me.tsmExportarPDF.Image = CType(resources.GetObject("tsmExportarPDF.Image"), System.Drawing.Image)
         Me.tsmExportarPDF.Name = "tsmExportarPDF"
-        Me.tsmExportarPDF.Size = New System.Drawing.Size(200, 24)
+        Me.tsmExportarPDF.Size = New System.Drawing.Size(202, 24)
         Me.tsmExportarPDF.Text = "Exportar Listado  a PDF"
+        '
+        'ImprimirListadoPDFToolStripMenuItem
+        '
+        Me.ImprimirListadoPDFToolStripMenuItem.Enabled = False
+        Me.ImprimirListadoPDFToolStripMenuItem.Name = "ImprimirListadoPDFToolStripMenuItem"
+        Me.ImprimirListadoPDFToolStripMenuItem.Size = New System.Drawing.Size(202, 24)
+        Me.ImprimirListadoPDFToolStripMenuItem.Text = "Exportar Reportes a PDF"
         '
         'GVConsultar
         '
         Me.GVConsultar.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colORDEN, Me.colFECHA_INGRESO, Me.colIDENTIFICACION, Me.colNOMBRE, Me.colSEXO, Me.colEDAD, Me.colTELEFONO, Me.colCONTRATO, Me.colENTIDAD, Me.colESTUDIO, Me.colESTADO, Me.colConsecutivo, Me.colCorreoElectronico, Me.colCOMENTARIOS, Me.colEspecimenes})
-        GridFormatRule1.ApplyToRow = True
-        GridFormatRule1.Column = Me.colESTADO
-        GridFormatRule1.Name = "Format0"
-        FormatConditionRuleValue1.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        FormatConditionRuleValue1.Appearance.Options.UseBackColor = True
-        FormatConditionRuleValue1.Condition = DevExpress.XtraEditors.FormatCondition.Equal
-        FormatConditionRuleValue1.Expression = "PENDIENTE"
-        FormatConditionRuleValue1.Value1 = "PENDIENTE"
-        GridFormatRule1.Rule = FormatConditionRuleValue1
-        GridFormatRule2.ApplyToRow = True
-        GridFormatRule2.Column = Me.colESTADO
-        GridFormatRule2.Name = "Format1"
-        FormatConditionRuleValue2.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
-        FormatConditionRuleValue2.Appearance.Options.UseBackColor = True
-        FormatConditionRuleValue2.Condition = DevExpress.XtraEditors.FormatCondition.Equal
-        FormatConditionRuleValue2.Expression = "CANCELADO"
-        FormatConditionRuleValue2.Value1 = "CANCELADO"
-        GridFormatRule2.Rule = FormatConditionRuleValue2
-        GridFormatRule3.ApplyToRow = True
-        GridFormatRule3.Column = Me.colESTUDIO
-        GridFormatRule3.Name = "Format2"
-        FormatConditionRuleValue3.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        FormatConditionRuleValue3.Appearance.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        FormatConditionRuleValue3.Appearance.Options.UseBackColor = True
-        FormatConditionRuleValue3.Condition = DevExpress.XtraEditors.FormatCondition.Equal
-        FormatConditionRuleValue3.Expression = "ANEXOS"
-        FormatConditionRuleValue3.Value1 = "ANEXOS"
-        FormatConditionRuleValue3.Value2 = ""
-        GridFormatRule3.Rule = FormatConditionRuleValue3
-        Me.GVConsultar.FormatRules.Add(GridFormatRule1)
-        Me.GVConsultar.FormatRules.Add(GridFormatRule2)
-        Me.GVConsultar.FormatRules.Add(GridFormatRule3)
+        GridFormatRule4.ApplyToRow = True
+        GridFormatRule4.Column = Me.colESTADO
+        GridFormatRule4.Name = "Format0"
+        FormatConditionRuleValue4.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        FormatConditionRuleValue4.Appearance.Options.UseBackColor = True
+        FormatConditionRuleValue4.Condition = DevExpress.XtraEditors.FormatCondition.Equal
+        FormatConditionRuleValue4.Expression = "PENDIENTE"
+        FormatConditionRuleValue4.Value1 = "PENDIENTE"
+        GridFormatRule4.Rule = FormatConditionRuleValue4
+        GridFormatRule5.ApplyToRow = True
+        GridFormatRule5.Column = Me.colESTADO
+        GridFormatRule5.Name = "Format1"
+        FormatConditionRuleValue5.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
+        FormatConditionRuleValue5.Appearance.Options.UseBackColor = True
+        FormatConditionRuleValue5.Condition = DevExpress.XtraEditors.FormatCondition.Equal
+        FormatConditionRuleValue5.Expression = "CANCELADO"
+        FormatConditionRuleValue5.Value1 = "CANCELADO"
+        GridFormatRule5.Rule = FormatConditionRuleValue5
+        GridFormatRule6.ApplyToRow = True
+        GridFormatRule6.Column = Me.colESTUDIO
+        GridFormatRule6.Name = "Format2"
+        FormatConditionRuleValue6.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        FormatConditionRuleValue6.Appearance.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        FormatConditionRuleValue6.Appearance.Options.UseBackColor = True
+        FormatConditionRuleValue6.Condition = DevExpress.XtraEditors.FormatCondition.Equal
+        FormatConditionRuleValue6.Expression = "ANEXOS"
+        FormatConditionRuleValue6.Value1 = "ANEXOS"
+        FormatConditionRuleValue6.Value2 = ""
+        GridFormatRule6.Rule = FormatConditionRuleValue6
+        Me.GVConsultar.FormatRules.Add(GridFormatRule4)
+        Me.GVConsultar.FormatRules.Add(GridFormatRule5)
+        Me.GVConsultar.FormatRules.Add(GridFormatRule6)
         Me.GVConsultar.GridControl = Me.GCConsultar
         Me.GVConsultar.HorzScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Always
         Me.GVConsultar.Name = "GVConsultar"
@@ -349,12 +357,11 @@ Partial Class frmConsultarCitoPato
         Me.colEspecimenes.VisibleIndex = 8
         Me.colEspecimenes.Width = 197
         '
-        'ImprimirListadoPDFToolStripMenuItem
+        'tsm2024
         '
-        Me.ImprimirListadoPDFToolStripMenuItem.Enabled = False
-        Me.ImprimirListadoPDFToolStripMenuItem.Name = "ImprimirListadoPDFToolStripMenuItem"
-        Me.ImprimirListadoPDFToolStripMenuItem.Size = New System.Drawing.Size(202, 24)
-        Me.ImprimirListadoPDFToolStripMenuItem.Text = "Exportar Reportes a PDF"
+        Me.tsm2024.Name = "tsm2024"
+        Me.tsm2024.Size = New System.Drawing.Size(180, 22)
+        Me.tsm2024.Text = "2024"
         '
         'frmConsultarCitoPato
         '
@@ -409,4 +416,5 @@ Partial Class frmConsultarCitoPato
     Friend WithEvents tsm2022 As ToolStripMenuItem
     Friend WithEvents tsm2023 As ToolStripMenuItem
     Friend WithEvents ImprimirListadoPDFToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents tsm2024 As ToolStripMenuItem
 End Class

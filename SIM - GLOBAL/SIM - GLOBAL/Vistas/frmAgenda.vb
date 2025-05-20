@@ -50,6 +50,7 @@ Public Class frmAgenda
         cboUsuarios.Enabled = True
         cboTipoEstudio.Enabled = True
         cboProcedimiento.Enabled = True
+        cboContrato.Enabled = True ' linea de codigo agregada
 
         Select Case Licencia
             Case 4
@@ -61,7 +62,7 @@ Public Class frmAgenda
                     Case Else
                         'USUARIO
                         teHora.Enabled = True
-                        cboContrato.Enabled = False
+                        cboContrato.Enabled = True ' linea de codigo habilitada
                 End Select
             Case Else
                 teHora.Enabled = True
@@ -173,11 +174,20 @@ Public Class frmAgenda
         cboProcedimiento.Enabled = False
         dtFechaSolicitudCita.Enabled = False
         dtFechaSolicitadaPaciente.Enabled = False
+        DNFecha.Enabled = True
+
     End Sub
     Private Sub AgendaDia()
         ' Cargar agenda del dia
         _ds = _DAgenda.Listar(cboMedico.EditValue, Format(DNFecha.DateTime, "yyyy-MM-dd"))
-        GCAgenda.DataSource = _ds.Tables(0)
+        If _ds IsNot Nothing AndAlso _ds.Tables.Count > 0 AndAlso _ds.Tables(0).Rows.Count > 0 Then
+            ' Hay datos
+            GCAgenda.DataSource = _ds.Tables(0)
+        Else
+            ' No hay datos
+            MessageBox.Show("No se encontraron registros para ese médico y fecha.", "Sin resultados", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            GCAgenda.DataSource = Nothing ' opcional: limpiar el grid
+        End If
 
         'riteHora.DisplayFormat.FormatType = FormatType.DateTime
         'riteHora.DisplayFormat.FormatString = "t"
@@ -192,16 +202,21 @@ Public Class frmAgenda
         dtFecha.Text = DNFecha.DateTime
         If cboMedico.Text <> "" Then
             LimpiarCampos()
+            'MessageBox.Show(cboMedico.EditValue)
+            Dim _dAgenda = New DAgenda
+            If _dAgenda.ExisteDia(cboMedico.EditValue, DNFecha.DateTime) = False Then
+                _dAgenda.Dia(cboMedico.EditValue, idEmpleado, DNFecha.DateTime)
+            End If
             AgendaDia()
             '_ClickGrilla = ""
 
+
+
+            'MsgBox(DNFecha.DateTime)
+            'AgendaDia()
+
         End If
 
-        ' Dim _dAgenda = New DAgenda
-        ' If _dAgenda.ExisteDia(DNFecha.DateTime) = False Then
-        ' _DAgenda.Dia(DNFecha.DateTime)
-        ' End If
-        'MsgBox(DNFecha.DateTime)
 
         'PROCESO DE CARGA
 
@@ -255,8 +270,8 @@ Public Class frmAgenda
         cboContrato.Properties.ValueMember = _ds.Tables(0).Columns(0).Caption
         cboContrato.ItemIndex = -1
 
-        UsuarioAgenda1 = "26" 'Administrador
-        UsuarioAgenda2 = "23" 'Administrador
+        UsuarioAgenda1 = "19" 'Administrador 26
+        UsuarioAgenda2 = "23" 'Administrador 23
 
         Select Case Licencia
             Case 4
@@ -321,8 +336,10 @@ Public Class frmAgenda
                 MessageBox.Show("Fecha no Valida para crear Cita", "Nueva Agenda", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Else
                 ' habilitamos los procedimientos a la agenda
-                cboTipoEstudio.Visible = False
+
+                cboTipoEstudio.Visible = False ' estaba en false
                 cboProcedimiento.Visible = True
+
                 teHora.Enabled = False
                 EditarAgenda()
             End If
@@ -349,8 +366,8 @@ Public Class frmAgenda
             MessageBox.Show("Debe Seleccionar un Contrato", "ASIGNAR CITA", MessageBoxButtons.OK, MessageBoxIcon.Information)
         ElseIf cboProcedimiento.Text = "" And cboProcedimiento.Visible = True Then
             MessageBox.Show("Debe Seleccionar un Estudio", "ASIGNAR CITA", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        ElseIf cboTipoEstudio.Text = "" And cboTipoEstudio.Visible = True Then
-            MessageBox.Show("Debe Seleccionar un Estudio", "ASIGNAR CITA", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            'ElseIf cboTipoEstudio.Text = "" And cboTipoEstudio.Visible = True Then
+            'MessageBox.Show("Debe Seleccionar un Estudio", "ASIGNAR CITA", MessageBoxButtons.OK, MessageBoxIcon.Information)
         ElseIf DNFecha.DateTime < Format(DateTime.Now, "dd/MM/yyyy") Then
             MessageBox.Show("Fecha no Valida para apartar Cita, la fecha debe ser mayor a la fecha actual", "ASIGNAR CITA", MessageBoxButtons.OK, MessageBoxIcon.Information)
         ElseIf dtFechaSolicitudCita.Text = "" Then
@@ -639,4 +656,6 @@ Public Class frmAgenda
             _ClickIdTipoEstudio = cboGVProcedimientos.GetRowCellValue(e.RowHandle.ToString, "TIPOESTUDIO").ToString()
         End If
     End Sub
+
+
 End Class

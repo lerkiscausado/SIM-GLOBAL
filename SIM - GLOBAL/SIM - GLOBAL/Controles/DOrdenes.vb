@@ -804,7 +804,7 @@ Namespace Controles
                                     & ",  `tipo_estudio`.`NOMBRE_TIPO_ESTUDIO` AS `ESTUDIO`, usuarios.id as ID_USUARIO FROM ((`ordenes`  JOIN `usuarios`  ON ((`ordenes`.`ID_USUARIO` = `usuarios`.`ID`)))  " _
                                     & "	JOIN `tipo_estudio`  ON ((`ordenes`.`ID_TIPO_ESTUDIO` = `tipo_estudio`.`ID`))) " _
                                     & " JOIN `detalle_orden` ON( `ordenes`.`id`= `detalle_orden`.`id_orden`) " _
-                                    & "	WHERE (((`tipo_estudio`.`PREFIJO` = _utf8'CV')  OR (`tipo_estudio`.`PREFIJO` = _utf8'CB') OR (`tipo_estudio`.`PREFIJO` = _utf8'CR'))  AND (`ordenes`.`ESTADO` <> _utf8'ATENDIDO')  AND (`ordenes`.`ESTADO` <> _utf8'CANCELADO') AND (`ordenes`.`ESTADO` <> _utf8'FACTURADO')) AND `detalle_orden`.`codigo_cups` ='898001'")
+                                    & "	WHERE (((`tipo_estudio`.`PREFIJO` = _utf8'CV')  OR (`tipo_estudio`.`PREFIJO` = _utf8'CB') OR (`tipo_estudio`.`PREFIJO` = _utf8'CR'))  AND (`ordenes`.`ESTADO` <> _utf8'ATENDIDO')  AND (`ordenes`.`ESTADO` <> _utf8'CANCELADO') AND (`ordenes`.`ESTADO` <> _utf8'FACTURADO')) AND (`detalle_orden`.`codigo_cups` ='898001' OR `detalle_orden`.`codigo_cups` ='898002')")
                 _conn = ConexionODBC.Open()
                 Dim comando = New OdbcCommand(query, _conn)
                 _adapter = New OdbcDataAdapter(comando)
@@ -1249,15 +1249,13 @@ Namespace Controles
         Public Function ListarPatologias() As DataSet
             Try
                 Dim query As String =
-                                    String.Format("SELECT ordenes.ID AS ID, ordenes.consecutivo AS CONSECUTIVO ,ordenes.FECHA_INGRESO AS FECHA " _
-                                    & ", CONCAT(usuarios.ID_TIPO_IDENTIFICACION,usuarios.IDENTIFICACION) AS IDENTIFICACION, " _
-                                    & "CONCAT(usuarios.PRIMER_NOMBRE,' ',usuarios.SEGUNDO_NOMBRE,' ',usuarios.PRIMER_APELLIDO,' ',usuarios.SEGUNDO_APELLIDO) " _
-                                    & "AS USUARIO, tipo_estudio.NOMBRE_TIPO_ESTUDIO AS ESTUDIO, usuarios.id AS ID_USUARIO, especimenes.`NOMBRE` AS ESPECIMEN " _
-                                    & "FROM (((ordenes JOIN usuarios  ON ((ordenes.ID_USUARIO = usuarios.ID))) " _
-                                    & "JOIN tipo_estudio ON ((ordenes.ID_TIPO_ESTUDIO = tipo_estudio.ID))) " _
-                                    & "JOIN especimenes ON ((ordenes.`ID_ESPECIMEN` = especimenes.`ID`))) " _
-                                    & "WHERE ((tipo_estudio.PREFIJO <> 'CV') AND (tipo_estudio.PREFIJO <> 'CB')  AND (ordenes.ESTADO <> 'ATENDIDO') " _
-                                    & "And (ordenes.ESTADO <> 'CANCELADO') And (ordenes.ESTADO <> 'FACTURADO'))")
+                                    String.Format("SELECT ordenes.ID AS ID, ordenes.consecutivo AS CONSECUTIVO, ordenes.FECHA_INGRESO AS FECHA, " _
+                                                  & "CONCAT(usuarios.ID_TIPO_IDENTIFICACION, usuarios.IDENTIFICACION) AS IDENTIFICACION,  " _
+                                                  & "CONCAT(usuarios.PRIMER_NOMBRE, ' ', usuarios.SEGUNDO_NOMBRE, ' ', usuarios.PRIMER_APELLIDO, ' ', usuarios.SEGUNDO_APELLIDO) AS USUARIO, " _
+                                                  & " tipo_estudio.NOMBRE_TIPO_ESTUDIO AS ESTUDIO, usuarios.id AS ID_USUARIO,  especimenes.NOMBRE AS ESPECIMEN FROM  ordenes " _
+                                                  & "JOIN usuarios ON ordenes.ID_USUARIO = usuarios.ID JOIN  tipo_estudio ON ordenes.ID_TIPO_ESTUDIO = tipo_estudio.ID JOIN " _
+                                                  & " especimenes ON ordenes.ID_ESPECIMEN = especimenes.ID WHERE  tipo_estudio.PREFIJO NOT IN ('CV', 'CB') " _
+                                                  & "And ordenes.ESTADO Not IN ('ATENDIDO', 'CANCELADO', 'FACTURADO')")
                 _conn = ConexionODBC.Open()
                 Dim comando = New OdbcCommand(query, _conn)
                 _adapter = New OdbcDataAdapter(comando)

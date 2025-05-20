@@ -127,7 +127,7 @@ Partial Class frmSubEntidades
         Me.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top
         Me.barDockControlTop.Location = New System.Drawing.Point(0, 0)
         Me.barDockControlTop.Manager = Me.BarManager1
-        Me.barDockControlTop.Size = New System.Drawing.Size(564, 31)
+        Me.barDockControlTop.Size = New System.Drawing.Size(564, 24)
         '
         'barDockControlBottom
         '
@@ -141,17 +141,17 @@ Partial Class frmSubEntidades
         '
         Me.barDockControlLeft.CausesValidation = False
         Me.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left
-        Me.barDockControlLeft.Location = New System.Drawing.Point(0, 31)
+        Me.barDockControlLeft.Location = New System.Drawing.Point(0, 24)
         Me.barDockControlLeft.Manager = Me.BarManager1
-        Me.barDockControlLeft.Size = New System.Drawing.Size(0, 415)
+        Me.barDockControlLeft.Size = New System.Drawing.Size(0, 422)
         '
         'barDockControlRight
         '
         Me.barDockControlRight.CausesValidation = False
         Me.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right
-        Me.barDockControlRight.Location = New System.Drawing.Point(564, 31)
+        Me.barDockControlRight.Location = New System.Drawing.Point(564, 24)
         Me.barDockControlRight.Manager = Me.BarManager1
-        Me.barDockControlRight.Size = New System.Drawing.Size(0, 415)
+        Me.barDockControlRight.Size = New System.Drawing.Size(0, 422)
         '
         'bbiEditar
         '
@@ -189,7 +189,7 @@ Partial Class frmSubEntidades
         Me.chkEstado.Name = "chkEstado"
         Me.chkEstado.Properties.Caption = "Activo"
         Me.chkEstado.Properties.GlyphAlignment = DevExpress.Utils.HorzAlignment.Far
-        Me.chkEstado.Size = New System.Drawing.Size(75, 19)
+        Me.chkEstado.Size = New System.Drawing.Size(75, 20)
         Me.chkEstado.TabIndex = 10
         '
         'txtNombre
@@ -234,6 +234,9 @@ Partial Class frmSubEntidades
         '
         'GCConsultar
         '
+        Me.GCConsultar.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.GCConsultar.Location = New System.Drawing.Point(16, 135)
         Me.GCConsultar.MainView = Me.GVConsultar
         Me.GCConsultar.MenuManager = Me.BarManager1
@@ -317,7 +320,7 @@ Partial Class frmSubEntidades
         Me.Controls.Add(Me.barDockControlRight)
         Me.Controls.Add(Me.barDockControlBottom)
         Me.Controls.Add(Me.barDockControlTop)
-        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.IconOptions.Icon = CType(resources.GetObject("frmSubEntidades.IconOptions.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmSubEntidades"

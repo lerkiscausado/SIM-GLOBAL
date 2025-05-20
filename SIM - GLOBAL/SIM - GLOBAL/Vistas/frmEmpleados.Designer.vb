@@ -27,7 +27,6 @@ Partial Class frmEmpleados
         Me.bbtNuevo = New DevExpress.XtraBars.BarButtonItem()
         Me.bbiAbrir = New DevExpress.XtraBars.BarButtonItem()
         Me.bbiGuardar = New DevExpress.XtraBars.BarButtonItem()
-        Me.bbiEliminar = New DevExpress.XtraBars.BarButtonItem()
         Me.bbiConsultar = New DevExpress.XtraBars.BarButtonItem()
         Me.bbiImprimir = New DevExpress.XtraBars.BarButtonItem()
         Me.barDockControlTop = New DevExpress.XtraBars.BarDockControl()
@@ -35,6 +34,7 @@ Partial Class frmEmpleados
         Me.barDockControlLeft = New DevExpress.XtraBars.BarDockControl()
         Me.barDockControlRight = New DevExpress.XtraBars.BarDockControl()
         Me.bbiEditar = New DevExpress.XtraBars.BarButtonItem()
+        Me.bbiEliminar = New DevExpress.XtraBars.BarButtonItem()
         Me.txtRegistroMedico = New DevExpress.XtraEditors.TextEdit()
         Me.LabelControl5 = New DevExpress.XtraEditors.LabelControl()
         Me.LabelControl4 = New DevExpress.XtraEditors.LabelControl()
@@ -54,6 +54,8 @@ Partial Class frmEmpleados
         Me.colESTADO = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.SeparatorControl1 = New DevExpress.XtraEditors.SeparatorControl()
         Me.peFoto = New DevExpress.XtraEditors.PictureEdit()
+        Me.LabelControl6 = New DevExpress.XtraEditors.LabelControl()
+        Me.peFirma = New DevExpress.XtraEditors.PictureEdit()
         CType(Me.BarManager1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtRegistroMedico.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cboEspecialidad.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -65,6 +67,7 @@ Partial Class frmEmpleados
         CType(Me.GVConsultar, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SeparatorControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.peFoto.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.peFirma.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'LabelControl2
@@ -115,13 +118,6 @@ Partial Class frmEmpleados
         Me.bbiGuardar.Id = 2
         Me.bbiGuardar.ImageOptions.Image = CType(resources.GetObject("bbiGuardar.ImageOptions.Image"), System.Drawing.Image)
         Me.bbiGuardar.Name = "bbiGuardar"
-        '
-        'bbiEliminar
-        '
-        Me.bbiEliminar.Caption = "Eliminar "
-        Me.bbiEliminar.Id = 5
-        Me.bbiEliminar.ImageOptions.Image = CType(resources.GetObject("bbiEliminar.ImageOptions.Image"), System.Drawing.Image)
-        Me.bbiEliminar.Name = "bbiEliminar"
         '
         'bbiConsultar
         '
@@ -176,6 +172,13 @@ Partial Class frmEmpleados
         Me.bbiEditar.Id = 1
         Me.bbiEditar.ImageOptions.Image = CType(resources.GetObject("bbiEditar.ImageOptions.Image"), System.Drawing.Image)
         Me.bbiEditar.Name = "bbiEditar"
+        '
+        'bbiEliminar
+        '
+        Me.bbiEliminar.Caption = "Eliminar "
+        Me.bbiEliminar.Id = 5
+        Me.bbiEliminar.ImageOptions.Image = CType(resources.GetObject("bbiEliminar.ImageOptions.Image"), System.Drawing.Image)
+        Me.bbiEliminar.Name = "bbiEliminar"
         '
         'txtRegistroMedico
         '
@@ -244,7 +247,7 @@ Partial Class frmEmpleados
         '
         'chkEstado
         '
-        Me.chkEstado.Location = New System.Drawing.Point(403, 117)
+        Me.chkEstado.Location = New System.Drawing.Point(403, 196)
         Me.chkEstado.MenuManager = Me.BarManager1
         Me.chkEstado.Name = "chkEstado"
         Me.chkEstado.Properties.Caption = "Activo"
@@ -286,11 +289,11 @@ Partial Class frmEmpleados
         '
         'GCConsultar
         '
-        Me.GCConsultar.Location = New System.Drawing.Point(16, 195)
+        Me.GCConsultar.Location = New System.Drawing.Point(16, 249)
         Me.GCConsultar.MainView = Me.GVConsultar
         Me.GCConsultar.MenuManager = Me.BarManager1
         Me.GCConsultar.Name = "GCConsultar"
-        Me.GCConsultar.Size = New System.Drawing.Size(594, 307)
+        Me.GCConsultar.Size = New System.Drawing.Size(594, 253)
         Me.GCConsultar.TabIndex = 13
         Me.GCConsultar.UseEmbeddedNavigator = True
         Me.GCConsultar.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GVConsultar})
@@ -352,9 +355,9 @@ Partial Class frmEmpleados
         '
         'SeparatorControl1
         '
-        Me.SeparatorControl1.Location = New System.Drawing.Point(16, 150)
+        Me.SeparatorControl1.Location = New System.Drawing.Point(16, 216)
         Me.SeparatorControl1.Name = "SeparatorControl1"
-        Me.SeparatorControl1.Size = New System.Drawing.Size(462, 26)
+        Me.SeparatorControl1.Size = New System.Drawing.Size(593, 26)
         Me.SeparatorControl1.TabIndex = 140
         '
         'peFoto
@@ -367,11 +370,31 @@ Partial Class frmEmpleados
         Me.peFoto.Size = New System.Drawing.Size(126, 149)
         Me.peFoto.TabIndex = 141
         '
+        'LabelControl6
+        '
+        Me.LabelControl6.Location = New System.Drawing.Point(15, 141)
+        Me.LabelControl6.Name = "LabelControl6"
+        Me.LabelControl6.Size = New System.Drawing.Size(29, 13)
+        Me.LabelControl6.TabIndex = 147
+        Me.LabelControl6.Text = "Frima "
+        '
+        'peFirma
+        '
+        Me.peFirma.EditValue = CType(resources.GetObject("peFirma.EditValue"), Object)
+        Me.peFirma.Location = New System.Drawing.Point(101, 142)
+        Me.peFirma.Name = "peFirma"
+        Me.peFirma.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.[Auto]
+        Me.peFirma.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Stretch
+        Me.peFirma.Size = New System.Drawing.Size(296, 74)
+        Me.peFirma.TabIndex = 148
+        '
         'frmEmpleados
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(621, 514)
+        Me.Controls.Add(Me.peFirma)
+        Me.Controls.Add(Me.LabelControl6)
         Me.Controls.Add(Me.peFoto)
         Me.Controls.Add(Me.SeparatorControl1)
         Me.Controls.Add(Me.GCConsultar)
@@ -407,6 +430,7 @@ Partial Class frmEmpleados
         CType(Me.GVConsultar, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.SeparatorControl1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.peFoto.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.peFirma.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -445,4 +469,6 @@ Partial Class frmEmpleados
     Friend WithEvents colESTADO As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents SeparatorControl1 As DevExpress.XtraEditors.SeparatorControl
     Friend WithEvents peFoto As DevExpress.XtraEditors.PictureEdit
+    Friend WithEvents LabelControl6 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents peFirma As DevExpress.XtraEditors.PictureEdit
 End Class

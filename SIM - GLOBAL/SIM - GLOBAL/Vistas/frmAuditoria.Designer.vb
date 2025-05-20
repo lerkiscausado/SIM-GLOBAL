@@ -133,6 +133,7 @@ Partial Class frmAuditoria
         Me.tsmActualizarVista = New System.Windows.Forms.ToolStripMenuItem()
         Me.FiltrarPorAñoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.tsmActual = New System.Windows.Forms.ToolStripMenuItem()
+        Me.tsm2023 = New System.Windows.Forms.ToolStripMenuItem()
         Me.tsm2022 = New System.Windows.Forms.ToolStripMenuItem()
         Me.tsm2021 = New System.Windows.Forms.ToolStripMenuItem()
         Me.tsm2020 = New System.Windows.Forms.ToolStripMenuItem()
@@ -178,7 +179,7 @@ Partial Class frmAuditoria
         Me.colTIPO = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colNOTA = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.sfdRuta = New System.Windows.Forms.SaveFileDialog()
-        Me.tsm2023 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.tsm2024 = New System.Windows.Forms.ToolStripMenuItem()
         CType(Me.BarManager1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.xtcAuditoria, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.xtcAuditoria.SuspendLayout()
@@ -415,7 +416,7 @@ Partial Class frmAuditoria
         Me.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top
         Me.barDockControlTop.Location = New System.Drawing.Point(0, 0)
         Me.barDockControlTop.Manager = Me.BarManager1
-        Me.barDockControlTop.Size = New System.Drawing.Size(1088, 25)
+        Me.barDockControlTop.Size = New System.Drawing.Size(1088, 24)
         '
         'barDockControlBottom
         '
@@ -429,17 +430,17 @@ Partial Class frmAuditoria
         '
         Me.barDockControlLeft.CausesValidation = False
         Me.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left
-        Me.barDockControlLeft.Location = New System.Drawing.Point(0, 25)
+        Me.barDockControlLeft.Location = New System.Drawing.Point(0, 24)
         Me.barDockControlLeft.Manager = Me.BarManager1
-        Me.barDockControlLeft.Size = New System.Drawing.Size(0, 467)
+        Me.barDockControlLeft.Size = New System.Drawing.Size(0, 468)
         '
         'barDockControlRight
         '
         Me.barDockControlRight.CausesValidation = False
         Me.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right
-        Me.barDockControlRight.Location = New System.Drawing.Point(1088, 25)
+        Me.barDockControlRight.Location = New System.Drawing.Point(1088, 24)
         Me.barDockControlRight.Manager = Me.BarManager1
-        Me.barDockControlRight.Size = New System.Drawing.Size(0, 467)
+        Me.barDockControlRight.Size = New System.Drawing.Size(0, 468)
         '
         'bbiEditar
         '
@@ -709,24 +710,24 @@ Partial Class frmAuditoria
         Me.cmsGrillaUsuarios.ImageScalingSize = New System.Drawing.Size(18, 18)
         Me.cmsGrillaUsuarios.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsmActualizarListado, Me.ToolStripSeparator3, Me.tsmTodoslosRegistros})
         Me.cmsGrillaUsuarios.Name = "cmsGrid"
-        Me.cmsGrillaUsuarios.Size = New System.Drawing.Size(251, 58)
+        Me.cmsGrillaUsuarios.Size = New System.Drawing.Size(221, 58)
         '
         'tsmActualizarListado
         '
         Me.tsmActualizarListado.Image = CType(resources.GetObject("tsmActualizarListado.Image"), System.Drawing.Image)
         Me.tsmActualizarListado.Name = "tsmActualizarListado"
-        Me.tsmActualizarListado.Size = New System.Drawing.Size(250, 24)
+        Me.tsmActualizarListado.Size = New System.Drawing.Size(220, 24)
         Me.tsmActualizarListado.Text = "Actualizar Listado"
         '
         'ToolStripSeparator3
         '
         Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
-        Me.ToolStripSeparator3.Size = New System.Drawing.Size(247, 6)
+        Me.ToolStripSeparator3.Size = New System.Drawing.Size(217, 6)
         '
         'tsmTodoslosRegistros
         '
         Me.tsmTodoslosRegistros.Name = "tsmTodoslosRegistros"
-        Me.tsmTodoslosRegistros.Size = New System.Drawing.Size(250, 24)
+        Me.tsmTodoslosRegistros.Size = New System.Drawing.Size(220, 24)
         Me.tsmTodoslosRegistros.Text = "Mostrar Todos los Registros"
         '
         'GVUsuarios
@@ -884,7 +885,7 @@ Partial Class frmAuditoria
         Me.chkEstado.Name = "chkEstado"
         Me.chkEstado.Properties.Caption = "Firmar"
         Me.chkEstado.Properties.GlyphAlignment = DevExpress.Utils.HorzAlignment.Far
-        Me.chkEstado.Size = New System.Drawing.Size(75, 21)
+        Me.chkEstado.Size = New System.Drawing.Size(75, 20)
         Me.chkEstado.TabIndex = 126
         '
         'GCUsuarioEstudios
@@ -1054,101 +1055,107 @@ Partial Class frmAuditoria
         Me.cmsGrid.ImageScalingSize = New System.Drawing.Size(18, 18)
         Me.cmsGrid.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsmActualizarVista, Me.FiltrarPorAñoToolStripMenuItem, Me.ToolStripSeparator1, Me.tsmVistaPrevia, Me.tsmImprimir, Me.ToolStripSeparator2, Me.tsmExportarExcel, Me.tsmExportarPDF})
         Me.cmsGrid.Name = "cmsGrid"
-        Me.cmsGrid.Size = New System.Drawing.Size(224, 184)
+        Me.cmsGrid.Size = New System.Drawing.Size(201, 182)
         '
         'tsmActualizarVista
         '
         Me.tsmActualizarVista.Image = CType(resources.GetObject("tsmActualizarVista.Image"), System.Drawing.Image)
         Me.tsmActualizarVista.Name = "tsmActualizarVista"
-        Me.tsmActualizarVista.Size = New System.Drawing.Size(223, 24)
+        Me.tsmActualizarVista.Size = New System.Drawing.Size(200, 24)
         Me.tsmActualizarVista.Text = "Actualizar Listado"
         '
         'FiltrarPorAñoToolStripMenuItem
         '
-        Me.FiltrarPorAñoToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsmActual, Me.tsm2023, Me.tsm2022, Me.tsm2021, Me.tsm2020, Me.tsm2019, Me.tsm2018, Me.tsm2017})
+        Me.FiltrarPorAñoToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsmActual, Me.tsm2024, Me.tsm2023, Me.tsm2022, Me.tsm2021, Me.tsm2020, Me.tsm2019, Me.tsm2018, Me.tsm2017})
         Me.FiltrarPorAñoToolStripMenuItem.Image = CType(resources.GetObject("FiltrarPorAñoToolStripMenuItem.Image"), System.Drawing.Image)
         Me.FiltrarPorAñoToolStripMenuItem.Name = "FiltrarPorAñoToolStripMenuItem"
-        Me.FiltrarPorAñoToolStripMenuItem.Size = New System.Drawing.Size(223, 24)
+        Me.FiltrarPorAñoToolStripMenuItem.Size = New System.Drawing.Size(200, 24)
         Me.FiltrarPorAñoToolStripMenuItem.Text = "Filtrar por Año"
         '
         'tsmActual
         '
         Me.tsmActual.Name = "tsmActual"
-        Me.tsmActual.Size = New System.Drawing.Size(198, 24)
+        Me.tsmActual.Size = New System.Drawing.Size(180, 22)
         Me.tsmActual.Text = "Actual"
+        '
+        'tsm2023
+        '
+        Me.tsm2023.Name = "tsm2023"
+        Me.tsm2023.Size = New System.Drawing.Size(180, 22)
+        Me.tsm2023.Text = "2023"
         '
         'tsm2022
         '
         Me.tsm2022.Name = "tsm2022"
-        Me.tsm2022.Size = New System.Drawing.Size(198, 24)
+        Me.tsm2022.Size = New System.Drawing.Size(180, 22)
         Me.tsm2022.Text = "2022"
         '
         'tsm2021
         '
         Me.tsm2021.Name = "tsm2021"
-        Me.tsm2021.Size = New System.Drawing.Size(198, 24)
+        Me.tsm2021.Size = New System.Drawing.Size(180, 22)
         Me.tsm2021.Text = "2021"
         '
         'tsm2020
         '
         Me.tsm2020.Name = "tsm2020"
-        Me.tsm2020.Size = New System.Drawing.Size(198, 24)
+        Me.tsm2020.Size = New System.Drawing.Size(180, 22)
         Me.tsm2020.Text = "2020"
         '
         'tsm2019
         '
         Me.tsm2019.Name = "tsm2019"
-        Me.tsm2019.Size = New System.Drawing.Size(198, 24)
+        Me.tsm2019.Size = New System.Drawing.Size(180, 22)
         Me.tsm2019.Text = "2019"
         '
         'tsm2018
         '
         Me.tsm2018.Name = "tsm2018"
-        Me.tsm2018.Size = New System.Drawing.Size(198, 24)
+        Me.tsm2018.Size = New System.Drawing.Size(180, 22)
         Me.tsm2018.Text = "2018"
         '
         'tsm2017
         '
         Me.tsm2017.Name = "tsm2017"
-        Me.tsm2017.Size = New System.Drawing.Size(198, 24)
+        Me.tsm2017.Size = New System.Drawing.Size(180, 22)
         Me.tsm2017.Text = "2017"
         '
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(220, 6)
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(197, 6)
         '
         'tsmVistaPrevia
         '
         Me.tsmVistaPrevia.Image = CType(resources.GetObject("tsmVistaPrevia.Image"), System.Drawing.Image)
         Me.tsmVistaPrevia.Name = "tsmVistaPrevia"
-        Me.tsmVistaPrevia.Size = New System.Drawing.Size(223, 24)
+        Me.tsmVistaPrevia.Size = New System.Drawing.Size(200, 24)
         Me.tsmVistaPrevia.Text = "Vista Previa Reporte"
         '
         'tsmImprimir
         '
         Me.tsmImprimir.Image = CType(resources.GetObject("tsmImprimir.Image"), System.Drawing.Image)
         Me.tsmImprimir.Name = "tsmImprimir"
-        Me.tsmImprimir.Size = New System.Drawing.Size(223, 24)
+        Me.tsmImprimir.Size = New System.Drawing.Size(200, 24)
         Me.tsmImprimir.Text = "Imprimir Reporte"
         '
         'ToolStripSeparator2
         '
         Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
-        Me.ToolStripSeparator2.Size = New System.Drawing.Size(220, 6)
+        Me.ToolStripSeparator2.Size = New System.Drawing.Size(197, 6)
         '
         'tsmExportarExcel
         '
         Me.tsmExportarExcel.Image = CType(resources.GetObject("tsmExportarExcel.Image"), System.Drawing.Image)
         Me.tsmExportarExcel.Name = "tsmExportarExcel"
-        Me.tsmExportarExcel.Size = New System.Drawing.Size(223, 24)
+        Me.tsmExportarExcel.Size = New System.Drawing.Size(200, 24)
         Me.tsmExportarExcel.Text = "Exportar Listado a Excel"
         '
         'tsmExportarPDF
         '
         Me.tsmExportarPDF.Image = CType(resources.GetObject("tsmExportarPDF.Image"), System.Drawing.Image)
         Me.tsmExportarPDF.Name = "tsmExportarPDF"
-        Me.tsmExportarPDF.Size = New System.Drawing.Size(223, 24)
+        Me.tsmExportarPDF.Size = New System.Drawing.Size(200, 24)
         Me.tsmExportarPDF.Text = "Exportar Listado  a PDF"
         '
         'GVEstudios
@@ -1358,24 +1365,24 @@ Partial Class frmAuditoria
         Me.cmsRegistros.ImageScalingSize = New System.Drawing.Size(18, 18)
         Me.cmsRegistros.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsmActualizarListadoRegistros, Me.ToolStripSeparator4, Me.tsmMostrarTodosRegistros})
         Me.cmsRegistros.Name = "cmsGrid"
-        Me.cmsRegistros.Size = New System.Drawing.Size(251, 58)
+        Me.cmsRegistros.Size = New System.Drawing.Size(221, 58)
         '
         'tsmActualizarListadoRegistros
         '
         Me.tsmActualizarListadoRegistros.Image = CType(resources.GetObject("tsmActualizarListadoRegistros.Image"), System.Drawing.Image)
         Me.tsmActualizarListadoRegistros.Name = "tsmActualizarListadoRegistros"
-        Me.tsmActualizarListadoRegistros.Size = New System.Drawing.Size(250, 24)
+        Me.tsmActualizarListadoRegistros.Size = New System.Drawing.Size(220, 24)
         Me.tsmActualizarListadoRegistros.Text = "Actualizar Listado"
         '
         'ToolStripSeparator4
         '
         Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
-        Me.ToolStripSeparator4.Size = New System.Drawing.Size(247, 6)
+        Me.ToolStripSeparator4.Size = New System.Drawing.Size(217, 6)
         '
         'tsmMostrarTodosRegistros
         '
         Me.tsmMostrarTodosRegistros.Name = "tsmMostrarTodosRegistros"
-        Me.tsmMostrarTodosRegistros.Size = New System.Drawing.Size(250, 24)
+        Me.tsmMostrarTodosRegistros.Size = New System.Drawing.Size(220, 24)
         Me.tsmMostrarTodosRegistros.Text = "Mostrar Todos los Registros"
         '
         'gvRegistros
@@ -1455,11 +1462,11 @@ Partial Class frmAuditoria
         Me.colNOTA.VisibleIndex = 6
         Me.colNOTA.Width = 411
         '
-        'tsm2023
+        'tsm2024
         '
-        Me.tsm2023.Name = "tsm2023"
-        Me.tsm2023.Size = New System.Drawing.Size(198, 24)
-        Me.tsm2023.Text = "2023"
+        Me.tsm2024.Name = "tsm2024"
+        Me.tsm2024.Size = New System.Drawing.Size(180, 22)
+        Me.tsm2024.Text = "2024"
         '
         'frmAuditoria
         '
@@ -1638,4 +1645,5 @@ Partial Class frmAuditoria
     Friend WithEvents tsmMostrarTodosRegistros As ToolStripMenuItem
     Friend WithEvents tsm2022 As ToolStripMenuItem
     Friend WithEvents tsm2023 As ToolStripMenuItem
+    Friend WithEvents tsm2024 As ToolStripMenuItem
 End Class

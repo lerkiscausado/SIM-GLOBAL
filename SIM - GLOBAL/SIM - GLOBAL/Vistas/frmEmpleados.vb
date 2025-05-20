@@ -47,7 +47,7 @@ Public Class frmEmpleados
         GCConsultar.DataSource = _ds.Tables(0)
     End Sub
     Private Sub frmEmpleados_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
+        peFirma.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Zoom
         ActualizarGrilla()
 
         'llenamos campo Cargos

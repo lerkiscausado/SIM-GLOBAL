@@ -58,7 +58,7 @@ Partial Class frmEspecimenes
         Me.chkEstado.MenuManager = Me.BarManager1
         Me.chkEstado.Name = "chkEstado"
         Me.chkEstado.Properties.Caption = "Activo"
-        Me.chkEstado.Size = New System.Drawing.Size(75, 21)
+        Me.chkEstado.Size = New System.Drawing.Size(75, 20)
         Me.chkEstado.TabIndex = 10
         '
         'BarManager1
@@ -124,7 +124,7 @@ Partial Class frmEspecimenes
         Me.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top
         Me.barDockControlTop.Location = New System.Drawing.Point(0, 0)
         Me.barDockControlTop.Manager = Me.BarManager1
-        Me.barDockControlTop.Size = New System.Drawing.Size(495, 25)
+        Me.barDockControlTop.Size = New System.Drawing.Size(495, 24)
         '
         'barDockControlBottom
         '
@@ -138,17 +138,17 @@ Partial Class frmEspecimenes
         '
         Me.barDockControlLeft.CausesValidation = False
         Me.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left
-        Me.barDockControlLeft.Location = New System.Drawing.Point(0, 25)
+        Me.barDockControlLeft.Location = New System.Drawing.Point(0, 24)
         Me.barDockControlLeft.Manager = Me.BarManager1
-        Me.barDockControlLeft.Size = New System.Drawing.Size(0, 393)
+        Me.barDockControlLeft.Size = New System.Drawing.Size(0, 394)
         '
         'barDockControlRight
         '
         Me.barDockControlRight.CausesValidation = False
         Me.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right
-        Me.barDockControlRight.Location = New System.Drawing.Point(495, 25)
+        Me.barDockControlRight.Location = New System.Drawing.Point(495, 24)
         Me.barDockControlRight.Manager = Me.BarManager1
-        Me.barDockControlRight.Size = New System.Drawing.Size(0, 393)
+        Me.barDockControlRight.Size = New System.Drawing.Size(0, 394)
         '
         'bbiEditar
         '

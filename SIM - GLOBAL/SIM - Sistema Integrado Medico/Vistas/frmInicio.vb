@@ -784,11 +784,11 @@ Public Class frmInicio
                 bbiTomaMuestra.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
                 bbiCitologia.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
                 bbiPatologia.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
-                bbiEndoscopia.Visibility = DevExpress.XtraBars.BarItemVisibility.Always
-                bbiImagenes.Visibility = DevExpress.XtraBars.BarItemVisibility.Always
-                bbiOtrosEstudios.Visibility = DevExpress.XtraBars.BarItemVisibility.Always
+                bbiEndoscopia.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
+                bbiImagenes.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
+                bbiOtrosEstudios.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
                 bbiOrtodoncia.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
-                bbiAnestesia.Visibility = DevExpress.XtraBars.BarItemVisibility.Always
+                bbiAnestesia.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
 
                 rpgReportes.Visible = True ' Grupo Reportes
                 bbiRelacionPatologias.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
@@ -2121,9 +2121,7 @@ Public Class frmInicio
     End Sub
 
     Private Sub bbiSoporteTecnico_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles bbiSoporteTecnico.ItemClick
-        Dim _frmOpen As New SIM___GLOBAL.frmGenerarPDF
-        _frmOpen.Licencia = LicenciaG
-        '_frmOpen.Estudio = Estudio
+        Dim _frmOpen As New SIM___GLOBAL.frmRipsJson
         _frmOpen.ShowDialog()
     End Sub
 

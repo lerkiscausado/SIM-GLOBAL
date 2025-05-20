@@ -602,7 +602,7 @@ Partial Class frmHistoria
         Me.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top
         Me.barDockControlTop.Location = New System.Drawing.Point(0, 0)
         Me.barDockControlTop.Manager = Me.BarManager1
-        Me.barDockControlTop.Size = New System.Drawing.Size(1272, 25)
+        Me.barDockControlTop.Size = New System.Drawing.Size(1272, 24)
         '
         'BarDockControl8
         '
@@ -616,17 +616,17 @@ Partial Class frmHistoria
         '
         Me.BarDockControl9.CausesValidation = False
         Me.BarDockControl9.Dock = System.Windows.Forms.DockStyle.Left
-        Me.BarDockControl9.Location = New System.Drawing.Point(0, 25)
+        Me.BarDockControl9.Location = New System.Drawing.Point(0, 24)
         Me.BarDockControl9.Manager = Me.BarManager1
-        Me.BarDockControl9.Size = New System.Drawing.Size(0, 593)
+        Me.BarDockControl9.Size = New System.Drawing.Size(0, 594)
         '
         'BarDockControl10
         '
         Me.BarDockControl10.CausesValidation = False
         Me.BarDockControl10.Dock = System.Windows.Forms.DockStyle.Right
-        Me.BarDockControl10.Location = New System.Drawing.Point(1272, 25)
+        Me.BarDockControl10.Location = New System.Drawing.Point(1272, 24)
         Me.BarDockControl10.Manager = Me.BarManager1
-        Me.BarDockControl10.Size = New System.Drawing.Size(0, 593)
+        Me.BarDockControl10.Size = New System.Drawing.Size(0, 594)
         '
         'BarButtonItem1
         '
@@ -645,7 +645,7 @@ Partial Class frmHistoria
         'SplitContainerControl1
         '
         Me.SplitContainerControl1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.SplitContainerControl1.Location = New System.Drawing.Point(0, 25)
+        Me.SplitContainerControl1.Location = New System.Drawing.Point(0, 24)
         Me.SplitContainerControl1.Name = "SplitContainerControl1"
         Me.SplitContainerControl1.Panel1.Controls.Add(Me.btVistaPrevia)
         Me.SplitContainerControl1.Panel1.Controls.Add(Me.GroupControl2)
@@ -666,7 +666,7 @@ Partial Class frmHistoria
         Me.SplitContainerControl1.Panel2.Controls.Add(Me.LabelControl2)
         Me.SplitContainerControl1.Panel2.Controls.Add(Me.dtFechaIngreso)
         Me.SplitContainerControl1.Panel2.Text = "Panel2"
-        Me.SplitContainerControl1.Size = New System.Drawing.Size(1272, 593)
+        Me.SplitContainerControl1.Size = New System.Drawing.Size(1272, 594)
         Me.SplitContainerControl1.SplitterPosition = 511
         Me.SplitContainerControl1.TabIndex = 4
         Me.SplitContainerControl1.Text = "SplitContainerControl1"
@@ -675,7 +675,7 @@ Partial Class frmHistoria
         '
         Me.btVistaPrevia.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btVistaPrevia.ImageOptions.Image = CType(resources.GetObject("btVistaPrevia.ImageOptions.Image"), System.Drawing.Image)
-        Me.btVistaPrevia.Location = New System.Drawing.Point(477, 517)
+        Me.btVistaPrevia.Location = New System.Drawing.Point(477, 518)
         Me.btVistaPrevia.Name = "btVistaPrevia"
         Me.btVistaPrevia.Size = New System.Drawing.Size(26, 23)
         Me.btVistaPrevia.TabIndex = 20
@@ -689,18 +689,18 @@ Partial Class frmHistoria
         Me.GroupControl2.Controls.Add(Me.GCHistoriasAnteriores)
         Me.GroupControl2.Location = New System.Drawing.Point(5, 369)
         Me.GroupControl2.Name = "GroupControl2"
-        Me.GroupControl2.Size = New System.Drawing.Size(500, 144)
+        Me.GroupControl2.Size = New System.Drawing.Size(500, 145)
         Me.GroupControl2.TabIndex = 2
         Me.GroupControl2.Text = "Historias Anteriores"
         '
         'GCHistoriasAnteriores
         '
         Me.GCHistoriasAnteriores.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.GCHistoriasAnteriores.Location = New System.Drawing.Point(2, 25)
+        Me.GCHistoriasAnteriores.Location = New System.Drawing.Point(2, 23)
         Me.GCHistoriasAnteriores.MainView = Me.gvHistoriasAnteriores
         Me.GCHistoriasAnteriores.MenuManager = Me.BarManager1
         Me.GCHistoriasAnteriores.Name = "GCHistoriasAnteriores"
-        Me.GCHistoriasAnteriores.Size = New System.Drawing.Size(496, 117)
+        Me.GCHistoriasAnteriores.Size = New System.Drawing.Size(496, 120)
         Me.GCHistoriasAnteriores.TabIndex = 2
         Me.GCHistoriasAnteriores.UseEmbeddedNavigator = True
         Me.GCHistoriasAnteriores.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.gvHistoriasAnteriores})
@@ -767,11 +767,11 @@ Partial Class frmHistoria
         'GCPacientesAtender
         '
         Me.GCPacientesAtender.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.GCPacientesAtender.Location = New System.Drawing.Point(2, 25)
+        Me.GCPacientesAtender.Location = New System.Drawing.Point(2, 23)
         Me.GCPacientesAtender.MainView = Me.GVPacientesAtender
         Me.GCPacientesAtender.MenuManager = Me.BarManager1
         Me.GCPacientesAtender.Name = "GCPacientesAtender"
-        Me.GCPacientesAtender.Size = New System.Drawing.Size(500, 330)
+        Me.GCPacientesAtender.Size = New System.Drawing.Size(500, 332)
         Me.GCPacientesAtender.TabIndex = 1
         Me.GCPacientesAtender.UseEmbeddedNavigator = True
         Me.GCPacientesAtender.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GVPacientesAtender})
@@ -968,7 +968,7 @@ Partial Class frmHistoria
         Me.lblHistoriaClinica.Appearance.Options.UseFont = True
         Me.lblHistoriaClinica.Location = New System.Drawing.Point(12, 189)
         Me.lblHistoriaClinica.Name = "lblHistoriaClinica"
-        Me.lblHistoriaClinica.Size = New System.Drawing.Size(94, 16)
+        Me.lblHistoriaClinica.Size = New System.Drawing.Size(89, 14)
         Me.lblHistoriaClinica.TabIndex = 106
         Me.lblHistoriaClinica.Text = "Historia Clinica"
         '
@@ -983,7 +983,7 @@ Partial Class frmHistoria
         Me.xtcReporteEstudio.Name = "xtcReporteEstudio"
         Me.xtcReporteEstudio.PageImagePosition = DevExpress.XtraTab.TabPageImagePosition.None
         Me.xtcReporteEstudio.SelectedTabPage = Me.xtpMotivoConsulta
-        Me.xtcReporteEstudio.Size = New System.Drawing.Size(730, 335)
+        Me.xtcReporteEstudio.Size = New System.Drawing.Size(730, 336)
         Me.xtcReporteEstudio.TabIndex = 105
         Me.xtcReporteEstudio.TabPages.AddRange(New DevExpress.XtraTab.XtraTabPage() {Me.xtpMotivoConsulta, Me.xtpConsultaControl, Me.xtpEnfermedadActual, Me.xtpRevisionxSistemas, Me.xtpAntecedentes, Me.xtpExamenFisico, Me.xtpDiagnostico, Me.xtpAnalisis, Me.xtpRemision, Me.xtpOrdenesMedicas, Me.xtpCurva, Me.xtpExamenesPrequirurgicos})
         '
@@ -994,7 +994,7 @@ Partial Class frmHistoria
         Me.xtpMotivoConsulta.Controls.Add(Me.txtMotivoConsulta)
         Me.xtpMotivoConsulta.Controls.Add(Me.LabelControl9)
         Me.xtpMotivoConsulta.Name = "xtpMotivoConsulta"
-        Me.xtpMotivoConsulta.Size = New System.Drawing.Size(560, 333)
+        Me.xtpMotivoConsulta.Size = New System.Drawing.Size(561, 334)
         Me.xtpMotivoConsulta.Text = "Motivo de Consulta"
         '
         'txtResponsables
@@ -1038,7 +1038,7 @@ Partial Class frmHistoria
         Me.xtpConsultaControl.Controls.Add(Me.LabelControl30)
         Me.xtpConsultaControl.Controls.Add(Me.txtConsultaControl)
         Me.xtpConsultaControl.Name = "xtpConsultaControl"
-        Me.xtpConsultaControl.Size = New System.Drawing.Size(560, 334)
+        Me.xtpConsultaControl.Size = New System.Drawing.Size(561, 333)
         Me.xtpConsultaControl.Text = "Consulta de Control o Evolucion"
         '
         'LabelControl30
@@ -1064,7 +1064,7 @@ Partial Class frmHistoria
         Me.xtpEnfermedadActual.Controls.Add(Me.LabelControl10)
         Me.xtpEnfermedadActual.Controls.Add(Me.txtEnfermedadActual)
         Me.xtpEnfermedadActual.Name = "xtpEnfermedadActual"
-        Me.xtpEnfermedadActual.Size = New System.Drawing.Size(560, 334)
+        Me.xtpEnfermedadActual.Size = New System.Drawing.Size(561, 333)
         Me.xtpEnfermedadActual.Text = "Enfermedad Actual"
         '
         'LabelControl10
@@ -1090,7 +1090,7 @@ Partial Class frmHistoria
         Me.xtpRevisionxSistemas.Controls.Add(Me.LabelControl3)
         Me.xtpRevisionxSistemas.Controls.Add(Me.txtRevisionxSistemas)
         Me.xtpRevisionxSistemas.Name = "xtpRevisionxSistemas"
-        Me.xtpRevisionxSistemas.Size = New System.Drawing.Size(560, 334)
+        Me.xtpRevisionxSistemas.Size = New System.Drawing.Size(561, 333)
         Me.xtpRevisionxSistemas.Text = "Revision por Sistemas"
         '
         'LabelControl3
@@ -1118,7 +1118,7 @@ Partial Class frmHistoria
         Me.xtpAntecedentes.Controls.Add(Me.LabelControl4)
         Me.xtpAntecedentes.Controls.Add(Me.txtAntecedentesPersonales)
         Me.xtpAntecedentes.Name = "xtpAntecedentes"
-        Me.xtpAntecedentes.Size = New System.Drawing.Size(560, 334)
+        Me.xtpAntecedentes.Size = New System.Drawing.Size(561, 333)
         Me.xtpAntecedentes.Text = "Antecedentes"
         '
         'LabelControl6
@@ -1161,7 +1161,7 @@ Partial Class frmHistoria
         '
         Me.xtpExamenFisico.Controls.Add(Me.XtraTabControl2)
         Me.xtpExamenFisico.Name = "xtpExamenFisico"
-        Me.xtpExamenFisico.Size = New System.Drawing.Size(560, 334)
+        Me.xtpExamenFisico.Size = New System.Drawing.Size(561, 333)
         Me.xtpExamenFisico.Text = "Examen Fisico"
         '
         'XtraTabControl2
@@ -1497,7 +1497,7 @@ Partial Class frmHistoria
         Me.xtpDiagnostico.Controls.Add(Me.txtDiagnostico)
         Me.xtpDiagnostico.Controls.Add(Me.LabelControl26)
         Me.xtpDiagnostico.Name = "xtpDiagnostico"
-        Me.xtpDiagnostico.Size = New System.Drawing.Size(560, 334)
+        Me.xtpDiagnostico.Size = New System.Drawing.Size(561, 333)
         Me.xtpDiagnostico.Text = "Diagnostico"
         '
         'cboDiagnosticos
@@ -1646,7 +1646,7 @@ Partial Class frmHistoria
         Me.xtpAnalisis.Controls.Add(Me.LabelControl29)
         Me.xtpAnalisis.Controls.Add(Me.txtPlanSeguir)
         Me.xtpAnalisis.Name = "xtpAnalisis"
-        Me.xtpAnalisis.Size = New System.Drawing.Size(560, 334)
+        Me.xtpAnalisis.Size = New System.Drawing.Size(561, 333)
         Me.xtpAnalisis.Text = "Analisis y Plan a Seguir"
         '
         'LabelControl29
@@ -1672,7 +1672,7 @@ Partial Class frmHistoria
         Me.xtpRemision.Controls.Add(Me.LabelControl5)
         Me.xtpRemision.Controls.Add(Me.txtRemision)
         Me.xtpRemision.Name = "xtpRemision"
-        Me.xtpRemision.Size = New System.Drawing.Size(560, 334)
+        Me.xtpRemision.Size = New System.Drawing.Size(561, 333)
         Me.xtpRemision.Text = "Remision"
         '
         'LabelControl5
@@ -1697,7 +1697,7 @@ Partial Class frmHistoria
         '
         Me.xtpOrdenesMedicas.Controls.Add(Me.XtraTabControl4)
         Me.xtpOrdenesMedicas.Name = "xtpOrdenesMedicas"
-        Me.xtpOrdenesMedicas.Size = New System.Drawing.Size(560, 334)
+        Me.xtpOrdenesMedicas.Size = New System.Drawing.Size(561, 333)
         Me.xtpOrdenesMedicas.Text = "Ordenes Medicas"
         '
         'XtraTabControl4
@@ -1706,7 +1706,7 @@ Partial Class frmHistoria
         Me.XtraTabControl4.Location = New System.Drawing.Point(0, 0)
         Me.XtraTabControl4.Name = "XtraTabControl4"
         Me.XtraTabControl4.SelectedTabPage = Me.xtpOMFormulacion
-        Me.XtraTabControl4.Size = New System.Drawing.Size(560, 334)
+        Me.XtraTabControl4.Size = New System.Drawing.Size(561, 333)
         Me.XtraTabControl4.TabIndex = 0
         Me.XtraTabControl4.TabPages.AddRange(New DevExpress.XtraTab.XtraTabPage() {Me.xtpOMFormulacion, Me.xtpOMLaboratorios, Me.xtpOMEstudiosDiagnosticos, Me.xtpOMProcedimientos})
         '
@@ -1714,7 +1714,7 @@ Partial Class frmHistoria
         '
         Me.xtpOMFormulacion.Controls.Add(Me.XtraTabControl3)
         Me.xtpOMFormulacion.Name = "xtpOMFormulacion"
-        Me.xtpOMFormulacion.Size = New System.Drawing.Size(558, 309)
+        Me.xtpOMFormulacion.Size = New System.Drawing.Size(559, 308)
         Me.xtpOMFormulacion.Text = "Formulacion"
         '
         'XtraTabControl3
@@ -1985,7 +1985,7 @@ Partial Class frmHistoria
         Me.xtpOMLaboratorios.Controls.Add(Me.txtLaboratorios)
         Me.xtpOMLaboratorios.Controls.Add(Me.LabelControl22)
         Me.xtpOMLaboratorios.Name = "xtpOMLaboratorios"
-        Me.xtpOMLaboratorios.Size = New System.Drawing.Size(558, 309)
+        Me.xtpOMLaboratorios.Size = New System.Drawing.Size(559, 308)
         Me.xtpOMLaboratorios.Text = "Laboratorios"
         '
         'GCLaboratorios
@@ -1996,7 +1996,7 @@ Partial Class frmHistoria
         Me.GCLaboratorios.MainView = Me.GVLaboratorios
         Me.GCLaboratorios.MenuManager = Me.BarManager1
         Me.GCLaboratorios.Name = "GCLaboratorios"
-        Me.GCLaboratorios.Size = New System.Drawing.Size(534, 151)
+        Me.GCLaboratorios.Size = New System.Drawing.Size(535, 151)
         Me.GCLaboratorios.TabIndex = 118
         Me.GCLaboratorios.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GVLaboratorios})
         '
@@ -2139,7 +2139,7 @@ Partial Class frmHistoria
         Me.xtpOMEstudiosDiagnosticos.Controls.Add(Me.txtEstudiosDiagnosticos)
         Me.xtpOMEstudiosDiagnosticos.Controls.Add(Me.LabelControl34)
         Me.xtpOMEstudiosDiagnosticos.Name = "xtpOMEstudiosDiagnosticos"
-        Me.xtpOMEstudiosDiagnosticos.Size = New System.Drawing.Size(558, 309)
+        Me.xtpOMEstudiosDiagnosticos.Size = New System.Drawing.Size(559, 308)
         Me.xtpOMEstudiosDiagnosticos.Text = "Estudios Diagnosticos"
         '
         'GCEstudiosDiagnosticos
@@ -2150,7 +2150,7 @@ Partial Class frmHistoria
         Me.GCEstudiosDiagnosticos.MainView = Me.GVEstudiosDiagnosticos
         Me.GCEstudiosDiagnosticos.MenuManager = Me.BarManager1
         Me.GCEstudiosDiagnosticos.Name = "GCEstudiosDiagnosticos"
-        Me.GCEstudiosDiagnosticos.Size = New System.Drawing.Size(534, 152)
+        Me.GCEstudiosDiagnosticos.Size = New System.Drawing.Size(535, 152)
         Me.GCEstudiosDiagnosticos.TabIndex = 127
         Me.GCEstudiosDiagnosticos.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GVEstudiosDiagnosticos})
         '
@@ -2292,7 +2292,7 @@ Partial Class frmHistoria
         Me.xtpOMProcedimientos.Controls.Add(Me.txtOtrosEstudios)
         Me.xtpOMProcedimientos.Controls.Add(Me.LabelControl23)
         Me.xtpOMProcedimientos.Name = "xtpOMProcedimientos"
-        Me.xtpOMProcedimientos.Size = New System.Drawing.Size(558, 309)
+        Me.xtpOMProcedimientos.Size = New System.Drawing.Size(559, 308)
         Me.xtpOMProcedimientos.Text = "Procedimientos"
         '
         'GCProcedimientos
@@ -2303,7 +2303,7 @@ Partial Class frmHistoria
         Me.GCProcedimientos.MainView = Me.GVProcedimientos
         Me.GCProcedimientos.MenuManager = Me.BarManager1
         Me.GCProcedimientos.Name = "GCProcedimientos"
-        Me.GCProcedimientos.Size = New System.Drawing.Size(534, 152)
+        Me.GCProcedimientos.Size = New System.Drawing.Size(535, 152)
         Me.GCProcedimientos.TabIndex = 118
         Me.GCProcedimientos.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GVProcedimientos})
         '
@@ -2437,7 +2437,7 @@ Partial Class frmHistoria
         'xtpCurva
         '
         Me.xtpCurva.Name = "xtpCurva"
-        Me.xtpCurva.Size = New System.Drawing.Size(560, 334)
+        Me.xtpCurva.Size = New System.Drawing.Size(561, 333)
         Me.xtpCurva.Text = "Curva de Crecimiento"
         '
         'xtpExamenesPrequirurgicos
@@ -2449,7 +2449,7 @@ Partial Class frmHistoria
         Me.xtpExamenesPrequirurgicos.Controls.Add(Me.gcExamenesPrequirurgicos)
         Me.xtpExamenesPrequirurgicos.Controls.Add(Me.gcExamenesPredeterminados)
         Me.xtpExamenesPrequirurgicos.Name = "xtpExamenesPrequirurgicos"
-        Me.xtpExamenesPrequirurgicos.Size = New System.Drawing.Size(560, 334)
+        Me.xtpExamenesPrequirurgicos.Size = New System.Drawing.Size(561, 333)
         Me.xtpExamenesPrequirurgicos.Text = "Examenes Prequirurgicos"
         '
         'cmdImprimirExamenesPrequirurgicos
@@ -2572,7 +2572,7 @@ Partial Class frmHistoria
         Me.chkRXTorax.Name = "chkRXTorax"
         Me.chkRXTorax.Properties.Caption = "RX de Torax PA y Lateral"
         Me.chkRXTorax.Properties.GlyphAlignment = DevExpress.Utils.HorzAlignment.[Default]
-        Me.chkRXTorax.Size = New System.Drawing.Size(142, 21)
+        Me.chkRXTorax.Size = New System.Drawing.Size(142, 20)
         Me.chkRXTorax.TabIndex = 113
         '
         'chkElectrocardiograma
@@ -2582,7 +2582,7 @@ Partial Class frmHistoria
         Me.chkElectrocardiograma.Name = "chkElectrocardiograma"
         Me.chkElectrocardiograma.Properties.Caption = "Electrocardiograma"
         Me.chkElectrocardiograma.Properties.GlyphAlignment = DevExpress.Utils.HorzAlignment.[Default]
-        Me.chkElectrocardiograma.Size = New System.Drawing.Size(112, 21)
+        Me.chkElectrocardiograma.Size = New System.Drawing.Size(112, 20)
         Me.chkElectrocardiograma.TabIndex = 112
         '
         'chkUrianalisis
@@ -2592,7 +2592,7 @@ Partial Class frmHistoria
         Me.chkUrianalisis.Name = "chkUrianalisis"
         Me.chkUrianalisis.Properties.Caption = "Urianalisis"
         Me.chkUrianalisis.Properties.GlyphAlignment = DevExpress.Utils.HorzAlignment.[Default]
-        Me.chkUrianalisis.Size = New System.Drawing.Size(101, 21)
+        Me.chkUrianalisis.Size = New System.Drawing.Size(101, 20)
         Me.chkUrianalisis.TabIndex = 111
         '
         'chkCreatinina
@@ -2602,7 +2602,7 @@ Partial Class frmHistoria
         Me.chkCreatinina.Name = "chkCreatinina"
         Me.chkCreatinina.Properties.Caption = "Creatinina"
         Me.chkCreatinina.Properties.GlyphAlignment = DevExpress.Utils.HorzAlignment.[Default]
-        Me.chkCreatinina.Size = New System.Drawing.Size(101, 21)
+        Me.chkCreatinina.Size = New System.Drawing.Size(101, 20)
         Me.chkCreatinina.TabIndex = 110
         '
         'chkBUN
@@ -2612,7 +2612,7 @@ Partial Class frmHistoria
         Me.chkBUN.Name = "chkBUN"
         Me.chkBUN.Properties.Caption = "BUN"
         Me.chkBUN.Properties.GlyphAlignment = DevExpress.Utils.HorzAlignment.[Default]
-        Me.chkBUN.Size = New System.Drawing.Size(101, 21)
+        Me.chkBUN.Size = New System.Drawing.Size(101, 20)
         Me.chkBUN.TabIndex = 109
         '
         'chkRecuentoPlaquetas
@@ -2622,7 +2622,7 @@ Partial Class frmHistoria
         Me.chkRecuentoPlaquetas.Name = "chkRecuentoPlaquetas"
         Me.chkRecuentoPlaquetas.Properties.Caption = "Recuento de Plaquetas"
         Me.chkRecuentoPlaquetas.Properties.GlyphAlignment = DevExpress.Utils.HorzAlignment.[Default]
-        Me.chkRecuentoPlaquetas.Size = New System.Drawing.Size(137, 21)
+        Me.chkRecuentoPlaquetas.Size = New System.Drawing.Size(137, 20)
         Me.chkRecuentoPlaquetas.TabIndex = 108
         '
         'chkTPT
@@ -2632,7 +2632,7 @@ Partial Class frmHistoria
         Me.chkTPT.Name = "chkTPT"
         Me.chkTPT.Properties.Caption = "TPT"
         Me.chkTPT.Properties.GlyphAlignment = DevExpress.Utils.HorzAlignment.[Default]
-        Me.chkTPT.Size = New System.Drawing.Size(101, 21)
+        Me.chkTPT.Size = New System.Drawing.Size(101, 20)
         Me.chkTPT.TabIndex = 107
         '
         'chkTP
@@ -2642,7 +2642,7 @@ Partial Class frmHistoria
         Me.chkTP.Name = "chkTP"
         Me.chkTP.Properties.Caption = "TP"
         Me.chkTP.Properties.GlyphAlignment = DevExpress.Utils.HorzAlignment.[Default]
-        Me.chkTP.Size = New System.Drawing.Size(101, 21)
+        Me.chkTP.Size = New System.Drawing.Size(101, 20)
         Me.chkTP.TabIndex = 106
         '
         'chkGlicemia
@@ -2652,7 +2652,7 @@ Partial Class frmHistoria
         Me.chkGlicemia.Name = "chkGlicemia"
         Me.chkGlicemia.Properties.Caption = "Glicemia Ayuna"
         Me.chkGlicemia.Properties.GlyphAlignment = DevExpress.Utils.HorzAlignment.[Default]
-        Me.chkGlicemia.Size = New System.Drawing.Size(99, 21)
+        Me.chkGlicemia.Size = New System.Drawing.Size(99, 20)
         Me.chkGlicemia.TabIndex = 105
         '
         'chkHemograma
@@ -2662,7 +2662,7 @@ Partial Class frmHistoria
         Me.chkHemograma.Name = "chkHemograma"
         Me.chkHemograma.Properties.Caption = "Hemograma"
         Me.chkHemograma.Properties.GlyphAlignment = DevExpress.Utils.HorzAlignment.[Default]
-        Me.chkHemograma.Size = New System.Drawing.Size(86, 21)
+        Me.chkHemograma.Size = New System.Drawing.Size(86, 20)
         Me.chkHemograma.TabIndex = 104
         '
         'lblIdDetalleOrden
@@ -2673,7 +2673,7 @@ Partial Class frmHistoria
         Me.lblIdDetalleOrden.Appearance.Options.UseForeColor = True
         Me.lblIdDetalleOrden.Location = New System.Drawing.Point(275, 6)
         Me.lblIdDetalleOrden.Name = "lblIdDetalleOrden"
-        Me.lblIdDetalleOrden.Size = New System.Drawing.Size(9, 17)
+        Me.lblIdDetalleOrden.Size = New System.Drawing.Size(8, 16)
         Me.lblIdDetalleOrden.TabIndex = 104
         Me.lblIdDetalleOrden.Text = "1"
         Me.lblIdDetalleOrden.Visible = False
@@ -2685,7 +2685,7 @@ Partial Class frmHistoria
         Me.chkProcesado.Name = "chkProcesado"
         Me.chkProcesado.Properties.Caption = "Firmar"
         Me.chkProcesado.Properties.GlyphAlignment = DevExpress.Utils.HorzAlignment.Far
-        Me.chkProcesado.Size = New System.Drawing.Size(75, 21)
+        Me.chkProcesado.Size = New System.Drawing.Size(75, 20)
         Me.chkProcesado.TabIndex = 103
         '
         'LabelControl7
@@ -2706,7 +2706,7 @@ Partial Class frmHistoria
         Me.lblConsecutivoOrden.Properties.Appearance.Options.UseBackColor = True
         Me.lblConsecutivoOrden.Properties.Appearance.Options.UseFont = True
         Me.lblConsecutivoOrden.Properties.ReadOnly = True
-        Me.lblConsecutivoOrden.Size = New System.Drawing.Size(56, 24)
+        Me.lblConsecutivoOrden.Size = New System.Drawing.Size(56, 22)
         Me.lblConsecutivoOrden.TabIndex = 101
         '
         'XtraTabControl1
@@ -2770,7 +2770,7 @@ Partial Class frmHistoria
         Me.lblConsecutivo.Appearance.Options.UseForeColor = True
         Me.lblConsecutivo.Location = New System.Drawing.Point(303, 16)
         Me.lblConsecutivo.Name = "lblConsecutivo"
-        Me.lblConsecutivo.Size = New System.Drawing.Size(9, 17)
+        Me.lblConsecutivo.Size = New System.Drawing.Size(8, 16)
         Me.lblConsecutivo.TabIndex = 93
         Me.lblConsecutivo.Text = "1"
         Me.lblConsecutivo.Visible = False
@@ -2785,7 +2785,7 @@ Partial Class frmHistoria
         Me.txtNumeroHistoria.Properties.Appearance.Options.UseBackColor = True
         Me.txtNumeroHistoria.Properties.Appearance.Options.UseFont = True
         Me.txtNumeroHistoria.Properties.ReadOnly = True
-        Me.txtNumeroHistoria.Size = New System.Drawing.Size(192, 24)
+        Me.txtNumeroHistoria.Size = New System.Drawing.Size(192, 22)
         Me.txtNumeroHistoria.TabIndex = 92
         '
         'LabelControl1

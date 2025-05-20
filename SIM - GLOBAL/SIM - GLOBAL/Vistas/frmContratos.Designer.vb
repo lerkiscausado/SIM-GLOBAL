@@ -19,10 +19,11 @@ Partial Class frmContratos
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmContratos))
         Dim GridFormatRule1 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
         Dim FormatConditionRuleValue1 As DevExpress.XtraEditors.FormatConditionRuleValue = New DevExpress.XtraEditors.FormatConditionRuleValue()
-        Me.BarManager1 = New DevExpress.XtraBars.BarManager()
+        Me.BarManager1 = New DevExpress.XtraBars.BarManager(Me.components)
         Me.Bar1 = New DevExpress.XtraBars.Bar()
         Me.bbtNuevo = New DevExpress.XtraBars.BarButtonItem()
         Me.bbiEditar = New DevExpress.XtraBars.BarButtonItem()
@@ -161,7 +162,7 @@ Partial Class frmContratos
         Me.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top
         Me.barDockControlTop.Location = New System.Drawing.Point(0, 0)
         Me.barDockControlTop.Manager = Me.BarManager1
-        Me.barDockControlTop.Size = New System.Drawing.Size(920, 31)
+        Me.barDockControlTop.Size = New System.Drawing.Size(920, 24)
         '
         'barDockControlBottom
         '
@@ -175,17 +176,17 @@ Partial Class frmContratos
         '
         Me.barDockControlLeft.CausesValidation = False
         Me.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left
-        Me.barDockControlLeft.Location = New System.Drawing.Point(0, 31)
+        Me.barDockControlLeft.Location = New System.Drawing.Point(0, 24)
         Me.barDockControlLeft.Manager = Me.BarManager1
-        Me.barDockControlLeft.Size = New System.Drawing.Size(0, 425)
+        Me.barDockControlLeft.Size = New System.Drawing.Size(0, 432)
         '
         'barDockControlRight
         '
         Me.barDockControlRight.CausesValidation = False
         Me.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right
-        Me.barDockControlRight.Location = New System.Drawing.Point(920, 31)
+        Me.barDockControlRight.Location = New System.Drawing.Point(920, 24)
         Me.barDockControlRight.Manager = Me.BarManager1
-        Me.barDockControlRight.Size = New System.Drawing.Size(0, 425)
+        Me.barDockControlRight.Size = New System.Drawing.Size(0, 432)
         '
         'chkEstado
         '
@@ -194,7 +195,7 @@ Partial Class frmContratos
         Me.chkEstado.Name = "chkEstado"
         Me.chkEstado.Properties.Caption = "Estado"
         Me.chkEstado.Properties.GlyphAlignment = DevExpress.Utils.HorzAlignment.Far
-        Me.chkEstado.Size = New System.Drawing.Size(75, 19)
+        Me.chkEstado.Size = New System.Drawing.Size(75, 20)
         Me.chkEstado.TabIndex = 14
         '
         'chkRips
@@ -204,7 +205,7 @@ Partial Class frmContratos
         Me.chkRips.Name = "chkRips"
         Me.chkRips.Properties.Caption = "Rips"
         Me.chkRips.Properties.GlyphAlignment = DevExpress.Utils.HorzAlignment.Far
-        Me.chkRips.Size = New System.Drawing.Size(75, 19)
+        Me.chkRips.Size = New System.Drawing.Size(75, 20)
         Me.chkRips.TabIndex = 12
         '
         'txtValor
@@ -491,6 +492,9 @@ Partial Class frmContratos
         '
         'GCConsultar
         '
+        Me.GCConsultar.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.GCConsultar.Location = New System.Drawing.Point(12, 256)
         Me.GCConsultar.MainView = Me.GVConsultar
         Me.GCConsultar.MenuManager = Me.BarManager1
@@ -616,7 +620,7 @@ Partial Class frmContratos
         Me.Controls.Add(Me.barDockControlRight)
         Me.Controls.Add(Me.barDockControlBottom)
         Me.Controls.Add(Me.barDockControlTop)
-        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.IconOptions.Icon = CType(resources.GetObject("frmContratos.IconOptions.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmContratos"

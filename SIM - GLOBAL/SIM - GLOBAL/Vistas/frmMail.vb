@@ -34,7 +34,7 @@ Public Class frmMail
 
 
         'Try
-        ' '    Se genera el reporte en PDF
+        '    Se genera el reporte en PDF
         ' Select Case Licencia
         ' Case "11"
         ' _funciones.GenerarPDF(IdOrden, TipoEstudio, 1, Licencia, IdOrden & " - " & _ds.Tables(0).Rows(0)(2).ToString & ".pdf")

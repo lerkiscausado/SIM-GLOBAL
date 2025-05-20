@@ -114,6 +114,7 @@ Partial Class frmInicio
         Me.bbiEntregaResultados = New DevExpress.XtraBars.BarButtonItem()
         Me.bbiImprimirMenu = New DevExpress.XtraBars.BarSubItem()
         Me.bbiImprimirEstudios = New DevExpress.XtraBars.BarButtonItem()
+        Me.bbiExportarPDF = New DevExpress.XtraBars.BarButtonItem()
         Me.bbiImprimirEstudiosFoto = New DevExpress.XtraBars.BarButtonItem()
         Me.bsiImpresionOrdenesMedicas = New DevExpress.XtraBars.BarSubItem()
         Me.bbiImpresionLaboratorios = New DevExpress.XtraBars.BarButtonItem()
@@ -151,7 +152,6 @@ Partial Class frmInicio
         Me.RibbonStatusBar = New DevExpress.XtraBars.Ribbon.RibbonStatusBar()
         Me.RibbonPageGroup15 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.RibbonPageGroup16 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
-        Me.bbiExportarPDF = New DevExpress.XtraBars.BarButtonItem()
         CType(Me.RibbonControl, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemTextEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -165,7 +165,7 @@ Partial Class frmInicio
         Me.RibbonControl.Name = "RibbonControl"
         Me.RibbonControl.Pages.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPage() {Me.rpArchivo, Me.rpAdministracion, Me.rpContable, Me.rpConfiguracion, Me.rpAyuda})
         Me.RibbonControl.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemTextEdit1})
-        Me.RibbonControl.Size = New System.Drawing.Size(1610, 169)
+        Me.RibbonControl.Size = New System.Drawing.Size(1610, 161)
         Me.RibbonControl.StatusBar = Me.RibbonStatusBar
         '
         'bbiNuevo
@@ -401,6 +401,7 @@ Partial Class frmInicio
         Me.bbiProgramacionProcedimiento.Name = "bbiProgramacionProcedimiento"
         Me.bbiProgramacionProcedimiento.RibbonStyle = CType(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) _
             Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
+        Me.bbiProgramacionProcedimiento.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
         '
         'bbiImagenes
         '
@@ -410,6 +411,7 @@ Partial Class frmInicio
         Me.bbiImagenes.Name = "bbiImagenes"
         Me.bbiImagenes.RibbonStyle = CType(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) _
             Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
+        Me.bbiImagenes.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
         '
         'bbiCargos
         '
@@ -578,6 +580,7 @@ Partial Class frmInicio
         Me.bbiEndoscopia.Name = "bbiEndoscopia"
         Me.bbiEndoscopia.RibbonStyle = CType(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) _
             Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
+        Me.bbiEndoscopia.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
         '
         'bbiEquiposApoyo
         '
@@ -712,6 +715,7 @@ Partial Class frmInicio
         Me.bbiOtrosEstudios.Name = "bbiOtrosEstudios"
         Me.bbiOtrosEstudios.RibbonStyle = CType(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) _
             Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
+        Me.bbiOtrosEstudios.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
         '
         'bbiPlantillas
         '
@@ -748,6 +752,7 @@ Partial Class frmInicio
         Me.bbiOrtodoncia.Name = "bbiOrtodoncia"
         Me.bbiOrtodoncia.RibbonStyle = CType(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) _
             Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
+        Me.bbiOrtodoncia.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
         '
         'bbiPlantillaConsentimiento
         '
@@ -907,6 +912,7 @@ Partial Class frmInicio
         Me.bbiTomaMuestra.Name = "bbiTomaMuestra"
         Me.bbiTomaMuestra.RibbonStyle = CType(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) _
             Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
+        Me.bbiTomaMuestra.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
         '
         'bbiAuditoriaOrdenes
         '
@@ -984,6 +990,13 @@ Partial Class frmInicio
         Me.bbiImprimirEstudios.Id = 93
         Me.bbiImprimirEstudios.ImageOptions.Image = CType(resources.GetObject("bbiImprimirEstudios.ImageOptions.Image"), System.Drawing.Image)
         Me.bbiImprimirEstudios.Name = "bbiImprimirEstudios"
+        '
+        'bbiExportarPDF
+        '
+        Me.bbiExportarPDF.Caption = "Exportar Resultado a PDF"
+        Me.bbiExportarPDF.Id = 112
+        Me.bbiExportarPDF.ImageOptions.Image = CType(resources.GetObject("bbiExportarPDF.ImageOptions.Image"), System.Drawing.Image)
+        Me.bbiExportarPDF.Name = "bbiExportarPDF"
         '
         'bbiImprimirEstudiosFoto
         '
@@ -1273,10 +1286,10 @@ Partial Class frmInicio
         'RibbonStatusBar
         '
         Me.RibbonStatusBar.ItemLinks.Add(Me.srgAspecto)
-        Me.RibbonStatusBar.Location = New System.Drawing.Point(0, 564)
+        Me.RibbonStatusBar.Location = New System.Drawing.Point(0, 565)
         Me.RibbonStatusBar.Name = "RibbonStatusBar"
         Me.RibbonStatusBar.Ribbon = Me.RibbonControl
-        Me.RibbonStatusBar.Size = New System.Drawing.Size(1610, 25)
+        Me.RibbonStatusBar.Size = New System.Drawing.Size(1610, 24)
         '
         'RibbonPageGroup15
         '
@@ -1288,17 +1301,10 @@ Partial Class frmInicio
         Me.RibbonPageGroup16.Name = "RibbonPageGroup16"
         Me.RibbonPageGroup16.Text = "Transacciones"
         '
-        'bbiExportarPDF
-        '
-        Me.bbiExportarPDF.Caption = "Exportar Resultado a PDF"
-        Me.bbiExportarPDF.Id = 112
-        Me.bbiExportarPDF.ImageOptions.Image = CType(resources.GetObject("BarButtonItem5.ImageOptions.Image"), System.Drawing.Image)
-        Me.bbiExportarPDF.Name = "bbiExportarPDF"
-        '
         'frmInicio
         '
         Me.Appearance.Options.UseFont = True
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 14.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1610, 589)
         Me.Controls.Add(Me.RibbonStatusBar)

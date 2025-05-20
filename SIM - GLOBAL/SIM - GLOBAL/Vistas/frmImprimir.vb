@@ -182,7 +182,7 @@ Public Class frmImprimir
                             crv.Refresh()
                             ShowDialog()
                         Case 4 'Gastrolap
-                            Dim rptLaboratorios As New rptLaboratorios
+                            Dim rptLaboratorios As New rptLaboratoriosMR
                             rptLaboratorios.SetParameterValue("filtro", filtro)
                             rptLaboratorios.SetParameterValue("licencia", Licencia)
                             crv.ReportSource = rptLaboratorios
@@ -200,7 +200,7 @@ Public Class frmImprimir
                             crv.Refresh()
                             ShowDialog()
                         Case 4 ' Gastrolap
-                            Dim rptEstudios As New rptEstudiosDiagnosticos
+                            Dim rptEstudios As New rptEstudiosDiagnosticosMR
                             rptEstudios.SetParameterValue("filtro", filtro)
                             rptEstudios.SetParameterValue("licencia", Licencia)
                             crv.ReportSource = rptEstudios
@@ -218,7 +218,7 @@ Public Class frmImprimir
                             crv.Refresh()
                             ShowDialog()
                         Case 4 'Gastrolap
-                            Dim rptProcedimientos As New rptProcedimientos
+                            Dim rptProcedimientos As New rptProcedimientosMR
                             rptProcedimientos.SetParameterValue("filtro", filtro)
                             rptProcedimientos.SetParameterValue("licencia", Licencia)
                             crv.ReportSource = rptProcedimientos
@@ -235,7 +235,7 @@ Public Class frmImprimir
                             crv.Refresh()
                             ShowDialog()
                         Case 4 ' Gastrolap
-                            Dim rptFormulacion As New rptFormulacion
+                            Dim rptFormulacion As New rptFormulacionMR
                             rptFormulacion.SetParameterValue("filtro", filtro)
                             rptFormulacion.SetParameterValue("licencia", Licencia)
                             crv.ReportSource = rptFormulacion
@@ -946,7 +946,7 @@ Public Class frmImprimir
                         rptHistoriaClinica.SetParameterValue("reporte", Reporte)
                         crv.ReportSource = rptHistoriaClinica
                     Case 4 'GASTROLAP
-                        Dim rptHistoriaClinica As New rptHistoriaClinicaGL
+                        Dim rptHistoriaClinica As New rptHistoriaClinicaMR
                         rptHistoriaClinica.SetParameterValue("filtro", idDetalleOrden)
                         rptHistoriaClinica.SetParameterValue("reporte", Reporte)
                         crv.ReportSource = rptHistoriaClinica
@@ -960,7 +960,7 @@ Public Class frmImprimir
                         rptHistoriaClinica.SetParameterValue("reporte", Reporte)
                         crv.ReportSource = rptHistoriaClinica
                     Case 4 'GASTROLAP
-                        Dim rptHistoriaClinica As New rptHistoriaClinicaGL
+                        Dim rptHistoriaClinica As New rptHistoriaClinicaMR
                         rptHistoriaClinica.SetParameterValue("filtro", idDetalleOrden)
                         rptHistoriaClinica.SetParameterValue("reporte", Reporte)
                         crv.ReportSource = rptHistoriaClinica
@@ -976,7 +976,7 @@ Public Class frmImprimir
                         rptEndoscopiaGL.SetParameterValue("fotos", Fotos)
                         crv.ReportSource = rptEndoscopiaGL
                     Case 4 'GASTROLAP
-                        Dim rptEndoscopiaGL As New rptImgEndoscopiaGL
+                        Dim rptEndoscopiaGL As New rptImgEndoscopiaGC
                         rptEndoscopiaGL.SetParameterValue("filtro", idDetalleOrden)
                         rptEndoscopiaGL.SetParameterValue("reporte", Reporte)
                         rptEndoscopiaGL.SetParameterValue("fotos", Fotos)
@@ -992,7 +992,7 @@ Public Class frmImprimir
                         rptColonoscopiaGL.SetParameterValue("fotos", Fotos)
                         crv.ReportSource = rptColonoscopiaGL
                     Case 4 'GASTROLAP
-                        Dim rptColonoscopiaGL As New rptImgColonoscopiaGL
+                        Dim rptColonoscopiaGL As New rptImgColonoscopiaGC
                         rptColonoscopiaGL.SetParameterValue("filtro", idDetalleOrden)
                         rptColonoscopiaGL.SetParameterValue("reporte", Reporte)
                         rptColonoscopiaGL.SetParameterValue("fotos", Fotos)
@@ -1008,7 +1008,7 @@ Public Class frmImprimir
                         rptRectoscopiaGL.SetParameterValue("fotos", Fotos)
                         crv.ReportSource = rptRectoscopiaGL
                     Case 4 'GASTROLAP
-                        Dim rptRectoscopiaGL As New rptImgRectoscopiaGL
+                        Dim rptRectoscopiaGL As New rptImgRectoscopiaGC
                         rptRectoscopiaGL.SetParameterValue("filtro", idDetalleOrden)
                         rptRectoscopiaGL.SetParameterValue("reporte", Reporte)
                         rptRectoscopiaGL.SetParameterValue("fotos", Fotos)
