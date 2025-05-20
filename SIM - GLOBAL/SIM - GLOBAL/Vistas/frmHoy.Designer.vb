@@ -25,19 +25,19 @@ Partial Class frmHoy
         Dim TileViewItemElement8 As DevExpress.XtraGrid.Views.Tile.TileViewItemElement = New DevExpress.XtraGrid.Views.Tile.TileViewItemElement()
         Dim TileViewItemElement9 As DevExpress.XtraGrid.Views.Tile.TileViewItemElement = New DevExpress.XtraGrid.Views.Tile.TileViewItemElement()
         Dim TileViewItemElement10 As DevExpress.XtraGrid.Views.Tile.TileViewItemElement = New DevExpress.XtraGrid.Views.Tile.TileViewItemElement()
+        Me.TileViewColumn3 = New DevExpress.XtraGrid.Columns.TileViewColumn()
+        Me.TileViewColumn5 = New DevExpress.XtraGrid.Columns.TileViewColumn()
+        Me.TileViewColumn2 = New DevExpress.XtraGrid.Columns.TileViewColumn()
+        Me.colEmail = New DevExpress.XtraGrid.Columns.TileViewColumn()
+        Me.colDireccion = New DevExpress.XtraGrid.Columns.TileViewColumn()
         Me.LabelControl7 = New DevExpress.XtraEditors.LabelControl()
         Me.txtDescuentoS = New DevExpress.XtraEditors.TextEdit()
         Me.GCDatosContrato = New DevExpress.XtraGrid.GridControl()
         Me.TVDatosContrato = New DevExpress.XtraGrid.Views.Tile.TileView()
         Me.TileViewColumn1 = New DevExpress.XtraGrid.Columns.TileViewColumn()
-        Me.TileViewColumn2 = New DevExpress.XtraGrid.Columns.TileViewColumn()
-        Me.TileViewColumn3 = New DevExpress.XtraGrid.Columns.TileViewColumn()
         Me.colApellidos = New DevExpress.XtraGrid.Columns.TileViewColumn()
         Me.colEdad = New DevExpress.XtraGrid.Columns.TileViewColumn()
         Me.TileViewColumn4 = New DevExpress.XtraGrid.Columns.TileViewColumn()
-        Me.colDireccion = New DevExpress.XtraGrid.Columns.TileViewColumn()
-        Me.colEmail = New DevExpress.XtraGrid.Columns.TileViewColumn()
-        Me.TileViewColumn5 = New DevExpress.XtraGrid.Columns.TileViewColumn()
         Me.colFoto = New DevExpress.XtraGrid.Columns.TileViewColumn()
         Me.SeparatorControl1 = New DevExpress.XtraEditors.SeparatorControl()
         Me.SeparatorControl3 = New DevExpress.XtraEditors.SeparatorControl()
@@ -70,6 +70,7 @@ Partial Class frmHoy
         Me.dtFechaVencimientoS = New DevExpress.XtraEditors.DateEdit()
         Me.LabelControl8 = New DevExpress.XtraEditors.LabelControl()
         Me.txtConceptoS = New DevExpress.XtraEditors.MemoEdit()
+        Me.SimpleButton1 = New DevExpress.XtraEditors.SimpleButton()
         CType(Me.txtDescuentoS.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GCDatosContrato, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TVDatosContrato, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -89,6 +90,46 @@ Partial Class frmHoy
         CType(Me.dtFechaVencimientoS.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtConceptoS.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
+        '
+        'TileViewColumn3
+        '
+        Me.TileViewColumn3.Caption = "Nombres"
+        Me.TileViewColumn3.FieldName = "NOMBRE_ENTIDAD"
+        Me.TileViewColumn3.Name = "TileViewColumn3"
+        Me.TileViewColumn3.Visible = True
+        Me.TileViewColumn3.VisibleIndex = 2
+        '
+        'TileViewColumn5
+        '
+        Me.TileViewColumn5.Caption = "Telefono"
+        Me.TileViewColumn5.FieldName = "TELEFONO"
+        Me.TileViewColumn5.Name = "TileViewColumn5"
+        Me.TileViewColumn5.Visible = True
+        Me.TileViewColumn5.VisibleIndex = 4
+        '
+        'TileViewColumn2
+        '
+        Me.TileViewColumn2.Caption = "Identificacion"
+        Me.TileViewColumn2.FieldName = "NIT"
+        Me.TileViewColumn2.Name = "TileViewColumn2"
+        Me.TileViewColumn2.Visible = True
+        Me.TileViewColumn2.VisibleIndex = 1
+        '
+        'colEmail
+        '
+        Me.colEmail.Caption = "EMAIL"
+        Me.colEmail.FieldName = "EMAIL"
+        Me.colEmail.Name = "colEmail"
+        Me.colEmail.Visible = True
+        Me.colEmail.VisibleIndex = 7
+        '
+        'colDireccion
+        '
+        Me.colDireccion.Caption = "DIRECCION"
+        Me.colDireccion.FieldName = "DIRECCION"
+        Me.colDireccion.Name = "colDireccion"
+        Me.colDireccion.Visible = True
+        Me.colDireccion.VisibleIndex = 6
         '
         'LabelControl7
         '
@@ -193,22 +234,6 @@ Partial Class frmHoy
         Me.TileViewColumn1.Visible = True
         Me.TileViewColumn1.VisibleIndex = 0
         '
-        'TileViewColumn2
-        '
-        Me.TileViewColumn2.Caption = "Identificacion"
-        Me.TileViewColumn2.FieldName = "NIT"
-        Me.TileViewColumn2.Name = "TileViewColumn2"
-        Me.TileViewColumn2.Visible = True
-        Me.TileViewColumn2.VisibleIndex = 1
-        '
-        'TileViewColumn3
-        '
-        Me.TileViewColumn3.Caption = "Nombres"
-        Me.TileViewColumn3.FieldName = "NOMBRE_ENTIDAD"
-        Me.TileViewColumn3.Name = "TileViewColumn3"
-        Me.TileViewColumn3.Visible = True
-        Me.TileViewColumn3.VisibleIndex = 2
-        '
         'colApellidos
         '
         Me.colApellidos.Caption = "APELLIDOS"
@@ -232,30 +257,6 @@ Partial Class frmHoy
         Me.TileViewColumn4.Name = "TileViewColumn4"
         Me.TileViewColumn4.Visible = True
         Me.TileViewColumn4.VisibleIndex = 3
-        '
-        'colDireccion
-        '
-        Me.colDireccion.Caption = "DIRECCION"
-        Me.colDireccion.FieldName = "DIRECCION"
-        Me.colDireccion.Name = "colDireccion"
-        Me.colDireccion.Visible = True
-        Me.colDireccion.VisibleIndex = 6
-        '
-        'colEmail
-        '
-        Me.colEmail.Caption = "EMAIL"
-        Me.colEmail.FieldName = "EMAIL"
-        Me.colEmail.Name = "colEmail"
-        Me.colEmail.Visible = True
-        Me.colEmail.VisibleIndex = 7
-        '
-        'TileViewColumn5
-        '
-        Me.TileViewColumn5.Caption = "Telefono"
-        Me.TileViewColumn5.FieldName = "TELEFONO"
-        Me.TileViewColumn5.Name = "TileViewColumn5"
-        Me.TileViewColumn5.Visible = True
-        Me.TileViewColumn5.VisibleIndex = 4
         '
         'colFoto
         '
@@ -611,11 +612,20 @@ Partial Class frmHoy
         Me.txtConceptoS.Size = New System.Drawing.Size(597, 53)
         Me.txtConceptoS.TabIndex = 166
         '
+        'SimpleButton1
+        '
+        Me.SimpleButton1.Location = New System.Drawing.Point(78, 64)
+        Me.SimpleButton1.Name = "SimpleButton1"
+        Me.SimpleButton1.Size = New System.Drawing.Size(131, 51)
+        Me.SimpleButton1.TabIndex = 190
+        Me.SimpleButton1.Text = "Chacara"
+        '
         'frmHoy
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1101, 593)
+        Me.Controls.Add(Me.SimpleButton1)
         Me.Controls.Add(Me.LabelControl7)
         Me.Controls.Add(Me.txtDescuentoS)
         Me.Controls.Add(Me.GCDatosContrato)
@@ -710,4 +720,5 @@ Partial Class frmHoy
     Friend WithEvents dtFechaVencimientoS As DevExpress.XtraEditors.DateEdit
     Friend WithEvents LabelControl8 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents txtConceptoS As DevExpress.XtraEditors.MemoEdit
+    Friend WithEvents SimpleButton1 As DevExpress.XtraEditors.SimpleButton
 End Class
