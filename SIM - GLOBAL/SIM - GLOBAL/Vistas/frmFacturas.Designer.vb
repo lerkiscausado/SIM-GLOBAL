@@ -403,6 +403,7 @@ Partial Class frmFacturas
         Me.txtID = New DevExpress.XtraEditors.TextEdit()
         Me.LabelControl31 = New DevExpress.XtraEditors.LabelControl()
         Me.CachedEjemplo1 = New SIM___GLOBAL.CachedEjemplo()
+        Me.BarButtonItem11 = New DevExpress.XtraBars.BarButtonItem()
         CType(Me.BarManager1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemLookUpEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GCConsultar, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -548,7 +549,7 @@ Partial Class frmFacturas
         '
         Me.barDockControlTop.CausesValidation = False
         Me.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top
-        Me.barDockControlTop.Location = New System.Drawing.Point(0, 25)
+        Me.barDockControlTop.Location = New System.Drawing.Point(0, 24)
         Me.barDockControlTop.Manager = Nothing
         Me.barDockControlTop.Size = New System.Drawing.Size(1264, 0)
         '
@@ -564,7 +565,7 @@ Partial Class frmFacturas
         '
         Me.BarDockControl1.CausesValidation = False
         Me.BarDockControl1.Dock = System.Windows.Forms.DockStyle.Top
-        Me.BarDockControl1.Location = New System.Drawing.Point(0, 25)
+        Me.BarDockControl1.Location = New System.Drawing.Point(0, 24)
         Me.BarDockControl1.Manager = Nothing
         Me.BarDockControl1.Size = New System.Drawing.Size(1264, 0)
         '
@@ -584,8 +585,8 @@ Partial Class frmFacturas
         Me.BarManager1.DockControls.Add(Me.barDockControlLeft)
         Me.BarManager1.DockControls.Add(Me.barDockControlRight)
         Me.BarManager1.Form = Me
-        Me.BarManager1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.bbiNuevo, Me.bbiGuardar, Me.bbiImprimir, Me.bbiAnular, Me.cboFactura, Me.bbiVistaPrevia, Me.bsiImprimir, Me.bbiActualizar, Me.bbiFactura, Me.bbiDetalleFactura, Me.bbiConsultar, Me.bbiFacturaConcepto, Me.bbiRelacionFactura, Me.BarButtonItem4, Me.bbiRips, Me.bbiAgregarFacturaRips, Me.bbiFacturaAgregarTodo, Me.bbiFacturaBorrar, Me.BarStaticItem1, Me.BarButtonItem5, Me.BarButtonItem6, Me.BarButtonItem7, Me.BarButtonItem8, Me.BarButtonItem9, Me.BarButtonItem10, Me.bbiEliminarFacturaRips, Me.bbiEliminarFacturasRips, Me.bbiAgregarFacturasRips})
-        Me.BarManager1.MaxItemId = 28
+        Me.BarManager1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.bbiNuevo, Me.bbiGuardar, Me.bbiImprimir, Me.bbiAnular, Me.cboFactura, Me.bbiVistaPrevia, Me.bsiImprimir, Me.bbiActualizar, Me.bbiFactura, Me.bbiDetalleFactura, Me.bbiConsultar, Me.bbiFacturaConcepto, Me.bbiRelacionFactura, Me.BarButtonItem4, Me.bbiRips, Me.bbiAgregarFacturaRips, Me.bbiFacturaAgregarTodo, Me.bbiFacturaBorrar, Me.BarStaticItem1, Me.BarButtonItem5, Me.BarButtonItem6, Me.BarButtonItem7, Me.BarButtonItem8, Me.BarButtonItem9, Me.BarButtonItem10, Me.bbiEliminarFacturaRips, Me.bbiEliminarFacturasRips, Me.bbiAgregarFacturasRips, Me.BarButtonItem11})
+        Me.BarManager1.MaxItemId = 29
         Me.BarManager1.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemLookUpEdit1})
         '
         'bFacturas
@@ -595,7 +596,7 @@ Partial Class frmFacturas
         Me.bFacturas.DockRow = 0
         Me.bFacturas.DockStyle = DevExpress.XtraBars.BarDockStyle.Top
         Me.bFacturas.FloatLocation = New System.Drawing.Point(86, 132)
-        Me.bFacturas.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.bbiNuevo), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiGuardar), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiAnular), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiActualizar), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiConsultar, True), New DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, Me.bsiImprimir, DevExpress.XtraBars.BarItemPaintStyle.CaptionInMenu), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiRips, True), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiEliminarFacturasRips), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiEliminarFacturaRips), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiAgregarFacturaRips), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiAgregarFacturasRips)})
+        Me.bFacturas.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.bbiNuevo), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiGuardar), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiAnular), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiActualizar), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiConsultar, True), New DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, Me.bsiImprimir, DevExpress.XtraBars.BarItemPaintStyle.CaptionInMenu), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiRips, True), New DevExpress.XtraBars.LinkPersistInfo(Me.BarButtonItem11), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiEliminarFacturasRips), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiEliminarFacturaRips), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiAgregarFacturaRips), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiAgregarFacturasRips)})
         Me.bFacturas.Offset = 3
         Me.bFacturas.Text = "Herramientas Facturas"
         '
@@ -709,7 +710,7 @@ Partial Class frmFacturas
         Me.BarDockControl2.Dock = System.Windows.Forms.DockStyle.Top
         Me.BarDockControl2.Location = New System.Drawing.Point(0, 0)
         Me.BarDockControl2.Manager = Me.BarManager1
-        Me.BarDockControl2.Size = New System.Drawing.Size(1264, 25)
+        Me.BarDockControl2.Size = New System.Drawing.Size(1264, 24)
         '
         'barDockControlBottom
         '
@@ -723,17 +724,17 @@ Partial Class frmFacturas
         '
         Me.barDockControlLeft.CausesValidation = False
         Me.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left
-        Me.barDockControlLeft.Location = New System.Drawing.Point(0, 25)
+        Me.barDockControlLeft.Location = New System.Drawing.Point(0, 24)
         Me.barDockControlLeft.Manager = Me.BarManager1
-        Me.barDockControlLeft.Size = New System.Drawing.Size(0, 569)
+        Me.barDockControlLeft.Size = New System.Drawing.Size(0, 570)
         '
         'barDockControlRight
         '
         Me.barDockControlRight.CausesValidation = False
         Me.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right
-        Me.barDockControlRight.Location = New System.Drawing.Point(1264, 25)
+        Me.barDockControlRight.Location = New System.Drawing.Point(1264, 24)
         Me.barDockControlRight.Manager = Me.BarManager1
-        Me.barDockControlRight.Size = New System.Drawing.Size(0, 569)
+        Me.barDockControlRight.Size = New System.Drawing.Size(0, 570)
         '
         'bbiImprimir
         '
@@ -839,7 +840,7 @@ Partial Class frmFacturas
         Me.GCConsultar.Location = New System.Drawing.Point(0, 0)
         Me.GCConsultar.MainView = Me.gvConsultar
         Me.GCConsultar.Name = "GCConsultar"
-        Me.GCConsultar.Size = New System.Drawing.Size(1262, 544)
+        Me.GCConsultar.Size = New System.Drawing.Size(1262, 545)
         Me.GCConsultar.TabIndex = 14
         Me.GCConsultar.UseEmbeddedNavigator = True
         Me.GCConsultar.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.gvConsultar})
@@ -976,10 +977,10 @@ Partial Class frmFacturas
         'xtcFactura
         '
         Me.xtcFactura.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.xtcFactura.Location = New System.Drawing.Point(0, 25)
+        Me.xtcFactura.Location = New System.Drawing.Point(0, 24)
         Me.xtcFactura.Name = "xtcFactura"
         Me.xtcFactura.SelectedTabPage = Me.xtpFacturasGeneradas
-        Me.xtcFactura.Size = New System.Drawing.Size(1264, 569)
+        Me.xtcFactura.Size = New System.Drawing.Size(1264, 570)
         Me.xtcFactura.TabIndex = 82
         Me.xtcFactura.TabPages.AddRange(New DevExpress.XtraTab.XtraTabPage() {Me.xtpFacturasGeneradas, Me.xtpDetalleFactura, Me.xtpFacturaServicios, Me.xtpFacturaProductos, Me.xtpRips})
         '
@@ -987,14 +988,14 @@ Partial Class frmFacturas
         '
         Me.xtpFacturasGeneradas.Controls.Add(Me.GCConsultar)
         Me.xtpFacturasGeneradas.Name = "xtpFacturasGeneradas"
-        Me.xtpFacturasGeneradas.Size = New System.Drawing.Size(1262, 544)
+        Me.xtpFacturasGeneradas.Size = New System.Drawing.Size(1262, 545)
         Me.xtpFacturasGeneradas.Text = "Facturas Generadas"
         '
         'xtpDetalleFactura
         '
         Me.xtpDetalleFactura.Controls.Add(Me.GCDetalleFactura)
         Me.xtpDetalleFactura.Name = "xtpDetalleFactura"
-        Me.xtpDetalleFactura.Size = New System.Drawing.Size(1262, 544)
+        Me.xtpDetalleFactura.Size = New System.Drawing.Size(1262, 545)
         Me.xtpDetalleFactura.Text = "Detalle de Factura"
         '
         'GCDetalleFactura
@@ -1003,7 +1004,7 @@ Partial Class frmFacturas
         Me.GCDetalleFactura.Location = New System.Drawing.Point(0, 0)
         Me.GCDetalleFactura.MainView = Me.GVDetalleFactura
         Me.GCDetalleFactura.Name = "GCDetalleFactura"
-        Me.GCDetalleFactura.Size = New System.Drawing.Size(1262, 544)
+        Me.GCDetalleFactura.Size = New System.Drawing.Size(1262, 545)
         Me.GCDetalleFactura.TabIndex = 15
         Me.GCDetalleFactura.UseEmbeddedNavigator = True
         Me.GCDetalleFactura.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GVDetalleFactura})
@@ -1177,7 +1178,7 @@ Partial Class frmFacturas
         Me.xtpFacturaServicios.Controls.Add(Me.txtNumeroFacturaS)
         Me.xtpFacturaServicios.Controls.Add(Me.LabelControl1)
         Me.xtpFacturaServicios.Name = "xtpFacturaServicios"
-        Me.xtpFacturaServicios.Size = New System.Drawing.Size(1262, 544)
+        Me.xtpFacturaServicios.Size = New System.Drawing.Size(1262, 545)
         Me.xtpFacturaServicios.Text = "Facturar Servicios"
         '
         'btnAgregarTodo
@@ -1628,7 +1629,7 @@ Partial Class frmFacturas
         Me.LabelControl32.Appearance.Options.UseFont = True
         Me.LabelControl32.Location = New System.Drawing.Point(858, 293)
         Me.LabelControl32.Name = "LabelControl32"
-        Me.LabelControl32.Size = New System.Drawing.Size(158, 22)
+        Me.LabelControl32.Size = New System.Drawing.Size(146, 19)
         Me.LabelControl32.TabIndex = 240
         Me.LabelControl32.Text = "Vr. TOTAL Fac:   $"
         '
@@ -1650,7 +1651,7 @@ Partial Class frmFacturas
         Me.txtTotalServicios.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric
         Me.txtTotalServicios.Properties.Mask.UseMaskAsDisplayFormat = True
         Me.txtTotalServicios.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.txtTotalServicios.Size = New System.Drawing.Size(143, 28)
+        Me.txtTotalServicios.Size = New System.Drawing.Size(143, 26)
         Me.txtTotalServicios.TabIndex = 239
         '
         'LabelControl7
@@ -1659,7 +1660,7 @@ Partial Class frmFacturas
         Me.LabelControl7.Appearance.Options.UseFont = True
         Me.LabelControl7.Location = New System.Drawing.Point(888, 228)
         Me.LabelControl7.Name = "LabelControl7"
-        Me.LabelControl7.Size = New System.Drawing.Size(130, 22)
+        Me.LabelControl7.Size = New System.Drawing.Size(116, 19)
         Me.LabelControl7.TabIndex = 238
         Me.LabelControl7.Text = "Descuento:   $"
         '
@@ -1681,7 +1682,7 @@ Partial Class frmFacturas
         Me.txtDescuentoS.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric
         Me.txtDescuentoS.Properties.Mask.UseMaskAsDisplayFormat = True
         Me.txtDescuentoS.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.txtDescuentoS.Size = New System.Drawing.Size(143, 28)
+        Me.txtDescuentoS.Size = New System.Drawing.Size(143, 26)
         Me.txtDescuentoS.TabIndex = 237
         '
         'LabelControl6
@@ -1710,7 +1711,7 @@ Partial Class frmFacturas
         Me.txtTotalS.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric
         Me.txtTotalS.Properties.Mask.UseMaskAsDisplayFormat = True
         Me.txtTotalS.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.txtTotalS.Size = New System.Drawing.Size(105, 22)
+        Me.txtTotalS.Size = New System.Drawing.Size(105, 20)
         Me.txtTotalS.TabIndex = 234
         '
         'LabelControl5
@@ -1719,7 +1720,7 @@ Partial Class frmFacturas
         Me.LabelControl5.Appearance.Options.UseFont = True
         Me.LabelControl5.Location = New System.Drawing.Point(943, 260)
         Me.LabelControl5.Name = "LabelControl5"
-        Me.LabelControl5.Size = New System.Drawing.Size(66, 22)
+        Me.LabelControl5.Size = New System.Drawing.Size(61, 19)
         Me.LabelControl5.TabIndex = 233
         Me.LabelControl5.Text = "IVA:   $"
         '
@@ -1741,7 +1742,7 @@ Partial Class frmFacturas
         Me.txtIVAS.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric
         Me.txtIVAS.Properties.Mask.UseMaskAsDisplayFormat = True
         Me.txtIVAS.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.txtIVAS.Size = New System.Drawing.Size(143, 28)
+        Me.txtIVAS.Size = New System.Drawing.Size(143, 26)
         Me.txtIVAS.TabIndex = 232
         '
         'LabelControl4
@@ -1758,7 +1759,7 @@ Partial Class frmFacturas
         Me.LabelControl10.Appearance.Options.UseFont = True
         Me.LabelControl10.Location = New System.Drawing.Point(895, 199)
         Me.LabelControl10.Name = "LabelControl10"
-        Me.LabelControl10.Size = New System.Drawing.Size(117, 22)
+        Me.LabelControl10.Size = New System.Drawing.Size(109, 19)
         Me.LabelControl10.TabIndex = 228
         Me.LabelControl10.Text = "Sub Total:   $"
         '
@@ -1773,7 +1774,7 @@ Partial Class frmFacturas
         Me.txtSon.Properties.Appearance.Options.UseFont = True
         Me.txtSon.Properties.Appearance.Options.UseForeColor = True
         Me.txtSon.Properties.ReadOnly = True
-        Me.txtSon.Size = New System.Drawing.Size(797, 28)
+        Me.txtSon.Size = New System.Drawing.Size(797, 26)
         Me.txtSon.TabIndex = 230
         '
         'txtSubTotalS
@@ -1794,7 +1795,7 @@ Partial Class frmFacturas
         Me.txtSubTotalS.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric
         Me.txtSubTotalS.Properties.Mask.UseMaskAsDisplayFormat = True
         Me.txtSubTotalS.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.txtSubTotalS.Size = New System.Drawing.Size(143, 28)
+        Me.txtSubTotalS.Size = New System.Drawing.Size(143, 26)
         Me.txtSubTotalS.TabIndex = 227
         '
         'LabelControl11
@@ -1803,7 +1804,7 @@ Partial Class frmFacturas
         Me.LabelControl11.Appearance.Options.UseFont = True
         Me.LabelControl11.Location = New System.Drawing.Point(8, 293)
         Me.LabelControl11.Name = "LabelControl11"
-        Me.LabelControl11.Size = New System.Drawing.Size(41, 22)
+        Me.LabelControl11.Size = New System.Drawing.Size(36, 19)
         Me.LabelControl11.TabIndex = 229
         Me.LabelControl11.Text = "Son:"
         '
@@ -1856,7 +1857,7 @@ Partial Class frmFacturas
         Me.dtFechaVencimientoS.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime
         Me.dtFechaVencimientoS.Properties.Mask.EditMask = ""
         Me.dtFechaVencimientoS.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None
-        Me.dtFechaVencimientoS.Size = New System.Drawing.Size(146, 24)
+        Me.dtFechaVencimientoS.Size = New System.Drawing.Size(146, 22)
         Me.dtFechaVencimientoS.TabIndex = 221
         '
         'LabelControl3
@@ -1865,7 +1866,7 @@ Partial Class frmFacturas
         Me.LabelControl3.Appearance.Options.UseFont = True
         Me.LabelControl3.Location = New System.Drawing.Point(903, 109)
         Me.LabelControl3.Name = "LabelControl3"
-        Me.LabelControl3.Size = New System.Drawing.Size(127, 18)
+        Me.LabelControl3.Size = New System.Drawing.Size(113, 16)
         Me.LabelControl3.TabIndex = 218
         Me.LabelControl3.Text = "Fecha Vencimiento:"
         '
@@ -1875,7 +1876,7 @@ Partial Class frmFacturas
         Me.LabelControl2.Appearance.Options.UseFont = True
         Me.LabelControl2.Location = New System.Drawing.Point(913, 81)
         Me.LabelControl2.Name = "LabelControl2"
-        Me.LabelControl2.Size = New System.Drawing.Size(116, 18)
+        Me.LabelControl2.Size = New System.Drawing.Size(103, 16)
         Me.LabelControl2.TabIndex = 217
         Me.LabelControl2.Text = "Fecha Expedición:"
         '
@@ -1894,7 +1895,7 @@ Partial Class frmFacturas
         Me.dtFechaExpedicionS.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime
         Me.dtFechaExpedicionS.Properties.Mask.EditMask = ""
         Me.dtFechaExpedicionS.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None
-        Me.dtFechaExpedicionS.Size = New System.Drawing.Size(146, 24)
+        Me.dtFechaExpedicionS.Size = New System.Drawing.Size(146, 22)
         Me.dtFechaExpedicionS.TabIndex = 220
         '
         'txtNumeroFacturaS
@@ -1908,7 +1909,7 @@ Partial Class frmFacturas
         Me.txtNumeroFacturaS.Properties.Appearance.Options.UseFont = True
         Me.txtNumeroFacturaS.Properties.Appearance.Options.UseForeColor = True
         Me.txtNumeroFacturaS.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.txtNumeroFacturaS.Size = New System.Drawing.Size(212, 42)
+        Me.txtNumeroFacturaS.Size = New System.Drawing.Size(212, 40)
         Me.txtNumeroFacturaS.TabIndex = 219
         '
         'LabelControl1
@@ -1919,7 +1920,7 @@ Partial Class frmFacturas
         Me.LabelControl1.Appearance.Options.UseForeColor = True
         Me.LabelControl1.Location = New System.Drawing.Point(797, 29)
         Me.LabelControl1.Name = "LabelControl1"
-        Me.LabelControl1.Size = New System.Drawing.Size(177, 35)
+        Me.LabelControl1.Size = New System.Drawing.Size(164, 33)
         Me.LabelControl1.TabIndex = 216
         Me.LabelControl1.Text = "Factura No. "
         '
@@ -1968,7 +1969,7 @@ Partial Class frmFacturas
         Me.xtpFacturaProductos.Controls.Add(Me.cboProducto)
         Me.xtpFacturaProductos.Controls.Add(Me.lblUnidadMedida)
         Me.xtpFacturaProductos.Name = "xtpFacturaProductos"
-        Me.xtpFacturaProductos.Size = New System.Drawing.Size(1262, 544)
+        Me.xtpFacturaProductos.Size = New System.Drawing.Size(1262, 545)
         Me.xtpFacturaProductos.Text = "Facturar Productos"
         '
         'btnVerOrdenServicio
@@ -2008,7 +2009,7 @@ Partial Class frmFacturas
         Me.txtTipoDocumento.Properties.Appearance.Options.UseFont = True
         Me.txtTipoDocumento.Properties.Appearance.Options.UseForeColor = True
         Me.txtTipoDocumento.Properties.ReadOnly = True
-        Me.txtTipoDocumento.Size = New System.Drawing.Size(182, 28)
+        Me.txtTipoDocumento.Size = New System.Drawing.Size(182, 26)
         Me.txtTipoDocumento.TabIndex = 274
         '
         'LabelControl13
@@ -2017,7 +2018,7 @@ Partial Class frmFacturas
         Me.LabelControl13.Appearance.Options.UseFont = True
         Me.LabelControl13.Location = New System.Drawing.Point(628, 126)
         Me.LabelControl13.Name = "LabelControl13"
-        Me.LabelControl13.Size = New System.Drawing.Size(93, 16)
+        Me.LabelControl13.Size = New System.Drawing.Size(77, 13)
         Me.LabelControl13.TabIndex = 275
         Me.LabelControl13.Text = "Tipo Documento"
         '
@@ -2027,7 +2028,7 @@ Partial Class frmFacturas
         Me.LabelControl15.Appearance.Options.UseFont = True
         Me.LabelControl15.Location = New System.Drawing.Point(815, 124)
         Me.LabelControl15.Name = "LabelControl15"
-        Me.LabelControl15.Size = New System.Drawing.Size(39, 16)
+        Me.LabelControl15.Size = New System.Drawing.Size(33, 13)
         Me.LabelControl15.TabIndex = 273
         Me.LabelControl15.Text = "SALDO"
         '
@@ -2043,7 +2044,7 @@ Partial Class frmFacturas
         Me.txtConsecutivo.Properties.Appearance.Options.UseFont = True
         Me.txtConsecutivo.Properties.Appearance.Options.UseForeColor = True
         Me.txtConsecutivo.Properties.ReadOnly = True
-        Me.txtConsecutivo.Size = New System.Drawing.Size(76, 28)
+        Me.txtConsecutivo.Size = New System.Drawing.Size(76, 26)
         Me.txtConsecutivo.TabIndex = 271
         '
         'LabelControl16
@@ -2052,7 +2053,7 @@ Partial Class frmFacturas
         Me.LabelControl16.Appearance.Options.UseFont = True
         Me.LabelControl16.Location = New System.Drawing.Point(547, 124)
         Me.LabelControl16.Name = "LabelControl16"
-        Me.LabelControl16.Size = New System.Drawing.Size(36, 16)
+        Me.LabelControl16.Size = New System.Drawing.Size(31, 13)
         Me.LabelControl16.TabIndex = 272
         Me.LabelControl16.Text = "Cons. "
         '
@@ -2074,7 +2075,7 @@ Partial Class frmFacturas
         Me.txtValor.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric
         Me.txtValor.Properties.Mask.UseMaskAsDisplayFormat = True
         Me.txtValor.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.txtValor.Size = New System.Drawing.Size(130, 28)
+        Me.txtValor.Size = New System.Drawing.Size(130, 26)
         Me.txtValor.TabIndex = 270
         '
         'SeparatorControl4
@@ -2166,7 +2167,7 @@ Partial Class frmFacturas
         Me.txtDescuento.Properties.Mask.EditMask = "c0"
         Me.txtDescuento.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric
         Me.txtDescuento.Properties.Mask.UseMaskAsDisplayFormat = True
-        Me.txtDescuento.Size = New System.Drawing.Size(132, 32)
+        Me.txtDescuento.Size = New System.Drawing.Size(132, 30)
         Me.txtDescuento.TabIndex = 267
         '
         'LabelControl24
@@ -2175,7 +2176,7 @@ Partial Class frmFacturas
         Me.LabelControl24.Appearance.Options.UseFont = True
         Me.LabelControl24.Location = New System.Drawing.Point(500, 316)
         Me.LabelControl24.Name = "LabelControl24"
-        Me.LabelControl24.Size = New System.Drawing.Size(82, 22)
+        Me.LabelControl24.Size = New System.Drawing.Size(73, 19)
         Me.LabelControl24.TabIndex = 266
         Me.LabelControl24.Text = "Descuento"
         '
@@ -2270,7 +2271,7 @@ Partial Class frmFacturas
         Me.txtFormaPagoValor.Properties.Mask.EditMask = "c0"
         Me.txtFormaPagoValor.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric
         Me.txtFormaPagoValor.Properties.Mask.UseMaskAsDisplayFormat = True
-        Me.txtFormaPagoValor.Size = New System.Drawing.Size(110, 22)
+        Me.txtFormaPagoValor.Size = New System.Drawing.Size(110, 20)
         Me.txtFormaPagoValor.TabIndex = 248
         '
         'btnAgregarFormaPago
@@ -2309,7 +2310,7 @@ Partial Class frmFacturas
         Me.cboFormaPago.Properties.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ID", "ID", 20, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.[Default], DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("CONCEPTO", "CONCEPTO")})
         Me.cboFormaPago.Properties.NullText = ""
         Me.cboFormaPago.Properties.ShowHeader = False
-        Me.cboFormaPago.Size = New System.Drawing.Size(168, 22)
+        Me.cboFormaPago.Size = New System.Drawing.Size(168, 20)
         Me.cboFormaPago.TabIndex = 248
         '
         'GroupBox2
@@ -2332,7 +2333,7 @@ Partial Class frmFacturas
         Me.LabelControl14.Appearance.Options.UseFont = True
         Me.LabelControl14.Location = New System.Drawing.Point(32, 30)
         Me.LabelControl14.Name = "LabelControl14"
-        Me.LabelControl14.Size = New System.Drawing.Size(90, 22)
+        Me.LabelControl14.Size = New System.Drawing.Size(82, 19)
         Me.LabelControl14.TabIndex = 204
         Me.LabelControl14.Text = "Expedición:"
         '
@@ -2352,7 +2353,7 @@ Partial Class frmFacturas
         Me.dtFechaExpedicion.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime
         Me.dtFechaExpedicion.Properties.EditFormat.FormatString = ""
         Me.dtFechaExpedicion.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime
-        Me.dtFechaExpedicion.Size = New System.Drawing.Size(111, 28)
+        Me.dtFechaExpedicion.Size = New System.Drawing.Size(111, 26)
         Me.dtFechaExpedicion.TabIndex = 191
         '
         'LabelControl18
@@ -2361,7 +2362,7 @@ Partial Class frmFacturas
         Me.LabelControl18.Appearance.Options.UseFont = True
         Me.LabelControl18.Location = New System.Drawing.Point(21, 62)
         Me.LabelControl18.Name = "LabelControl18"
-        Me.LabelControl18.Size = New System.Drawing.Size(102, 22)
+        Me.LabelControl18.Size = New System.Drawing.Size(93, 19)
         Me.LabelControl18.TabIndex = 205
         Me.LabelControl18.Text = "Vencimiento:"
         '
@@ -2378,7 +2379,7 @@ Partial Class frmFacturas
         Me.dtFechaVencimiento.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime
         Me.dtFechaVencimiento.Properties.EditFormat.FormatString = ""
         Me.dtFechaVencimiento.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime
-        Me.dtFechaVencimiento.Size = New System.Drawing.Size(110, 28)
+        Me.dtFechaVencimiento.Size = New System.Drawing.Size(110, 26)
         Me.dtFechaVencimiento.TabIndex = 192
         '
         'SeparatorControl2
@@ -2395,7 +2396,7 @@ Partial Class frmFacturas
         Me.LabelControl9.Appearance.Options.UseFont = True
         Me.LabelControl9.Location = New System.Drawing.Point(287, 316)
         Me.LabelControl9.Name = "LabelControl9"
-        Me.LabelControl9.Size = New System.Drawing.Size(69, 22)
+        Me.LabelControl9.Size = New System.Drawing.Size(62, 19)
         Me.LabelControl9.TabIndex = 246
         Me.LabelControl9.Text = "Cantidad"
         '
@@ -2432,7 +2433,7 @@ Partial Class frmFacturas
         Me.LabelControl22.Appearance.Options.UseFont = True
         Me.LabelControl22.Location = New System.Drawing.Point(17, 37)
         Me.LabelControl22.Name = "LabelControl22"
-        Me.LabelControl22.Size = New System.Drawing.Size(96, 25)
+        Me.LabelControl22.Size = New System.Drawing.Size(87, 23)
         Me.LabelControl22.TabIndex = 211
         Me.LabelControl22.Text = "Sub Total:"
         '
@@ -2442,7 +2443,7 @@ Partial Class frmFacturas
         Me.LabelControl21.Appearance.Options.UseFont = True
         Me.LabelControl21.Location = New System.Drawing.Point(68, 107)
         Me.LabelControl21.Name = "LabelControl21"
-        Me.LabelControl21.Size = New System.Drawing.Size(41, 25)
+        Me.LabelControl21.Size = New System.Drawing.Size(36, 23)
         Me.LabelControl21.TabIndex = 216
         Me.LabelControl21.Text = "IVA:"
         '
@@ -2463,7 +2464,7 @@ Partial Class frmFacturas
         Me.txtDescuentoP.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric
         Me.txtDescuentoP.Properties.Mask.UseMaskAsDisplayFormat = True
         Me.txtDescuentoP.Properties.ReadOnly = True
-        Me.txtDescuentoP.Size = New System.Drawing.Size(120, 30)
+        Me.txtDescuentoP.Size = New System.Drawing.Size(120, 28)
         Me.txtDescuentoP.TabIndex = 237
         '
         'LabelControl20
@@ -2472,7 +2473,7 @@ Partial Class frmFacturas
         Me.LabelControl20.Appearance.Options.UseFont = True
         Me.LabelControl20.Location = New System.Drawing.Point(56, 144)
         Me.LabelControl20.Name = "LabelControl20"
-        Me.LabelControl20.Size = New System.Drawing.Size(53, 25)
+        Me.LabelControl20.Size = New System.Drawing.Size(48, 23)
         Me.LabelControl20.TabIndex = 218
         Me.LabelControl20.Text = "Total:"
         '
@@ -2493,7 +2494,7 @@ Partial Class frmFacturas
         Me.txtIVAP.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric
         Me.txtIVAP.Properties.Mask.UseMaskAsDisplayFormat = True
         Me.txtIVAP.Properties.ReadOnly = True
-        Me.txtIVAP.Size = New System.Drawing.Size(120, 30)
+        Me.txtIVAP.Size = New System.Drawing.Size(120, 28)
         Me.txtIVAP.TabIndex = 238
         '
         'LabelControl19
@@ -2502,7 +2503,7 @@ Partial Class frmFacturas
         Me.LabelControl19.Appearance.Options.UseFont = True
         Me.LabelControl19.Location = New System.Drawing.Point(9, 71)
         Me.LabelControl19.Name = "LabelControl19"
-        Me.LabelControl19.Size = New System.Drawing.Size(104, 25)
+        Me.LabelControl19.Size = New System.Drawing.Size(95, 23)
         Me.LabelControl19.TabIndex = 221
         Me.LabelControl19.Text = "Descuento:"
         '
@@ -2523,7 +2524,7 @@ Partial Class frmFacturas
         Me.txtSubTotalP.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric
         Me.txtSubTotalP.Properties.Mask.UseMaskAsDisplayFormat = True
         Me.txtSubTotalP.Properties.ReadOnly = True
-        Me.txtSubTotalP.Size = New System.Drawing.Size(120, 30)
+        Me.txtSubTotalP.Size = New System.Drawing.Size(120, 28)
         Me.txtSubTotalP.TabIndex = 236
         '
         'txtTotalP
@@ -2543,7 +2544,7 @@ Partial Class frmFacturas
         Me.txtTotalP.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric
         Me.txtTotalP.Properties.Mask.UseMaskAsDisplayFormat = True
         Me.txtTotalP.Properties.ReadOnly = True
-        Me.txtTotalP.Size = New System.Drawing.Size(120, 30)
+        Me.txtTotalP.Size = New System.Drawing.Size(120, 28)
         Me.txtTotalP.TabIndex = 239
         '
         'lblMarca
@@ -2554,7 +2555,7 @@ Partial Class frmFacturas
         Me.lblMarca.Appearance.Options.UseForeColor = True
         Me.lblMarca.Location = New System.Drawing.Point(254, 212)
         Me.lblMarca.Name = "lblMarca"
-        Me.lblMarca.Size = New System.Drawing.Size(40, 18)
+        Me.lblMarca.Size = New System.Drawing.Size(35, 16)
         Me.lblMarca.TabIndex = 242
         Me.lblMarca.Text = "Marca"
         '
@@ -2570,7 +2571,7 @@ Partial Class frmFacturas
         Me.cboCliente.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.cboCliente.Properties.NullText = ""
         Me.cboCliente.Properties.PopupView = Me.GridView1
-        Me.cboCliente.Size = New System.Drawing.Size(404, 28)
+        Me.cboCliente.Size = New System.Drawing.Size(404, 26)
         Me.cboCliente.TabIndex = 241
         '
         'GridView1
@@ -2711,7 +2712,7 @@ Partial Class frmFacturas
         Me.LabelControl35.Appearance.Options.UseFont = True
         Me.LabelControl35.Location = New System.Drawing.Point(414, 316)
         Me.LabelControl35.Name = "LabelControl35"
-        Me.LabelControl35.Size = New System.Drawing.Size(42, 22)
+        Me.LabelControl35.Size = New System.Drawing.Size(38, 19)
         Me.LabelControl35.TabIndex = 231
         Me.LabelControl35.Text = "Exist."
         '
@@ -2729,7 +2730,7 @@ Partial Class frmFacturas
         Me.txtExistencia.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric
         Me.txtExistencia.Properties.Mask.UseMaskAsDisplayFormat = True
         Me.txtExistencia.Properties.ReadOnly = True
-        Me.txtExistencia.Size = New System.Drawing.Size(80, 32)
+        Me.txtExistencia.Size = New System.Drawing.Size(80, 30)
         Me.txtExistencia.TabIndex = 230
         '
         'txtValorUnitarioP
@@ -2747,7 +2748,7 @@ Partial Class frmFacturas
         Me.txtValorUnitarioP.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric
         Me.txtValorUnitarioP.Properties.Mask.UseMaskAsDisplayFormat = True
         Me.txtValorUnitarioP.Properties.ReadOnly = True
-        Me.txtValorUnitarioP.Size = New System.Drawing.Size(120, 30)
+        Me.txtValorUnitarioP.Size = New System.Drawing.Size(120, 28)
         Me.txtValorUnitarioP.TabIndex = 229
         '
         'txtCantidadP
@@ -2766,7 +2767,7 @@ Partial Class frmFacturas
         Me.txtCantidadP.Properties.Mask.EditMask = "f"
         Me.txtCantidadP.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric
         Me.txtCantidadP.Properties.Mask.UseMaskAsDisplayFormat = True
-        Me.txtCantidadP.Size = New System.Drawing.Size(84, 32)
+        Me.txtCantidadP.Size = New System.Drawing.Size(84, 30)
         Me.txtCantidadP.TabIndex = 228
         '
         'peFoto
@@ -2894,7 +2895,7 @@ Partial Class frmFacturas
         Me.LabelControl12.Appearance.Options.UseFont = True
         Me.LabelControl12.Location = New System.Drawing.Point(18, 147)
         Me.LabelControl12.Name = "LabelControl12"
-        Me.LabelControl12.Size = New System.Drawing.Size(51, 22)
+        Me.LabelControl12.Size = New System.Drawing.Size(47, 19)
         Me.LabelControl12.TabIndex = 223
         Me.LabelControl12.Text = "Tarifa:"
         '
@@ -2909,7 +2910,7 @@ Partial Class frmFacturas
         Me.cboTarifaProducto.Properties.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ID", "ID", 20, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.[Default], DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("TARIFA", "TARIFA")})
         Me.cboTarifaProducto.Properties.NullText = ""
         Me.cboTarifaProducto.Properties.ShowHeader = False
-        Me.cboTarifaProducto.Size = New System.Drawing.Size(438, 28)
+        Me.cboTarifaProducto.Size = New System.Drawing.Size(438, 26)
         Me.cboTarifaProducto.TabIndex = 190
         '
         'LabelControl25
@@ -2918,7 +2919,7 @@ Partial Class frmFacturas
         Me.LabelControl25.Appearance.Options.UseFont = True
         Me.LabelControl25.Location = New System.Drawing.Point(12, 18)
         Me.LabelControl25.Name = "LabelControl25"
-        Me.LabelControl25.Size = New System.Drawing.Size(59, 22)
+        Me.LabelControl25.Size = New System.Drawing.Size(54, 19)
         Me.LabelControl25.TabIndex = 222
         Me.LabelControl25.Text = "Cliente:"
         '
@@ -2933,7 +2934,7 @@ Partial Class frmFacturas
         Me.txtSonP.Properties.Appearance.Options.UseFont = True
         Me.txtSonP.Properties.Appearance.Options.UseForeColor = True
         Me.txtSonP.Properties.ReadOnly = True
-        Me.txtSonP.Size = New System.Drawing.Size(912, 28)
+        Me.txtSonP.Size = New System.Drawing.Size(912, 26)
         Me.txtSonP.TabIndex = 213
         '
         'LabelControl23
@@ -2942,7 +2943,7 @@ Partial Class frmFacturas
         Me.LabelControl23.Appearance.Options.UseFont = True
         Me.LabelControl23.Location = New System.Drawing.Point(10, 505)
         Me.LabelControl23.Name = "LabelControl23"
-        Me.LabelControl23.Size = New System.Drawing.Size(41, 22)
+        Me.LabelControl23.Size = New System.Drawing.Size(36, 19)
         Me.LabelControl23.TabIndex = 212
         Me.LabelControl23.Text = "Son:"
         '
@@ -3095,7 +3096,7 @@ Partial Class frmFacturas
         Me.lblCodigoProducto.Appearance.Options.UseForeColor = True
         Me.lblCodigoProducto.Location = New System.Drawing.Point(253, 263)
         Me.lblCodigoProducto.Name = "lblCodigoProducto"
-        Me.lblCodigoProducto.Size = New System.Drawing.Size(43, 18)
+        Me.lblCodigoProducto.Size = New System.Drawing.Size(39, 16)
         Me.lblCodigoProducto.TabIndex = 198
         Me.lblCodigoProducto.Text = "Código"
         '
@@ -3111,7 +3112,7 @@ Partial Class frmFacturas
         Me.cboProducto.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.cboProducto.Properties.NullText = ""
         Me.cboProducto.Properties.PopupView = Me.gvComboProductos
-        Me.cboProducto.Size = New System.Drawing.Size(713, 28)
+        Me.cboProducto.Size = New System.Drawing.Size(713, 26)
         Me.cboProducto.TabIndex = 193
         '
         'gvComboProductos
@@ -3213,7 +3214,7 @@ Partial Class frmFacturas
         Me.lblUnidadMedida.Appearance.Options.UseFont = True
         Me.lblUnidadMedida.Location = New System.Drawing.Point(376, 283)
         Me.lblUnidadMedida.Name = "lblUnidadMedida"
-        Me.lblUnidadMedida.Size = New System.Drawing.Size(74, 25)
+        Me.lblUnidadMedida.Size = New System.Drawing.Size(67, 23)
         Me.lblUnidadMedida.TabIndex = 200
         Me.lblUnidadMedida.Text = "Unidad"
         '
@@ -3225,7 +3226,7 @@ Partial Class frmFacturas
         Me.xtpRips.Controls.Add(Me.xtcReporteEstudio)
         Me.xtpRips.Controls.Add(Me.BarDockControl7)
         Me.xtpRips.Name = "xtpRips"
-        Me.xtpRips.Size = New System.Drawing.Size(1262, 544)
+        Me.xtpRips.Size = New System.Drawing.Size(1262, 545)
         Me.xtpRips.Text = "RIPS"
         '
         'Button1
@@ -3364,7 +3365,7 @@ Partial Class frmFacturas
         Me.xtcReporteEstudio.Name = "xtcReporteEstudio"
         Me.xtcReporteEstudio.PageImagePosition = DevExpress.XtraTab.TabPageImagePosition.None
         Me.xtcReporteEstudio.SelectedTabPage = Me.xtpUsuarios
-        Me.xtcReporteEstudio.Size = New System.Drawing.Size(967, 310)
+        Me.xtcReporteEstudio.Size = New System.Drawing.Size(967, 311)
         Me.xtcReporteEstudio.TabIndex = 100
         Me.xtcReporteEstudio.TabPages.AddRange(New DevExpress.XtraTab.XtraTabPage() {Me.xtpUsuarios, Me.xtpFacturas, Me.xtpConsultas, Me.xtpProcedimientos})
         '
@@ -3372,7 +3373,7 @@ Partial Class frmFacturas
         '
         Me.xtpUsuarios.Controls.Add(Me.GCUsuarios)
         Me.xtpUsuarios.Name = "xtpUsuarios"
-        Me.xtpUsuarios.Size = New System.Drawing.Size(965, 285)
+        Me.xtpUsuarios.Size = New System.Drawing.Size(965, 286)
         Me.xtpUsuarios.Text = "USUARIOS"
         '
         'GCUsuarios
@@ -3381,7 +3382,7 @@ Partial Class frmFacturas
         Me.GCUsuarios.Location = New System.Drawing.Point(0, 0)
         Me.GCUsuarios.MainView = Me.GVUsuarios
         Me.GCUsuarios.Name = "GCUsuarios"
-        Me.GCUsuarios.Size = New System.Drawing.Size(965, 285)
+        Me.GCUsuarios.Size = New System.Drawing.Size(965, 286)
         Me.GCUsuarios.TabIndex = 2
         Me.GCUsuarios.UseEmbeddedNavigator = True
         Me.GCUsuarios.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GVUsuarios})
@@ -4277,6 +4278,12 @@ Partial Class frmFacturas
         Me.LabelControl31.Text = "ID:"
         Me.LabelControl31.Visible = False
         '
+        'BarButtonItem11
+        '
+        Me.BarButtonItem11.Caption = "JSON"
+        Me.BarButtonItem11.Id = 28
+        Me.BarButtonItem11.Name = "BarButtonItem11"
+        '
         'frmFacturas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -4789,4 +4796,5 @@ Partial Class frmFacturas
     Friend WithEvents btnVerOrdenServicio As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents colTipoUsuario As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colLFTipoUsuario As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents BarButtonItem11 As DevExpress.XtraBars.BarButtonItem
 End Class

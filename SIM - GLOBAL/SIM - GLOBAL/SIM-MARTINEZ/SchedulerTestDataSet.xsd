@@ -1,0 +1,159 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="SchedulerTestDataSet" targetNamespace="http://tempuri.org/SchedulerTestDataSet.xsd" xmlns:mstns="http://tempuri.org/SchedulerTestDataSet.xsd" xmlns="http://tempuri.org/SchedulerTestDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="ConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="ConnectionString (MySettings)" PropertyReference="ApplicationSettings.SIM_MARTINEZ.My.MySettings.GlobalReference.Default.ConnectionString" Provider="System.Data.Odbc" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="AppointmentsTableAdapter" GeneratorDataComponentClassName="AppointmentsTableAdapter" Name="Appointments" UserDataComponentName="AppointmentsTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ConnectionString (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT * FROM `appointments`</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="UNIQUEID" DataSetColumn="UNIQUEID" />
+              <Mapping SourceColumn="STARTDATE" DataSetColumn="STARTDATE" />
+              <Mapping SourceColumn="ENDDATE" DataSetColumn="ENDDATE" />
+              <Mapping SourceColumn="ALLDAY" DataSetColumn="ALLDAY" />
+              <Mapping SourceColumn="LOCATION" DataSetColumn="LOCATION" />
+              <Mapping SourceColumn="DESCRIPTION" DataSetColumn="DESCRIPTION" />
+              <Mapping SourceColumn="LABEL" DataSetColumn="LABEL" />
+              <Mapping SourceColumn="RESOURCEID" DataSetColumn="RESOURCEID" />
+              <Mapping SourceColumn="RESOURCEIDS" DataSetColumn="RESOURCEIDS" />
+              <Mapping SourceColumn="REMINDERINFO" DataSetColumn="REMINDERINFO" />
+              <Mapping SourceColumn="PERCENTCOMPLETE" DataSetColumn="PERCENTCOMPLETE" />
+              <Mapping SourceColumn="TIMEZONEID" DataSetColumn="TIMEZONEID" />
+              <Mapping SourceColumn="CUSTOMFIELD1" DataSetColumn="CUSTOMFIELD1" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ResourcesTableAdapter" GeneratorDataComponentClassName="ResourcesTableAdapter" Name="Resources" UserDataComponentName="ResourcesTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ConnectionString (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT * FROM `resources`</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="ID" DataSetColumn="ID" />
+              <Mapping SourceColumn="IDSORT" DataSetColumn="IDSORT" />
+              <Mapping SourceColumn="PARENTID" DataSetColumn="PARENTID" />
+              <Mapping SourceColumn="DESCRIPTION" DataSetColumn="DESCRIPTION" />
+              <Mapping SourceColumn="COLOR" DataSetColumn="COLOR" />
+              <Mapping SourceColumn="IMAGE" DataSetColumn="IMAGE" />
+              <Mapping SourceColumn="CUSTOMFIELD1" DataSetColumn="CUSTOMFIELD1" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="SchedulerTestDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="SchedulerTestDataSet" msprop:Generator_UserDSName="SchedulerTestDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Appointments" msprop:Generator_TableClassName="AppointmentsDataTable" msprop:Generator_TableVarName="tableAppointments" msprop:Generator_TablePropName="Appointments" msprop:Generator_RowDeletingName="AppointmentsRowDeleting" msprop:Generator_RowChangingName="AppointmentsRowChanging" msprop:Generator_RowEvHandlerName="AppointmentsRowChangeEventHandler" msprop:Generator_RowDeletedName="AppointmentsRowDeleted" msprop:Generator_UserTableName="Appointments" msprop:Generator_RowChangedName="AppointmentsRowChanged" msprop:Generator_RowEvArgName="AppointmentsRowChangeEvent" msprop:Generator_RowClassName="AppointmentsRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="UNIQUEID" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnUNIQUEID" msprop:Generator_ColumnPropNameInRow="UNIQUEID" msprop:Generator_ColumnPropNameInTable="UNIQUEIDColumn" msprop:Generator_UserColumnName="UNIQUEID" type="xs:int" minOccurs="0" />
+              <xs:element name="STARTDATE" msprop:Generator_ColumnVarNameInTable="columnSTARTDATE" msprop:Generator_ColumnPropNameInRow="STARTDATE" msprop:Generator_ColumnPropNameInTable="STARTDATEColumn" msprop:Generator_UserColumnName="STARTDATE" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="ENDDATE" msprop:Generator_ColumnVarNameInTable="columnENDDATE" msprop:Generator_ColumnPropNameInRow="ENDDATE" msprop:Generator_ColumnPropNameInTable="ENDDATEColumn" msprop:Generator_UserColumnName="ENDDATE" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="ALLDAY" msprop:Generator_ColumnVarNameInTable="columnALLDAY" msprop:Generator_ColumnPropNameInRow="ALLDAY" msprop:Generator_ColumnPropNameInTable="ALLDAYColumn" msprop:Generator_UserColumnName="ALLDAY" type="xs:int" minOccurs="0" />
+              <xs:element name="LOCATION" msprop:Generator_ColumnVarNameInTable="columnLOCATION" msprop:Generator_ColumnPropNameInRow="LOCATION" msprop:Generator_ColumnPropNameInTable="LOCATIONColumn" msprop:Generator_UserColumnName="LOCATION" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="75" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DESCRIPTION" msprop:Generator_ColumnVarNameInTable="columnDESCRIPTION" msprop:Generator_ColumnPropNameInRow="DESCRIPTION" msprop:Generator_ColumnPropNameInTable="DESCRIPTIONColumn" msprop:Generator_UserColumnName="DESCRIPTION" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="75" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="LABEL" msprop:Generator_ColumnVarNameInTable="columnLABEL" msprop:Generator_ColumnPropNameInRow="LABEL" msprop:Generator_ColumnPropNameInTable="LABELColumn" msprop:Generator_UserColumnName="LABEL" type="xs:int" minOccurs="0" />
+              <xs:element name="RESOURCEID" msprop:Generator_ColumnVarNameInTable="columnRESOURCEID" msprop:Generator_ColumnPropNameInRow="RESOURCEID" msprop:Generator_ColumnPropNameInTable="RESOURCEIDColumn" msprop:Generator_UserColumnName="RESOURCEID" type="xs:int" minOccurs="0" />
+              <xs:element name="RESOURCEIDS" msprop:Generator_ColumnVarNameInTable="columnRESOURCEIDS" msprop:Generator_ColumnPropNameInRow="RESOURCEIDS" msprop:Generator_ColumnPropNameInTable="RESOURCEIDSColumn" msprop:Generator_UserColumnName="RESOURCEIDS" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="75" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="REMINDERINFO" msprop:Generator_ColumnVarNameInTable="columnREMINDERINFO" msprop:Generator_ColumnPropNameInRow="REMINDERINFO" msprop:Generator_ColumnPropNameInTable="REMINDERINFOColumn" msprop:Generator_UserColumnName="REMINDERINFO" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="75" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="PERCENTCOMPLETE" msprop:Generator_ColumnVarNameInTable="columnPERCENTCOMPLETE" msprop:Generator_ColumnPropNameInRow="PERCENTCOMPLETE" msprop:Generator_ColumnPropNameInTable="PERCENTCOMPLETEColumn" msprop:Generator_UserColumnName="PERCENTCOMPLETE" type="xs:int" minOccurs="0" />
+              <xs:element name="TIMEZONEID" msprop:Generator_ColumnVarNameInTable="columnTIMEZONEID" msprop:Generator_ColumnPropNameInRow="TIMEZONEID" msprop:Generator_ColumnPropNameInTable="TIMEZONEIDColumn" msprop:Generator_UserColumnName="TIMEZONEID" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="75" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CUSTOMFIELD1" msprop:Generator_ColumnVarNameInTable="columnCUSTOMFIELD1" msprop:Generator_ColumnPropNameInRow="CUSTOMFIELD1" msprop:Generator_ColumnPropNameInTable="CUSTOMFIELD1Column" msprop:Generator_UserColumnName="CUSTOMFIELD1" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="75" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Resources" msprop:Generator_TableClassName="ResourcesDataTable" msprop:Generator_TableVarName="tableResources" msprop:Generator_TablePropName="Resources" msprop:Generator_RowDeletingName="ResourcesRowDeleting" msprop:Generator_RowChangingName="ResourcesRowChanging" msprop:Generator_RowEvHandlerName="ResourcesRowChangeEventHandler" msprop:Generator_RowDeletedName="ResourcesRowDeleted" msprop:Generator_UserTableName="Resources" msprop:Generator_RowChangedName="ResourcesRowChanged" msprop:Generator_RowEvArgName="ResourcesRowChangeEvent" msprop:Generator_RowClassName="ResourcesRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" minOccurs="0" />
+              <xs:element name="IDSORT" msprop:Generator_ColumnVarNameInTable="columnIDSORT" msprop:Generator_ColumnPropNameInRow="IDSORT" msprop:Generator_ColumnPropNameInTable="IDSORTColumn" msprop:Generator_UserColumnName="IDSORT" type="xs:int" minOccurs="0" />
+              <xs:element name="PARENTID" msprop:Generator_ColumnVarNameInTable="columnPARENTID" msprop:Generator_ColumnPropNameInRow="PARENTID" msprop:Generator_ColumnPropNameInTable="PARENTIDColumn" msprop:Generator_UserColumnName="PARENTID" type="xs:int" minOccurs="0" />
+              <xs:element name="DESCRIPTION" msprop:Generator_ColumnVarNameInTable="columnDESCRIPTION" msprop:Generator_ColumnPropNameInRow="DESCRIPTION" msprop:Generator_ColumnPropNameInTable="DESCRIPTIONColumn" msprop:Generator_UserColumnName="DESCRIPTION" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="300" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="COLOR" msprop:Generator_ColumnVarNameInTable="columnCOLOR" msprop:Generator_ColumnPropNameInRow="COLOR" msprop:Generator_ColumnPropNameInTable="COLORColumn" msprop:Generator_UserColumnName="COLOR" type="xs:int" minOccurs="0" />
+              <xs:element name="IMAGE" msprop:Generator_ColumnVarNameInTable="columnIMAGE" msprop:Generator_ColumnPropNameInRow="IMAGE" msprop:Generator_ColumnPropNameInTable="IMAGEColumn" msprop:Generator_UserColumnName="IMAGE" type="xs:base64Binary" minOccurs="0" />
+              <xs:element name="CUSTOMFIELD1" msprop:Generator_ColumnVarNameInTable="columnCUSTOMFIELD1" msprop:Generator_ColumnPropNameInRow="CUSTOMFIELD1" msprop:Generator_ColumnPropNameInTable="CUSTOMFIELD1Column" msprop:Generator_UserColumnName="CUSTOMFIELD1" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="300" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1">
+      <xs:selector xpath=".//mstns:Appointments" />
+      <xs:field xpath="mstns:UNIQUEID" />
+    </xs:unique>
+    <xs:unique name="Resources_Constraint1" msdata:ConstraintName="Constraint1">
+      <xs:selector xpath=".//mstns:Resources" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

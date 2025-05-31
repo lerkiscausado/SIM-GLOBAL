@@ -1,0 +1,681 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+SIM - GLOBAL
+</name>
+</assembly>
+<members>
+<member name="T:SIM___GLOBAL.My.Resources.Resources">
+<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member>
+<member name="P:SIM___GLOBAL.My.Resources.Resources.ResourceManager">
+<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member>
+<member name="P:SIM___GLOBAL.My.Resources.Resources.Culture">
+<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member>
+<member name="T:SIM___GLOBAL.DSContratos">
+<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member>
+<member name="T:SIM___GLOBAL.DSContratos.DTContratosDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:SIM___GLOBAL.DSContratos.DTContratosRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:SIM___GLOBAL.DSContratos.DTContratosRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:SIM___GLOBAL.DSContratosTableAdapters.DTContratosTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:SIM___GLOBAL.DSContratosTableAdapters.TableAdapterManager">
+<summary>
+TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
+</summary>
+</member>
+<member name="M:SIM___GLOBAL.DSContratosTableAdapters.TableAdapterManager.UpdateUpdatedRows(SIM___GLOBAL.DSContratos,System.Collections.Generic.List{System.Data.DataRow},System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Update rows in top-down order.
+</summary>
+</member>
+<member name="M:SIM___GLOBAL.DSContratosTableAdapters.TableAdapterManager.UpdateInsertedRows(SIM___GLOBAL.DSContratos,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Insert rows in top-down order.
+</summary>
+</member>
+<member name="M:SIM___GLOBAL.DSContratosTableAdapters.TableAdapterManager.UpdateDeletedRows(SIM___GLOBAL.DSContratos,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Delete rows in bottom-up order.
+</summary>
+</member>
+<member name="M:SIM___GLOBAL.DSContratosTableAdapters.TableAdapterManager.GetRealUpdatedRows(System.Data.DataRow[],System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Remove inserted rows that become updated rows after calling TableAdapter.Update(inserted rows) first
+</summary>
+</member>
+<member name="M:SIM___GLOBAL.DSContratosTableAdapters.TableAdapterManager.UpdateAll(SIM___GLOBAL.DSContratos)">
+<summary>
+Update all changes to the dataset.
+</summary>
+</member>
+<member name="T:SIM___GLOBAL.DSContratosTableAdapters.TableAdapterManager.UpdateOrderOption">
+<summary>
+Update Order Option
+</summary>
+</member>
+<member name="T:SIM___GLOBAL.DSContratosTableAdapters.TableAdapterManager.SelfReferenceComparer">
+<summary>
+Used to sort self-referenced table's rows
+</summary>
+</member>
+<member name="T:SIM___GLOBAL.DSCups">
+<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member>
+<member name="T:SIM___GLOBAL.DSCups.DTCupsDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:SIM___GLOBAL.DSCups.DTCupsRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:SIM___GLOBAL.DSCups.DTCupsRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:SIM___GLOBAL.DSCupsTableAdapters.DTCupsTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:SIM___GLOBAL.DSCupsTableAdapters.TableAdapterManager">
+<summary>
+TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
+</summary>
+</member>
+<member name="M:SIM___GLOBAL.DSCupsTableAdapters.TableAdapterManager.UpdateUpdatedRows(SIM___GLOBAL.DSCups,System.Collections.Generic.List{System.Data.DataRow},System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Update rows in top-down order.
+</summary>
+</member>
+<member name="M:SIM___GLOBAL.DSCupsTableAdapters.TableAdapterManager.UpdateInsertedRows(SIM___GLOBAL.DSCups,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Insert rows in top-down order.
+</summary>
+</member>
+<member name="M:SIM___GLOBAL.DSCupsTableAdapters.TableAdapterManager.UpdateDeletedRows(SIM___GLOBAL.DSCups,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Delete rows in bottom-up order.
+</summary>
+</member>
+<member name="M:SIM___GLOBAL.DSCupsTableAdapters.TableAdapterManager.GetRealUpdatedRows(System.Data.DataRow[],System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Remove inserted rows that become updated rows after calling TableAdapter.Update(inserted rows) first
+</summary>
+</member>
+<member name="M:SIM___GLOBAL.DSCupsTableAdapters.TableAdapterManager.UpdateAll(SIM___GLOBAL.DSCups)">
+<summary>
+Update all changes to the dataset.
+</summary>
+</member>
+<member name="T:SIM___GLOBAL.DSCupsTableAdapters.TableAdapterManager.UpdateOrderOption">
+<summary>
+Update Order Option
+</summary>
+</member>
+<member name="T:SIM___GLOBAL.DSCupsTableAdapters.TableAdapterManager.SelfReferenceComparer">
+<summary>
+Used to sort self-referenced table's rows
+</summary>
+</member>
+<member name="T:SIM___GLOBAL.DSDetalleTarifa">
+<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member>
+<member name="T:SIM___GLOBAL.DSDetalleTarifa.DTDetalleTarifaDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:SIM___GLOBAL.DSDetalleTarifa.DTDetalleTarifaRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:SIM___GLOBAL.DSDetalleTarifa.DTDetalleTarifaRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:SIM___GLOBAL.DSDetalleTarifaTableAdapters.DTDetalleTarifaTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:SIM___GLOBAL.DSDetalleTarifaTableAdapters.TableAdapterManager">
+<summary>
+TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
+</summary>
+</member>
+<member name="M:SIM___GLOBAL.DSDetalleTarifaTableAdapters.TableAdapterManager.UpdateUpdatedRows(SIM___GLOBAL.DSDetalleTarifa,System.Collections.Generic.List{System.Data.DataRow},System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Update rows in top-down order.
+</summary>
+</member>
+<member name="M:SIM___GLOBAL.DSDetalleTarifaTableAdapters.TableAdapterManager.UpdateInsertedRows(SIM___GLOBAL.DSDetalleTarifa,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Insert rows in top-down order.
+</summary>
+</member>
+<member name="M:SIM___GLOBAL.DSDetalleTarifaTableAdapters.TableAdapterManager.UpdateDeletedRows(SIM___GLOBAL.DSDetalleTarifa,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Delete rows in bottom-up order.
+</summary>
+</member>
+<member name="M:SIM___GLOBAL.DSDetalleTarifaTableAdapters.TableAdapterManager.GetRealUpdatedRows(System.Data.DataRow[],System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Remove inserted rows that become updated rows after calling TableAdapter.Update(inserted rows) first
+</summary>
+</member>
+<member name="M:SIM___GLOBAL.DSDetalleTarifaTableAdapters.TableAdapterManager.UpdateAll(SIM___GLOBAL.DSDetalleTarifa)">
+<summary>
+Update all changes to the dataset.
+</summary>
+</member>
+<member name="T:SIM___GLOBAL.DSDetalleTarifaTableAdapters.TableAdapterManager.UpdateOrderOption">
+<summary>
+Update Order Option
+</summary>
+</member>
+<member name="T:SIM___GLOBAL.DSDetalleTarifaTableAdapters.TableAdapterManager.SelfReferenceComparer">
+<summary>
+Used to sort self-referenced table's rows
+</summary>
+</member>
+<member name="T:SIM___GLOBAL.DSTarifas">
+<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member>
+<member name="T:SIM___GLOBAL.DSTarifas.DTTarifasDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:SIM___GLOBAL.DSTarifas.DTTarifasRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:SIM___GLOBAL.DSTarifas.DTTarifasRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:SIM___GLOBAL.DSTarifasTableAdapters.DTTarifasTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:SIM___GLOBAL.DSTarifasTableAdapters.TableAdapterManager">
+<summary>
+TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
+</summary>
+</member>
+<member name="M:SIM___GLOBAL.DSTarifasTableAdapters.TableAdapterManager.UpdateUpdatedRows(SIM___GLOBAL.DSTarifas,System.Collections.Generic.List{System.Data.DataRow},System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Update rows in top-down order.
+</summary>
+</member>
+<member name="M:SIM___GLOBAL.DSTarifasTableAdapters.TableAdapterManager.UpdateInsertedRows(SIM___GLOBAL.DSTarifas,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Insert rows in top-down order.
+</summary>
+</member>
+<member name="M:SIM___GLOBAL.DSTarifasTableAdapters.TableAdapterManager.UpdateDeletedRows(SIM___GLOBAL.DSTarifas,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Delete rows in bottom-up order.
+</summary>
+</member>
+<member name="M:SIM___GLOBAL.DSTarifasTableAdapters.TableAdapterManager.GetRealUpdatedRows(System.Data.DataRow[],System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Remove inserted rows that become updated rows after calling TableAdapter.Update(inserted rows) first
+</summary>
+</member>
+<member name="M:SIM___GLOBAL.DSTarifasTableAdapters.TableAdapterManager.UpdateAll(SIM___GLOBAL.DSTarifas)">
+<summary>
+Update all changes to the dataset.
+</summary>
+</member>
+<member name="T:SIM___GLOBAL.DSTarifasTableAdapters.TableAdapterManager.UpdateOrderOption">
+<summary>
+Update Order Option
+</summary>
+</member>
+<member name="T:SIM___GLOBAL.DSTarifasTableAdapters.TableAdapterManager.SelfReferenceComparer">
+<summary>
+Used to sort self-referenced table's rows
+</summary>
+</member>
+<member name="T:SIM___GLOBAL.DSVistas">
+<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member>
+<member name="T:SIM___GLOBAL.DSVistas.DTHistoriasAnterioresDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:SIM___GLOBAL.DSVistas.dtEmpleadosDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:SIM___GLOBAL.DSVistas.DTUsersDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:SIM___GLOBAL.DSVistas.DTAgendaDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:SIM___GLOBAL.DSVistas.dtOAtendidasDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:SIM___GLOBAL.DSVistas.dtOaFacturarDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:SIM___GLOBAL.DSVistas.dtODetalleDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:SIM___GLOBAL.DSVistas.DTOrdenesFacturarDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:SIM___GLOBAL.DSVistas.DTHistoriasAnterioresRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:SIM___GLOBAL.DSVistas.dtEmpleadosRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:SIM___GLOBAL.DSVistas.DTUsersRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:SIM___GLOBAL.DSVistas.DTAgendaRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:SIM___GLOBAL.DSVistas.dtOAtendidasRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:SIM___GLOBAL.DSVistas.dtOaFacturarRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:SIM___GLOBAL.DSVistas.dtODetalleRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:SIM___GLOBAL.DSVistas.DTOrdenesFacturarRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:SIM___GLOBAL.DSVistas.DTHistoriasAnterioresRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:SIM___GLOBAL.DSVistas.dtEmpleadosRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:SIM___GLOBAL.DSVistas.DTUsersRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:SIM___GLOBAL.DSVistas.DTAgendaRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:SIM___GLOBAL.DSVistas.dtOAtendidasRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:SIM___GLOBAL.DSVistas.dtOaFacturarRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:SIM___GLOBAL.DSVistas.dtODetalleRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:SIM___GLOBAL.DSVistas.DTOrdenesFacturarRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:SIM___GLOBAL.DSVistasTableAdapters.DTHistoriasAnterioresTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:SIM___GLOBAL.DSVistasTableAdapters.dtEmpleadosTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:SIM___GLOBAL.DSVistasTableAdapters.DTUsersTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:SIM___GLOBAL.DSVistasTableAdapters.DTAgendaTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:SIM___GLOBAL.DSVistasTableAdapters.dtOAtendidasTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:SIM___GLOBAL.DSVistasTableAdapters.dtOaFacturarTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:SIM___GLOBAL.DSVistasTableAdapters.dtODetalleTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:SIM___GLOBAL.DSVistasTableAdapters.TableAdapterManager">
+<summary>
+TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
+</summary>
+</member>
+<member name="M:SIM___GLOBAL.DSVistasTableAdapters.TableAdapterManager.UpdateUpdatedRows(SIM___GLOBAL.DSVistas,System.Collections.Generic.List{System.Data.DataRow},System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Update rows in top-down order.
+</summary>
+</member>
+<member name="M:SIM___GLOBAL.DSVistasTableAdapters.TableAdapterManager.UpdateInsertedRows(SIM___GLOBAL.DSVistas,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Insert rows in top-down order.
+</summary>
+</member>
+<member name="M:SIM___GLOBAL.DSVistasTableAdapters.TableAdapterManager.UpdateDeletedRows(SIM___GLOBAL.DSVistas,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Delete rows in bottom-up order.
+</summary>
+</member>
+<member name="M:SIM___GLOBAL.DSVistasTableAdapters.TableAdapterManager.GetRealUpdatedRows(System.Data.DataRow[],System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Remove inserted rows that become updated rows after calling TableAdapter.Update(inserted rows) first
+</summary>
+</member>
+<member name="M:SIM___GLOBAL.DSVistasTableAdapters.TableAdapterManager.UpdateAll(SIM___GLOBAL.DSVistas)">
+<summary>
+Update all changes to the dataset.
+</summary>
+</member>
+<member name="T:SIM___GLOBAL.DSVistasTableAdapters.TableAdapterManager.UpdateOrderOption">
+<summary>
+Update Order Option
+</summary>
+</member>
+<member name="T:SIM___GLOBAL.DSVistasTableAdapters.TableAdapterManager.SelfReferenceComparer">
+<summary>
+Used to sort self-referenced table's rows
+</summary>
+</member>
+<member name="T:SIM___GLOBAL.DTCargos">
+<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member>
+<member name="T:SIM___GLOBAL.DTCargos.DTCargosDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:SIM___GLOBAL.DTCargos.DTCargosRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:SIM___GLOBAL.DTCargos.DTCargosRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:SIM___GLOBAL.DTCargosTableAdapters.DTCargosTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:SIM___GLOBAL.DTCargosTableAdapters.TableAdapterManager">
+<summary>
+TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
+</summary>
+</member>
+<member name="M:SIM___GLOBAL.DTCargosTableAdapters.TableAdapterManager.UpdateUpdatedRows(SIM___GLOBAL.DTCargos,System.Collections.Generic.List{System.Data.DataRow},System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Update rows in top-down order.
+</summary>
+</member>
+<member name="M:SIM___GLOBAL.DTCargosTableAdapters.TableAdapterManager.UpdateInsertedRows(SIM___GLOBAL.DTCargos,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Insert rows in top-down order.
+</summary>
+</member>
+<member name="M:SIM___GLOBAL.DTCargosTableAdapters.TableAdapterManager.UpdateDeletedRows(SIM___GLOBAL.DTCargos,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Delete rows in bottom-up order.
+</summary>
+</member>
+<member name="M:SIM___GLOBAL.DTCargosTableAdapters.TableAdapterManager.GetRealUpdatedRows(System.Data.DataRow[],System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Remove inserted rows that become updated rows after calling TableAdapter.Update(inserted rows) first
+</summary>
+</member>
+<member name="M:SIM___GLOBAL.DTCargosTableAdapters.TableAdapterManager.UpdateAll(SIM___GLOBAL.DTCargos)">
+<summary>
+Update all changes to the dataset.
+</summary>
+</member>
+<member name="T:SIM___GLOBAL.DTCargosTableAdapters.TableAdapterManager.UpdateOrderOption">
+<summary>
+Update Order Option
+</summary>
+</member>
+<member name="T:SIM___GLOBAL.DTCargosTableAdapters.TableAdapterManager.SelfReferenceComparer">
+<summary>
+Used to sort self-referenced table's rows
+</summary>
+</member>
+<member name="T:SIM___GLOBAL.DTDiagnosticos">
+<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member>
+<member name="T:SIM___GLOBAL.DTDiagnosticos.DTDiagnosticosDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:SIM___GLOBAL.DTDiagnosticos.DTDiagnosticosRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:SIM___GLOBAL.DTDiagnosticos.DTDiagnosticosRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:SIM___GLOBAL.DTDiagnosticosTableAdapters.DTDiagnosticosTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:SIM___GLOBAL.DTDiagnosticosTableAdapters.TableAdapterManager">
+<summary>
+TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
+</summary>
+</member>
+<member name="M:SIM___GLOBAL.DTDiagnosticosTableAdapters.TableAdapterManager.UpdateUpdatedRows(SIM___GLOBAL.DTDiagnosticos,System.Collections.Generic.List{System.Data.DataRow},System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Update rows in top-down order.
+</summary>
+</member>
+<member name="M:SIM___GLOBAL.DTDiagnosticosTableAdapters.TableAdapterManager.UpdateInsertedRows(SIM___GLOBAL.DTDiagnosticos,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Insert rows in top-down order.
+</summary>
+</member>
+<member name="M:SIM___GLOBAL.DTDiagnosticosTableAdapters.TableAdapterManager.UpdateDeletedRows(SIM___GLOBAL.DTDiagnosticos,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Delete rows in bottom-up order.
+</summary>
+</member>
+<member name="M:SIM___GLOBAL.DTDiagnosticosTableAdapters.TableAdapterManager.GetRealUpdatedRows(System.Data.DataRow[],System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Remove inserted rows that become updated rows after calling TableAdapter.Update(inserted rows) first
+</summary>
+</member>
+<member name="M:SIM___GLOBAL.DTDiagnosticosTableAdapters.TableAdapterManager.UpdateAll(SIM___GLOBAL.DTDiagnosticos)">
+<summary>
+Update all changes to the dataset.
+</summary>
+</member>
+<member name="T:SIM___GLOBAL.DTDiagnosticosTableAdapters.TableAdapterManager.UpdateOrderOption">
+<summary>
+Update Order Option
+</summary>
+</member>
+<member name="T:SIM___GLOBAL.DTDiagnosticosTableAdapters.TableAdapterManager.SelfReferenceComparer">
+<summary>
+Used to sort self-referenced table's rows
+</summary>
+</member>
+<member name="T:SIM___GLOBAL.DTv_entidades">
+<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member>
+<member name="T:SIM___GLOBAL.DTv_entidades.DTEntidadesDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:SIM___GLOBAL.DTv_entidades.DTEntidadesRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:SIM___GLOBAL.DTv_entidades.DTEntidadesRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:SIM___GLOBAL.DTv_entidadesTableAdapters.DTEntidadesTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:SIM___GLOBAL.DTv_entidadesTableAdapters.TableAdapterManager">
+<summary>
+TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
+</summary>
+</member>
+<member name="M:SIM___GLOBAL.DTv_entidadesTableAdapters.TableAdapterManager.UpdateUpdatedRows(SIM___GLOBAL.DTv_entidades,System.Collections.Generic.List{System.Data.DataRow},System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Update rows in top-down order.
+</summary>
+</member>
+<member name="M:SIM___GLOBAL.DTv_entidadesTableAdapters.TableAdapterManager.UpdateInsertedRows(SIM___GLOBAL.DTv_entidades,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Insert rows in top-down order.
+</summary>
+</member>
+<member name="M:SIM___GLOBAL.DTv_entidadesTableAdapters.TableAdapterManager.UpdateDeletedRows(SIM___GLOBAL.DTv_entidades,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Delete rows in bottom-up order.
+</summary>
+</member>
+<member name="M:SIM___GLOBAL.DTv_entidadesTableAdapters.TableAdapterManager.GetRealUpdatedRows(System.Data.DataRow[],System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Remove inserted rows that become updated rows after calling TableAdapter.Update(inserted rows) first
+</summary>
+</member>
+<member name="M:SIM___GLOBAL.DTv_entidadesTableAdapters.TableAdapterManager.UpdateAll(SIM___GLOBAL.DTv_entidades)">
+<summary>
+Update all changes to the dataset.
+</summary>
+</member>
+<member name="T:SIM___GLOBAL.DTv_entidadesTableAdapters.TableAdapterManager.UpdateOrderOption">
+<summary>
+Update Order Option
+</summary>
+</member>
+<member name="T:SIM___GLOBAL.DTv_entidadesTableAdapters.TableAdapterManager.SelfReferenceComparer">
+<summary>
+Used to sort self-referenced table's rows
+</summary>
+</member>
+</members>
+</doc>
