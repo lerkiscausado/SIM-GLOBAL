@@ -750,9 +750,9 @@ Public Class frmEndoscopiaGL
                             _dOrdenes.ActualizarEstado(lblConsecutivoOrden.Text, "ATENDIDO")
                         End If
 
-                        If MessageBox.Show("Desea imprimir el Estudio # " & txtConsecutivo.Text, "Imprimir Estudio", MessageBoxButtons.YesNo, MessageBoxIcon.Information) = DialogResult.Yes Then
-                            ImprimirEstudio()
-                        End If
+                        'If MessageBox.Show("Desea imprimir el Estudio # " & txtConsecutivo.Text, "Imprimir Estudio", MessageBoxButtons.YesNo, MessageBoxIcon.Information) = DialogResult.Yes Then
+                        ' ImprimirEstudio()
+                        ' End If
                         ActualizarGrilla()
                         LimpiarCampos()
                         _Capturas.Items.Clear()

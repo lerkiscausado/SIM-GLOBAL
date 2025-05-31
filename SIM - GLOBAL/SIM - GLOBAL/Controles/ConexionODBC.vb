@@ -9,9 +9,11 @@ Namespace My.Controles
             Try
                 BdAdos = New OdbcConnection(Cadena)
                 BdAdos.Open()
+                Return BdAdos
             Catch ex As Exception
                 Close(BdAdos)
                 MessageBox.Show(ex.Message)
+                Return Nothing
             End Try
             Return BdAdos
         End Function
@@ -19,14 +21,10 @@ Namespace My.Controles
         Public Shared Sub Close(ByVal BdAdos As OdbcConnection)
             Try
                 If BdAdos.State = ConnectionState.Open Then
-                    Try
-                        BdAdos.Close()
-                    Catch ex As Exception
-                        MsgBox("Error" & ex.ToString)
-                    End Try
+                    BdAdos.Close()
                 End If
             Catch ex As Exception
-                MessageBox.Show(ex.Message)
+                MessageBox.Show("Error al cerrar la conexión: " & ex.Message)
             End Try
         End Sub
     End Class

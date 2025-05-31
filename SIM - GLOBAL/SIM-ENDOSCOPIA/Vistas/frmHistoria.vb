@@ -958,16 +958,16 @@ Public Class frmHistoria
                             _dordenes.ActualizarEstado(lblConsecutivoOrden.Text, "ATENDIDO")
                         End If
 
-                        If MessageBox.Show("Desea imprimir la historia", "Imprimir Historia", MessageBoxButtons.YesNo, MessageBoxIcon.Information) = DialogResult.Yes Then
-                            Dim _frmOrdenesMedicas As New SIM___GLOBAL.frmOrdenesMedicas
-                            _frmOrdenesMedicas.IdOrden = lblConsecutivoOrden.Text
-                            _frmOrdenesMedicas.Licencia = Licencia
-                            _frmOrdenesMedicas.IdEmpleado = IdEmpleado
-                            _frmOrdenesMedicas.IdDetalleOrden = lblIdDetalleOrden.Text
-                            _frmOrdenesMedicas.TipoEstudio = TipoEstudio
-                            _frmOrdenesMedicas.ShowDialog()
-                            'ImprimirHistoria()
-                        End If
+                        'If MessageBox.Show("Desea imprimir la historia", "Imprimir Historia", MessageBoxButtons.YesNo, MessageBoxIcon.Information) = DialogResult.Yes Then
+                        'Dim _frmOrdenesMedicas As New SIM___GLOBAL.frmOrdenesMedicas
+                        '_frmOrdenesMedicas.IdOrden = lblConsecutivoOrden.Text
+ _ 'frmOrdenesMedicas.Licencia = Licencia
+                        '_frmOrdenesMedicas.IdEmpleado = IdEmpleado
+                        ' _frmOrdenesMedicas.IdDetalleOrden = lblIdDetalleOrden.Text
+                        '  _frmOrdenesMedicas.TipoEstudio = TipoEstudio
+                        '   _frmOrdenesMedicas.ShowDialog()
+                        'ImprimirHistoria()
+                        'End If
                         LimpiarCampos()
                         Else
                             MessageBox.Show("La historia clinica no se pudo firmar. Verifique si fue guardada.", "Registro de Historia", MessageBoxButtons.OK, MessageBoxIcon.Information)
