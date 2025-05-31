@@ -578,6 +578,12 @@
       <DependentUpon>rptHistoriaClinicaDiteg.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Reportes\rptHistoriaClinicaGC.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptHistoriaClinicaGC.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Reportes\rptHistoriaClinicaMR.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1510,6 +1516,10 @@
     <EmbeddedResource Include="Reportes\rptHistoriaClinicaDiteg.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptHistoriaClinicaDiteg.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\rptHistoriaClinicaGC.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptHistoriaClinicaGC.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\rptHistoriaClinicaMR.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

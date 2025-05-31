@@ -8,29 +8,33 @@ Namespace Controles
         Shared _ds As DataSet
         Shared _adapter As DataAdapter
         Public Function Validar(ByVal usuario As String, ByVal clave As String) As Boolean
+            Const sql As String = "SELECT 1 FROM users WHERE usuario = ? AND pass = ? AND estado = 'A'"
+
             Try
-                Dim query As String =
-                        String.Format("SELECT id FROM users WHERE usuario='" & usuario & "' AND pass='" & clave & "' AND estado='A'")
-                _conn = ConexionODBC.Open()
+                ' Abrir conexión
+                Using conn As OdbcConnection = ConexionODBC.Open()
+                    If conn Is Nothing Then
+                        Throw New InvalidOperationException("No se pudo establecer la conexión a la base de datos.")
+                    End If
 
-                Dim comando = New OdbcCommand(query, _conn)
-                Dim reader As OdbcDataReader
-                reader = comando.ExecuteReader()
-                If reader.Read() Then
-                    'ConexionODBC.Close(_conn)
-                    _conn.Close()
-                    Return True
-                Else
-                    'ConexionODBC.Close(_conn)
-                    _conn.Close()
-                    Return False
-                End If
-            Catch ex As Exception
-                MessageBox.Show(ex.Message)
+                    ' Crear comando parametrizado
+                    Using cmd As New OdbcCommand(sql, conn)
+                        cmd.Parameters.Add("usuario", OdbcType.VarChar, 50).Value = usuario
+                        cmd.Parameters.Add("pass", OdbcType.VarChar, 50).Value = clave
+
+                        ' Ejecutar lector
+                        Using reader As OdbcDataReader = cmd.ExecuteReader()
+                            Return reader.Read()  ' True si hay al menos un registro
+                        End Using
+                    End Using
+                End Using
+
+            Catch ex As OdbcException
+                ' Aquí podrías loguear a un archivo o re-lanzar
+                Throw New ApplicationException("Error en la validación de usuario.", ex)
             End Try
-            Return Nothing
-
         End Function
+
         Public Function Auditar(ByVal usuario As String, ByVal clave As String) As Boolean
             Try
                 Dim query As String =

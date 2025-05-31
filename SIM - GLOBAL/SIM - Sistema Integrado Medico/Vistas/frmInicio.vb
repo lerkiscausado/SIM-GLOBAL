@@ -784,11 +784,11 @@ Public Class frmInicio
                 bbiTomaMuestra.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
                 bbiCitologia.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
                 bbiPatologia.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
-                bbiEndoscopia.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
-                bbiImagenes.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
-                bbiOtrosEstudios.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
+                bbiEndoscopia.Visibility = DevExpress.XtraBars.BarItemVisibility.Always
+                bbiImagenes.Visibility = DevExpress.XtraBars.BarItemVisibility.Always
+                bbiOtrosEstudios.Visibility = DevExpress.XtraBars.BarItemVisibility.Always
                 bbiOrtodoncia.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
-                bbiAnestesia.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
+                bbiAnestesia.Visibility = DevExpress.XtraBars.BarItemVisibility.Always
 
                 rpgReportes.Visible = True ' Grupo Reportes
                 bbiRelacionPatologias.Visibility = DevExpress.XtraBars.BarItemVisibility.Never

@@ -1,51 +1,69 @@
-﻿Imports System.Data.Common
+﻿Imports System.Data
 Imports System.Data.Odbc
 Imports SIM___GLOBAL.Modelo
 Imports SIM___GLOBAL.My.Controles
+
+
 Namespace Controles
     Public Class DLicencias
-        Shared _conn As New OdbcConnection
-        Shared _ds As DataSet
-        Shared _adapter As DataAdapter
-        Public Shared Function Cargar(ByVal filtro As String) As Licencias
-            Try
-                Dim query As String = String.Format("SELECT * FROM licencias WHERE id='" & filtro & "'")
-                _conn = ConexionODBC.Open()
-                Dim comando = New OdbcCommand(query, _conn)
-                _adapter = New OdbcDataAdapter(comando)
-                _ds = New DataSet()
-                _adapter.Fill(_ds)
-                ConexionODBC.Close(_conn)
-                Dim _Licencia = New Licencias
-                _Licencia.Id = _ds.Tables(0).Rows(0)(0).ToString()
-                _Licencia.NombreCliente = _ds.Tables(0).Rows(0)(1).ToString()
-                _Licencia.FechaContatacion = _ds.Tables(0).Rows(0)(2).ToString()
-                _Licencia.Serial = _ds.Tables(0).Rows(0)(3).ToString()
-                _Licencia.IdOrigen = _ds.Tables(0).Rows(0)(4).ToString()
-                _Licencia.Estado = _ds.Tables(0).Rows(0)(5).ToString()
-                Return _Licencia
-            Catch ex As Exception
-                MessageBox.Show(ex.Message)
-                Return Nothing
-            End Try
+        ' Ya no usamos campos Shared; cada instancia maneja su propio estado.
+        Private ReadOnly _connectionString As String
+
+        Public Sub New()
+            _connectionString = ConexionODBC.Cadena
+        End Sub
+
+        ''' <summary>
+        ''' Obtiene una licencia por su ID.
+        ''' </summary>
+        Public Function Cargar(ByVal idLicencia As String) As Licencias
+            Dim sql As String = "SELECT id, cliente, fecha_Contratacion, serial, id_Origen, estado " &
+                                "FROM licencias WHERE id = ?"
+
+            ' Usamos Using para asegurar cierre/disposición correcta
+            Using conn As OdbcConnection = New OdbcConnection(_connectionString)
+                Using cmd As New OdbcCommand(sql, conn)
+                    cmd.Parameters.Add("id", OdbcType.VarChar, 50).Value = idLicencia
+                    conn.Open()
+
+                    Using reader = cmd.ExecuteReader()
+                        If Not reader.Read() Then
+                            Return Nothing
+                        End If
+
+                        Dim lic As New Licencias() With {
+                            .Id = reader("id").ToString(),
+                            .NombreCliente = reader("cliente").ToString(),
+                            .FechaContatacion = reader("fecha_Contratacion").ToString(),
+                            .Serial = reader("serial").ToString(),
+                            .IdOrigen = reader("id_Origen").ToString(),
+                            .Estado = reader("estado").ToString()
+                        }
+                        Return lic
+                    End Using
+                End Using
+            End Using
         End Function
+
+        ''' <summary>
+        ''' Lista las licencias activas (estado = 'A') para un combo.
+        ''' </summary>
         Public Function ListarCombo() As DataSet
-            Try
-                Dim query As String =
-                                    String.Format("SELECT `ID`, `CLIENTE` AS `EMPRESA` FROM `licencias` WHERE (`ESTADO`='A')")
-                'MsgBox(_conn.State.ToString)
-                _conn = ConexionODBC.Open()
-                Dim comando = New OdbcCommand(query, _conn)
-                _adapter = New OdbcDataAdapter(comando)
-                _ds = New DataSet()
-                _adapter.Fill(_ds)
-                ConexionODBC.Close(_conn)
-                Return _ds
-            Catch ex As Exception
-                MessageBox.Show(ex.Message)
-                Return Nothing
-            End Try
+            Dim sql As String = "SELECT id AS ID, cliente AS EMPRESA FROM licencias WHERE estado = 'A'"
+            Dim ds As New DataSet()
+
+            Using conn As New OdbcConnection(_connectionString)
+                Using cmd As New OdbcCommand(sql, conn)
+                    conn.Open()
+                    Using adapter As New OdbcDataAdapter(cmd)
+                        adapter.Fill(ds)  ' Llenamos el DataSet completo
+                    End Using
+                End Using
+            End Using
+
+            Return ds
         End Function
     End Class
 End Namespace
+
 

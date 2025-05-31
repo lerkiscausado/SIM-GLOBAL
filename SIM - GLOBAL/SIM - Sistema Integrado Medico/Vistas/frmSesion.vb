@@ -23,16 +23,31 @@ Public Class frmSesion
     Dim _DLicencia As DLicencias
     Dim _dLogin As DLogin
     Private Sub CargarLicencias()
-        ' Cargar licencias activas
-        Dim _DLicencia = New SIM___GLOBAL.Controles.DLicencias
-        _ds = _DLicencia.ListarCombo
-        cboLicencia.Properties.DataSource = _ds.Tables(0)
-        cboLicencia.Properties.DisplayMember = _ds.Tables(0).Columns(1).Caption
-        cboLicencia.Properties.ValueMember = _ds.Tables(0).Columns(0).Caption
-        cboLicencia.ItemIndex = 0
-        lblValidar.Visible = False
+        Try
+            Dim _DLicencia As New SIM___GLOBAL.Controles.DLicencias
+            Dim dsLic As DataSet = _DLicencia.ListarCombo()
 
+            ' Validar que el DataSet tenga datos
+            If dsLic Is Nothing OrElse dsLic.Tables.Count = 0 OrElse dsLic.Tables(0).Rows.Count = 0 Then
+                MessageBox.Show("No se encontraron licencias activas.", "Sin resultados", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                Return
+            End If
+
+            ' Asignar DataSource al combo
+            Dim dt As DataTable = dsLic.Tables(0)
+            cboLicencia.Properties.DataSource = dt
+            cboLicencia.Properties.DisplayMember = "EMPRESA"  ' Usa el nombre real de la columna
+            cboLicencia.Properties.ValueMember = "ID"       ' Usa el nombre real de la columna
+
+            ' Seleccionar primer elemento si existe
+            cboLicencia.ItemIndex = If(dt.Rows.Count > 0, 0, -1)
+
+            lblValidar.Visible = False
+        Catch ex As Exception
+            MessageBox.Show($"Error al cargar licencias: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
     End Sub
+
     Private Sub btnSalir_Click(sender As Object, e As EventArgs) Handles btnSalir.Click
         'Me.Close()
         'Exit Sub

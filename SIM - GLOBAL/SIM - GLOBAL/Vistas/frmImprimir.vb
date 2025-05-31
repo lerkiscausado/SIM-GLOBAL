@@ -946,7 +946,7 @@ Public Class frmImprimir
                         rptHistoriaClinica.SetParameterValue("reporte", Reporte)
                         crv.ReportSource = rptHistoriaClinica
                     Case 4 'GASTROLAP
-                        Dim rptHistoriaClinica As New rptHistoriaClinicaMR
+                        Dim rptHistoriaClinica As New rptHistoriaClinicaGC
                         rptHistoriaClinica.SetParameterValue("filtro", idDetalleOrden)
                         rptHistoriaClinica.SetParameterValue("reporte", Reporte)
                         crv.ReportSource = rptHistoriaClinica
@@ -960,7 +960,7 @@ Public Class frmImprimir
                         rptHistoriaClinica.SetParameterValue("reporte", Reporte)
                         crv.ReportSource = rptHistoriaClinica
                     Case 4 'GASTROLAP
-                        Dim rptHistoriaClinica As New rptHistoriaClinicaMR
+                        Dim rptHistoriaClinica As New rptHistoriaClinicaGC
                         rptHistoriaClinica.SetParameterValue("filtro", idDetalleOrden)
                         rptHistoriaClinica.SetParameterValue("reporte", Reporte)
                         crv.ReportSource = rptHistoriaClinica
@@ -1036,7 +1036,7 @@ Public Class frmImprimir
                         rptEstudiosEspecialesGL.SetParameterValue("fotos", Fotos)
                         crv.ReportSource = rptEstudiosEspecialesGL
                     Case 4 'GASTROLAP
-                        Dim rptEstudiosEspecialesGL As New rptImgEstudiosEspecialesGL
+                        Dim rptEstudiosEspecialesGL As New rptImgEstudiosEspecialesGC
                         rptEstudiosEspecialesGL.SetParameterValue("filtro", idDetalleOrden)
                         rptEstudiosEspecialesGL.SetParameterValue("reporte", Reporte)
                         rptEstudiosEspecialesGL.SetParameterValue("fotos", Fotos)
