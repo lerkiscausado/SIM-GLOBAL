@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DTDiagnosticos" targetNamespace="http://tempuri.org/DTDiagnosticos.xsd" xmlns:mstns="http://tempuri.org/DTDiagnosticos.xsd" xmlns="http://tempuri.org/DTDiagnosticos.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="ConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="ConnectionString (MySettings)" PropertyReference="ApplicationSettings.SIM___GLOBAL.My.MySettings.GlobalReference.Default.ConnectionString" Provider="System.Data.Odbc" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="DTDiagnosticosTableAdapter" GeneratorDataComponentClassName="DTDiagnosticosTableAdapter" Name="DTDiagnosticos" UserDataComponentName="DTDiagnosticosTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ConnectionString (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT * FROM `diagnosticos`</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="CODIGO_DIAGNOSTICO" DataSetColumn="CODIGO_DIAGNOSTICO" />
+              <Mapping SourceColumn="NOMBRE_DIAGNOSTICO" DataSetColumn="NOMBRE_DIAGNOSTICO" />
+              <Mapping SourceColumn="ESTADO" DataSetColumn="ESTADO" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DTDiagnosticos" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="DTDiagnosticos" msprop:Generator_UserDSName="DTDiagnosticos">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DTDiagnosticos" msprop:Generator_TableClassName="DTDiagnosticosDataTable" msprop:Generator_TableVarName="tableDTDiagnosticos" msprop:Generator_TablePropName="_DTDiagnosticos" msprop:Generator_RowDeletingName="DTDiagnosticosRowDeleting" msprop:Generator_RowChangingName="DTDiagnosticosRowChanging" msprop:Generator_RowEvHandlerName="DTDiagnosticosRowChangeEventHandler" msprop:Generator_RowDeletedName="DTDiagnosticosRowDeleted" msprop:Generator_UserTableName="DTDiagnosticos" msprop:Generator_RowChangedName="DTDiagnosticosRowChanged" msprop:Generator_RowEvArgName="DTDiagnosticosRowChangeEvent" msprop:Generator_RowClassName="DTDiagnosticosRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CODIGO_DIAGNOSTICO" msprop:Generator_ColumnVarNameInTable="columnCODIGO_DIAGNOSTICO" msprop:Generator_ColumnPropNameInRow="CODIGO_DIAGNOSTICO" msprop:Generator_ColumnPropNameInTable="CODIGO_DIAGNOSTICOColumn" msprop:Generator_UserColumnName="CODIGO_DIAGNOSTICO" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="18" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="NOMBRE_DIAGNOSTICO" msprop:Generator_ColumnVarNameInTable="columnNOMBRE_DIAGNOSTICO" msprop:Generator_ColumnPropNameInRow="NOMBRE_DIAGNOSTICO" msprop:Generator_ColumnPropNameInTable="NOMBRE_DIAGNOSTICOColumn" msprop:Generator_UserColumnName="NOMBRE_DIAGNOSTICO" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1350" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ESTADO" msprop:Generator_ColumnVarNameInTable="columnESTADO" msprop:Generator_ColumnPropNameInRow="ESTADO" msprop:Generator_ColumnPropNameInTable="ESTADOColumn" msprop:Generator_UserColumnName="ESTADO" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="4" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

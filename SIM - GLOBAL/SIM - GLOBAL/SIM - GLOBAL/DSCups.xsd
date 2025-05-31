@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DSCups" targetNamespace="http://tempuri.org/DSCups.xsd" xmlns:mstns="http://tempuri.org/DSCups.xsd" xmlns="http://tempuri.org/DSCups.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="ConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="ConnectionString (MySettings)" PropertyReference="ApplicationSettings.SIM___GLOBAL.My.MySettings.GlobalReference.Default.ConnectionString" Provider="System.Data.Odbc" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="DTCupsTableAdapter" GeneratorDataComponentClassName="DTCupsTableAdapter" Name="DTCups" UserDataComponentName="DTCupsTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ConnectionString (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT * FROM `cups`</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="CODIGO_CUPS" DataSetColumn="CODIGO_CUPS" />
+              <Mapping SourceColumn="NOMBRE_CUPS" DataSetColumn="NOMBRE_CUPS" />
+              <Mapping SourceColumn="ESTADO" DataSetColumn="ESTADO" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DSCups" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="DSCups" msprop:Generator_UserDSName="DSCups">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DTCups" msprop:Generator_TableClassName="DTCupsDataTable" msprop:Generator_TableVarName="tableDTCups" msprop:Generator_TablePropName="DTCups" msprop:Generator_RowDeletingName="DTCupsRowDeleting" msprop:Generator_RowChangingName="DTCupsRowChanging" msprop:Generator_RowEvHandlerName="DTCupsRowChangeEventHandler" msprop:Generator_RowDeletedName="DTCupsRowDeleted" msprop:Generator_UserTableName="DTCups" msprop:Generator_RowChangedName="DTCupsRowChanged" msprop:Generator_RowEvArgName="DTCupsRowChangeEvent" msprop:Generator_RowClassName="DTCupsRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CODIGO_CUPS" msprop:Generator_ColumnVarNameInTable="columnCODIGO_CUPS" msprop:Generator_ColumnPropNameInRow="CODIGO_CUPS" msprop:Generator_ColumnPropNameInTable="CODIGO_CUPSColumn" msprop:Generator_UserColumnName="CODIGO_CUPS">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="9" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="NOMBRE_CUPS" msprop:Generator_ColumnVarNameInTable="columnNOMBRE_CUPS" msprop:Generator_ColumnPropNameInRow="NOMBRE_CUPS" msprop:Generator_ColumnPropNameInTable="NOMBRE_CUPSColumn" msprop:Generator_UserColumnName="NOMBRE_CUPS">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="450" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ESTADO" msprop:Generator_ColumnVarNameInTable="columnESTADO" msprop:Generator_ColumnPropNameInRow="ESTADO" msprop:Generator_ColumnPropNameInTable="ESTADOColumn" msprop:Generator_UserColumnName="ESTADO">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="4" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:DTCups" />
+      <xs:field xpath="mstns:CODIGO_CUPS" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>
