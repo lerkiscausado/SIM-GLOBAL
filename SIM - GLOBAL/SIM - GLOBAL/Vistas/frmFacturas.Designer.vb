@@ -3235,7 +3235,7 @@ Partial Class frmFacturas
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(75, 23)
         Me.Button1.TabIndex = 225
-        Me.Button1.Text = "Button1"
+        Me.Button1.Text = "CAmbios para GIT"
         Me.Button1.UseVisualStyleBackColor = True
         '
         'LabelControl34
