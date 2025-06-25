@@ -1237,6 +1237,12 @@
     <Compile Include="Vistas\frmEspecimenes.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Vistas\frmFacturacionSandra.Designer.vb">
+      <DependentUpon>frmFacturacionSandra.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\frmFacturacionSandra.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Vistas\frmFacturas.Designer.vb">
       <DependentUpon>frmFacturas.vb</DependentUpon>
     </Compile>
@@ -1965,6 +1971,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Vistas\frmEspecimenes.resx">
       <DependentUpon>frmEspecimenes.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\frmFacturacionSandra.resx">
+      <DependentUpon>frmFacturacionSandra.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vistas\frmFacturas.resx">
       <DependentUpon>frmFacturas.vb</DependentUpon>
