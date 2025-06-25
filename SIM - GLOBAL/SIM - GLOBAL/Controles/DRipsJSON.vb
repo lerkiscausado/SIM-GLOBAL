@@ -8,6 +8,7 @@ Namespace Controles
         Shared _ds As DataSet
         Shared _adapter As DataAdapter
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         Public Function Usuarios(ByVal filtro As String) As DataSet
             Try
 
@@ -27,6 +28,8 @@ Namespace Controles
                                             & "INNER JOIN ordenes ON detalle_factura.id_orden = ordenes.id " _
                                             & "INNER JOIN usuarios ON ordenes.id_usuario = usuarios.id WHERE f.factura='" & filtro & "'")
 =======
+=======
+>>>>>>> Stashed changes
         Public Function Usuarios(ByVal idFactura As String) As DataSet
             Try
 
@@ -41,6 +44,9 @@ Namespace Controles
                       & "consecutivo, '170' AS codPaisOrigen, detalle_factura.tipo FROM facturas f INNER JOIN detalle_factura ON f.id = " _
                       & "detalle_factura.id_factura INNER JOIN ordenes ON detalle_factura.id_orden = ordenes.id INNER " _
                       & "JOIN usuarios ON ordenes.id_usuario = usuarios.id WHERE f.id='" & idFactura & "'")
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
                 _conn = ConexionODBC.Open()
                 Dim comando = New OdbcCommand(query, _conn)
@@ -55,6 +61,7 @@ Namespace Controles
             End Try
 
         End Function
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
         Public Function Consultas(ByVal filtro As String) As DataSet
             Try
@@ -93,10 +100,14 @@ Namespace Controles
 =======
         Public Function Procedimientos(ByVal idOrden As String) As DataSet
 >>>>>>> Stashed changes
+=======
+        Public Function Procedimientos(ByVal idOrden As String) As DataSet
+>>>>>>> Stashed changes
             Try
 
                 Dim query As String =
                                     String.Format("SELECT '130010244901' AS codPrestador, " _
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
                                                 & "o.fecha_ingreso AS fechaInicioAtencion, NULL AS idMIPRES, " _
                                                 & "o.autorizacion, detalle_orden.codigo_cups AS codProcedimiento, " _
@@ -112,6 +123,8 @@ Namespace Controles
                                                 & "INNER JOIN detalle_orden ON o.id = detalle_orden.id_orden " _
                                                 & "INNER JOIN endoscopias ON o.id = endoscopias.id_orden WHERE o.id = '" & filtro & "'")
 =======
+=======
+>>>>>>> Stashed changes
                                     & "o.fecha_ingreso AS fechaInicioAtencion, NULL AS idMIPRES, o.autorizacion, " _
                                     & "detalle_orden.codigo_cups AS codProcedimiento, '02' AS viaIngresoServicioSalud, " _
                                     & "'01' AS modalidadGrupoServicioTecSal, '02' AS grupoServicios, 706 AS codServicio, " _
@@ -164,6 +177,9 @@ Namespace Controles
                               & "FROM ordenes o INNER JOIN detalle_orden ON o.id = detalle_orden.id_orden " _
                               & "INNER JOIN historia_clinica ON o.id = historia_clinica.id_orden INNER JOIN " _
                               & "especialistas ON historia_clinica.id_especialista = especialistas.id WHERE o.id = '" & idOrden & "'")
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
                 _conn = ConexionODBC.Open()
                 Dim comando = New OdbcCommand(query, _conn)
@@ -180,8 +196,13 @@ Namespace Controles
         End Function
     End Class
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 
 End Namespace
+=======
+End Namespace
+
+>>>>>>> Stashed changes
 =======
 End Namespace
 

@@ -948,7 +948,11 @@ Public Class frmImprimir
                         crv.ReportSource = rptHistoriaClinica
                     Case 4 'GASTROLAP
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
                         Dim rptHistoriaClinica As New rptHistoriaClinicaMR
+=======
+                        Dim rptHistoriaClinica As New rptHistoriaClinicaGL
+>>>>>>> Stashed changes
 =======
                         Dim rptHistoriaClinica As New rptHistoriaClinicaGL
 >>>>>>> Stashed changes
@@ -966,7 +970,11 @@ Public Class frmImprimir
                         crv.ReportSource = rptHistoriaClinica
                     Case 4 'GASTROLAP
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
                         Dim rptHistoriaClinica As New rptHistoriaClinicaMR
+=======
+                        Dim rptHistoriaClinica As New rptHistoriaClinicaGL
+>>>>>>> Stashed changes
 =======
                         Dim rptHistoriaClinica As New rptHistoriaClinicaGL
 >>>>>>> Stashed changes

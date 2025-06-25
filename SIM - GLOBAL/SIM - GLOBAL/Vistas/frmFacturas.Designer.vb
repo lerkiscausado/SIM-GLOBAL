@@ -591,7 +591,11 @@ Partial Class frmFacturas
         Me.BarManager1.DockControls.Add(Me.barDockControlRight)
         Me.BarManager1.Form = Me
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         Me.BarManager1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.bbiNuevo, Me.bbiGuardar, Me.bbiImprimir, Me.bbiAnular, Me.cboFactura, Me.bbiVistaPrevia, Me.bsiImprimir, Me.bbiActualizar, Me.bbiFactura, Me.bbiDetalleFactura, Me.bbiConsultar, Me.bbiFacturaConcepto, Me.bbiRelacionFactura, Me.BarButtonItem4, Me.bbiRips, Me.bbiAgregarFacturaRips, Me.bbiFacturaAgregarTodo, Me.bbiFacturaBorrar, Me.BarStaticItem1, Me.BarButtonItem5, Me.BarButtonItem6, Me.BarButtonItem7, Me.BarButtonItem8, Me.BarButtonItem9, Me.BarButtonItem10, Me.bbiEliminarFacturaRips, Me.bbiEliminarFacturasRips, Me.bbiAgregarFacturasRips, Me.BarButtonItem11})
+=======
+        Me.BarManager1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.bbiNuevo, Me.bbiGuardar, Me.bbiImprimir, Me.bbiAnular, Me.cboFactura, Me.bbiVistaPrevia, Me.bsiImprimir, Me.bbiActualizar, Me.bbiFactura, Me.bbiDetalleFactura, Me.bbiConsultar, Me.bbiFacturaConcepto, Me.bbiRelacionFactura, Me.BarButtonItem4, Me.bbiRips, Me.bbiAgregarFacturaRips, Me.bbiFacturaAgregarTodo, Me.bbiFacturaBorrar, Me.BarStaticItem1, Me.BarButtonItem5, Me.BarButtonItem6, Me.BarButtonItem7, Me.BarButtonItem8, Me.BarButtonItem9, Me.BarButtonItem10, Me.bbiEliminarFacturaRips, Me.bbiEliminarFacturasRips, Me.bbiAgregarFacturasRips, Me.bbiGenerarRips})
+>>>>>>> Stashed changes
 =======
         Me.BarManager1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.bbiNuevo, Me.bbiGuardar, Me.bbiImprimir, Me.bbiAnular, Me.cboFactura, Me.bbiVistaPrevia, Me.bsiImprimir, Me.bbiActualizar, Me.bbiFactura, Me.bbiDetalleFactura, Me.bbiConsultar, Me.bbiFacturaConcepto, Me.bbiRelacionFactura, Me.BarButtonItem4, Me.bbiRips, Me.bbiAgregarFacturaRips, Me.bbiFacturaAgregarTodo, Me.bbiFacturaBorrar, Me.BarStaticItem1, Me.BarButtonItem5, Me.BarButtonItem6, Me.BarButtonItem7, Me.BarButtonItem8, Me.BarButtonItem9, Me.BarButtonItem10, Me.bbiEliminarFacturaRips, Me.bbiEliminarFacturasRips, Me.bbiAgregarFacturasRips, Me.bbiGenerarRips})
 >>>>>>> Stashed changes
@@ -605,9 +609,14 @@ Partial Class frmFacturas
         Me.bFacturas.DockRow = 0
         Me.bFacturas.DockStyle = DevExpress.XtraBars.BarDockStyle.Top
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         Me.bFacturas.FloatLocation = New System.Drawing.Point(86, 132)
         Me.bFacturas.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.bbiNuevo), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiGuardar), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiAnular), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiActualizar), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiConsultar, True), New DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, Me.bsiImprimir, DevExpress.XtraBars.BarItemPaintStyle.CaptionInMenu), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiRips, True), New DevExpress.XtraBars.LinkPersistInfo(Me.BarButtonItem11), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiEliminarFacturasRips), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiEliminarFacturaRips), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiAgregarFacturaRips), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiAgregarFacturasRips)})
         Me.bFacturas.Offset = 3
+=======
+        Me.bFacturas.FloatLocation = New System.Drawing.Point(45, 133)
+        Me.bFacturas.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.bbiNuevo), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiGuardar), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiAnular), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiActualizar), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiConsultar, True), New DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, Me.bsiImprimir, DevExpress.XtraBars.BarItemPaintStyle.CaptionInMenu), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiRips, True), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiGenerarRips), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiEliminarFacturasRips), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiEliminarFacturaRips), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiAgregarFacturaRips), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiAgregarFacturasRips)})
+>>>>>>> Stashed changes
 =======
         Me.bFacturas.FloatLocation = New System.Drawing.Point(45, 133)
         Me.bFacturas.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.bbiNuevo), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiGuardar), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiAnular), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiActualizar), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiConsultar, True), New DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, Me.bsiImprimir, DevExpress.XtraBars.BarItemPaintStyle.CaptionInMenu), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiRips, True), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiGenerarRips), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiEliminarFacturasRips), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiEliminarFacturaRips), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiAgregarFacturaRips), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiAgregarFacturasRips)})
@@ -3281,6 +3290,10 @@ Partial Class frmFacturas
         Me.xtpRips.Controls.Add(Me.BarDockControl7)
         Me.xtpRips.Name = "xtpRips"
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+        Me.xtpRips.PageVisible = False
+>>>>>>> Stashed changes
 =======
         Me.xtpRips.PageVisible = False
 >>>>>>> Stashed changes
@@ -4889,11 +4902,17 @@ Partial Class frmFacturas
     Friend WithEvents colTipoUsuario As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colLFTipoUsuario As DevExpress.XtraGrid.Columns.GridColumn
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     Friend WithEvents BarButtonItem11 As DevExpress.XtraBars.BarButtonItem
 =======
+=======
+>>>>>>> Stashed changes
     Friend WithEvents bbiGenerarRips As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents xtpJSON As DevExpress.XtraTab.XtraTabPage
     Friend WithEvents rtbJSON As RichTextBox
     Friend WithEvents btnGenerarJSON As Button
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 End Class
