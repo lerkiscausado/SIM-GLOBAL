@@ -947,15 +947,7 @@ Public Class frmImprimir
                         rptHistoriaClinica.SetParameterValue("reporte", Reporte)
                         crv.ReportSource = rptHistoriaClinica
                     Case 4 'GASTROLAP
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-                        Dim rptHistoriaClinica As New rptHistoriaClinicaMR
-=======
                         Dim rptHistoriaClinica As New rptHistoriaClinicaGL
->>>>>>> Stashed changes
-=======
-                        Dim rptHistoriaClinica As New rptHistoriaClinicaGL
->>>>>>> Stashed changes
                         rptHistoriaClinica.SetParameterValue("filtro", idDetalleOrden)
                         rptHistoriaClinica.SetParameterValue("reporte", Reporte)
                         crv.ReportSource = rptHistoriaClinica
@@ -969,15 +961,7 @@ Public Class frmImprimir
                         rptHistoriaClinica.SetParameterValue("reporte", Reporte)
                         crv.ReportSource = rptHistoriaClinica
                     Case 4 'GASTROLAP
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-                        Dim rptHistoriaClinica As New rptHistoriaClinicaMR
-=======
                         Dim rptHistoriaClinica As New rptHistoriaClinicaGL
->>>>>>> Stashed changes
-=======
-                        Dim rptHistoriaClinica As New rptHistoriaClinicaGL
->>>>>>> Stashed changes
                         rptHistoriaClinica.SetParameterValue("filtro", idDetalleOrden)
                         rptHistoriaClinica.SetParameterValue("reporte", Reporte)
                         crv.ReportSource = rptHistoriaClinica
@@ -1103,10 +1087,6 @@ Public Class frmImprimir
         Else
             crv.PrintReport()
         End If
-
-    End Sub
-
-    Private Sub frmImprimir_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
     End Sub
 End Class
