@@ -1038,7 +1038,7 @@ Partial Class frmHistoria
         Me.xtpConsultaControl.Controls.Add(Me.LabelControl30)
         Me.xtpConsultaControl.Controls.Add(Me.txtConsultaControl)
         Me.xtpConsultaControl.Name = "xtpConsultaControl"
-        Me.xtpConsultaControl.Size = New System.Drawing.Size(561, 333)
+        Me.xtpConsultaControl.Size = New System.Drawing.Size(561, 334)
         Me.xtpConsultaControl.Text = "Consulta de Control o Evolucion"
         '
         'LabelControl30
@@ -1051,12 +1051,15 @@ Partial Class frmHistoria
         '
         'txtConsultaControl
         '
+        Me.txtConsultaControl.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtConsultaControl.Location = New System.Drawing.Point(15, 38)
         Me.txtConsultaControl.MenuManager = Me.BarManager1
         Me.txtConsultaControl.Name = "txtConsultaControl"
         Me.txtConsultaControl.Properties.Appearance.BackColor = System.Drawing.Color.White
         Me.txtConsultaControl.Properties.Appearance.Options.UseBackColor = True
-        Me.txtConsultaControl.Size = New System.Drawing.Size(422, 100)
+        Me.txtConsultaControl.Size = New System.Drawing.Size(541, 293)
         Me.txtConsultaControl.TabIndex = 2
         '
         'xtpEnfermedadActual
@@ -1064,7 +1067,7 @@ Partial Class frmHistoria
         Me.xtpEnfermedadActual.Controls.Add(Me.LabelControl10)
         Me.xtpEnfermedadActual.Controls.Add(Me.txtEnfermedadActual)
         Me.xtpEnfermedadActual.Name = "xtpEnfermedadActual"
-        Me.xtpEnfermedadActual.Size = New System.Drawing.Size(561, 333)
+        Me.xtpEnfermedadActual.Size = New System.Drawing.Size(561, 334)
         Me.xtpEnfermedadActual.Text = "Enfermedad Actual"
         '
         'LabelControl10
@@ -1077,12 +1080,15 @@ Partial Class frmHistoria
         '
         'txtEnfermedadActual
         '
+        Me.txtEnfermedadActual.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtEnfermedadActual.Location = New System.Drawing.Point(15, 38)
         Me.txtEnfermedadActual.MenuManager = Me.BarManager1
         Me.txtEnfermedadActual.Name = "txtEnfermedadActual"
         Me.txtEnfermedadActual.Properties.Appearance.BackColor = System.Drawing.Color.White
         Me.txtEnfermedadActual.Properties.Appearance.Options.UseBackColor = True
-        Me.txtEnfermedadActual.Size = New System.Drawing.Size(422, 100)
+        Me.txtEnfermedadActual.Size = New System.Drawing.Size(530, 293)
         Me.txtEnfermedadActual.TabIndex = 3
         '
         'xtpRevisionxSistemas
@@ -1090,7 +1096,7 @@ Partial Class frmHistoria
         Me.xtpRevisionxSistemas.Controls.Add(Me.LabelControl3)
         Me.xtpRevisionxSistemas.Controls.Add(Me.txtRevisionxSistemas)
         Me.xtpRevisionxSistemas.Name = "xtpRevisionxSistemas"
-        Me.xtpRevisionxSistemas.Size = New System.Drawing.Size(561, 333)
+        Me.xtpRevisionxSistemas.Size = New System.Drawing.Size(561, 334)
         Me.xtpRevisionxSistemas.Text = "Revision por Sistemas"
         '
         'LabelControl3
@@ -1103,12 +1109,15 @@ Partial Class frmHistoria
         '
         'txtRevisionxSistemas
         '
+        Me.txtRevisionxSistemas.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtRevisionxSistemas.Location = New System.Drawing.Point(15, 38)
         Me.txtRevisionxSistemas.MenuManager = Me.BarManager1
         Me.txtRevisionxSistemas.Name = "txtRevisionxSistemas"
         Me.txtRevisionxSistemas.Properties.Appearance.BackColor = System.Drawing.Color.White
         Me.txtRevisionxSistemas.Properties.Appearance.Options.UseBackColor = True
-        Me.txtRevisionxSistemas.Size = New System.Drawing.Size(422, 100)
+        Me.txtRevisionxSistemas.Size = New System.Drawing.Size(541, 283)
         Me.txtRevisionxSistemas.TabIndex = 40
         '
         'xtpAntecedentes
@@ -1118,7 +1127,7 @@ Partial Class frmHistoria
         Me.xtpAntecedentes.Controls.Add(Me.LabelControl4)
         Me.xtpAntecedentes.Controls.Add(Me.txtAntecedentesPersonales)
         Me.xtpAntecedentes.Name = "xtpAntecedentes"
-        Me.xtpAntecedentes.Size = New System.Drawing.Size(561, 333)
+        Me.xtpAntecedentes.Size = New System.Drawing.Size(561, 334)
         Me.xtpAntecedentes.Text = "Antecedentes"
         '
         'LabelControl6
@@ -1161,7 +1170,7 @@ Partial Class frmHistoria
         '
         Me.xtpExamenFisico.Controls.Add(Me.XtraTabControl2)
         Me.xtpExamenFisico.Name = "xtpExamenFisico"
-        Me.xtpExamenFisico.Size = New System.Drawing.Size(561, 333)
+        Me.xtpExamenFisico.Size = New System.Drawing.Size(561, 334)
         Me.xtpExamenFisico.Text = "Examen Fisico"
         '
         'XtraTabControl2
@@ -1497,7 +1506,7 @@ Partial Class frmHistoria
         Me.xtpDiagnostico.Controls.Add(Me.txtDiagnostico)
         Me.xtpDiagnostico.Controls.Add(Me.LabelControl26)
         Me.xtpDiagnostico.Name = "xtpDiagnostico"
-        Me.xtpDiagnostico.Size = New System.Drawing.Size(561, 333)
+        Me.xtpDiagnostico.Size = New System.Drawing.Size(561, 334)
         Me.xtpDiagnostico.Text = "Diagnostico"
         '
         'cboDiagnosticos
@@ -1646,7 +1655,7 @@ Partial Class frmHistoria
         Me.xtpAnalisis.Controls.Add(Me.LabelControl29)
         Me.xtpAnalisis.Controls.Add(Me.txtPlanSeguir)
         Me.xtpAnalisis.Name = "xtpAnalisis"
-        Me.xtpAnalisis.Size = New System.Drawing.Size(561, 333)
+        Me.xtpAnalisis.Size = New System.Drawing.Size(561, 334)
         Me.xtpAnalisis.Text = "Analisis y Plan a Seguir"
         '
         'LabelControl29
@@ -1659,12 +1668,15 @@ Partial Class frmHistoria
         '
         'txtPlanSeguir
         '
+        Me.txtPlanSeguir.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtPlanSeguir.Location = New System.Drawing.Point(15, 38)
         Me.txtPlanSeguir.MenuManager = Me.BarManager1
         Me.txtPlanSeguir.Name = "txtPlanSeguir"
         Me.txtPlanSeguir.Properties.Appearance.BackColor = System.Drawing.Color.White
         Me.txtPlanSeguir.Properties.Appearance.Options.UseBackColor = True
-        Me.txtPlanSeguir.Size = New System.Drawing.Size(422, 100)
+        Me.txtPlanSeguir.Size = New System.Drawing.Size(527, 293)
         Me.txtPlanSeguir.TabIndex = 18
         '
         'xtpRemision
@@ -1672,7 +1684,7 @@ Partial Class frmHistoria
         Me.xtpRemision.Controls.Add(Me.LabelControl5)
         Me.xtpRemision.Controls.Add(Me.txtRemision)
         Me.xtpRemision.Name = "xtpRemision"
-        Me.xtpRemision.Size = New System.Drawing.Size(561, 333)
+        Me.xtpRemision.Size = New System.Drawing.Size(561, 334)
         Me.xtpRemision.Text = "Remision"
         '
         'LabelControl5
@@ -1685,19 +1697,22 @@ Partial Class frmHistoria
         '
         'txtRemision
         '
+        Me.txtRemision.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtRemision.Location = New System.Drawing.Point(15, 38)
         Me.txtRemision.MenuManager = Me.BarManager1
         Me.txtRemision.Name = "txtRemision"
         Me.txtRemision.Properties.Appearance.BackColor = System.Drawing.Color.White
         Me.txtRemision.Properties.Appearance.Options.UseBackColor = True
-        Me.txtRemision.Size = New System.Drawing.Size(422, 100)
+        Me.txtRemision.Size = New System.Drawing.Size(530, 278)
         Me.txtRemision.TabIndex = 101
         '
         'xtpOrdenesMedicas
         '
         Me.xtpOrdenesMedicas.Controls.Add(Me.XtraTabControl4)
         Me.xtpOrdenesMedicas.Name = "xtpOrdenesMedicas"
-        Me.xtpOrdenesMedicas.Size = New System.Drawing.Size(561, 333)
+        Me.xtpOrdenesMedicas.Size = New System.Drawing.Size(561, 334)
         Me.xtpOrdenesMedicas.Text = "Ordenes Medicas"
         '
         'XtraTabControl4
@@ -1706,7 +1721,7 @@ Partial Class frmHistoria
         Me.XtraTabControl4.Location = New System.Drawing.Point(0, 0)
         Me.XtraTabControl4.Name = "XtraTabControl4"
         Me.XtraTabControl4.SelectedTabPage = Me.xtpOMFormulacion
-        Me.XtraTabControl4.Size = New System.Drawing.Size(561, 333)
+        Me.XtraTabControl4.Size = New System.Drawing.Size(561, 334)
         Me.XtraTabControl4.TabIndex = 0
         Me.XtraTabControl4.TabPages.AddRange(New DevExpress.XtraTab.XtraTabPage() {Me.xtpOMFormulacion, Me.xtpOMLaboratorios, Me.xtpOMEstudiosDiagnosticos, Me.xtpOMProcedimientos})
         '
@@ -1714,7 +1729,7 @@ Partial Class frmHistoria
         '
         Me.xtpOMFormulacion.Controls.Add(Me.XtraTabControl3)
         Me.xtpOMFormulacion.Name = "xtpOMFormulacion"
-        Me.xtpOMFormulacion.Size = New System.Drawing.Size(559, 308)
+        Me.xtpOMFormulacion.Size = New System.Drawing.Size(559, 309)
         Me.xtpOMFormulacion.Text = "Formulacion"
         '
         'XtraTabControl3
@@ -1736,12 +1751,15 @@ Partial Class frmHistoria
         '
         'txtFormulacion
         '
+        Me.txtFormulacion.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtFormulacion.Location = New System.Drawing.Point(12, 29)
         Me.txtFormulacion.MenuManager = Me.BarManager1
         Me.txtFormulacion.Name = "txtFormulacion"
         Me.txtFormulacion.Properties.Appearance.BackColor = System.Drawing.Color.White
         Me.txtFormulacion.Properties.Appearance.Options.UseBackColor = True
-        Me.txtFormulacion.Size = New System.Drawing.Size(408, 100)
+        Me.txtFormulacion.Size = New System.Drawing.Size(518, 242)
         Me.txtFormulacion.TabIndex = 103
         '
         'LabelControl21
@@ -1985,7 +2003,7 @@ Partial Class frmHistoria
         Me.xtpOMLaboratorios.Controls.Add(Me.txtLaboratorios)
         Me.xtpOMLaboratorios.Controls.Add(Me.LabelControl22)
         Me.xtpOMLaboratorios.Name = "xtpOMLaboratorios"
-        Me.xtpOMLaboratorios.Size = New System.Drawing.Size(559, 308)
+        Me.xtpOMLaboratorios.Size = New System.Drawing.Size(559, 309)
         Me.xtpOMLaboratorios.Text = "Laboratorios"
         '
         'GCLaboratorios
@@ -2139,7 +2157,7 @@ Partial Class frmHistoria
         Me.xtpOMEstudiosDiagnosticos.Controls.Add(Me.txtEstudiosDiagnosticos)
         Me.xtpOMEstudiosDiagnosticos.Controls.Add(Me.LabelControl34)
         Me.xtpOMEstudiosDiagnosticos.Name = "xtpOMEstudiosDiagnosticos"
-        Me.xtpOMEstudiosDiagnosticos.Size = New System.Drawing.Size(559, 308)
+        Me.xtpOMEstudiosDiagnosticos.Size = New System.Drawing.Size(559, 309)
         Me.xtpOMEstudiosDiagnosticos.Text = "Estudios Diagnosticos"
         '
         'GCEstudiosDiagnosticos
@@ -2292,7 +2310,7 @@ Partial Class frmHistoria
         Me.xtpOMProcedimientos.Controls.Add(Me.txtOtrosEstudios)
         Me.xtpOMProcedimientos.Controls.Add(Me.LabelControl23)
         Me.xtpOMProcedimientos.Name = "xtpOMProcedimientos"
-        Me.xtpOMProcedimientos.Size = New System.Drawing.Size(559, 308)
+        Me.xtpOMProcedimientos.Size = New System.Drawing.Size(559, 309)
         Me.xtpOMProcedimientos.Text = "Procedimientos"
         '
         'GCProcedimientos
@@ -2437,7 +2455,7 @@ Partial Class frmHistoria
         'xtpCurva
         '
         Me.xtpCurva.Name = "xtpCurva"
-        Me.xtpCurva.Size = New System.Drawing.Size(561, 333)
+        Me.xtpCurva.Size = New System.Drawing.Size(561, 334)
         Me.xtpCurva.Text = "Curva de Crecimiento"
         '
         'xtpExamenesPrequirurgicos
@@ -2449,7 +2467,7 @@ Partial Class frmHistoria
         Me.xtpExamenesPrequirurgicos.Controls.Add(Me.gcExamenesPrequirurgicos)
         Me.xtpExamenesPrequirurgicos.Controls.Add(Me.gcExamenesPredeterminados)
         Me.xtpExamenesPrequirurgicos.Name = "xtpExamenesPrequirurgicos"
-        Me.xtpExamenesPrequirurgicos.Size = New System.Drawing.Size(561, 333)
+        Me.xtpExamenesPrequirurgicos.Size = New System.Drawing.Size(561, 334)
         Me.xtpExamenesPrequirurgicos.Text = "Examenes Prequirurgicos"
         '
         'cmdImprimirExamenesPrequirurgicos

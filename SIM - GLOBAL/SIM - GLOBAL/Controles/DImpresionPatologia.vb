@@ -82,6 +82,38 @@ Namespace Controles
                 MessageBox.Show(ex.ToString())
             End Try
         End Sub
+        Public Sub GuardarPDF(ByVal idOrden As String, ByVal ruta As String)
+            Try
+                ' Leer el archivo PDF como arreglo de bytes
+                Dim pdfBytes As Byte() = File.ReadAllBytes(ruta)
+
+                ' Verificar si ya existe el registro en documentospdf
+                Dim existe As Boolean = False
+                Dim consulta As String = "SELECT COUNT(*) FROM documentospdf WHERE consecutivo = ?"
+                _conn = ConexionODBC.Open()
+                Using cmd As New OdbcCommand(consulta, _conn)
+                    cmd.Parameters.AddWithValue("?", idOrden)
+                    Dim count As Integer = Convert.ToInt32(cmd.ExecuteScalar())
+                    existe = (count > 0)
+                End Using
+
+                If Not existe Then
+                    ' Insertar el nuevo PDF si no existe
+                    Dim insert As String = "INSERT INTO documentospdf (consecutivo, pdf) VALUES (?, ?)"
+                    Using cmdInsert As New OdbcCommand(insert, _conn)
+                        cmdInsert.Parameters.AddWithValue("?", idOrden)
+                        cmdInsert.Parameters.Add("?", OdbcType.Binary, pdfBytes.Length).Value = pdfBytes
+                        cmdInsert.ExecuteNonQuery()
+                    End Using
+                End If
+
+                ConexionODBC.Close(_conn)
+
+            Catch ex As Exception
+                MessageBox.Show("Error al guardar el PDF: " & ex.Message)
+            End Try
+        End Sub
+
         Public Function Existe(ByVal orden As String) As Boolean
 
             Try

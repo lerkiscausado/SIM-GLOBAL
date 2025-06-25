@@ -70,6 +70,13 @@ Public Class frmConsultarCDPatologia
                         'pdfOptions.DocumentOptions.Subject = "Document Subject"
                         pdfOptions.DocumentOptions.Title = DatosPacienteG
 
+                        ' ⬇⬇⬇ Estas opciones reducen la calidad ⬇⬇⬇
+                        pdfOptions.ImageQuality = PdfJpegImageQuality.Low  ' Bajo (puedes usar Medium si prefieres más detalle)
+                        pdfOptions.ConvertImagesToJpeg = True              ' Convierte imágenes a JPEG (más ligero que PNG)
+                        pdfOptions.NeverEmbeddedFonts = True               ' No incrustar fuentes (reduce tamaño)
+                        pdfOptions.PdfACompatibility = PdfACompatibility.None ' No generar compatibilidad PDF/A
+                        pdfOptions.ShowPrintDialogOnOpen = False           ' No muestra diálogo de impresión
+
                         'filtro.Name = "idOrden"
                         filtro.Value = IDOrdenG
                         filtro.Visible = False
@@ -79,7 +86,8 @@ Public Class frmConsultarCDPatologia
                         reporteRTB.Parameters(0).Value = IDOrdenG
                         reporteRTB.Parameters("idOrden").Value = IDOrdenG
                         reporteRTB.ExportToPdf(reportPath, pdfOptions)
-
+                        'aqui guardamos el PDF en la base de datos 
+                        _DImpresionPatologia.GuardarPDF(IDOrdenG, reportPath)
                     End If
                 End If
 
@@ -151,7 +159,7 @@ Public Class frmConsultarCDPatologia
         Recargar("2021")
     End Sub
 
-    Private Sub tsmExportarLotePDF_Click(sender As Object, e As EventArgs) Handles tsmExportarLotePDF.Click
+    Private Async Sub tsmExportarLotePDF_Click(sender As Object, e As EventArgs) Handles tsmExportarLotePDF.Click
 
         pbExportarPDF.Visible = True
         pbExportarPDF.Maximum = GVConsultar.RowCount - 1
@@ -181,6 +189,7 @@ Public Class frmConsultarCDPatologia
                 Else
                     MessageBox.Show("Debe Seleccionar una Orden", "Vista Previa", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 End If
+                Await Task.Delay(300)
             Next
             MessageBox.Show("Reportes Exportados Con Exito", "Exportar Reportes", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End If
