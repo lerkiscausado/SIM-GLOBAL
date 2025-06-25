@@ -38,7 +38,7 @@ Namespace Controles
             End Try
 
         End Function
-        Public Function Consultas(ByVal filtro As String) As DataSet
+        Public Function Consultas(ByVal idOrden As String) As DataSet
             Try
 
                 Dim query As String =
@@ -57,7 +57,7 @@ Namespace Controles
                                                 & "FROM ordenes o INNER JOIN detalle_orden ON o.id = detalle_orden.id_orden " _
                                                 & "INNER JOIN historia_clinica ON o.id = historia_clinica.id_orden " _
                                                 & "INNER JOIN especialistas ON historia_clinica.id_especialista = especialistas.id " _
-                                                & "WHERE o.id = '" & filtro & "'")
+                                                & "WHERE o.id = '" & idOrden & "'")
                 _conn = ConexionODBC.Open()
                 Dim comando = New OdbcCommand(query, _conn)
                 _adapter = New OdbcDataAdapter(comando)
