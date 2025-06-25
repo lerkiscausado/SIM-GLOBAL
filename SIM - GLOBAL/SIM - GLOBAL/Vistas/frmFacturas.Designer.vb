@@ -49,6 +49,7 @@ Partial Class frmFacturas
         Me.bbiFactura = New DevExpress.XtraBars.BarButtonItem()
         Me.bbiDetalleFactura = New DevExpress.XtraBars.BarButtonItem()
         Me.bbiRips = New DevExpress.XtraBars.BarButtonItem()
+        Me.bbiGenerarRips = New DevExpress.XtraBars.BarButtonItem()
         Me.bbiEliminarFacturasRips = New DevExpress.XtraBars.BarButtonItem()
         Me.bbiEliminarFacturaRips = New DevExpress.XtraBars.BarButtonItem()
         Me.bbiAgregarFacturaRips = New DevExpress.XtraBars.BarButtonItem()
@@ -377,6 +378,9 @@ Partial Class frmFacturas
         Me.colPRealizacion = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colPNeto = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.BarDockControl7 = New DevExpress.XtraBars.BarDockControl()
+        Me.xtpJSON = New DevExpress.XtraTab.XtraTabPage()
+        Me.btnGenerarJSON = New System.Windows.Forms.Button()
+        Me.rtbJSON = New System.Windows.Forms.RichTextBox()
         Me.bbiEditar = New DevExpress.XtraBars.BarButtonItem()
         Me.BarDockControl3 = New DevExpress.XtraBars.BarDockControl()
         Me.BarManager2 = New DevExpress.XtraBars.BarManager(Me.components)
@@ -499,6 +503,7 @@ Partial Class frmFacturas
         Me.xtpProcedimientos.SuspendLayout()
         CType(Me.GCProcedimientos, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GVProcedimientos, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.xtpJSON.SuspendLayout()
         CType(Me.BarManager2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.rcboFacturas, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BarManager3, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -585,7 +590,11 @@ Partial Class frmFacturas
         Me.BarManager1.DockControls.Add(Me.barDockControlLeft)
         Me.BarManager1.DockControls.Add(Me.barDockControlRight)
         Me.BarManager1.Form = Me
+<<<<<<< Updated upstream
         Me.BarManager1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.bbiNuevo, Me.bbiGuardar, Me.bbiImprimir, Me.bbiAnular, Me.cboFactura, Me.bbiVistaPrevia, Me.bsiImprimir, Me.bbiActualizar, Me.bbiFactura, Me.bbiDetalleFactura, Me.bbiConsultar, Me.bbiFacturaConcepto, Me.bbiRelacionFactura, Me.BarButtonItem4, Me.bbiRips, Me.bbiAgregarFacturaRips, Me.bbiFacturaAgregarTodo, Me.bbiFacturaBorrar, Me.BarStaticItem1, Me.BarButtonItem5, Me.BarButtonItem6, Me.BarButtonItem7, Me.BarButtonItem8, Me.BarButtonItem9, Me.BarButtonItem10, Me.bbiEliminarFacturaRips, Me.bbiEliminarFacturasRips, Me.bbiAgregarFacturasRips, Me.BarButtonItem11})
+=======
+        Me.BarManager1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.bbiNuevo, Me.bbiGuardar, Me.bbiImprimir, Me.bbiAnular, Me.cboFactura, Me.bbiVistaPrevia, Me.bsiImprimir, Me.bbiActualizar, Me.bbiFactura, Me.bbiDetalleFactura, Me.bbiConsultar, Me.bbiFacturaConcepto, Me.bbiRelacionFactura, Me.BarButtonItem4, Me.bbiRips, Me.bbiAgregarFacturaRips, Me.bbiFacturaAgregarTodo, Me.bbiFacturaBorrar, Me.BarStaticItem1, Me.BarButtonItem5, Me.BarButtonItem6, Me.BarButtonItem7, Me.BarButtonItem8, Me.BarButtonItem9, Me.BarButtonItem10, Me.bbiEliminarFacturaRips, Me.bbiEliminarFacturasRips, Me.bbiAgregarFacturasRips, Me.bbiGenerarRips})
+>>>>>>> Stashed changes
         Me.BarManager1.MaxItemId = 29
         Me.BarManager1.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemLookUpEdit1})
         '
@@ -595,9 +604,14 @@ Partial Class frmFacturas
         Me.bFacturas.DockCol = 0
         Me.bFacturas.DockRow = 0
         Me.bFacturas.DockStyle = DevExpress.XtraBars.BarDockStyle.Top
+<<<<<<< Updated upstream
         Me.bFacturas.FloatLocation = New System.Drawing.Point(86, 132)
         Me.bFacturas.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.bbiNuevo), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiGuardar), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiAnular), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiActualizar), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiConsultar, True), New DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, Me.bsiImprimir, DevExpress.XtraBars.BarItemPaintStyle.CaptionInMenu), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiRips, True), New DevExpress.XtraBars.LinkPersistInfo(Me.BarButtonItem11), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiEliminarFacturasRips), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiEliminarFacturaRips), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiAgregarFacturaRips), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiAgregarFacturasRips)})
         Me.bFacturas.Offset = 3
+=======
+        Me.bFacturas.FloatLocation = New System.Drawing.Point(45, 133)
+        Me.bFacturas.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.bbiNuevo), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiGuardar), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiAnular), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiActualizar), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiConsultar, True), New DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, Me.bsiImprimir, DevExpress.XtraBars.BarItemPaintStyle.CaptionInMenu), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiRips, True), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiGenerarRips), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiEliminarFacturasRips), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiEliminarFacturaRips), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiAgregarFacturaRips), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiAgregarFacturasRips)})
+>>>>>>> Stashed changes
         Me.bFacturas.Text = "Herramientas Facturas"
         '
         'bbiNuevo
@@ -675,6 +689,15 @@ Partial Class frmFacturas
         Me.bbiRips.Caption = "Rips"
         Me.bbiRips.Id = 14
         Me.bbiRips.Name = "bbiRips"
+        Me.bbiRips.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
+        '
+        'bbiGenerarRips
+        '
+        Me.bbiGenerarRips.Caption = "Generar Rips JSON"
+        Me.bbiGenerarRips.Id = 28
+        Me.bbiGenerarRips.ImageOptions.Image = CType(resources.GetObject("bbiGenerarRips.ImageOptions.Image"), System.Drawing.Image)
+        Me.bbiGenerarRips.ImageOptions.LargeImage = CType(resources.GetObject("bbiGenerarRips.ImageOptions.LargeImage"), System.Drawing.Image)
+        Me.bbiGenerarRips.Name = "bbiGenerarRips"
         '
         'bbiEliminarFacturasRips
         '
@@ -855,7 +878,6 @@ Partial Class frmFacturas
         Me.gvConsultar.OptionsView.EnableAppearanceOddRow = True
         Me.gvConsultar.OptionsView.ShowFooter = True
         Me.gvConsultar.OptionsView.ShowGroupPanel = False
-        Me.gvConsultar.SortInfo.AddRange(New DevExpress.XtraGrid.Columns.GridColumnSortInfo() {New DevExpress.XtraGrid.Columns.GridColumnSortInfo(Me.colFFacturas, DevExpress.Data.ColumnSortOrder.Descending)})
         '
         'colFId
         '
@@ -871,7 +893,7 @@ Partial Class frmFacturas
         Me.colFFacturas.Name = "colFFacturas"
         Me.colFFacturas.Visible = True
         Me.colFFacturas.VisibleIndex = 0
-        Me.colFFacturas.Width = 74
+        Me.colFFacturas.Width = 73
         '
         'colFFecha
         '
@@ -880,6 +902,7 @@ Partial Class frmFacturas
         Me.colFFecha.Name = "colFFecha"
         Me.colFFecha.Visible = True
         Me.colFFecha.VisibleIndex = 1
+        Me.colFFecha.Width = 37
         '
         'colFContratoFactura
         '
@@ -888,7 +911,7 @@ Partial Class frmFacturas
         Me.colFContratoFactura.Name = "colFContratoFactura"
         Me.colFContratoFactura.Visible = True
         Me.colFContratoFactura.VisibleIndex = 2
-        Me.colFContratoFactura.Width = 190
+        Me.colFContratoFactura.Width = 98
         '
         'colFConcepto
         '
@@ -897,7 +920,7 @@ Partial Class frmFacturas
         Me.colFConcepto.Name = "colFConcepto"
         Me.colFConcepto.Visible = True
         Me.colFConcepto.VisibleIndex = 5
-        Me.colFConcepto.Width = 178
+        Me.colFConcepto.Width = 92
         '
         'colFValor
         '
@@ -909,6 +932,7 @@ Partial Class frmFacturas
         Me.colFValor.Summary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "VALOR", "{0:C0}")})
         Me.colFValor.Visible = True
         Me.colFValor.VisibleIndex = 6
+        Me.colFValor.Width = 37
         '
         'colFNEtoFactura
         '
@@ -920,6 +944,7 @@ Partial Class frmFacturas
         Me.colFNEtoFactura.Summary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "NETO", "{0:C0}")})
         Me.colFNEtoFactura.Visible = True
         Me.colFNEtoFactura.VisibleIndex = 8
+        Me.colFNEtoFactura.Width = 37
         '
         'colFGenerada
         '
@@ -928,7 +953,7 @@ Partial Class frmFacturas
         Me.colFGenerada.Name = "colFGenerada"
         Me.colFGenerada.Visible = True
         Me.colFGenerada.VisibleIndex = 9
-        Me.colFGenerada.Width = 107
+        Me.colFGenerada.Width = 55
         '
         'colFEstado
         '
@@ -937,6 +962,7 @@ Partial Class frmFacturas
         Me.colFEstado.Name = "colFEstado"
         Me.colFEstado.Visible = True
         Me.colFEstado.VisibleIndex = 10
+        Me.colFEstado.Width = 37
         '
         'colTIPOFACTURA
         '
@@ -945,6 +971,7 @@ Partial Class frmFacturas
         Me.colTIPOFACTURA.Name = "colTIPOFACTURA"
         Me.colTIPOFACTURA.Visible = True
         Me.colTIPOFACTURA.VisibleIndex = 11
+        Me.colTIPOFACTURA.Width = 61
         '
         'colFPDescuento
         '
@@ -956,6 +983,7 @@ Partial Class frmFacturas
         Me.colFPDescuento.Summary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "DESCUENTO", "{0:C0}")})
         Me.colFPDescuento.Visible = True
         Me.colFPDescuento.VisibleIndex = 7
+        Me.colFPDescuento.Width = 37
         '
         'colFPTelefono
         '
@@ -964,6 +992,7 @@ Partial Class frmFacturas
         Me.colFPTelefono.Name = "colFPTelefono"
         Me.colFPTelefono.Visible = True
         Me.colFPTelefono.VisibleIndex = 3
+        Me.colFPTelefono.Width = 37
         '
         'colFPEmail
         '
@@ -972,7 +1001,7 @@ Partial Class frmFacturas
         Me.colFPEmail.Name = "colFPEmail"
         Me.colFPEmail.Visible = True
         Me.colFPEmail.VisibleIndex = 4
-        Me.colFPEmail.Width = 163
+        Me.colFPEmail.Width = 84
         '
         'xtcFactura
         '
@@ -982,7 +1011,7 @@ Partial Class frmFacturas
         Me.xtcFactura.SelectedTabPage = Me.xtpFacturasGeneradas
         Me.xtcFactura.Size = New System.Drawing.Size(1264, 570)
         Me.xtcFactura.TabIndex = 82
-        Me.xtcFactura.TabPages.AddRange(New DevExpress.XtraTab.XtraTabPage() {Me.xtpFacturasGeneradas, Me.xtpDetalleFactura, Me.xtpFacturaServicios, Me.xtpFacturaProductos, Me.xtpRips})
+        Me.xtcFactura.TabPages.AddRange(New DevExpress.XtraTab.XtraTabPage() {Me.xtpFacturasGeneradas, Me.xtpDetalleFactura, Me.xtpFacturaServicios, Me.xtpFacturaProductos, Me.xtpRips, Me.xtpJSON})
         '
         'xtpFacturasGeneradas
         '
@@ -1014,8 +1043,7 @@ Partial Class frmFacturas
         Me.GVDetalleFactura.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.ColDFFactura, Me.colDFFechaFactura, Me.colDFContrato, Me.colDFOrden, Me.colDFFechaOrden, Me.colDFIdentificacion, Me.colDFNombre, Me.colDFAutorizacion, Me.colDFProcedimiento, Me.colDFCodigoCups, Me.colDFNombreCups, Me.colDFValor, Me.colDFCopago, Me.colDFNeto})
         Me.GVDetalleFactura.GridControl = Me.GCDetalleFactura
         Me.GVDetalleFactura.Name = "GVDetalleFactura"
-        Me.GVDetalleFactura.OptionsBehavior.Editable = False
-        Me.GVDetalleFactura.OptionsBehavior.ReadOnly = True
+        Me.GVDetalleFactura.OptionsBehavior.EditorShowMode = DevExpress.Utils.EditorShowMode.Click
         Me.GVDetalleFactura.OptionsView.ColumnAutoWidth = False
         Me.GVDetalleFactura.OptionsView.EnableAppearanceOddRow = True
         Me.GVDetalleFactura.OptionsView.ShowFooter = True
@@ -1026,6 +1054,8 @@ Partial Class frmFacturas
         Me.ColDFFactura.Caption = "FACTURA"
         Me.ColDFFactura.FieldName = "FACTURA"
         Me.ColDFFactura.Name = "ColDFFactura"
+        Me.ColDFFactura.OptionsColumn.AllowEdit = False
+        Me.ColDFFactura.OptionsColumn.ReadOnly = True
         Me.ColDFFactura.Visible = True
         Me.ColDFFactura.VisibleIndex = 0
         Me.ColDFFactura.Width = 58
@@ -1035,6 +1065,8 @@ Partial Class frmFacturas
         Me.colDFFechaFactura.Caption = "FECHA FACTURA"
         Me.colDFFechaFactura.FieldName = "FECHA_FACTURA"
         Me.colDFFechaFactura.Name = "colDFFechaFactura"
+        Me.colDFFechaFactura.OptionsColumn.AllowEdit = False
+        Me.colDFFechaFactura.OptionsColumn.ReadOnly = True
         Me.colDFFechaFactura.Visible = True
         Me.colDFFechaFactura.VisibleIndex = 1
         Me.colDFFechaFactura.Width = 92
@@ -1044,6 +1076,8 @@ Partial Class frmFacturas
         Me.colDFContrato.Caption = "CONTRATO"
         Me.colDFContrato.FieldName = "CONTRATO"
         Me.colDFContrato.Name = "colDFContrato"
+        Me.colDFContrato.OptionsColumn.AllowEdit = False
+        Me.colDFContrato.OptionsColumn.ReadOnly = True
         Me.colDFContrato.Visible = True
         Me.colDFContrato.VisibleIndex = 2
         Me.colDFContrato.Width = 199
@@ -1053,6 +1087,8 @@ Partial Class frmFacturas
         Me.colDFOrden.Caption = "ORDEN"
         Me.colDFOrden.FieldName = "ORDEN"
         Me.colDFOrden.Name = "colDFOrden"
+        Me.colDFOrden.OptionsColumn.AllowEdit = False
+        Me.colDFOrden.OptionsColumn.ReadOnly = True
         Me.colDFOrden.Visible = True
         Me.colDFOrden.VisibleIndex = 3
         Me.colDFOrden.Width = 66
@@ -1062,6 +1098,8 @@ Partial Class frmFacturas
         Me.colDFFechaOrden.Caption = "FECHA ORDEN"
         Me.colDFFechaOrden.FieldName = "FECHA_INGRESO"
         Me.colDFFechaOrden.Name = "colDFFechaOrden"
+        Me.colDFFechaOrden.OptionsColumn.AllowEdit = False
+        Me.colDFFechaOrden.OptionsColumn.ReadOnly = True
         Me.colDFFechaOrden.Visible = True
         Me.colDFFechaOrden.VisibleIndex = 4
         Me.colDFFechaOrden.Width = 84
@@ -1071,6 +1109,8 @@ Partial Class frmFacturas
         Me.colDFIdentificacion.Caption = "IDENTIFICACION"
         Me.colDFIdentificacion.FieldName = "IDENTIFICACION"
         Me.colDFIdentificacion.Name = "colDFIdentificacion"
+        Me.colDFIdentificacion.OptionsColumn.AllowEdit = False
+        Me.colDFIdentificacion.OptionsColumn.ReadOnly = True
         Me.colDFIdentificacion.Visible = True
         Me.colDFIdentificacion.VisibleIndex = 5
         Me.colDFIdentificacion.Width = 97
@@ -1080,6 +1120,8 @@ Partial Class frmFacturas
         Me.colDFNombre.Caption = "NOMBRE"
         Me.colDFNombre.FieldName = "NOMBRE"
         Me.colDFNombre.Name = "colDFNombre"
+        Me.colDFNombre.OptionsColumn.AllowEdit = False
+        Me.colDFNombre.OptionsColumn.ReadOnly = True
         Me.colDFNombre.Visible = True
         Me.colDFNombre.VisibleIndex = 6
         Me.colDFNombre.Width = 208
@@ -1098,6 +1140,8 @@ Partial Class frmFacturas
         Me.colDFProcedimiento.Caption = "PROCEDIMIENTO"
         Me.colDFProcedimiento.FieldName = "CODIGO_PROCEDIMIENTO"
         Me.colDFProcedimiento.Name = "colDFProcedimiento"
+        Me.colDFProcedimiento.OptionsColumn.AllowEdit = False
+        Me.colDFProcedimiento.OptionsColumn.ReadOnly = True
         Me.colDFProcedimiento.Visible = True
         Me.colDFProcedimiento.VisibleIndex = 8
         Me.colDFProcedimiento.Width = 92
@@ -1107,6 +1151,8 @@ Partial Class frmFacturas
         Me.colDFCodigoCups.Caption = "CUPS"
         Me.colDFCodigoCups.FieldName = "CODIGO_CUPS"
         Me.colDFCodigoCups.Name = "colDFCodigoCups"
+        Me.colDFCodigoCups.OptionsColumn.AllowEdit = False
+        Me.colDFCodigoCups.OptionsColumn.ReadOnly = True
         Me.colDFCodigoCups.Visible = True
         Me.colDFCodigoCups.VisibleIndex = 9
         Me.colDFCodigoCups.Width = 55
@@ -1116,6 +1162,8 @@ Partial Class frmFacturas
         Me.colDFNombreCups.Caption = "NOMBRE CUPS"
         Me.colDFNombreCups.FieldName = "NOMBRE_CUPS"
         Me.colDFNombreCups.Name = "colDFNombreCups"
+        Me.colDFNombreCups.OptionsColumn.AllowEdit = False
+        Me.colDFNombreCups.OptionsColumn.ReadOnly = True
         Me.colDFNombreCups.Visible = True
         Me.colDFNombreCups.VisibleIndex = 10
         Me.colDFNombreCups.Width = 245
@@ -1127,6 +1175,8 @@ Partial Class frmFacturas
         Me.colDFValor.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.colDFValor.FieldName = "VALOR"
         Me.colDFValor.Name = "colDFValor"
+        Me.colDFValor.OptionsColumn.AllowEdit = False
+        Me.colDFValor.OptionsColumn.ReadOnly = True
         Me.colDFValor.Summary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "VALOR", "{0:C0}")})
         Me.colDFValor.Visible = True
         Me.colDFValor.VisibleIndex = 11
@@ -1138,6 +1188,8 @@ Partial Class frmFacturas
         Me.colDFCopago.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.colDFCopago.FieldName = "COPAGO"
         Me.colDFCopago.Name = "colDFCopago"
+        Me.colDFCopago.OptionsColumn.AllowEdit = False
+        Me.colDFCopago.OptionsColumn.ReadOnly = True
         Me.colDFCopago.Summary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "COPAGO", "{0:C0}")})
         Me.colDFCopago.Visible = True
         Me.colDFCopago.VisibleIndex = 12
@@ -1149,6 +1201,8 @@ Partial Class frmFacturas
         Me.colDFNeto.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.colDFNeto.FieldName = "NETO"
         Me.colDFNeto.Name = "colDFNeto"
+        Me.colDFNeto.OptionsColumn.AllowEdit = False
+        Me.colDFNeto.OptionsColumn.ReadOnly = True
         Me.colDFNeto.Summary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "NETO", "{0:C0}")})
         Me.colDFNeto.Visible = True
         Me.colDFNeto.VisibleIndex = 13
@@ -3226,6 +3280,10 @@ Partial Class frmFacturas
         Me.xtpRips.Controls.Add(Me.xtcReporteEstudio)
         Me.xtpRips.Controls.Add(Me.BarDockControl7)
         Me.xtpRips.Name = "xtpRips"
+<<<<<<< Updated upstream
+=======
+        Me.xtpRips.PageVisible = False
+>>>>>>> Stashed changes
         Me.xtpRips.Size = New System.Drawing.Size(1262, 545)
         Me.xtpRips.Text = "RIPS"
         '
@@ -3533,7 +3591,7 @@ Partial Class frmFacturas
         '
         Me.xtpFacturas.Controls.Add(Me.GCFacturas)
         Me.xtpFacturas.Name = "xtpFacturas"
-        Me.xtpFacturas.Size = New System.Drawing.Size(965, 285)
+        Me.xtpFacturas.Size = New System.Drawing.Size(965, 286)
         Me.xtpFacturas.Text = "FACTURAS"
         '
         'GCFacturas
@@ -3542,7 +3600,7 @@ Partial Class frmFacturas
         Me.GCFacturas.Location = New System.Drawing.Point(0, 0)
         Me.GCFacturas.MainView = Me.GVFacturas
         Me.GCFacturas.Name = "GCFacturas"
-        Me.GCFacturas.Size = New System.Drawing.Size(965, 285)
+        Me.GCFacturas.Size = New System.Drawing.Size(965, 286)
         Me.GCFacturas.TabIndex = 3
         Me.GCFacturas.UseEmbeddedNavigator = True
         Me.GCFacturas.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GVFacturas})
@@ -3717,7 +3775,7 @@ Partial Class frmFacturas
         '
         Me.xtpConsultas.Controls.Add(Me.GCConsultas)
         Me.xtpConsultas.Name = "xtpConsultas"
-        Me.xtpConsultas.Size = New System.Drawing.Size(965, 285)
+        Me.xtpConsultas.Size = New System.Drawing.Size(965, 286)
         Me.xtpConsultas.Text = "CONSULTAS"
         '
         'GCConsultas
@@ -3726,7 +3784,7 @@ Partial Class frmFacturas
         Me.GCConsultas.Location = New System.Drawing.Point(0, 0)
         Me.GCConsultas.MainView = Me.GVConsultas
         Me.GCConsultas.Name = "GCConsultas"
-        Me.GCConsultas.Size = New System.Drawing.Size(965, 285)
+        Me.GCConsultas.Size = New System.Drawing.Size(965, 286)
         Me.GCConsultas.TabIndex = 3
         Me.GCConsultas.UseEmbeddedNavigator = True
         Me.GCConsultas.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GVConsultas})
@@ -3902,7 +3960,7 @@ Partial Class frmFacturas
         '
         Me.xtpProcedimientos.Controls.Add(Me.GCProcedimientos)
         Me.xtpProcedimientos.Name = "xtpProcedimientos"
-        Me.xtpProcedimientos.Size = New System.Drawing.Size(965, 285)
+        Me.xtpProcedimientos.Size = New System.Drawing.Size(965, 286)
         Me.xtpProcedimientos.Text = "PROCEDIMIENTOS"
         '
         'GCProcedimientos
@@ -3911,7 +3969,7 @@ Partial Class frmFacturas
         Me.GCProcedimientos.Location = New System.Drawing.Point(0, 0)
         Me.GCProcedimientos.MainView = Me.GVProcedimientos
         Me.GCProcedimientos.Name = "GCProcedimientos"
-        Me.GCProcedimientos.Size = New System.Drawing.Size(965, 285)
+        Me.GCProcedimientos.Size = New System.Drawing.Size(965, 286)
         Me.GCProcedimientos.TabIndex = 3
         Me.GCProcedimientos.UseEmbeddedNavigator = True
         Me.GCProcedimientos.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GVProcedimientos})
@@ -4074,6 +4132,38 @@ Partial Class frmFacturas
         Me.BarDockControl7.Location = New System.Drawing.Point(0, 0)
         Me.BarDockControl7.Manager = Nothing
         Me.BarDockControl7.Size = New System.Drawing.Size(1262, 0)
+        '
+        'xtpJSON
+        '
+        Me.xtpJSON.Controls.Add(Me.btnGenerarJSON)
+        Me.xtpJSON.Controls.Add(Me.rtbJSON)
+        Me.xtpJSON.Name = "xtpJSON"
+        Me.xtpJSON.Size = New System.Drawing.Size(1262, 545)
+        Me.xtpJSON.Text = "Rips JSON"
+        '
+        'btnGenerarJSON
+        '
+        Me.btnGenerarJSON.Enabled = False
+        Me.btnGenerarJSON.Location = New System.Drawing.Point(11, 13)
+        Me.btnGenerarJSON.Name = "btnGenerarJSON"
+        Me.btnGenerarJSON.Size = New System.Drawing.Size(115, 31)
+        Me.btnGenerarJSON.TabIndex = 1
+        Me.btnGenerarJSON.Text = "Guardar Rips JSON"
+        Me.btnGenerarJSON.UseVisualStyleBackColor = True
+        '
+        'rtbJSON
+        '
+        Me.rtbJSON.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.rtbJSON.BackColor = System.Drawing.Color.White
+        Me.rtbJSON.Font = New System.Drawing.Font("Consolas", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.rtbJSON.Location = New System.Drawing.Point(11, 50)
+        Me.rtbJSON.Name = "rtbJSON"
+        Me.rtbJSON.ReadOnly = True
+        Me.rtbJSON.Size = New System.Drawing.Size(1240, 475)
+        Me.rtbJSON.TabIndex = 0
+        Me.rtbJSON.Text = ""
         '
         'bbiEditar
         '
@@ -4310,6 +4400,7 @@ Partial Class frmFacturas
         Me.Name = "frmFacturas"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Generar Factura"
+        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         CType(Me.BarManager1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemLookUpEdit1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GCConsultar, System.ComponentModel.ISupportInitialize).EndInit()
@@ -4412,6 +4503,7 @@ Partial Class frmFacturas
         Me.xtpProcedimientos.ResumeLayout(False)
         CType(Me.GCProcedimientos, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GVProcedimientos, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.xtpJSON.ResumeLayout(False)
         CType(Me.BarManager2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.rcboFacturas, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.BarManager3, System.ComponentModel.ISupportInitialize).EndInit()
@@ -4796,5 +4888,12 @@ Partial Class frmFacturas
     Friend WithEvents btnVerOrdenServicio As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents colTipoUsuario As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colLFTipoUsuario As DevExpress.XtraGrid.Columns.GridColumn
+<<<<<<< Updated upstream
     Friend WithEvents BarButtonItem11 As DevExpress.XtraBars.BarButtonItem
+=======
+    Friend WithEvents bbiGenerarRips As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents xtpJSON As DevExpress.XtraTab.XtraTabPage
+    Friend WithEvents rtbJSON As RichTextBox
+    Friend WithEvents btnGenerarJSON As Button
+>>>>>>> Stashed changes
 End Class

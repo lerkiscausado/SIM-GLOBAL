@@ -115,4 +115,8 @@ Public Class frmCups
             _Fila = e.RowHandle.ToString
         End If
     End Sub
+
+    Private Sub txtCodigo_EditValueChanged(sender As Object, e As EventArgs) Handles txtCodigo.EditValueChanged
+
+    End Sub
 End Class

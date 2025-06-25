@@ -452,6 +452,7 @@
     <Compile Include="Controles\DUsers.vb" />
     <Compile Include="Controles\DUsuarios.vb" />
     <Compile Include="Controles\DViaAdministracion.vb" />
+    <Compile Include="Controles\GenerarJSON.vb" />
     <Compile Include="DataSet1.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1037,6 +1038,12 @@
       <DependentUpon>Binarios.vb</DependentUpon>
     </Compile>
     <Compile Include="Vistas\Binarios.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\FacturaSandra.Designer.vb">
+      <DependentUpon>FacturaSandra.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\FacturaSandra.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Vistas\frmAcercaDe.Designer.vb">
@@ -1863,6 +1870,9 @@
     <EmbeddedResource Include="Vistas\Binarios.resx">
       <DependentUpon>Binarios.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\FacturaSandra.resx">
+      <DependentUpon>FacturaSandra.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Vistas\frmAcercaDe.resx">
       <DependentUpon>frmAcercaDe.vb</DependentUpon>
     </EmbeddedResource>
@@ -2259,6 +2269,7 @@
     </None>
     <None Include="App.config" />
     <None Include="packages.config" />
+    <None Include="Reportes\rptAgendaEntidad.rpt" />
     <None Include="Utilidades\Diccionarios\es_ES.aff" />
     <None Include="Utilidades\Diccionarios\es_ES.dic" />
   </ItemGroup>

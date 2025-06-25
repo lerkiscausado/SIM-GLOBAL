@@ -61,7 +61,7 @@ Public Class frmImprimir
     End Sub
     Public Sub ImprimirAgenda(ByVal Fecha As String, ByVal Especialista As String)
         Try
-            Dim rptAgenda As New rptAgenda
+            Dim rptAgenda As New rptAgendaEntidad
             rptAgenda.SetParameterValue("filtro", Fecha)
             rptAgenda.SetParameterValue("filtro2", Especialista)
             crv.ReportSource = rptAgenda
@@ -70,10 +70,11 @@ Public Class frmImprimir
         Catch ex As Exception
             MessageBox.Show(ex.Message)
         End Try
+
     End Sub
     Public Sub ImprimirReserva(ByVal Fecha As String, ByVal Salon As String)
         Try
-            Dim rptReserva As New rptAgenda
+            Dim rptReserva As New rptAgendaEntidad
             rptReserva.SetParameterValue("filtro", Fecha)
             rptReserva.SetParameterValue("filtro2", Salon)
             crv.ReportSource = rptReserva
@@ -946,7 +947,11 @@ Public Class frmImprimir
                         rptHistoriaClinica.SetParameterValue("reporte", Reporte)
                         crv.ReportSource = rptHistoriaClinica
                     Case 4 'GASTROLAP
+<<<<<<< Updated upstream
                         Dim rptHistoriaClinica As New rptHistoriaClinicaMR
+=======
+                        Dim rptHistoriaClinica As New rptHistoriaClinicaGL
+>>>>>>> Stashed changes
                         rptHistoriaClinica.SetParameterValue("filtro", idDetalleOrden)
                         rptHistoriaClinica.SetParameterValue("reporte", Reporte)
                         crv.ReportSource = rptHistoriaClinica
@@ -960,7 +965,11 @@ Public Class frmImprimir
                         rptHistoriaClinica.SetParameterValue("reporte", Reporte)
                         crv.ReportSource = rptHistoriaClinica
                     Case 4 'GASTROLAP
+<<<<<<< Updated upstream
                         Dim rptHistoriaClinica As New rptHistoriaClinicaMR
+=======
+                        Dim rptHistoriaClinica As New rptHistoriaClinicaGL
+>>>>>>> Stashed changes
                         rptHistoriaClinica.SetParameterValue("filtro", idDetalleOrden)
                         rptHistoriaClinica.SetParameterValue("reporte", Reporte)
                         crv.ReportSource = rptHistoriaClinica
@@ -976,7 +985,7 @@ Public Class frmImprimir
                         rptEndoscopiaGL.SetParameterValue("fotos", Fotos)
                         crv.ReportSource = rptEndoscopiaGL
                     Case 4 'GASTROLAP
-                        Dim rptEndoscopiaGL As New rptImgEndoscopiaGC
+                        Dim rptEndoscopiaGL As New rptImgEndoscopiaGL
                         rptEndoscopiaGL.SetParameterValue("filtro", idDetalleOrden)
                         rptEndoscopiaGL.SetParameterValue("reporte", Reporte)
                         rptEndoscopiaGL.SetParameterValue("fotos", Fotos)
@@ -992,7 +1001,7 @@ Public Class frmImprimir
                         rptColonoscopiaGL.SetParameterValue("fotos", Fotos)
                         crv.ReportSource = rptColonoscopiaGL
                     Case 4 'GASTROLAP
-                        Dim rptColonoscopiaGL As New rptImgColonoscopiaGC
+                        Dim rptColonoscopiaGL As New rptImgColonoscopiaGL
                         rptColonoscopiaGL.SetParameterValue("filtro", idDetalleOrden)
                         rptColonoscopiaGL.SetParameterValue("reporte", Reporte)
                         rptColonoscopiaGL.SetParameterValue("fotos", Fotos)
@@ -1008,7 +1017,7 @@ Public Class frmImprimir
                         rptRectoscopiaGL.SetParameterValue("fotos", Fotos)
                         crv.ReportSource = rptRectoscopiaGL
                     Case 4 'GASTROLAP
-                        Dim rptRectoscopiaGL As New rptImgRectoscopiaGC
+                        Dim rptRectoscopiaGL As New rptImgRectoscopiaGL
                         rptRectoscopiaGL.SetParameterValue("filtro", idDetalleOrden)
                         rptRectoscopiaGL.SetParameterValue("reporte", Reporte)
                         rptRectoscopiaGL.SetParameterValue("fotos", Fotos)

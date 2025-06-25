@@ -18,7 +18,7 @@ Imports System
 Imports System.ComponentModel
 
 
-Public Class rptAgenda
+Public Class rptAgendaEntidad
     Inherits ReportClass
     
     Public Sub New()
@@ -136,7 +136,7 @@ Public Class CachedrptAgenda
     End Property
     
     Public Overridable Function CreateReport() As CrystalDecisions.CrystalReports.Engine.ReportDocument Implements CrystalDecisions.ReportSource.ICachedReport.CreateReport
-        Dim rpt As rptAgenda = New rptAgenda()
+        Dim rpt As rptAgendaEntidad = New rptAgendaEntidad()
         rpt.Site = Me.Site
         Return rpt
     End Function

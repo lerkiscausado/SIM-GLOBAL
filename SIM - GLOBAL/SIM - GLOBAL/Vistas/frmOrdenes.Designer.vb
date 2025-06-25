@@ -410,7 +410,7 @@ Partial Class frmOrdenes
         Me.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top
         Me.barDockControlTop.Location = New System.Drawing.Point(0, 0)
         Me.barDockControlTop.Manager = Me.BarManager1
-        Me.barDockControlTop.Size = New System.Drawing.Size(1068, 25)
+        Me.barDockControlTop.Size = New System.Drawing.Size(1068, 24)
         '
         'barDockControlBottom
         '
@@ -424,17 +424,17 @@ Partial Class frmOrdenes
         '
         Me.barDockControlLeft.CausesValidation = False
         Me.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left
-        Me.barDockControlLeft.Location = New System.Drawing.Point(0, 25)
+        Me.barDockControlLeft.Location = New System.Drawing.Point(0, 24)
         Me.barDockControlLeft.Manager = Me.BarManager1
-        Me.barDockControlLeft.Size = New System.Drawing.Size(0, 599)
+        Me.barDockControlLeft.Size = New System.Drawing.Size(0, 600)
         '
         'barDockControlRight
         '
         Me.barDockControlRight.CausesValidation = False
         Me.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right
-        Me.barDockControlRight.Location = New System.Drawing.Point(1068, 25)
+        Me.barDockControlRight.Location = New System.Drawing.Point(1068, 24)
         Me.barDockControlRight.Manager = Me.BarManager1
-        Me.barDockControlRight.Size = New System.Drawing.Size(0, 599)
+        Me.barDockControlRight.Size = New System.Drawing.Size(0, 600)
         '
         'GCConsultar
         '
@@ -454,24 +454,24 @@ Partial Class frmOrdenes
         Me.cmsGrid.ImageScalingSize = New System.Drawing.Size(18, 18)
         Me.cmsGrid.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsmActualizarVista, Me.ToolStripSeparator1, Me.tsmTodoslosRegistros})
         Me.cmsGrid.Name = "cmsGrid"
-        Me.cmsGrid.Size = New System.Drawing.Size(251, 58)
+        Me.cmsGrid.Size = New System.Drawing.Size(221, 58)
         '
         'tsmActualizarVista
         '
         Me.tsmActualizarVista.Image = CType(resources.GetObject("tsmActualizarVista.Image"), System.Drawing.Image)
         Me.tsmActualizarVista.Name = "tsmActualizarVista"
-        Me.tsmActualizarVista.Size = New System.Drawing.Size(250, 24)
+        Me.tsmActualizarVista.Size = New System.Drawing.Size(220, 24)
         Me.tsmActualizarVista.Text = "Actualizar Listado"
         '
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(247, 6)
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(217, 6)
         '
         'tsmTodoslosRegistros
         '
         Me.tsmTodoslosRegistros.Name = "tsmTodoslosRegistros"
-        Me.tsmTodoslosRegistros.Size = New System.Drawing.Size(250, 24)
+        Me.tsmTodoslosRegistros.Size = New System.Drawing.Size(220, 24)
         Me.tsmTodoslosRegistros.Text = "Mostrar Todos los Registros"
         '
         'GVConsultar
@@ -673,7 +673,7 @@ Partial Class frmOrdenes
         Me.txtConsecutivo.Properties.Appearance.Options.UseFont = True
         Me.txtConsecutivo.Properties.Appearance.Options.UseForeColor = True
         Me.txtConsecutivo.Properties.ReadOnly = True
-        Me.txtConsecutivo.Size = New System.Drawing.Size(87, 24)
+        Me.txtConsecutivo.Size = New System.Drawing.Size(87, 20)
         Me.txtConsecutivo.TabIndex = 110
         '
         'LabelControl1

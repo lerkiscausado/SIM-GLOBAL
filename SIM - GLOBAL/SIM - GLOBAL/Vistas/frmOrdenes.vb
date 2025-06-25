@@ -1117,18 +1117,12 @@ Public Class frmOrdenes
             _DOrdenes.ActualizarValoryCopago(GVDetalleOrden.GetRowCellValue(e.RowHandle.ToString, "ID").ToString(), GVDetalleOrden.GetRowCellValue(e.RowHandle.ToString, "VALOR").ToString(), GVDetalleOrden.GetRowCellValue(e.RowHandle.ToString, "COPAGO").ToString())
         End If
     End Sub
-
-    Private Sub frmOrdenes_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
-
-    End Sub
-
     Private Sub tsmActualizarVista_Click(sender As Object, e As EventArgs) Handles tsmActualizarVista.Click
         'LLENAR GRILLA  
         _ds = New DataSet
         _ds = _dUsuarios.Listarultimosregistros()
         GCConsultar.DataSource = _ds.Tables(0)
     End Sub
-
     Private Sub tsmTodoslosRegistros_Click(sender As Object, e As EventArgs) Handles tsmTodoslosRegistros.Click
         'LLENAR GRILLA  
         _ds = New DataSet
@@ -1136,7 +1130,4 @@ Public Class frmOrdenes
         GCConsultar.DataSource = _ds.Tables(0)
     End Sub
 
-    Private Sub txtNumeroEstudio_EditValueChanged(sender As Object, e As EventArgs) Handles txtNumeroEstudio.EditValueChanged
-
-    End Sub
 End Class

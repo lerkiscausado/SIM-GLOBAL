@@ -79,12 +79,6 @@ Public Class frmEspecialidades
             GVConsultar.OptionsFind.AlwaysVisible = True
         End If
     End Sub
-    Private Sub GVConsultar_RowClick(ByVal sender As System.Object, ByVal e As DevExpress.XtraGrid.Views.Grid.RowClickEventArgs)
-        If e.RowHandle >= 0 Then
-            _ClickGrilla = GVConsultar.GetRowCellValue(e.RowHandle.ToString, "ID").ToString()
-            _Fila = e.RowHandle.ToString
-        End If
-    End Sub
 
     Private Sub txtNombre_EditValueChanged(sender As Object, e As EventArgs)
         bbiGuardar.Enabled = True
@@ -112,6 +106,17 @@ Public Class frmEspecialidades
             End If
         Else
             MessageBox.Show("No ha seleccionado la especialidad", "Registro de Especialidades", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        End If
+    End Sub
+
+    Private Sub txtNombre_EditValueChanged_1(sender As Object, e As EventArgs) Handles txtNombre.EditValueChanged
+        bbiGuardar.Enabled = True
+    End Sub
+
+    Private Sub GVConsultar_RowClick(sender As Object, e As DevExpress.XtraGrid.Views.Grid.RowClickEventArgs) Handles GVConsultar.RowClick
+        If e.RowHandle >= 0 Then
+            _ClickGrilla = GVConsultar.GetRowCellValue(e.RowHandle.ToString, "ID").ToString()
+            _Fila = e.RowHandle.ToString
         End If
     End Sub
 End Class

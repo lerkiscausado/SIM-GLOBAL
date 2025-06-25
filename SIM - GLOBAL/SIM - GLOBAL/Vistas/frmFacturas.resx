@@ -188,6 +188,53 @@
         WxZGxiA1iOz8nwEA1pw5wY5dSdEAAAAASUVORK5CYII=
 </value>
   </data>
+<<<<<<< Updated upstream
+=======
+  <data name="bbiFactura.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAu
+        IgAALiIBquLdkgAAAUdJREFUOE+Vkz9LxDAUwDvqrrRXoZprwWKP5DWxaQcRQXc/wqEIHtynURx19VAH
+        Rwf1E7h5oteii4ubOIri1dc7/AN9d9XhFwJ5+eW9vMTI89xY5NzXUvSRtzH0GWMTRfxvBoMWYh4DDiMp
+        1qUM1ihw/SUCaIRhEIwUaMmvYwWvWsEjiRS3yO5YQaLDNmZyQKElXGHchQ75BoDPSEEkoYXzPJZinyKS
+        fA/XH4o9tEDxbZy/Z57dTD27Q7EsxVG1wK21U9c+p1hR/Lha4EzNZMwEikSKTqUAT9rBMnKKVcVPKgU9
+        Vpu7Y1ZC8acMep7dwtPOKEqXWDxl7PN9rMTzTwnWFgafUpS7wHk9Ar6JGy+x181CkM1a9dQ1lyhKJXwx
+        eCQKboYZ/OMSvwWw0AAEJU9d1zJTNu1TjMygwHGcScyg6mt/DAW58Qn4xJ5+3otj/AAAAABJRU5ErkJg
+        gg==
+</value>
+  </data>
+  <data name="bbiDetalleFactura.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAu
+        IgAALiIBquLdkgAAAfhJREFUOE99k71P20AYxmNUCVg6lcR3VZPYd5ivxEcc52MAIdEW8bEiQAgxtKhL
+        i6hQWlXq0qmVOnZJJVp1QcyIhZWJAdRujX1mRsyIP8C87zmRDHEYHjmy7v29z/OckwrD8I6kMTQqGT0I
+        ON27p33P0Ot4pizEtGVZ/fi7CxBwsgaHF31Gl+O6MOmM5PR9NpsdrDriquLY28kAk6wGjCxFoJgYnUZA
+        ZdLeBUAIujQMY6Ab0HbQGZQmWUEHkmWmFMC2X7puYbbmiK26ZT1WQ8ea1h/k6RjK5+SDZOT1/zwd9zgp
+        oPB9y0iXEFAtiTO3VGyiC3jOpYLsk6ew8TAwaeOOGN1V4vQGFIKuFcARf0G/VAwh5jHzO59TFzcoq2A5
+        sq8/V66iYaUeANrwWNpCy9Kg876ZmQuY/gKhXj7tJAEg/+8uAEaR7Jnd0YWVY4GRmUwCVJIAnklzuBUi
+        VfGDaeXIBMaCwSMo9RPKZ3oxEdDi6WE13L66TgcKwMjb+DX3dJAEUBGg5AcBkpOPcQDYXIf/woYqswcA
+        FN2CIxZS+OH45tBI/FBHSQDXETu1svhcK5e+1guF8RSU8wpjQNYmtPwDSnsDrr7D+z/t4tbjALD/r709
+        cnCiaY9gaA8gm5LpWzD0E7diDIR+0bS+OACGvoHOq4596haL7BZld6T8n0hcZgAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="bbiGenerarRips.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
+        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAAXdEVYdFRpdGxlAERvY3VtZW50O01hcDtOZXQ7yXvB
+        KQAAAFtJREFUOE/NjEkOwCAMA3lY/v8to1YyIpHD0nLgMIdMbBcAv5ByBynNDBkx6w6iiiRm3UFUkcSs
+        O1Qhgx01MBt6/+zcO9AjHTvnBh7Z0YIjlw7suHMDX5FyHZQKvQhLHY2gSs0AAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="bbiGenerarRips.ImageOptions.LargeImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
+        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAAXdEVYdFRpdGxlAERvY3VtZW50O01hcDtOZXQ7yXvB
+        KQAAAL5JREFUWEft0EEOhDAIQFEP5v2v1ZEFhsCHVKM4iy5eMvkRSmYbY3wKYyeMnTB2wkj2fR9X+PkM
+        RkKPVPx8BiOhRyp+PoOR0CMVP5/BSOiRip/PYISFlw84hBn/jghB+MHDrX+AmheCoAG7aAbN2qZCENWS
+        WTRrmwpBVEtm0axtKgRRLZlFs7apEES1ZBbN2qZCENXAHa8d8MR3IYgnFlvVdyF0O3/olZm3vlsHrAPW
+        Af9zwFcwdsLYCWOfsf0AUEf5hV5LlQAAAAAASUVORK5CYII=
+</value>
+  </data>
+>>>>>>> Stashed changes
   <data name="bbiEliminarFacturasRips.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAu

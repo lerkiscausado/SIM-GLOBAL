@@ -26,7 +26,6 @@ Partial Class frmEspecialidades
         Me.bbtNuevo = New DevExpress.XtraBars.BarButtonItem()
         Me.bbiAbrir = New DevExpress.XtraBars.BarButtonItem()
         Me.bbiGuardar = New DevExpress.XtraBars.BarButtonItem()
-        Me.bbiEliminar = New DevExpress.XtraBars.BarButtonItem()
         Me.bbiConsultar = New DevExpress.XtraBars.BarButtonItem()
         Me.bbiImprimir = New DevExpress.XtraBars.BarButtonItem()
         Me.barDockControlTop = New DevExpress.XtraBars.BarDockControl()
@@ -34,6 +33,7 @@ Partial Class frmEspecialidades
         Me.barDockControlLeft = New DevExpress.XtraBars.BarDockControl()
         Me.barDockControlRight = New DevExpress.XtraBars.BarDockControl()
         Me.bbiEditar = New DevExpress.XtraBars.BarButtonItem()
+        Me.bbiEliminar = New DevExpress.XtraBars.BarButtonItem()
         Me.GCConsultar = New DevExpress.XtraGrid.GridControl()
         Me.GVConsultar = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.colId = New DevExpress.XtraGrid.Columns.GridColumn()
@@ -92,14 +92,6 @@ Partial Class frmEspecialidades
         Me.bbiGuardar.ImageOptions.Image = CType(resources.GetObject("bbiGuardar.ImageOptions.Image"), System.Drawing.Image)
         Me.bbiGuardar.Name = "bbiGuardar"
         '
-        'bbiEliminar
-        '
-        Me.bbiEliminar.Caption = "Eliminar "
-        Me.bbiEliminar.Enabled = False
-        Me.bbiEliminar.Id = 5
-        Me.bbiEliminar.ImageOptions.Image = CType(resources.GetObject("bbiEliminar.ImageOptions.Image"), System.Drawing.Image)
-        Me.bbiEliminar.Name = "bbiEliminar"
-        '
         'bbiConsultar
         '
         Me.bbiConsultar.Caption = "Consultar"
@@ -153,6 +145,14 @@ Partial Class frmEspecialidades
         Me.bbiEditar.Id = 1
         Me.bbiEditar.ImageOptions.Image = CType(resources.GetObject("bbiEditar.ImageOptions.Image"), System.Drawing.Image)
         Me.bbiEditar.Name = "bbiEditar"
+        '
+        'bbiEliminar
+        '
+        Me.bbiEliminar.Caption = "Eliminar "
+        Me.bbiEliminar.Enabled = False
+        Me.bbiEliminar.Id = 5
+        Me.bbiEliminar.ImageOptions.Image = CType(resources.GetObject("bbiEliminar.ImageOptions.Image"), System.Drawing.Image)
+        Me.bbiEliminar.Name = "bbiEliminar"
         '
         'GCConsultar
         '
