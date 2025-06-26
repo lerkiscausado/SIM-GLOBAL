@@ -32,6 +32,20 @@ Partial Class frmFacturacionSandra
         Me.xtpConsulta = New DevExpress.XtraTab.XtraTabPage()
         Me.GCConsultar = New DevExpress.XtraGrid.GridControl()
         Me.GVConsultar = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.colOrden = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colCaso = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colFechaIngreso = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colIdentificacion = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colNombre = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colSexo = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.ColEdad = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colEntidad = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colSubentidad = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colEstudio = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.ColEspecimen = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colCups = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colValor = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colEstado = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.BarManager1 = New DevExpress.XtraBars.BarManager(Me.components)
         Me.Bar4 = New DevExpress.XtraBars.Bar()
         Me.bbiConsultar = New DevExpress.XtraBars.BarButtonItem()
@@ -45,6 +59,7 @@ Partial Class frmFacturacionSandra
         Me.BarDockControl1 = New DevExpress.XtraBars.BarDockControl()
         Me.GridView2 = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.barDockControlTop = New DevExpress.XtraBars.BarDockControl()
+        Me.colAutorizacion = New DevExpress.XtraGrid.Columns.GridColumn()
         CType(Me.XtraTabControl3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.XtraTabControl3.SuspendLayout()
         Me.xtpConsulta.SuspendLayout()
@@ -135,9 +150,9 @@ Partial Class frmFacturacionSandra
         '
         'GVConsultar
         '
+        Me.GVConsultar.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colOrden, Me.colCaso, Me.colFechaIngreso, Me.colIdentificacion, Me.colNombre, Me.colSexo, Me.ColEdad, Me.colEntidad, Me.colSubentidad, Me.colEstudio, Me.colAutorizacion, Me.ColEspecimen, Me.colCups, Me.colValor, Me.colEstado})
         Me.GVConsultar.GridControl = Me.GCConsultar
         Me.GVConsultar.Name = "GVConsultar"
-        Me.GVConsultar.OptionsBehavior.Editable = False
         Me.GVConsultar.OptionsBehavior.EditorShowMode = DevExpress.Utils.EditorShowMode.Click
         Me.GVConsultar.OptionsPrint.EnableAppearanceOddRow = True
         Me.GVConsultar.OptionsPrint.ExpandAllDetails = True
@@ -147,6 +162,157 @@ Partial Class frmFacturacionSandra
         Me.GVConsultar.OptionsView.ColumnAutoWidth = False
         Me.GVConsultar.OptionsView.EnableAppearanceOddRow = True
         Me.GVConsultar.OptionsView.ShowGroupPanel = False
+        '
+        'colOrden
+        '
+        Me.colOrden.Caption = "ORDEN"
+        Me.colOrden.FieldName = "ORDEN"
+        Me.colOrden.Name = "colOrden"
+        Me.colOrden.OptionsColumn.AllowEdit = False
+        Me.colOrden.OptionsColumn.ReadOnly = True
+        Me.colOrden.Width = 56
+        '
+        'colCaso
+        '
+        Me.colCaso.Caption = "CASO"
+        Me.colCaso.FieldName = "CASO"
+        Me.colCaso.Name = "colCaso"
+        Me.colCaso.OptionsColumn.AllowEdit = False
+        Me.colCaso.OptionsColumn.ReadOnly = True
+        Me.colCaso.Visible = True
+        Me.colCaso.VisibleIndex = 0
+        Me.colCaso.Width = 56
+        '
+        'colFechaIngreso
+        '
+        Me.colFechaIngreso.Caption = "FECHA INGRESO"
+        Me.colFechaIngreso.FieldName = "FECHA_INGRESO"
+        Me.colFechaIngreso.Name = "colFechaIngreso"
+        Me.colFechaIngreso.OptionsColumn.AllowEdit = False
+        Me.colFechaIngreso.OptionsColumn.ReadOnly = True
+        Me.colFechaIngreso.Visible = True
+        Me.colFechaIngreso.VisibleIndex = 1
+        Me.colFechaIngreso.Width = 81
+        '
+        'colIdentificacion
+        '
+        Me.colIdentificacion.Caption = "IDENTIFICACION"
+        Me.colIdentificacion.FieldName = "IDENTIFICACION"
+        Me.colIdentificacion.Name = "colIdentificacion"
+        Me.colIdentificacion.OptionsColumn.AllowEdit = False
+        Me.colIdentificacion.OptionsColumn.ReadOnly = True
+        Me.colIdentificacion.Visible = True
+        Me.colIdentificacion.VisibleIndex = 2
+        Me.colIdentificacion.Width = 91
+        '
+        'colNombre
+        '
+        Me.colNombre.Caption = "NOMBRE"
+        Me.colNombre.FieldName = "NOMBRE"
+        Me.colNombre.Name = "colNombre"
+        Me.colNombre.OptionsColumn.AllowEdit = False
+        Me.colNombre.OptionsColumn.ReadOnly = True
+        Me.colNombre.Visible = True
+        Me.colNombre.VisibleIndex = 3
+        Me.colNombre.Width = 187
+        '
+        'colSexo
+        '
+        Me.colSexo.Caption = "SEXO"
+        Me.colSexo.FieldName = "SEXO"
+        Me.colSexo.Name = "colSexo"
+        Me.colSexo.OptionsColumn.AllowEdit = False
+        Me.colSexo.OptionsColumn.ReadOnly = True
+        Me.colSexo.Visible = True
+        Me.colSexo.VisibleIndex = 4
+        Me.colSexo.Width = 40
+        '
+        'ColEdad
+        '
+        Me.ColEdad.Caption = "EDAD"
+        Me.ColEdad.FieldName = "EDAD"
+        Me.ColEdad.Name = "ColEdad"
+        Me.ColEdad.OptionsColumn.AllowEdit = False
+        Me.ColEdad.OptionsColumn.ReadOnly = True
+        Me.ColEdad.Visible = True
+        Me.ColEdad.VisibleIndex = 5
+        Me.ColEdad.Width = 36
+        '
+        'colEntidad
+        '
+        Me.colEntidad.Caption = "ENTIDAD"
+        Me.colEntidad.FieldName = "ENTIDAD"
+        Me.colEntidad.Name = "colEntidad"
+        Me.colEntidad.OptionsColumn.AllowEdit = False
+        Me.colEntidad.OptionsColumn.ReadOnly = True
+        Me.colEntidad.Visible = True
+        Me.colEntidad.VisibleIndex = 6
+        Me.colEntidad.Width = 144
+        '
+        'colSubentidad
+        '
+        Me.colSubentidad.Caption = "SUBENTIDAD"
+        Me.colSubentidad.FieldName = "SUBENTIDAD"
+        Me.colSubentidad.Name = "colSubentidad"
+        Me.colSubentidad.OptionsColumn.AllowEdit = False
+        Me.colSubentidad.OptionsColumn.ReadOnly = True
+        Me.colSubentidad.Visible = True
+        Me.colSubentidad.VisibleIndex = 7
+        Me.colSubentidad.Width = 137
+        '
+        'colEstudio
+        '
+        Me.colEstudio.Caption = "ESTUDIO"
+        Me.colEstudio.FieldName = "ESTUDIO"
+        Me.colEstudio.Name = "colEstudio"
+        Me.colEstudio.OptionsColumn.AllowEdit = False
+        Me.colEstudio.OptionsColumn.ReadOnly = True
+        Me.colEstudio.Visible = True
+        Me.colEstudio.VisibleIndex = 8
+        Me.colEstudio.Width = 167
+        '
+        'ColEspecimen
+        '
+        Me.ColEspecimen.Caption = "ESPECIMEN"
+        Me.ColEspecimen.FieldName = "ESPECIMEN"
+        Me.ColEspecimen.Name = "ColEspecimen"
+        Me.ColEspecimen.OptionsColumn.AllowEdit = False
+        Me.ColEspecimen.OptionsColumn.ReadOnly = True
+        Me.ColEspecimen.Visible = True
+        Me.ColEspecimen.VisibleIndex = 10
+        Me.ColEspecimen.Width = 136
+        '
+        'colCups
+        '
+        Me.colCups.Caption = "CUPS"
+        Me.colCups.FieldName = "CUPS"
+        Me.colCups.Name = "colCups"
+        Me.colCups.OptionsColumn.AllowEdit = False
+        Me.colCups.OptionsColumn.ReadOnly = True
+        Me.colCups.Visible = True
+        Me.colCups.VisibleIndex = 11
+        Me.colCups.Width = 208
+        '
+        'colValor
+        '
+        Me.colValor.Caption = "VALOR"
+        Me.colValor.FieldName = "VALOR"
+        Me.colValor.Name = "colValor"
+        Me.colValor.OptionsColumn.AllowEdit = False
+        Me.colValor.OptionsColumn.ReadOnly = True
+        Me.colValor.Visible = True
+        Me.colValor.VisibleIndex = 12
+        Me.colValor.Width = 80
+        '
+        'colEstado
+        '
+        Me.colEstado.Caption = "ESTADO"
+        Me.colEstado.FieldName = "ESTADO"
+        Me.colEstado.Name = "colEstado"
+        Me.colEstado.OptionsColumn.AllowEdit = False
+        Me.colEstado.OptionsColumn.ReadOnly = True
+        Me.colEstado.Visible = True
+        Me.colEstado.VisibleIndex = 13
         '
         'BarManager1
         '
@@ -246,6 +412,15 @@ Partial Class frmFacturacionSandra
         Me.barDockControlTop.Manager = Nothing
         Me.barDockControlTop.Size = New System.Drawing.Size(1179, 0)
         '
+        'colAutorizacion
+        '
+        Me.colAutorizacion.Caption = "AUTORIZACION"
+        Me.colAutorizacion.FieldName = "AUTORIZACION"
+        Me.colAutorizacion.Name = "colAutorizacion"
+        Me.colAutorizacion.Visible = True
+        Me.colAutorizacion.VisibleIndex = 9
+        Me.colAutorizacion.Width = 83
+        '
         'frmFacturacionSandra
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -261,6 +436,7 @@ Partial Class frmFacturacionSandra
         Me.Controls.Add(Me.BarDockControl3)
         Me.Name = "frmFacturacionSandra"
         Me.Text = "Relación a facturar"
+        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         CType(Me.XtraTabControl3, System.ComponentModel.ISupportInitialize).EndInit()
         Me.XtraTabControl3.ResumeLayout(False)
         Me.xtpConsulta.ResumeLayout(False)
@@ -298,4 +474,19 @@ Partial Class frmFacturacionSandra
     Friend WithEvents barDockControlTop As DevExpress.XtraBars.BarDockControl
     Friend WithEvents GridView1 As DevExpress.XtraGrid.Views.Grid.GridView
     Friend WithEvents GridView2 As DevExpress.XtraGrid.Views.Grid.GridView
+    Friend WithEvents colOrden As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colCaso As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colFechaIngreso As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colIdentificacion As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colNombre As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colSexo As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents ColEdad As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colEntidad As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colSubentidad As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colEstudio As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents ColEspecimen As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colCups As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colValor As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colEstado As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colAutorizacion As DevExpress.XtraGrid.Columns.GridColumn
 End Class

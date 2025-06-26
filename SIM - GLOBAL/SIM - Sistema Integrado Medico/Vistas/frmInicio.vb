@@ -46,6 +46,7 @@ Public Class frmInicio
 
     Dim _frmAgenda As SIM___GLOBAL.frmAgenda
     Dim _frmFacturacion As SIM___GLOBAL.frmFacturas
+    Dim _frmFacturacionSandra As SIM___GLOBAL.frmFacturacionSandra
     Dim _frmHistoria As SIM_ENDOSCOPIA.frmHistoria
     Dim _frmHistoriaGL As SIM_ENDOSCOPIA.frmHistoriaGL
     Dim _frmEndoscopia As SIM_ENDOSCOPIA.frmEndoscopia
@@ -1752,12 +1753,6 @@ Public Class frmInicio
             _frmImagenes.Show()
         End If
     End Sub
-
-
-    Private Sub bbiImprimir_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles bbiImprimir.ItemClick
-
-    End Sub
-
     Private Sub bbiCargos_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles bbiCargos.ItemClick
         Dim _frmOpen As New SIM___GLOBAL.frmCargos
         _frmOpen.ShowDialog()
@@ -1829,16 +1824,29 @@ Public Class frmInicio
     End Sub
 
     Private Sub bbiFactura_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles bbiFactura.ItemClick
-        If Funciones.IsLoaded("frmFacturas") = True Then
-            MessageBox.Show("Esta Ventana se encuentra abierta", "Factura", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        Else
-            _frmFacturacion = New SIM___GLOBAL.frmFacturas
-            _frmFacturacion.MdiParent = Me
-            _frmFacturacion.IDEmpleado = IdEmpleadoG
-            _frmFacturacion.Licencia = LicenciaG
-            _frmFacturacion.Show()
-        End If
 
+        Select Case LicenciaG
+            Case 16 ' DRA SANDRA
+                If Funciones.IsLoaded("frmFacturacionSandra") = True Then
+                    MessageBox.Show("Esta Ventana se encuentra abierta", "Factura", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                Else
+                    _frmFacturacionSandra = New SIM___GLOBAL.frmFacturacionSandra
+                    _frmFacturacionSandra.MdiParent = Me
+                    _frmFacturacionSandra.IDEmpleado = IdEmpleadoG
+                    _frmFacturacionSandra.Licencia = LicenciaG
+                    _frmFacturacionSandra.Show()
+                End If
+            Case Else
+                If Funciones.IsLoaded("frmFacturas") = True Then
+                    MessageBox.Show("Esta Ventana se encuentra abierta", "Factura", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                Else
+                    _frmFacturacion = New SIM___GLOBAL.frmFacturas
+                    _frmFacturacion.MdiParent = Me
+                    _frmFacturacion.IDEmpleado = IdEmpleadoG
+                    _frmFacturacion.Licencia = LicenciaG
+                    _frmFacturacion.Show()
+                End If
+        End Select
     End Sub
 
     Private Sub bbiAgenda_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles bbiAgenda.ItemClick

@@ -402,7 +402,7 @@ Public Class frmOrdenes
                                     Consecutivo = "" & Val(_DPatologia.GenerarConsecutivoCD(cboSede.GetColumnValue("ID")) + 30000) & "-" & Mid(Year(dtFechaIngreso.Text), 3, 2)
                                 End If
                             End If
-                                Case Else
+                        Case Else
 
                     End Select
 
@@ -1107,36 +1107,24 @@ Public Class frmOrdenes
         cboEspecimen.Properties.DisplayMember = _ds.Tables(0).Columns(1).Caption
         cboEspecimen.Properties.ValueMember = _ds.Tables(0).Columns(0).Caption
     End Sub
-
     Private Sub dtFechaEntrega_EditValueChanged(sender As Object, e As EventArgs) Handles dtFechaEntrega.EditValueChanged
         ActivarGuardar()
     End Sub
-
     Private Sub GVDetalleOrden_RowUpdated(sender As Object, e As DevExpress.XtraGrid.Views.Base.RowObjectEventArgs) Handles GVDetalleOrden.RowUpdated
         If e.RowHandle >= 0 Then
             _DOrdenes.ActualizarValoryCopago(GVDetalleOrden.GetRowCellValue(e.RowHandle.ToString, "ID").ToString(), GVDetalleOrden.GetRowCellValue(e.RowHandle.ToString, "VALOR").ToString(), GVDetalleOrden.GetRowCellValue(e.RowHandle.ToString, "COPAGO").ToString())
         End If
     End Sub
-
-    Private Sub frmOrdenes_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
-
-    End Sub
-
     Private Sub tsmActualizarVista_Click(sender As Object, e As EventArgs) Handles tsmActualizarVista.Click
         'LLENAR GRILLA  
         _ds = New DataSet
         _ds = _dUsuarios.Listarultimosregistros()
         GCConsultar.DataSource = _ds.Tables(0)
     End Sub
-
     Private Sub tsmTodoslosRegistros_Click(sender As Object, e As EventArgs) Handles tsmTodoslosRegistros.Click
         'LLENAR GRILLA  
         _ds = New DataSet
         _ds = _dUsuarios.Listar()
         GCConsultar.DataSource = _ds.Tables(0)
-    End Sub
-
-    Private Sub txtNumeroEstudio_EditValueChanged(sender As Object, e As EventArgs) Handles txtNumeroEstudio.EditValueChanged
-
     End Sub
 End Class
