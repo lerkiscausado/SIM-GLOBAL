@@ -45,6 +45,7 @@ Public Class frmFacturas
     Public IDEmpleado As String
     ReadOnly _funciones As New Funciones
     '-----------------------------------
+    Dim _ClickFactura As String
     Dim _ClickGrillaFacturas As String
     Dim _ClickGrillaProductos As String
     Dim _ClickGrillaOrdenesAuditadas As String
@@ -790,6 +791,7 @@ Public Class frmFacturas
             _ClickGrillaFacturas = gvConsultar.GetRowCellValue(e.RowHandle.ToString, "ID").ToString()
             _EstadoFactura = gvConsultar.GetRowCellValue(e.RowHandle.ToString, "ESTADO").ToString()
             _ClickGrillaTipoFactura = gvConsultar.GetRowCellValue(e.RowHandle.ToString, "TIPOFACTURA").ToString()
+            _ClickFactura = gvConsultar.GetRowCellValue(e.RowHandle.ToString, "FACTURA").ToString()
             If _ClickGrillaTipoFactura = "PRODUCTOS" Then
                 bbiFacturaConcepto.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
                 bbiRelacionFactura.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
@@ -1649,24 +1651,24 @@ Public Class frmFacturas
             Next
 
             'Armar el JSON final con la factura
-            'Dim factura = New With {
-            '.numDocumentoIdObligado = "900329923",
-            '.numFactura = _ClickFactura,
-            '.tipoNota = CType(Nothing, String),
-            '.numNota = CType(Nothing, String),
-            '.usuarios = listaUsuarios.ToArray()
-            '}
+            Dim factura = New With {
+                .numDocumentoIdObligado = "900329923",
+                .numFactura = _ClickFactura,
+                .tipoNota = CType(Nothing, String),
+                .numNota = CType(Nothing, String),
+                .usuarios = listaUsuarios.ToArray()
+            }
 
 
-            'json = JsonConvert.SerializeObject(factura, Formatting.Indented)
+            json = JsonConvert.SerializeObject(factura, Formatting.Indented)
 
-            'rtbJSON.Text = json
+            rtbJSON.Text = json
 
-            'HighlightJsonSyntax(rtbJSON)
+            HighlightJsonSyntax(rtbJSON)
 
-            'btnGenerarJSON.Enabled = True
+            btnGenerarJSON.Enabled = True
 
-            'xtcFactura.SelectedTabPage = xtpJSON
+            xtcFactura.SelectedTabPage = xtpJSON
 
 
             '----------------------------------------------------------
@@ -1675,7 +1677,22 @@ Public Class frmFacturas
             'File.WriteAllText(rutaArchivo, json, Encoding.UTF8)
 
             ' MessageBox.Show("Archivo JSON generado exitosamente en:" & vbCrLf & rutaArchivo)
-
+        Else
+            MsgBox("Debe seleccionar la factura")
         End If
+    End Sub
+
+    Private Sub btnGenerarJSON_Click(sender As Object, e As EventArgs) Handles btnGenerarJSON.Click
+        ' Crear el diálogo para guardar archivo
+        Dim saveFileDialog As New SaveFileDialog()
+        saveFileDialog.Filter = "Archivos JSON (*.json)|*.json"
+        saveFileDialog.Title = "Guardar archivo JSON"
+        saveFileDialog.FileName = _ClickFactura & ".json"
+
+        If saveFileDialog.ShowDialog() = DialogResult.OK Then
+            File.WriteAllText(saveFileDialog.FileName, json, Encoding.UTF8)
+            MessageBox.Show("Archivo guardado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        End If
+
     End Sub
 End Class
