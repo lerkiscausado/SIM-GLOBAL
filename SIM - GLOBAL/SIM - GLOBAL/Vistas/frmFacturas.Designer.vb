@@ -49,6 +49,7 @@ Partial Class frmFacturas
         Me.bbiFactura = New DevExpress.XtraBars.BarButtonItem()
         Me.bbiDetalleFactura = New DevExpress.XtraBars.BarButtonItem()
         Me.bbiRips = New DevExpress.XtraBars.BarButtonItem()
+        Me.bbigenerarRips = New DevExpress.XtraBars.BarButtonItem()
         Me.bbiEliminarFacturasRips = New DevExpress.XtraBars.BarButtonItem()
         Me.bbiEliminarFacturaRips = New DevExpress.XtraBars.BarButtonItem()
         Me.bbiAgregarFacturaRips = New DevExpress.XtraBars.BarButtonItem()
@@ -377,6 +378,9 @@ Partial Class frmFacturas
         Me.colPRealizacion = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colPNeto = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.BarDockControl7 = New DevExpress.XtraBars.BarDockControl()
+        Me.xtpJSON = New DevExpress.XtraTab.XtraTabPage()
+        Me.btnGenerarJSON = New System.Windows.Forms.Button()
+        Me.rtbJSON = New System.Windows.Forms.RichTextBox()
         Me.bbiEditar = New DevExpress.XtraBars.BarButtonItem()
         Me.BarDockControl3 = New DevExpress.XtraBars.BarDockControl()
         Me.BarManager2 = New DevExpress.XtraBars.BarManager(Me.components)
@@ -403,7 +407,7 @@ Partial Class frmFacturas
         Me.txtID = New DevExpress.XtraEditors.TextEdit()
         Me.LabelControl31 = New DevExpress.XtraEditors.LabelControl()
         Me.CachedEjemplo1 = New SIM___GLOBAL.CachedEjemplo()
-        Me.BarButtonItem11 = New DevExpress.XtraBars.BarButtonItem()
+        Me.bbiPrueba = New DevExpress.XtraBars.BarButtonItem()
         CType(Me.BarManager1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemLookUpEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GCConsultar, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -499,6 +503,7 @@ Partial Class frmFacturas
         Me.xtpProcedimientos.SuspendLayout()
         CType(Me.GCProcedimientos, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GVProcedimientos, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.xtpJSON.SuspendLayout()
         CType(Me.BarManager2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.rcboFacturas, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BarManager3, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -585,8 +590,8 @@ Partial Class frmFacturas
         Me.BarManager1.DockControls.Add(Me.barDockControlLeft)
         Me.BarManager1.DockControls.Add(Me.barDockControlRight)
         Me.BarManager1.Form = Me
-        Me.BarManager1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.bbiNuevo, Me.bbiGuardar, Me.bbiImprimir, Me.bbiAnular, Me.cboFactura, Me.bbiVistaPrevia, Me.bsiImprimir, Me.bbiActualizar, Me.bbiFactura, Me.bbiDetalleFactura, Me.bbiConsultar, Me.bbiFacturaConcepto, Me.bbiRelacionFactura, Me.BarButtonItem4, Me.bbiRips, Me.bbiAgregarFacturaRips, Me.bbiFacturaAgregarTodo, Me.bbiFacturaBorrar, Me.BarStaticItem1, Me.BarButtonItem5, Me.BarButtonItem6, Me.BarButtonItem7, Me.BarButtonItem8, Me.BarButtonItem9, Me.BarButtonItem10, Me.bbiEliminarFacturaRips, Me.bbiEliminarFacturasRips, Me.bbiAgregarFacturasRips, Me.BarButtonItem11})
-        Me.BarManager1.MaxItemId = 29
+        Me.BarManager1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.bbiNuevo, Me.bbiGuardar, Me.bbiImprimir, Me.bbiAnular, Me.cboFactura, Me.bbiVistaPrevia, Me.bsiImprimir, Me.bbiActualizar, Me.bbiFactura, Me.bbiDetalleFactura, Me.bbiConsultar, Me.bbiFacturaConcepto, Me.bbiRelacionFactura, Me.BarButtonItem4, Me.bbiRips, Me.bbiAgregarFacturaRips, Me.bbiFacturaAgregarTodo, Me.bbiFacturaBorrar, Me.BarStaticItem1, Me.BarButtonItem5, Me.BarButtonItem6, Me.BarButtonItem7, Me.BarButtonItem8, Me.BarButtonItem9, Me.BarButtonItem10, Me.bbiEliminarFacturaRips, Me.bbiEliminarFacturasRips, Me.bbiAgregarFacturasRips, Me.bbigenerarRips, Me.bbiPrueba})
+        Me.BarManager1.MaxItemId = 30
         Me.BarManager1.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemLookUpEdit1})
         '
         'bFacturas
@@ -596,7 +601,7 @@ Partial Class frmFacturas
         Me.bFacturas.DockRow = 0
         Me.bFacturas.DockStyle = DevExpress.XtraBars.BarDockStyle.Top
         Me.bFacturas.FloatLocation = New System.Drawing.Point(86, 132)
-        Me.bFacturas.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.bbiNuevo), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiGuardar), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiAnular), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiActualizar), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiConsultar, True), New DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, Me.bsiImprimir, DevExpress.XtraBars.BarItemPaintStyle.CaptionInMenu), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiRips, True), New DevExpress.XtraBars.LinkPersistInfo(Me.BarButtonItem11), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiEliminarFacturasRips), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiEliminarFacturaRips), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiAgregarFacturaRips), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiAgregarFacturasRips)})
+        Me.bFacturas.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.bbiNuevo), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiGuardar), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiAnular), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiActualizar), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiConsultar, True), New DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, Me.bsiImprimir, DevExpress.XtraBars.BarItemPaintStyle.CaptionInMenu), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiRips, True), New DevExpress.XtraBars.LinkPersistInfo(Me.bbigenerarRips), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiEliminarFacturasRips), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiEliminarFacturaRips), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiAgregarFacturaRips), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiAgregarFacturasRips), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiPrueba)})
         Me.bFacturas.Offset = 3
         Me.bFacturas.Text = "Herramientas Facturas"
         '
@@ -675,6 +680,13 @@ Partial Class frmFacturas
         Me.bbiRips.Caption = "Rips"
         Me.bbiRips.Id = 14
         Me.bbiRips.Name = "bbiRips"
+        Me.bbiRips.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
+        '
+        'bbigenerarRips
+        '
+        Me.bbigenerarRips.Caption = "JSON"
+        Me.bbigenerarRips.Id = 28
+        Me.bbigenerarRips.Name = "bbigenerarRips"
         '
         'bbiEliminarFacturasRips
         '
@@ -982,7 +994,7 @@ Partial Class frmFacturas
         Me.xtcFactura.SelectedTabPage = Me.xtpFacturasGeneradas
         Me.xtcFactura.Size = New System.Drawing.Size(1264, 570)
         Me.xtcFactura.TabIndex = 82
-        Me.xtcFactura.TabPages.AddRange(New DevExpress.XtraTab.XtraTabPage() {Me.xtpFacturasGeneradas, Me.xtpDetalleFactura, Me.xtpFacturaServicios, Me.xtpFacturaProductos, Me.xtpRips})
+        Me.xtcFactura.TabPages.AddRange(New DevExpress.XtraTab.XtraTabPage() {Me.xtpFacturasGeneradas, Me.xtpDetalleFactura, Me.xtpFacturaServicios, Me.xtpFacturaProductos, Me.xtpRips, Me.xtpJSON})
         '
         'xtpFacturasGeneradas
         '
@@ -3226,6 +3238,7 @@ Partial Class frmFacturas
         Me.xtpRips.Controls.Add(Me.xtcReporteEstudio)
         Me.xtpRips.Controls.Add(Me.BarDockControl7)
         Me.xtpRips.Name = "xtpRips"
+        Me.xtpRips.PageVisible = False
         Me.xtpRips.Size = New System.Drawing.Size(1262, 545)
         Me.xtpRips.Text = "RIPS"
         '
@@ -3533,7 +3546,7 @@ Partial Class frmFacturas
         '
         Me.xtpFacturas.Controls.Add(Me.GCFacturas)
         Me.xtpFacturas.Name = "xtpFacturas"
-        Me.xtpFacturas.Size = New System.Drawing.Size(965, 285)
+        Me.xtpFacturas.Size = New System.Drawing.Size(965, 286)
         Me.xtpFacturas.Text = "FACTURAS"
         '
         'GCFacturas
@@ -3542,7 +3555,7 @@ Partial Class frmFacturas
         Me.GCFacturas.Location = New System.Drawing.Point(0, 0)
         Me.GCFacturas.MainView = Me.GVFacturas
         Me.GCFacturas.Name = "GCFacturas"
-        Me.GCFacturas.Size = New System.Drawing.Size(965, 285)
+        Me.GCFacturas.Size = New System.Drawing.Size(965, 286)
         Me.GCFacturas.TabIndex = 3
         Me.GCFacturas.UseEmbeddedNavigator = True
         Me.GCFacturas.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GVFacturas})
@@ -3717,7 +3730,7 @@ Partial Class frmFacturas
         '
         Me.xtpConsultas.Controls.Add(Me.GCConsultas)
         Me.xtpConsultas.Name = "xtpConsultas"
-        Me.xtpConsultas.Size = New System.Drawing.Size(965, 285)
+        Me.xtpConsultas.Size = New System.Drawing.Size(965, 286)
         Me.xtpConsultas.Text = "CONSULTAS"
         '
         'GCConsultas
@@ -3726,7 +3739,7 @@ Partial Class frmFacturas
         Me.GCConsultas.Location = New System.Drawing.Point(0, 0)
         Me.GCConsultas.MainView = Me.GVConsultas
         Me.GCConsultas.Name = "GCConsultas"
-        Me.GCConsultas.Size = New System.Drawing.Size(965, 285)
+        Me.GCConsultas.Size = New System.Drawing.Size(965, 286)
         Me.GCConsultas.TabIndex = 3
         Me.GCConsultas.UseEmbeddedNavigator = True
         Me.GCConsultas.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GVConsultas})
@@ -3902,7 +3915,7 @@ Partial Class frmFacturas
         '
         Me.xtpProcedimientos.Controls.Add(Me.GCProcedimientos)
         Me.xtpProcedimientos.Name = "xtpProcedimientos"
-        Me.xtpProcedimientos.Size = New System.Drawing.Size(965, 285)
+        Me.xtpProcedimientos.Size = New System.Drawing.Size(965, 286)
         Me.xtpProcedimientos.Text = "PROCEDIMIENTOS"
         '
         'GCProcedimientos
@@ -3911,7 +3924,7 @@ Partial Class frmFacturas
         Me.GCProcedimientos.Location = New System.Drawing.Point(0, 0)
         Me.GCProcedimientos.MainView = Me.GVProcedimientos
         Me.GCProcedimientos.Name = "GCProcedimientos"
-        Me.GCProcedimientos.Size = New System.Drawing.Size(965, 285)
+        Me.GCProcedimientos.Size = New System.Drawing.Size(965, 286)
         Me.GCProcedimientos.TabIndex = 3
         Me.GCProcedimientos.UseEmbeddedNavigator = True
         Me.GCProcedimientos.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GVProcedimientos})
@@ -4074,6 +4087,31 @@ Partial Class frmFacturas
         Me.BarDockControl7.Location = New System.Drawing.Point(0, 0)
         Me.BarDockControl7.Manager = Nothing
         Me.BarDockControl7.Size = New System.Drawing.Size(1262, 0)
+        '
+        'xtpJSON
+        '
+        Me.xtpJSON.Controls.Add(Me.btnGenerarJSON)
+        Me.xtpJSON.Controls.Add(Me.rtbJSON)
+        Me.xtpJSON.Name = "xtpJSON"
+        Me.xtpJSON.Size = New System.Drawing.Size(1262, 545)
+        Me.xtpJSON.Text = "JSON"
+        '
+        'btnGenerarJSON
+        '
+        Me.btnGenerarJSON.Location = New System.Drawing.Point(11, 19)
+        Me.btnGenerarJSON.Name = "btnGenerarJSON"
+        Me.btnGenerarJSON.Size = New System.Drawing.Size(109, 27)
+        Me.btnGenerarJSON.TabIndex = 226
+        Me.btnGenerarJSON.Text = "Generar JSON"
+        Me.btnGenerarJSON.UseVisualStyleBackColor = True
+        '
+        'rtbJSON
+        '
+        Me.rtbJSON.Location = New System.Drawing.Point(11, 52)
+        Me.rtbJSON.Name = "rtbJSON"
+        Me.rtbJSON.Size = New System.Drawing.Size(559, 490)
+        Me.rtbJSON.TabIndex = 0
+        Me.rtbJSON.Text = ""
         '
         'bbiEditar
         '
@@ -4278,11 +4316,11 @@ Partial Class frmFacturas
         Me.LabelControl31.Text = "ID:"
         Me.LabelControl31.Visible = False
         '
-        'BarButtonItem11
+        'bbiPrueba
         '
-        Me.BarButtonItem11.Caption = "JSON"
-        Me.BarButtonItem11.Id = 28
-        Me.BarButtonItem11.Name = "BarButtonItem11"
+        Me.bbiPrueba.Caption = "Prueba"
+        Me.bbiPrueba.Id = 29
+        Me.bbiPrueba.Name = "bbiPrueba"
         '
         'frmFacturas
         '
@@ -4310,6 +4348,7 @@ Partial Class frmFacturas
         Me.Name = "frmFacturas"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Generar Factura"
+        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         CType(Me.BarManager1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemLookUpEdit1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GCConsultar, System.ComponentModel.ISupportInitialize).EndInit()
@@ -4412,6 +4451,7 @@ Partial Class frmFacturas
         Me.xtpProcedimientos.ResumeLayout(False)
         CType(Me.GCProcedimientos, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GVProcedimientos, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.xtpJSON.ResumeLayout(False)
         CType(Me.BarManager2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.rcboFacturas, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.BarManager3, System.ComponentModel.ISupportInitialize).EndInit()
@@ -4796,5 +4836,9 @@ Partial Class frmFacturas
     Friend WithEvents btnVerOrdenServicio As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents colTipoUsuario As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colLFTipoUsuario As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents BarButtonItem11 As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents bbigenerarRips As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents xtpJSON As DevExpress.XtraTab.XtraTabPage
+    Friend WithEvents btnGenerarJSON As Button
+    Friend WithEvents rtbJSON As RichTextBox
+    Friend WithEvents bbiPrueba As DevExpress.XtraBars.BarButtonItem
 End Class

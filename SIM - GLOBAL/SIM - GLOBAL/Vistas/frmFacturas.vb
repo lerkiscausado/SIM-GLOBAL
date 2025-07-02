@@ -3,10 +3,16 @@ Imports SIM___GLOBAL.Controles
 Imports SIM___GLOBAL.Modelo
 Imports SIM___GLOBAL.Utilidades
 Imports System.IO
+Imports System.Text
+Imports Newtonsoft.Json
+Imports System.Text.RegularExpressions
+
 Public Class frmFacturas
     Dim _Id As New Guid
     Dim _IdDetallePagoRecibo As New Guid
     Dim _ds As DataSet
+    Dim _dsP As DataSet
+    Dim _dsC As DataSet
     Dim _Facturas As New Facturas
     Dim _DFacturas As New DFacturas
     Dim _DContratos As New DContratos
@@ -22,6 +28,7 @@ Public Class frmFacturas
     Dim _DDetalleFacturaProductos As New DDetalleFacturaProductos
     Dim _Inventario As New Inventario
     Dim _DRips As New SIM___GLOBAL.Controles.DRips
+    Dim _DRipsJSON As New SIM___GLOBAL.Controles.DRipsJSON
     Dim _PresentacionProductos As New SIM___GLOBAL.Modelo.PresentacionProductos
     Dim _DPresentacionProductos As New DPresentacionProductos
     Dim _DMedioPago As New SIM___GLOBAL.Controles.DMediosPago
@@ -38,6 +45,7 @@ Public Class frmFacturas
     Public IDEmpleado As String
     ReadOnly _funciones As New Funciones
     '-----------------------------------
+    Dim _ClickFactura As String
     Dim _ClickGrillaFacturas As String
     Dim _ClickGrillaProductos As String
     Dim _ClickGrillaOrdenesAuditadas As String
@@ -54,6 +62,45 @@ Public Class frmFacturas
     Dim Inventario As String
     Dim IdSaldoCliente As String
     Dim _ClickDetallePago As String
+    ' Serializar a JSON
+    Dim json As String
+    Private Sub HighlightJsonSyntax(rtb As RichTextBox)
+        ' Guardamos la posición del cursor
+        Dim selectionStart = rtb.SelectionStart
+        Dim selectionLength = rtb.SelectionLength
+
+        rtb.SuspendLayout()
+        rtb.SelectAll()
+        rtb.SelectionColor = Color.Black
+
+        ' Palabras clave (true, false, null)
+        HighlightRegex(rtb, "\b(true|false|null)\b", Color.Blue)
+
+        ' Strings (entre comillas)
+        HighlightRegex(rtb, """(\\.|[^""])*""", Color.Brown)
+
+        ' Números
+        HighlightRegex(rtb, "\b\d+(\.\d+)?\b", Color.DarkCyan)
+
+        ' Llaves y corchetes
+        HighlightRegex(rtb, "[\{\}\[\]]", Color.Purple)
+
+        ' Dos puntos y comas
+        HighlightRegex(rtb, "[:,]", Color.Gray)
+
+        ' Restauramos la selección original
+        rtb.SelectionStart = selectionStart
+        rtb.SelectionLength = selectionLength
+        rtb.SelectionColor = Color.Black
+        rtb.ResumeLayout()
+    End Sub
+    Private Sub HighlightRegex(rtb As RichTextBox, pattern As String, color As Color)
+        Dim matches = Regex.Matches(rtb.Text, pattern)
+        For Each m As RegularExpressions.Match In matches
+            rtb.Select(m.Index, m.Length)
+            rtb.SelectionColor = color
+        Next
+    End Sub
     Private Sub RIPS()
         Dim fs As FileStream
         ':::Ruta donde crearemos nuestro archivo txt
@@ -744,6 +791,7 @@ Public Class frmFacturas
             _ClickGrillaFacturas = gvConsultar.GetRowCellValue(e.RowHandle.ToString, "ID").ToString()
             _EstadoFactura = gvConsultar.GetRowCellValue(e.RowHandle.ToString, "ESTADO").ToString()
             _ClickGrillaTipoFactura = gvConsultar.GetRowCellValue(e.RowHandle.ToString, "TIPOFACTURA").ToString()
+            _ClickFactura = gvConsultar.GetRowCellValue(e.RowHandle.ToString, "FACTURA").ToString()
             If _ClickGrillaTipoFactura = "PRODUCTOS" Then
                 bbiFacturaConcepto.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
                 bbiRelacionFactura.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
@@ -1488,5 +1536,176 @@ Public Class frmFacturas
             bbiGuardar.Enabled = True
 
         End If
+    End Sub
+
+    Private Sub bbigenerarRips_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles bbigenerarRips.ItemClick
+        ' Crear la lista de usuarios
+        Dim listaUsuarios As New List(Of Object)
+
+        If _ClickGrillaFacturas <> "" Then
+
+            _ds = New DataSet
+            _ds = _DRipsJSON.Usuarios(_ClickGrillaFacturas)
+
+            For i As Integer = 0 To _ds.Tables(0).Rows.Count - 1
+
+                Dim tipoEstudio As String = _ds.Tables(0).Rows(i)(12).ToString
+
+                If tipoEstudio = "P" Then
+                    _dsP = New DataSet
+                    _dsP = _DRipsJSON.Procedimientos(_ds.Tables(0).Rows(i)(0).ToString)
+
+                    If _dsP.Tables(0).Rows.Count = 0 Then
+                        MsgBox("No se pueden generar los Rips porque existen procedimientos que no se han realizados")
+                        Exit For
+                    Else
+                        listaUsuarios.Add(New With {
+                            .tipoDocumentoIdentificacion = _ds.Tables(0).Rows(i)(1).ToString,
+                            .numDocumentoIdentificacion = _ds.Tables(0).Rows(i)(2).ToString,
+                            .tipoUsuario = "0" & _ds.Tables(0).Rows(i)(3).ToString,
+                            .fechaNacimiento = Format(_ds.Tables(0).Rows(i)(4), "yyyy-MM-dd"),
+                            .codSexo = _ds.Tables(0).Rows(i)(5).ToString(),
+                            .codPaisResidencia = "170",
+                            .codMunicipioResidencia = _ds.Tables(0).Rows(i)(7).ToString(),
+                            .codZonaTerritorialResidencia = _ds.Tables(0).Rows(i)(8).ToString(),
+                            .incapacidad = "NO",
+                            .consecutivo = _ds.Tables(0).Rows(i)(10),
+                            .codPaisOrigen = "170",
+                            .servicios = New With {
+                                .Procedimientos = New Object() {
+                                    New With {
+                                    .codPrestador = "130010244901",
+                                    .fechaInicioAtencion = Format(_dsP.Tables(0).Rows(0)(1), "yyyy-MM-dd HH:mm"),
+                                    .idMIPRES = CType(Nothing, String),
+                                    .numAutorizacion = _dsP.Tables(0).Rows(0)(3).ToString(),
+                                    .codProcedimiento = _dsP.Tables(0).Rows(0)(4).ToString(),
+                                    .viaIngresoServicioSalud = "02",
+                                    .modalidadGrupoServicioTecSal = "01",
+                                    .grupoServicios = "02",
+                                    .codServicio = 706,
+                                    .finalidadTecnologiaSalud = "15",
+                                    .tipoDocumentoIdentificacion = "CC",
+                                    .numDocumentoIdentificacion = "73106055",
+                                    .codDiagnosticoPrincipal = _dsP.Tables(0).Rows(0)(12).ToString(),
+                                    .codDiagnosticoRelacionado = CType(Nothing, String),
+                                    .codComplicacion = CType(Nothing, String),
+                                    .vrServicio = _dsP.Tables(0).Rows(0)(15),
+                                    .conceptoRecaudo = "05",
+                                    .valorPagoModerador = _dsP.Tables(0).Rows(0)(17),
+                                    .numFEVPagoModerador = CType(Nothing, String),
+                                    .consecutivo = _dsP.Tables(0).Rows(0)(19)
+                                    }
+                                }
+                            }
+                        })
+
+                    End If
+                Else
+                    _dsC = New DataSet
+                    _dsC = _DRipsJSON.Consultas(_ds.Tables(0).Rows(i)(0).ToString)
+
+                    If _dsC.Tables(0).Rows.Count = 0 Then
+                        MsgBox("No se pueden generar los Rips porque existen consultas que no se han realizados")
+                        Exit For
+                    Else
+                        listaUsuarios.Add(New With {
+                            .tipoDocumentoIdentificacion = _ds.Tables(0).Rows(i)(1).ToString,
+                            .numDocumentoIdentificacion = _ds.Tables(0).Rows(i)(2).ToString,
+                            .tipoUsuario = "0" & _ds.Tables(0).Rows(i)(3).ToString,
+                            .fechaNacimiento = Format(_ds.Tables(0).Rows(i)(4), "yyyy-MM-dd"),
+                            .codSexo = _ds.Tables(0).Rows(i)(5).ToString(),
+                            .codPaisResidencia = "170",
+                            .codMunicipioResidencia = _ds.Tables(0).Rows(i)(7).ToString(),
+                            .codZonaTerritorialResidencia = _ds.Tables(0).Rows(i)(8).ToString(),
+                            .incapacidad = "NO",
+                            .consecutivo = _ds.Tables(0).Rows(i)(10),
+                            .codPaisOrigen = "170",
+                            .servicios = New With {
+                            .consultas = New Object() {
+                                New With {
+                                .codPrestador = "130010244901",
+                                .fechaInicioAtencion = Format(_dsC.Tables(0).Rows(0)(1), "yyyy-MM-dd HH:mm"),
+                                .numAutorizacion = _dsC.Tables(0).Rows(0)(2).ToString(),
+                                .codConsulta = _dsC.Tables(0).Rows(0)(3).ToString(),
+                                .modalidadGrupoServicioTecSal = "01",
+                                .grupoServicios = "01",
+                                .codServicio = 301,
+                                .finalidadTecnologiaSalud = "15",
+                                .causaMotivoAtencion = "38",
+                                .codDiagnosticoPrincipal = _dsC.Tables(0).Rows(0)(9).ToString(),
+                                .codDiagnosticoRelacionado1 = CType(Nothing, String),
+                                .codDiagnosticoRelacionado2 = CType(Nothing, String),
+                                .codDiagnosticoRelacionado3 = CType(Nothing, String),
+                                .tipoDiagnosticoPrincipal = "01",
+                                .tipoDocumentoIdentificacion = "CC",
+                                .numDocumentoIdentificacion = "73106055",
+                                .vrServicio = _dsC.Tables(0).Rows(0)(16),
+                                .conceptoRecaudo = "05",
+                                .valorPagoModerador = _dsC.Tables(0).Rows(0)(18),
+                                .numFEVPagoModerador = CType(Nothing, String),
+                                .consecutivo = _dsC.Tables(0).Rows(0)(20)
+                                }
+                            }
+                        }
+                    })
+                    End If
+                End If
+            Next
+
+            'Armar el JSON final con la factura
+            Dim factura = New With {
+                .numDocumentoIdObligado = "900329923",
+                .numFactura = _ClickFactura,
+                .tipoNota = CType(Nothing, String),
+                .numNota = CType(Nothing, String),
+                .usuarios = listaUsuarios.ToArray()
+            }
+
+
+            json = JsonConvert.SerializeObject(factura, Formatting.Indented)
+
+            rtbJSON.Text = json
+
+            HighlightJsonSyntax(rtbJSON)
+
+            btnGenerarJSON.Enabled = True
+
+            xtcFactura.SelectedTabPage = xtpJSON
+
+
+            '----------------------------------------------------------
+            ' Guardar en archivo (ajusta la ruta si es necesario)
+            'Dim rutaArchivo = "C:\Otros Documentos\Proyectos\Rips\salida.json"
+            'File.WriteAllText(rutaArchivo, json, Encoding.UTF8)
+
+            ' MessageBox.Show("Archivo JSON generado exitosamente en:" & vbCrLf & rutaArchivo)
+        Else
+            MsgBox("Debe seleccionar la factura")
+        End If
+    End Sub
+
+    Private Sub btnGenerarJSON_Click(sender As Object, e As EventArgs) Handles btnGenerarJSON.Click
+        ' Crear el diálogo para guardar archivo
+        Dim saveFileDialog As New SaveFileDialog()
+        saveFileDialog.Filter = "Archivos JSON (*.json)|*.json"
+        saveFileDialog.Title = "Guardar archivo JSON"
+        saveFileDialog.FileName = _ClickFactura & ".json"
+
+        If saveFileDialog.ShowDialog() = DialogResult.OK Then
+            File.WriteAllText(saveFileDialog.FileName, json, Encoding.UTF8)
+            MessageBox.Show("Archivo guardado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        End If
+
+    End Sub
+
+    Private Sub bbiPrueba_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles bbiPrueba.ItemClick
+
+        Dim jsonFinal As String = _DRipsJSON.GenerarJSONDesdeDataTables(_DRipsJSON.consultas2(_ClickGrillaFacturas), _DRipsJSON.procedimientos2(_ClickGrillaFacturas))
+
+        rtbJSON.Text = jsonFinal
+
+        xtcFactura.SelectedTabPage = xtpJSON
+
+        'File.WriteAllText("usuarios_servicios.json", jsonFinal)
     End Sub
 End Class
