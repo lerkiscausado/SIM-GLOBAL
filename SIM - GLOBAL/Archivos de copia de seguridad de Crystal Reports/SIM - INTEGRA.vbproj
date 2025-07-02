@@ -4,15 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C91D9247-4753-41BF-94E5-51469924E9C0}</ProjectGuid>
+    <ProjectGuid>{31AB802F-9C21-4420-8F46-3E1D68EB8A74}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <StartupObject>SIM_ENDOSCOPIA.My.MyApplication</StartupObject>
-    <RootNamespace>SIM_ENDOSCOPIA</RootNamespace>
-    <AssemblyName>SIM-ENDOSCOPIA</AssemblyName>
+    <StartupObject>SIM___INTEGRA.My.MyApplication</StartupObject>
+    <RootNamespace>SIM___INTEGRA</RootNamespace>
+    <AssemblyName>SIM - INTEGRA</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>WindowsForms</MyType>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -21,7 +22,7 @@
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\Debug\</OutputPath>
-    <DocumentationFile>SIM-ENDOSCOPIA.xml</DocumentationFile>
+    <DocumentationFile>SIM - INTEGRA.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -31,7 +32,7 @@
     <DefineTrace>true</DefineTrace>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DocumentationFile>SIM-ENDOSCOPIA.xml</DocumentationFile>
+    <DocumentationFile>SIM - INTEGRA.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup>
@@ -49,32 +50,28 @@
   <PropertyGroup>
     <ApplicationIcon>sim-ConvertImage.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.ReportSource, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.Shared, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Charts.v20.1.Core, Version=20.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Data.v20.1, Version=20.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Dialogs.v20.1.Core, Version=20.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Printing.v20.1.Core, Version=20.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.TreeMap.v20.1.Core, Version=20.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Data.Desktop.v20.1, Version=20.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Utils.v20.1, Version=20.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraBars.v20.1, Version=20.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraCharts.v20.1, Version=20.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraCharts.v20.1.UI, Version=20.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraCharts.v20.1.Wizard, Version=20.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraDialogs.v20.1, Version=20.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraEditors.v20.1, Version=20.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraGrid.v20.1, Version=20.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraLayout.v20.1, Version=20.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraNavBar.v20.1, Version=20.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraPrinting.v20.1, Version=20.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraTreeList.v20.1, Version=20.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraTreeMap.v20.1, Version=20.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraTreeList.v20.1, Version=20.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Web.Services" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
@@ -96,31 +93,45 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controles\DEndoscopia.vb" />
-    <Compile Include="Controles\DImagenes.vb" />
-    <Compile Include="Controles\DImagenesTemporales.vb" />
+    <Compile Include="Controles\DHistoriaIntegra.vb" />
+    <Compile Include="Controles\DImpresionHistoria.vb" />
+    <Compile Include="Controles\DInsertar.vb" />
+    <Compile Include="Controles\DOrdenes.vb" />
+    <Compile Include="Controles\DTemporal.vb" />
+    <Compile Include="Controles\DUsuarios.vb" />
     <Compile Include="Datos.vb" />
-    <Compile Include="DSVistas.Designer.vb">
+    <Compile Include="Form1.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.vb">
+      <DependentUpon>Form1.vb</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modelo\HistoriaIntegra.vb" />
+    <Compile Include="Modelo\ImpresionHistoria.vb" />
+    <Compile Include="Modelo\Ordenes.vb" />
+    <Compile Include="Modelo\Temporal.vb" />
+    <Compile Include="Modelo\Usuarios.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DSVistas.xsd</DependentUpon>
+      <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="DSVistas.vb">
-      <DependentUpon>DSVistas.xsd</DependentUpon>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Modelo\Endoscopia.vb" />
-    <Compile Include="Modelo\Imagenes.vb" />
-    <Compile Include="Modelo\ImagenesTemporales.vb" />
-    <Compile Include="Reportes\agenda.vb">
+    <Compile Include="Reportes\ReporteMensual.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>agenda.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Reportes\prueba.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>prueba.rpt</DependentUpon>
+      <DependentUpon>ReporteMensual.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Vistas\frmConsultar.Designer.vb">
@@ -129,52 +140,22 @@
     <Compile Include="Vistas\frmConsultar.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Vistas\frmDetalleOrden.Designer.vb">
-      <DependentUpon>frmDetalleOrden.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Vistas\frmDetalleOrden.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Vistas\frmEndoscopia.Designer.vb">
-      <DependentUpon>frmEndoscopia.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Vistas\frmEndoscopia.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Vistas\frmEndoscopiaGL.Designer.vb">
-      <DependentUpon>frmEndoscopiaGL.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Vistas\frmEndoscopiaGL.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Vistas\frmEstudiosEspeciales.Designer.vb">
-      <DependentUpon>frmEstudiosEspeciales.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Vistas\frmEstudiosEspeciales.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Vistas\frmHistoria.Designer.vb">
       <DependentUpon>frmHistoria.vb</DependentUpon>
     </Compile>
     <Compile Include="Vistas\frmHistoria.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Vistas\frmHistoriaGL.Designer.vb">
-      <DependentUpon>frmHistoriaGL.vb</DependentUpon>
+    <Compile Include="Vistas\frmHistoriaGrupal.Designer.vb">
+      <DependentUpon>frmHistoriaGrupal.vb</DependentUpon>
     </Compile>
-    <Compile Include="Vistas\frmHistoriaGL.vb">
+    <Compile Include="Vistas\frmHistoriaGrupal.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Vistas\frmImagenes.Designer.vb">
-      <DependentUpon>frmImagenes.vb</DependentUpon>
+    <Compile Include="Vistas\frmHistoriasAnteriores.Designer.vb">
+      <DependentUpon>frmHistoriasAnteriores.vb</DependentUpon>
     </Compile>
-    <Compile Include="Vistas\frmImagenes.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Vistas\frmImagenesCapturadas.Designer.vb">
-      <DependentUpon>frmImagenesCapturadas.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Vistas\frmImagenesCapturadas.vb">
+    <Compile Include="Vistas\frmHistoriasAnteriores.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Vistas\frmInicio.Designer.vb">
@@ -195,54 +176,29 @@
     <Compile Include="Vistas\frmOrdenes.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Vistas\frmPlantillasInformes.Designer.vb">
-      <DependentUpon>frmPlantillasInformes.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Vistas\frmPlantillasInformes.vb">
-      <SubType>Form</SubType>
+    <Compile Include="Vistas\frmPrueba.Designer.vb">
+      <DependentUpon>frmPrueba.vb</DependentUpon>
     </Compile>
     <Compile Include="Vistas\frmPrueba.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Vistas\frmPrueba.Designer.vb">
-      <DependentUpon>frmPrueba.vb</DependentUpon>
+    <Compile Include="Vistas\frmUsuarios.Designer.vb">
+      <DependentUpon>frmUsuarios.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\frmUsuarios.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="My Project\AssemblyInfo.vb" />
-    <Compile Include="My Project\Application.Designer.vb">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Application.myapp</DependentUpon>
+    <Compile Include="Vistas\frmVistaHistoria.Designer.vb">
+      <DependentUpon>frmVistaHistoria.vb</DependentUpon>
     </Compile>
-    <Compile Include="My Project\Resources.Designer.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="My Project\Settings.Designer.vb">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Settings.settings</DependentUpon>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-    </Compile>
-    <Compile Include="Vistas\frmTextoImagenes.Designer.vb">
-      <DependentUpon>frmTextoImagenes.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Vistas\frmTextoImagenes.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Vistas\prueba2imagenes.Designer.vb">
-      <DependentUpon>prueba2imagenes.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Vistas\prueba2imagenes.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Vistas\SSPresentacion.Designer.vb">
-      <DependentUpon>SSPresentacion.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Vistas\SSPresentacion.vb">
+    <Compile Include="Vistas\frmVistaHistoria.vb">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="My Project\licenses.licx" />
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
@@ -250,40 +206,21 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reportes\agenda.rpt">
+    <EmbeddedResource Include="Reportes\ReporteMensual.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>agenda.vb</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Reportes\prueba.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>prueba.vb</LastGenOutput>
+      <LastGenOutput>ReporteMensual.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Vistas\frmConsultar.resx">
       <DependentUpon>frmConsultar.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Vistas\frmDetalleOrden.resx">
-      <DependentUpon>frmDetalleOrden.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Vistas\frmEndoscopia.resx">
-      <DependentUpon>frmEndoscopia.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Vistas\frmEndoscopiaGL.resx">
-      <DependentUpon>frmEndoscopiaGL.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Vistas\frmEstudiosEspeciales.resx">
-      <DependentUpon>frmEstudiosEspeciales.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Vistas\frmHistoria.resx">
       <DependentUpon>frmHistoria.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Vistas\frmHistoriaGL.resx">
-      <DependentUpon>frmHistoriaGL.vb</DependentUpon>
+    <EmbeddedResource Include="Vistas\frmHistoriaGrupal.resx">
+      <DependentUpon>frmHistoriaGrupal.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Vistas\frmImagenes.resx">
-      <DependentUpon>frmImagenes.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Vistas\frmImagenesCapturadas.resx">
-      <DependentUpon>frmImagenesCapturadas.vb</DependentUpon>
+    <EmbeddedResource Include="Vistas\frmHistoriasAnteriores.resx">
+      <DependentUpon>frmHistoriasAnteriores.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vistas\frmInicio.resx">
       <DependentUpon>frmInicio.vb</DependentUpon>
@@ -294,34 +231,18 @@
     <EmbeddedResource Include="Vistas\frmOrdenes.resx">
       <DependentUpon>frmOrdenes.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Vistas\frmPlantillasInformes.resx">
-      <DependentUpon>frmPlantillasInformes.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Vistas\frmPrueba.resx">
       <DependentUpon>frmPrueba.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Vistas\frmTextoImagenes.resx">
-      <DependentUpon>frmTextoImagenes.vb</DependentUpon>
+    <EmbeddedResource Include="Vistas\frmUsuarios.resx">
+      <DependentUpon>frmUsuarios.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Vistas\prueba2imagenes.resx">
-      <DependentUpon>prueba2imagenes.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Vistas\SSPresentacion.resx">
-      <DependentUpon>SSPresentacion.vb</DependentUpon>
+    <EmbeddedResource Include="Vistas\frmVistaHistoria.resx">
+      <DependentUpon>frmVistaHistoria.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="DSVistas.xsc">
-      <DependentUpon>DSVistas.xsd</DependentUpon>
-    </None>
-    <None Include="DSVistas.xsd">
-      <SubType>Designer</SubType>
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DSVistas.Designer.vb</LastGenOutput>
-    </None>
-    <None Include="DSVistas.xss">
-      <DependentUpon>DSVistas.xsd</DependentUpon>
-    </None>
+    <None Include="My Project\app.manifest" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
@@ -333,25 +254,15 @@
     </None>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="sim-ConvertImage.ico" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\SIM - GLOBAL\SIM - GLOBAL.vbproj">
       <Project>{57b7dcdb-2284-411a-8f6d-cafab410d207}</Project>
       <Name>SIM - GLOBAL</Name>
     </ProjectReference>
-    <ProjectReference Include="..\SIM-CITOPATO\SIM-CITOPATO.vbproj">
-      <Project>{bce171a9-d672-44e4-bf25-096862dec330}</Project>
-      <Name>SIM-CITOPATO</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SIM-MARTINEZ\SIM-MARTINEZ.vbproj">
-      <Project>{0c816d82-b3a3-49b2-be3f-13f234ddd6f3}</Project>
-      <Name>SIM-MARTINEZ</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadata Include="Connected Services\" />
+    <Content Include="sim-ConvertImage.ico" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
