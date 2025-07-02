@@ -20,13 +20,13 @@ Partial Class frmFacturas
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim TableColumnDefinition2 As DevExpress.XtraEditors.TableLayout.TableColumnDefinition = New DevExpress.XtraEditors.TableLayout.TableColumnDefinition()
-        Dim TileViewItemElement6 As DevExpress.XtraGrid.Views.Tile.TileViewItemElement = New DevExpress.XtraGrid.Views.Tile.TileViewItemElement()
-        Dim TileViewItemElement7 As DevExpress.XtraGrid.Views.Tile.TileViewItemElement = New DevExpress.XtraGrid.Views.Tile.TileViewItemElement()
-        Dim TileViewItemElement8 As DevExpress.XtraGrid.Views.Tile.TileViewItemElement = New DevExpress.XtraGrid.Views.Tile.TileViewItemElement()
-        Dim TileViewItemElement9 As DevExpress.XtraGrid.Views.Tile.TileViewItemElement = New DevExpress.XtraGrid.Views.Tile.TileViewItemElement()
-        Dim TileViewItemElement10 As DevExpress.XtraGrid.Views.Tile.TileViewItemElement = New DevExpress.XtraGrid.Views.Tile.TileViewItemElement()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmFacturas))
+        Dim TableColumnDefinition1 As DevExpress.XtraEditors.TableLayout.TableColumnDefinition = New DevExpress.XtraEditors.TableLayout.TableColumnDefinition()
+        Dim TileViewItemElement1 As DevExpress.XtraGrid.Views.Tile.TileViewItemElement = New DevExpress.XtraGrid.Views.Tile.TileViewItemElement()
+        Dim TileViewItemElement2 As DevExpress.XtraGrid.Views.Tile.TileViewItemElement = New DevExpress.XtraGrid.Views.Tile.TileViewItemElement()
+        Dim TileViewItemElement3 As DevExpress.XtraGrid.Views.Tile.TileViewItemElement = New DevExpress.XtraGrid.Views.Tile.TileViewItemElement()
+        Dim TileViewItemElement4 As DevExpress.XtraGrid.Views.Tile.TileViewItemElement = New DevExpress.XtraGrid.Views.Tile.TileViewItemElement()
+        Dim TileViewItemElement5 As DevExpress.XtraGrid.Views.Tile.TileViewItemElement = New DevExpress.XtraGrid.Views.Tile.TileViewItemElement()
         Me.TileViewColumn3 = New DevExpress.XtraGrid.Columns.TileViewColumn()
         Me.TileViewColumn5 = New DevExpress.XtraGrid.Columns.TileViewColumn()
         Me.TileViewColumn2 = New DevExpress.XtraGrid.Columns.TileViewColumn()
@@ -378,6 +378,9 @@ Partial Class frmFacturas
         Me.colPRealizacion = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colPNeto = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.BarDockControl7 = New DevExpress.XtraBars.BarDockControl()
+        Me.xtpJSON = New DevExpress.XtraTab.XtraTabPage()
+        Me.btnGenerarJSON = New System.Windows.Forms.Button()
+        Me.rtbJSON = New System.Windows.Forms.RichTextBox()
         Me.bbiEditar = New DevExpress.XtraBars.BarButtonItem()
         Me.BarDockControl3 = New DevExpress.XtraBars.BarDockControl()
         Me.BarManager2 = New DevExpress.XtraBars.BarManager(Me.components)
@@ -404,9 +407,7 @@ Partial Class frmFacturas
         Me.txtID = New DevExpress.XtraEditors.TextEdit()
         Me.LabelControl31 = New DevExpress.XtraEditors.LabelControl()
         Me.CachedEjemplo1 = New SIM___GLOBAL.CachedEjemplo()
-        Me.xtpJSON = New DevExpress.XtraTab.XtraTabPage()
-        Me.rtbJSON = New System.Windows.Forms.RichTextBox()
-        Me.btnGenerarJSON = New System.Windows.Forms.Button()
+        Me.bbiPrueba = New DevExpress.XtraBars.BarButtonItem()
         CType(Me.BarManager1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemLookUpEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GCConsultar, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -502,11 +503,11 @@ Partial Class frmFacturas
         Me.xtpProcedimientos.SuspendLayout()
         CType(Me.GCProcedimientos, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GVProcedimientos, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.xtpJSON.SuspendLayout()
         CType(Me.BarManager2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.rcboFacturas, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BarManager3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtID.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.xtpJSON.SuspendLayout()
         Me.SuspendLayout()
         '
         'TileViewColumn3
@@ -589,8 +590,8 @@ Partial Class frmFacturas
         Me.BarManager1.DockControls.Add(Me.barDockControlLeft)
         Me.BarManager1.DockControls.Add(Me.barDockControlRight)
         Me.BarManager1.Form = Me
-        Me.BarManager1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.bbiNuevo, Me.bbiGuardar, Me.bbiImprimir, Me.bbiAnular, Me.cboFactura, Me.bbiVistaPrevia, Me.bsiImprimir, Me.bbiActualizar, Me.bbiFactura, Me.bbiDetalleFactura, Me.bbiConsultar, Me.bbiFacturaConcepto, Me.bbiRelacionFactura, Me.BarButtonItem4, Me.bbiRips, Me.bbiAgregarFacturaRips, Me.bbiFacturaAgregarTodo, Me.bbiFacturaBorrar, Me.BarStaticItem1, Me.BarButtonItem5, Me.BarButtonItem6, Me.BarButtonItem7, Me.BarButtonItem8, Me.BarButtonItem9, Me.BarButtonItem10, Me.bbiEliminarFacturaRips, Me.bbiEliminarFacturasRips, Me.bbiAgregarFacturasRips, Me.bbigenerarRips})
-        Me.BarManager1.MaxItemId = 29
+        Me.BarManager1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.bbiNuevo, Me.bbiGuardar, Me.bbiImprimir, Me.bbiAnular, Me.cboFactura, Me.bbiVistaPrevia, Me.bsiImprimir, Me.bbiActualizar, Me.bbiFactura, Me.bbiDetalleFactura, Me.bbiConsultar, Me.bbiFacturaConcepto, Me.bbiRelacionFactura, Me.BarButtonItem4, Me.bbiRips, Me.bbiAgregarFacturaRips, Me.bbiFacturaAgregarTodo, Me.bbiFacturaBorrar, Me.BarStaticItem1, Me.BarButtonItem5, Me.BarButtonItem6, Me.BarButtonItem7, Me.BarButtonItem8, Me.BarButtonItem9, Me.BarButtonItem10, Me.bbiEliminarFacturaRips, Me.bbiEliminarFacturasRips, Me.bbiAgregarFacturasRips, Me.bbigenerarRips, Me.bbiPrueba})
+        Me.BarManager1.MaxItemId = 30
         Me.BarManager1.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemLookUpEdit1})
         '
         'bFacturas
@@ -600,7 +601,7 @@ Partial Class frmFacturas
         Me.bFacturas.DockRow = 0
         Me.bFacturas.DockStyle = DevExpress.XtraBars.BarDockStyle.Top
         Me.bFacturas.FloatLocation = New System.Drawing.Point(86, 132)
-        Me.bFacturas.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.bbiNuevo), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiGuardar), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiAnular), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiActualizar), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiConsultar, True), New DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, Me.bsiImprimir, DevExpress.XtraBars.BarItemPaintStyle.CaptionInMenu), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiRips, True), New DevExpress.XtraBars.LinkPersistInfo(Me.bbigenerarRips), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiEliminarFacturasRips), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiEliminarFacturaRips), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiAgregarFacturaRips), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiAgregarFacturasRips)})
+        Me.bFacturas.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.bbiNuevo), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiGuardar), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiAnular), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiActualizar), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiConsultar, True), New DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, Me.bsiImprimir, DevExpress.XtraBars.BarItemPaintStyle.CaptionInMenu), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiRips, True), New DevExpress.XtraBars.LinkPersistInfo(Me.bbigenerarRips), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiEliminarFacturasRips), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiEliminarFacturaRips), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiAgregarFacturaRips), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiAgregarFacturasRips), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiPrueba)})
         Me.bFacturas.Offset = 3
         Me.bFacturas.Text = "Herramientas Facturas"
         '
@@ -2814,51 +2815,51 @@ Partial Class frmFacturas
         Me.TVDatosCliente.OptionsTiles.ItemPadding = New System.Windows.Forms.Padding(5)
         Me.TVDatosCliente.OptionsTiles.ItemSize = New System.Drawing.Size(372, 72)
         Me.TVDatosCliente.OptionsTiles.Padding = New System.Windows.Forms.Padding(3)
-        TableColumnDefinition2.Length.Value = 138.0R
-        Me.TVDatosCliente.TileColumns.Add(TableColumnDefinition2)
-        TileViewItemElement6.AnchorAlignment = DevExpress.Utils.AnchorAlignment.Left
-        TileViewItemElement6.Appearance.Normal.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        TileViewItemElement6.Appearance.Normal.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer))
-        TileViewItemElement6.Appearance.Normal.Options.UseFont = True
-        TileViewItemElement6.Appearance.Normal.Options.UseForeColor = True
-        TileViewItemElement6.Column = Me.TileViewColumn3
-        TileViewItemElement6.StretchHorizontal = True
-        TileViewItemElement6.Text = "TileViewColumn3"
-        TileViewItemElement6.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.Manual
-        TileViewItemElement6.TextLocation = New System.Drawing.Point(10, 5)
-        TileViewItemElement7.Appearance.Normal.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        TileViewItemElement7.Appearance.Normal.ForeColor = System.Drawing.Color.Gray
-        TileViewItemElement7.Appearance.Normal.Options.UseFont = True
-        TileViewItemElement7.Appearance.Normal.Options.UseForeColor = True
-        TileViewItemElement7.Column = Me.TileViewColumn5
-        TileViewItemElement7.StretchHorizontal = True
-        TileViewItemElement7.Text = "TileViewColumn5"
-        TileViewItemElement7.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.Manual
-        TileViewItemElement7.TextLocation = New System.Drawing.Point(10, 35)
-        TileViewItemElement8.Column = Me.TileViewColumn2
-        TileViewItemElement8.StretchHorizontal = True
-        TileViewItemElement8.Text = "TileViewColumn2"
-        TileViewItemElement8.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.Manual
-        TileViewItemElement8.TextLocation = New System.Drawing.Point(10, 22)
-        TileViewItemElement9.Column = Me.colEmail
-        TileViewItemElement9.StretchHorizontal = True
-        TileViewItemElement9.Text = "colEmail"
-        TileViewItemElement9.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.Manual
-        TileViewItemElement9.TextLocation = New System.Drawing.Point(10, 60)
-        TileViewItemElement10.Appearance.Normal.BackColor = System.Drawing.Color.Transparent
-        TileViewItemElement10.Appearance.Normal.ForeColor = System.Drawing.Color.DimGray
-        TileViewItemElement10.Appearance.Normal.Options.UseBackColor = True
-        TileViewItemElement10.Appearance.Normal.Options.UseForeColor = True
-        TileViewItemElement10.Column = Me.colDireccion
-        TileViewItemElement10.StretchHorizontal = True
-        TileViewItemElement10.Text = "colDireccion"
-        TileViewItemElement10.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.Manual
-        TileViewItemElement10.TextLocation = New System.Drawing.Point(10, 47)
-        Me.TVDatosCliente.TileTemplate.Add(TileViewItemElement6)
-        Me.TVDatosCliente.TileTemplate.Add(TileViewItemElement7)
-        Me.TVDatosCliente.TileTemplate.Add(TileViewItemElement8)
-        Me.TVDatosCliente.TileTemplate.Add(TileViewItemElement9)
-        Me.TVDatosCliente.TileTemplate.Add(TileViewItemElement10)
+        TableColumnDefinition1.Length.Value = 138.0R
+        Me.TVDatosCliente.TileColumns.Add(TableColumnDefinition1)
+        TileViewItemElement1.AnchorAlignment = DevExpress.Utils.AnchorAlignment.Left
+        TileViewItemElement1.Appearance.Normal.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        TileViewItemElement1.Appearance.Normal.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer))
+        TileViewItemElement1.Appearance.Normal.Options.UseFont = True
+        TileViewItemElement1.Appearance.Normal.Options.UseForeColor = True
+        TileViewItemElement1.Column = Me.TileViewColumn3
+        TileViewItemElement1.StretchHorizontal = True
+        TileViewItemElement1.Text = "TileViewColumn3"
+        TileViewItemElement1.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.Manual
+        TileViewItemElement1.TextLocation = New System.Drawing.Point(10, 5)
+        TileViewItemElement2.Appearance.Normal.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        TileViewItemElement2.Appearance.Normal.ForeColor = System.Drawing.Color.Gray
+        TileViewItemElement2.Appearance.Normal.Options.UseFont = True
+        TileViewItemElement2.Appearance.Normal.Options.UseForeColor = True
+        TileViewItemElement2.Column = Me.TileViewColumn5
+        TileViewItemElement2.StretchHorizontal = True
+        TileViewItemElement2.Text = "TileViewColumn5"
+        TileViewItemElement2.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.Manual
+        TileViewItemElement2.TextLocation = New System.Drawing.Point(10, 35)
+        TileViewItemElement3.Column = Me.TileViewColumn2
+        TileViewItemElement3.StretchHorizontal = True
+        TileViewItemElement3.Text = "TileViewColumn2"
+        TileViewItemElement3.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.Manual
+        TileViewItemElement3.TextLocation = New System.Drawing.Point(10, 22)
+        TileViewItemElement4.Column = Me.colEmail
+        TileViewItemElement4.StretchHorizontal = True
+        TileViewItemElement4.Text = "colEmail"
+        TileViewItemElement4.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.Manual
+        TileViewItemElement4.TextLocation = New System.Drawing.Point(10, 60)
+        TileViewItemElement5.Appearance.Normal.BackColor = System.Drawing.Color.Transparent
+        TileViewItemElement5.Appearance.Normal.ForeColor = System.Drawing.Color.DimGray
+        TileViewItemElement5.Appearance.Normal.Options.UseBackColor = True
+        TileViewItemElement5.Appearance.Normal.Options.UseForeColor = True
+        TileViewItemElement5.Column = Me.colDireccion
+        TileViewItemElement5.StretchHorizontal = True
+        TileViewItemElement5.Text = "colDireccion"
+        TileViewItemElement5.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.Manual
+        TileViewItemElement5.TextLocation = New System.Drawing.Point(10, 47)
+        Me.TVDatosCliente.TileTemplate.Add(TileViewItemElement1)
+        Me.TVDatosCliente.TileTemplate.Add(TileViewItemElement2)
+        Me.TVDatosCliente.TileTemplate.Add(TileViewItemElement3)
+        Me.TVDatosCliente.TileTemplate.Add(TileViewItemElement4)
+        Me.TVDatosCliente.TileTemplate.Add(TileViewItemElement5)
         '
         'TileViewColumn1
         '
@@ -4087,6 +4088,31 @@ Partial Class frmFacturas
         Me.BarDockControl7.Manager = Nothing
         Me.BarDockControl7.Size = New System.Drawing.Size(1262, 0)
         '
+        'xtpJSON
+        '
+        Me.xtpJSON.Controls.Add(Me.btnGenerarJSON)
+        Me.xtpJSON.Controls.Add(Me.rtbJSON)
+        Me.xtpJSON.Name = "xtpJSON"
+        Me.xtpJSON.Size = New System.Drawing.Size(1262, 545)
+        Me.xtpJSON.Text = "JSON"
+        '
+        'btnGenerarJSON
+        '
+        Me.btnGenerarJSON.Location = New System.Drawing.Point(11, 19)
+        Me.btnGenerarJSON.Name = "btnGenerarJSON"
+        Me.btnGenerarJSON.Size = New System.Drawing.Size(109, 27)
+        Me.btnGenerarJSON.TabIndex = 226
+        Me.btnGenerarJSON.Text = "Generar JSON"
+        Me.btnGenerarJSON.UseVisualStyleBackColor = True
+        '
+        'rtbJSON
+        '
+        Me.rtbJSON.Location = New System.Drawing.Point(11, 52)
+        Me.rtbJSON.Name = "rtbJSON"
+        Me.rtbJSON.Size = New System.Drawing.Size(559, 490)
+        Me.rtbJSON.TabIndex = 0
+        Me.rtbJSON.Text = ""
+        '
         'bbiEditar
         '
         Me.bbiEditar.Caption = "Editar"
@@ -4290,30 +4316,11 @@ Partial Class frmFacturas
         Me.LabelControl31.Text = "ID:"
         Me.LabelControl31.Visible = False
         '
-        'xtpJSON
+        'bbiPrueba
         '
-        Me.xtpJSON.Controls.Add(Me.btnGenerarJSON)
-        Me.xtpJSON.Controls.Add(Me.rtbJSON)
-        Me.xtpJSON.Name = "xtpJSON"
-        Me.xtpJSON.Size = New System.Drawing.Size(1262, 545)
-        Me.xtpJSON.Text = "JSON"
-        '
-        'rtbJSON
-        '
-        Me.rtbJSON.Location = New System.Drawing.Point(11, 52)
-        Me.rtbJSON.Name = "rtbJSON"
-        Me.rtbJSON.Size = New System.Drawing.Size(559, 490)
-        Me.rtbJSON.TabIndex = 0
-        Me.rtbJSON.Text = ""
-        '
-        'btnGenerarJSON
-        '
-        Me.btnGenerarJSON.Location = New System.Drawing.Point(11, 19)
-        Me.btnGenerarJSON.Name = "btnGenerarJSON"
-        Me.btnGenerarJSON.Size = New System.Drawing.Size(109, 27)
-        Me.btnGenerarJSON.TabIndex = 226
-        Me.btnGenerarJSON.Text = "Generar JSON"
-        Me.btnGenerarJSON.UseVisualStyleBackColor = True
+        Me.bbiPrueba.Caption = "Prueba"
+        Me.bbiPrueba.Id = 29
+        Me.bbiPrueba.Name = "bbiPrueba"
         '
         'frmFacturas
         '
@@ -4444,11 +4451,11 @@ Partial Class frmFacturas
         Me.xtpProcedimientos.ResumeLayout(False)
         CType(Me.GCProcedimientos, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GVProcedimientos, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.xtpJSON.ResumeLayout(False)
         CType(Me.BarManager2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.rcboFacturas, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.BarManager3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtID.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.xtpJSON.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -4833,4 +4840,5 @@ Partial Class frmFacturas
     Friend WithEvents xtpJSON As DevExpress.XtraTab.XtraTabPage
     Friend WithEvents btnGenerarJSON As Button
     Friend WithEvents rtbJSON As RichTextBox
+    Friend WithEvents bbiPrueba As DevExpress.XtraBars.BarButtonItem
 End Class

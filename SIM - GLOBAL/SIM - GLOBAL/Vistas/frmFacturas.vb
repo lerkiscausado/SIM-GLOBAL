@@ -1557,6 +1557,7 @@ Public Class frmFacturas
 
                     If _dsP.Tables(0).Rows.Count = 0 Then
                         MsgBox("No se pueden generar los Rips porque existen procedimientos que no se han realizados")
+                        Exit For
                     Else
                         listaUsuarios.Add(New With {
                             .tipoDocumentoIdentificacion = _ds.Tables(0).Rows(i)(1).ToString,
@@ -1605,6 +1606,7 @@ Public Class frmFacturas
 
                     If _dsC.Tables(0).Rows.Count = 0 Then
                         MsgBox("No se pueden generar los Rips porque existen consultas que no se han realizados")
+                        Exit For
                     Else
                         listaUsuarios.Add(New With {
                             .tipoDocumentoIdentificacion = _ds.Tables(0).Rows(i)(1).ToString,
@@ -1694,5 +1696,16 @@ Public Class frmFacturas
             MessageBox.Show("Archivo guardado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End If
 
+    End Sub
+
+    Private Sub bbiPrueba_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles bbiPrueba.ItemClick
+
+        Dim jsonFinal As String = _DRipsJSON.GenerarJSONDesdeDataTables(_DRipsJSON.consultas2(_ClickGrillaFacturas), _DRipsJSON.procedimientos2(_ClickGrillaFacturas))
+
+        rtbJSON.Text = jsonFinal
+
+        xtcFactura.SelectedTabPage = xtpJSON
+
+        'File.WriteAllText("usuarios_servicios.json", jsonFinal)
     End Sub
 End Class
