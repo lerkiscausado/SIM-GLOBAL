@@ -48,4 +48,9 @@ Public Class frmFacturacionSandra
             _DFacturas.actualizarAutorizacion(GVConsultar.GetRowCellValue(e.RowHandle.ToString, "ORDEN").ToString(), GVConsultar.GetRowCellValue(e.RowHandle.ToString, "AUTORIZACION").ToString())
         End If
     End Sub
+
+    Private Sub bbiActualizar_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles bbiActualizar.ItemClick
+        _ds = _DFacturas.RelacionFactura()
+        GCConsultar.DataSource = _ds.Tables(0)
+    End Sub
 End Class
