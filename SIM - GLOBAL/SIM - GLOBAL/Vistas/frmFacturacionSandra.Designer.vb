@@ -42,6 +42,7 @@ Partial Class frmFacturacionSandra
         Me.colEntidad = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colSubentidad = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colEstudio = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colAutorizacion = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.ColEspecimen = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colCups = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colValor = New DevExpress.XtraGrid.Columns.GridColumn()
@@ -59,7 +60,7 @@ Partial Class frmFacturacionSandra
         Me.BarDockControl1 = New DevExpress.XtraBars.BarDockControl()
         Me.GridView2 = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.barDockControlTop = New DevExpress.XtraBars.BarDockControl()
-        Me.colAutorizacion = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.bbiActualizar = New DevExpress.XtraBars.BarButtonItem()
         CType(Me.XtraTabControl3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.XtraTabControl3.SuspendLayout()
         Me.xtpConsulta.SuspendLayout()
@@ -119,13 +120,11 @@ Partial Class frmFacturacionSandra
         '
         'XtraTabControl3
         '
-        Me.XtraTabControl3.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.XtraTabControl3.Location = New System.Drawing.Point(12, 54)
+        Me.XtraTabControl3.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.XtraTabControl3.Location = New System.Drawing.Point(0, 24)
         Me.XtraTabControl3.Name = "XtraTabControl3"
         Me.XtraTabControl3.SelectedTabPage = Me.xtpConsulta
-        Me.XtraTabControl3.Size = New System.Drawing.Size(1155, 472)
+        Me.XtraTabControl3.Size = New System.Drawing.Size(1179, 526)
         Me.XtraTabControl3.TabIndex = 171
         Me.XtraTabControl3.TabPages.AddRange(New DevExpress.XtraTab.XtraTabPage() {Me.xtpConsulta})
         '
@@ -133,7 +132,7 @@ Partial Class frmFacturacionSandra
         '
         Me.xtpConsulta.Controls.Add(Me.GCConsultar)
         Me.xtpConsulta.Name = "xtpConsulta"
-        Me.xtpConsulta.Size = New System.Drawing.Size(1153, 447)
+        Me.xtpConsulta.Size = New System.Drawing.Size(1177, 501)
         Me.xtpConsulta.Text = "Relacion a facturar"
         '
         'GCConsultar
@@ -143,7 +142,7 @@ Partial Class frmFacturacionSandra
         Me.GCConsultar.MainView = Me.GVConsultar
         Me.GCConsultar.MenuManager = Me.BarManager1
         Me.GCConsultar.Name = "GCConsultar"
-        Me.GCConsultar.Size = New System.Drawing.Size(1153, 447)
+        Me.GCConsultar.Size = New System.Drawing.Size(1177, 501)
         Me.GCConsultar.TabIndex = 13
         Me.GCConsultar.UseEmbeddedNavigator = True
         Me.GCConsultar.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GVConsultar})
@@ -271,6 +270,15 @@ Partial Class frmFacturacionSandra
         Me.colEstudio.VisibleIndex = 8
         Me.colEstudio.Width = 167
         '
+        'colAutorizacion
+        '
+        Me.colAutorizacion.Caption = "AUTORIZACION"
+        Me.colAutorizacion.FieldName = "AUTORIZACION"
+        Me.colAutorizacion.Name = "colAutorizacion"
+        Me.colAutorizacion.Visible = True
+        Me.colAutorizacion.VisibleIndex = 9
+        Me.colAutorizacion.Width = 83
+        '
         'ColEspecimen
         '
         Me.ColEspecimen.Caption = "ESPECIMEN"
@@ -322,8 +330,8 @@ Partial Class frmFacturacionSandra
         Me.BarManager1.DockControls.Add(Me.barDockControlLeft)
         Me.BarManager1.DockControls.Add(Me.barDockControlRight)
         Me.BarManager1.Form = Me
-        Me.BarManager1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.bbiConsultar, Me.bbiExportarPDF, Me.bbiExportarExcel})
-        Me.BarManager1.MaxItemId = 6
+        Me.BarManager1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.bbiConsultar, Me.bbiExportarPDF, Me.bbiExportarExcel, Me.bbiActualizar})
+        Me.BarManager1.MaxItemId = 7
         '
         'Bar4
         '
@@ -331,7 +339,7 @@ Partial Class frmFacturacionSandra
         Me.Bar4.DockCol = 0
         Me.Bar4.DockRow = 0
         Me.Bar4.DockStyle = DevExpress.XtraBars.BarDockStyle.Top
-        Me.Bar4.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.bbiConsultar), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiExportarPDF, True), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiExportarExcel)})
+        Me.Bar4.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.bbiConsultar), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiExportarPDF, True), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiExportarExcel), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiActualizar)})
         Me.Bar4.Text = "Herramientas"
         '
         'bbiConsultar
@@ -412,14 +420,12 @@ Partial Class frmFacturacionSandra
         Me.barDockControlTop.Manager = Nothing
         Me.barDockControlTop.Size = New System.Drawing.Size(1179, 0)
         '
-        'colAutorizacion
+        'bbiActualizar
         '
-        Me.colAutorizacion.Caption = "AUTORIZACION"
-        Me.colAutorizacion.FieldName = "AUTORIZACION"
-        Me.colAutorizacion.Name = "colAutorizacion"
-        Me.colAutorizacion.Visible = True
-        Me.colAutorizacion.VisibleIndex = 9
-        Me.colAutorizacion.Width = 83
+        Me.bbiActualizar.Caption = "Actualizar"
+        Me.bbiActualizar.Id = 6
+        Me.bbiActualizar.ImageOptions.Image = CType(resources.GetObject("bbiActualizar.ImageOptions.Image"), System.Drawing.Image)
+        Me.bbiActualizar.Name = "bbiActualizar"
         '
         'frmFacturacionSandra
         '
@@ -489,4 +495,5 @@ Partial Class frmFacturacionSandra
     Friend WithEvents colValor As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colEstado As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colAutorizacion As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents bbiActualizar As DevExpress.XtraBars.BarButtonItem
 End Class
