@@ -878,6 +878,12 @@
     <Compile Include="Reportes\xrbase64.vb">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Reportes\xrPatologiaBosque.Designer.vb">
+      <DependentUpon>xrPatologiaBosque.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\xrPatologiaBosque.vb">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Reportes\xrPatologiaCD.Designer.vb">
       <DependentUpon>xrPatologiaCD.vb</DependentUpon>
     </Compile>
@@ -888,6 +894,12 @@
       <DependentUpon>xrPatologiaCDPreliminar.vb</DependentUpon>
     </Compile>
     <Compile Include="Reportes\xrPatologiaCDPreliminar.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\xrPatologiaNuestra.Designer.vb">
+      <DependentUpon>xrPatologiaNuestra.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\xrPatologiaNuestra.vb">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Utilidades\Funciones.vb" />
@@ -1716,11 +1728,17 @@
     <EmbeddedResource Include="Reportes\xrbase64.resx">
       <DependentUpon>xrbase64.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\xrPatologiaBosque.resx">
+      <DependentUpon>xrPatologiaBosque.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reportes\xrPatologiaCD.resx">
       <DependentUpon>xrPatologiaCD.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\xrPatologiaCDPreliminar.resx">
       <DependentUpon>xrPatologiaCDPreliminar.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\xrPatologiaNuestra.resx">
+      <DependentUpon>xrPatologiaNuestra.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vistas\Binarios.resx">
       <DependentUpon>Binarios.vb</DependentUpon>

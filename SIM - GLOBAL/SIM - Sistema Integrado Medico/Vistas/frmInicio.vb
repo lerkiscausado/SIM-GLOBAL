@@ -146,10 +146,23 @@ Public Class frmInicio
                         _frmOpen.Consecutivo = ConsecutivoG
                         _frmOpen.ShowDialog()
                     ElseIf Fotos = "0" Then
-                        Dim reporteRTB As New SIM___GLOBAL.xrPatologiaCD
-                        Dim filtro As New Parameter()
                         'DEFINIMOS EL PROCESO DE GUARDADO EN TABLA IMPRESION HISTORIA
                         Dim _DImpresionPatologia As New SIM___GLOBAL.Controles.DImpresionPatologia
+                        ' realizamos la verificacion del ID SEDE
+                        Dim idSede As Integer = _DImpresionPatologia.ValidarSede(IDOrdenG)
+
+                        Dim reporteRTB As DevExpress.XtraReports.UI.XtraReport
+                        Select Case idSede
+                            Case 2
+                                reporteRTB = New SIM___GLOBAL.xrPatologiaNuestra
+                            Case 3
+                                reporteRTB = New SIM___GLOBAL.xrPatologiaBosque
+                            Case Else
+                                reporteRTB = New SIM___GLOBAL.xrPatologiaCD ' Por defecto
+                        End Select
+
+                        Dim filtro As New Parameter()
+
                         _DImpresionPatologia.Guardar(IDOrdenG)
                         '------------------------------------------------------------
                         'filtro.Name = "idOrden"
