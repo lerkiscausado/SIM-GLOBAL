@@ -25,6 +25,31 @@ Namespace Controles
                 MessageBox.Show(ex.ToString())
             End Try
         End Sub
+        Public Function ValidarSede(ByVal idOrden As String) As Integer
+            Try
+
+                Dim query As String = "SELECT id_sede FROM ordenes WHERE id = ?"
+                    _conn = ConexionODBC.Open()
+
+                    Using comando As New OdbcCommand(query, _conn)
+                        comando.Parameters.AddWithValue("?", idOrden)
+
+                        Dim resultado As Object = comando.ExecuteScalar()
+                        ConexionODBC.Close(_conn)
+
+                        If resultado IsNot Nothing AndAlso Not IsDBNull(resultado) Then
+                            Return Convert.ToInt32(resultado)
+                        End If
+                    End Using
+
+            Catch ex As Exception
+                MessageBox.Show("Error al validar sede: " & ex.Message)
+            End Try
+
+            ' Retorna -1 si no se encuentra o hay error
+            Return -1
+        End Function
+
         Public Sub Guardar(ByVal idOrden As String)
             Try
                 Dim query As String

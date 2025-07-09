@@ -67,6 +67,7 @@ Partial Public Class xrPatologiaCD
         Me.XrLabel36 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrPageInfo2 = New DevExpress.XtraReports.UI.XRPageInfo()
         Me.ReportHeader = New DevExpress.XtraReports.UI.ReportHeaderBand()
+        Me.XrPictureBox1 = New DevExpress.XtraReports.UI.XRPictureBox()
         Me.XrLabel2 = New DevExpress.XtraReports.UI.XRLabel()
         Me.PageFooter = New DevExpress.XtraReports.UI.PageFooterBand()
         Me.XrLabel38 = New DevExpress.XtraReports.UI.XRLabel()
@@ -79,7 +80,6 @@ Partial Public Class xrPatologiaCD
         Me.DsCD1 = New SIM___GLOBAL.dsCD()
         Me.ReportePatologiaCDTableAdapter = New SIM___GLOBAL.dsCDTableAdapters.ReportePatologiaCDTableAdapter()
         Me.DsCD2 = New SIM___GLOBAL.dsCD()
-        Me.XrPictureBox1 = New DevExpress.XtraReports.UI.XRPictureBox()
         CType(Me.xrDiagnostico, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DsCD1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DsCD2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -627,9 +627,17 @@ Partial Public Class xrPatologiaCD
         '
         Me.ReportHeader.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrLabel2, Me.XrLabel36, Me.XrPageInfo2, Me.XrPictureBox1})
         Me.ReportHeader.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Bold)
-        Me.ReportHeader.HeightF = 103.5417!
+        Me.ReportHeader.HeightF = 102.5!
         Me.ReportHeader.Name = "ReportHeader"
         Me.ReportHeader.StylePriority.UseFont = False
+        '
+        'XrPictureBox1
+        '
+        Me.XrPictureBox1.ImageSource = New DevExpress.XtraPrinting.Drawing.ImageSource("img", resources.GetString("XrPictureBox1.ImageSource"))
+        Me.XrPictureBox1.LocationFloat = New DevExpress.Utils.PointFloat(0!, 0!)
+        Me.XrPictureBox1.Name = "XrPictureBox1"
+        Me.XrPictureBox1.SizeF = New System.Drawing.SizeF(200.0!, 100.0!)
+        Me.XrPictureBox1.Sizing = DevExpress.XtraPrinting.ImageSizeMode.StretchImage
         '
         'XrLabel2
         '
@@ -740,17 +748,6 @@ Partial Public Class xrPatologiaCD
         '
         Me.DsCD2.DataSetName = "dsCD"
         Me.DsCD2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'XrPictureBox1
-        '
-        Me.XrPictureBox1.BorderDashStyle = DevExpress.XtraPrinting.BorderDashStyle.Solid
-        Me.XrPictureBox1.ImageAlignment = DevExpress.XtraPrinting.ImageAlignment.MiddleCenter
-        Me.XrPictureBox1.ImageSource = New DevExpress.XtraPrinting.Drawing.ImageSource("img", resources.GetString("XrPictureBox1.ImageSource"))
-        Me.XrPictureBox1.LocationFloat = New DevExpress.Utils.PointFloat(0!, 12.62265!)
-        Me.XrPictureBox1.Name = "XrPictureBox1"
-        Me.XrPictureBox1.SizeF = New System.Drawing.SizeF(200.0!, 87.37733!)
-        Me.XrPictureBox1.Sizing = DevExpress.XtraPrinting.ImageSizeMode.StretchImage
-        Me.XrPictureBox1.StylePriority.UseBorderDashStyle = False
         '
         'xrPatologiaCD
         '
