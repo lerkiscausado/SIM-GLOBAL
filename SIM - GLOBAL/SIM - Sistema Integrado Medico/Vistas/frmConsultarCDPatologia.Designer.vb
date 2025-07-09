@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class frmConsultarCDPatologia
     Inherits DevExpress.XtraEditors.XtraForm
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         If disposing AndAlso components IsNot Nothing Then
             components.Dispose()
@@ -17,7 +17,7 @@ Partial Class frmConsultarCDPatologia
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmConsultarCDPatologia))
@@ -38,6 +38,7 @@ Partial Class frmConsultarCDPatologia
         Me.tsm2019 = New System.Windows.Forms.ToolStripMenuItem()
         Me.tsm2018 = New System.Windows.Forms.ToolStripMenuItem()
         Me.tsm2017 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.tsm1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
         Me.tsmImprimir = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
@@ -100,89 +101,94 @@ Partial Class frmConsultarCDPatologia
         Me.cmsGrid.ImageScalingSize = New System.Drawing.Size(18, 18)
         Me.cmsGrid.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsmActualizarVista, Me.FiltrarPorAñoToolStripMenuItem, Me.ToolStripSeparator1, Me.tsmImprimir, Me.ToolStripSeparator2, Me.tsmExportarExcel, Me.tsmExportarPDF, Me.tsmExportarLotePDF})
         Me.cmsGrid.Name = "cmsGrid"
-        Me.cmsGrid.Size = New System.Drawing.Size(290, 160)
+        Me.cmsGrid.Size = New System.Drawing.Size(255, 182)
         '
         'tsmActualizarVista
         '
         Me.tsmActualizarVista.Image = CType(resources.GetObject("tsmActualizarVista.Image"), System.Drawing.Image)
         Me.tsmActualizarVista.Name = "tsmActualizarVista"
-        Me.tsmActualizarVista.Size = New System.Drawing.Size(289, 24)
+        Me.tsmActualizarVista.Size = New System.Drawing.Size(254, 24)
         Me.tsmActualizarVista.Text = "Actualizar Listado"
         '
         'FiltrarPorAñoToolStripMenuItem
         '
-        Me.FiltrarPorAñoToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsm2021, Me.tsm2020, Me.tsm2019, Me.tsm2018, Me.tsm2017})
+        Me.FiltrarPorAñoToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsm2021, Me.tsm2020, Me.tsm2019, Me.tsm2018, Me.tsm2017, Me.tsm1})
         Me.FiltrarPorAñoToolStripMenuItem.Image = CType(resources.GetObject("FiltrarPorAñoToolStripMenuItem.Image"), System.Drawing.Image)
         Me.FiltrarPorAñoToolStripMenuItem.Name = "FiltrarPorAñoToolStripMenuItem"
-        Me.FiltrarPorAñoToolStripMenuItem.Size = New System.Drawing.Size(289, 24)
+        Me.FiltrarPorAñoToolStripMenuItem.Size = New System.Drawing.Size(254, 24)
         Me.FiltrarPorAñoToolStripMenuItem.Text = "Filtrar por Año"
-        Me.FiltrarPorAñoToolStripMenuItem.Visible = False
         '
         'tsm2021
         '
         Me.tsm2021.Name = "tsm2021"
-        Me.tsm2021.Size = New System.Drawing.Size(116, 24)
+        Me.tsm2021.Size = New System.Drawing.Size(180, 22)
         Me.tsm2021.Text = "2021"
         '
         'tsm2020
         '
         Me.tsm2020.Name = "tsm2020"
-        Me.tsm2020.Size = New System.Drawing.Size(116, 24)
+        Me.tsm2020.Size = New System.Drawing.Size(180, 22)
         Me.tsm2020.Text = "2020"
         '
         'tsm2019
         '
         Me.tsm2019.Name = "tsm2019"
-        Me.tsm2019.Size = New System.Drawing.Size(116, 24)
+        Me.tsm2019.Size = New System.Drawing.Size(180, 22)
         Me.tsm2019.Text = "2019"
         '
         'tsm2018
         '
         Me.tsm2018.Name = "tsm2018"
-        Me.tsm2018.Size = New System.Drawing.Size(116, 24)
+        Me.tsm2018.Size = New System.Drawing.Size(180, 22)
         Me.tsm2018.Text = "2018"
         '
         'tsm2017
         '
         Me.tsm2017.Name = "tsm2017"
-        Me.tsm2017.Size = New System.Drawing.Size(116, 24)
+        Me.tsm2017.Size = New System.Drawing.Size(180, 22)
         Me.tsm2017.Text = "2017"
+        '
+        'tsm1
+        '
+        Me.tsm1.Name = "tsm1"
+        Me.tsm1.Size = New System.Drawing.Size(180, 22)
+        Me.tsm1.Text = "2010"
         '
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(286, 6)
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(251, 6)
         '
         'tsmImprimir
         '
         Me.tsmImprimir.Image = CType(resources.GetObject("tsmImprimir.Image"), System.Drawing.Image)
         Me.tsmImprimir.Name = "tsmImprimir"
-        Me.tsmImprimir.Size = New System.Drawing.Size(289, 24)
+        Me.tsmImprimir.Size = New System.Drawing.Size(254, 24)
         Me.tsmImprimir.Text = "Imprimir Reporte"
         '
         'ToolStripSeparator2
         '
         Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
-        Me.ToolStripSeparator2.Size = New System.Drawing.Size(286, 6)
+        Me.ToolStripSeparator2.Size = New System.Drawing.Size(251, 6)
         '
         'tsmExportarExcel
         '
         Me.tsmExportarExcel.Image = CType(resources.GetObject("tsmExportarExcel.Image"), System.Drawing.Image)
         Me.tsmExportarExcel.Name = "tsmExportarExcel"
-        Me.tsmExportarExcel.Size = New System.Drawing.Size(289, 24)
+        Me.tsmExportarExcel.Size = New System.Drawing.Size(254, 24)
         Me.tsmExportarExcel.Text = "Exportar Listado a Excel"
         '
         'tsmExportarPDF
         '
         Me.tsmExportarPDF.Image = CType(resources.GetObject("tsmExportarPDF.Image"), System.Drawing.Image)
         Me.tsmExportarPDF.Name = "tsmExportarPDF"
-        Me.tsmExportarPDF.Size = New System.Drawing.Size(289, 24)
+        Me.tsmExportarPDF.Size = New System.Drawing.Size(254, 24)
         Me.tsmExportarPDF.Text = "Exportar Listado  a PDF"
         '
         'tsmExportarLotePDF
         '
         Me.tsmExportarLotePDF.Name = "tsmExportarLotePDF"
-        Me.tsmExportarLotePDF.Size = New System.Drawing.Size(289, 24)
+        Me.tsmExportarLotePDF.Size = New System.Drawing.Size(254, 24)
         Me.tsmExportarLotePDF.Text = "Exportar Resultados Listado a PDF"
         '
         'GVConsultar
@@ -418,4 +424,5 @@ Partial Class frmConsultarCDPatologia
     Friend WithEvents colSubentidad As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents tsmExportarLotePDF As ToolStripMenuItem
     Friend WithEvents pbExportarPDF As ProgressBar
+    Friend WithEvents tsm1 As ToolStripMenuItem
 End Class

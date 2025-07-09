@@ -178,7 +178,7 @@ Public Class frmAgenda
 
     End Sub
     Private Sub AgendaDia()
-        ' Cargar agenda del dia
+        'Cargar agenda del dia
         _ds = _DAgenda.Listar(cboMedico.EditValue, Format(DNFecha.DateTime, "yyyy-MM-dd"))
         If _ds IsNot Nothing AndAlso _ds.Tables.Count > 0 AndAlso _ds.Tables(0).Rows.Count > 0 Then
             ' Hay datos

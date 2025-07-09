@@ -196,5 +196,12 @@ Public Class frmConsultarCDPatologia
         pbExportarPDF.Visible = False
     End Sub
 
+    Private Sub frmConsultarCDPatologia_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
+        tsm1.Text = DateTime.Now.Year - 1
+    End Sub
+
+    Private Sub tsm1_Click(sender As Object, e As EventArgs) Handles tsm1.Click
+        Recargar(DateTime.Now.Year - 1)
+    End Sub
 End Class
