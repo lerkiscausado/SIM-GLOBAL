@@ -33,12 +33,11 @@ Partial Class frmConsultarCDPatologia
         Me.cmsGrid = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.tsmActualizarVista = New System.Windows.Forms.ToolStripMenuItem()
         Me.FiltrarPorAñoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.tsm2021 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.tsm2020 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.tsm2019 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.tsm2018 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.tsm2017 = New System.Windows.Forms.ToolStripMenuItem()
         Me.tsm1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.tsm2 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.tsm3 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.tsm4 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.tsm5 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
         Me.tsmImprimir = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
@@ -101,7 +100,7 @@ Partial Class frmConsultarCDPatologia
         Me.cmsGrid.ImageScalingSize = New System.Drawing.Size(18, 18)
         Me.cmsGrid.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsmActualizarVista, Me.FiltrarPorAñoToolStripMenuItem, Me.ToolStripSeparator1, Me.tsmImprimir, Me.ToolStripSeparator2, Me.tsmExportarExcel, Me.tsmExportarPDF, Me.tsmExportarLotePDF})
         Me.cmsGrid.Name = "cmsGrid"
-        Me.cmsGrid.Size = New System.Drawing.Size(255, 182)
+        Me.cmsGrid.Size = New System.Drawing.Size(255, 160)
         '
         'tsmActualizarVista
         '
@@ -112,47 +111,41 @@ Partial Class frmConsultarCDPatologia
         '
         'FiltrarPorAñoToolStripMenuItem
         '
-        Me.FiltrarPorAñoToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsm2021, Me.tsm2020, Me.tsm2019, Me.tsm2018, Me.tsm2017, Me.tsm1})
+        Me.FiltrarPorAñoToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsm1, Me.tsm2, Me.tsm3, Me.tsm4, Me.tsm5})
         Me.FiltrarPorAñoToolStripMenuItem.Image = CType(resources.GetObject("FiltrarPorAñoToolStripMenuItem.Image"), System.Drawing.Image)
         Me.FiltrarPorAñoToolStripMenuItem.Name = "FiltrarPorAñoToolStripMenuItem"
         Me.FiltrarPorAñoToolStripMenuItem.Size = New System.Drawing.Size(254, 24)
         Me.FiltrarPorAñoToolStripMenuItem.Text = "Filtrar por Año"
         '
-        'tsm2021
-        '
-        Me.tsm2021.Name = "tsm2021"
-        Me.tsm2021.Size = New System.Drawing.Size(180, 22)
-        Me.tsm2021.Text = "2021"
-        '
-        'tsm2020
-        '
-        Me.tsm2020.Name = "tsm2020"
-        Me.tsm2020.Size = New System.Drawing.Size(180, 22)
-        Me.tsm2020.Text = "2020"
-        '
-        'tsm2019
-        '
-        Me.tsm2019.Name = "tsm2019"
-        Me.tsm2019.Size = New System.Drawing.Size(180, 22)
-        Me.tsm2019.Text = "2019"
-        '
-        'tsm2018
-        '
-        Me.tsm2018.Name = "tsm2018"
-        Me.tsm2018.Size = New System.Drawing.Size(180, 22)
-        Me.tsm2018.Text = "2018"
-        '
-        'tsm2017
-        '
-        Me.tsm2017.Name = "tsm2017"
-        Me.tsm2017.Size = New System.Drawing.Size(180, 22)
-        Me.tsm2017.Text = "2017"
-        '
         'tsm1
         '
         Me.tsm1.Name = "tsm1"
         Me.tsm1.Size = New System.Drawing.Size(180, 22)
-        Me.tsm1.Text = "2010"
+        Me.tsm1.Text = "2021"
+        '
+        'tsm2
+        '
+        Me.tsm2.Name = "tsm2"
+        Me.tsm2.Size = New System.Drawing.Size(180, 22)
+        Me.tsm2.Text = "2020"
+        '
+        'tsm3
+        '
+        Me.tsm3.Name = "tsm3"
+        Me.tsm3.Size = New System.Drawing.Size(180, 22)
+        Me.tsm3.Text = "2019"
+        '
+        'tsm4
+        '
+        Me.tsm4.Name = "tsm4"
+        Me.tsm4.Size = New System.Drawing.Size(180, 22)
+        Me.tsm4.Text = "2018"
+        '
+        'tsm5
+        '
+        Me.tsm5.Name = "tsm5"
+        Me.tsm5.Size = New System.Drawing.Size(180, 22)
+        Me.tsm5.Text = "2017"
         '
         'ToolStripSeparator1
         '
@@ -409,11 +402,11 @@ Partial Class frmConsultarCDPatologia
     Friend WithEvents cmsGrid As ContextMenuStrip
     Friend WithEvents tsmActualizarVista As ToolStripMenuItem
     Friend WithEvents FiltrarPorAñoToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents tsm2021 As ToolStripMenuItem
-    Friend WithEvents tsm2020 As ToolStripMenuItem
-    Friend WithEvents tsm2019 As ToolStripMenuItem
-    Friend WithEvents tsm2018 As ToolStripMenuItem
-    Friend WithEvents tsm2017 As ToolStripMenuItem
+    Friend WithEvents tsm1 As ToolStripMenuItem
+    Friend WithEvents tsm2 As ToolStripMenuItem
+    Friend WithEvents tsm3 As ToolStripMenuItem
+    Friend WithEvents tsm4 As ToolStripMenuItem
+    Friend WithEvents tsm5 As ToolStripMenuItem
     Friend WithEvents ToolStripSeparator1 As ToolStripSeparator
     Friend WithEvents tsmImprimir As ToolStripMenuItem
     Friend WithEvents ToolStripSeparator2 As ToolStripSeparator
@@ -424,5 +417,4 @@ Partial Class frmConsultarCDPatologia
     Friend WithEvents colSubentidad As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents tsmExportarLotePDF As ToolStripMenuItem
     Friend WithEvents pbExportarPDF As ProgressBar
-    Friend WithEvents tsm1 As ToolStripMenuItem
 End Class

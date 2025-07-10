@@ -1221,7 +1221,7 @@ Namespace Controles
                 Return Nothing
             End Try
         End Function
-        Public Function OrdenesCDPatologia() As DataSet
+        Public Function OrdenesCDPatologia(ByVal Ano As String) As DataSet
             Try
                 Dim query As String =
                                     String.Format("SELECT ordenes.`ID` AS ORDEN	,ordenes.`CONSECUTIVO` ,ordenes.FECHA_INGRESO AS FECHA_INGRESO, " _
@@ -1233,7 +1233,7 @@ Namespace Controles
                                                   & "FROM `ordenes`	INNER JOIN `tipo_estudio`  ON (`ordenes`.`ID_TIPO_ESTUDIO` = `tipo_estudio`.`ID`) INNER JOIN `usuarios` ON (`ordenes`.`ID_USUARIO` = `usuarios`.`ID`) " _
                                                   & "INNER JOIN `contratos` ON (`ordenes`.`ID_CONTRATO` = `contratos`.`ID`) INNER JOIN `entidades` ON (`contratos`.`CODIGO_ENTIDAD` = `entidades`.`CODIGO_ENTIDAD`) " _
                                                   & "inner join `especimenes` on (`especimenes`.`id`=`ordenes`.`id_especimen`)	inner join `sedes` on (`sedes`.`id`=`ordenes`.`id_sede`)" _
-                                                  & "inner join `subentidades` on(`subentidades`.`id`=`ordenes`.`id_subentidad`)")
+                                                  & "inner join `subentidades` on(`subentidades`.`id`=`ordenes`.`id_subentidad`) WHERE YEAR(ordenes.FECHA_INGRESO) = '" & Ano & "'")
                 _conn = ConexionODBC.Open()
                 Dim comando = New OdbcCommand(query, _conn)
                 _adapter = New OdbcDataAdapter(comando)
