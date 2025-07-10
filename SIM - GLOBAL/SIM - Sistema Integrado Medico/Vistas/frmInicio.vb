@@ -46,6 +46,7 @@ Public Class frmInicio
 
     Dim _frmAgenda As SIM___GLOBAL.frmAgenda
     Dim _frmFacturacion As SIM___GLOBAL.frmFacturas
+    Dim _frmFacturacionSandra As SIM___GLOBAL.frmFacturacionSandra
     Dim _frmHistoria As SIM_ENDOSCOPIA.frmHistoria
     Dim _frmHistoriaGL As SIM_ENDOSCOPIA.frmHistoriaGL
     Dim _frmEndoscopia As SIM_ENDOSCOPIA.frmEndoscopia
@@ -1755,7 +1756,6 @@ Public Class frmInicio
         'Dim _frm   Open As New frmPrueba
         '_frmOpen.ShowDialog()
     End Sub
-
     Private Sub bbiImagenes_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles bbiImagenes.ItemClick
         If Funciones.IsLoaded("frmImagenesVideo") = True Then
             MessageBox.Show("Esta Ventana se encuentra abierta", "Captura de Imagenes", MessageBoxButtons.OK, MessageBoxIcon.Information)
@@ -1765,12 +1765,6 @@ Public Class frmInicio
             _frmImagenes.Show()
         End If
     End Sub
-
-
-    Private Sub bbiImprimir_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles bbiImprimir.ItemClick
-
-    End Sub
-
     Private Sub bbiCargos_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles bbiCargos.ItemClick
         Dim _frmOpen As New SIM___GLOBAL.frmCargos
         _frmOpen.ShowDialog()
@@ -1822,17 +1816,14 @@ Public Class frmInicio
         Dim _frmOpen As New SIM___GLOBAL.frmTarifas
         _frmOpen.ShowDialog()
     End Sub
-
     Private Sub bbiContratos_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles bbiContratos.ItemClick
         Dim _frmOpen As New SIM___GLOBAL.frmContratos
         _frmOpen.ShowDialog()
     End Sub
-
     Private Sub bbtHistoriasAnteriores_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles bbiHistoriasAnteriores.ItemClick
         Dim _frmOpen As New SIM___GLOBAL.frmHistoriasAnteriores
         _frmOpen.ShowDialog()
     End Sub
-
     Private Sub bbiListadoOrdenes_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles bbiListadoOrdenes.ItemClick
         'ACTUALIZAR LISTADO ORDENES EN GLOBAL 
         Dim _frmOpen As New SIM_ENDOSCOPIA.frmListadoOrdenes
@@ -1840,20 +1831,28 @@ Public Class frmInicio
         '_frmOpen.IDEmpleado = IdEmpleadoG
         _frmOpen.ShowDialog()
     End Sub
-
     Private Sub bbiFactura_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles bbiFactura.ItemClick
         If Funciones.IsLoaded("frmFacturas") = True Then
             MessageBox.Show("Esta Ventana se encuentra abierta", "Factura", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        ElseIf Funciones.IsLoaded("frmFacturacionSandra") Then
+            MessageBox.Show("Esta Ventana se encuentra abierta", "Relación a facturar", MessageBoxButtons.OK, MessageBoxIcon.Information)
         Else
-            _frmFacturacion = New SIM___GLOBAL.frmFacturas
-            _frmFacturacion.MdiParent = Me
-            _frmFacturacion.IDEmpleado = IdEmpleadoG
-            _frmFacturacion.Licencia = LicenciaG
-            _frmFacturacion.Show()
+            Select Case LicenciaG
+                Case 16 ' DRA SANDRA
+                    _frmFacturacionSandra = New SIM___GLOBAL.frmFacturacionSandra
+                    _frmFacturacionSandra.MdiParent = Me
+                    _frmFacturacionSandra.IDEmpleado = IdEmpleadoG
+                    _frmFacturacionSandra.Licencia = LicenciaG
+                    _frmFacturacionSandra.Show()
+                Case Else
+                    _frmFacturacion = New SIM___GLOBAL.frmFacturas
+                    _frmFacturacion.MdiParent = Me
+                    _frmFacturacion.IDEmpleado = IdEmpleadoG
+                    _frmFacturacion.Licencia = LicenciaG
+                    _frmFacturacion.Show()
+            End Select
         End If
-
     End Sub
-
     Private Sub bbiAgenda_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles bbiAgenda.ItemClick
         If Funciones.IsLoaded("frmAgenda") = True Then
             MessageBox.Show("Esta Ventana se encuentra abierta", "Agenda", MessageBoxButtons.OK, MessageBoxIcon.Information)
