@@ -11,7 +11,7 @@ Public Class frmFacturacionSandra
     Public IDEmpleado As String
 
     Private Sub frmFacturacionSandra_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        _ds = _DFacturas.RelacionFactura()
+        _ds = _DFacturas.RelacionFacturas()
         GCConsultar.DataSource = _ds.Tables(0)
     End Sub
     Private Sub bbiConsultar_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles bbiConsultar.ItemClick
@@ -50,7 +50,7 @@ Public Class frmFacturacionSandra
     End Sub
 
     Private Sub bbiActualizar_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles bbiActualizar.ItemClick
-        _ds = _DFacturas.RelacionFactura()
+        _ds = _DFacturas.RelacionFacturas()
         GCConsultar.DataSource = _ds.Tables(0)
     End Sub
 End Class
