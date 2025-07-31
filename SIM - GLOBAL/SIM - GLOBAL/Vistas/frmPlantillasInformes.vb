@@ -22,6 +22,7 @@
         txtDiagnostico.Text = ""
         cboMedico.Text = ""
         cboTipoEstudio.Text = ""
+        teNombrePlantilla.Text = ""
         lblId.Text = ""
         cboMedico.Enabled = True
         cboTipoEstudio.Enabled = True
@@ -70,6 +71,7 @@
         _PlantillasInformes.Id = Val(lblId.Text)
         _PlantillasInformes.IdEspecialista = cboMedico.GetColumnValue("ID")
         _PlantillasInformes.IdTipoEstudio = cboTipoEstudio.GetColumnValue("ID")
+        _PlantillasInformes.nombrePlantilla = teNombrePlantilla.Text
         _PlantillasInformes.Campo1 = txtELCB.Text
         _PlantillasInformes.Campo2 = txtDescripcion.Text
         _PlantillasInformes.Campo3 = txtCampo2.Text
@@ -77,7 +79,7 @@
         _PlantillasInformes.Campo5 = txtCampo4.Text
         _PlantillasInformes.Campo6 = txtDiagnostico.Text
         _PlantillasInformes.Estado = "A"
-        _DPlantillasInformes.Guardar(_PlantillasInformes)
+        _DPlantillasInformes.GuardarPlantilla(_PlantillasInformes)
         'bbiGuardar.Enabled = False
     End Sub
 
@@ -86,6 +88,8 @@
             MessageBox.Show("Debe seleccionar el medico", "Plantillas de Informes", MessageBoxButtons.OK, MessageBoxIcon.Information)
         ElseIf cboTipoEstudio.Text = "" Then
             MessageBox.Show("Debe seleccionar el medico", "Plantillas de Informes", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        ElseIf teNombrePlantilla.Text = "" Then
+            MessageBox.Show("El nombre de la plantilla es obligatorio", "Plantillas de Informes", MessageBoxButtons.OK, MessageBoxIcon.Information)
         Else
             Guardar()
             ActualizarGrilla()
@@ -163,7 +167,6 @@
     Private Sub txtCampo4_EditValueChanged(sender As Object, e As EventArgs) Handles txtCampo4.EditValueChanged
         ActivarGuardar()
     End Sub
-
     Private Sub txtDiagnostico_EditValueChanged(sender As Object, e As EventArgs) Handles txtDiagnostico.EditValueChanged
         ActivarGuardar()
     End Sub
@@ -188,6 +191,7 @@
                     cboMedico.ItemIndex = cboMedico.Properties.GetDataSourceRowIndex("ID", _PlantillasInformes.IdEspecialista)
                     cboTipoEstudio.ItemIndex = cboTipoEstudio.Properties.GetDataSourceRowIndex("ID", _PlantillasInformes.IdTipoEstudio)
 
+                    teNombrePlantilla.Text = _PlantillasInformes.nombrePlantilla
                     txtELCB.Text = _PlantillasInformes.Campo1
                     txtDescripcion.Text = _PlantillasInformes.Campo2
                     txtCampo2.Text = _PlantillasInformes.Campo3
@@ -205,5 +209,9 @@
         Catch ex As Exception
 
         End Try
+    End Sub
+
+    Private Sub teNombrePlantilla_EditValueChanged(sender As Object, e As EventArgs) Handles teNombrePlantilla.EditValueChanged
+        ActivarGuardar()
     End Sub
 End Class

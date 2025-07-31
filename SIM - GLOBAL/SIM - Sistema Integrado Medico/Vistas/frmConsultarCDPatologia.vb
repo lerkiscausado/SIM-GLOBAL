@@ -54,10 +54,25 @@ Public Class frmConsultarCDPatologia
                         Dim printTool As New ReportPrintTool(reporteRTB)
                         printTool.ShowPreviewDialog()
                     Else
-                        Dim reporteRTB As New SIM___GLOBAL.xrPatologiaCD
-                        Dim filtro As New Parameter()
+                        'generamos reportes por SEDE 
                         'DEFINIMOS EL PROCESO DE GUARDADO EN TABLA IMPRESION HISTORIA
                         Dim _DImpresionPatologia As New SIM___GLOBAL.Controles.DImpresionPatologia
+                        ' realizamos la verificacion del ID SEDE
+                        Dim idSede As Integer = _DImpresionPatologia.ValidarSede(IDOrdenG)
+
+                        Dim reporteRTB As DevExpress.XtraReports.UI.XtraReport
+                        Select Case idSede
+                            Case 2
+                                reporteRTB = New SIM___GLOBAL.xrPatologiaNuestra
+                            Case 3
+                                reporteRTB = New SIM___GLOBAL.xrPatologiaBosque
+                            Case Else
+                                reporteRTB = New SIM___GLOBAL.xrPatologiaCD ' Por defecto
+                        End Select
+                        'Dim reporteRTB As New SIM___GLOBAL.xrPatologiaCD
+                        Dim filtro As New Parameter()
+                        'DEFINIMOS EL PROCESO DE GUARDADO EN TABLA IMPRESION HISTORIA
+                        'Dim _DImpresionPatologia As New SIM___GLOBAL.Controles.DImpresionPatologia
                         _DImpresionPatologia.Guardar(IDOrdenG)
                         '------------------------------------------------------------
                         Dim reportPath As String = "c:\\SIM\pdf\" + DatosPacienteG + ".pdf"

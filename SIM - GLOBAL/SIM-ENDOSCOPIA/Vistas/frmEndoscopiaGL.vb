@@ -182,7 +182,7 @@ Public Class frmEndoscopiaGL
             Case "COLONOSCOPIA"
                 lblReporteEstudio.Text = "Informe de Colonoscopia" & " - " & _ClickCups
 
-                xtpELCB.PageVisible = True
+                xtpELCB.PageVisible = False
                 xtpCampo2.Text = "Inspeccion"
                 xtpCampo3.Text = "Tacto"
                 xtpCampo4.Text = "Colonoscopia"
@@ -247,7 +247,7 @@ Public Class frmEndoscopiaGL
         chkProcesado.Checked = False
 
         'CAmpos Resporte de Endoscopia
-        txtELCB.Text = ""
+        txtELCB.Text = "."
         txtDescripcion.Text = ""
         txtCampo2.Text = ""
         txtCampo3.Text = ""
