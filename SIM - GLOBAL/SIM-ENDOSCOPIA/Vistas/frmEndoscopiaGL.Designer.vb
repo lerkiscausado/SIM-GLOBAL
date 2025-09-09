@@ -86,6 +86,8 @@ Partial Class frmEndoscopiaGL
         Me.bbiSeptiembre = New DevExpress.XtraBars.BarButtonItem()
         Me.bbiOctubre = New DevExpress.XtraBars.BarButtonItem()
         Me.bbiNoviembre = New DevExpress.XtraBars.BarButtonItem()
+        Me.bbiPlantillaEstudio = New DevExpress.XtraBars.BarEditItem()
+        Me.RepositoryItemComboBox1 = New DevExpress.XtraEditors.Repository.RepositoryItemComboBox()
         Me.GridView1 = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.btVistaEstudios = New DevExpress.XtraEditors.SimpleButton()
         Me.XtraTabPage2 = New DevExpress.XtraTab.XtraTabPage()
@@ -105,6 +107,8 @@ Partial Class frmEndoscopiaGL
         Me.colIDTipoEstudio = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colIdUsuario = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colIdDetalleOrden = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.lblPlantilla = New DevExpress.XtraEditors.LabelControl()
+        Me.cboPlantillas = New DevExpress.XtraEditors.LookUpEdit()
         Me.cboTomaBiopsia = New DevExpress.XtraEditors.ComboBoxEdit()
         Me.LabelControl5 = New DevExpress.XtraEditors.LabelControl()
         Me.GCDatosUsuarios = New DevExpress.XtraGrid.GridControl()
@@ -161,6 +165,7 @@ Partial Class frmEndoscopiaGL
         CType(Me.GCEstudiosAnteriores, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.gvEstudiosAnteriores, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BarManager1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RepositoryItemComboBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.XtraTabPage2.SuspendLayout()
         CType(Me.gcSeleccionadas, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -169,6 +174,7 @@ Partial Class frmEndoscopiaGL
         Me.GroupControl1.SuspendLayout()
         CType(Me.GCPacientesAtender, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GVPacientesAtender, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.cboPlantillas.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cboTomaBiopsia.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GCDatosUsuarios, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TVDatosUsuarios, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -289,6 +295,8 @@ Partial Class frmEndoscopiaGL
         Me.SplitContainerControl1.Panel1.Controls.Add(Me.XtraTabControl1)
         Me.SplitContainerControl1.Panel1.Controls.Add(Me.GroupControl1)
         Me.SplitContainerControl1.Panel1.Text = "Panel1"
+        Me.SplitContainerControl1.Panel2.Controls.Add(Me.lblPlantilla)
+        Me.SplitContainerControl1.Panel2.Controls.Add(Me.cboPlantillas)
         Me.SplitContainerControl1.Panel2.Controls.Add(Me.cboTomaBiopsia)
         Me.SplitContainerControl1.Panel2.Controls.Add(Me.LabelControl5)
         Me.SplitContainerControl1.Panel2.Controls.Add(Me.GCDatosUsuarios)
@@ -412,8 +420,9 @@ Partial Class frmEndoscopiaGL
         Me.BarManager1.DockControls.Add(Me.barDockControlLeft)
         Me.BarManager1.DockControls.Add(Me.barDockControlRight)
         Me.BarManager1.Form = Me
-        Me.BarManager1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.bbiNuevo, Me.bbiAbrir, Me.bbiGuardar, Me.BarButtonItem4, Me.BarButtonItem5, Me.bbiConsultar, Me.BarSubItem1, Me.BarButtonItem1, Me.BarButtonItem2, Me.BarButtonItem3, Me.BarButtonItem6, Me.BarButtonItem7, Me.BarButtonItem8, Me.BarButtonItem9, Me.bbiEnero, Me.bbiFebrero, Me.bbiMarzo, Me.bbiAbril, Me.bbiMayo, Me.bbiJunio, Me.bbiJulio, Me.bbiAgosto, Me.bbiSeptiembre, Me.bbiOctubre, Me.bbiNoviembre, Me.bbiDiciembre, Me.bbiActualizar, Me.bbiAplicarPlantilla})
-        Me.BarManager1.MaxItemId = 34
+        Me.BarManager1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.bbiNuevo, Me.bbiAbrir, Me.bbiGuardar, Me.BarButtonItem4, Me.BarButtonItem5, Me.bbiConsultar, Me.BarSubItem1, Me.BarButtonItem1, Me.BarButtonItem2, Me.BarButtonItem3, Me.BarButtonItem6, Me.BarButtonItem7, Me.BarButtonItem8, Me.BarButtonItem9, Me.bbiEnero, Me.bbiFebrero, Me.bbiMarzo, Me.bbiAbril, Me.bbiMayo, Me.bbiJunio, Me.bbiJulio, Me.bbiAgosto, Me.bbiSeptiembre, Me.bbiOctubre, Me.bbiNoviembre, Me.bbiDiciembre, Me.bbiActualizar, Me.bbiAplicarPlantilla, Me.bbiPlantillaEstudio})
+        Me.BarManager1.MaxItemId = 36
+        Me.BarManager1.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemComboBox1})
         '
         'Bar2
         '
@@ -630,6 +639,19 @@ Partial Class frmEndoscopiaGL
         Me.bbiNoviembre.Id = 30
         Me.bbiNoviembre.Name = "bbiNoviembre"
         '
+        'bbiPlantillaEstudio
+        '
+        Me.bbiPlantillaEstudio.Caption = "BarEditItem1"
+        Me.bbiPlantillaEstudio.Edit = Me.RepositoryItemComboBox1
+        Me.bbiPlantillaEstudio.Id = 34
+        Me.bbiPlantillaEstudio.Name = "bbiPlantillaEstudio"
+        '
+        'RepositoryItemComboBox1
+        '
+        Me.RepositoryItemComboBox1.AutoHeight = False
+        Me.RepositoryItemComboBox1.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.RepositoryItemComboBox1.Name = "RepositoryItemComboBox1"
+        '
         'GridView1
         '
         Me.GridView1.GridControl = Me.GCEstudiosAnteriores
@@ -809,6 +831,31 @@ Partial Class frmEndoscopiaGL
         Me.colIdDetalleOrden.FieldName = "ID"
         Me.colIdDetalleOrden.Name = "colIdDetalleOrden"
         '
+        'lblPlantilla
+        '
+        Me.lblPlantilla.Location = New System.Drawing.Point(337, 124)
+        Me.lblPlantilla.Name = "lblPlantilla"
+        Me.lblPlantilla.Size = New System.Drawing.Size(40, 13)
+        Me.lblPlantilla.TabIndex = 113
+        Me.lblPlantilla.Text = "Plantilla:"
+        Me.lblPlantilla.Visible = False
+        '
+        'cboPlantillas
+        '
+        Me.cboPlantillas.Location = New System.Drawing.Point(422, 117)
+        Me.cboPlantillas.MenuManager = Me.BarManager1
+        Me.cboPlantillas.Name = "cboPlantillas"
+        Me.cboPlantillas.Properties.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFitResizePopup
+        Me.cboPlantillas.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.cboPlantillas.Properties.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ID", "ID", 20, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.[Default], DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("PLANTILLA", "PLANTILLA")})
+        Me.cboPlantillas.Properties.NullText = ""
+        Me.cboPlantillas.Properties.PopupFilterMode = DevExpress.XtraEditors.PopupFilterMode.Contains
+        Me.cboPlantillas.Properties.PopupWidth = 600
+        Me.cboPlantillas.Properties.ShowHeader = False
+        Me.cboPlantillas.Size = New System.Drawing.Size(192, 20)
+        Me.cboPlantillas.TabIndex = 112
+        Me.cboPlantillas.Visible = False
+        '
         'cboTomaBiopsia
         '
         Me.cboTomaBiopsia.Location = New System.Drawing.Point(532, 271)
@@ -960,6 +1007,7 @@ Partial Class frmEndoscopiaGL
         '
         Me.xtpELCB.Controls.Add(Me.txtELCB)
         Me.xtpELCB.Name = "xtpELCB"
+        Me.xtpELCB.PageVisible = False
         Me.xtpELCB.Size = New System.Drawing.Size(602, 186)
         Me.xtpELCB.Text = "ELCB"
         '
@@ -967,11 +1015,14 @@ Partial Class frmEndoscopiaGL
         '
         Me.txtELCB.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.txtELCB.EditValue = "."
         Me.txtELCB.Location = New System.Drawing.Point(11, 13)
         Me.txtELCB.MenuManager = Me.BarManager1
         Me.txtELCB.Name = "txtELCB"
         Me.txtELCB.Properties.Appearance.BackColor = System.Drawing.Color.White
+        Me.txtELCB.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtELCB.Properties.Appearance.Options.UseBackColor = True
+        Me.txtELCB.Properties.Appearance.Options.UseFont = True
         Me.txtELCB.Size = New System.Drawing.Size(570, 149)
         Me.txtELCB.TabIndex = 9
         '
@@ -1395,6 +1446,7 @@ Partial Class frmEndoscopiaGL
         CType(Me.GCEstudiosAnteriores, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.gvEstudiosAnteriores, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.BarManager1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RepositoryItemComboBox1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.XtraTabPage2.ResumeLayout(False)
         CType(Me.gcSeleccionadas, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1403,6 +1455,7 @@ Partial Class frmEndoscopiaGL
         Me.GroupControl1.ResumeLayout(False)
         CType(Me.GCPacientesAtender, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GVPacientesAtender, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.cboPlantillas.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cboTomaBiopsia.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GCDatosUsuarios, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TVDatosUsuarios, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1559,4 +1612,8 @@ Partial Class frmEndoscopiaGL
     Friend WithEvents txtDescripcionBiopsia As DevExpress.XtraEditors.MemoEdit
     Friend WithEvents LabelControl5 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents cboTomaBiopsia As DevExpress.XtraEditors.ComboBoxEdit
+    Friend WithEvents bbiPlantillaEstudio As DevExpress.XtraBars.BarEditItem
+    Friend WithEvents RepositoryItemComboBox1 As DevExpress.XtraEditors.Repository.RepositoryItemComboBox
+    Friend WithEvents lblPlantilla As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents cboPlantillas As DevExpress.XtraEditors.LookUpEdit
 End Class
