@@ -1544,6 +1544,8 @@ Public Class frmFacturas
 
         If _ClickGrillaFacturas <> "" Then
 
+            xtpJSON.PageVisible = True
+
             _ds = New DataSet
             _ds = _DRipsJSON.Usuarios(_ClickGrillaFacturas)
 
