@@ -20,9 +20,9 @@ Option Explicit On
  Global.System.ComponentModel.DesignerCategoryAttribute("code"),  _
  Global.System.ComponentModel.ToolboxItem(true),  _
  Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema"),  _
- Global.System.Xml.Serialization.XmlRootAttribute("dsCD"),  _
+ Global.System.Xml.Serialization.XmlRootAttribute("dsCDAWS"),  _
  Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")>  _
-Partial Public Class dsCD
+Partial Public Class dsCDAWS
     Inherits Global.System.Data.DataSet
     
     Private tableReportePatologiaCD As ReportePatologiaCDDataTable
@@ -128,7 +128,7 @@ Partial Public Class dsCD
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
     Public Overrides Function Clone() As Global.System.Data.DataSet
-        Dim cln As dsCD = CType(MyBase.Clone,dsCD)
+        Dim cln As dsCDAWS = CType(MyBase.Clone,dsCDAWS)
         cln.InitVars
         cln.SchemaSerializationMode = Me.SchemaSerializationMode
         Return cln
@@ -199,9 +199,9 @@ Partial Public Class dsCD
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
     Private Sub InitClass()
-        Me.DataSetName = "dsCD"
+        Me.DataSetName = "dsCDAWS"
         Me.Prefix = ""
-        Me.Namespace = "http://tempuri.org/dsCD.xsd"
+        Me.Namespace = "http://tempuri.org/dsCDAWS.xsd"
         Me.EnforceConstraints = true
         Me.SchemaSerializationMode = Global.System.Data.SchemaSerializationMode.IncludeSchema
         Me.tableReportePatologiaCD = New ReportePatologiaCDDataTable()
@@ -225,7 +225,7 @@ Partial Public Class dsCD
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
     Public Shared Function GetTypedDataSetSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
-        Dim ds As dsCD = New dsCD()
+        Dim ds As dsCDAWS = New dsCDAWS()
         Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
         Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
         Dim any As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
@@ -781,28 +781,28 @@ Partial Public Class dsCD
             Me.columnID.AutoIncrementSeed = -1
             Me.columnID.AutoIncrementStep = -1
             Me.columnID.Unique = true
-            Me.columnCONSECUTIVO.MaxLength = 60
-            Me.columnIDENTIFICACION.MaxLength = 456
-            Me.columnNOMBRE.MaxLength = 1809
-            Me.columnEDAD.MaxLength = 69
-            Me.columnSEXO.MaxLength = 9
-            Me.columnESTADO_CIVIL.MaxLength = 129
-            Me.columnTELEFONO.MaxLength = 450
-            Me.columnDIRECCION.MaxLength = 900
-            Me.columnNOMBRE_ENTIDAD.MaxLength = 300
-            Me.columnTIPO_MUESTRA.MaxLength = 300
-            Me.columnSITIO_LESION.MaxLength = 150
-            Me.columnSOLICITADO.MaxLength = 150
+            Me.columnCONSECUTIVO.MaxLength = 100
+            Me.columnIDENTIFICACION.MaxLength = 100
+            Me.columnNOMBRE.MaxLength = 200
+            Me.columnEDAD.MaxLength = 200
+            Me.columnSEXO.MaxLength = 3
+            Me.columnESTADO_CIVIL.MaxLength = 100
+            Me.columnTELEFONO.MaxLength = 100
+            Me.columnDIRECCION.MaxLength = 200
+            Me.columnNOMBRE_ENTIDAD.MaxLength = 200
+            Me.columnTIPO_MUESTRA.MaxLength = 200
+            Me.columnSITIO_LESION.MaxLength = 200
+            Me.columnSOLICITADO.MaxLength = 200
             Me.columnDESCRIPCION_MACROSCOPICA.MaxLength = 65535
             Me.columnDESCRIPCION_MICROSCOPICA.MaxLength = 65535
             Me.columnDIAGNOSTICO.MaxLength = 65535
             Me.columnOBSERVACIONES.MaxLength = 65535
-            Me.columnCODIGO_DIAGNOSTICO.MaxLength = 36
-            Me.columnnombre_diagnostico.MaxLength = 2700
-            Me.columnmedico.MaxLength = 150
-            Me.columnespecialidad.MaxLength = 150
-            Me.columnregistro_medico.MaxLength = 300
-            Me.columnsede.MaxLength = 65535
+            Me.columnCODIGO_DIAGNOSTICO.MaxLength = 100
+            Me.columnnombre_diagnostico.MaxLength = 200
+            Me.columnmedico.MaxLength = 100
+            Me.columnespecialidad.MaxLength = 200
+            Me.columnregistro_medico.MaxLength = 100
+            Me.columnsede.MaxLength = 200
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -870,7 +870,7 @@ Partial Public Class dsCD
         Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
             Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
             Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
-            Dim ds As dsCD = New dsCD()
+            Dim ds As dsCDAWS = New dsCDAWS()
             Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
             any1.Namespace = "http://www.w3.org/2001/XMLSchema"
             any1.MinOccurs = New Decimal(0)
@@ -1755,7 +1755,7 @@ Partial Public Class dsCD
     End Class
 End Class
 
-Namespace dsCDTableAdapters
+Namespace dsCDAWSTableAdapters
     
     '''<summary>
     '''Represents the connection and commands used to retrieve and save data.
@@ -1933,7 +1933,7 @@ Namespace dsCDTableAdapters
                 "`, `SITIO_LESION`, `SOLICITADO`, `DESCRIPCION_MACROSCOPICA`, `DESCRIPCION_MICROS"& _ 
                 "COPICA`, `DIAGNOSTICO`, `OBSERVACIONES`, `CODIGO_DIAGNOSTICO`, `nombre_diagnosti"& _ 
                 "co`, `ID_LICENCIA`, `ID_EMPLEADO`, `medico`, `especialidad`, `registro_medico`, "& _ 
-                "`firma`, `fecha_salida`, sede FROM `ReportePatologiaCD`"
+                "`firma`, `fecha_salida`, `sede` FROM `impresion_patologia`"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
         End Sub
         
@@ -1941,7 +1941,7 @@ Namespace dsCDTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As dsCD.ReportePatologiaCDDataTable) As Integer
+        Public Overloads Overridable Function Fill(ByVal dataTable As dsCDAWS.ReportePatologiaCDDataTable) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
@@ -1954,9 +1954,9 @@ Namespace dsCDTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData() As dsCD.ReportePatologiaCDDataTable
+        Public Overloads Overridable Function GetData() As dsCDAWS.ReportePatologiaCDDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            Dim dataTable As dsCD.ReportePatologiaCDDataTable = New dsCD.ReportePatologiaCDDataTable()
+            Dim dataTable As dsCDAWS.ReportePatologiaCDDataTable = New dsCDAWS.ReportePatologiaCDDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
         End Function
@@ -2031,7 +2031,7 @@ Namespace dsCDTableAdapters
         '''</summary>
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Private Function UpdateUpdatedRows(ByVal dataSet As dsCD, ByVal allChangedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow), ByVal allAddedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow)) As Integer
+        Private Function UpdateUpdatedRows(ByVal dataSet As dsCDAWS, ByVal allChangedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow), ByVal allAddedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow)) As Integer
             Dim result As Integer = 0
             Return result
         End Function
@@ -2041,7 +2041,7 @@ Namespace dsCDTableAdapters
         '''</summary>
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Private Function UpdateInsertedRows(ByVal dataSet As dsCD, ByVal allAddedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow)) As Integer
+        Private Function UpdateInsertedRows(ByVal dataSet As dsCDAWS, ByVal allAddedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow)) As Integer
             Dim result As Integer = 0
             Return result
         End Function
@@ -2051,7 +2051,7 @@ Namespace dsCDTableAdapters
         '''</summary>
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Private Function UpdateDeletedRows(ByVal dataSet As dsCD, ByVal allChangedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow)) As Integer
+        Private Function UpdateDeletedRows(ByVal dataSet As dsCDAWS, ByVal allChangedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow)) As Integer
             Dim result As Integer = 0
             Return result
         End Function
@@ -2087,7 +2087,7 @@ Namespace dsCDTableAdapters
         '''</summary>
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Overridable Function UpdateAll(ByVal dataSet As dsCD) As Integer
+        Public Overridable Function UpdateAll(ByVal dataSet As dsCDAWS) As Integer
             If (dataSet Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("dataSet")
             End If

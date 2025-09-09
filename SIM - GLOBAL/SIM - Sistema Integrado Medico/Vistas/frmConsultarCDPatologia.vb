@@ -54,10 +54,25 @@ Public Class frmConsultarCDPatologia
                         Dim printTool As New ReportPrintTool(reporteRTB)
                         printTool.ShowPreviewDialog()
                     Else
-                        Dim reporteRTB As New SIM___GLOBAL.xrPatologiaCD
-                        Dim filtro As New Parameter()
+                        'generamos reportes por SEDE 
                         'DEFINIMOS EL PROCESO DE GUARDADO EN TABLA IMPRESION HISTORIA
                         Dim _DImpresionPatologia As New SIM___GLOBAL.Controles.DImpresionPatologia
+                        ' realizamos la verificacion del ID SEDE
+                        Dim idSede As Integer = _DImpresionPatologia.ValidarSede(IDOrdenG)
+
+                        Dim reporteRTB As DevExpress.XtraReports.UI.XtraReport
+                        Select Case idSede
+                            Case 2
+                                reporteRTB = New SIM___GLOBAL.xrPatologiaNuestra
+                            Case 3
+                                reporteRTB = New SIM___GLOBAL.xrPatologiaBosque
+                            Case Else
+                                reporteRTB = New SIM___GLOBAL.xrPatologiaCD ' Por defecto
+                        End Select
+                        'Dim reporteRTB As New SIM___GLOBAL.xrPatologiaCD
+                        Dim filtro As New Parameter()
+                        'DEFINIMOS EL PROCESO DE GUARDADO EN TABLA IMPRESION HISTORIA
+                        'Dim _DImpresionPatologia As New SIM___GLOBAL.Controles.DImpresionPatologia
                         _DImpresionPatologia.Guardar(IDOrdenG)
                         '------------------------------------------------------------
                         Dim reportPath As String = "c:\\SIM\pdf\" + DatosPacienteG + ".pdf"
@@ -97,7 +112,7 @@ Public Class frmConsultarCDPatologia
     Public Sub Recargar(ByVal filtro As String)
         Try
             Dim _ds = New DataSet
-            _ds = _dOrdenes.Ordenescdpatologia()
+            _ds = _dOrdenes.Ordenescdpatologia(filtro)
             GCConsultar.DataSource = _ds.Tables(0)
         Catch ex As Exception
         End Try
@@ -138,33 +153,11 @@ Public Class frmConsultarCDPatologia
     Private Sub tsmActualizarVista_Click(sender As Object, e As EventArgs) Handles tsmActualizarVista.Click
         Recargar(Year(Now))
     End Sub
-
-    Private Sub tsm2020_Click(sender As Object, e As EventArgs) Handles tsm2020.Click
-        Recargar("2020")
-    End Sub
-
-    Private Sub tsm2019_Click(sender As Object, e As EventArgs) Handles tsm2019.Click
-        Recargar("2019")
-    End Sub
-
-    Private Sub tsm2018_Click(sender As Object, e As EventArgs) Handles tsm2018.Click
-        Recargar("2018")
-    End Sub
-
-    Private Sub tsm2017_Click(sender As Object, e As EventArgs) Handles tsm2017.Click
-        Recargar("2017")
-    End Sub
-
-    Private Sub tsm2021_Click(sender As Object, e As EventArgs) Handles tsm2021.Click
-        Recargar("2021")
-    End Sub
-
     Private Async Sub tsmExportarLotePDF_Click(sender As Object, e As EventArgs) Handles tsmExportarLotePDF.Click
 
         pbExportarPDF.Visible = True
         pbExportarPDF.Maximum = GVConsultar.RowCount - 1
         If MessageBox.Show("Desea Exportar los resultados, ¿Este proceso puede tomar unos minutos, Desea Continuar?", "Exportar Resultados", MessageBoxButtons.OKCancel, MessageBoxIcon.Information) = DialogResult.OK Then
-
 
             For x As Integer = 0 To GVConsultar.RowCount - 1
                 'ppExportarPDF.FrameCount = x + 1
@@ -195,10 +188,24 @@ Public Class frmConsultarCDPatologia
         End If
         pbExportarPDF.Visible = False
     End Sub
-
     Private Sub frmConsultarCDPatologia_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
         tsm1.Text = DateTime.Now.Year - 1
+        tsm2.Text = DateTime.Now.Year - 2
+        tsm3.Text = DateTime.Now.Year - 3
+        tsm4.Text = DateTime.Now.Year - 4
+        tsm5.Text = DateTime.Now.Year - 5
+    End Sub
+    Private Sub tsm2_Click(sender As Object, e As EventArgs) Handles tsm2.Click
+        Recargar(DateTime.Now.Year - 2)
+    End Sub
+    Private Sub tsm3_Click(sender As Object, e As EventArgs) Handles tsm3.Click
+        Recargar(DateTime.Now.Year - 3)
+    End Sub
+    Private Sub tsm4_Click(sender As Object, e As EventArgs) Handles tsm4.Click
+        Recargar(DateTime.Now.Year - 4)
+    End Sub
+    Private Sub tsm5_Click(sender As Object, e As EventArgs) Handles tsm5.Click
+        Recargar(DateTime.Now.Year - 5)
     End Sub
 
     Private Sub tsm1_Click(sender As Object, e As EventArgs) Handles tsm1.Click

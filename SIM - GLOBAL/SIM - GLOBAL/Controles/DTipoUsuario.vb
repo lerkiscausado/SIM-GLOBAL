@@ -10,7 +10,7 @@ Namespace Controles
         Public Function Listar() As DataSet
             Try
                 Dim query As String =
-                                    String.Format("Select ID, nombre_tipo_usuario as TIPO from tipo_usuario")
+                                    String.Format("Select ID, nombre_tipo_usuario as TIPO from tipo_usuario where estado='A'")
                 _conn = ConexionODBC.Open()
                 Dim comando = New OdbcCommand(query, _conn)
                 _adapter = New OdbcDataAdapter(comando)

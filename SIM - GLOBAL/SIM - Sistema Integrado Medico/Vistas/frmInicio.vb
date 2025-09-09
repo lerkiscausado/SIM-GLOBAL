@@ -178,7 +178,22 @@ Public Class frmInicio
                         Dim printTool As New ReportPrintTool(reporteRTB)
                         printTool.ShowPreviewDialog()
                     Else
-                        Dim reporteRTB As New SIM___GLOBAL.xrPatologiaCD
+                        'DEFINIMOS EL PROCESO DE GUARDADO EN TABLA IMPRESION HISTORIA
+                        Dim _DImpresionPatologia As New SIM___GLOBAL.Controles.DImpresionPatologia
+                        ' realizamos la verificacion del ID SEDE
+                        Dim idSede As Integer = _DImpresionPatologia.ValidarSede(IDOrdenG)
+
+                        Dim reporteRTB As DevExpress.XtraReports.UI.XtraReport
+                        Select Case idSede
+                            Case 2
+                                reporteRTB = New SIM___GLOBAL.xrPatologiaNuestra
+                            Case 3
+                                reporteRTB = New SIM___GLOBAL.xrPatologiaBosque
+                            Case Else
+                                reporteRTB = New SIM___GLOBAL.xrPatologiaCD ' Por defecto
+                        End Select
+
+                        'Dim reporteRTB As New SIM___GLOBAL.xrPatologiaCD
                         Dim filtro As New Parameter()
                         Dim reportPath As String = "c:\\SIM\pdf\" + DatosPacienteG + ".pdf"
                         Dim pdfOptions As PdfExportOptions = reporteRTB.ExportOptions.Pdf
@@ -190,6 +205,8 @@ Public Class frmInicio
                         'pdfOptions.DocumentOptions.Subject = "Document Subject"
                         pdfOptions.DocumentOptions.Title = DatosPacienteG
 
+                        _DImpresionPatologia.Guardar(IDOrdenG)
+                        '------------------------------------------------------------
                         'filtro.Name = "idOrden"
                         filtro.Value = IDOrdenG
                         filtro.Visible = False
@@ -2065,7 +2082,7 @@ Public Class frmInicio
                     _frmHistoria.Close()
                 End If
                 If Funciones.IsLoaded("frmEndoscopiaGL") = True Then
-                    _frmEndoscopia.Close()
+                    _frmEndoscopiaGl.Close()
                 End If
                 If Funciones.IsLoaded("frmImagenes") = True Then
                     _frmImagenes.Close()
