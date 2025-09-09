@@ -82,6 +82,8 @@ Partial Class frmEstudiosEspeciales
         Me.colPREFIJO = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colCups = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colIDTipoEstudio = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.cboPlantillas = New DevExpress.XtraEditors.LookUpEdit()
+        Me.lblPlantilla = New DevExpress.XtraEditors.LabelControl()
         Me.txtInforme = New DevExpress.XtraEditors.MemoEdit()
         Me.lblReporteEstudio = New DevExpress.XtraEditors.LabelControl()
         Me.cboDiagnosticos = New DevExpress.XtraEditors.SearchLookUpEdit()
@@ -120,6 +122,7 @@ Partial Class frmEstudiosEspeciales
         Me.GroupControl1.SuspendLayout()
         CType(Me.GCPacientesAtender, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GVPacientesAtender, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.cboPlantillas.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtInforme.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cboDiagnosticos.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SearchLookUpEdit1View, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -142,11 +145,13 @@ Partial Class frmEstudiosEspeciales
         'SplitContainerControl1
         '
         Me.SplitContainerControl1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.SplitContainerControl1.Location = New System.Drawing.Point(0, 25)
+        Me.SplitContainerControl1.Location = New System.Drawing.Point(0, 24)
         Me.SplitContainerControl1.Name = "SplitContainerControl1"
         Me.SplitContainerControl1.Panel1.Controls.Add(Me.XtraTabControl1)
         Me.SplitContainerControl1.Panel1.Controls.Add(Me.GroupControl1)
         Me.SplitContainerControl1.Panel1.Text = "Panel1"
+        Me.SplitContainerControl1.Panel2.Controls.Add(Me.cboPlantillas)
+        Me.SplitContainerControl1.Panel2.Controls.Add(Me.lblPlantilla)
         Me.SplitContainerControl1.Panel2.Controls.Add(Me.txtInforme)
         Me.SplitContainerControl1.Panel2.Controls.Add(Me.lblReporteEstudio)
         Me.SplitContainerControl1.Panel2.Controls.Add(Me.cboDiagnosticos)
@@ -166,7 +171,7 @@ Partial Class frmEstudiosEspeciales
         Me.SplitContainerControl1.Panel2.Controls.Add(Me.LabelControl2)
         Me.SplitContainerControl1.Panel2.Controls.Add(Me.dtFecha)
         Me.SplitContainerControl1.Panel2.Text = "Panel2"
-        Me.SplitContainerControl1.Size = New System.Drawing.Size(1186, 574)
+        Me.SplitContainerControl1.Size = New System.Drawing.Size(1186, 575)
         Me.SplitContainerControl1.SplitterPosition = 534
         Me.SplitContainerControl1.TabIndex = 6
         Me.SplitContainerControl1.Text = "SplitContainerControl1"
@@ -314,7 +319,7 @@ Partial Class frmEstudiosEspeciales
         Me.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top
         Me.barDockControlTop.Location = New System.Drawing.Point(0, 0)
         Me.barDockControlTop.Manager = Me.BarManager1
-        Me.barDockControlTop.Size = New System.Drawing.Size(1186, 25)
+        Me.barDockControlTop.Size = New System.Drawing.Size(1186, 24)
         '
         'barDockControlBottom
         '
@@ -328,17 +333,17 @@ Partial Class frmEstudiosEspeciales
         '
         Me.barDockControlLeft.CausesValidation = False
         Me.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left
-        Me.barDockControlLeft.Location = New System.Drawing.Point(0, 25)
+        Me.barDockControlLeft.Location = New System.Drawing.Point(0, 24)
         Me.barDockControlLeft.Manager = Me.BarManager1
-        Me.barDockControlLeft.Size = New System.Drawing.Size(0, 574)
+        Me.barDockControlLeft.Size = New System.Drawing.Size(0, 575)
         '
         'barDockControlRight
         '
         Me.barDockControlRight.CausesValidation = False
         Me.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right
-        Me.barDockControlRight.Location = New System.Drawing.Point(1186, 25)
+        Me.barDockControlRight.Location = New System.Drawing.Point(1186, 24)
         Me.barDockControlRight.Manager = Me.BarManager1
-        Me.barDockControlRight.Size = New System.Drawing.Size(0, 574)
+        Me.barDockControlRight.Size = New System.Drawing.Size(0, 575)
         '
         'bbiAbrir
         '
@@ -550,11 +555,11 @@ Partial Class frmEstudiosEspeciales
         'GCPacientesAtender
         '
         Me.GCPacientesAtender.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.GCPacientesAtender.Location = New System.Drawing.Point(2, 25)
+        Me.GCPacientesAtender.Location = New System.Drawing.Point(2, 23)
         Me.GCPacientesAtender.MainView = Me.GVPacientesAtender
         Me.GCPacientesAtender.MenuManager = Me.BarManager1
         Me.GCPacientesAtender.Name = "GCPacientesAtender"
-        Me.GCPacientesAtender.Size = New System.Drawing.Size(507, 229)
+        Me.GCPacientesAtender.Size = New System.Drawing.Size(507, 231)
         Me.GCPacientesAtender.TabIndex = 1
         Me.GCPacientesAtender.UseEmbeddedNavigator = True
         Me.GCPacientesAtender.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GVPacientesAtender})
@@ -650,13 +655,40 @@ Partial Class frmEstudiosEspeciales
         Me.colIDTipoEstudio.FieldName = "TIPOESTUDIO"
         Me.colIDTipoEstudio.Name = "colIDTipoEstudio"
         '
+        'cboPlantillas
+        '
+        Me.cboPlantillas.Location = New System.Drawing.Point(270, 184)
+        Me.cboPlantillas.MenuManager = Me.BarManager1
+        Me.cboPlantillas.Name = "cboPlantillas"
+        Me.cboPlantillas.Properties.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFitResizePopup
+        Me.cboPlantillas.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.cboPlantillas.Properties.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ID", "ID", 20, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.[Default], DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("PLANTILLA", "PLANTILLA")})
+        Me.cboPlantillas.Properties.NullText = ""
+        Me.cboPlantillas.Properties.PopupFilterMode = DevExpress.XtraEditors.PopupFilterMode.Contains
+        Me.cboPlantillas.Properties.PopupWidth = 600
+        Me.cboPlantillas.Properties.ShowHeader = False
+        Me.cboPlantillas.Size = New System.Drawing.Size(253, 20)
+        Me.cboPlantillas.TabIndex = 115
+        Me.cboPlantillas.Visible = False
+        '
+        'lblPlantilla
+        '
+        Me.lblPlantilla.Location = New System.Drawing.Point(270, 165)
+        Me.lblPlantilla.Name = "lblPlantilla"
+        Me.lblPlantilla.Size = New System.Drawing.Size(40, 13)
+        Me.lblPlantilla.TabIndex = 114
+        Me.lblPlantilla.Text = "Plantilla:"
+        Me.lblPlantilla.Visible = False
+        '
         'txtInforme
         '
         Me.txtInforme.Location = New System.Drawing.Point(8, 240)
         Me.txtInforme.MenuManager = Me.BarManager1
         Me.txtInforme.Name = "txtInforme"
         Me.txtInforme.Properties.Appearance.BackColor = System.Drawing.Color.White
+        Me.txtInforme.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtInforme.Properties.Appearance.Options.UseBackColor = True
+        Me.txtInforme.Properties.Appearance.Options.UseFont = True
         Me.txtInforme.Size = New System.Drawing.Size(606, 281)
         Me.txtInforme.TabIndex = 10
         '
@@ -666,7 +698,7 @@ Partial Class frmEstudiosEspeciales
         Me.lblReporteEstudio.Appearance.Options.UseFont = True
         Me.lblReporteEstudio.Location = New System.Drawing.Point(10, 220)
         Me.lblReporteEstudio.Name = "lblReporteEstudio"
-        Me.lblReporteEstudio.Size = New System.Drawing.Size(124, 16)
+        Me.lblReporteEstudio.Size = New System.Drawing.Size(119, 14)
         Me.lblReporteEstudio.TabIndex = 96
         Me.lblReporteEstudio.Text = "Reporte de Estudio"
         Me.lblReporteEstudio.Visible = False
@@ -730,7 +762,7 @@ Partial Class frmEstudiosEspeciales
         Me.lblConsecutivoOrden.Properties.Appearance.Options.UseBackColor = True
         Me.lblConsecutivoOrden.Properties.Appearance.Options.UseFont = True
         Me.lblConsecutivoOrden.Properties.ReadOnly = True
-        Me.lblConsecutivoOrden.Size = New System.Drawing.Size(95, 24)
+        Me.lblConsecutivoOrden.Size = New System.Drawing.Size(95, 22)
         Me.lblConsecutivoOrden.TabIndex = 94
         '
         'LabelControl8
@@ -748,7 +780,7 @@ Partial Class frmEstudiosEspeciales
         Me.txtMedicoSolicita.Name = "txtMedicoSolicita"
         Me.txtMedicoSolicita.Properties.Appearance.BackColor = System.Drawing.Color.White
         Me.txtMedicoSolicita.Properties.Appearance.Options.UseBackColor = True
-        Me.txtMedicoSolicita.Size = New System.Drawing.Size(287, 20)
+        Me.txtMedicoSolicita.Size = New System.Drawing.Size(246, 20)
         Me.txtMedicoSolicita.TabIndex = 3
         '
         'LabelControl33
@@ -767,19 +799,19 @@ Partial Class frmEstudiosEspeciales
         Me.lblIdDetalleOrden.Appearance.Options.UseForeColor = True
         Me.lblIdDetalleOrden.Location = New System.Drawing.Point(432, 11)
         Me.lblIdDetalleOrden.Name = "lblIdDetalleOrden"
-        Me.lblIdDetalleOrden.Size = New System.Drawing.Size(9, 17)
+        Me.lblIdDetalleOrden.Size = New System.Drawing.Size(8, 16)
         Me.lblIdDetalleOrden.TabIndex = 93
         Me.lblIdDetalleOrden.Text = "1"
         Me.lblIdDetalleOrden.Visible = False
         '
         'chkProcesado
         '
-        Me.chkProcesado.Location = New System.Drawing.Point(539, 183)
+        Me.chkProcesado.Location = New System.Drawing.Point(539, 184)
         Me.chkProcesado.MenuManager = Me.BarManager1
         Me.chkProcesado.Name = "chkProcesado"
         Me.chkProcesado.Properties.Caption = "Firmar"
         Me.chkProcesado.Properties.GlyphAlignment = DevExpress.Utils.HorzAlignment.Far
-        Me.chkProcesado.Size = New System.Drawing.Size(75, 21)
+        Me.chkProcesado.Size = New System.Drawing.Size(75, 20)
         Me.chkProcesado.TabIndex = 81
         '
         'SeparatorControl1
@@ -819,7 +851,7 @@ Partial Class frmEstudiosEspeciales
         Me.lblConsecutivo.Appearance.Options.UseForeColor = True
         Me.lblConsecutivo.Location = New System.Drawing.Point(401, 7)
         Me.lblConsecutivo.Name = "lblConsecutivo"
-        Me.lblConsecutivo.Size = New System.Drawing.Size(9, 17)
+        Me.lblConsecutivo.Size = New System.Drawing.Size(8, 16)
         Me.lblConsecutivo.TabIndex = 16
         Me.lblConsecutivo.Text = "1"
         Me.lblConsecutivo.Visible = False
@@ -834,7 +866,7 @@ Partial Class frmEstudiosEspeciales
         Me.txtConsecutivo.Properties.Appearance.Options.UseBackColor = True
         Me.txtConsecutivo.Properties.Appearance.Options.UseFont = True
         Me.txtConsecutivo.Properties.ReadOnly = True
-        Me.txtConsecutivo.Size = New System.Drawing.Size(95, 24)
+        Me.txtConsecutivo.Size = New System.Drawing.Size(95, 22)
         Me.txtConsecutivo.TabIndex = 1
         '
         'LabelControl1
@@ -903,6 +935,7 @@ Partial Class frmEstudiosEspeciales
         Me.GroupControl1.ResumeLayout(False)
         CType(Me.GCPacientesAtender, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GVPacientesAtender, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.cboPlantillas.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtInforme.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cboDiagnosticos.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.SearchLookUpEdit1View, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1002,4 +1035,6 @@ Partial Class frmEstudiosEspeciales
     Friend WithEvents bbiAplicarPlantilla As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents colIDTipoEstudio As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents txtInforme As DevExpress.XtraEditors.MemoEdit
+    Friend WithEvents lblPlantilla As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents cboPlantillas As DevExpress.XtraEditors.LookUpEdit
 End Class

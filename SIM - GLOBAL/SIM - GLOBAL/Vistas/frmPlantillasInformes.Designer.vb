@@ -76,6 +76,7 @@ Partial Class frmPlantillasInformes
         Me.SeparatorControl1 = New DevExpress.XtraEditors.SeparatorControl()
         Me.GVPlantillasInformes = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.colID = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colPLANTILLA = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colESPECIALISTA = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colESTUDIO = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GCPlantillasInformes = New DevExpress.XtraGrid.GridControl()
@@ -89,7 +90,6 @@ Partial Class frmPlantillasInformes
         Me.cboMedico = New DevExpress.XtraEditors.LookUpEdit()
         Me.LabelControl14 = New DevExpress.XtraEditors.LabelControl()
         Me.xtcReporteEstudio = New DevExpress.XtraTab.XtraTabControl()
-        Me.colPLANTILLA = New DevExpress.XtraGrid.Columns.GridColumn()
         CType(Me.txtDiagnostico.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BarManager1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtCampo4.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -167,7 +167,7 @@ Partial Class frmPlantillasInformes
         Me.txtDiagnostico.Name = "txtDiagnostico"
         Me.txtDiagnostico.Properties.Appearance.BackColor = System.Drawing.Color.White
         Me.txtDiagnostico.Properties.Appearance.Options.UseBackColor = True
-        Me.txtDiagnostico.Size = New System.Drawing.Size(570, 148)
+        Me.txtDiagnostico.Size = New System.Drawing.Size(570, 247)
         Me.txtDiagnostico.TabIndex = 8
         '
         'BarManager1
@@ -238,7 +238,7 @@ Partial Class frmPlantillasInformes
         '
         Me.barDockControlBottom.CausesValidation = False
         Me.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.barDockControlBottom.Location = New System.Drawing.Point(0, 370)
+        Me.barDockControlBottom.Location = New System.Drawing.Point(0, 455)
         Me.barDockControlBottom.Manager = Me.BarManager1
         Me.barDockControlBottom.Size = New System.Drawing.Size(1109, 0)
         '
@@ -248,7 +248,7 @@ Partial Class frmPlantillasInformes
         Me.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left
         Me.barDockControlLeft.Location = New System.Drawing.Point(0, 24)
         Me.barDockControlLeft.Manager = Me.BarManager1
-        Me.barDockControlLeft.Size = New System.Drawing.Size(0, 346)
+        Me.barDockControlLeft.Size = New System.Drawing.Size(0, 431)
         '
         'barDockControlRight
         '
@@ -256,7 +256,7 @@ Partial Class frmPlantillasInformes
         Me.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right
         Me.barDockControlRight.Location = New System.Drawing.Point(1109, 24)
         Me.barDockControlRight.Manager = Me.BarManager1
-        Me.barDockControlRight.Size = New System.Drawing.Size(0, 346)
+        Me.barDockControlRight.Size = New System.Drawing.Size(0, 431)
         '
         'bbiAbrir
         '
@@ -409,7 +409,7 @@ Partial Class frmPlantillasInformes
         Me.txtCampo4.Name = "txtCampo4"
         Me.txtCampo4.Properties.Appearance.BackColor = System.Drawing.Color.White
         Me.txtCampo4.Properties.Appearance.Options.UseBackColor = True
-        Me.txtCampo4.Size = New System.Drawing.Size(570, 148)
+        Me.txtCampo4.Size = New System.Drawing.Size(570, 247)
         Me.txtCampo4.TabIndex = 7
         '
         'txtCampo3
@@ -419,14 +419,14 @@ Partial Class frmPlantillasInformes
         Me.txtCampo3.Name = "txtCampo3"
         Me.txtCampo3.Properties.Appearance.BackColor = System.Drawing.Color.White
         Me.txtCampo3.Properties.Appearance.Options.UseBackColor = True
-        Me.txtCampo3.Size = New System.Drawing.Size(570, 148)
+        Me.txtCampo3.Size = New System.Drawing.Size(570, 247)
         Me.txtCampo3.TabIndex = 6
         '
         'xtpELCB
         '
         Me.xtpELCB.Controls.Add(Me.txtELCB)
         Me.xtpELCB.Name = "xtpELCB"
-        Me.xtpELCB.Size = New System.Drawing.Size(602, 157)
+        Me.xtpELCB.Size = New System.Drawing.Size(602, 269)
         Me.xtpELCB.Text = "ELCB"
         '
         'txtELCB
@@ -436,7 +436,7 @@ Partial Class frmPlantillasInformes
         Me.txtELCB.Name = "txtELCB"
         Me.txtELCB.Properties.Appearance.BackColor = System.Drawing.Color.White
         Me.txtELCB.Properties.Appearance.Options.UseBackColor = True
-        Me.txtELCB.Size = New System.Drawing.Size(570, 148)
+        Me.txtELCB.Size = New System.Drawing.Size(570, 247)
         Me.txtELCB.TabIndex = 3
         '
         'txtCampo2
@@ -446,14 +446,14 @@ Partial Class frmPlantillasInformes
         Me.txtCampo2.Name = "txtCampo2"
         Me.txtCampo2.Properties.Appearance.BackColor = System.Drawing.Color.White
         Me.txtCampo2.Properties.Appearance.Options.UseBackColor = True
-        Me.txtCampo2.Size = New System.Drawing.Size(570, 148)
+        Me.txtCampo2.Size = New System.Drawing.Size(570, 247)
         Me.txtCampo2.TabIndex = 5
         '
         'xtpDescripcion
         '
         Me.xtpDescripcion.Controls.Add(Me.txtDescripcion)
         Me.xtpDescripcion.Name = "xtpDescripcion"
-        Me.xtpDescripcion.Size = New System.Drawing.Size(602, 157)
+        Me.xtpDescripcion.Size = New System.Drawing.Size(602, 269)
         Me.xtpDescripcion.Text = "Descripcion"
         '
         'txtDescripcion
@@ -463,35 +463,35 @@ Partial Class frmPlantillasInformes
         Me.txtDescripcion.Name = "txtDescripcion"
         Me.txtDescripcion.Properties.Appearance.BackColor = System.Drawing.Color.White
         Me.txtDescripcion.Properties.Appearance.Options.UseBackColor = True
-        Me.txtDescripcion.Size = New System.Drawing.Size(570, 148)
+        Me.txtDescripcion.Size = New System.Drawing.Size(570, 247)
         Me.txtDescripcion.TabIndex = 4
         '
         'xtpCampo2
         '
         Me.xtpCampo2.Controls.Add(Me.txtCampo2)
         Me.xtpCampo2.Name = "xtpCampo2"
-        Me.xtpCampo2.Size = New System.Drawing.Size(602, 157)
+        Me.xtpCampo2.Size = New System.Drawing.Size(602, 269)
         Me.xtpCampo2.Text = "Campo2"
         '
         'xtpCampo3
         '
         Me.xtpCampo3.Controls.Add(Me.txtCampo3)
         Me.xtpCampo3.Name = "xtpCampo3"
-        Me.xtpCampo3.Size = New System.Drawing.Size(602, 157)
+        Me.xtpCampo3.Size = New System.Drawing.Size(602, 269)
         Me.xtpCampo3.Text = "Campo3"
         '
         'xtpCampo4
         '
         Me.xtpCampo4.Controls.Add(Me.txtCampo4)
         Me.xtpCampo4.Name = "xtpCampo4"
-        Me.xtpCampo4.Size = New System.Drawing.Size(602, 157)
+        Me.xtpCampo4.Size = New System.Drawing.Size(602, 269)
         Me.xtpCampo4.Text = "Campo4"
         '
         'xtpDiagnostico
         '
         Me.xtpDiagnostico.Controls.Add(Me.txtDiagnostico)
         Me.xtpDiagnostico.Name = "xtpDiagnostico"
-        Me.xtpDiagnostico.Size = New System.Drawing.Size(602, 157)
+        Me.xtpDiagnostico.Size = New System.Drawing.Size(602, 269)
         Me.xtpDiagnostico.Text = "Diagnostico"
         '
         'Bar4
@@ -532,6 +532,15 @@ Partial Class frmPlantillasInformes
         Me.colID.FieldName = "ID"
         Me.colID.Name = "colID"
         '
+        'colPLANTILLA
+        '
+        Me.colPLANTILLA.Caption = "PLANTILLA"
+        Me.colPLANTILLA.FieldName = "PLANTILLA"
+        Me.colPLANTILLA.Name = "colPLANTILLA"
+        Me.colPLANTILLA.Visible = True
+        Me.colPLANTILLA.VisibleIndex = 0
+        Me.colPLANTILLA.Width = 206
+        '
         'colESPECIALISTA
         '
         Me.colESPECIALISTA.Caption = "ESPECIALISTA"
@@ -557,7 +566,7 @@ Partial Class frmPlantillasInformes
         Me.GCPlantillasInformes.MainView = Me.GVPlantillasInformes
         Me.GCPlantillasInformes.MenuManager = Me.BarManager1
         Me.GCPlantillasInformes.Name = "GCPlantillasInformes"
-        Me.GCPlantillasInformes.Size = New System.Drawing.Size(454, 281)
+        Me.GCPlantillasInformes.Size = New System.Drawing.Size(477, 406)
         Me.GCPlantillasInformes.TabIndex = 1
         Me.GCPlantillasInformes.UseEmbeddedNavigator = True
         Me.GCPlantillasInformes.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GVPlantillasInformes})
@@ -580,19 +589,18 @@ Partial Class frmPlantillasInformes
         Me.SplitContainerControl1.Panel2.Controls.Add(Me.lblReporteEstudio)
         Me.SplitContainerControl1.Panel2.Controls.Add(Me.SeparatorControl1)
         Me.SplitContainerControl1.Panel2.Text = "Panel2"
-        Me.SplitContainerControl1.Size = New System.Drawing.Size(1109, 346)
+        Me.SplitContainerControl1.Size = New System.Drawing.Size(1109, 431)
         Me.SplitContainerControl1.SplitterPosition = 481
         Me.SplitContainerControl1.TabIndex = 8
         Me.SplitContainerControl1.Text = "SplitContainerControl1"
         '
         'GroupControl1
         '
-        Me.GroupControl1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.GroupControl1.Controls.Add(Me.GCPlantillasInformes)
-        Me.GroupControl1.Location = New System.Drawing.Point(12, 6)
+        Me.GroupControl1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.GroupControl1.Location = New System.Drawing.Point(0, 0)
         Me.GroupControl1.Name = "GroupControl1"
-        Me.GroupControl1.Size = New System.Drawing.Size(458, 306)
+        Me.GroupControl1.Size = New System.Drawing.Size(481, 431)
         Me.GroupControl1.TabIndex = 0
         Me.GroupControl1.Text = "Plantillas "
         '
@@ -673,25 +681,16 @@ Partial Class frmPlantillasInformes
         Me.xtcReporteEstudio.Name = "xtcReporteEstudio"
         Me.xtcReporteEstudio.PageImagePosition = DevExpress.XtraTab.TabPageImagePosition.None
         Me.xtcReporteEstudio.SelectedTabPage = Me.xtpELCB
-        Me.xtcReporteEstudio.Size = New System.Drawing.Size(604, 182)
+        Me.xtcReporteEstudio.Size = New System.Drawing.Size(604, 294)
         Me.xtcReporteEstudio.TabIndex = 97
         Me.xtcReporteEstudio.TabPages.AddRange(New DevExpress.XtraTab.XtraTabPage() {Me.xtpELCB, Me.xtpDescripcion, Me.xtpCampo2, Me.xtpCampo3, Me.xtpCampo4, Me.xtpDiagnostico})
         Me.xtcReporteEstudio.Visible = False
-        '
-        'colPLANTILLA
-        '
-        Me.colPLANTILLA.Caption = "PLANTILLA"
-        Me.colPLANTILLA.FieldName = "PLANTILLA"
-        Me.colPLANTILLA.Name = "colPLANTILLA"
-        Me.colPLANTILLA.Visible = True
-        Me.colPLANTILLA.VisibleIndex = 0
-        Me.colPLANTILLA.Width = 206
         '
         'frmPlantillasInformes
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1109, 370)
+        Me.ClientSize = New System.Drawing.Size(1109, 455)
         Me.Controls.Add(Me.SplitContainerControl1)
         Me.Controls.Add(Me.barDockControlTop)
         Me.Controls.Add(Me.BarDockControl1)

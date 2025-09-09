@@ -51,6 +51,23 @@ Namespace Controles
                 Return Nothing
             End Try
         End Function
+        Public Function AplicarPlantilla2(ByVal id As String) As DataSet
+            Try
+                Dim query As String =
+                                    String.Format(
+                                        "select campo1, campo2, campo3, campo4, campo5, campo6 from plantillas_informes where id='" & id & "'")
+                _conn = ConexionODBC.Open()
+                Dim comando = New OdbcCommand(query, _conn)
+                _adapter = New OdbcDataAdapter(comando)
+                _ds = New DataSet()
+                _adapter.Fill(_ds)
+                ConexionODBC.Close(_conn)
+                Return _ds
+            Catch ex As Exception
+                MessageBox.Show(ex.Message)
+                Return Nothing
+            End Try
+        End Function
         Public Sub Guardar(ByVal _PlantillasInformes As SIM___GLOBAL.Modelo.PlantillasInformes)
             Try
                 Dim query As String
@@ -160,6 +177,23 @@ Namespace Controles
                 Return _ds
             Catch ex As Exception
                 MessageBox.Show(ex.Message)
+                Return Nothing
+            End Try
+        End Function
+        Public Function ListarCombo(ByVal id As String) As DataSet
+            Try
+                Dim query As String =
+                                    String.Format(
+                                        "Select ID, nombreplantilla as PLANTILLA from plantillas_informes where id_tipo_estudio='" & id & "' and estado='A'")
+                _conn = ConexionODBC.Open()
+                Dim comando = New OdbcCommand(query, _conn)
+                _adapter = New OdbcDataAdapter(comando)
+                _ds = New DataSet()
+                _adapter.Fill(_ds)
+                ConexionODBC.Close(_conn)
+                Return _ds
+            Catch ex As Exception
+                MessageBox.Show(ex.Message & " PLANTILLAS - Listar Combo")
                 Return Nothing
             End Try
         End Function

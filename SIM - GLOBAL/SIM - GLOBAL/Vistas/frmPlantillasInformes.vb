@@ -85,11 +85,11 @@
 
     Private Sub bbiGuardar_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles bbiGuardar.ItemClick
         If cboMedico.Text = "" Then
-            MessageBox.Show("Debe seleccionar el medico", "Plantillas de Informes", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            MessageBox.Show("Debe seleccionar el medico", "Especialista", MessageBoxButtons.OK, MessageBoxIcon.Information)
         ElseIf cboTipoEstudio.Text = "" Then
-            MessageBox.Show("Debe seleccionar el medico", "Plantillas de Informes", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            MessageBox.Show("Debe seleccionar el tipo de estudio", "Tipo de estudio", MessageBoxButtons.OK, MessageBoxIcon.Information)
         ElseIf teNombrePlantilla.Text = "" Then
-            MessageBox.Show("El nombre de la plantilla es obligatorio", "Plantillas de Informes", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            MessageBox.Show("El nombre de la plantilla es obligatorio", "Nombre plantilla", MessageBoxButtons.OK, MessageBoxIcon.Information)
         Else
             Guardar()
             ActualizarGrilla()

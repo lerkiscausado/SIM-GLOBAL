@@ -292,6 +292,7 @@
     <Compile Include="Controles\DRegistros.vb" />
     <Compile Include="Controles\DRevisionSistemas.vb" />
     <Compile Include="Controles\DRips.vb" />
+    <Compile Include="Controles\DRipsJSON.vb" />
     <Compile Include="Controles\DSedes.vb" />
     <Compile Include="Controles\DSesiones.vb" />
     <Compile Include="Controles\DSudentidades.vb" />
