@@ -679,6 +679,7 @@ Partial Class frmFacturas
         Me.bbiRips.Caption = "Rips"
         Me.bbiRips.Id = 14
         Me.bbiRips.Name = "bbiRips"
+        Me.bbiRips.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
         '
         'bbiEliminarFacturasRips
         '
@@ -712,6 +713,8 @@ Partial Class frmFacturas
         '
         Me.bbiGenerarRips.Caption = "Rips JSON"
         Me.bbiGenerarRips.Id = 28
+        Me.bbiGenerarRips.ImageOptions.Image = CType(resources.GetObject("bbiGenerarRips.ImageOptions.Image"), System.Drawing.Image)
+        Me.bbiGenerarRips.ImageOptions.LargeImage = CType(resources.GetObject("bbiGenerarRips.ImageOptions.LargeImage"), System.Drawing.Image)
         Me.bbiGenerarRips.Name = "bbiGenerarRips"
         '
         'BarDockControl2
@@ -4091,6 +4094,7 @@ Partial Class frmFacturas
         Me.xtpJSON.Controls.Add(Me.btnGenerarJSON)
         Me.xtpJSON.Controls.Add(Me.rtbJSON)
         Me.xtpJSON.Name = "xtpJSON"
+        Me.xtpJSON.PageVisible = False
         Me.xtpJSON.Size = New System.Drawing.Size(1262, 545)
         Me.xtpJSON.Text = "JSON"
         '
