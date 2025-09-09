@@ -120,9 +120,9 @@ Partial Class frmAcercaDe
         '
         Me.lcNombreCliente.Location = New System.Drawing.Point(230, 9)
         Me.lcNombreCliente.Name = "lcNombreCliente"
-        Me.lcNombreCliente.Size = New System.Drawing.Size(63, 13)
+        Me.lcNombreCliente.Size = New System.Drawing.Size(169, 13)
         Me.lcNombreCliente.TabIndex = 9
-        Me.lcNombreCliente.Text = "INTEGRA IPS"
+        Me.lcNombreCliente.Text = "SIM SISTEMA INTEGRADO MEDICO"
         '
         'LabelControl5
         '
@@ -172,7 +172,7 @@ Partial Class frmAcercaDe
         Me.Controls.Add(Me.SimpleButton2)
         Me.Controls.Add(Me.btnInformacionSistema)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
-        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.IconOptions.Icon = CType(resources.GetObject("frmAcercaDe.IconOptions.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmAcercaDe"
