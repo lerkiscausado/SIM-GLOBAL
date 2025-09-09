@@ -14,7 +14,7 @@ Public Class frmEstudiosEspeciales
     Dim _dProcedimientosTerapeuticos As New SIM___GLOBAL.Controles.DProcedimientosTerapeuticos
     Dim _Endoscopia As New SIM_ENDOSCOPIA.Modelo.Endoscopia
     Dim _DEndoscopia As New SIM_ENDOSCOPIA.Controles.DEndoscopia
-    'Dim _DImagenes As New SIM_ENDOSCOPIA.Controles.DImagenes
+    Dim _Dplantillas As New SIM___GLOBAL.Controles.DPlantillasInformes
 
     Dim _dImpresionHistoria As New SIM___GLOBAL.Controles.DImpresionHistoria
     Dim _ImpresionHistoria As New SIM___GLOBAL.Modelo.ImpresionHistoria
@@ -22,8 +22,6 @@ Public Class frmEstudiosEspeciales
 
     Dim _dImpresionEndoscopia As New SIM___GLOBAL.Controles.DImpresionEndoscopia
     Dim _ImpresionEndoscopia As New SIM___GLOBAL.Modelo.ImpresionEndoscopia
-
-    'Dim _DDetalleOrden As New SIM___GLOBAL.Controles.DDetalleOrden
 
     Dim _Capturas As GalleryItemGroup = New GalleryItemGroup()
 
@@ -35,7 +33,6 @@ Public Class frmEstudiosEspeciales
     Dim _ClickEstudio As String
     Dim _ClickIdTipoEstudiosAnteriores As String
     Dim _ClickCups As String
-    'Dim _ClickIdTipoEstudio As String
     Dim _NombreCups As String
     Dim _IDTipoEstudio As String
     Dim _Fila As String
@@ -156,6 +153,11 @@ Public Class frmEstudiosEspeciales
         GCEstudiosAnteriores.DataSource = _ds.Tables(0)
 
         'CargarImagenes(lblIdDetalleOrden.Text)
+        'Listamos las plantillas
+        ' _ds = _Dplantillas.ListarCombo(_ClickIdTipoEstudio)
+        'cboPlantillas.Properties.DataSource = _ds.Tables(0)
+        'cboPlantillas.Properties.DisplayMember = _ds.Tables(0).Columns(1).Caption
+        'cboPlantillas.Properties.ValueMember = _ds.Tables(0).Columns(0).Caption
 
         bbiGuardar.Enabled = False
     End Sub
@@ -793,5 +795,12 @@ Public Class frmEstudiosEspeciales
 
     Private Sub txtInforme_EditValueChanged(sender As Object, e As EventArgs) Handles txtInforme.EditValueChanged
         ActivaGuardar()
+    End Sub
+
+    Private Sub cboPlantillas_EditValueChanged(sender As Object, e As EventArgs) Handles cboPlantillas.EditValueChanged
+        If MsgBox("¿Desea aplicar la plantilla seleccionada? Recuerde que si tiene información sera reemplazada por la plantilla seleccionada.", vbYesNo + vbExclamation, "Plantilla") = vbYes Then
+            _ds = _Dplantillas.AplicarPlantilla2(cboPlantillas.GetColumnValue("ID"))
+            txtInforme.Text = _ds.Tables(0).Rows(0)(2).ToString
+        End If
     End Sub
 End Class

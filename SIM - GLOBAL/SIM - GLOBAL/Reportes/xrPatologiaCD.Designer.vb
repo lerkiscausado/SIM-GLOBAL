@@ -67,8 +67,8 @@ Partial Public Class xrPatologiaCD
         Me.XrLabel36 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrPageInfo2 = New DevExpress.XtraReports.UI.XRPageInfo()
         Me.ReportHeader = New DevExpress.XtraReports.UI.ReportHeaderBand()
-        Me.XrPictureBox1 = New DevExpress.XtraReports.UI.XRPictureBox()
         Me.XrLabel2 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.XrPictureBox1 = New DevExpress.XtraReports.UI.XRPictureBox()
         Me.PageFooter = New DevExpress.XtraReports.UI.PageFooterBand()
         Me.XrLabel38 = New DevExpress.XtraReports.UI.XRLabel()
         Me.ReportFooter = New DevExpress.XtraReports.UI.ReportFooterBand()
@@ -80,9 +80,14 @@ Partial Public Class xrPatologiaCD
         Me.DsCD1 = New SIM___GLOBAL.dsCD()
         Me.ReportePatologiaCDTableAdapter = New SIM___GLOBAL.dsCDTableAdapters.ReportePatologiaCDTableAdapter()
         Me.DsCD2 = New SIM___GLOBAL.dsCD()
+        Me.DsCDAWS1 = New SIM___GLOBAL.dsCDAWS()
+        Me.ReportePatologiaCDTableAdapter1 = New SIM___GLOBAL.dsCDAWSTableAdapters.ReportePatologiaCDTableAdapter()
+        Me.DsCD3 = New SIM___GLOBAL.dsCD()
         CType(Me.xrDiagnostico, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DsCD1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DsCD2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DsCDAWS1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DsCD3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me, System.ComponentModel.ISupportInitialize).BeginInit()
         '
         'TopMargin
@@ -98,7 +103,7 @@ Partial Public Class xrPatologiaCD
         'Detail
         '
         Me.Detail.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.xrDiagnostico, Me.XrLabel33})
-        Me.Detail.HeightF = 78.35953!
+        Me.Detail.HeightF = 104.1188!
         Me.Detail.Name = "Detail"
         '
         'xrDiagnostico
@@ -116,11 +121,11 @@ Partial Public Class xrPatologiaCD
         'XrLabel33
         '
         Me.XrLabel33.Font = New System.Drawing.Font("Calibri", 8.0!, System.Drawing.FontStyle.Italic)
-        Me.XrLabel33.LocationFloat = New DevExpress.Utils.PointFloat(0.00008637051!, 29.11405!)
+        Me.XrLabel33.LocationFloat = New DevExpress.Utils.PointFloat(0.00007947286!, 29.11409!)
         Me.XrLabel33.Multiline = True
         Me.XrLabel33.Name = "XrLabel33"
         Me.XrLabel33.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
-        Me.XrLabel33.SizeF = New System.Drawing.SizeF(740.9435!, 43.75471!)
+        Me.XrLabel33.SizeF = New System.Drawing.SizeF(740.9435!, 75.0047!)
         Me.XrLabel33.StylePriority.UseFont = False
         Me.XrLabel33.StylePriority.UseTextAlignment = False
         Me.XrLabel33.Text = resources.GetString("XrLabel33.Text")
@@ -631,14 +636,6 @@ Partial Public Class xrPatologiaCD
         Me.ReportHeader.Name = "ReportHeader"
         Me.ReportHeader.StylePriority.UseFont = False
         '
-        'XrPictureBox1
-        '
-        Me.XrPictureBox1.ImageSource = New DevExpress.XtraPrinting.Drawing.ImageSource("img", resources.GetString("XrPictureBox1.ImageSource"))
-        Me.XrPictureBox1.LocationFloat = New DevExpress.Utils.PointFloat(0!, 0!)
-        Me.XrPictureBox1.Name = "XrPictureBox1"
-        Me.XrPictureBox1.SizeF = New System.Drawing.SizeF(200.0!, 100.0!)
-        Me.XrPictureBox1.Sizing = DevExpress.XtraPrinting.ImageSizeMode.StretchImage
-        '
         'XrLabel2
         '
         Me.XrLabel2.Font = New System.Drawing.Font("Calibri", 13.0!, System.Drawing.FontStyle.Bold)
@@ -651,6 +648,14 @@ Partial Public Class xrPatologiaCD
         Me.XrLabel2.StylePriority.UseTextAlignment = False
         Me.XrLabel2.Text = "LABORATORIO DE PATOLOGIA [NOMBRE_ENTIDAD]"
         Me.XrLabel2.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter
+        '
+        'XrPictureBox1
+        '
+        Me.XrPictureBox1.ImageSource = New DevExpress.XtraPrinting.Drawing.ImageSource("img", resources.GetString("XrPictureBox1.ImageSource"))
+        Me.XrPictureBox1.LocationFloat = New DevExpress.Utils.PointFloat(0!, 0!)
+        Me.XrPictureBox1.Name = "XrPictureBox1"
+        Me.XrPictureBox1.SizeF = New System.Drawing.SizeF(200.0!, 100.0!)
+        Me.XrPictureBox1.Sizing = DevExpress.XtraPrinting.ImageSizeMode.StretchImage
         '
         'PageFooter
         '
@@ -749,10 +754,24 @@ Partial Public Class xrPatologiaCD
         Me.DsCD2.DataSetName = "dsCD"
         Me.DsCD2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
+        'DsCDAWS1
+        '
+        Me.DsCDAWS1.DataSetName = "dsCDAWS"
+        Me.DsCDAWS1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'ReportePatologiaCDTableAdapter1
+        '
+        Me.ReportePatologiaCDTableAdapter1.ClearBeforeFill = True
+        '
+        'DsCD3
+        '
+        Me.DsCD3.DataSetName = "dsCD"
+        Me.DsCD3.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
         'xrPatologiaCD
         '
         Me.Bands.AddRange(New DevExpress.XtraReports.UI.Band() {Me.TopMargin, Me.BottomMargin, Me.Detail, Me.PageHeader, Me.ReportHeader, Me.PageFooter, Me.ReportFooter})
-        Me.ComponentStorage.AddRange(New System.ComponentModel.IComponent() {Me.DsCD1, Me.DsCD2})
+        Me.ComponentStorage.AddRange(New System.ComponentModel.IComponent() {Me.DsCD1, Me.DsCD2, Me.DsCDAWS1, Me.DsCD3})
         Me.DataAdapter = Me.ReportePatologiaCDTableAdapter
         Me.DataMember = "ReportePatologiaCD"
         Me.DataSource = Me.DsCD1
@@ -764,6 +783,8 @@ Partial Public Class xrPatologiaCD
         CType(Me.xrDiagnostico, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DsCD1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DsCD2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DsCDAWS1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DsCD3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me, System.ComponentModel.ISupportInitialize).EndInit()
 
     End Sub
@@ -827,6 +848,9 @@ Partial Public Class xrPatologiaCD
     Friend WithEvents XrLabel17 As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents XrLabel13 As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents XrPictureBox1 As DevExpress.XtraReports.UI.XRPictureBox
+    Friend WithEvents DsCDAWS1 As dsCDAWS
+    Friend WithEvents ReportePatologiaCDTableAdapter1 As dsCDAWSTableAdapters.ReportePatologiaCDTableAdapter
+    Friend WithEvents DsCD3 As dsCD
     'Friend WithEvents DtReportePatologiaCD2 As dtReportePatologiaCD
     'Friend WithEvents DtReportePatologiaCDTableAdapter As dtReportePatologiaCDTableAdapters.dtReportePatologiaCDTableAdapter
     'Friend WithEvents DtPatologiaCD1 As dtPatologiaCD

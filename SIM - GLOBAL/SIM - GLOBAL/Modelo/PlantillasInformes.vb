@@ -3,6 +3,7 @@
         Private _Id As Integer
         Private _IdTipoEstudio As Integer
         Private _IdEspecialista As Integer
+        Private _nombrePlantilla As String
         Private _Campo1 As String
         Private _Campo2 As String
         Private _Campo3 As String
@@ -28,7 +29,6 @@
                 _IdTipoEstudio = value
             End Set
         End Property
-
         Public Property IdEspecialista As Integer
             Get
                 Return _IdEspecialista
@@ -37,7 +37,14 @@
                 _IdEspecialista = value
             End Set
         End Property
-
+        Public Property nombrePlantilla As String
+            Get
+                Return _nombrePlantilla
+            End Get
+            Set(value As String)
+                _nombrePlantilla = value
+            End Set
+        End Property
         Public Property Campo1 As String
             Get
                 Return _Campo1

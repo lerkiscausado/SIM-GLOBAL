@@ -19,13 +19,15 @@ Partial Public Class xrPatologiaBosque
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(xrPatologiaBosque))
         Dim ShapeRectangle1 As DevExpress.XtraPrinting.Shape.ShapeRectangle = New DevExpress.XtraPrinting.Shape.ShapeRectangle()
         Dim ShapeRectangle2 As DevExpress.XtraPrinting.Shape.ShapeRectangle = New DevExpress.XtraPrinting.Shape.ShapeRectangle()
         Dim ShapeRectangle3 As DevExpress.XtraPrinting.Shape.ShapeRectangle = New DevExpress.XtraPrinting.Shape.ShapeRectangle()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(xrPatologiaBosque))
         Me.TopMargin = New DevExpress.XtraReports.UI.TopMarginBand()
         Me.BottomMargin = New DevExpress.XtraReports.UI.BottomMarginBand()
         Me.Detail = New DevExpress.XtraReports.UI.DetailBand()
+        Me.XrLabel33 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.xrDiagnostico = New DevExpress.XtraReports.UI.XRRichText()
         Me.DsCD1 = New SIM___GLOBAL.dsCD()
         Me.ReportePatologiaCDTableAdapter = New SIM___GLOBAL.dsCDTableAdapters.ReportePatologiaCDTableAdapter()
         Me.ReportHeader = New DevExpress.XtraReports.UI.ReportHeaderBand()
@@ -69,18 +71,23 @@ Partial Public Class xrPatologiaBosque
         Me.XrLabel32 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel1 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLine1 = New DevExpress.XtraReports.UI.XRLine()
-        Me.XrLabel33 = New DevExpress.XtraReports.UI.XRLabel()
-        Me.xrDiagnostico = New DevExpress.XtraReports.UI.XRRichText()
         Me.ReportFooter = New DevExpress.XtraReports.UI.ReportFooterBand()
-        Me.XrPictureBox2 = New DevExpress.XtraReports.UI.XRPictureBox()
         Me.XrLabel39 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel40 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel41 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.XrPictureBox2 = New DevExpress.XtraReports.UI.XRPictureBox()
         Me.PageFooter = New DevExpress.XtraReports.UI.PageFooterBand()
         Me.XrLabel38 = New DevExpress.XtraReports.UI.XRLabel()
         Me.idOrden = New DevExpress.XtraReports.Parameters.Parameter()
-        CType(Me.DsCD1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.DsCD2 = New SIM___GLOBAL.dsCD()
+        Me.DsCDAWS1 = New SIM___GLOBAL.dsCDAWS()
+        Me.DsCDAWS2 = New SIM___GLOBAL.dsCDAWS()
+        Me.ReportePatologiaCDTableAdapter1 = New SIM___GLOBAL.dsCDAWSTableAdapters.ReportePatologiaCDTableAdapter()
         CType(Me.xrDiagnostico, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DsCD1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DsCD2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DsCDAWS1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DsCDAWS2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me, System.ComponentModel.ISupportInitialize).BeginInit()
         '
         'TopMargin
@@ -96,8 +103,33 @@ Partial Public Class xrPatologiaBosque
         'Detail
         '
         Me.Detail.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrLabel33, Me.xrDiagnostico})
-        Me.Detail.HeightF = 75.78373!
+        Me.Detail.HeightF = 98.91046!
         Me.Detail.Name = "Detail"
+        '
+        'XrLabel33
+        '
+        Me.XrLabel33.Font = New System.Drawing.Font("Calibri", 8.0!, System.Drawing.FontStyle.Italic)
+        Me.XrLabel33.LocationFloat = New DevExpress.Utils.PointFloat(0.00007947286!, 29.11406!)
+        Me.XrLabel33.Multiline = True
+        Me.XrLabel33.Name = "XrLabel33"
+        Me.XrLabel33.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
+        Me.XrLabel33.SizeF = New System.Drawing.SizeF(740.9435!, 69.7964!)
+        Me.XrLabel33.StylePriority.UseFont = False
+        Me.XrLabel33.StylePriority.UseTextAlignment = False
+        Me.XrLabel33.Text = resources.GetString("XrLabel33.Text")
+        Me.XrLabel33.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopJustify
+        '
+        'xrDiagnostico
+        '
+        Me.xrDiagnostico.CanShrink = True
+        Me.xrDiagnostico.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Html", "[DIAGNOSTICO]")})
+        Me.xrDiagnostico.Font = New System.Drawing.Font("Arial", 9.75!)
+        Me.xrDiagnostico.LocationFloat = New DevExpress.Utils.PointFloat(1.886792!, 0!)
+        Me.xrDiagnostico.Name = "xrDiagnostico"
+        Me.xrDiagnostico.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
+        Me.xrDiagnostico.SerializableRtfString = resources.GetString("xrDiagnostico.SerializableRtfString")
+        Me.xrDiagnostico.SizeF = New System.Drawing.SizeF(740.9435!, 23.0!)
+        Me.xrDiagnostico.StylePriority.UseFont = False
         '
         'DsCD1
         '
@@ -634,43 +666,10 @@ Partial Public Class xrPatologiaBosque
         Me.XrLine1.StylePriority.UseBorderWidth = False
         Me.XrLine1.StylePriority.UseForeColor = False
         '
-        'XrLabel33
-        '
-        Me.XrLabel33.Font = New System.Drawing.Font("Calibri", 8.0!, System.Drawing.FontStyle.Italic)
-        Me.XrLabel33.LocationFloat = New DevExpress.Utils.PointFloat(0.00008637051!, 29.11405!)
-        Me.XrLabel33.Multiline = True
-        Me.XrLabel33.Name = "XrLabel33"
-        Me.XrLabel33.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
-        Me.XrLabel33.SizeF = New System.Drawing.SizeF(740.9435!, 43.75471!)
-        Me.XrLabel33.StylePriority.UseFont = False
-        Me.XrLabel33.StylePriority.UseTextAlignment = False
-        Me.XrLabel33.Text = resources.GetString("XrLabel33.Text")
-        Me.XrLabel33.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopJustify
-        '
-        'xrDiagnostico
-        '
-        Me.xrDiagnostico.CanShrink = True
-        Me.xrDiagnostico.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Html", "[DIAGNOSTICO]")})
-        Me.xrDiagnostico.Font = New System.Drawing.Font("Arial", 9.75!)
-        Me.xrDiagnostico.LocationFloat = New DevExpress.Utils.PointFloat(1.886792!, 0!)
-        Me.xrDiagnostico.Name = "xrDiagnostico"
-        Me.xrDiagnostico.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
-        Me.xrDiagnostico.SerializableRtfString = resources.GetString("xrDiagnostico.SerializableRtfString")
-        Me.xrDiagnostico.SizeF = New System.Drawing.SizeF(740.9435!, 23.0!)
-        Me.xrDiagnostico.StylePriority.UseFont = False
-        '
         'ReportFooter
         '
         Me.ReportFooter.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrLabel39, Me.XrLabel40, Me.XrLabel41, Me.XrPictureBox2})
         Me.ReportFooter.Name = "ReportFooter"
-        '
-        'XrPictureBox2
-        '
-        Me.XrPictureBox2.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "ImageSource", "[firma]")})
-        Me.XrPictureBox2.LocationFloat = New DevExpress.Utils.PointFloat(42.3962!, 10.0!)
-        Me.XrPictureBox2.Name = "XrPictureBox2"
-        Me.XrPictureBox2.SizeF = New System.Drawing.SizeF(76.90567!, 36.15095!)
-        Me.XrPictureBox2.Sizing = DevExpress.XtraPrinting.ImageSizeMode.StretchImage
         '
         'XrLabel39
         '
@@ -710,6 +709,14 @@ Partial Public Class xrPatologiaBosque
         Me.XrLabel41.StylePriority.UseFont = False
         Me.XrLabel41.Text = "XrLabel41"
         '
+        'XrPictureBox2
+        '
+        Me.XrPictureBox2.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "ImageSource", "[firma]")})
+        Me.XrPictureBox2.LocationFloat = New DevExpress.Utils.PointFloat(42.3962!, 10.0!)
+        Me.XrPictureBox2.Name = "XrPictureBox2"
+        Me.XrPictureBox2.SizeF = New System.Drawing.SizeF(76.90567!, 36.15095!)
+        Me.XrPictureBox2.Sizing = DevExpress.XtraPrinting.ImageSizeMode.StretchImage
+        '
         'PageFooter
         '
         Me.PageFooter.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrLabel38})
@@ -740,10 +747,29 @@ Partial Public Class xrPatologiaBosque
         Me.idOrden.Type = GetType(Integer)
         Me.idOrden.ValueInfo = "8"
         '
+        'DsCD2
+        '
+        Me.DsCD2.DataSetName = "dsCD"
+        Me.DsCD2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'DsCDAWS1
+        '
+        Me.DsCDAWS1.DataSetName = "dsCDAWS"
+        Me.DsCDAWS1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'DsCDAWS2
+        '
+        Me.DsCDAWS2.DataSetName = "dsCDAWS"
+        Me.DsCDAWS2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'ReportePatologiaCDTableAdapter1
+        '
+        Me.ReportePatologiaCDTableAdapter1.ClearBeforeFill = True
+        '
         'xrPatologiaBosque
         '
         Me.Bands.AddRange(New DevExpress.XtraReports.UI.Band() {Me.TopMargin, Me.BottomMargin, Me.Detail, Me.ReportHeader, Me.PageHeader, Me.ReportFooter, Me.PageFooter})
-        Me.ComponentStorage.AddRange(New System.ComponentModel.IComponent() {Me.DsCD1})
+        Me.ComponentStorage.AddRange(New System.ComponentModel.IComponent() {Me.DsCD1, Me.DsCD2, Me.DsCDAWS1, Me.DsCDAWS2})
         Me.DataAdapter = Me.ReportePatologiaCDTableAdapter
         Me.DataMember = "ReportePatologiaCD"
         Me.DataSource = Me.DsCD1
@@ -752,8 +778,11 @@ Partial Public Class xrPatologiaBosque
         Me.Margins = New System.Drawing.Printing.Margins(46, 50, 30, 27)
         Me.Parameters.AddRange(New DevExpress.XtraReports.Parameters.Parameter() {Me.idOrden})
         Me.Version = "20.1"
-        CType(Me.DsCD1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.xrDiagnostico, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DsCD1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DsCD2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DsCDAWS1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DsCDAWS2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me, System.ComponentModel.ISupportInitialize).EndInit()
 
     End Sub
@@ -814,4 +843,8 @@ Partial Public Class xrPatologiaBosque
     Friend WithEvents PageFooter As DevExpress.XtraReports.UI.PageFooterBand
     Friend WithEvents XrLabel38 As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents idOrden As DevExpress.XtraReports.Parameters.Parameter
+    Friend WithEvents DsCD2 As dsCD
+    Friend WithEvents DsCDAWS1 As dsCDAWS
+    Friend WithEvents DsCDAWS2 As dsCDAWS
+    Friend WithEvents ReportePatologiaCDTableAdapter1 As dsCDAWSTableAdapters.ReportePatologiaCDTableAdapter
 End Class

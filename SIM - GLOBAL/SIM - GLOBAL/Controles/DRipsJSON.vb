@@ -14,15 +14,21 @@ Namespace Controles
 
                 Dim query As String =
                       String.Format("SELECT detalle_factura.id_orden AS idOrden, " _
-                      & "usuarios.id_tipo_identificacion AS tipoDocumentoIdentificacion, " _
-                      & "usuarios.identificacion AS numDocumentoIdenfificacion, ordenes.id_tipo_usuario AS tipoUsuario, " _
-                      & "usuarios.fecha_nacimiento AS fechaNacimiento, usuarios.sexo AS codSexo, " _
-                      & "'170' AS codPaisResidencia, usuarios.codigo_municipio AS codMunicipioResidencia, " _
-                      & "CASE WHEN usuarios.zona = 'R' THEN '01' WHEN usuarios.zona = 'U' THEN '02' ELSE NULL END AS " _
-                      & "codZonaTerritorialResidencia, 'NO' AS incapacidad, ROW_NUMBER() OVER (ORDER BY usuarios.id) AS " _
-                      & "consecutivo, '170' AS codPaisOrigen, detalle_factura.tipo FROM facturas f INNER JOIN detalle_factura ON f.id = " _
-                      & "detalle_factura.id_factura INNER JOIN ordenes ON detalle_factura.id_orden = ordenes.id INNER " _
-                      & "JOIN usuarios ON ordenes.id_usuario = usuarios.id WHERE f.id='" & idFactura & "'")
+                            & "usuarios.id_tipo_identificacion AS tipoDocumentoIdentificacion, " _
+                            & "usuarios.identificacion AS numDocumentoIdenfificacion, " _
+                            & "tipo_usuario.codigo AS tipoUsuario, " _
+                            & "usuarios.fecha_nacimiento AS fechaNacimiento, " _
+                            & "usuarios.sexo AS codSexo, '170' AS codPaisResidencia, " _
+                            & "usuarios.codigo_municipio AS codMunicipioResidencia, " _
+                            & "CASE WHEN usuarios.zona = 'R' THEN '01' WHEN usuarios.zona = 'U' THEN '02' ELSE NULL END AS codZonaTerritorialResidencia, " _
+                            & "'NO' AS incapacidad, " _
+                            & "ROW_NUMBER() OVER (ORDER BY usuarios.id) AS consecutivo, " _
+                            & "'170' AS codPaisOrigen, " _
+                            & "detalle_factura.tipo FROM facturas f " _
+                            & "INNER JOIN detalle_factura ON f.id = detalle_factura.id_factura " _
+                            & "INNER JOIN ordenes ON detalle_factura.id_orden = ordenes.id " _
+                            & "INNER JOIN tipo_usuario ON ordenes.id_tipo_usuario = tipo_usuario.id " _
+                            & "INNER JOIN usuarios ON ordenes.id_usuario = usuarios.id WHERE f.id='" & idFactura & "'")
                 _conn = ConexionODBC.Open()
                 Dim comando = New OdbcCommand(query, _conn)
                 _adapter = New OdbcDataAdapter(comando)
@@ -40,18 +46,30 @@ Namespace Controles
             Try
 
                 Dim query As String =
-                                    String.Format("SELECT '130010244901' AS codPrestador, " _
-                                    & "o.fecha_ingreso AS fechaInicioAtencion, NULL AS idMIPRES, o.autorizacion, " _
-                                    & "detalle_orden.codigo_cups AS codProcedimiento, '02' AS viaIngresoServicioSalud, " _
-                                    & "'01' AS modalidadGrupoServicioTecSal, '02' AS grupoServicios, 706 AS codServicio, " _
-                                    & "'15' AS finalidadTecnologiaSalud, 'CC' AS tipoDocumentoIdentificacion, '45632147' " _
-                                    & "AS numDocumentoIdentificacion, detalle_orden.diagnostico1 AS codDiagnosticoPrincipal, " _
-                                    & "NULL AS codDiagnosticoRelacionado, NULL AS codComplicacion, " _
-                                    & "detalle_orden.valor AS valorServicio, '05' AS conceptoRecaudo, " _
-                                    & "detalle_orden.copago AS valorPagoModerador, NULL AS numFEVPagoModerador, " _
-                                    & "ROW_NUMBER() OVER (ORDER BY o.id) AS consecutivo, o.id FROM ordenes o INNER JOIN " _
-                                    & "detalle_orden ON o.id = detalle_orden.id_orden INNER JOIN " _
-                                    & "endoscopias ON o.id = endoscopias.id_orden WHERE o.id = '" & idOrden & "'")
+                    String.Format("SELECT '130010244901' AS codPrestador, " _
+                        & "o.fecha_ingreso AS fechaInicioAtencion, " _
+                        & "NULL AS idMIPRES, " _
+                        & "o.autorizacion, " _
+                        & "detalle_orden.codigo_cups AS codProcedimiento, " _
+                        & "'02' AS viaIngresoServicioSalud, " _
+                        & "'01' AS modalidadGrupoServicioTecSal, " _
+                        & "'02' AS grupoServicios, " _
+                        & "Cups.codigo_servicio AS codServicio, " _
+                        & "'15' AS finalidadTecnologiaSalud, " _
+                        & "'CC' AS tipoDocumentoIdentificacion, " _
+                        & "'45632147' AS numDocumentoIdentificacion, " _
+                        & "detalle_orden.diagnostico1 AS codDiagnosticoPrincipal, " _
+                        & "NULL AS codDiagnosticoRelacionado, " _
+                        & "NULL AS codComplicacion, " _
+                        & "detalle_orden.valor AS valorServicio, " _
+                        & "'05' AS conceptoRecaudo, " _
+                        & "detalle_orden.copago AS valorPagoModerador, " _
+                        & "NULL AS numFEVPagoModerador, " _
+                        & "ROW_NUMBER() OVER (ORDER BY o.id) AS consecutivo, " _
+                        & "o.id FROM ordenes o " _
+                        & "INNER JOIN detalle_orden ON o.id = detalle_orden.id_orden " _
+                        & "INNER JOIN cups ON detalle_orden.codigo_cups = cups.codigo_cups " _
+                        & "INNER JOIN endoscopias ON o.id = endoscopias.id_orden WHERE o.id = '" & idOrden & "'")
                 _conn = ConexionODBC.Open()
                 Dim comando = New OdbcCommand(query, _conn)
                 _adapter = New OdbcDataAdapter(comando)
@@ -69,30 +87,31 @@ Namespace Controles
             Try
 
                 Dim query As String =
-                              String.Format("SELECT '130010244901' AS codPrestador, " _
-                              & "o.fecha_ingreso AS fechaInicioAtencion, " _
-                              & "o.autorizacion, " _
-                              & "detalle_orden.codigo_cups AS codConsulta, " _
-                              & "'01' AS modalidadGrupoServicioTecSal, " _
-                              & "'01' AS grupoServicios, " _
-                              & "301 AS codServicio, " _
-                              & "'15' AS finalidadTecnologiaSalud, " _
-                              & "'38' AS causaMotivoAtencion, " _
-                              & "detalle_orden.diagnostico1 AS codDiagnosticoPrincipal, " _
-                              & "NULL AS codDiagnosticoRelacionado1, " _
-                              & "NULL AS codDiagnosticoRelacionado2, " _
-                              & "NULL AS codDiagnosticoRelacionado3, " _
-                              & "'01' AS tipoDiagnosticoPrincipal, " _
-                              & "'CC' AS tipoDocumentoIdentificacion, " _
-                              & "'45632147' AS numDocumentoIdentificacion, " _
-                              & "detalle_orden.valor AS vrServicio, " _
-                              & "'05' AS conceptoRecaudo, " _
-                              & "detalle_orden.copago AS valorPagoModerador, " _
-                              & "NULL AS numFEVPagoModerador, " _
-                              & "ROW_NUMBER() OVER (ORDER BY o.id) AS consecutivo " _
-                              & "FROM ordenes o INNER JOIN detalle_orden ON o.id = detalle_orden.id_orden " _
-                              & "INNER JOIN historia_clinica ON o.id = historia_clinica.id_orden INNER JOIN " _
-                              & "especialistas ON historia_clinica.id_especialista = especialistas.id WHERE o.id = '" & idOrden & "'")
+                    String.Format("SELECT '130010244901' AS codPrestador, " _
+                        & "o.fecha_ingreso As fechaInicioAtencion, " _
+                        & "o.autorizacion, " _
+                        & "detalle_orden.codigo_cups AS codConsulta, " _
+                        & "'01' AS modalidadGrupoServicioTecSal, " _
+                        & "'01' AS grupoServicios, " _
+                        & "cups.codigo_servicio AS codServicio, " _
+                        & "'15' AS finalidadTecnologiaSalud, " _
+                        & "'38' AS causaMotivoAtencion, " _
+                        & "detalle_orden.diagnostico1 AS codDiagnosticoPrincipal, " _
+                        & "NULL AS codDiagnosticoRelacionado1, " _
+                        & "NULL AS codDiagnosticoRelacionado2, " _
+                        & "NULL AS codDiagnosticoRelacionado3, " _
+                        & "'01' AS tipoDiagnosticoPrincipal, " _
+                        & "'CC' AS tipoDocumentoIdentificacion, " _
+                        & "'45632147' AS numDocumentoIdentificacion, " _
+                        & "detalle_orden.valor AS vrServicio, " _
+                        & "'05' AS conceptoRecaudo, " _
+                        & "detalle_orden.copago AS valorPagoModerador, " _
+                        & "NULL AS numFEVPagoModerador, " _
+                        & "ROW_NUMBER() OVER (ORDER BY o.id) AS consecutivo FROM ordenes o " _
+                        & "INNER JOIN detalle_orden ON o.id = detalle_orden.id_orden " _
+                        & "INNER JOIN historia_clinica ON o.id = historia_clinica.id_orden " _
+                        & "INNER JOIN cups ON detalle_orden.codigo_cups = cups.codigo_cups " _
+                        & "INNER JOIN especialistas ON historia_clinica.id_especialista = especialistas.id WHERE o.id = '56712'")
                 _conn = ConexionODBC.Open()
                 Dim comando = New OdbcCommand(query, _conn)
                 _adapter = New OdbcDataAdapter(comando)

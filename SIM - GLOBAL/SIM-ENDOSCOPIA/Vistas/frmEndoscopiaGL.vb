@@ -16,6 +16,7 @@ Public Class frmEndoscopiaGL
     Dim _DImagenes As New SIM___GLOBAL.Controles.DImagenes
     Dim _ImagenesTemporales As New SIM___GLOBAL.Modelo.ImagenesTemporales
     Dim _DImagenesTemporales As New SIM___GLOBAL.Controles.DImagenesTemporales
+    Dim _Dplantillas As New SIM___GLOBAL.Controles.DPlantillasInformes
 
     Dim _dImpresionHistoria As New SIM___GLOBAL.Controles.DImpresionHistoria
     Dim _ImpresionHistoria As New SIM___GLOBAL.Modelo.ImpresionHistoria
@@ -182,7 +183,7 @@ Public Class frmEndoscopiaGL
             Case "COLONOSCOPIA"
                 lblReporteEstudio.Text = "Informe de Colonoscopia" & " - " & _ClickCups
 
-                xtpELCB.PageVisible = True
+                xtpELCB.PageVisible = False
                 xtpCampo2.Text = "Inspeccion"
                 xtpCampo3.Text = "Tacto"
                 xtpCampo4.Text = "Colonoscopia"
@@ -230,6 +231,12 @@ Public Class frmEndoscopiaGL
 
         CargarImagenes(lblIdDetalleOrden.Text)
 
+        'Listamos las plantillas
+        ' _ds = _Dplantillas.ListarCombo(_ClickIdTipoEstudio)
+        'cboPlantillas.Properties.DataSource = _ds.Tables(0)
+        'cboPlantillas.Properties.DisplayMember = _ds.Tables(0).Columns(1).Caption
+        'cboPlantillas.Properties.ValueMember = _ds.Tables(0).Columns(0).Caption
+
         bbiGuardar.Enabled = False
     End Sub
     Private Sub LimpiarCampos()
@@ -247,7 +254,7 @@ Public Class frmEndoscopiaGL
         chkProcesado.Checked = False
 
         'CAmpos Resporte de Endoscopia
-        txtELCB.Text = ""
+        txtELCB.Text = "."
         txtDescripcion.Text = ""
         txtCampo2.Text = ""
         txtCampo3.Text = ""
@@ -963,10 +970,17 @@ Public Class frmEndoscopiaGL
         _frmOpen.ShowDialog()
         CargarImagenes(lblIdDetalleOrden.Text)
     End Sub
+    Private Sub cboPlantillas_EditValueChanged(sender As Object, e As EventArgs) Handles cboPlantillas.EditValueChanged
 
-    Private Sub LabelControl9_Click(sender As Object, e As EventArgs) Handles LabelControl9.Click
+        If MsgBox("¿Desea aplicar la plantilla seleccionada? Recuerde que si tiene información sera reemplazada por la plantilla seleccionada.", vbYesNo + vbExclamation, "Plantilla") = vbYes Then
+            _ds = _Dplantillas.AplicarPlantilla2(cboPlantillas.GetColumnValue("ID"))
+            txtELCB.Text = _ds.Tables(0).Rows(0)(0).ToString
+            txtDescripcion.Text = _ds.Tables(0).Rows(0)(1).ToString
+            txtCampo2.Text = _ds.Tables(0).Rows(0)(2).ToString
+            txtCampo3.Text = _ds.Tables(0).Rows(0)(3).ToString
+            txtCampo4.Text = _ds.Tables(0).Rows(0)(4).ToString
+            txtDiagnostico.Text = _ds.Tables(0).Rows(0)(5).ToString
+        End If
 
     End Sub
-
-
 End Class
