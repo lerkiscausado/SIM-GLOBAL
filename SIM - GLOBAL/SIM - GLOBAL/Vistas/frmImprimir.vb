@@ -946,8 +946,8 @@ Public Class frmImprimir
                         rptHistoriaClinica.SetParameterValue("reporte", Reporte)
                         crv.ReportSource = rptHistoriaClinica
                     Case 4 'GASTROLAP
-                        'Dim rptHistoriaClinica As New rptHistoriaClinicaGC
-                        Dim rptHistoriaClinica As New rptHistoriaClinicaGL
+                        Dim rptHistoriaClinica As New rptHistoriaClinicaGC
+                        'Dim rptHistoriaClinica As New rptHistoriaClinicaGL
                         rptHistoriaClinica.SetParameterValue("filtro", idDetalleOrden)
                         rptHistoriaClinica.SetParameterValue("reporte", Reporte)
                         crv.ReportSource = rptHistoriaClinica
@@ -961,8 +961,8 @@ Public Class frmImprimir
                         rptHistoriaClinica.SetParameterValue("reporte", Reporte)
                         crv.ReportSource = rptHistoriaClinica
                     Case 4 'GASTROLAP
-                        'Dim rptHistoriaClinica As New rptHistoriaClinicaGC
-                        Dim rptHistoriaClinica As New rptHistoriaClinicaGL
+                        Dim rptHistoriaClinica As New rptHistoriaClinicaGC
+                        'Dim rptHistoriaClinica As New rptHistoriaClinicaGL
                         rptHistoriaClinica.SetParameterValue("filtro", idDetalleOrden)
                         rptHistoriaClinica.SetParameterValue("reporte", Reporte)
                         crv.ReportSource = rptHistoriaClinica
@@ -978,8 +978,8 @@ Public Class frmImprimir
                         rptEndoscopiaGL.SetParameterValue("fotos", Fotos)
                         crv.ReportSource = rptEndoscopiaGL
                     Case 4 'GASTROLAP
-                        Dim rptEndoscopiaGL As New rptImgEndoscopiaGL
-                        'Dim rptEndoscopiaGL As New rptImgEndoscopiaGC
+                        'Dim rptEndoscopiaGL As New rptImgEndoscopiaGL
+                        Dim rptEndoscopiaGL As New rptImgEndoscopiaGC
                         rptEndoscopiaGL.SetParameterValue("filtro", idDetalleOrden)
                         rptEndoscopiaGL.SetParameterValue("reporte", Reporte)
                         rptEndoscopiaGL.SetParameterValue("fotos", Fotos)
@@ -995,8 +995,8 @@ Public Class frmImprimir
                         rptColonoscopiaGL.SetParameterValue("fotos", Fotos)
                         crv.ReportSource = rptColonoscopiaGL
                     Case 4 'GASTROLAP
-                        'Dim rptColonoscopiaGL As New rptImgColonoscopiaGC
-                        Dim rptColonoscopiaGL As New rptImgColonoscopiaGL
+                        Dim rptColonoscopiaGL As New rptImgColonoscopiaGC
+                        'Dim rptColonoscopiaGL As New rptImgColonoscopiaGL
                         rptColonoscopiaGL.SetParameterValue("filtro", idDetalleOrden)
                         rptColonoscopiaGL.SetParameterValue("reporte", Reporte)
                         rptColonoscopiaGL.SetParameterValue("fotos", Fotos)
@@ -1012,8 +1012,8 @@ Public Class frmImprimir
                         rptRectoscopiaGL.SetParameterValue("fotos", Fotos)
                         crv.ReportSource = rptRectoscopiaGL
                     Case 4 'GASTROLAP
-                        'Dim rptRectoscopiaGL As New rptImgRectoscopiaGC
-                        Dim rptRectoscopiaGL As New rptImgRectoscopiaGL
+                        Dim rptRectoscopiaGL As New rptImgRectoscopiaGC
+                        'Dim rptRectoscopiaGL As New rptImgRectoscopiaGL
                         rptRectoscopiaGL.SetParameterValue("filtro", idDetalleOrden)
                         rptRectoscopiaGL.SetParameterValue("reporte", Reporte)
                         rptRectoscopiaGL.SetParameterValue("fotos", Fotos)
@@ -1041,8 +1041,8 @@ Public Class frmImprimir
                         rptEstudiosEspecialesGL.SetParameterValue("fotos", Fotos)
                         crv.ReportSource = rptEstudiosEspecialesGL
                     Case 4 'GASTROLAP
-                        'Dim rptEstudiosEspecialesGL As New rptImgEstudiosEspecialesGC
-                        Dim rptEstudiosEspecialesGL As New rptImgEstudiosEspecialesGL
+                        Dim rptEstudiosEspecialesGL As New rptImgEstudiosEspecialesGC
+                        'Dim rptEstudiosEspecialesGL As New rptImgEstudiosEspecialesGL
                         rptEstudiosEspecialesGL.SetParameterValue("filtro", idDetalleOrden)
                         rptEstudiosEspecialesGL.SetParameterValue("reporte", Reporte)
                         rptEstudiosEspecialesGL.SetParameterValue("fotos", Fotos)
