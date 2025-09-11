@@ -608,7 +608,8 @@ Public Class frmEstudiosEspeciales
 
                     'Actualizar estado de detalle orden
                     Dim _DDetalleOrden As New SIM___GLOBAL.Controles.DDetalleOrden
-                    _DDetalleOrden.ActualizarEstado(lblIdDetalleOrden.Text)
+                    '_DDetalleOrden.ActualizarEstado(lblIdDetalleOrden.Text)
+                    _DDetalleOrden.ActualizarDiagnosticoyEstado(lblIdDetalleOrden.Text, cboDiagnosticos.EditValue)
                     If _DDetalleOrden.DetalleOrdenPendiente(lblConsecutivoOrden.Text) = False Then
                         _dOrdenes.ActualizarEstado(lblConsecutivoOrden.Text, "ATENDIDO")
                     End If
