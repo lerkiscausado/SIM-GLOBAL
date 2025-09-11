@@ -1582,7 +1582,7 @@ Public Class frmFacturas
                             .viaIngresoServicioSalud = "02",
                             .modalidadGrupoServicioTecSal = "01",
                             .grupoServicios = "02",
-                            .codServicio = 706,
+                            .codServicio = _dsP.Tables(0).Rows(0)(8).ToString(),
                             .finalidadTecnologiaSalud = "15",
                             .tipoDocumentoIdentificacion = "CC",
                             .numDocumentoIdentificacion = "73106055",
