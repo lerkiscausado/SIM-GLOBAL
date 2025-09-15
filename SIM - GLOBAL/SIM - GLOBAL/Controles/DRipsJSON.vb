@@ -111,7 +111,7 @@ Namespace Controles
                         & "INNER JOIN detalle_orden ON o.id = detalle_orden.id_orden " _
                         & "INNER JOIN historia_clinica ON o.id = historia_clinica.id_orden " _
                         & "INNER JOIN cups ON detalle_orden.codigo_cups = cups.codigo_cups " _
-                        & "INNER JOIN especialistas ON historia_clinica.id_especialista = especialistas.id WHERE o.id = '56712'")
+                        & "INNER JOIN especialistas ON historia_clinica.id_especialista = especialistas.id WHERE o.id = '" & idOrden & "'")
                 _conn = ConexionODBC.Open()
                 Dim comando = New OdbcCommand(query, _conn)
                 _adapter = New OdbcDataAdapter(comando)

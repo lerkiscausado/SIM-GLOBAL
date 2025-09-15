@@ -1605,7 +1605,7 @@ Public Class frmFacturas
                     listaUsuarios.Add(New With {
                     .tipoDocumentoIdentificacion = _ds.Tables(0).Rows(i)(1).ToString,
                     .numDocumentoIdentificacion = _ds.Tables(0).Rows(i)(2).ToString,
-                    .tipoUsuario = "0" & _ds.Tables(0).Rows(i)(3).ToString,
+                    .tipoUsuario = _ds.Tables(0).Rows(i)(3).ToString,
                     .fechaNacimiento = Format(_ds.Tables(0).Rows(i)(4), "yyyy-MM-dd"),
                     .codSexo = _ds.Tables(0).Rows(i)(5).ToString(),
                     .codPaisResidencia = "170",
@@ -1623,7 +1623,7 @@ Public Class frmFacturas
                             .codConsulta = _dsC.Tables(0).Rows(0)(3).ToString(),
                             .modalidadGrupoServicioTecSal = "01",
                             .grupoServicios = "01",
-                            .codServicio = 301,
+                            .codServicio = _dsC.Tables(0).Rows(0)(6).ToString(),
                             .finalidadTecnologiaSalud = "15",
                             .causaMotivoAtencion = "38",
                             .codDiagnosticoPrincipal = _dsC.Tables(0).Rows(0)(9).ToString(),

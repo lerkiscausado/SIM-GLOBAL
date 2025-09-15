@@ -687,6 +687,7 @@ Partial Class frmFacturas
         Me.bbiEliminarFacturasRips.Id = 26
         Me.bbiEliminarFacturasRips.ImageOptions.Image = CType(resources.GetObject("bbiEliminarFacturasRips.ImageOptions.Image"), System.Drawing.Image)
         Me.bbiEliminarFacturasRips.Name = "bbiEliminarFacturasRips"
+        Me.bbiEliminarFacturasRips.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
         '
         'bbiEliminarFacturaRips
         '
@@ -694,6 +695,7 @@ Partial Class frmFacturas
         Me.bbiEliminarFacturaRips.Id = 25
         Me.bbiEliminarFacturaRips.ImageOptions.Image = CType(resources.GetObject("bbiEliminarFacturaRips.ImageOptions.Image"), System.Drawing.Image)
         Me.bbiEliminarFacturaRips.Name = "bbiEliminarFacturaRips"
+        Me.bbiEliminarFacturaRips.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
         '
         'bbiAgregarFacturaRips
         '
@@ -701,6 +703,7 @@ Partial Class frmFacturas
         Me.bbiAgregarFacturaRips.Id = 15
         Me.bbiAgregarFacturaRips.ImageOptions.Image = CType(resources.GetObject("bbiAgregarFacturaRips.ImageOptions.Image"), System.Drawing.Image)
         Me.bbiAgregarFacturaRips.Name = "bbiAgregarFacturaRips"
+        Me.bbiAgregarFacturaRips.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
         '
         'bbiAgregarFacturasRips
         '
@@ -708,6 +711,7 @@ Partial Class frmFacturas
         Me.bbiAgregarFacturasRips.Id = 27
         Me.bbiAgregarFacturasRips.ImageOptions.Image = CType(resources.GetObject("bbiAgregarFacturasRips.ImageOptions.Image"), System.Drawing.Image)
         Me.bbiAgregarFacturasRips.Name = "bbiAgregarFacturasRips"
+        Me.bbiAgregarFacturasRips.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
         '
         'bbiGenerarRips
         '

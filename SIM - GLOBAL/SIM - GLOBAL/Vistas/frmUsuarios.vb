@@ -1,6 +1,7 @@
 ﻿Imports SIM___GLOBAL.Controles
 Imports SIM___GLOBAL.Modelo
 Imports System.Text.RegularExpressions
+Imports System.IO
 Public Class frmUsuarios
     Dim _ds As DataSet
     Dim _dUsuarios = New DUsuarios
@@ -140,7 +141,7 @@ Public Class frmUsuarios
             MsgBox(ex.Message)
         End Try
 
-        'ACtualizar grilla
+        'Actualizar grilla
         ActualizarGrilla()
 
 
