@@ -1001,13 +1001,11 @@ Partial Class frmEndoscopiaGL
         Me.xtcReporteEstudio.Size = New System.Drawing.Size(604, 211)
         Me.xtcReporteEstudio.TabIndex = 97
         Me.xtcReporteEstudio.TabPages.AddRange(New DevExpress.XtraTab.XtraTabPage() {Me.xtpELCB, Me.xtpDescripcion, Me.xtpCampo2, Me.xtpCampo3, Me.xtpCampo4, Me.xtpDiagnostico, Me.xtpBiopsia})
-        Me.xtcReporteEstudio.Visible = False
         '
         'xtpELCB
         '
         Me.xtpELCB.Controls.Add(Me.txtELCB)
         Me.xtpELCB.Name = "xtpELCB"
-        Me.xtpELCB.PageVisible = False
         Me.xtpELCB.Size = New System.Drawing.Size(602, 186)
         Me.xtpELCB.Text = "ELCB"
         '
