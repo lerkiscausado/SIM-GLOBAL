@@ -183,7 +183,7 @@ Public Class frmEndoscopiaGL
             Case "COLONOSCOPIA"
                 lblReporteEstudio.Text = "Informe de Colonoscopia" & " - " & _ClickCups
 
-                xtpELCB.PageVisible = False
+                xtpELCB.PageVisible = True
                 xtpCampo2.Text = "Inspeccion"
                 xtpCampo3.Text = "Tacto"
                 xtpCampo4.Text = "Colonoscopia"

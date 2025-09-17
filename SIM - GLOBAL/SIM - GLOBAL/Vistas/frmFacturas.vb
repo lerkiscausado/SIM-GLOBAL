@@ -292,9 +292,9 @@ Public Class frmFacturas
             Case Else
                 _ds = _DFacturas.ListarFacturaServicios
                 GCConsultar.DataSource = _ds.Tables(0)
-                _ds = New DataSet
-                _ds = _DFacturas.ListarDetalleFactura
-                GCDetalleFactura.DataSource = _ds.Tables(0)
+                '_ds = New DataSet
+                '_ds = _DFacturas.ListarDetalleFactura
+                'GCDetalleFactura.DataSource = _ds.Tables(0)
         End Select
     End Sub
 
@@ -1684,6 +1684,25 @@ Public Class frmFacturas
         If saveFileDialog.ShowDialog() = DialogResult.OK Then
             File.WriteAllText(saveFileDialog.FileName, json, System.Text.Encoding.UTF8)
             MessageBox.Show("Archivo guardado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        End If
+    End Sub
+
+    Private Sub gvConsultar_DoubleClick(sender As Object, e As EventArgs) Handles gvConsultar.DoubleClick
+        If _ClickGrillaFacturas <> "" Then
+            _ds = New DataSet
+            _ds = _DFacturas.ListarDetalleFactura(_ClickGrillaFacturas)
+            GCDetalleFactura.DataSource = _ds.Tables(0)
+
+            xtcFactura.SelectedTabPage = xtpDetalleFactura
+        End If
+    End Sub
+
+    Private Sub bbiExportarExcel_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles bbiExportarExcel.ItemClick
+        If xtcFactura.SelectedTabPageIndex = 1 And GVDetalleFactura.RowCount <> 0 Then
+            sfdRuta.Filter = "Archivo Excel |*.xls"
+            If sfdRuta.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
+                GCDetalleFactura.ExportToXls(sfdRuta.FileName)
+            End If
         End If
     End Sub
 End Class

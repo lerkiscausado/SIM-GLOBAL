@@ -257,7 +257,7 @@ Namespace Controles
             End Try
 
         End Function
-        Public Function ListarDetalleFactura() As DataSet
+        Public Function ListarDetalleFacturas() As DataSet
             Try
                 Dim query As String =
                                     String.Format("SELECT `facturas`.`FACTURA`, `facturas`.`FECHA_FACTURA`, `contratos`.`NOMBRE` AS CONTRATO, " _
@@ -435,6 +435,31 @@ Namespace Controles
                 MessageBox.Show(ex.ToString())
             End Try
         End Sub
+        Public Function ListarDetalleFactura(ByVal idFactura As String) As DataSet
+            Try
+                Dim query As String =
+                   String.Format("SELECT `facturas`.`FACTURA`, `facturas`.`FECHA_FACTURA`, `contratos`.`NOMBRE` AS CONTRATO, " _
+                    & "`detalle_factura`.`ID_ORDEN` AS ORDEN , `ordenes`.`FECHA_INGRESO`, " _
+                    & "CONCAT(`usuarios`.`ID_TIPO_IDENTIFICACION`,`usuarios`.`IDENTIFICACION`) AS IDENTIFICACION, " _
+                    & "CONCAT(`usuarios`.`PRIMER_NOMBRE`,' ',`usuarios`.`SEGUNDO_NOMBRE`,' ', `usuarios`.`PRIMER_APELLIDO`,' ',`usuarios`.`SEGUNDO_APELLIDO`) AS NOMBRE, " _
+                    & "`ordenes`.`AUTORIZACION`, `detalle_factura`.`CODIGO_PROCEDIMIENTO`, `detalle_factura`.`CODIGO_CUPS`, `cups`.`NOMBRE_CUPS`, " _
+                    & "`detalle_factura`.`VALOR`, `detalle_factura`.`COPAGO` , (`detalle_factura`.`VALOR`-`detalle_factura`.`COPAGO`) AS NETO " _
+                    & "FROM `detalle_factura` INNER JOIN `facturas` ON (`detalle_factura`.`ID_FACTURA` = `facturas`.`ID`) INNER JOIN `ordenes` " _
+                    & "ON (`detalle_factura`.`ID_ORDEN` = `ordenes`.`ID`) INNER JOIN `cups` ON (`detalle_factura`.`CODIGO_CUPS` = `cups`.`CODIGO_CUPS`) " _
+                    & "INNER JOIN `contratos` ON (`facturas`.`ID_CONTRATO` = `contratos`.`ID`) INNER JOIN `usuarios` ON (`ordenes`.`ID_USUARIO` = `usuarios`.`ID`) WHERE facturas.id='" & idFactura & "'")
+                _conn = ConexionODBC.Open()
+                Dim comando = New OdbcCommand(query, _conn)
+                _adapter = New OdbcDataAdapter(comando)
+                _ds = New DataSet()
+                _adapter.Fill(_ds)
+                ConexionODBC.Close(_conn)
+                Return _ds
+            Catch ex As Exception
+                MessageBox.Show(ex.Message)
+                Return Nothing
+            End Try
+
+        End Function
     End Class
 
 End Namespace

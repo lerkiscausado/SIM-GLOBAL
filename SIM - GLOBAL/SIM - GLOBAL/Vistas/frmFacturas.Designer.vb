@@ -54,6 +54,7 @@ Partial Class frmFacturas
         Me.bbiAgregarFacturaRips = New DevExpress.XtraBars.BarButtonItem()
         Me.bbiAgregarFacturasRips = New DevExpress.XtraBars.BarButtonItem()
         Me.bbiGenerarRips = New DevExpress.XtraBars.BarButtonItem()
+        Me.bbiExportarExcel = New DevExpress.XtraBars.BarButtonItem()
         Me.BarDockControl2 = New DevExpress.XtraBars.BarDockControl()
         Me.barDockControlBottom = New DevExpress.XtraBars.BarDockControl()
         Me.barDockControlLeft = New DevExpress.XtraBars.BarDockControl()
@@ -589,8 +590,8 @@ Partial Class frmFacturas
         Me.BarManager1.DockControls.Add(Me.barDockControlLeft)
         Me.BarManager1.DockControls.Add(Me.barDockControlRight)
         Me.BarManager1.Form = Me
-        Me.BarManager1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.bbiNuevo, Me.bbiGuardar, Me.bbiImprimir, Me.bbiAnular, Me.cboFactura, Me.bbiVistaPrevia, Me.bsiImprimir, Me.bbiActualizar, Me.bbiFactura, Me.bbiDetalleFactura, Me.bbiConsultar, Me.bbiFacturaConcepto, Me.bbiRelacionFactura, Me.BarButtonItem4, Me.bbiRips, Me.bbiAgregarFacturaRips, Me.bbiFacturaAgregarTodo, Me.bbiFacturaBorrar, Me.BarStaticItem1, Me.BarButtonItem5, Me.BarButtonItem6, Me.BarButtonItem7, Me.BarButtonItem8, Me.BarButtonItem9, Me.BarButtonItem10, Me.bbiEliminarFacturaRips, Me.bbiEliminarFacturasRips, Me.bbiAgregarFacturasRips, Me.bbiGenerarRips})
-        Me.BarManager1.MaxItemId = 29
+        Me.BarManager1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.bbiNuevo, Me.bbiGuardar, Me.bbiImprimir, Me.bbiAnular, Me.cboFactura, Me.bbiVistaPrevia, Me.bsiImprimir, Me.bbiActualizar, Me.bbiFactura, Me.bbiDetalleFactura, Me.bbiConsultar, Me.bbiFacturaConcepto, Me.bbiRelacionFactura, Me.BarButtonItem4, Me.bbiRips, Me.bbiAgregarFacturaRips, Me.bbiFacturaAgregarTodo, Me.bbiFacturaBorrar, Me.BarStaticItem1, Me.BarButtonItem5, Me.BarButtonItem6, Me.BarButtonItem7, Me.BarButtonItem8, Me.BarButtonItem9, Me.BarButtonItem10, Me.bbiEliminarFacturaRips, Me.bbiEliminarFacturasRips, Me.bbiAgregarFacturasRips, Me.bbiGenerarRips, Me.bbiExportarExcel})
+        Me.BarManager1.MaxItemId = 30
         Me.BarManager1.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemLookUpEdit1})
         '
         'bFacturas
@@ -600,7 +601,7 @@ Partial Class frmFacturas
         Me.bFacturas.DockRow = 0
         Me.bFacturas.DockStyle = DevExpress.XtraBars.BarDockStyle.Top
         Me.bFacturas.FloatLocation = New System.Drawing.Point(86, 132)
-        Me.bFacturas.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.bbiNuevo), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiGuardar), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiAnular), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiActualizar), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiConsultar, True), New DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, Me.bsiImprimir, DevExpress.XtraBars.BarItemPaintStyle.CaptionInMenu), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiRips, True), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiEliminarFacturasRips), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiEliminarFacturaRips), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiAgregarFacturaRips), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiAgregarFacturasRips), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiGenerarRips)})
+        Me.bFacturas.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.bbiNuevo), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiGuardar), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiAnular), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiActualizar), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiConsultar, True), New DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, Me.bsiImprimir, DevExpress.XtraBars.BarItemPaintStyle.CaptionInMenu), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiRips, True), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiEliminarFacturasRips), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiEliminarFacturaRips), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiAgregarFacturaRips), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiAgregarFacturasRips), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiGenerarRips), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiExportarExcel)})
         Me.bFacturas.Offset = 3
         Me.bFacturas.Text = "Herramientas Facturas"
         '
@@ -720,6 +721,14 @@ Partial Class frmFacturas
         Me.bbiGenerarRips.ImageOptions.Image = CType(resources.GetObject("bbiGenerarRips.ImageOptions.Image"), System.Drawing.Image)
         Me.bbiGenerarRips.ImageOptions.LargeImage = CType(resources.GetObject("bbiGenerarRips.ImageOptions.LargeImage"), System.Drawing.Image)
         Me.bbiGenerarRips.Name = "bbiGenerarRips"
+        '
+        'bbiExportarExcel
+        '
+        Me.bbiExportarExcel.Caption = "Exportar Excel"
+        Me.bbiExportarExcel.Id = 29
+        Me.bbiExportarExcel.ImageOptions.Image = CType(resources.GetObject("bbiExportarExcel.ImageOptions.Image"), System.Drawing.Image)
+        Me.bbiExportarExcel.ImageOptions.LargeImage = CType(resources.GetObject("bbiExportarExcel.ImageOptions.LargeImage"), System.Drawing.Image)
+        Me.bbiExportarExcel.Name = "bbiExportarExcel"
         '
         'BarDockControl2
         '
@@ -4840,4 +4849,5 @@ Partial Class frmFacturas
     Friend WithEvents bbiGenerarRips As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents rtbJSON As RichTextBox
     Friend WithEvents btnGenerarJSON As Button
+    Friend WithEvents bbiExportarExcel As DevExpress.XtraBars.BarButtonItem
 End Class
