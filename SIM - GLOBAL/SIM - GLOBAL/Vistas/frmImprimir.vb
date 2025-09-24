@@ -947,7 +947,8 @@ Public Class frmImprimir
                         crv.ReportSource = rptHistoriaClinica
                     Case 4 'GASTROLAP
                         'Dim rptHistoriaClinica As New rptHistoriaClinicaGC
-                        Dim rptHistoriaClinica As New rptHistoriaClinicaGL
+                        'Dim rptHistoriaClinica As New rptHistoriaClinicaGL
+                        Dim rptHistoriaClinica As New rptHistoriaClinicaMR
                         rptHistoriaClinica.SetParameterValue("filtro", idDetalleOrden)
                         rptHistoriaClinica.SetParameterValue("reporte", Reporte)
                         crv.ReportSource = rptHistoriaClinica
@@ -962,7 +963,8 @@ Public Class frmImprimir
                         crv.ReportSource = rptHistoriaClinica
                     Case 4 'GASTROLAP
                         'Dim rptHistoriaClinica As New rptHistoriaClinicaGC
-                        Dim rptHistoriaClinica As New rptHistoriaClinicaGL
+                        'Dim rptHistoriaClinica As New rptHistoriaClinicaGL
+                        Dim rptHistoriaClinica As New rptHistoriaClinicaMR
                         rptHistoriaClinica.SetParameterValue("filtro", idDetalleOrden)
                         rptHistoriaClinica.SetParameterValue("reporte", Reporte)
                         crv.ReportSource = rptHistoriaClinica
