@@ -680,7 +680,6 @@ Partial Class frmFacturas
         Me.bbiRips.Caption = "Rips"
         Me.bbiRips.Id = 14
         Me.bbiRips.Name = "bbiRips"
-        Me.bbiRips.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
         '
         'bbiEliminarFacturasRips
         '
@@ -688,7 +687,6 @@ Partial Class frmFacturas
         Me.bbiEliminarFacturasRips.Id = 26
         Me.bbiEliminarFacturasRips.ImageOptions.Image = CType(resources.GetObject("bbiEliminarFacturasRips.ImageOptions.Image"), System.Drawing.Image)
         Me.bbiEliminarFacturasRips.Name = "bbiEliminarFacturasRips"
-        Me.bbiEliminarFacturasRips.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
         '
         'bbiEliminarFacturaRips
         '
@@ -696,7 +694,6 @@ Partial Class frmFacturas
         Me.bbiEliminarFacturaRips.Id = 25
         Me.bbiEliminarFacturaRips.ImageOptions.Image = CType(resources.GetObject("bbiEliminarFacturaRips.ImageOptions.Image"), System.Drawing.Image)
         Me.bbiEliminarFacturaRips.Name = "bbiEliminarFacturaRips"
-        Me.bbiEliminarFacturaRips.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
         '
         'bbiAgregarFacturaRips
         '
@@ -704,7 +701,6 @@ Partial Class frmFacturas
         Me.bbiAgregarFacturaRips.Id = 15
         Me.bbiAgregarFacturaRips.ImageOptions.Image = CType(resources.GetObject("bbiAgregarFacturaRips.ImageOptions.Image"), System.Drawing.Image)
         Me.bbiAgregarFacturaRips.Name = "bbiAgregarFacturaRips"
-        Me.bbiAgregarFacturaRips.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
         '
         'bbiAgregarFacturasRips
         '
@@ -712,7 +708,6 @@ Partial Class frmFacturas
         Me.bbiAgregarFacturasRips.Id = 27
         Me.bbiAgregarFacturasRips.ImageOptions.Image = CType(resources.GetObject("bbiAgregarFacturasRips.ImageOptions.Image"), System.Drawing.Image)
         Me.bbiAgregarFacturasRips.Name = "bbiAgregarFacturasRips"
-        Me.bbiAgregarFacturasRips.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
         '
         'bbiGenerarRips
         '
@@ -3258,11 +3253,11 @@ Partial Class frmFacturas
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(1026, 32)
+        Me.Button1.Location = New System.Drawing.Point(997, 32)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 23)
+        Me.Button1.Size = New System.Drawing.Size(106, 23)
         Me.Button1.TabIndex = 225
-        Me.Button1.Text = "CAmbios para GIT"
+        Me.Button1.Text = "Generar Rips"
         Me.Button1.UseVisualStyleBackColor = True
         '
         'LabelControl34
