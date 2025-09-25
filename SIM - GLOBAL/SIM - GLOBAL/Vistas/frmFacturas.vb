@@ -1254,6 +1254,8 @@ Public Class frmFacturas
     Private Sub bbiRips_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles bbiRips.ItemClick
         If _ClickGrillaFacturas <> "" Then
 
+            xtpRips.PageVisible = True
+
             If _ClickGrillaTipoFactura = "SERVICIOS" Then
                 xtpRips.Show()
                 _ds = New DataSet
@@ -1572,7 +1574,7 @@ Public Class frmFacturas
                     .consecutivo = _ds.Tables(0).Rows(i)(10),
                     .codPaisOrigen = "170",
                     .servicios = New With {
-                        .Procedimientos = New Object() {
+                        .procedimientos = New Object() {
                             New With {
                             .codPrestador = "130010244901",
                             .fechaInicioAtencion = Format(_dsP.Tables(0).Rows(0)(1), "yyyy-MM-dd HH:mm"),
