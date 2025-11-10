@@ -833,12 +833,11 @@ Partial Class frmEndoscopiaGL
         '
         'lblPlantilla
         '
-        Me.lblPlantilla.Location = New System.Drawing.Point(337, 124)
+        Me.lblPlantilla.Location = New System.Drawing.Point(347, 120)
         Me.lblPlantilla.Name = "lblPlantilla"
         Me.lblPlantilla.Size = New System.Drawing.Size(40, 13)
         Me.lblPlantilla.TabIndex = 113
         Me.lblPlantilla.Text = "Plantilla:"
-        Me.lblPlantilla.Visible = False
         '
         'cboPlantillas
         '
@@ -854,7 +853,6 @@ Partial Class frmEndoscopiaGL
         Me.cboPlantillas.Properties.ShowHeader = False
         Me.cboPlantillas.Size = New System.Drawing.Size(192, 20)
         Me.cboPlantillas.TabIndex = 112
-        Me.cboPlantillas.Visible = False
         '
         'cboTomaBiopsia
         '

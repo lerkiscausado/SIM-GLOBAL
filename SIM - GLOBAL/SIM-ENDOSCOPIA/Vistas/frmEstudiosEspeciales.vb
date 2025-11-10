@@ -154,10 +154,10 @@ Public Class frmEstudiosEspeciales
 
         'CargarImagenes(lblIdDetalleOrden.Text)
         'Listamos las plantillas
-        ' _ds = _Dplantillas.ListarCombo(_ClickIdTipoEstudio)
-        'cboPlantillas.Properties.DataSource = _ds.Tables(0)
-        'cboPlantillas.Properties.DisplayMember = _ds.Tables(0).Columns(1).Caption
-        'cboPlantillas.Properties.ValueMember = _ds.Tables(0).Columns(0).Caption
+        _ds = _Dplantillas.ListarCombo(_ClickIdTipoEstudio)
+        cboPlantillas.Properties.DataSource = _ds.Tables(0)
+        cboPlantillas.Properties.DisplayMember = _ds.Tables(0).Columns(1).Caption
+        cboPlantillas.Properties.ValueMember = _ds.Tables(0).Columns(0).Caption
 
         bbiGuardar.Enabled = False
     End Sub
