@@ -295,6 +295,7 @@
     <Compile Include="Controles\DRipsJSON.vb" />
     <Compile Include="Controles\DSedes.vb" />
     <Compile Include="Controles\DSesiones.vb" />
+    <Compile Include="Controles\DSmtpConfig.vb" />
     <Compile Include="Controles\DSudentidades.vb" />
     <Compile Include="Controles\DTarifaProductos.vb" />
     <Compile Include="Controles\DTarifas.vb" />
@@ -474,6 +475,7 @@
     <Compile Include="Modelo\RevisionSistemas.vb" />
     <Compile Include="Modelo\Sedes.vb" />
     <Compile Include="Modelo\Sesiones.vb" />
+    <Compile Include="Modelo\SmtpConfig.vb" />
     <Compile Include="Modelo\Subentidades.vb" />
     <Compile Include="Modelo\TarifaProductos.vb" />
     <Compile Include="Modelo\Tarifas.vb" />
@@ -1402,6 +1404,12 @@
     <Compile Include="Vistas\frmSesion.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Vistas\frmSmtpConfig.Designer.vb">
+      <DependentUpon>frmSmtpConfig.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\frmSmtpConfig.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Vistas\frmSubEntidades.Designer.vb">
       <DependentUpon>frmSubEntidades.vb</DependentUpon>
     </Compile>
@@ -1995,6 +2003,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Vistas\frmSesion.resx">
       <DependentUpon>frmSesion.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\frmSmtpConfig.resx">
+      <DependentUpon>frmSmtpConfig.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vistas\frmSubEntidades.resx">
       <DependentUpon>frmSubEntidades.vb</DependentUpon>

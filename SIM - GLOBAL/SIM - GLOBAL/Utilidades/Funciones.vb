@@ -496,14 +496,14 @@ Namespace Utilidades
                     Select Case TipoEstudio
                         Case "CONSULTA PRIMERA VEZ", "CONSULTA DE CONTROL"
                             Try
-                                Dim rptHistoriaClinica As New rptHistoriaClinica
+                                Dim rptHistoriaClinica As New rptHistoriaClinicaMR
                                 rptHistoriaClinica.SetParameterValue("filtro", filtro)
                                 rptHistoriaClinica.SetParameterValue("reporte", Reporte)
 
                                 Dim crDiskFileDestinationOptions As CrystalDecisions.Shared.DiskFileDestinationOptions = New CrystalDecisions.Shared.DiskFileDestinationOptions
                                 Dim crExportOptions As CrystalDecisions.Shared.ExportOptions = New CrystalDecisions.Shared.ExportOptions
 
-                                crDiskFileDestinationOptions.DiskFileName = "d:\estudios\pdf\" & Ruta
+                                crDiskFileDestinationOptions.DiskFileName = "c:\estudios\pdf\" & Ruta
                                 'crDiskFileDestinationOptions.DiskFileName = "\\192.168.1.1\resultados\pdf\" & Ruta
 
                                 With crExportOptions

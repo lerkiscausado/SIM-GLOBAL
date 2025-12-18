@@ -2553,4 +2553,10 @@ Public Class frmInicio
             MessageBox.Show("Debe Seleccionar una Orden", "Vista Previa", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End If
     End Sub
+
+    Private Sub bbiSmtpConfig_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles bbiSmtpConfig.ItemClick
+        Dim _frmOpen As New SIM___GLOBAL.frmSmtpConfig
+        _frmOpen.Licencia = LicenciaG
+        _frmOpen.ShowDialog()
+    End Sub
 End Class

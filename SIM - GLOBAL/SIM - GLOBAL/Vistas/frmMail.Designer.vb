@@ -37,8 +37,6 @@ Partial Class frmMail
         Me.xtpAdjunto = New DevExpress.XtraTab.XtraTabPage()
         Me.PDF = New DevExpress.XtraPdfViewer.PdfViewer()
         Me.GridView10 = New DevExpress.XtraGrid.Views.Grid.GridView()
-        Me.xtpConcepto = New DevExpress.XtraTab.XtraTabPage()
-        Me.txtConcepto = New DevExpress.XtraEditors.MemoEdit()
         Me.GridView11 = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.xtcFactura = New DevExpress.XtraTab.XtraTabControl()
         Me.btnEnviar = New DevExpress.XtraEditors.SimpleButton()
@@ -56,8 +54,6 @@ Partial Class frmMail
         CType(Me.GridView9, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.xtpAdjunto.SuspendLayout()
         CType(Me.GridView10, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.xtpConcepto.SuspendLayout()
-        CType(Me.txtConcepto.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView11, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.xtcFactura, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.xtcFactura.SuspendLayout()
@@ -135,7 +131,7 @@ Partial Class frmMail
         '
         Me.xtpAdjunto.Controls.Add(Me.PDF)
         Me.xtpAdjunto.Name = "xtpAdjunto"
-        Me.xtpAdjunto.Size = New System.Drawing.Size(657, 292)
+        Me.xtpAdjunto.Size = New System.Drawing.Size(661, 295)
         Me.xtpAdjunto.Text = "Adjunto"
         '
         'PDF
@@ -143,7 +139,7 @@ Partial Class frmMail
         Me.PDF.Dock = System.Windows.Forms.DockStyle.Fill
         Me.PDF.Location = New System.Drawing.Point(0, 0)
         Me.PDF.Name = "PDF"
-        Me.PDF.Size = New System.Drawing.Size(657, 292)
+        Me.PDF.Size = New System.Drawing.Size(661, 295)
         Me.PDF.TabIndex = 2
         Me.PDF.ZoomMode = DevExpress.XtraPdfViewer.PdfZoomMode.FitToVisible
         '
@@ -151,35 +147,25 @@ Partial Class frmMail
         '
         Me.GridView10.Name = "GridView10"
         '
-        'xtpConcepto
-        '
-        Me.xtpConcepto.Controls.Add(Me.txtConcepto)
-        Me.xtpConcepto.Name = "xtpConcepto"
-        Me.xtpConcepto.Size = New System.Drawing.Size(657, 292)
-        Me.xtpConcepto.Text = "Concepto"
-        '
-        'txtConcepto
-        '
-        Me.txtConcepto.Location = New System.Drawing.Point(3, 3)
-        Me.txtConcepto.Name = "txtConcepto"
-        Me.txtConcepto.Size = New System.Drawing.Size(651, 300)
-        Me.txtConcepto.TabIndex = 210
-        '
         'GridView11
         '
         Me.GridView11.Name = "GridView11"
         '
         'xtcFactura
         '
+        Me.xtcFactura.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.xtcFactura.Location = New System.Drawing.Point(12, 78)
         Me.xtcFactura.Name = "xtcFactura"
-        Me.xtcFactura.SelectedTabPage = Me.xtpConcepto
+        Me.xtcFactura.SelectedTabPage = Me.xtpAdjunto
         Me.xtcFactura.Size = New System.Drawing.Size(663, 320)
         Me.xtcFactura.TabIndex = 83
-        Me.xtcFactura.TabPages.AddRange(New DevExpress.XtraTab.XtraTabPage() {Me.xtpConcepto, Me.xtpAdjunto})
+        Me.xtcFactura.TabPages.AddRange(New DevExpress.XtraTab.XtraTabPage() {Me.xtpAdjunto})
         '
         'btnEnviar
         '
+        Me.btnEnviar.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnEnviar.ImageOptions.Image = CType(resources.GetObject("btnEnviar.ImageOptions.Image"), System.Drawing.Image)
         Me.btnEnviar.Location = New System.Drawing.Point(588, 406)
         Me.btnEnviar.Name = "btnEnviar"
@@ -189,6 +175,7 @@ Partial Class frmMail
         '
         'btnDescartar
         '
+        Me.btnDescartar.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnDescartar.ImageOptions.Image = CType(resources.GetObject("btnDescartar.ImageOptions.Image"), System.Drawing.Image)
         Me.btnDescartar.Location = New System.Drawing.Point(495, 406)
         Me.btnDescartar.Name = "btnDescartar"
@@ -208,10 +195,11 @@ Partial Class frmMail
         Me.Controls.Add(Me.LabelControl13)
         Me.Controls.Add(Me.txtPara)
         Me.Controls.Add(Me.LabelControl12)
-        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.IconOptions.Icon = CType(resources.GetObject("frmMail.IconOptions.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmMail"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Enviar Email"
         CType(Me.txtAsunto.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtPara.Properties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -226,8 +214,6 @@ Partial Class frmMail
         CType(Me.GridView9, System.ComponentModel.ISupportInitialize).EndInit()
         Me.xtpAdjunto.ResumeLayout(False)
         CType(Me.GridView10, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.xtpConcepto.ResumeLayout(False)
-        CType(Me.txtConcepto.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView11, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.xtcFactura, System.ComponentModel.ISupportInitialize).EndInit()
         Me.xtcFactura.ResumeLayout(False)
@@ -251,11 +237,9 @@ Partial Class frmMail
     Friend WithEvents GridView9 As DevExpress.XtraGrid.Views.Grid.GridView
     Friend WithEvents xtpAdjunto As DevExpress.XtraTab.XtraTabPage
     Friend WithEvents GridView10 As DevExpress.XtraGrid.Views.Grid.GridView
-    Friend WithEvents xtpConcepto As DevExpress.XtraTab.XtraTabPage
     Friend WithEvents GridView11 As DevExpress.XtraGrid.Views.Grid.GridView
     Friend WithEvents xtcFactura As DevExpress.XtraTab.XtraTabControl
     Friend WithEvents btnEnviar As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents btnDescartar As DevExpress.XtraEditors.SimpleButton
-    Friend WithEvents txtConcepto As DevExpress.XtraEditors.MemoEdit
     Friend WithEvents PDF As DevExpress.XtraPdfViewer.PdfViewer
 End Class
