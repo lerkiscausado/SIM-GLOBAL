@@ -6,7 +6,7 @@ Public Class frmSesion
     ' Conexion
     Dim conectar = New ConexionODBC
     Dim _conn As OdbcConnection
-    Dim cerrar As Boolean = True
+    Dim admincerrar As Boolean = True
 
     'Variables 
     Dim _ds As DataSet
