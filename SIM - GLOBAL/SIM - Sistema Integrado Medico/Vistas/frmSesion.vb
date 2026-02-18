@@ -78,7 +78,7 @@ Public Class frmSesion
         DevExpress.LookAndFeel.UserLookAndFeel.Default.SetSkinStyle("Office 2013")
         'INICIAR CONEXION BASE DE DATOS
         Try
-            conectar.Cadena = String.Format("Dsn=SIMDB;uid=adossofn_admin;pwd=80082552700ers")
+            conectar.Cadena = String.Format("Dsn=SIMDB;uid=adossofn_admin;pwd=@G800825Ers")
             _conn = conectar.Open()
             'cerrar = False
         Catch ex As Exception
