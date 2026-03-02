@@ -406,7 +406,7 @@ Partial Class frmFacturas
         Me.BarDockControl11 = New DevExpress.XtraBars.BarDockControl()
         Me.txtID = New DevExpress.XtraEditors.TextEdit()
         Me.LabelControl31 = New DevExpress.XtraEditors.LabelControl()
-        Me.CachedEjemplo1 = New SIM___GLOBAL.CachedEjemplo()
+        'Me.CachedEjemplo1 = New SIM___GLOBAL.CachedEjemplo()
         CType(Me.BarManager1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemLookUpEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GCConsultar, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -4790,7 +4790,7 @@ Partial Class frmFacturas
     Friend WithEvents colMARCA As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents lblMarca As DevExpress.XtraEditors.LabelControl
     Friend WithEvents colINVENTARIO As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents CachedEjemplo1 As CachedEjemplo
+    ' Friend WithEvents CachedEjemplo1 As CachedEjemplo
     Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents SeparatorControl1 As DevExpress.XtraEditors.SeparatorControl
     Friend WithEvents SeparatorControl2 As DevExpress.XtraEditors.SeparatorControl

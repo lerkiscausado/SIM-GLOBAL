@@ -725,10 +725,10 @@ Public Class frmImprimir
     Public Sub ImprimirEjemplo()
         Try
 
-            Dim rptEjemplo As New Ejemplo
-            crv.ReportSource = rptEjemplo
-            crv.Refresh()
-            ShowDialog()
+            'Dim rptEjemplo As New rptImagenes
+            'crv.ReportSource = rptEjemplo
+            'crv.Refresh()
+            'ShowDialog()
         Catch ex As Exception
             MessageBox.Show(ex.Message)
         End Try
@@ -983,6 +983,8 @@ Public Class frmImprimir
                         rptEndoscopiaGL.SetParameterValue("filtro", idDetalleOrden)
                         rptEndoscopiaGL.SetParameterValue("reporte", Reporte)
                         rptEndoscopiaGL.SetParameterValue("fotos", Fotos)
+                        ' Usamos el nombre del objeto "subImagenes" y el nombre técnico del parámetro
+                        rptEndoscopiaGL.SetParameterValue("id_detalle_orden", idDetalleOrden, "imagenes")
                         crv.ReportSource = rptEndoscopiaGL
 
                 End Select
