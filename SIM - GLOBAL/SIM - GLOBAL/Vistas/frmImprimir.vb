@@ -1002,7 +1002,10 @@ Public Class frmImprimir
                         rptColonoscopiaGL.SetParameterValue("filtro", idDetalleOrden)
                         rptColonoscopiaGL.SetParameterValue("reporte", Reporte)
                         rptColonoscopiaGL.SetParameterValue("fotos", Fotos)
+                        ' Usamos el nombre del objeto "subImagenes" y el nombre técnico del parámetro
+                        rptColonoscopiaGL.SetParameterValue("id_detalle_orden", idDetalleOrden, "imagenes")
                         crv.ReportSource = rptColonoscopiaGL
+
 
                 End Select
             Case "RECTOSCOPIA"
