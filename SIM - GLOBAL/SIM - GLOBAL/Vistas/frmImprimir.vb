@@ -1022,6 +1022,8 @@ Public Class frmImprimir
                         rptRectoscopiaGL.SetParameterValue("filtro", idDetalleOrden)
                         rptRectoscopiaGL.SetParameterValue("reporte", Reporte)
                         rptRectoscopiaGL.SetParameterValue("fotos", Fotos)
+                        ' Usamos el nombre del objeto "subImagenes" y el nombre técnico del parámetro
+                        rptRectoscopiaGL.SetParameterValue("id_detalle_orden", idDetalleOrden, "imagenes")
                         crv.ReportSource = rptRectoscopiaGL
 
                 End Select
@@ -1051,6 +1053,8 @@ Public Class frmImprimir
                         rptEstudiosEspecialesGL.SetParameterValue("filtro", idDetalleOrden)
                         rptEstudiosEspecialesGL.SetParameterValue("reporte", Reporte)
                         rptEstudiosEspecialesGL.SetParameterValue("fotos", Fotos)
+                        ' Usamos el nombre del objeto "subImagenes" y el nombre técnico del parámetro
+                        rptEstudiosEspecialesGL.SetParameterValue("id_detalle_orden", idDetalleOrden, "imagenes")
                         crv.ReportSource = rptEstudiosEspecialesGL
 
                 End Select

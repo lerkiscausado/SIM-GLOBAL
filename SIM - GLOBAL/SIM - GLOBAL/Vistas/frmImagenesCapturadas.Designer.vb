@@ -23,20 +23,20 @@ Partial Class frmImagenesCapturadas
         Me.SplitContainerControl1 = New DevExpress.XtraEditors.SplitContainerControl()
         Me.gcCapturadas = New DevExpress.XtraBars.Ribbon.GalleryControl()
         Me.GalleryControlClient1 = New DevExpress.XtraBars.Ribbon.GalleryControlClient()
+        Me.LabelControl1 = New DevExpress.XtraEditors.LabelControl()
+        Me.LabelControl8 = New DevExpress.XtraEditors.LabelControl()
+        Me.isImagenes = New DevExpress.XtraEditors.Controls.ImageSlider()
         Me.btnRemover = New DevExpress.XtraEditors.SimpleButton()
         Me.btnAgregar = New DevExpress.XtraEditors.SimpleButton()
         Me.gcSeleccionadas = New DevExpress.XtraBars.Ribbon.GalleryControl()
         Me.GalleryControlClient2 = New DevExpress.XtraBars.Ribbon.GalleryControlClient()
-        Me.isImagenes = New DevExpress.XtraEditors.Controls.ImageSlider()
-        Me.LabelControl8 = New DevExpress.XtraEditors.LabelControl()
-        Me.LabelControl1 = New DevExpress.XtraEditors.LabelControl()
         CType(Me.SplitContainerControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainerControl1.SuspendLayout()
         CType(Me.gcCapturadas, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.gcCapturadas.SuspendLayout()
+        CType(Me.isImagenes, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.gcSeleccionadas, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.gcSeleccionadas.SuspendLayout()
-        CType(Me.isImagenes, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'SplitContainerControl1
@@ -53,7 +53,7 @@ Partial Class frmImagenesCapturadas
         Me.SplitContainerControl1.Panel2.Controls.Add(Me.btnAgregar)
         Me.SplitContainerControl1.Panel2.Controls.Add(Me.gcSeleccionadas)
         Me.SplitContainerControl1.Panel2.Text = "Panel2"
-        Me.SplitContainerControl1.Size = New System.Drawing.Size(1000, 609)
+        Me.SplitContainerControl1.Size = New System.Drawing.Size(1000, 690)
         Me.SplitContainerControl1.SplitterPosition = 365
         Me.SplitContainerControl1.TabIndex = 0
         Me.SplitContainerControl1.Text = "SplitContainerControl1"
@@ -76,7 +76,7 @@ Partial Class frmImagenesCapturadas
         Me.gcCapturadas.Gallery.UseMaxImageSize = True
         Me.gcCapturadas.Location = New System.Drawing.Point(0, 14)
         Me.gcCapturadas.Name = "gcCapturadas"
-        Me.gcCapturadas.Size = New System.Drawing.Size(361, 591)
+        Me.gcCapturadas.Size = New System.Drawing.Size(361, 672)
         Me.gcCapturadas.TabIndex = 7
         Me.gcCapturadas.Text = "GalleryControl2"
         '
@@ -84,7 +84,33 @@ Partial Class frmImagenesCapturadas
         '
         Me.GalleryControlClient1.GalleryControl = Me.gcCapturadas
         Me.GalleryControlClient1.Location = New System.Drawing.Point(2, 2)
-        Me.GalleryControlClient1.Size = New System.Drawing.Size(340, 587)
+        Me.GalleryControlClient1.Size = New System.Drawing.Size(340, 668)
+        '
+        'LabelControl1
+        '
+        Me.LabelControl1.Location = New System.Drawing.Point(37, 388)
+        Me.LabelControl1.Name = "LabelControl1"
+        Me.LabelControl1.Size = New System.Drawing.Size(117, 13)
+        Me.LabelControl1.TabIndex = 97
+        Me.LabelControl1.Text = "Imagenes Seleccionadas"
+        '
+        'LabelControl8
+        '
+        Me.LabelControl8.Location = New System.Drawing.Point(39, 14)
+        Me.LabelControl8.Name = "LabelControl8"
+        Me.LabelControl8.Size = New System.Drawing.Size(88, 13)
+        Me.LabelControl8.TabIndex = 96
+        Me.LabelControl8.Text = "Visor de Imagenes"
+        '
+        'isImagenes
+        '
+        Me.isImagenes.Appearance.Options.UseImage = True
+        Me.isImagenes.Location = New System.Drawing.Point(37, 33)
+        Me.isImagenes.Name = "isImagenes"
+        Me.isImagenes.ScrollButtonVisibility = DevExpress.Utils.DefaultBoolean.[True]
+        Me.isImagenes.Size = New System.Drawing.Size(581, 348)
+        Me.isImagenes.TabIndex = 7
+        Me.isImagenes.Text = "ImageSlider1"
         '
         'btnRemover
         '
@@ -119,7 +145,7 @@ Partial Class frmImagenesCapturadas
         Me.gcSeleccionadas.Gallery.ShowItemText = True
         Me.gcSeleccionadas.Location = New System.Drawing.Point(37, 407)
         Me.gcSeleccionadas.Name = "gcSeleccionadas"
-        Me.gcSeleccionadas.Size = New System.Drawing.Size(581, 190)
+        Me.gcSeleccionadas.Size = New System.Drawing.Size(581, 271)
         Me.gcSeleccionadas.TabIndex = 5
         Me.gcSeleccionadas.Text = "GalleryControl2"
         '
@@ -127,39 +153,13 @@ Partial Class frmImagenesCapturadas
         '
         Me.GalleryControlClient2.GalleryControl = Me.gcSeleccionadas
         Me.GalleryControlClient2.Location = New System.Drawing.Point(2, 2)
-        Me.GalleryControlClient2.Size = New System.Drawing.Size(560, 186)
-        '
-        'isImagenes
-        '
-        Me.isImagenes.Appearance.Options.UseImage = True
-        Me.isImagenes.Location = New System.Drawing.Point(37, 33)
-        Me.isImagenes.Name = "isImagenes"
-        Me.isImagenes.ScrollButtonVisibility = DevExpress.Utils.DefaultBoolean.[True]
-        Me.isImagenes.Size = New System.Drawing.Size(581, 348)
-        Me.isImagenes.TabIndex = 7
-        Me.isImagenes.Text = "ImageSlider1"
-        '
-        'LabelControl8
-        '
-        Me.LabelControl8.Location = New System.Drawing.Point(39, 14)
-        Me.LabelControl8.Name = "LabelControl8"
-        Me.LabelControl8.Size = New System.Drawing.Size(88, 13)
-        Me.LabelControl8.TabIndex = 96
-        Me.LabelControl8.Text = "Visor de Imagenes"
-        '
-        'LabelControl1
-        '
-        Me.LabelControl1.Location = New System.Drawing.Point(37, 388)
-        Me.LabelControl1.Name = "LabelControl1"
-        Me.LabelControl1.Size = New System.Drawing.Size(117, 13)
-        Me.LabelControl1.TabIndex = 97
-        Me.LabelControl1.Text = "Imagenes Seleccionadas"
+        Me.GalleryControlClient2.Size = New System.Drawing.Size(560, 267)
         '
         'frmImagenesCapturadas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1000, 609)
+        Me.ClientSize = New System.Drawing.Size(1000, 690)
         Me.Controls.Add(Me.SplitContainerControl1)
         Me.IconOptions.Icon = CType(resources.GetObject("frmImagenesCapturadas.IconOptions.Icon"), System.Drawing.Icon)
         Me.Name = "frmImagenesCapturadas"
@@ -169,9 +169,9 @@ Partial Class frmImagenesCapturadas
         Me.SplitContainerControl1.ResumeLayout(False)
         CType(Me.gcCapturadas, System.ComponentModel.ISupportInitialize).EndInit()
         Me.gcCapturadas.ResumeLayout(False)
+        CType(Me.isImagenes, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.gcSeleccionadas, System.ComponentModel.ISupportInitialize).EndInit()
         Me.gcSeleccionadas.ResumeLayout(False)
-        CType(Me.isImagenes, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
