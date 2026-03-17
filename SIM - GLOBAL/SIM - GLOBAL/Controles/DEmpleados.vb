@@ -185,10 +185,8 @@ Namespace Controles
         Public Function ListarEspecialista() As DataSet
             Try
                 Dim query As String =
-                                    String.Format("SELECT empleados.ID, empleados.NOMBRE_EMPLEADO AS NOMBRE, especialidades.NOMBRE_ESPECIALIDAD AS " _
-                                                  & "ESPECIALIDAD FROM empleados INNER JOIN cargos ON (empleados.ID_CARGO = cargos.ID) " _
-                                                  & "INNER JOIN especialidades ON (empleados.ID_ESPECIALIDAD = especialidades.ID) WHERE " _
-                                                  & "(cargos.NOMBRE_CARGO ='ESPECIALISTA' And empleados.ESTADO ='A')")
+                                    String.Format("SELECT e.ID, e.NOMBRE_EMPLEADO AS NOMBRE, esp.NOMBRE_ESPECIALIDAD AS ESPECIALIDAD FROM empleados e INNER JOIN cargos       ca  ON e.ID_CARGO       = ca.ID
+                                                    INNER JOIN especialidades esp ON e.ID_ESPECIALIDAD = esp.ID WHERE ca.NOMBRE_CARGO = 'ESPECIALISTA'  AND e.ESTADO        = 'A';")
                 _conn = ConexionODBC.Open()
                 Dim comando = New OdbcCommand(query, _conn)
                 _adapter = New OdbcDataAdapter(comando)

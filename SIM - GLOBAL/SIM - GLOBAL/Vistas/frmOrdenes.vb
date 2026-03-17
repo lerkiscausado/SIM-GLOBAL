@@ -53,6 +53,7 @@ Public Class frmOrdenes
     Dim IdCuentaCliente As String
     Dim ValorRecibo As Double
     Dim IdCliente As String
+    Private _combosInicializados As Boolean = False
 #End Region
 #Region "Procedimientos personalizados"
     Private Sub GuardarCuentaCliente()
@@ -68,7 +69,73 @@ Public Class frmOrdenes
         _DCuentasClientes.Guardar(_CuentasClientes)
     End Sub
 
+    Private Sub CargarCombos()
+        ' Si ya fueron cargados, no volver a cargar
+        If _combosInicializados Then Return
 
+        Try
+            ' Cargar Tipo Afiliado
+            Dim _Dtipoafiliado = New DTipoAfiliado
+            _ds = _Dtipoafiliado.Listar
+            CargarCombo(cboTipoAfiliado, _ds.Tables(0), 0)
+
+            ' Cargar Tipo Usuario
+            Dim _DtipoUsuario = New DTipoUsuario
+            _ds = _DtipoUsuario.Listar
+            CargarCombo(cboTipoUsuario, _ds.Tables(0), 0)
+
+            ' Cargar Ambito Procedimiento
+            Dim _DAmbitoProcedimiento = New SIM___GLOBAL.DAmbitoProcedimiento
+            _ds = _DAmbitoProcedimiento.Listar
+            CargarCombo(cboAmbitoProcedimiento, _ds.Tables(0), 0)
+
+            ' Cargar Finalidad
+            Dim _DFinalidad = New SIM___GLOBAL.Controles.DFinalidadConsulta
+            _ds = _DFinalidad.Listar
+            CargarCombo(cboFinalidad, _ds.Tables(0), 9)
+
+            ' Cargar Tipo Estudio
+            Dim _DTipoEstudio = New DTipoEstudio
+            _ds = _DTipoEstudio.Listar
+            CargarCombo(cboTipoEstudio, _ds.Tables(0), 0)
+
+            ' Cargar Contratos
+            Dim _DContratos = New DContratos
+            _ds = _DContratos.ListarCombo
+            CargarCombo(cboContrato, _ds.Tables(0), -1)
+
+            ' Cargar Especialista
+            Dim _Dempleados = New DEmpleados
+            _ds = _Dempleados.ListarEspecialista
+            CargarCombo(cboMedico, _ds.Tables(0), -1)
+
+            ' Cargar Sedes
+            Dim _DSedes = New DSedes
+            _ds = _DSedes.ListarCombo
+            CargarCombo(cboSede, _ds.Tables(0), 0)
+
+            ' Cargar Especímenes
+            _ds = _DEspecimenes.Listar()
+            CargarCombo(cboEspecimen, _ds.Tables(0), 0)
+
+            ' Marcar como inicializados
+            _combosInicializados = True
+
+        Catch ex As Exception
+            MessageBox.Show("Error al cargar los combos: " & ex.Message,
+                        "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
+    ' Método auxiliar para evitar repetir código en cada combo
+    Private Sub CargarCombo(ByVal combo As DevExpress.XtraEditors.LookUpEdit,
+                        ByVal tabla As DataTable,
+                        ByVal itemIndex As Integer)
+        combo.Properties.DataSource = tabla
+        combo.Properties.DisplayMember = tabla.Columns(1).Caption
+        combo.Properties.ValueMember = tabla.Columns(0).Caption
+        combo.ItemIndex = itemIndex
+    End Sub
     Private Sub ActivarGuardar()
         If TVDatosUsuarios.RowCount <> 0 Then
             bbiGuardar.Enabled = True
@@ -90,6 +157,9 @@ Public Class frmOrdenes
         GCConsultarOrdenes.DataSource = _ds.Tables(0)
     End Sub
     Private Sub NuevaOrden()
+        ' CARGAMOS LA INFORMACION de los combos
+        CargarCombos()
+        '--------------------------------------
         If _ClickIdAgenda <> "" Then
             IdAgenda = _ClickIdAgenda
         End If
@@ -487,79 +557,7 @@ Public Class frmOrdenes
         _ds = _DAgenda.ListarAgendaHoy
         GCAgendados.DataSource = _ds.Tables(0)
 
-        ' Cargar Tipo Afiliado
-        Dim _Dtipoafiliado = New DTipoAfiliado
-        _ds = _Dtipoafiliado.Listar
-        cboTipoAfiliado.Properties.DataSource = _ds.Tables(0)
-        cboTipoAfiliado.Properties.DisplayMember = _ds.Tables(0).Columns(1).Caption
-        cboTipoAfiliado.Properties.ValueMember = _ds.Tables(0).Columns(0).Caption
-        cboTipoAfiliado.ItemIndex = 0
 
-        ' Cargar Tipo Usuario
-        Dim _DtipoUsuario = New DTipoUsuario
-        _ds = _DtipoUsuario.Listar
-        cboTipoUsuario.Properties.DataSource = _ds.Tables(0)
-        cboTipoUsuario.Properties.DisplayMember = _ds.Tables(0).Columns(1).Caption
-        cboTipoUsuario.Properties.ValueMember = _ds.Tables(0).Columns(0).Caption
-        cboTipoUsuario.ItemIndex = 0
-
-        ' Cargar Ambito Procedimiento
-        Dim _DAmbitoProcedimiento = New SIM___GLOBAL.DAmbitoProcedimiento
-        _ds = _DAmbitoProcedimiento.Listar
-        cboAmbitoProcedimiento.Properties.DataSource = _ds.Tables(0)
-        cboAmbitoProcedimiento.Properties.DisplayMember = _ds.Tables(0).Columns(1).Caption
-        cboAmbitoProcedimiento.Properties.ValueMember = _ds.Tables(0).Columns(0).Caption
-        cboAmbitoProcedimiento.ItemIndex = 0
-        '---------------------------------
-
-        ' Cargar FINALIDAD
-        Dim _DFinalidad = New SIM___GLOBAL.Controles.DFinalidadConsulta
-        _ds = _DFinalidad.Listar
-        cboFinalidad.Properties.DataSource = _ds.Tables(0)
-        cboFinalidad.Properties.DisplayMember = _ds.Tables(0).Columns(1).Caption
-        cboFinalidad.Properties.ValueMember = _ds.Tables(0).Columns(0).Caption
-        cboFinalidad.ItemIndex = 9
-        '---------------------------------
-
-        ' Cargar Tipo Estudio
-        Dim _DTipoEstudio = New DTipoEstudio
-        _ds = _DTipoEstudio.Listar
-        cboTipoEstudio.Properties.DataSource = _ds.Tables(0)
-        cboTipoEstudio.Properties.DisplayMember = _ds.Tables(0).Columns(1).Caption
-        cboTipoEstudio.Properties.ValueMember = _ds.Tables(0).Columns(0).Caption
-        cboTipoEstudio.ItemIndex = 0
-        '---------------------------------
-        ' Cargar Contratos
-        Dim _DContratos = New DContratos
-        _ds = _DContratos.ListarCombo
-        cboContrato.Properties.DataSource = _ds.Tables(0)
-        cboContrato.Properties.DisplayMember = _ds.Tables(0).Columns(1).Caption
-        cboContrato.Properties.ValueMember = _ds.Tables(0).Columns(0).Caption
-        cboContrato.ItemIndex = -1
-
-        ' Cargar Especialista
-        Dim _Dempleados = New DEmpleados
-        _ds = _Dempleados.ListarEspecialista
-        cboMedico.Properties.DataSource = _ds.Tables(0)
-        cboMedico.Properties.DisplayMember = _ds.Tables(0).Columns(1).Caption
-        cboMedico.Properties.ValueMember = _ds.Tables(0).Columns(0).Caption
-        cboMedico.ItemIndex = -1
-
-        ' Cargar Sedes
-        Dim _DSedes = New DSedes
-        _ds = _DSedes.ListarCombo
-        cboSede.Properties.DataSource = _ds.Tables(0)
-        cboSede.Properties.DisplayMember = _ds.Tables(0).Columns(1).Caption
-        cboSede.Properties.ValueMember = _ds.Tables(0).Columns(0).Caption
-        cboSede.ItemIndex = 0
-
-        'Cargar especimenes
-        _ds = New DataSet()
-        _ds = _DEspecimenes.Listar()
-        cboEspecimen.Properties.DataSource = _ds.Tables(0)
-        cboEspecimen.Properties.DisplayMember = _ds.Tables(0).Columns(1).Caption
-        cboEspecimen.Properties.ValueMember = _ds.Tables(0).Columns(0).Caption
-        cboEspecimen.ItemIndex = 0
 
         'NuevaO = 0
         Select Case Licencia

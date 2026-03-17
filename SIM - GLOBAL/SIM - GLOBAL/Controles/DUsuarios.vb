@@ -69,9 +69,8 @@ Namespace Controles
             Try
                 Dim query As String =
                                     String.Format(
-                                        "SELECT ID, ID_TIPO_IDENTIFICACION AS TI, IDENTIFICACION AS IDENTIFICACION " _
-                                        & ", CONCAT(PRIMER_NOMBRE,' ', SEGUNDO_NOMBRE,' ', PRIMER_APELLIDO,' ', SEGUNDO_APELLIDO)AS NOMBRE " _
-                                        & ", SEXO, TELEFONO, CORREO_ELECTRONICO FROM usuarios WHERE ID <> '1' ORDER BY id DESC LIMIT 0, 500")
+                                        "SELECT ID, ID_TIPO_IDENTIFICACION AS TI, IDENTIFICACION, CONCAT_WS(' ', PRIMER_NOMBRE, NULLIF(SEGUNDO_NOMBRE, ''),PRIMER_APELLIDO, NULLIF(SEGUNDO_APELLIDO, '')) AS NOMBRE, " _
+                                        & " SEXO, TELEFONO, CORREO_ELECTRONICO FROM usuarios WHERE ID != 1 ORDER BY ID DESC LIMIT 100;")
                 _conn = ConexionODBC.Open()
                 Dim comando = New OdbcCommand(query, _conn)
                 _adapter = New OdbcDataAdapter(comando)
