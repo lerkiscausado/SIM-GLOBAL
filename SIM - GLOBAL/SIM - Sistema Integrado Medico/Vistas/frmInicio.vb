@@ -61,71 +61,14 @@ Public Class frmInicio
     Private Sub ImpresionResultados(ByVal Fotos As String, ByVal VistaPrevia As Boolean)
         Dim ImprimirFrm As New SIM___GLOBAL.frmImprimir
         Dim Reporte As Integer = 1
-        'Verificamos la Licencia
-        Select Case LicenciaG
-            'Case 1 'ADOS SOFTWARE & DISEÑO
-            'Case 2 'LABORATORIO DE INMUNOPATOLOGICO DE LA COSTA
-            Case 3 'DITEG SAS
-                If Estudio = "CONSULTA PRIMERA VEZ" Or Estudio = "CONSULTA DE CONTROL" Then
-                    ' Impresion de Historias
-                    _dImpresionHistoria.EliminarHistoria(IdEmpleadoG)
-                    _dImpresionDetalleHistoria.EliminarDetalleHistoria(IdEmpleadoG)
-                    _funciones.ImprimirHistoria(IDDetalleOrdenG, IdEmpleadoG)
-                    ImprimirFrm.ImprimirEstudios(IDOrdenG, IDDetalleOrdenG, Reporte, Fotos, LicenciaG, Estudio, VistaPrevia)
-                ElseIf Estudio = "REGISTRO ANESTESIA" Then
-                    ImprimirFrm.ImprimirEstudios(IDOrdenG, IDDetalleOrdenG, Reporte, Fotos, LicenciaG, Estudio, VistaPrevia)
-                Else
-                    If MessageBox.Show("¿Desea Imprimir Reporte con Encabezado?", "Imprimir Reporte", MessageBoxButtons.YesNo, MessageBoxIcon.Information) = DialogResult.Yes Then
-                        Reporte = 1
-                    Else
-                        Reporte = 0
-                    End If
-                    ' Impresion endoscopia endoscopias
-                    _dImpresionEndoscopia.EliminarEndoscopia(IdEmpleadoG)
-                    ImpresionEndoscopia(IDDetalleOrdenG)
-                    ImprimirFrm.ImprimirEstudios(IDOrdenG, IDDetalleOrdenG, Reporte, Fotos, LicenciaG, Estudio, VistaPrevia)
-                End If
-            Case 4 'GASTROLAP
-                If Estudio = "CONSULTA PRIMERA VEZ" Or Estudio = "CONSULTA DE CONTROL" Then
-                    ' Impresion de Historias
-                    _dImpresionHistoria.EliminarHistoria(IdEmpleadoG)
-                    _dImpresionDetalleHistoria.EliminarDetalleHistoria(IdEmpleadoG)
-                    _funciones.ImprimirHistoria(IDDetalleOrdenG, IdEmpleadoG)
-                    ImprimirFrm.ImprimirEstudios(IDOrdenG, IDDetalleOrdenG, Reporte, Fotos, LicenciaG, Estudio, VistaPrevia)
-                ElseIf Estudio = "REGISTRO ANESTESIA" Then
-                    ImprimirFrm.ImprimirEstudios(IDOrdenG, IDDetalleOrdenG, Reporte, Fotos, LicenciaG, Estudio, VistaPrevia)
-                Else
-                    If MessageBox.Show("¿Desea Imprimir Reporte con Encabezado?", "Imprimir Reporte", MessageBoxButtons.YesNo, MessageBoxIcon.Information) = DialogResult.Yes Then
-                        Reporte = 1
-                    Else
-                        Reporte = 0
-                    End If
-                    ' Impresion endoscopia endoscopias
-                    _dImpresionEndoscopia.EliminarEndoscopia(IdEmpleadoG)
-                    ImpresionEndoscopia(IDDetalleOrdenG)
-                    ImprimirFrm.ImprimirEstudios(IDOrdenG, IDDetalleOrdenG, Reporte, Fotos, LicenciaG, Estudio, VistaPrevia)
-                End If
 
-            'Case 5 'INTEGRAIPS
-            Case 6 'KELLY GOMEZ
-            'Case 7 'FAUSTO VELEZ
-            'Case 8 'PEDRO IMBETH
-            'Case 9 'BEATRIZ LINCE VIDES
-            'Case 10 'FANNY LINCE VIDES
-            Case 11 'CITOPAT DE LA COSTA LTDA
-                ImprimirFrm.ImprimirEstudios(IDOrdenG, IDDetalleOrdenG, Reporte, Fotos, LicenciaG, Estudio, VistaPrevia)
-            'Case 12 'AQUAMEDICAL
-            'Case 13 'MATERIALES LA PUNTA
-            'Case 17 'FERNANDO PONCE IGLESIAS
-            'Case 15 'OPTICA FREISEM
-            Case 16 'CD PATOLOGIA ONCOLOGICA SAS
-                'IMPRESION CON DEVEXPRESS XTRA REPORT
-                'definimos elreporte
-                If VistaPrevia = False Then
-                    Dim reporteRTB As New SIM___GLOBAL.xrPatologiaCDPreliminar
-                    Dim filtro As New Parameter()
-                    'DEFINIMOS EL PROCESO DE GUARDADO EN TABLA IMPRESION HISTORIA
-                    Dim _DImpresionPatologia As New SIM___GLOBAL.Controles.DImpresionPatologia
+        'IMPRESION CON DEVEXPRESS XTRA REPORT
+        'definimos elreporte
+        If VistaPrevia = False Then
+            Dim reporteRTB As New SIM___GLOBAL.xrPatologiaCDPreliminar
+            Dim filtro As New Parameter()
+            'DEFINIMOS EL PROCESO DE GUARDADO EN TABLA IMPRESION HISTORIA
+            Dim _DImpresionPatologia As New SIM___GLOBAL.Controles.DImpresionPatologia
                     _DImpresionPatologia.Guardar(IDOrdenG)
                     '------------------------------------------------------------
                     'filtro.Name = "idOrden"
@@ -151,32 +94,27 @@ Public Class frmInicio
                         Dim _DImpresionPatologia As New SIM___GLOBAL.Controles.DImpresionPatologia
                         ' realizamos la verificacion del ID SEDE
                         Dim idSede As Integer = _DImpresionPatologia.ValidarSede(IDOrdenG)
+                        'verifica si existe y si no guarda los datos para impresion 
+                        _DImpresionPatologia.Guardar(IDOrdenG)
+                        Dim tabla As DataTable = _DImpresionPatologia.ObtenerDatosPorOrden(CInt(IDOrdenG))
+
+                        If tabla Is Nothing OrElse tabla.Rows.Count = 0 Then
+                            MessageBox.Show("No se encontraron datos para esta orden.",
+                                "Sin resultados", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                            Return
+                        End If
 
                         Dim reporteRTB As DevExpress.XtraReports.UI.XtraReport
                         Select Case idSede
                             Case 2
-                                reporteRTB = New SIM___GLOBAL.xrPatologiaNuestra
+                                reporteRTB = New SIM___GLOBAL.xrPatologiaNuestra(tabla)
                             Case 3
-                                reporteRTB = New SIM___GLOBAL.xrPatologiaBosque
+                                reporteRTB = New SIM___GLOBAL.xrPatologiaBosque(tabla)
                             Case Else
-                                reporteRTB = New SIM___GLOBAL.xrPatologiaCD ' Por defecto
+                                reporteRTB = New SIM___GLOBAL.xrPatologiaCD(tabla) ' Por defecto
                         End Select
-
-                        Dim filtro As New Parameter()
-
-                        _DImpresionPatologia.Guardar(IDOrdenG)
-                        '------------------------------------------------------------
-                        'filtro.Name = "idOrden"
-                        filtro.Value = IDOrdenG
-                        filtro.Visible = False
-                        reporteRTB.Parameters.Add(filtro)
-                        reporteRTB.FilterString = "[ID] = ?idOrden"
-                        reporteRTB.RequestParameters = False
-                        reporteRTB.Parameters(0).Value = IDOrdenG
-                        reporteRTB.Parameters("idOrden").Value = IDOrdenG
-                        'reporteRTB.ExportToPdf()
-                        Dim printTool As New ReportPrintTool(reporteRTB)
-                        printTool.ShowPreviewDialog()
+                        Dim visor As New DevExpress.XtraReports.UI.ReportPrintTool(reporteRTB)
+                        visor.ShowPreviewDialog()
                     Else
                         Dim reporteRTB As New SIM___GLOBAL.xrPatologiaCD
                         Dim filtro As New Parameter()
@@ -205,14 +143,6 @@ Public Class frmInicio
 
 
 
-                'printTool.ShowRibbonPreview()
-                'printTool.PrintDialog()
-
-
-                'ImprimirFrm.ImprimirEstudios(IDOrdenG, IDDetalleOrdenG, Reporte, Fotos, LicenciaG, Estudio, VistaPrevia)
-                'Case 17 'SERVICIOS AGORA
-                'Case 18 '
-        End Select
     End Sub
     Private Sub ResultadosAWS(ByVal Fotos As String, ByVal VistaPrevia As Boolean)
         Dim ImprimirFrm As New SIM___GLOBAL.frmImprimir
@@ -1900,8 +1830,32 @@ Public Class frmInicio
     End Sub
 
     Private Sub bbiAyudaProducto_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles bbiAyudaProducto.ItemClick
-        Dim _frmOpen As New SIM___GLOBAL.frmPruebaJson
-        _frmOpen.ShowDialog()
+        ' Dim _frmOpen As New SIM___GLOBAL.frmPruebaJson
+        ' _frmOpen.ShowDialog()
+        Try
+
+
+            Dim _DImpresion As New DImpresionPatologia
+            Dim tabla As DataTable = _DImpresion.ObtenerDatosPorOrden(CInt(IDOrdenG))
+
+            If tabla Is Nothing OrElse tabla.Rows.Count = 0 Then
+                MessageBox.Show("No se encontraron datos para esta orden.",
+                                "Sin resultados", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                Return
+            End If
+
+            'Dim reporte As New SIM___GLOBAL.xrCorregido(tabla)
+            Dim reporte As New SIM___GLOBAL.xrPatologiaNuestra(tabla)
+            reporte.RequestParameters = False
+            Dim visor As New DevExpress.XtraReports.UI.ReportPrintTool(reporte)
+            visor.ShowPreviewDialog()
+
+        Catch ex As Exception
+            MessageBox.Show("Error al generar el reporte: " & ex.Message,
+                            "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        Finally
+            Me.Cursor = Cursors.Default
+        End Try
     End Sub
 
     Private Sub bbiEquipos_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles bbiEquiposApoyo.ItemClick

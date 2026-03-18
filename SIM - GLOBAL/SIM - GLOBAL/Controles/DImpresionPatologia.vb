@@ -161,6 +161,75 @@ Namespace Controles
             Return Nothing
         End Function
 
+        Public Function ObtenerDatosPorOrden(ByVal idOrden As Integer) As DataTable
+            Try
+                Dim query As String =
+                    "SELECT
+                    ip.ID,
+                    ip.idOrden,
+                    ip.CONSECUTIVO,
+                    ip.FECHA_INGRESO,
+                    ip.IDENTIFICACION,
+                    ip.NOMBRE,
+                    ip.EDAD,
+                    ip.SEXO,
+                    ip.ESTADO_CIVIL,
+                    ip.TELEFONO,
+                    ip.DIRECCION,
+                    ip.NOMBRE_ENTIDAD,
+                    ip.TIPO_MUESTRA,
+                    ip.SITIO_LESION,
+                    ip.SOLICITADO,
+                    ip.DESCRIPCION_MACROSCOPICA,
+                    ip.DESCRIPCION_MICROSCOPICA,
+                    ip.DIAGNOSTICO,
+                    ip.OBSERVACIONES,
+                    ip.CODIGO_DIAGNOSTICO,
+                    ip.nombre_diagnostico,
+                    ip.ID_LICENCIA,
+                    ip.ID_EMPLEADO,
+                    ip.medico,
+                    ip.especialidad,
+                    ip.registro_medico,
+                    ip.firma,
+                    ip.fecha_salida,
+                    ip.sede
+                FROM impresion_patologia ip
+                WHERE ip.idOrden = ?"
+
+                _conn = ConexionODBC.Open()
+                Dim comando As New OdbcCommand(query, _conn)
+                comando.Parameters.AddWithValue("@idOrden", idOrden)
+
+                Dim adapter As New OdbcDataAdapter(comando)
+                Dim tabla As New DataTable("ImpresionPatologia")
+                adapter.Fill(tabla)
+
+                ' Verificar si trajo datos
+                If tabla.Rows.Count = 0 Then
+                    MessageBox.Show("No se encontraron datos para la orden: " & idOrden.ToString(),
+                                    "Sin resultados", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    Return Nothing
+                End If
+
+                Return tabla
+
+            Catch ex As OdbcException
+                MessageBox.Show("Error de base de datos: " & ex.Message,
+                                "Error BD", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Return Nothing
+
+            Catch ex As Exception
+                MessageBox.Show("Error inesperado: " & ex.Message,
+                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Return Nothing
+
+            Finally
+                If _conn IsNot Nothing AndAlso _conn.State = ConnectionState.Open Then
+                    ConexionODBC.Close(_conn)
+                End If
+            End Try
+        End Function
     End Class
 End Namespace
 

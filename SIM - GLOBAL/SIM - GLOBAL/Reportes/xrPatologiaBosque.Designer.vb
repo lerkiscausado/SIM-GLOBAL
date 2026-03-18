@@ -19,26 +19,28 @@ Partial Public Class xrPatologiaBosque
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim ShapeRectangle1 As DevExpress.XtraPrinting.Shape.ShapeRectangle = New DevExpress.XtraPrinting.Shape.ShapeRectangle()
-        Dim ShapeRectangle2 As DevExpress.XtraPrinting.Shape.ShapeRectangle = New DevExpress.XtraPrinting.Shape.ShapeRectangle()
-        Dim ShapeRectangle3 As DevExpress.XtraPrinting.Shape.ShapeRectangle = New DevExpress.XtraPrinting.Shape.ShapeRectangle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(xrPatologiaBosque))
+        Dim ShapeRectangle3 As DevExpress.XtraPrinting.Shape.ShapeRectangle = New DevExpress.XtraPrinting.Shape.ShapeRectangle()
+        Dim ShapeRectangle2 As DevExpress.XtraPrinting.Shape.ShapeRectangle = New DevExpress.XtraPrinting.Shape.ShapeRectangle()
+        Dim ShapeRectangle1 As DevExpress.XtraPrinting.Shape.ShapeRectangle = New DevExpress.XtraPrinting.Shape.ShapeRectangle()
         Me.TopMargin = New DevExpress.XtraReports.UI.TopMarginBand()
         Me.BottomMargin = New DevExpress.XtraReports.UI.BottomMarginBand()
         Me.Detail = New DevExpress.XtraReports.UI.DetailBand()
+        Me.XrLabel33 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.xrDiagnostico = New DevExpress.XtraReports.UI.XRRichText()
         Me.DsCD1 = New SIM___GLOBAL.dsCD()
         Me.ReportePatologiaCDTableAdapter = New SIM___GLOBAL.dsCDTableAdapters.ReportePatologiaCDTableAdapter()
         Me.ReportHeader = New DevExpress.XtraReports.UI.ReportHeaderBand()
         Me.XrPictureBox1 = New DevExpress.XtraReports.UI.XRPictureBox()
         Me.XrPageInfo2 = New DevExpress.XtraReports.UI.XRPageInfo()
         Me.XrLabel36 = New DevExpress.XtraReports.UI.XRLabel()
-        Me.XrLabel2 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.lblNombreEntidad = New DevExpress.XtraReports.UI.XRLabel()
         Me.PageHeader = New DevExpress.XtraReports.UI.PageHeaderBand()
         Me.XrShape3 = New DevExpress.XtraReports.UI.XRShape()
-        Me.XrLabel31 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.lblSolicitado = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel30 = New DevExpress.XtraReports.UI.XRLabel()
-        Me.XrLabel28 = New DevExpress.XtraReports.UI.XRLabel()
-        Me.XrLabel27 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.lblTipoMuestra = New DevExpress.XtraReports.UI.XRLabel()
+        Me.lblEntidad = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel26 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel25 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrShape2 = New DevExpress.XtraReports.UI.XRShape()
@@ -46,41 +48,38 @@ Partial Public Class xrPatologiaBosque
         Me.XrPanel2 = New DevExpress.XtraReports.UI.XRPanel()
         Me.XrPageInfo1 = New DevExpress.XtraReports.UI.XRPageInfo()
         Me.XrLabel35 = New DevExpress.XtraReports.UI.XRLabel()
-        Me.XrLabel23 = New DevExpress.XtraReports.UI.XRLabel()
-        Me.XrLabel22 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.lblFechaSalida = New DevExpress.XtraReports.UI.XRLabel()
+        Me.lblFechaIngreso = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel21 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel20 = New DevExpress.XtraReports.UI.XRLabel()
-        Me.XrLabel19 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.lblConsecutivo = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel18 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrPanel1 = New DevExpress.XtraReports.UI.XRPanel()
-        Me.XrLabel17 = New DevExpress.XtraReports.UI.XRLabel()
-        Me.XrLabel16 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.lblDireccion = New DevExpress.XtraReports.UI.XRLabel()
+        Me.lblSexo = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel15 = New DevExpress.XtraReports.UI.XRLabel()
-        Me.XrLabel14 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.lblEdad = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel13 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel12 = New DevExpress.XtraReports.UI.XRLabel()
-        Me.XrLabel11 = New DevExpress.XtraReports.UI.XRLabel()
-        Me.XrLabel10 = New DevExpress.XtraReports.UI.XRLabel()
-        Me.XrLabel9 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.lblTelefono = New DevExpress.XtraReports.UI.XRLabel()
+        Me.lblIdentificacion = New DevExpress.XtraReports.UI.XRLabel()
+        Me.lblNombre = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel8 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel7 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel6 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrShape1 = New DevExpress.XtraReports.UI.XRShape()
-        Me.XrLabel32 = New DevExpress.XtraReports.UI.XRLabel()
-        Me.XrLabel1 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.lblInforme = New DevExpress.XtraReports.UI.XRLabel()
+        Me.lblDescripcionMacroscopica = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLine1 = New DevExpress.XtraReports.UI.XRLine()
-        Me.XrLabel33 = New DevExpress.XtraReports.UI.XRLabel()
-        Me.xrDiagnostico = New DevExpress.XtraReports.UI.XRRichText()
         Me.ReportFooter = New DevExpress.XtraReports.UI.ReportFooterBand()
-        Me.XrPictureBox2 = New DevExpress.XtraReports.UI.XRPictureBox()
-        Me.XrLabel39 = New DevExpress.XtraReports.UI.XRLabel()
-        Me.XrLabel40 = New DevExpress.XtraReports.UI.XRLabel()
-        Me.XrLabel41 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.lblMedico = New DevExpress.XtraReports.UI.XRLabel()
+        Me.lblEspecialidad = New DevExpress.XtraReports.UI.XRLabel()
+        Me.lblRegistroMedico = New DevExpress.XtraReports.UI.XRLabel()
+        Me.picFirma = New DevExpress.XtraReports.UI.XRPictureBox()
         Me.PageFooter = New DevExpress.XtraReports.UI.PageFooterBand()
-        Me.XrLabel38 = New DevExpress.XtraReports.UI.XRLabel()
-        Me.idOrden = New DevExpress.XtraReports.Parameters.Parameter()
-        CType(Me.DsCD1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.lblSede = New DevExpress.XtraReports.UI.XRLabel()
         CType(Me.xrDiagnostico, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DsCD1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me, System.ComponentModel.ISupportInitialize).BeginInit()
         '
         'TopMargin
@@ -99,6 +98,30 @@ Partial Public Class xrPatologiaBosque
         Me.Detail.HeightF = 75.78373!
         Me.Detail.Name = "Detail"
         '
+        'XrLabel33
+        '
+        Me.XrLabel33.Font = New System.Drawing.Font("Calibri", 8.0!, System.Drawing.FontStyle.Italic)
+        Me.XrLabel33.LocationFloat = New DevExpress.Utils.PointFloat(0.00008637051!, 29.11405!)
+        Me.XrLabel33.Multiline = True
+        Me.XrLabel33.Name = "XrLabel33"
+        Me.XrLabel33.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
+        Me.XrLabel33.SizeF = New System.Drawing.SizeF(740.9435!, 43.75471!)
+        Me.XrLabel33.StylePriority.UseFont = False
+        Me.XrLabel33.StylePriority.UseTextAlignment = False
+        Me.XrLabel33.Text = resources.GetString("XrLabel33.Text")
+        Me.XrLabel33.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopJustify
+        '
+        'xrDiagnostico
+        '
+        Me.xrDiagnostico.CanShrink = True
+        Me.xrDiagnostico.Font = New System.Drawing.Font("Arial", 9.75!)
+        Me.xrDiagnostico.LocationFloat = New DevExpress.Utils.PointFloat(1.886792!, 0!)
+        Me.xrDiagnostico.Name = "xrDiagnostico"
+        Me.xrDiagnostico.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
+        Me.xrDiagnostico.SerializableRtfString = resources.GetString("xrDiagnostico.SerializableRtfString")
+        Me.xrDiagnostico.SizeF = New System.Drawing.SizeF(740.9435!, 23.0!)
+        Me.xrDiagnostico.StylePriority.UseFont = False
+        '
         'DsCD1
         '
         Me.DsCD1.DataSetName = "dsCD"
@@ -110,7 +133,8 @@ Partial Public Class xrPatologiaBosque
         '
         'ReportHeader
         '
-        Me.ReportHeader.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrPictureBox1, Me.XrPageInfo2, Me.XrLabel36, Me.XrLabel2})
+        Me.ReportHeader.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrPictureBox1, Me.XrPageInfo2, Me.XrLabel36, Me.lblNombreEntidad})
+        Me.ReportHeader.HeightF = 100.2083!
         Me.ReportHeader.Name = "ReportHeader"
         '
         'XrPictureBox1
@@ -152,22 +176,22 @@ Partial Public Class xrPatologiaBosque
         Me.XrLabel36.Text = "Fecha Impresión"
         Me.XrLabel36.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
         '
-        'XrLabel2
+        'lblNombreEntidad
         '
-        Me.XrLabel2.Font = New System.Drawing.Font("Calibri", 13.0!, System.Drawing.FontStyle.Bold)
-        Me.XrLabel2.LocationFloat = New DevExpress.Utils.PointFloat(0!, 35.62265!)
-        Me.XrLabel2.Multiline = True
-        Me.XrLabel2.Name = "XrLabel2"
-        Me.XrLabel2.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
-        Me.XrLabel2.SizeF = New System.Drawing.SizeF(754.0!, 22.99999!)
-        Me.XrLabel2.StylePriority.UseFont = False
-        Me.XrLabel2.StylePriority.UseTextAlignment = False
-        Me.XrLabel2.Text = "LABORATORIO DE PATOLOGIA [NOMBRE_ENTIDAD]"
-        Me.XrLabel2.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter
+        Me.lblNombreEntidad.Font = New System.Drawing.Font("Calibri", 13.0!, System.Drawing.FontStyle.Bold)
+        Me.lblNombreEntidad.LocationFloat = New DevExpress.Utils.PointFloat(0!, 35.62265!)
+        Me.lblNombreEntidad.Multiline = True
+        Me.lblNombreEntidad.Name = "lblNombreEntidad"
+        Me.lblNombreEntidad.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
+        Me.lblNombreEntidad.SizeF = New System.Drawing.SizeF(754.0!, 22.99999!)
+        Me.lblNombreEntidad.StylePriority.UseFont = False
+        Me.lblNombreEntidad.StylePriority.UseTextAlignment = False
+        Me.lblNombreEntidad.Text = "LABORATORIO DE PATOLOGIA [NOMBRE_ENTIDAD]"
+        Me.lblNombreEntidad.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter
         '
         'PageHeader
         '
-        Me.PageHeader.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrShape3, Me.XrLabel31, Me.XrLabel30, Me.XrLabel28, Me.XrLabel27, Me.XrLabel26, Me.XrLabel25, Me.XrShape2, Me.XrLabel24, Me.XrPanel2, Me.XrLabel19, Me.XrLabel18, Me.XrPanel1, Me.XrShape1, Me.XrLabel32, Me.XrLabel1, Me.XrLine1})
+        Me.PageHeader.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.lblSolicitado, Me.XrLabel30, Me.lblTipoMuestra, Me.lblEntidad, Me.XrLabel26, Me.XrLabel25, Me.XrLabel24, Me.XrPanel2, Me.lblConsecutivo, Me.XrLabel18, Me.lblInforme, Me.lblDescripcionMacroscopica, Me.XrLine1, Me.XrPanel1, Me.XrShape1, Me.XrShape2, Me.XrShape3})
         Me.PageHeader.HeightF = 167.9246!
         Me.PageHeader.Name = "PageHeader"
         '
@@ -177,23 +201,22 @@ Partial Public Class xrPatologiaBosque
         Me.XrShape3.ForeColor = System.Drawing.Color.Gainsboro
         Me.XrShape3.LocationFloat = New DevExpress.Utils.PointFloat(2.0!, 73.43392!)
         Me.XrShape3.Name = "XrShape3"
-        ShapeRectangle1.Fillet = 10
-        Me.XrShape3.Shape = ShapeRectangle1
+        ShapeRectangle3.Fillet = 10
+        Me.XrShape3.Shape = ShapeRectangle3
         Me.XrShape3.SizeF = New System.Drawing.SizeF(741.0!, 56.56611!)
         Me.XrShape3.StylePriority.UseBorderColor = False
         Me.XrShape3.StylePriority.UseForeColor = False
         '
-        'XrLabel31
+        'lblSolicitado
         '
-        Me.XrLabel31.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[SOLICITADO]")})
-        Me.XrLabel31.Font = New System.Drawing.Font("Calibri", 9.75!)
-        Me.XrLabel31.LocationFloat = New DevExpress.Utils.PointFloat(559.7925!, 76.00002!)
-        Me.XrLabel31.Multiline = True
-        Me.XrLabel31.Name = "XrLabel31"
-        Me.XrLabel31.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
-        Me.XrLabel31.SizeF = New System.Drawing.SizeF(163.2075!, 17.0!)
-        Me.XrLabel31.StylePriority.UseFont = False
-        Me.XrLabel31.Text = "XrLabel31"
+        Me.lblSolicitado.Font = New System.Drawing.Font("Calibri", 9.75!)
+        Me.lblSolicitado.LocationFloat = New DevExpress.Utils.PointFloat(559.7925!, 76.00002!)
+        Me.lblSolicitado.Multiline = True
+        Me.lblSolicitado.Name = "lblSolicitado"
+        Me.lblSolicitado.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
+        Me.lblSolicitado.SizeF = New System.Drawing.SizeF(163.2075!, 17.0!)
+        Me.lblSolicitado.StylePriority.UseFont = False
+        Me.lblSolicitado.Text = "lblSolicitado"
         '
         'XrLabel30
         '
@@ -208,29 +231,27 @@ Partial Public Class xrPatologiaBosque
         Me.XrLabel30.StylePriority.UseFont = False
         Me.XrLabel30.Text = "Remitente Dr(a):"
         '
-        'XrLabel28
+        'lblTipoMuestra
         '
-        Me.XrLabel28.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[TIPO_MUESTRA]")})
-        Me.XrLabel28.Font = New System.Drawing.Font("Calibri", 9.75!)
-        Me.XrLabel28.LocationFloat = New DevExpress.Utils.PointFloat(102.8301!, 93.00002!)
-        Me.XrLabel28.Multiline = True
-        Me.XrLabel28.Name = "XrLabel28"
-        Me.XrLabel28.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
-        Me.XrLabel28.SizeF = New System.Drawing.SizeF(620.1699!, 17.0!)
-        Me.XrLabel28.StylePriority.UseFont = False
-        Me.XrLabel28.Text = "XrLabel28"
+        Me.lblTipoMuestra.Font = New System.Drawing.Font("Calibri", 9.75!)
+        Me.lblTipoMuestra.LocationFloat = New DevExpress.Utils.PointFloat(102.8301!, 93.00002!)
+        Me.lblTipoMuestra.Multiline = True
+        Me.lblTipoMuestra.Name = "lblTipoMuestra"
+        Me.lblTipoMuestra.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
+        Me.lblTipoMuestra.SizeF = New System.Drawing.SizeF(620.1699!, 17.0!)
+        Me.lblTipoMuestra.StylePriority.UseFont = False
+        Me.lblTipoMuestra.Text = "lblTipoMuestra"
         '
-        'XrLabel27
+        'lblEntidad
         '
-        Me.XrLabel27.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[NOMBRE_ENTIDAD]")})
-        Me.XrLabel27.Font = New System.Drawing.Font("Calibri", 9.75!)
-        Me.XrLabel27.LocationFloat = New DevExpress.Utils.PointFloat(101.8301!, 76.00002!)
-        Me.XrLabel27.Multiline = True
-        Me.XrLabel27.Name = "XrLabel27"
-        Me.XrLabel27.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
-        Me.XrLabel27.SizeF = New System.Drawing.SizeF(350.0!, 17.0!)
-        Me.XrLabel27.StylePriority.UseFont = False
-        Me.XrLabel27.Text = "XrLabel27"
+        Me.lblEntidad.Font = New System.Drawing.Font("Calibri", 9.75!)
+        Me.lblEntidad.LocationFloat = New DevExpress.Utils.PointFloat(101.8301!, 76.00002!)
+        Me.lblEntidad.Multiline = True
+        Me.lblEntidad.Name = "lblEntidad"
+        Me.lblEntidad.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
+        Me.lblEntidad.SizeF = New System.Drawing.SizeF(350.0!, 17.0!)
+        Me.lblEntidad.StylePriority.UseFont = False
+        Me.lblEntidad.Text = "lblEntidad"
         '
         'XrLabel26
         '
@@ -287,7 +308,7 @@ Partial Public Class xrPatologiaBosque
         '
         Me.XrPanel2.BorderColor = System.Drawing.Color.Gainsboro
         Me.XrPanel2.Borders = DevExpress.XtraPrinting.BorderSide.None
-        Me.XrPanel2.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrPageInfo1, Me.XrLabel35, Me.XrLabel23, Me.XrLabel22, Me.XrLabel21, Me.XrLabel20})
+        Me.XrPanel2.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrPageInfo1, Me.XrLabel35, Me.lblFechaSalida, Me.lblFechaIngreso, Me.XrLabel21, Me.XrLabel20})
         Me.XrPanel2.LocationFloat = New DevExpress.Utils.PointFloat(582.3019!, 21.0!)
         Me.XrPanel2.Name = "XrPanel2"
         Me.XrPanel2.SizeF = New System.Drawing.SizeF(162.2642!, 42.0!)
@@ -320,39 +341,37 @@ Partial Public Class xrPatologiaBosque
         Me.XrLabel35.Text = "No. de Página:"
         Me.XrLabel35.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft
         '
-        'XrLabel23
+        'lblFechaSalida
         '
-        Me.XrLabel23.Borders = DevExpress.XtraPrinting.BorderSide.None
-        Me.XrLabel23.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[fecha_salida]")})
-        Me.XrLabel23.Font = New System.Drawing.Font("Calibri", 8.0!)
-        Me.XrLabel23.LocationFloat = New DevExpress.Utils.PointFloat(75.24542!, 15.00002!)
-        Me.XrLabel23.Multiline = True
-        Me.XrLabel23.Name = "XrLabel23"
-        Me.XrLabel23.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
-        Me.XrLabel23.SizeF = New System.Drawing.SizeF(83.01886!, 13.0!)
-        Me.XrLabel23.StylePriority.UseBorders = False
-        Me.XrLabel23.StylePriority.UseFont = False
-        Me.XrLabel23.StylePriority.UseTextAlignment = False
-        Me.XrLabel23.Text = "XrLabel23"
-        Me.XrLabel23.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
-        Me.XrLabel23.TextFormatString = "{0:d}"
+        Me.lblFechaSalida.Borders = DevExpress.XtraPrinting.BorderSide.None
+        Me.lblFechaSalida.Font = New System.Drawing.Font("Calibri", 8.0!)
+        Me.lblFechaSalida.LocationFloat = New DevExpress.Utils.PointFloat(75.24542!, 15.00002!)
+        Me.lblFechaSalida.Multiline = True
+        Me.lblFechaSalida.Name = "lblFechaSalida"
+        Me.lblFechaSalida.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
+        Me.lblFechaSalida.SizeF = New System.Drawing.SizeF(83.01886!, 13.0!)
+        Me.lblFechaSalida.StylePriority.UseBorders = False
+        Me.lblFechaSalida.StylePriority.UseFont = False
+        Me.lblFechaSalida.StylePriority.UseTextAlignment = False
+        Me.lblFechaSalida.Text = "lblFechaSalida"
+        Me.lblFechaSalida.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
+        Me.lblFechaSalida.TextFormatString = "{0:d}"
         '
-        'XrLabel22
+        'lblFechaIngreso
         '
-        Me.XrLabel22.Borders = DevExpress.XtraPrinting.BorderSide.None
-        Me.XrLabel22.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[FECHA_INGRESO]")})
-        Me.XrLabel22.Font = New System.Drawing.Font("Calibri", 8.0!)
-        Me.XrLabel22.LocationFloat = New DevExpress.Utils.PointFloat(75.24542!, 2.000015!)
-        Me.XrLabel22.Multiline = True
-        Me.XrLabel22.Name = "XrLabel22"
-        Me.XrLabel22.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
-        Me.XrLabel22.SizeF = New System.Drawing.SizeF(83.01886!, 13.0!)
-        Me.XrLabel22.StylePriority.UseBorders = False
-        Me.XrLabel22.StylePriority.UseFont = False
-        Me.XrLabel22.StylePriority.UseTextAlignment = False
-        Me.XrLabel22.Text = "XrLabel22"
-        Me.XrLabel22.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
-        Me.XrLabel22.TextFormatString = "{0:d}"
+        Me.lblFechaIngreso.Borders = DevExpress.XtraPrinting.BorderSide.None
+        Me.lblFechaIngreso.Font = New System.Drawing.Font("Calibri", 8.0!)
+        Me.lblFechaIngreso.LocationFloat = New DevExpress.Utils.PointFloat(75.24542!, 2.000015!)
+        Me.lblFechaIngreso.Multiline = True
+        Me.lblFechaIngreso.Name = "lblFechaIngreso"
+        Me.lblFechaIngreso.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
+        Me.lblFechaIngreso.SizeF = New System.Drawing.SizeF(83.01886!, 13.0!)
+        Me.lblFechaIngreso.StylePriority.UseBorders = False
+        Me.lblFechaIngreso.StylePriority.UseFont = False
+        Me.lblFechaIngreso.StylePriority.UseTextAlignment = False
+        Me.lblFechaIngreso.Text = "lblFechaIngreso"
+        Me.lblFechaIngreso.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
+        Me.lblFechaIngreso.TextFormatString = "{0:d}"
         '
         'XrLabel21
         '
@@ -384,19 +403,18 @@ Partial Public Class xrPatologiaBosque
         Me.XrLabel20.Text = "Fecha Ingreso:"
         Me.XrLabel20.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft
         '
-        'XrLabel19
+        'lblConsecutivo
         '
-        Me.XrLabel19.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[CONSECUTIVO]")})
-        Me.XrLabel19.Font = New System.Drawing.Font("Calibri", 13.0!, System.Drawing.FontStyle.Bold)
-        Me.XrLabel19.LocationFloat = New DevExpress.Utils.PointFloat(644.9434!, 0!)
-        Me.XrLabel19.Multiline = True
-        Me.XrLabel19.Name = "XrLabel19"
-        Me.XrLabel19.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
-        Me.XrLabel19.SizeF = New System.Drawing.SizeF(100.0!, 21.0!)
-        Me.XrLabel19.StylePriority.UseFont = False
-        Me.XrLabel19.StylePriority.UseTextAlignment = False
-        Me.XrLabel19.Text = "XrLabel19"
-        Me.XrLabel19.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
+        Me.lblConsecutivo.Font = New System.Drawing.Font("Calibri", 13.0!, System.Drawing.FontStyle.Bold)
+        Me.lblConsecutivo.LocationFloat = New DevExpress.Utils.PointFloat(644.9434!, 0!)
+        Me.lblConsecutivo.Multiline = True
+        Me.lblConsecutivo.Name = "lblConsecutivo"
+        Me.lblConsecutivo.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
+        Me.lblConsecutivo.SizeF = New System.Drawing.SizeF(100.0!, 21.0!)
+        Me.lblConsecutivo.StylePriority.UseFont = False
+        Me.lblConsecutivo.StylePriority.UseTextAlignment = False
+        Me.lblConsecutivo.Text = "lblConsecutivo"
+        Me.lblConsecutivo.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
         '
         'XrLabel18
         '
@@ -415,40 +433,38 @@ Partial Public Class xrPatologiaBosque
         '
         Me.XrPanel1.BorderColor = System.Drawing.Color.Gainsboro
         Me.XrPanel1.Borders = DevExpress.XtraPrinting.BorderSide.None
-        Me.XrPanel1.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrLabel17, Me.XrLabel16, Me.XrLabel15, Me.XrLabel14, Me.XrLabel13, Me.XrLabel12, Me.XrLabel11, Me.XrLabel10, Me.XrLabel9, Me.XrLabel8, Me.XrLabel7, Me.XrLabel6})
+        Me.XrPanel1.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.lblDireccion, Me.lblSexo, Me.XrLabel15, Me.lblEdad, Me.XrLabel13, Me.XrLabel12, Me.lblTelefono, Me.lblIdentificacion, Me.lblNombre, Me.XrLabel8, Me.XrLabel7, Me.XrLabel6})
         Me.XrPanel1.LocationFloat = New DevExpress.Utils.PointFloat(0!, 0!)
         Me.XrPanel1.Name = "XrPanel1"
         Me.XrPanel1.SizeF = New System.Drawing.SizeF(578.3019!, 71.81137!)
         Me.XrPanel1.StylePriority.UseBorderColor = False
         Me.XrPanel1.StylePriority.UseBorders = False
         '
-        'XrLabel17
+        'lblDireccion
         '
-        Me.XrLabel17.Borders = DevExpress.XtraPrinting.BorderSide.None
-        Me.XrLabel17.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[DIRECCION]")})
-        Me.XrLabel17.Font = New System.Drawing.Font("Calibri", 9.75!)
-        Me.XrLabel17.LocationFloat = New DevExpress.Utils.PointFloat(265.3018!, 41.62267!)
-        Me.XrLabel17.Multiline = True
-        Me.XrLabel17.Name = "XrLabel17"
-        Me.XrLabel17.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
-        Me.XrLabel17.SizeF = New System.Drawing.SizeF(303.0001!, 17.0!)
-        Me.XrLabel17.StylePriority.UseBorders = False
-        Me.XrLabel17.StylePriority.UseFont = False
-        Me.XrLabel17.Text = "XrLabel17"
+        Me.lblDireccion.Borders = DevExpress.XtraPrinting.BorderSide.None
+        Me.lblDireccion.Font = New System.Drawing.Font("Calibri", 9.75!)
+        Me.lblDireccion.LocationFloat = New DevExpress.Utils.PointFloat(265.3018!, 41.62267!)
+        Me.lblDireccion.Multiline = True
+        Me.lblDireccion.Name = "lblDireccion"
+        Me.lblDireccion.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
+        Me.lblDireccion.SizeF = New System.Drawing.SizeF(303.0001!, 17.0!)
+        Me.lblDireccion.StylePriority.UseBorders = False
+        Me.lblDireccion.StylePriority.UseFont = False
+        Me.lblDireccion.Text = "lblDireccion"
         '
-        'XrLabel16
+        'lblSexo
         '
-        Me.XrLabel16.Borders = DevExpress.XtraPrinting.BorderSide.None
-        Me.XrLabel16.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[SEXO]")})
-        Me.XrLabel16.Font = New System.Drawing.Font("Calibri", 9.75!)
-        Me.XrLabel16.LocationFloat = New DevExpress.Utils.PointFloat(468.3019!, 23.00002!)
-        Me.XrLabel16.Multiline = True
-        Me.XrLabel16.Name = "XrLabel16"
-        Me.XrLabel16.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
-        Me.XrLabel16.SizeF = New System.Drawing.SizeF(100.0!, 17.0!)
-        Me.XrLabel16.StylePriority.UseBorders = False
-        Me.XrLabel16.StylePriority.UseFont = False
-        Me.XrLabel16.Text = "XrLabel16"
+        Me.lblSexo.Borders = DevExpress.XtraPrinting.BorderSide.None
+        Me.lblSexo.Font = New System.Drawing.Font("Calibri", 9.75!)
+        Me.lblSexo.LocationFloat = New DevExpress.Utils.PointFloat(468.3019!, 23.00002!)
+        Me.lblSexo.Multiline = True
+        Me.lblSexo.Name = "lblSexo"
+        Me.lblSexo.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
+        Me.lblSexo.SizeF = New System.Drawing.SizeF(100.0!, 17.0!)
+        Me.lblSexo.StylePriority.UseBorders = False
+        Me.lblSexo.StylePriority.UseFont = False
+        Me.lblSexo.Text = "lblSexo"
         '
         'XrLabel15
         '
@@ -463,19 +479,18 @@ Partial Public Class xrPatologiaBosque
         Me.XrLabel15.StylePriority.UseFont = False
         Me.XrLabel15.Text = "Sexo:"
         '
-        'XrLabel14
+        'lblEdad
         '
-        Me.XrLabel14.Borders = DevExpress.XtraPrinting.BorderSide.None
-        Me.XrLabel14.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[EDAD]")})
-        Me.XrLabel14.Font = New System.Drawing.Font("Calibri", 9.75!)
-        Me.XrLabel14.LocationFloat = New DevExpress.Utils.PointFloat(265.3018!, 23.00002!)
-        Me.XrLabel14.Multiline = True
-        Me.XrLabel14.Name = "XrLabel14"
-        Me.XrLabel14.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
-        Me.XrLabel14.SizeF = New System.Drawing.SizeF(118.8679!, 17.0!)
-        Me.XrLabel14.StylePriority.UseBorders = False
-        Me.XrLabel14.StylePriority.UseFont = False
-        Me.XrLabel14.Text = "XrLabel14"
+        Me.lblEdad.Borders = DevExpress.XtraPrinting.BorderSide.None
+        Me.lblEdad.Font = New System.Drawing.Font("Calibri", 9.75!)
+        Me.lblEdad.LocationFloat = New DevExpress.Utils.PointFloat(265.3018!, 23.00002!)
+        Me.lblEdad.Multiline = True
+        Me.lblEdad.Name = "lblEdad"
+        Me.lblEdad.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
+        Me.lblEdad.SizeF = New System.Drawing.SizeF(118.8679!, 17.0!)
+        Me.lblEdad.StylePriority.UseBorders = False
+        Me.lblEdad.StylePriority.UseFont = False
+        Me.lblEdad.Text = "lblEdad"
         '
         'XrLabel13
         '
@@ -503,47 +518,44 @@ Partial Public Class xrPatologiaBosque
         Me.XrLabel12.StylePriority.UseFont = False
         Me.XrLabel12.Text = "Edad:"
         '
-        'XrLabel11
+        'lblTelefono
         '
-        Me.XrLabel11.Borders = DevExpress.XtraPrinting.BorderSide.None
-        Me.XrLabel11.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[TELEFONO]")})
-        Me.XrLabel11.Font = New System.Drawing.Font("Calibri", 9.75!)
-        Me.XrLabel11.LocationFloat = New DevExpress.Utils.PointFloat(99.83017!, 41.62267!)
-        Me.XrLabel11.Multiline = True
-        Me.XrLabel11.Name = "XrLabel11"
-        Me.XrLabel11.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
-        Me.XrLabel11.SizeF = New System.Drawing.SizeF(100.0!, 17.0!)
-        Me.XrLabel11.StylePriority.UseBorders = False
-        Me.XrLabel11.StylePriority.UseFont = False
-        Me.XrLabel11.Text = "XrLabel11"
+        Me.lblTelefono.Borders = DevExpress.XtraPrinting.BorderSide.None
+        Me.lblTelefono.Font = New System.Drawing.Font("Calibri", 9.75!)
+        Me.lblTelefono.LocationFloat = New DevExpress.Utils.PointFloat(99.83017!, 41.62267!)
+        Me.lblTelefono.Multiline = True
+        Me.lblTelefono.Name = "lblTelefono"
+        Me.lblTelefono.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
+        Me.lblTelefono.SizeF = New System.Drawing.SizeF(100.0!, 17.0!)
+        Me.lblTelefono.StylePriority.UseBorders = False
+        Me.lblTelefono.StylePriority.UseFont = False
+        Me.lblTelefono.Text = "lblTelefono"
         '
-        'XrLabel10
+        'lblIdentificacion
         '
-        Me.XrLabel10.Borders = DevExpress.XtraPrinting.BorderSide.None
-        Me.XrLabel10.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[IDENTIFICACION]")})
-        Me.XrLabel10.Font = New System.Drawing.Font("Calibri", 9.75!)
-        Me.XrLabel10.LocationFloat = New DevExpress.Utils.PointFloat(99.83017!, 23.00002!)
-        Me.XrLabel10.Multiline = True
-        Me.XrLabel10.Name = "XrLabel10"
-        Me.XrLabel10.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
-        Me.XrLabel10.SizeF = New System.Drawing.SizeF(100.0!, 17.0!)
-        Me.XrLabel10.StylePriority.UseBorders = False
-        Me.XrLabel10.StylePriority.UseFont = False
-        Me.XrLabel10.Text = "XrLabel10"
+        Me.lblIdentificacion.Borders = DevExpress.XtraPrinting.BorderSide.None
+        Me.lblIdentificacion.Font = New System.Drawing.Font("Calibri", 9.75!)
+        Me.lblIdentificacion.LocationFloat = New DevExpress.Utils.PointFloat(99.83017!, 23.00002!)
+        Me.lblIdentificacion.Multiline = True
+        Me.lblIdentificacion.Name = "lblIdentificacion"
+        Me.lblIdentificacion.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
+        Me.lblIdentificacion.SizeF = New System.Drawing.SizeF(100.0!, 17.0!)
+        Me.lblIdentificacion.StylePriority.UseBorders = False
+        Me.lblIdentificacion.StylePriority.UseFont = False
+        Me.lblIdentificacion.Text = "lblIdentificacion"
         '
-        'XrLabel9
+        'lblNombre
         '
-        Me.XrLabel9.Borders = DevExpress.XtraPrinting.BorderSide.None
-        Me.XrLabel9.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[NOMBRE]")})
-        Me.XrLabel9.Font = New System.Drawing.Font("Calibri", 9.75!, System.Drawing.FontStyle.Bold)
-        Me.XrLabel9.LocationFloat = New DevExpress.Utils.PointFloat(99.83017!, 6.000015!)
-        Me.XrLabel9.Multiline = True
-        Me.XrLabel9.Name = "XrLabel9"
-        Me.XrLabel9.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
-        Me.XrLabel9.SizeF = New System.Drawing.SizeF(363.2076!, 17.0!)
-        Me.XrLabel9.StylePriority.UseBorders = False
-        Me.XrLabel9.StylePriority.UseFont = False
-        Me.XrLabel9.Text = "XrLabel9"
+        Me.lblNombre.Borders = DevExpress.XtraPrinting.BorderSide.None
+        Me.lblNombre.Font = New System.Drawing.Font("Calibri", 9.75!, System.Drawing.FontStyle.Bold)
+        Me.lblNombre.LocationFloat = New DevExpress.Utils.PointFloat(99.83017!, 6.000015!)
+        Me.lblNombre.Multiline = True
+        Me.lblNombre.Name = "lblNombre"
+        Me.lblNombre.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
+        Me.lblNombre.SizeF = New System.Drawing.SizeF(363.2076!, 17.0!)
+        Me.lblNombre.StylePriority.UseBorders = False
+        Me.lblNombre.StylePriority.UseFont = False
+        Me.lblNombre.Text = "lblNombre"
         '
         'XrLabel8
         '
@@ -590,36 +602,35 @@ Partial Public Class xrPatologiaBosque
         Me.XrShape1.ForeColor = System.Drawing.Color.Gainsboro
         Me.XrShape1.LocationFloat = New DevExpress.Utils.PointFloat(0!, 0!)
         Me.XrShape1.Name = "XrShape1"
-        ShapeRectangle3.Fillet = 10
-        Me.XrShape1.Shape = ShapeRectangle3
+        ShapeRectangle1.Fillet = 10
+        Me.XrShape1.Shape = ShapeRectangle1
         Me.XrShape1.SizeF = New System.Drawing.SizeF(578.3019!, 70.56606!)
         Me.XrShape1.StylePriority.UseBorderColor = False
         Me.XrShape1.StylePriority.UseForeColor = False
         '
-        'XrLabel32
+        'lblInforme
         '
-        Me.XrLabel32.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Bold)
-        Me.XrLabel32.LocationFloat = New DevExpress.Utils.PointFloat(1.999995!, 144.9246!)
-        Me.XrLabel32.Multiline = True
-        Me.XrLabel32.Name = "XrLabel32"
-        Me.XrLabel32.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
-        Me.XrLabel32.SizeF = New System.Drawing.SizeF(738.9435!, 23.0!)
-        Me.XrLabel32.StylePriority.UseFont = False
-        Me.XrLabel32.StylePriority.UseTextAlignment = False
-        Me.XrLabel32.Text = "INFORME ANATOMOPATOLOGICO No. [CONSECUTIVO]"
-        Me.XrLabel32.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter
+        Me.lblInforme.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Bold)
+        Me.lblInforme.LocationFloat = New DevExpress.Utils.PointFloat(1.999995!, 144.9246!)
+        Me.lblInforme.Multiline = True
+        Me.lblInforme.Name = "lblInforme"
+        Me.lblInforme.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
+        Me.lblInforme.SizeF = New System.Drawing.SizeF(738.9435!, 23.0!)
+        Me.lblInforme.StylePriority.UseFont = False
+        Me.lblInforme.StylePriority.UseTextAlignment = False
+        Me.lblInforme.Text = "INFORME ANATOMOPATOLOGICO No. [CONSECUTIVO]"
+        Me.lblInforme.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter
         '
-        'XrLabel1
+        'lblDescripcionMacroscopica
         '
-        Me.XrLabel1.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[DESCRIPCION_MACROSCOPICA]")})
-        Me.XrLabel1.Font = New System.Drawing.Font("Calibri", 9.75!)
-        Me.XrLabel1.LocationFloat = New DevExpress.Utils.PointFloat(143.4906!, 110.0!)
-        Me.XrLabel1.Multiline = True
-        Me.XrLabel1.Name = "XrLabel1"
-        Me.XrLabel1.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
-        Me.XrLabel1.SizeF = New System.Drawing.SizeF(579.5094!, 17.0!)
-        Me.XrLabel1.StylePriority.UseFont = False
-        Me.XrLabel1.Text = "XrLabel1"
+        Me.lblDescripcionMacroscopica.Font = New System.Drawing.Font("Calibri", 9.75!)
+        Me.lblDescripcionMacroscopica.LocationFloat = New DevExpress.Utils.PointFloat(143.4906!, 110.0!)
+        Me.lblDescripcionMacroscopica.Multiline = True
+        Me.lblDescripcionMacroscopica.Name = "lblDescripcionMacroscopica"
+        Me.lblDescripcionMacroscopica.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
+        Me.lblDescripcionMacroscopica.SizeF = New System.Drawing.SizeF(579.5094!, 17.0!)
+        Me.lblDescripcionMacroscopica.StylePriority.UseFont = False
+        Me.lblDescripcionMacroscopica.Text = "lblDescripcionMacroscopica"
         '
         'XrLine1
         '
@@ -634,126 +645,85 @@ Partial Public Class xrPatologiaBosque
         Me.XrLine1.StylePriority.UseBorderWidth = False
         Me.XrLine1.StylePriority.UseForeColor = False
         '
-        'XrLabel33
-        '
-        Me.XrLabel33.Font = New System.Drawing.Font("Calibri", 8.0!, System.Drawing.FontStyle.Italic)
-        Me.XrLabel33.LocationFloat = New DevExpress.Utils.PointFloat(0.00008637051!, 29.11405!)
-        Me.XrLabel33.Multiline = True
-        Me.XrLabel33.Name = "XrLabel33"
-        Me.XrLabel33.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
-        Me.XrLabel33.SizeF = New System.Drawing.SizeF(740.9435!, 43.75471!)
-        Me.XrLabel33.StylePriority.UseFont = False
-        Me.XrLabel33.StylePriority.UseTextAlignment = False
-        Me.XrLabel33.Text = resources.GetString("XrLabel33.Text")
-        Me.XrLabel33.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopJustify
-        '
-        'xrDiagnostico
-        '
-        Me.xrDiagnostico.CanShrink = True
-        Me.xrDiagnostico.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Html", "[DIAGNOSTICO]")})
-        Me.xrDiagnostico.Font = New System.Drawing.Font("Arial", 9.75!)
-        Me.xrDiagnostico.LocationFloat = New DevExpress.Utils.PointFloat(1.886792!, 0!)
-        Me.xrDiagnostico.Name = "xrDiagnostico"
-        Me.xrDiagnostico.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
-        Me.xrDiagnostico.SerializableRtfString = resources.GetString("xrDiagnostico.SerializableRtfString")
-        Me.xrDiagnostico.SizeF = New System.Drawing.SizeF(740.9435!, 23.0!)
-        Me.xrDiagnostico.StylePriority.UseFont = False
-        '
         'ReportFooter
         '
-        Me.ReportFooter.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrLabel39, Me.XrLabel40, Me.XrLabel41, Me.XrPictureBox2})
+        Me.ReportFooter.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.lblMedico, Me.lblEspecialidad, Me.lblRegistroMedico, Me.picFirma})
         Me.ReportFooter.Name = "ReportFooter"
         '
-        'XrPictureBox2
+        'lblMedico
         '
-        Me.XrPictureBox2.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "ImageSource", "[firma]")})
-        Me.XrPictureBox2.LocationFloat = New DevExpress.Utils.PointFloat(42.3962!, 10.0!)
-        Me.XrPictureBox2.Name = "XrPictureBox2"
-        Me.XrPictureBox2.SizeF = New System.Drawing.SizeF(76.90567!, 36.15095!)
-        Me.XrPictureBox2.Sizing = DevExpress.XtraPrinting.ImageSizeMode.StretchImage
+        Me.lblMedico.Borders = DevExpress.XtraPrinting.BorderSide.Top
+        Me.lblMedico.Font = New System.Drawing.Font("Calibri", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.lblMedico.LocationFloat = New DevExpress.Utils.PointFloat(10.00001!, 38.15097!)
+        Me.lblMedico.Multiline = True
+        Me.lblMedico.Name = "lblMedico"
+        Me.lblMedico.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
+        Me.lblMedico.SizeF = New System.Drawing.SizeF(210.3773!, 17.53794!)
+        Me.lblMedico.StylePriority.UseBorders = False
+        Me.lblMedico.StylePriority.UseFont = False
+        Me.lblMedico.Text = "lblMedico"
         '
-        'XrLabel39
+        'lblEspecialidad
         '
-        Me.XrLabel39.Borders = DevExpress.XtraPrinting.BorderSide.Top
-        Me.XrLabel39.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[medico]")})
-        Me.XrLabel39.Font = New System.Drawing.Font("Calibri", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.XrLabel39.LocationFloat = New DevExpress.Utils.PointFloat(10.00001!, 38.15097!)
-        Me.XrLabel39.Multiline = True
-        Me.XrLabel39.Name = "XrLabel39"
-        Me.XrLabel39.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
-        Me.XrLabel39.SizeF = New System.Drawing.SizeF(210.3773!, 17.53794!)
-        Me.XrLabel39.StylePriority.UseBorders = False
-        Me.XrLabel39.StylePriority.UseFont = False
-        Me.XrLabel39.Text = "XrLabel39"
+        Me.lblEspecialidad.Font = New System.Drawing.Font("Calibri", 8.0!)
+        Me.lblEspecialidad.LocationFloat = New DevExpress.Utils.PointFloat(9.999977!, 55.6889!)
+        Me.lblEspecialidad.Multiline = True
+        Me.lblEspecialidad.Name = "lblEspecialidad"
+        Me.lblEspecialidad.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
+        Me.lblEspecialidad.SizeF = New System.Drawing.SizeF(255.3019!, 12.62265!)
+        Me.lblEspecialidad.StylePriority.UseFont = False
+        Me.lblEspecialidad.Text = "lblEspecialidad"
         '
-        'XrLabel40
+        'lblRegistroMedico
         '
-        Me.XrLabel40.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[especialidad]")})
-        Me.XrLabel40.Font = New System.Drawing.Font("Calibri", 8.0!)
-        Me.XrLabel40.LocationFloat = New DevExpress.Utils.PointFloat(9.999977!, 55.6889!)
-        Me.XrLabel40.Multiline = True
-        Me.XrLabel40.Name = "XrLabel40"
-        Me.XrLabel40.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
-        Me.XrLabel40.SizeF = New System.Drawing.SizeF(255.3019!, 12.62265!)
-        Me.XrLabel40.StylePriority.UseFont = False
-        Me.XrLabel40.Text = "XrLabel40"
+        Me.lblRegistroMedico.Font = New System.Drawing.Font("Calibri", 8.0!)
+        Me.lblRegistroMedico.LocationFloat = New DevExpress.Utils.PointFloat(10.0!, 68.68905!)
+        Me.lblRegistroMedico.Multiline = True
+        Me.lblRegistroMedico.Name = "lblRegistroMedico"
+        Me.lblRegistroMedico.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
+        Me.lblRegistroMedico.SizeF = New System.Drawing.SizeF(397.9434!, 19.99982!)
+        Me.lblRegistroMedico.StylePriority.UseFont = False
+        Me.lblRegistroMedico.Text = "lblRegistroMedico"
         '
-        'XrLabel41
+        'picFirma
         '
-        Me.XrLabel41.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[registro_medico]")})
-        Me.XrLabel41.Font = New System.Drawing.Font("Calibri", 8.0!)
-        Me.XrLabel41.LocationFloat = New DevExpress.Utils.PointFloat(10.0!, 68.68905!)
-        Me.XrLabel41.Multiline = True
-        Me.XrLabel41.Name = "XrLabel41"
-        Me.XrLabel41.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
-        Me.XrLabel41.SizeF = New System.Drawing.SizeF(397.9434!, 19.99982!)
-        Me.XrLabel41.StylePriority.UseFont = False
-        Me.XrLabel41.Text = "XrLabel41"
+        Me.picFirma.LocationFloat = New DevExpress.Utils.PointFloat(42.3962!, 10.0!)
+        Me.picFirma.Name = "picFirma"
+        Me.picFirma.SizeF = New System.Drawing.SizeF(76.90567!, 36.15095!)
+        Me.picFirma.Sizing = DevExpress.XtraPrinting.ImageSizeMode.StretchImage
         '
         'PageFooter
         '
-        Me.PageFooter.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrLabel38})
+        Me.PageFooter.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.lblSede})
         Me.PageFooter.HeightF = 24.27662!
         Me.PageFooter.Name = "PageFooter"
         '
-        'XrLabel38
+        'lblSede
         '
-        Me.XrLabel38.BorderColor = System.Drawing.Color.Gainsboro
-        Me.XrLabel38.Borders = DevExpress.XtraPrinting.BorderSide.Top
-        Me.XrLabel38.Font = New System.Drawing.Font("Calibri", 8.0!)
-        Me.XrLabel38.LocationFloat = New DevExpress.Utils.PointFloat(0!, 0!)
-        Me.XrLabel38.Multiline = True
-        Me.XrLabel38.Name = "XrLabel38"
-        Me.XrLabel38.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
-        Me.XrLabel38.SizeF = New System.Drawing.SizeF(743.0001!, 24.27662!)
-        Me.XrLabel38.StylePriority.UseBorderColor = False
-        Me.XrLabel38.StylePriority.UseBorders = False
-        Me.XrLabel38.StylePriority.UseFont = False
-        Me.XrLabel38.StylePriority.UseTextAlignment = False
-        Me.XrLabel38.Text = "[sede]"
-        Me.XrLabel38.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter
-        '
-        'idOrden
-        '
-        Me.idOrden.Description = "idOrden"
-        Me.idOrden.Name = "idOrden"
-        Me.idOrden.Type = GetType(Integer)
-        Me.idOrden.ValueInfo = "8"
+        Me.lblSede.BorderColor = System.Drawing.Color.Gainsboro
+        Me.lblSede.Borders = DevExpress.XtraPrinting.BorderSide.Top
+        Me.lblSede.Font = New System.Drawing.Font("Calibri", 8.0!)
+        Me.lblSede.LocationFloat = New DevExpress.Utils.PointFloat(0!, 0!)
+        Me.lblSede.Multiline = True
+        Me.lblSede.Name = "lblSede"
+        Me.lblSede.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
+        Me.lblSede.SizeF = New System.Drawing.SizeF(743.0001!, 24.27662!)
+        Me.lblSede.StylePriority.UseBorderColor = False
+        Me.lblSede.StylePriority.UseBorders = False
+        Me.lblSede.StylePriority.UseFont = False
+        Me.lblSede.StylePriority.UseTextAlignment = False
+        Me.lblSede.Text = "[sede]"
+        Me.lblSede.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter
         '
         'xrPatologiaBosque
         '
         Me.Bands.AddRange(New DevExpress.XtraReports.UI.Band() {Me.TopMargin, Me.BottomMargin, Me.Detail, Me.ReportHeader, Me.PageHeader, Me.ReportFooter, Me.PageFooter})
         Me.ComponentStorage.AddRange(New System.ComponentModel.IComponent() {Me.DsCD1})
-        Me.DataAdapter = Me.ReportePatologiaCDTableAdapter
-        Me.DataMember = "ReportePatologiaCD"
-        Me.DataSource = Me.DsCD1
-        Me.FilterString = "[ID] = ?idOrden"
         Me.Font = New System.Drawing.Font("Arial", 9.75!)
         Me.Margins = New System.Drawing.Printing.Margins(46, 50, 30, 27)
-        Me.Parameters.AddRange(New DevExpress.XtraReports.Parameters.Parameter() {Me.idOrden})
         Me.Version = "20.1"
-        CType(Me.DsCD1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.xrDiagnostico, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DsCD1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me, System.ComponentModel.ISupportInitialize).EndInit()
 
     End Sub
@@ -767,13 +737,13 @@ Partial Public Class xrPatologiaBosque
     Friend WithEvents XrPictureBox1 As DevExpress.XtraReports.UI.XRPictureBox
     Friend WithEvents XrPageInfo2 As DevExpress.XtraReports.UI.XRPageInfo
     Friend WithEvents XrLabel36 As DevExpress.XtraReports.UI.XRLabel
-    Friend WithEvents XrLabel2 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents lblNombreEntidad As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents PageHeader As DevExpress.XtraReports.UI.PageHeaderBand
     Friend WithEvents XrShape3 As DevExpress.XtraReports.UI.XRShape
-    Friend WithEvents XrLabel31 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents lblSolicitado As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents XrLabel30 As DevExpress.XtraReports.UI.XRLabel
-    Friend WithEvents XrLabel28 As DevExpress.XtraReports.UI.XRLabel
-    Friend WithEvents XrLabel27 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents lblTipoMuestra As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents lblEntidad As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents XrLabel26 As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents XrLabel25 As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents XrShape2 As DevExpress.XtraReports.UI.XRShape
@@ -781,37 +751,36 @@ Partial Public Class xrPatologiaBosque
     Friend WithEvents XrPanel2 As DevExpress.XtraReports.UI.XRPanel
     Friend WithEvents XrPageInfo1 As DevExpress.XtraReports.UI.XRPageInfo
     Friend WithEvents XrLabel35 As DevExpress.XtraReports.UI.XRLabel
-    Friend WithEvents XrLabel23 As DevExpress.XtraReports.UI.XRLabel
-    Friend WithEvents XrLabel22 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents lblFechaSalida As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents lblFechaIngreso As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents XrLabel21 As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents XrLabel20 As DevExpress.XtraReports.UI.XRLabel
-    Friend WithEvents XrLabel19 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents lblConsecutivo As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents XrLabel18 As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents XrPanel1 As DevExpress.XtraReports.UI.XRPanel
-    Friend WithEvents XrLabel17 As DevExpress.XtraReports.UI.XRLabel
-    Friend WithEvents XrLabel16 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents lblDireccion As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents lblSexo As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents XrLabel15 As DevExpress.XtraReports.UI.XRLabel
-    Friend WithEvents XrLabel14 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents lblEdad As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents XrLabel13 As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents XrLabel12 As DevExpress.XtraReports.UI.XRLabel
-    Friend WithEvents XrLabel11 As DevExpress.XtraReports.UI.XRLabel
-    Friend WithEvents XrLabel10 As DevExpress.XtraReports.UI.XRLabel
-    Friend WithEvents XrLabel9 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents lblTelefono As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents lblIdentificacion As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents lblNombre As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents XrLabel8 As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents XrLabel7 As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents XrLabel6 As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents XrShape1 As DevExpress.XtraReports.UI.XRShape
-    Friend WithEvents XrLabel32 As DevExpress.XtraReports.UI.XRLabel
-    Friend WithEvents XrLabel1 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents lblInforme As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents lblDescripcionMacroscopica As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents XrLine1 As DevExpress.XtraReports.UI.XRLine
     Friend WithEvents XrLabel33 As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents xrDiagnostico As DevExpress.XtraReports.UI.XRRichText
     Friend WithEvents ReportFooter As DevExpress.XtraReports.UI.ReportFooterBand
-    Friend WithEvents XrPictureBox2 As DevExpress.XtraReports.UI.XRPictureBox
-    Friend WithEvents XrLabel39 As DevExpress.XtraReports.UI.XRLabel
-    Friend WithEvents XrLabel40 As DevExpress.XtraReports.UI.XRLabel
-    Friend WithEvents XrLabel41 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents picFirma As DevExpress.XtraReports.UI.XRPictureBox
+    Friend WithEvents lblMedico As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents lblEspecialidad As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents lblRegistroMedico As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents PageFooter As DevExpress.XtraReports.UI.PageFooterBand
-    Friend WithEvents XrLabel38 As DevExpress.XtraReports.UI.XRLabel
-    Friend WithEvents idOrden As DevExpress.XtraReports.Parameters.Parameter
+    Friend WithEvents lblSede As DevExpress.XtraReports.UI.XRLabel
 End Class

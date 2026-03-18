@@ -878,6 +878,12 @@
     <Compile Include="Reportes\xrbase64.vb">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Reportes\xrCorregido.Designer.vb">
+      <DependentUpon>xrCorregido.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\xrCorregido.vb">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Reportes\xrPatologiaBosque.Designer.vb">
       <DependentUpon>xrPatologiaBosque.vb</DependentUpon>
     </Compile>
@@ -1733,6 +1739,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\xrbase64.resx">
       <DependentUpon>xrbase64.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\xrCorregido.resx">
+      <DependentUpon>xrCorregido.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\xrPatologiaBosque.resx">
       <DependentUpon>xrPatologiaBosque.vb</DependentUpon>
