@@ -83,63 +83,91 @@ Public Class frmInicio
                     printTool.ShowPreviewDialog()
                     'printTool.show
                 Else
-                    'Verificamos si es una Inmunohistoquimica
-                    If Estudio = "INMUNOHISTOQUIMICA" Then
-                        'Lamamos Inmonothistoquimica
-                        Dim _frmOpen As New SIM___GLOBAL.frmPDF
-                        _frmOpen.Consecutivo = ConsecutivoG
-                        _frmOpen.ShowDialog()
-                    ElseIf Fotos = "0" Then
-                        'DEFINIMOS EL PROCESO DE GUARDADO EN TABLA IMPRESION HISTORIA
-                        Dim _DImpresionPatologia As New SIM___GLOBAL.Controles.DImpresionPatologia
-                        ' realizamos la verificacion del ID SEDE
-                        Dim idSede As Integer = _DImpresionPatologia.ValidarSede(IDOrdenG)
-                        'verifica si existe y si no guarda los datos para impresion 
-                        _DImpresionPatologia.Guardar(IDOrdenG)
-                        Dim tabla As DataTable = _DImpresionPatologia.ObtenerDatosPorOrden(CInt(IDOrdenG))
+            'Verificamos si es una Inmunohistoquimica
+            If Estudio = "INMUNOHISTOQUIMICA" Then
+                'Lamamos Inmonothistoquimica
+                Dim _frmOpen As New SIM___GLOBAL.frmPDF
+                _frmOpen.Consecutivo = ConsecutivoG
+                _frmOpen.ShowDialog()
+            ElseIf Fotos = "0" Then
+                'DEFINIMOS EL PROCESO DE GUARDADO EN TABLA IMPRESION HISTORIA
+                Dim _DImpresionPatologia As New SIM___GLOBAL.Controles.DImpresionPatologia
+                ' realizamos la verificacion del ID SEDE
+                Dim idSede As Integer = _DImpresionPatologia.ValidarSede(IDOrdenG)
+                'verifica si existe y si no guarda los datos para impresion 
+                _DImpresionPatologia.Guardar(IDOrdenG)
+                Dim tabla As DataTable = _DImpresionPatologia.ObtenerDatosPorOrden(CInt(IDOrdenG))
 
-                        If tabla Is Nothing OrElse tabla.Rows.Count = 0 Then
-                            MessageBox.Show("No se encontraron datos para esta orden.",
+                If tabla Is Nothing OrElse tabla.Rows.Count = 0 Then
+                    MessageBox.Show("No se encontraron datos para esta orden.",
                                 "Sin resultados", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                            Return
-                        End If
-
-                        Dim reporteRTB As DevExpress.XtraReports.UI.XtraReport
-                        Select Case idSede
-                            Case 2
-                                reporteRTB = New SIM___GLOBAL.xrPatologiaNuestra(tabla)
-                            Case 3
-                                reporteRTB = New SIM___GLOBAL.xrPatologiaBosque(tabla)
-                            Case Else
-                                reporteRTB = New SIM___GLOBAL.xrPatologiaCD(tabla) ' Por defecto
-                        End Select
-                        Dim visor As New DevExpress.XtraReports.UI.ReportPrintTool(reporteRTB)
-                        visor.ShowPreviewDialog()
-                    Else
-                        Dim reporteRTB As New SIM___GLOBAL.xrPatologiaCD
-                        Dim filtro As New Parameter()
-                        Dim reportPath As String = "c:\\SIM\pdf\" + DatosPacienteG + ".pdf"
-                        Dim pdfOptions As PdfExportOptions = reporteRTB.ExportOptions.Pdf
-
-                        pdfOptions.DocumentOptions.Application = "SIM - Sistema Integrado Medico"
-                        pdfOptions.DocumentOptions.Author = "Ados Software"
-                        pdfOptions.DocumentOptions.Keywords = "DevExpress, Reporting, PDF"
-                        pdfOptions.DocumentOptions.Producer = Environment.UserName.ToString()
-                        'pdfOptions.DocumentOptions.Subject = "Document Subject"
-                        pdfOptions.DocumentOptions.Title = DatosPacienteG
-
-                        'filtro.Name = "idOrden"
-                        filtro.Value = IDOrdenG
-                        filtro.Visible = False
-                        reporteRTB.Parameters.Add(filtro)
-                        reporteRTB.FilterString = "[ID] = ?idOrden"
-                        reporteRTB.RequestParameters = False
-                        reporteRTB.Parameters(0).Value = IDOrdenG
-                        reporteRTB.Parameters("idOrden").Value = IDOrdenG
-                        reporteRTB.ExportToPdf(reportPath, pdfOptions)
-
-                    End If
+                    Return
                 End If
+
+                Dim reporteRTB As DevExpress.XtraReports.UI.XtraReport
+                Select Case idSede
+                    Case 2
+                        reporteRTB = New SIM___GLOBAL.xrPatologiaNuestra(tabla)
+                    Case 3
+                        reporteRTB = New SIM___GLOBAL.xrPatologiaBosque(tabla)
+                    Case Else
+                        reporteRTB = New SIM___GLOBAL.xrPatologiaCD(tabla) ' Por defecto
+                End Select
+                Dim visor As New DevExpress.XtraReports.UI.ReportPrintTool(reporteRTB)
+                visor.ShowPreviewDialog()
+            Else
+                '── Con fotos → exportar a PDF ──────────────────────────
+                Dim _DImpresionPatologia As New SIM___GLOBAL.Controles.DImpresionPatologia
+
+                ' Verificacion del ID SEDE
+                Dim idSede As Integer = _DImpresionPatologia.ValidarSede(IDOrdenG)
+
+                ' Verifica si existe y si no guarda los datos para impresion
+                _DImpresionPatologia.Guardar(IDOrdenG)
+
+                Dim tabla As DataTable = _DImpresionPatologia.ObtenerDatosPorOrden(CInt(IDOrdenG))
+
+                If tabla Is Nothing OrElse tabla.Rows.Count = 0 Then
+                    MessageBox.Show("No se encontraron datos para esta orden.",
+                                    "Sin resultados", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    Return
+                End If
+
+                ' Seleccionar reporte según sede
+                Dim reporteRTB As DevExpress.XtraReports.UI.XtraReport
+                Select Case idSede
+                    Case 2
+                        reporteRTB = New SIM___GLOBAL.xrPatologiaNuestra(tabla)
+                    Case 3
+                        reporteRTB = New SIM___GLOBAL.xrPatologiaBosque(tabla)
+                    Case Else
+                        reporteRTB = New SIM___GLOBAL.xrPatologiaCD(tabla)
+                End Select
+
+                ' Verificar que el directorio existe
+                Dim reportPath As String = "C:\SIM\pdf\" & DatosPacienteG & ".pdf"
+                If Not IO.Directory.Exists("C:\SIM\pdf\") Then
+                    IO.Directory.CreateDirectory("C:\SIM\pdf\")
+                End If
+
+                ' Configurar opciones PDF
+                Dim pdfOptions As PdfExportOptions = reporteRTB.ExportOptions.Pdf
+                pdfOptions.DocumentOptions.Application = "SIM - Sistema Integrado Medico"
+                pdfOptions.DocumentOptions.Author = "Ados Software"
+                pdfOptions.DocumentOptions.Producer = Environment.UserName.ToString()
+                pdfOptions.DocumentOptions.Title = DatosPacienteG
+
+                ' Exportar a PDF
+                reporteRTB.ExportToPdf(reportPath, pdfOptions)
+
+                ' Confirmar al usuario
+                'If MessageBox.Show("PDF generado correctamente. ¿Desea abrirlo?",
+                '                   "PDF Generado", MessageBoxButtons.YesNo,
+                ' MessageBoxIcon.Information) = DialogResult.Yes Then
+                ' Process.Start(reportPath)
+                ' End If
+            End If
+        End If
 
 
 
