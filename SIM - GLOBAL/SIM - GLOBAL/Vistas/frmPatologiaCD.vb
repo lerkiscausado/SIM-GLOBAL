@@ -555,7 +555,7 @@ Public Class frmPatologiaCD
         If txtConsecutivo.Text = "" Then
             MessageBox.Show("Debe Seleccionar un paciente para Vista Previa", "Vista Preliminar", MessageBoxButtons.OK, MessageBoxIcon.Information)
         Else
-            Dim reporteRTB As New SIM___GLOBAL.xrPatologiaCDPreliminar
+            'Dim reporteRTB As New SIM___GLOBAL.xrPatologiaCDPreliminar
             Dim filtro As New Parameter()
             'filtro.Name = "idOrden"
             filtro.Value = lblConsecutivoOrden.Text
@@ -566,14 +566,24 @@ Public Class frmPatologiaCD
             _DImpresionPatologia.Eliminar(lblConsecutivoOrden.Text)
             _DImpresionPatologia.Guardar(lblConsecutivoOrden.Text)
             '------------------------------------------------------------
+            Dim tabla As DataTable = _DImpresionPatologia.ObtenerDatosPorOrden(CInt(lblConsecutivoOrden.Text))
+            If tabla Is Nothing OrElse tabla.Rows.Count = 0 Then
+                MessageBox.Show("No se encontraron datos para esta orden.",
+                                "Sin resultados", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                Return
+            End If
+            Dim reporteRTB As DevExpress.XtraReports.UI.XtraReport
+            reporteRTB = New SIM___GLOBAL.xrPatologiaCD(tabla) ' Por defecto
 
-            reporteRTB.Parameters.Add(filtro)
-            reporteRTB.FilterString = "[ID] = ?idOrden"
-            reporteRTB.RequestParameters = False
-            reporteRTB.Parameters(0).Value = lblConsecutivoOrden.Text
-            reporteRTB.Parameters("idOrden").Value = lblConsecutivoOrden.Text
-            Dim printTool As New ReportPrintTool(reporteRTB)
-            printTool.ShowPreviewDialog()
+            Dim visor As New DevExpress.XtraReports.UI.ReportPrintTool(reporteRTB)
+            visor.ShowPreviewDialog()
+            'reporteRTB.Parameters.Add(filtro)
+            'reporteRTB.FilterString = "[ID] = ?idOrden"
+            'reporteRTB.RequestParameters = False
+            'reporteRTB.Parameters(0).Value = lblConsecutivoOrden.Text
+            'reporteRTB.Parameters("idOrden").Value = lblConsecutivoOrden.Text
+            'Dim printTool As New ReportPrintTool(reporteRTB)
+            'PrintTool.ShowPreviewDialog()
         End If
     End Sub
 
