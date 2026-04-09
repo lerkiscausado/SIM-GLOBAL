@@ -912,6 +912,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Utilidades\Funciones.vb" />
+    <Compile Include="Utilidades\LoadingHelper.vb" />
     <Compile Include="Vistas\Binarios.Designer.vb">
       <DependentUpon>Binarios.vb</DependentUpon>
     </Compile>
@@ -964,6 +965,12 @@
       <DependentUpon>frmCapturaImagenes.vb</DependentUpon>
     </Compile>
     <Compile Include="Vistas\frmCapturaImagenes.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\frmCargando.Designer.vb">
+      <DependentUpon>frmCargando.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\frmCargando.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Vistas\frmCargos.Designer.vb">
@@ -1787,6 +1794,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Vistas\frmCapturaImagenes.resx">
       <DependentUpon>frmCapturaImagenes.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\frmCargando.resx">
+      <DependentUpon>frmCargando.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vistas\frmCargos.resx">
       <DependentUpon>frmCargos.vb</DependentUpon>

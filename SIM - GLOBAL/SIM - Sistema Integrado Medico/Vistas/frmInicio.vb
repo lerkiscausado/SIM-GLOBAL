@@ -9,6 +9,7 @@ Imports System
 Imports System.Collections.Generic
 Imports System.Windows.Forms
 Imports System.IO
+Imports SIM___GLOBAL.Utilidades.LoadingHelper
 
 Public Class frmInicio
 #Region "DECLARACION DE VARIABLES"
@@ -1631,45 +1632,64 @@ Public Class frmInicio
     End Sub
 
     Private Sub bbtNuevo_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles bbiNuevo.ItemClick
-        Formulario = Nothing
-        'Dim _frmOpen As New SIM_ENDOSCOPIA.frmOrdenes
-        Dim _frmOpen As New SIM___GLOBAL.frmOrdenes
-        IDDetalleOrdenG = Nothing
-        _frmOpen.Licencia = LicenciaG
-        _frmOpen.IDEmpleado = IdEmpleadoG
-        _frmOpen.Empleado = lblUsers.Caption
-        _frmOpen.ShowDialog()
+        Try
+
+            Formulario = Nothing
+            'Dim _frmOpen As New SIM_ENDOSCOPIA.frmOrdenes
+            Dim _frmOpen As New SIM___GLOBAL.frmOrdenes
+            IDDetalleOrdenG = Nothing
+            _frmOpen.Licencia = LicenciaG
+            _frmOpen.IDEmpleado = IdEmpleadoG
+            _frmOpen.Empleado = lblUsers.Caption
+            _frmOpen.ShowDialog()
+        Catch ex As Exception
+            MessageBox.Show("Error: " & ex.Message,
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        Finally
+
+        End Try
+
     End Sub
 
     Private Sub bbtConsultar_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles bbiConsultar.ItemClick
         If Funciones.IsLoaded("frmConsultarEndoscopia") = True Or Funciones.IsLoaded("frmConsultarCitoPato") = True Then
             MessageBox.Show("Esta Ventana se encuentra abierta", "Consultar Ordenes", MessageBoxButtons.OK, MessageBoxIcon.Information)
         Else
-            Select Case LicenciaG
-                Case 1 'ADOS SOFTWARE DEMO
-                    MsgBox("Consultar ADOS")
-                Case 2, 6 'ESPECIALIDAD LABORATORIO DE PATOLOGIA
-                    _frmConsultarCitopato = New frmConsultarCitoPato
-                    _frmConsultarCitopato.MdiParent = Me
-                    _frmConsultarCitopato.Recargar(Year(Now))
-                    _frmConsultarCitopato.Show()
-                Case 11 'CITOPAT DE LA COSTA
-                    _frmConsultarCitopato = New frmConsultarCitoPato
-                    _frmConsultarCitopato.MdiParent = Me
-                    _frmConsultarCitopato.Recargar(Year(Now))
-                    _frmConsultarCitopato.Show()
-                Case 16 ' CD Oncologia 
-                    _frmConsultarCDPatologia = New frmConsultarCDPatologia
-                    _frmConsultarCDPatologia.MdiParent = Me
-                    _frmConsultarCDPatologia.Recargar(Year(Now))
-                    _frmConsultarCDPatologia.Show()
-                Case 3, 4, 9, 10, 14 ' ENDOSCOPIA y ORTODONCIA
-                    _frmConsultarEndoscopia = New frmConsultarEndoscopia
-                    _frmConsultarEndoscopia.MdiParent = Me
-                    _frmConsultarEndoscopia.Recargar(Year(Now))
-                    _frmConsultarEndoscopia.Show()
-                Case Else
-            End Select
+            Try
+                'Formulario de Cargando
+                LoadingHelper.Mostrar(Me, "Cargando Ordenes...", "Cargando historial ordenes...")
+                Select Case LicenciaG
+                    Case 1 'ADOS SOFTWARE DEMO
+                        MsgBox("Consultar ADOS")
+                    Case 2, 6 'ESPECIALIDAD LABORATORIO DE PATOLOGIA
+                        _frmConsultarCitopato = New frmConsultarCitoPato
+                        _frmConsultarCitopato.MdiParent = Me
+                        _frmConsultarCitopato.Recargar(Year(Now))
+                        _frmConsultarCitopato.Show()
+                    Case 11 'CITOPAT DE LA COSTA
+                        _frmConsultarCitopato = New frmConsultarCitoPato
+                        _frmConsultarCitopato.MdiParent = Me
+                        _frmConsultarCitopato.Recargar(Year(Now))
+                        _frmConsultarCitopato.Show()
+                    Case 16 ' CD Oncologia 
+                        _frmConsultarCDPatologia = New frmConsultarCDPatologia
+                        _frmConsultarCDPatologia.MdiParent = Me
+                        _frmConsultarCDPatologia.Recargar(Year(Now))
+                        _frmConsultarCDPatologia.Show()
+                    Case 3, 4, 9, 10, 14 ' ENDOSCOPIA y ORTODONCIA
+                        _frmConsultarEndoscopia = New frmConsultarEndoscopia
+                        _frmConsultarEndoscopia.MdiParent = Me
+                        _frmConsultarEndoscopia.Recargar(Year(Now))
+                        _frmConsultarEndoscopia.Show()
+                    Case Else
+                End Select
+            Catch ex As Exception
+                MessageBox.Show("Error: " & ex.Message,
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Finally
+                LoadingHelper.Ocultar()
+            End Try
+
         End If
     End Sub
 

@@ -463,132 +463,154 @@ Public Class frmOrdenes
     End Sub
 #End Region
     Private Sub frmOrdenes_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Try
+            ' Mostrar loading mientras carga el formulario
+            LoadingHelper.Mostrar(Me, "Cargando formulario...", "Cargando formulario...")
+            dtFechaIngreso.Text = Format(DateTime.Now, "dd/MM/yyyy")
 
-        dtFechaIngreso.Text = Format(DateTime.Now, "dd/MM/yyyy")
+            Select Case Licencia
+                Case 6, 11, 16 '6-KELLY, 11-CITOPAT Y 16-CD PATOLOGIA ONCOLOGICA
+                    colORDEN.Visible = False
+                    LabelControl13.Text = "Fec. Toma Muestra"
+                Case Else
+                    colCONSECUTIVO2.Visible = False
+            End Select
 
-        Select Case Licencia
-            Case 6, 11, 16 '6-KELLY, 11-CITOPAT Y 16-CD PATOLOGIA ONCOLOGICA
-                colORDEN.Visible = False
-                LabelControl13.Text = "Fec. Toma Muestra"
-            Case Else
-                colCONSECUTIVO2.Visible = False
-        End Select
+            'LLenamos grilla Ordenes
+            ActualizarGrilla()
 
-        'LLenamos grilla Ordenes
-        ActualizarGrilla()
+            'llenamos GridCONTROL Usuarios
+            LoadingHelper.ActualizarMensaje("Cargando usuarios...", "Cargando usuarios...")
+            _ds = New DataSet
+            _ds = _dUsuarios.ListarUltimosRegistros()
+            GCConsultar.DataSource = _ds.Tables(0)
 
-        'llenamos GridCONTROL Usuarios
-        _ds = New DataSet
-        _ds = _dUsuarios.ListarUltimosRegistros()
-        GCConsultar.DataSource = _ds.Tables(0)
 
-        'llenamos GridCONTROL Agendados
-        _ds = New DataSet
-        _ds = _DAgenda.ListarAgendaHoy
-        GCAgendados.DataSource = _ds.Tables(0)
+            'llenamos GridCONTROL Agendados
+            LoadingHelper.ActualizarMensaje("Cargando agendados...", "Cargando agendados...")
+            _ds = New DataSet
+            _ds = _DAgenda.ListarAgendaHoy
+            GCAgendados.DataSource = _ds.Tables(0)
 
-        ' Cargar Tipo Afiliado
-        Dim _Dtipoafiliado = New DTipoAfiliado
-        _ds = _Dtipoafiliado.Listar
-        cboTipoAfiliado.Properties.DataSource = _ds.Tables(0)
-        cboTipoAfiliado.Properties.DisplayMember = _ds.Tables(0).Columns(1).Caption
-        cboTipoAfiliado.Properties.ValueMember = _ds.Tables(0).Columns(0).Caption
-        cboTipoAfiliado.ItemIndex = 0
+            ' Cargar Tipo Afiliado
+            LoadingHelper.ActualizarMensaje("Cargando tipo afiliado...", "Cargando tipo afiliados...")
+            Dim _Dtipoafiliado = New DTipoAfiliado
+            _ds = _Dtipoafiliado.Listar
+            cboTipoAfiliado.Properties.DataSource = _ds.Tables(0)
+            cboTipoAfiliado.Properties.DisplayMember = _ds.Tables(0).Columns(1).Caption
+            cboTipoAfiliado.Properties.ValueMember = _ds.Tables(0).Columns(0).Caption
+            cboTipoAfiliado.ItemIndex = 0
 
-        ' Cargar Tipo Usuario
-        Dim _DtipoUsuario = New DTipoUsuario
-        _ds = _DtipoUsuario.Listar
-        cboTipoUsuario.Properties.DataSource = _ds.Tables(0)
-        cboTipoUsuario.Properties.DisplayMember = _ds.Tables(0).Columns(1).Caption
-        cboTipoUsuario.Properties.ValueMember = _ds.Tables(0).Columns(0).Caption
-        cboTipoUsuario.ItemIndex = 0
+            ' Cargar Tipo Usuario
+            LoadingHelper.ActualizarMensaje("Cargando tipo usuario...", "Cargando tipo usuarios...")
+            Dim _DtipoUsuario = New DTipoUsuario
+            _ds = _DtipoUsuario.Listar
+            cboTipoUsuario.Properties.DataSource = _ds.Tables(0)
+            cboTipoUsuario.Properties.DisplayMember = _ds.Tables(0).Columns(1).Caption
+            cboTipoUsuario.Properties.ValueMember = _ds.Tables(0).Columns(0).Caption
+            cboTipoUsuario.ItemIndex = 0
 
-        ' Cargar Ambito Procedimiento
-        Dim _DAmbitoProcedimiento = New SIM___GLOBAL.DAmbitoProcedimiento
-        _ds = _DAmbitoProcedimiento.Listar
-        cboAmbitoProcedimiento.Properties.DataSource = _ds.Tables(0)
-        cboAmbitoProcedimiento.Properties.DisplayMember = _ds.Tables(0).Columns(1).Caption
-        cboAmbitoProcedimiento.Properties.ValueMember = _ds.Tables(0).Columns(0).Caption
-        cboAmbitoProcedimiento.ItemIndex = 0
-        '---------------------------------
+            ' Cargar Ambito Procedimiento
+            LoadingHelper.ActualizarMensaje("Cargando ambito...", "Cargando ambito...")
+            Dim _DAmbitoProcedimiento = New SIM___GLOBAL.DAmbitoProcedimiento
+            _ds = _DAmbitoProcedimiento.Listar
+            cboAmbitoProcedimiento.Properties.DataSource = _ds.Tables(0)
+            cboAmbitoProcedimiento.Properties.DisplayMember = _ds.Tables(0).Columns(1).Caption
+            cboAmbitoProcedimiento.Properties.ValueMember = _ds.Tables(0).Columns(0).Caption
+            cboAmbitoProcedimiento.ItemIndex = 0
+            '---------------------------------
 
-        ' Cargar FINALIDAD
-        Dim _DFinalidad = New SIM___GLOBAL.Controles.DFinalidadConsulta
-        _ds = _DFinalidad.Listar
-        cboFinalidad.Properties.DataSource = _ds.Tables(0)
-        cboFinalidad.Properties.DisplayMember = _ds.Tables(0).Columns(1).Caption
-        cboFinalidad.Properties.ValueMember = _ds.Tables(0).Columns(0).Caption
-        cboFinalidad.ItemIndex = 9
-        '---------------------------------
+            ' Cargar FINALIDAD
+            LoadingHelper.ActualizarMensaje("Cargando finalidad...", "Cargando finalidad...")
+            Dim _DFinalidad = New SIM___GLOBAL.Controles.DFinalidadConsulta
+            _ds = _DFinalidad.Listar
+            cboFinalidad.Properties.DataSource = _ds.Tables(0)
+            cboFinalidad.Properties.DisplayMember = _ds.Tables(0).Columns(1).Caption
+            cboFinalidad.Properties.ValueMember = _ds.Tables(0).Columns(0).Caption
+            cboFinalidad.ItemIndex = 9
+            '---------------------------------
 
-        ' Cargar Tipo Estudio
-        Dim _DTipoEstudio = New DTipoEstudio
-        _ds = _DTipoEstudio.Listar
-        cboTipoEstudio.Properties.DataSource = _ds.Tables(0)
-        cboTipoEstudio.Properties.DisplayMember = _ds.Tables(0).Columns(1).Caption
-        cboTipoEstudio.Properties.ValueMember = _ds.Tables(0).Columns(0).Caption
-        cboTipoEstudio.ItemIndex = 0
-        '---------------------------------
-        ' Cargar Contratos
-        Dim _DContratos = New DContratos
-        _ds = _DContratos.ListarCombo
-        cboContrato.Properties.DataSource = _ds.Tables(0)
-        cboContrato.Properties.DisplayMember = _ds.Tables(0).Columns(1).Caption
-        cboContrato.Properties.ValueMember = _ds.Tables(0).Columns(0).Caption
-        cboContrato.ItemIndex = -1
+            ' Cargar Tipo Estudio
+            LoadingHelper.ActualizarMensaje("Cargando tipo estudio...", "Cargando tipo estudios...")
+            Dim _DTipoEstudio = New DTipoEstudio
+            _ds = _DTipoEstudio.Listar
+            cboTipoEstudio.Properties.DataSource = _ds.Tables(0)
+            cboTipoEstudio.Properties.DisplayMember = _ds.Tables(0).Columns(1).Caption
+            cboTipoEstudio.Properties.ValueMember = _ds.Tables(0).Columns(0).Caption
+            cboTipoEstudio.ItemIndex = 0
+            '---------------------------------
+            ' Cargar Contratos
+            LoadingHelper.ActualizarMensaje("Cargando contratos...", "Cargando contratos...")
+            Dim _DContratos = New DContratos
+            _ds = _DContratos.ListarCombo
+            cboContrato.Properties.DataSource = _ds.Tables(0)
+            cboContrato.Properties.DisplayMember = _ds.Tables(0).Columns(1).Caption
+            cboContrato.Properties.ValueMember = _ds.Tables(0).Columns(0).Caption
+            cboContrato.ItemIndex = -1
 
-        ' Cargar Especialista
-        Dim _Dempleados = New DEmpleados
-        _ds = _Dempleados.ListarEspecialista
-        cboMedico.Properties.DataSource = _ds.Tables(0)
-        cboMedico.Properties.DisplayMember = _ds.Tables(0).Columns(1).Caption
-        cboMedico.Properties.ValueMember = _ds.Tables(0).Columns(0).Caption
-        cboMedico.ItemIndex = -1
+            ' Cargar Especialista
+            LoadingHelper.ActualizarMensaje("Cargando especialistas...", "Cargando especialistas...")
+            Dim _Dempleados = New DEmpleados
+            _ds = _Dempleados.ListarEspecialista
+            cboMedico.Properties.DataSource = _ds.Tables(0)
+            cboMedico.Properties.DisplayMember = _ds.Tables(0).Columns(1).Caption
+            cboMedico.Properties.ValueMember = _ds.Tables(0).Columns(0).Caption
+            cboMedico.ItemIndex = -1
 
-        ' Cargar Sedes
-        Dim _DSedes = New DSedes
-        _ds = _DSedes.ListarCombo
-        cboSede.Properties.DataSource = _ds.Tables(0)
-        cboSede.Properties.DisplayMember = _ds.Tables(0).Columns(1).Caption
-        cboSede.Properties.ValueMember = _ds.Tables(0).Columns(0).Caption
-        cboSede.ItemIndex = 0
+            ' Cargar Sedes
+            LoadingHelper.ActualizarMensaje("Cargando sedes...", "Cargando sedes...")
+            Dim _DSedes = New DSedes
+            _ds = _DSedes.ListarCombo
+            cboSede.Properties.DataSource = _ds.Tables(0)
+            cboSede.Properties.DisplayMember = _ds.Tables(0).Columns(1).Caption
+            cboSede.Properties.ValueMember = _ds.Tables(0).Columns(0).Caption
+            cboSede.ItemIndex = 0
 
-        'Cargar especimenes
-        _ds = New DataSet()
-        _ds = _DEspecimenes.Listar()
-        cboEspecimen.Properties.DataSource = _ds.Tables(0)
-        cboEspecimen.Properties.DisplayMember = _ds.Tables(0).Columns(1).Caption
-        cboEspecimen.Properties.ValueMember = _ds.Tables(0).Columns(0).Caption
-        cboEspecimen.ItemIndex = 0
+            'Cargar especimenes
+            LoadingHelper.ActualizarMensaje("Cargando especimenes...", "Cargando especimenes...")
+            _ds = New DataSet()
+            _ds = _DEspecimenes.Listar()
+            cboEspecimen.Properties.DataSource = _ds.Tables(0)
+            cboEspecimen.Properties.DisplayMember = _ds.Tables(0).Columns(1).Caption
+            cboEspecimen.Properties.ValueMember = _ds.Tables(0).Columns(0).Caption
+            cboEspecimen.ItemIndex = 0
 
-        'NuevaO = 0
-        Select Case Licencia
-            Case 2, 6, 11, 16 '2-INMUNOPAT, 6-KELLY, 11-CITOPAT Y CD PATOLOGIA ONCOLOGICO - Si activan los campos que se utilizan para las licencias de laboratorio de Citologia y Patologia
-                lblFechaEntrega.Visible = True
-                dtFechaEntrega.Visible = True
-                cboTipoEstudio.Visible = True
-                txtPrefijo.Visible = True
-                txtNumeroEstudio.Visible = True
-                lblTipoEstudio.Visible = True
-                lblNumeroEstudio.Visible = True
-                cboEspecimen.Visible = True
-                lblEspecimen.Visible = True
-                xtpAgendados.PageVisible = False
-                xtpEstudios.PageVisible = True
-                If Licencia = 11 Or Licencia = 16 Then
-                    txtNumeroEstudio.ReadOnly = True
-                End If
-            Case Else
-                lblFechaEntrega.Visible = False
-                dtFechaEntrega.Visible = False
-                'cboEspecimen.Visible = True
-                'lblEspecimen.Visible = True
-                xtpAgendados.PageVisible = True
-                xtpEstudios.PageVisible = False
-        End Select
+            'NuevaO = 0
+            Select Case Licencia
+                Case 2, 6, 11, 16 '2-INMUNOPAT, 6-KELLY, 11-CITOPAT Y CD PATOLOGIA ONCOLOGICO - Si activan los campos que se utilizan para las licencias de laboratorio de Citologia y Patologia
+                    lblFechaEntrega.Visible = True
+                    dtFechaEntrega.Visible = True
+                    cboTipoEstudio.Visible = True
+                    txtPrefijo.Visible = True
+                    txtNumeroEstudio.Visible = True
+                    lblTipoEstudio.Visible = True
+                    lblNumeroEstudio.Visible = True
+                    cboEspecimen.Visible = True
+                    lblEspecimen.Visible = True
+                    xtpAgendados.PageVisible = False
+                    xtpEstudios.PageVisible = True
+                    If Licencia = 11 Or Licencia = 16 Then
+                        txtNumeroEstudio.ReadOnly = True
+                    End If
+                Case Else
+                    lblFechaEntrega.Visible = False
+                    dtFechaEntrega.Visible = False
+                    'cboEspecimen.Visible = True
+                    'lblEspecimen.Visible = True
+                    xtpAgendados.PageVisible = True
+                    xtpEstudios.PageVisible = False
+            End Select
 
-        cboEspecimen.ItemIndex = 0
-        bbiGuardar.Enabled = False
+            cboEspecimen.ItemIndex = 0
+            bbiGuardar.Enabled = False
+        Catch ex As Exception
+            MessageBox.Show("Error: " & ex.Message,
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        Finally
+            ' Por seguridad, asegurarse que siempre se oculte
+            LoadingHelper.Ocultar()
+        End Try
+
     End Sub
 
     Private Sub bbtNuevo_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles bbtNuevo.ItemClick
@@ -704,180 +726,197 @@ Public Class frmOrdenes
     End Sub
 
     Private Sub bbiGuardar_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles bbiGuardar.ItemClick
-        If dtFechaOrden.Text = "" Then
-            MessageBox.Show("La fecha de Orden es Obligatoria", "Registro de Ordenes", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        ElseIf cboContrato.Text = "" Then
-            MessageBox.Show("Debe Seleccionar el Contrato", "Registro de Ordenes", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        ElseIf cboMedico.Text = "" Then
-            MessageBox.Show("Debe seleccionar el medico", "Registro de Ordenes", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        ElseIf cboTipoEstudio.Text = "" And cboTipoEstudio.Visible = True Then
-            MessageBox.Show("Debe seleccionar el Tipo de Estudio", "Registro de Ordenes", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        ElseIf GVDetalleOrden.RowCount = 0 Then
-            MessageBox.Show("Falta los servicios a prestar al paciente", "Registro de Ordenes", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        ElseIf Sexo = "M" And (cboTipoEstudio.GetColumnValue("ID") = 1 Or cboTipoEstudio.GetColumnValue("ID") = 2) And (Licencia = 2 Or Licencia = 6 Or Licencia = 11) Then
-            MessageBox.Show("Tipo de estudio invalido", "Registro de Ordenes", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        ElseIf txtNumeroEstudio.Text = "" And (Licencia = 2 Or Licencia = 6) Then
-            MessageBox.Show("Debe digitar el numero de estudio a realizar", "Registro de Ordenes", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        ElseIf _DOrdenes.ExisteConsecutivo(txtPrefijo.Text & txtNumeroEstudio.Text & "-" & Mid(Year(dtFechaIngreso.Text), 3, 2)) = True And (Licencia = 2 Or Licencia = 16) Then
-            MessageBox.Show("Numero de consecutivo ya existe", "Registro de Ordenes", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        ElseIf dtFechaEntrega.Text = "" And (Licencia = 11 Or Licencia = 16) Then
-            MessageBox.Show("Fecha de entrega invalida", "Registro de Ordenes", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        Else
-            If txtConsecutivo.Text = "" Then
-                GuardarOrdenes()
+        Dim _frmMensaje As New SIM___GLOBAL.frmMensaje
+        Try
+            If dtFechaOrden.Text = "" Then
+                MessageBox.Show("La fecha de Orden es Obligatoria", "Registro de Ordenes", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            ElseIf cboContrato.Text = "" Then
+                MessageBox.Show("Debe Seleccionar el Contrato", "Registro de Ordenes", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            ElseIf cboMedico.Text = "" Then
+                MessageBox.Show("Debe seleccionar el medico", "Registro de Ordenes", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            ElseIf cboTipoEstudio.Text = "" And cboTipoEstudio.Visible = True Then
+                MessageBox.Show("Debe seleccionar el Tipo de Estudio", "Registro de Ordenes", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            ElseIf GVDetalleOrden.RowCount = 0 Then
+                MessageBox.Show("Falta los servicios a prestar al paciente", "Registro de Ordenes", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            ElseIf Sexo = "M" And (cboTipoEstudio.GetColumnValue("ID") = 1 Or cboTipoEstudio.GetColumnValue("ID") = 2) And (Licencia = 2 Or Licencia = 6 Or Licencia = 11) Then
+                MessageBox.Show("Tipo de estudio invalido", "Registro de Ordenes", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            ElseIf txtNumeroEstudio.Text = "" And (Licencia = 2 Or Licencia = 6) Then
+                MessageBox.Show("Debe digitar el numero de estudio a realizar", "Registro de Ordenes", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            ElseIf _DOrdenes.ExisteConsecutivo(txtPrefijo.Text & txtNumeroEstudio.Text & "-" & Mid(Year(dtFechaIngreso.Text), 3, 2)) = True And (Licencia = 2 Or Licencia = 16) Then
+                MessageBox.Show("Numero de consecutivo ya existe", "Registro de Ordenes", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            ElseIf dtFechaEntrega.Text = "" And (Licencia = 11 Or Licencia = 16) Then
+                MessageBox.Show("Fecha de entrega invalida", "Registro de Ordenes", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Else
+                If txtConsecutivo.Text = "" Then
+                    'Enviar Datos Ordenes
+                    LoadingHelper.Mostrar(Me, "Cargando especimenes...", "Enviando datos...")
+                    GuardarOrdenes()
 
-                'Buscamos el ultimo consecutivo de orden registrado
-                _Ordenes = _DOrdenes.UltimoRegistroPaciente(CStr(_IdUsuario))
+                    'Buscamos el ultimo consecutivo de orden registrado
+                    'Genenerando Consecutivo
+                    LoadingHelper.ActualizarMensaje("Cargando especimenes...", "Generando consecutivo...")
+                    _Ordenes = _DOrdenes.UltimoRegistroPaciente(CStr(_IdUsuario))
 
-                'Consultamos si el usuario tiene contraseña para la descarga de resultados
-                Select Case Licencia
-                    Case 11, 16 ' 11-CITOPAT y 16-CD PATOLOGIA ONCOLOGICA
-                        If _DSesiones.ExisteUsuario(_IdUsuario) = False Then
-                            _Sesiones.Id = Val("")
-                            _Sesiones.IdUsuario = _IdUsuario
+                    'Consultamos si el usuario tiene contraseña para la descarga de resultados
+                    Select Case Licencia
+                        Case 11, 16 ' 11-CITOPAT y 16-CD PATOLOGIA ONCOLOGICA
+                            If _DSesiones.ExisteUsuario(_IdUsuario) = False Then
+                                _Sesiones.Id = Val("")
+                                _Sesiones.IdUsuario = _IdUsuario
 
-                            '_Sesiones.Contrasena = Mid(_Id.ToString, 1, 6)
-                            _Sesiones.Contrasena = Mid(Identificacion.ToString, Len(Identificacion.ToString) - 3) & "C"
-                            _DSesiones.Guardar(_Sesiones)
-                            'Contrasena = Mid(_Id.ToString, 1, 6)
-                            Contrasena = Mid(Identificacion.ToString, Len(Identificacion.ToString) - 3) & "C"
-                        Else
-                            _Sesiones = _DSesiones.Cargar(_IdUsuario)
-                            Contrasena = _Sesiones.Contrasena
-                        End If
-                    Case Else
-                End Select
+                                '_Sesiones.Contrasena = Mid(_Id.ToString, 1, 6)
+                                _Sesiones.Contrasena = Mid(Identificacion.ToString, Len(Identificacion.ToString) - 3) & "C"
+                                _DSesiones.Guardar(_Sesiones)
+                                'Contrasena = Mid(_Id.ToString, 1, 6)
+                                Contrasena = Mid(Identificacion.ToString, Len(Identificacion.ToString) - 3) & "C"
+                            Else
+                                _Sesiones = _DSesiones.Cargar(_IdUsuario)
+                                Contrasena = _Sesiones.Contrasena
+                            End If
+                        Case Else
+                    End Select
 
-                'Guardamos la citologia o patologia correspondiente a la orden registrada
-                Select Case Licencia
+                    'Guardamos la citologia o patologia correspondiente a la orden registrada
+                    Select Case Licencia
                     '2 - LABORATORIO DE INMUNOPATOLOGICO DE LA COSTA
                     '6 - KELLY GOMEZ
                     '11 - CITOPAT
-                    Case 2, 6, 11, 16 '2-INMUNOPAT, 6-KELLY, 11-CITOPAT Y 16-CD PATOLOGIA ONCOLOGICA
-                        GuardarEstudio()
-                        'Guardamos el registro de lo realizado por el usuario
-                        _funciones.GuardarRegistro("3", _Ordenes.Id, IDEmpleado, "Registro", Consecutivo)
-                        GuardarEntregaResultados()
-                    Case Else
-                        'Guardamos el registro de lo realizado por el usuario
-                        _funciones.GuardarRegistro("3", _Ordenes.Id, IDEmpleado, "Registro", "")
-                End Select
+                        Case 2, 6, 11, 16 '2-INMUNOPAT, 6-KELLY, 11-CITOPAT Y 16-CD PATOLOGIA ONCOLOGICA
+                            GuardarEstudio()
+                            'Guardamos el registro de lo realizado por el usuario
+                            _funciones.GuardarRegistro("3", _Ordenes.Id, IDEmpleado, "Registro", Consecutivo)
+                            GuardarEntregaResultados()
+                        Case Else
+                            'Guardamos auditoria
+                            LoadingHelper.ActualizarMensaje("Cargando especimenes...", "Enviando auditoria...")
+                            'Guardamos el registro de lo realizado por el usuario
+                            _funciones.GuardarRegistro("3", _Ordenes.Id, IDEmpleado, "Registro", "")
+                    End Select
 
-                'Actualizamos del Id Temporal al ID definitivo de la Orden en la tabla DETALLE_ORDEN
-                _DDetalleOrden.ActualizarDetalleOrden(_Ordenes.Id, _Id.ToString)
+                    'Actualizamos del Id Temporal al ID definitivo de la Orden en la tabla DETALLE_ORDEN
+                    _DDetalleOrden.ActualizarDetalleOrden(_Ordenes.Id, _Id.ToString)
 
-                'Actualizamos la agenda con el ID_ORDEN
-                If IdAgenda <> "" Then
-                    _DAgenda.ActualizarAgenda(IdAgenda, _Ordenes.Id)
-                End If
+                    'Actualizamos la agenda con el ID_ORDEN
+                    If IdAgenda <> "" Then
+                        _DAgenda.ActualizarAgenda(IdAgenda, _Ordenes.Id)
+                    End If
 
-                'Mensaje del numero de Orden Generada
-                Dim _frmMensaje As New SIM___GLOBAL.frmMensaje
+                    'Mensaje del numero de Orden Generada
 
-                Select Case Licencia
-                    Case 2, 6 '2-Inmunopat, 6-Kelly  
-                        'If Licencia = 16 Then
-                        ' _frmMensaje.NumeroOrden = txtNumeroEstudio.Text & "-" & Mid(Year(dtFechaIngreso.Text), 3, 2)
-                        ' Else
-                        ' _frmMensaje.NumeroOrden = txtPrefijo.Text & txtNumeroEstudio.Text & "-" & Mid(Year(dtFechaIngreso.Text), 3, 2)
-                        ' End If
 
-                        _frmMensaje.lblCodigoR.Visible = True
-                        _frmMensaje.lblCodigo.Visible = True
-                        _frmMensaje.lblCodigo.Text = Contrasena
-                    Case 11, 16 '11-Citopat de la Costa 16-Cd Patologia Oncologica
-                        _frmMensaje.NumeroOrden = Consecutivo
-                        _frmMensaje.lblCodigoR.Visible = True
-                        _frmMensaje.lblCodigo.Visible = True
-                        _frmMensaje.lblCodigo.Text = Contrasena
+                    Select Case Licencia
+                        Case 2, 6 '2-Inmunopat, 6-Kelly  
+                            'If Licencia = 16 Then
+                            ' _frmMensaje.NumeroOrden = txtNumeroEstudio.Text & "-" & Mid(Year(dtFechaIngreso.Text), 3, 2)
+                            ' Else
+                            ' _frmMensaje.NumeroOrden = txtPrefijo.Text & txtNumeroEstudio.Text & "-" & Mid(Year(dtFechaIngreso.Text), 3, 2)
+                            ' End If
 
-                    Case Else
-                        _frmMensaje.NumeroOrden = _Ordenes.Id
-                End Select
+                            _frmMensaje.lblCodigoR.Visible = True
+                            _frmMensaje.lblCodigo.Visible = True
+                            _frmMensaje.lblCodigo.Text = Contrasena
+                        Case 11, 16 '11-Citopat de la Costa 16-Cd Patologia Oncologica
+                            _frmMensaje.NumeroOrden = Consecutivo
+                            _frmMensaje.lblCodigoR.Visible = True
+                            _frmMensaje.lblCodigo.Visible = True
+                            _frmMensaje.lblCodigo.Text = Contrasena
 
-                _frmMensaje.ShowDialog()
+                        Case Else
+                            _frmMensaje.NumeroOrden = _Ordenes.Id
+                    End Select
 
-                'Imprimimos el recibo de entrega de resultados
-                Select Case Licencia
-                    Case 11 '11-CITOPAT
-                        ImprimirFrm.ImprimirReciboEntregaResultados(_Ordenes.Id, Licencia)
-                    Case Else
-                End Select
 
-                'txtNumeroEstudio.Text = NumeroEstudio
-                txtConsecutivo.Text = _Ordenes.Id
-                'cboContrato.ReadOnly = True
-                'End If
 
-                'Validamos si se genera un recibo de caja                 
-                Select Case Licencia
-                    Case 11 'CITOPAT
-                        If colDOCopago.SummaryItem.SummaryValue > 0 Then
+                    'Imprimimos el recibo de entrega de resultados
+                    Select Case Licencia
+                        Case 11 '11-CITOPAT
+                            ImprimirFrm.ImprimirReciboEntregaResultados(_Ordenes.Id, Licencia)
+                        Case Else
+                    End Select
 
-                            IdCliente = _DClientes.IdCliente(Mid(Identificacion, 1, 2), Mid(Identificacion, 3, Len(Identificacion) - 2))
-                            'Guardamos el movimiento del cliente
+                    'txtNumeroEstudio.Text = NumeroEstudio
+                    txtConsecutivo.Text = _Ordenes.Id
+                    'cboContrato.ReadOnly = True
+                    'End If
 
-                            GuardarCuentaCliente()
+                    'Validamos si se genera un recibo de caja                 
+                    Select Case Licencia
+                        Case 11 'CITOPAT
+                            If colDOCopago.SummaryItem.SummaryValue > 0 Then
 
-                            If MessageBox.Show("¿Desea generar un recibo de caja?", "Recibo de Caja", MessageBoxButtons.YesNo, MessageBoxIcon.Information) = DialogResult.Yes Then
-                                Dim _frmOpen As New SIM___GLOBAL.frmReciboCaja
-                                _frmOpen.IdCliente = IdCliente
-                                _frmOpen.IdOrden = txtConsecutivo.Text
-                                _frmOpen.Empleado = Empleado
-                                _frmOpen.IdEmpleado = IDEmpleado
-                                _frmOpen.Licencia = Licencia
-                                _frmOpen.ShowDialog()
+                                IdCliente = _DClientes.IdCliente(Mid(Identificacion, 1, 2), Mid(Identificacion, 3, Len(Identificacion) - 2))
+                                'Guardamos el movimiento del cliente
+
+                                GuardarCuentaCliente()
+
+                                If MessageBox.Show("¿Desea generar un recibo de caja?", "Recibo de Caja", MessageBoxButtons.YesNo, MessageBoxIcon.Information) = DialogResult.Yes Then
+                                    Dim _frmOpen As New SIM___GLOBAL.frmReciboCaja
+                                    _frmOpen.IdCliente = IdCliente
+                                    _frmOpen.IdOrden = txtConsecutivo.Text
+                                    _frmOpen.Empleado = Empleado
+                                    _frmOpen.IdEmpleado = IDEmpleado
+                                    _frmOpen.Licencia = Licencia
+                                    _frmOpen.ShowDialog()
+                                End If
                             End If
-                        End If
-                    Case Else
-                End Select
+                        Case Else
+                    End Select
 
-            ElseIf txtConsecutivo.Text <> "" And _DOrdenes.OrdenPendiente(txtConsecutivo.Text) = True Then
-                GuardarOrdenes()
+                ElseIf txtConsecutivo.Text <> "" And _DOrdenes.OrdenPendiente(txtConsecutivo.Text) = True Then
+                    GuardarOrdenes()
 
-                'Guardamos el registro de lo realizado por el usuario
-                If Licencia = 16 Then
-                    _funciones.GuardarRegistro("3", txtConsecutivo.Text, IDEmpleado, "Actualizacion", "" & txtNumeroEstudio.Text)
-                Else
-                    _funciones.GuardarRegistro("3", txtConsecutivo.Text, IDEmpleado, "Actualizacion", txtPrefijo.Text & txtNumeroEstudio.Text)
-                End If
+                    'Guardamos el registro de lo realizado por el usuario
+                    If Licencia = 16 Then
+                        _funciones.GuardarRegistro("3", txtConsecutivo.Text, IDEmpleado, "Actualizacion", "" & txtNumeroEstudio.Text)
+                    Else
+                        _funciones.GuardarRegistro("3", txtConsecutivo.Text, IDEmpleado, "Actualizacion", txtPrefijo.Text & txtNumeroEstudio.Text)
+                    End If
 
 
-                'Validamos si se genera un recibo de caja                 
-                If Licencia = 11 Then '11 - CITOPAT
-                    If colDOCopago.SummaryItem.SummaryValue > 0 Then
-                        If _DCuentasClientes.ExisteCuentaCliente(txtConsecutivo.Text, "OM") = False Then
+                    'Validamos si se genera un recibo de caja                 
+                    If Licencia = 11 Then '11 - CITOPAT
+                        If colDOCopago.SummaryItem.SummaryValue > 0 Then
+                            If _DCuentasClientes.ExisteCuentaCliente(txtConsecutivo.Text, "OM") = False Then
 
-                            IdCliente = _DClientes.IdCliente(Mid(Identificacion, 1, 2), Mid(Identificacion, 3, Len(Identificacion) - 2))
+                                IdCliente = _DClientes.IdCliente(Mid(Identificacion, 1, 2), Mid(Identificacion, 3, Len(Identificacion) - 2))
 
-                            GuardarCuentaCliente()
+                                GuardarCuentaCliente()
 
-                            If MessageBox.Show("¿Desea generar un recibo de caja?", "Recibo de Caja", MessageBoxButtons.YesNo, MessageBoxIcon.Information) = DialogResult.Yes Then
-                                Dim _frmOpen As New SIM___GLOBAL.frmReciboCaja
-                                _frmOpen.IdCliente = IdCliente
-                                _frmOpen.IdOrden = txtConsecutivo.Text
-                                _frmOpen.Empleado = Empleado
-                                _frmOpen.IdEmpleado = IDEmpleado
-                                _frmOpen.Licencia = Licencia
-                                _frmOpen.ShowDialog()
+                                If MessageBox.Show("¿Desea generar un recibo de caja?", "Recibo de Caja", MessageBoxButtons.YesNo, MessageBoxIcon.Information) = DialogResult.Yes Then
+                                    Dim _frmOpen As New SIM___GLOBAL.frmReciboCaja
+                                    _frmOpen.IdCliente = IdCliente
+                                    _frmOpen.IdOrden = txtConsecutivo.Text
+                                    _frmOpen.Empleado = Empleado
+                                    _frmOpen.IdEmpleado = IDEmpleado
+                                    _frmOpen.Licencia = Licencia
+                                    _frmOpen.ShowDialog()
+                                End If
                             End If
                         End If
                     End If
+
+                    GuardarEntregaResultados()
+
+                Else
+                    MessageBox.Show("Esta orden no puede ser actualizada porque esta Cancelada o Atendida", "Registro de Ordenes", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 End If
 
-                GuardarEntregaResultados()
-
-            Else
-                MessageBox.Show("Esta orden no puede ser actualizada porque esta Cancelada o Atendida", "Registro de Ordenes", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                LimpiarCampos()
+                _IdUsuario = Nothing
+                _ClickIdAgenda = Nothing
+                GCDatosUsuarios.DataSource = Nothing
+                'NuevaO = 0
+                ActualizarGrilla()
             End If
+        Catch ex As Exception
+            MessageBox.Show("Error: " & ex.Message,
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        Finally
+            ' Por seguridad, asegurarse que siempre se oculte
+            LoadingHelper.Ocultar()
+            _frmMensaje.ShowDialog()
+        End Try
 
-            LimpiarCampos()
-            _IdUsuario = Nothing
-            _ClickIdAgenda = Nothing
-            GCDatosUsuarios.DataSource = Nothing
-            'NuevaO = 0
-            ActualizarGrilla()
-        End If
     End Sub
     Private Sub btnAgregar_Click(sender As Object, e As EventArgs) Handles btnAgregar.Click
         If TVDatosUsuarios.RowCount = 0 Then
