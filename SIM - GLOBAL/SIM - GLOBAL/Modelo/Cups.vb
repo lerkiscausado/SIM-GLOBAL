@@ -2,6 +2,7 @@
     Public Class Cups
         Private _id As String
         Private _nombre As String
+        Private _codigoServicio As String
         Private _Estado As String
 
         Public Property Id As String
@@ -19,6 +20,15 @@
             End Get
             Set(value As String)
                 _nombre = value
+            End Set
+        End Property
+
+        Public Property codigoServicio As String
+            Get
+                Return _codigoServicio
+            End Get
+            Set(value As String)
+                _codigoServicio = value
             End Set
         End Property
 

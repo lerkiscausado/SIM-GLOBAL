@@ -133,13 +133,13 @@ Partial Class frmAuditoria
         Me.tsmActualizarVista = New System.Windows.Forms.ToolStripMenuItem()
         Me.FiltrarPorAñoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.tsmActual = New System.Windows.Forms.ToolStripMenuItem()
+        Me.tsm2024 = New System.Windows.Forms.ToolStripMenuItem()
         Me.tsm2023 = New System.Windows.Forms.ToolStripMenuItem()
         Me.tsm2022 = New System.Windows.Forms.ToolStripMenuItem()
         Me.tsm2021 = New System.Windows.Forms.ToolStripMenuItem()
         Me.tsm2020 = New System.Windows.Forms.ToolStripMenuItem()
         Me.tsm2019 = New System.Windows.Forms.ToolStripMenuItem()
         Me.tsm2018 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.tsm2017 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
         Me.tsmVistaPrevia = New System.Windows.Forms.ToolStripMenuItem()
         Me.tsmImprimir = New System.Windows.Forms.ToolStripMenuItem()
@@ -179,7 +179,7 @@ Partial Class frmAuditoria
         Me.colTIPO = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colNOTA = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.sfdRuta = New System.Windows.Forms.SaveFileDialog()
-        Me.tsm2024 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.tsm2025 = New System.Windows.Forms.ToolStripMenuItem()
         CType(Me.BarManager1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.xtcAuditoria, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.xtcAuditoria.SuspendLayout()
@@ -1066,7 +1066,7 @@ Partial Class frmAuditoria
         '
         'FiltrarPorAñoToolStripMenuItem
         '
-        Me.FiltrarPorAñoToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsmActual, Me.tsm2024, Me.tsm2023, Me.tsm2022, Me.tsm2021, Me.tsm2020, Me.tsm2019, Me.tsm2018, Me.tsm2017})
+        Me.FiltrarPorAñoToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsmActual, Me.tsm2025, Me.tsm2024, Me.tsm2023, Me.tsm2022, Me.tsm2021, Me.tsm2020, Me.tsm2019, Me.tsm2018})
         Me.FiltrarPorAñoToolStripMenuItem.Image = CType(resources.GetObject("FiltrarPorAñoToolStripMenuItem.Image"), System.Drawing.Image)
         Me.FiltrarPorAñoToolStripMenuItem.Name = "FiltrarPorAñoToolStripMenuItem"
         Me.FiltrarPorAñoToolStripMenuItem.Size = New System.Drawing.Size(200, 24)
@@ -1077,6 +1077,12 @@ Partial Class frmAuditoria
         Me.tsmActual.Name = "tsmActual"
         Me.tsmActual.Size = New System.Drawing.Size(180, 22)
         Me.tsmActual.Text = "Actual"
+        '
+        'tsm2024
+        '
+        Me.tsm2024.Name = "tsm2024"
+        Me.tsm2024.Size = New System.Drawing.Size(180, 22)
+        Me.tsm2024.Text = "2024"
         '
         'tsm2023
         '
@@ -1113,12 +1119,6 @@ Partial Class frmAuditoria
         Me.tsm2018.Name = "tsm2018"
         Me.tsm2018.Size = New System.Drawing.Size(180, 22)
         Me.tsm2018.Text = "2018"
-        '
-        'tsm2017
-        '
-        Me.tsm2017.Name = "tsm2017"
-        Me.tsm2017.Size = New System.Drawing.Size(180, 22)
-        Me.tsm2017.Text = "2017"
         '
         'ToolStripSeparator1
         '
@@ -1462,11 +1462,11 @@ Partial Class frmAuditoria
         Me.colNOTA.VisibleIndex = 6
         Me.colNOTA.Width = 411
         '
-        'tsm2024
+        'tsm2025
         '
-        Me.tsm2024.Name = "tsm2024"
-        Me.tsm2024.Size = New System.Drawing.Size(180, 22)
-        Me.tsm2024.Text = "2024"
+        Me.tsm2025.Name = "tsm2025"
+        Me.tsm2025.Size = New System.Drawing.Size(180, 22)
+        Me.tsm2025.Text = "2025"
         '
         'frmAuditoria
         '
@@ -1585,7 +1585,6 @@ Partial Class frmAuditoria
     Friend WithEvents tsm2020 As ToolStripMenuItem
     Friend WithEvents tsm2019 As ToolStripMenuItem
     Friend WithEvents tsm2018 As ToolStripMenuItem
-    Friend WithEvents tsm2017 As ToolStripMenuItem
     Friend WithEvents ToolStripSeparator1 As ToolStripSeparator
     Friend WithEvents tsmVistaPrevia As ToolStripMenuItem
     Friend WithEvents tsmImprimir As ToolStripMenuItem
@@ -1646,4 +1645,5 @@ Partial Class frmAuditoria
     Friend WithEvents tsm2022 As ToolStripMenuItem
     Friend WithEvents tsm2023 As ToolStripMenuItem
     Friend WithEvents tsm2024 As ToolStripMenuItem
+    Friend WithEvents tsm2025 As ToolStripMenuItem
 End Class

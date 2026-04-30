@@ -1184,7 +1184,7 @@ Public Class frmFacturas
 
     Private Sub bbiAnular_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles bbiAnular.ItemClick
         If _ClickGrillaFacturas <> Nothing Then
-            If _EstadoFactura = "FACTURADO" Then
+            If _EstadoFactura = "FACTURADA" Then
                 If MessageBox.Show("Desea Anular la factura seleccionada?", "Anular factura",
                                     MessageBoxButtons.YesNo, MessageBoxIcon.Question) _
                                      = DialogResult.Yes Then
@@ -1687,6 +1687,15 @@ Public Class frmFacturas
             File.WriteAllText(saveFileDialog.FileName, json, System.Text.Encoding.UTF8)
             MessageBox.Show("Archivo guardado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End If
+
+
+        ' Guarda el JSON en un archivo
+        'Public Sub GuardarJSON(idFactura As String, numDocumentoIdObligado As String, numFactura As String, rutaArchivo As String)
+        '   Dim json As String = GenerarJSON(idFactura, numDocumentoIdObligado, numFactura)
+        '  System.IO.File.WriteAllText(rutaArchivo, json, Encoding.UTF8)
+        ' MessageBox.Show("Archivo JSON generado exitosamente en:" & vbCrLf & rutaArchivo, "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        'End Sub
+
     End Sub
 
     Private Sub gvConsultar_DoubleClick(sender As Object, e As EventArgs) Handles gvConsultar.DoubleClick

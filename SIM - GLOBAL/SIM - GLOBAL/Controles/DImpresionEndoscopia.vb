@@ -52,7 +52,7 @@ Namespace Controles
                                       & "especialistas.`FIRMA`, " _
                                       & "especialistas.`NOMBRE`, " _
                                       & "especialistas.`ESPECIALIDAD`, " _
-                                      & "especialistas.`REGISTRO_MEDICO`, " _
+                                      & "CONCAT(especialistas.id_tipo_identificacion,especialistas.identificacion,'   RM: ',especialistas.REGISTRO_MEDICO) AS REGISTRO_MEDICO, " _
                                       & "ordenes.id_empleado, " _
                                       & "'' as IMAGEN1, " _
                                       & "'' as IMAGEN2, " _
