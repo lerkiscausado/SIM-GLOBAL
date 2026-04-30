@@ -33,23 +33,8 @@ Partial Class frmPrueba3
         Dim ToolTipTitleItem4 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
         Dim ToolTipItem4 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
         Dim GalleryItemGroup1 As DevExpress.XtraBars.Ribbon.GalleryItemGroup = New DevExpress.XtraBars.Ribbon.GalleryItemGroup()
-        Me.Button2 = New System.Windows.Forms.Button()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.CachedrptAgenda1 = New SIM___GLOBAL.CachedrptAgenda()
-        Me.txtFlotante = New DevExpress.XtraEditors.TextEdit()
-        Me.txtDoble = New DevExpress.XtraEditors.TextEdit()
-        Me.txtDecimal = New DevExpress.XtraEditors.TextEdit()
-        Me.LabelControl2 = New DevExpress.XtraEditors.LabelControl()
-        Me.LabelControl1 = New DevExpress.XtraEditors.LabelControl()
-        Me.LabelControl3 = New DevExpress.XtraEditors.LabelControl()
-        Me.txtF = New DevExpress.XtraEditors.TextEdit()
-        Me.txtD = New DevExpress.XtraEditors.TextEdit()
-        Me.txtDe = New DevExpress.XtraEditors.TextEdit()
-        Me.LabelControl4 = New DevExpress.XtraEditors.LabelControl()
-        Me.LabelControl5 = New DevExpress.XtraEditors.LabelControl()
-        Me.LabelControl6 = New DevExpress.XtraEditors.LabelControl()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.rtbPrueba = New DevExpress.XtraRichEdit.RichEditControl()
         Me.BarManager1 = New DevExpress.XtraBars.BarManager(Me.components)
         Me.barDockControlTop = New DevExpress.XtraBars.BarDockControl()
         Me.barDockControlBottom = New DevExpress.XtraBars.BarDockControl()
@@ -329,23 +314,10 @@ Partial Class frmPrueba3
         Me.FloatingObjectSendBackwardItem1 = New DevExpress.XtraRichEdit.UI.FloatingObjectSendBackwardItem()
         Me.FloatingObjectSendToBackItem1 = New DevExpress.XtraRichEdit.UI.FloatingObjectSendToBackItem()
         Me.FloatingObjectSendBehindTextItem1 = New DevExpress.XtraRichEdit.UI.FloatingObjectSendBehindTextItem()
-        Me.rtbResultado = New DevExpress.XtraRichEdit.RichEditControl()
-        Me.Button3 = New System.Windows.Forms.Button()
-        Me.txtPrueba = New DevExpress.XtraEditors.MemoEdit()
         Me.RichEditBarController1 = New DevExpress.XtraRichEdit.UI.RichEditBarController(Me.components)
         Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
         Me.RichEditBarController2 = New DevExpress.XtraRichEdit.UI.RichEditBarController(Me.components)
-        Me.MemoEdit1 = New DevExpress.XtraEditors.MemoEdit()
         Me.ACPrueba = New DevExpress.XtraBars.Alerter.AlertControl(Me.components)
-        Me.PictureEdit1 = New DevExpress.XtraEditors.PictureEdit()
-        Me.gcJson = New DevExpress.XtraGrid.GridControl()
-        Me.GridView1 = New DevExpress.XtraGrid.Views.Grid.GridView()
-        CType(Me.txtFlotante.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtDoble.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtDecimal.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtF.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtD.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtDe.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BarManager1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemFontEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemRichEditFontSizeEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -354,180 +326,9 @@ Partial Class frmPrueba3
         CType(Me.RepositoryItemBorderLineStyle1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemBorderLineWeight1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemFloatingObjectOutlineWeight1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtPrueba.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RichEditBarController1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RichEditBarController2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.MemoEdit1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureEdit1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.gcJson, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        '
-        'Button2
-        '
-        Me.Button2.Location = New System.Drawing.Point(32, 232)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(75, 23)
-        Me.Button2.TabIndex = 1
-        Me.Button2.Text = "Button2"
-        Me.Button2.UseVisualStyleBackColor = True
-        '
-        'txtFlotante
-        '
-        Me.txtFlotante.EditValue = "0"
-        Me.txtFlotante.Location = New System.Drawing.Point(129, 123)
-        Me.txtFlotante.Name = "txtFlotante"
-        Me.txtFlotante.Properties.Appearance.BackColor = System.Drawing.Color.White
-        Me.txtFlotante.Properties.Appearance.Options.UseBackColor = True
-        Me.txtFlotante.Properties.Mask.BeepOnError = True
-        Me.txtFlotante.Properties.Mask.EditMask = "f"
-        Me.txtFlotante.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric
-        Me.txtFlotante.Properties.Mask.UseMaskAsDisplayFormat = True
-        Me.txtFlotante.Size = New System.Drawing.Size(109, 20)
-        Me.txtFlotante.TabIndex = 63
-        '
-        'txtDoble
-        '
-        Me.txtDoble.EditValue = "0"
-        Me.txtDoble.Location = New System.Drawing.Point(129, 154)
-        Me.txtDoble.Name = "txtDoble"
-        Me.txtDoble.Properties.Appearance.BackColor = System.Drawing.Color.White
-        Me.txtDoble.Properties.Appearance.Options.UseBackColor = True
-        Me.txtDoble.Properties.Mask.BeepOnError = True
-        Me.txtDoble.Properties.Mask.EditMask = "f"
-        Me.txtDoble.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric
-        Me.txtDoble.Properties.Mask.UseMaskAsDisplayFormat = True
-        Me.txtDoble.Size = New System.Drawing.Size(109, 20)
-        Me.txtDoble.TabIndex = 64
-        '
-        'txtDecimal
-        '
-        Me.txtDecimal.EditValue = "0"
-        Me.txtDecimal.Location = New System.Drawing.Point(129, 184)
-        Me.txtDecimal.Name = "txtDecimal"
-        Me.txtDecimal.Properties.Appearance.BackColor = System.Drawing.Color.White
-        Me.txtDecimal.Properties.Appearance.Options.UseBackColor = True
-        Me.txtDecimal.Properties.Mask.BeepOnError = True
-        Me.txtDecimal.Properties.Mask.EditMask = "f"
-        Me.txtDecimal.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric
-        Me.txtDecimal.Properties.Mask.UseMaskAsDisplayFormat = True
-        Me.txtDecimal.Size = New System.Drawing.Size(109, 20)
-        Me.txtDecimal.TabIndex = 65
-        '
-        'LabelControl2
-        '
-        Me.LabelControl2.Location = New System.Drawing.Point(30, 130)
-        Me.LabelControl2.Name = "LabelControl2"
-        Me.LabelControl2.Size = New System.Drawing.Size(40, 13)
-        Me.LabelControl2.TabIndex = 66
-        Me.LabelControl2.Text = "Flotante"
-        '
-        'LabelControl1
-        '
-        Me.LabelControl1.Location = New System.Drawing.Point(30, 161)
-        Me.LabelControl1.Name = "LabelControl1"
-        Me.LabelControl1.Size = New System.Drawing.Size(26, 13)
-        Me.LabelControl1.TabIndex = 67
-        Me.LabelControl1.Text = "doble"
-        '
-        'LabelControl3
-        '
-        Me.LabelControl3.Location = New System.Drawing.Point(30, 188)
-        Me.LabelControl3.Name = "LabelControl3"
-        Me.LabelControl3.Size = New System.Drawing.Size(35, 13)
-        Me.LabelControl3.TabIndex = 68
-        Me.LabelControl3.Text = "decimla"
-        '
-        'txtF
-        '
-        Me.txtF.EditValue = "0"
-        Me.txtF.Location = New System.Drawing.Point(85, 317)
-        Me.txtF.Name = "txtF"
-        Me.txtF.Properties.Appearance.BackColor = System.Drawing.Color.White
-        Me.txtF.Properties.Appearance.Options.UseBackColor = True
-        Me.txtF.Properties.Mask.BeepOnError = True
-        Me.txtF.Properties.Mask.EditMask = "f"
-        Me.txtF.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric
-        Me.txtF.Properties.Mask.UseMaskAsDisplayFormat = True
-        Me.txtF.Size = New System.Drawing.Size(109, 20)
-        Me.txtF.TabIndex = 69
-        '
-        'txtD
-        '
-        Me.txtD.EditValue = "0"
-        Me.txtD.Location = New System.Drawing.Point(85, 354)
-        Me.txtD.Name = "txtD"
-        Me.txtD.Properties.Appearance.BackColor = System.Drawing.Color.White
-        Me.txtD.Properties.Appearance.Options.UseBackColor = True
-        Me.txtD.Properties.Mask.BeepOnError = True
-        Me.txtD.Properties.Mask.EditMask = "f"
-        Me.txtD.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric
-        Me.txtD.Properties.Mask.UseMaskAsDisplayFormat = True
-        Me.txtD.Size = New System.Drawing.Size(109, 20)
-        Me.txtD.TabIndex = 70
-        '
-        'txtDe
-        '
-        Me.txtDe.EditValue = "0"
-        Me.txtDe.Location = New System.Drawing.Point(85, 393)
-        Me.txtDe.Name = "txtDe"
-        Me.txtDe.Properties.Appearance.BackColor = System.Drawing.Color.White
-        Me.txtDe.Properties.Appearance.Options.UseBackColor = True
-        Me.txtDe.Properties.Mask.BeepOnError = True
-        Me.txtDe.Properties.Mask.EditMask = "f"
-        Me.txtDe.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric
-        Me.txtDe.Properties.Mask.UseMaskAsDisplayFormat = True
-        Me.txtDe.Size = New System.Drawing.Size(109, 20)
-        Me.txtDe.TabIndex = 71
-        '
-        'LabelControl4
-        '
-        Me.LabelControl4.Location = New System.Drawing.Point(30, 396)
-        Me.LabelControl4.Name = "LabelControl4"
-        Me.LabelControl4.Size = New System.Drawing.Size(35, 13)
-        Me.LabelControl4.TabIndex = 74
-        Me.LabelControl4.Text = "decimla"
-        '
-        'LabelControl5
-        '
-        Me.LabelControl5.Location = New System.Drawing.Point(30, 357)
-        Me.LabelControl5.Name = "LabelControl5"
-        Me.LabelControl5.Size = New System.Drawing.Size(26, 13)
-        Me.LabelControl5.TabIndex = 73
-        Me.LabelControl5.Text = "doble"
-        '
-        'LabelControl6
-        '
-        Me.LabelControl6.Location = New System.Drawing.Point(30, 320)
-        Me.LabelControl6.Name = "LabelControl6"
-        Me.LabelControl6.Size = New System.Drawing.Size(40, 13)
-        Me.LabelControl6.TabIndex = 72
-        Me.LabelControl6.Text = "Flotante"
-        '
-        'Button1
-        '
-        Me.Button1.Location = New System.Drawing.Point(129, 232)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 23)
-        Me.Button1.TabIndex = 75
-        Me.Button1.Text = "Button1"
-        Me.Button1.UseVisualStyleBackColor = True
-        '
-        'rtbPrueba
-        '
-        Me.rtbPrueba.AcceptsEscape = False
-        Me.rtbPrueba.ActiveViewType = DevExpress.XtraRichEdit.RichEditViewType.Simple
-        Me.rtbPrueba.LayoutUnit = DevExpress.XtraRichEdit.DocumentLayoutUnit.Pixel
-        Me.rtbPrueba.Location = New System.Drawing.Point(595, 12)
-        Me.rtbPrueba.MenuManager = Me.BarManager1
-        Me.rtbPrueba.Name = "rtbPrueba"
-        Me.rtbPrueba.Options.Export.Html.CssPropertiesExportType = DevExpress.XtraRichEdit.Export.Html.CssPropertiesExportType.Inline
-        Me.rtbPrueba.Options.Export.Html.ExportedDocumentProperties = DevExpress.XtraRichEdit.Export.DocumentPropertyNames.CustomProperties
-        Me.rtbPrueba.Options.Export.Html.ExportRootTag = DevExpress.XtraRichEdit.Export.Html.ExportRootTag.Body
-        Me.rtbPrueba.Options.HorizontalScrollbar.Visibility = DevExpress.XtraRichEdit.RichEditScrollbarVisibility.Hidden
-        Me.rtbPrueba.Options.Printing.PrintPreviewFormKind = DevExpress.XtraRichEdit.PrintPreviewFormKind.Bars
-        Me.rtbPrueba.Size = New System.Drawing.Size(531, 99)
-        Me.rtbPrueba.TabIndex = 76
         '
         'BarManager1
         '
@@ -574,82 +375,113 @@ Partial Class frmPrueba3
         '
         'UndoItem1
         '
+        Me.UndoItem1.Caption = "Deshacer"
+        Me.UndoItem1.Enabled = False
         Me.UndoItem1.Id = 0
         Me.UndoItem1.Name = "UndoItem1"
         '
         'RedoItem1
         '
+        Me.RedoItem1.Caption = "Rehacer"
+        Me.RedoItem1.Enabled = False
         Me.RedoItem1.Id = 1
         Me.RedoItem1.Name = "RedoItem1"
         '
         'FileNewItem1
         '
+        Me.FileNewItem1.Caption = "Nuevo"
+        Me.FileNewItem1.Enabled = False
         Me.FileNewItem1.Id = 2
         Me.FileNewItem1.Name = "FileNewItem1"
         '
         'FileOpenItem1
         '
+        Me.FileOpenItem1.Caption = "Abrir"
+        Me.FileOpenItem1.Enabled = False
         Me.FileOpenItem1.Id = 3
         Me.FileOpenItem1.Name = "FileOpenItem1"
         '
         'FileSaveItem1
         '
+        Me.FileSaveItem1.Caption = "Guardar"
+        Me.FileSaveItem1.Enabled = False
         Me.FileSaveItem1.Id = 4
         Me.FileSaveItem1.Name = "FileSaveItem1"
         '
         'FileSaveAsItem1
         '
+        Me.FileSaveAsItem1.Caption = "Guardar como"
+        Me.FileSaveAsItem1.Enabled = False
         Me.FileSaveAsItem1.Id = 5
         Me.FileSaveAsItem1.Name = "FileSaveAsItem1"
         '
         'QuickPrintItem1
         '
+        Me.QuickPrintItem1.Caption = "Impr&esion Rápida"
+        Me.QuickPrintItem1.Enabled = False
         Me.QuickPrintItem1.Id = 6
         Me.QuickPrintItem1.Name = "QuickPrintItem1"
         '
         'PrintItem1
         '
+        Me.PrintItem1.Caption = "&Imprimir"
+        Me.PrintItem1.Enabled = False
         Me.PrintItem1.Id = 7
         Me.PrintItem1.Name = "PrintItem1"
         '
         'PrintPreviewItem1
         '
+        Me.PrintPreviewItem1.Caption = "&Vista previa"
+        Me.PrintPreviewItem1.Enabled = False
         Me.PrintPreviewItem1.Id = 8
         Me.PrintPreviewItem1.Name = "PrintPreviewItem1"
         '
         'EncryptDocumentItem1
         '
+        Me.EncryptDocumentItem1.Caption = "Encrypt with Password"
+        Me.EncryptDocumentItem1.Enabled = False
         Me.EncryptDocumentItem1.Id = 9
         Me.EncryptDocumentItem1.Name = "EncryptDocumentItem1"
         '
         'ShowDocumentPropertiesFormItem1
         '
+        Me.ShowDocumentPropertiesFormItem1.Caption = "Propiedades del documento"
+        Me.ShowDocumentPropertiesFormItem1.Enabled = False
         Me.ShowDocumentPropertiesFormItem1.Id = 10
         Me.ShowDocumentPropertiesFormItem1.Name = "ShowDocumentPropertiesFormItem1"
         '
         'PasteItem1
         '
+        Me.PasteItem1.Caption = "Pegar"
+        Me.PasteItem1.Enabled = False
         Me.PasteItem1.Id = 11
         Me.PasteItem1.Name = "PasteItem1"
         '
         'CutItem1
         '
+        Me.CutItem1.Caption = "Cortar"
+        Me.CutItem1.Enabled = False
         Me.CutItem1.Id = 12
         Me.CutItem1.Name = "CutItem1"
         '
         'CopyItem1
         '
+        Me.CopyItem1.Caption = "Copiar"
+        Me.CopyItem1.Enabled = False
         Me.CopyItem1.Id = 13
         Me.CopyItem1.Name = "CopyItem1"
         '
         'PasteSpecialItem1
         '
+        Me.PasteSpecialItem1.Caption = "Pegado Especial"
+        Me.PasteSpecialItem1.Enabled = False
         Me.PasteSpecialItem1.Id = 14
         Me.PasteSpecialItem1.Name = "PasteSpecialItem1"
         '
         'ChangeFontNameItem1
         '
         Me.ChangeFontNameItem1.Edit = Me.RepositoryItemFontEdit1
+        Me.ChangeFontNameItem1.Enabled = False
         Me.ChangeFontNameItem1.Id = 15
         Me.ChangeFontNameItem1.Name = "ChangeFontNameItem1"
         '
@@ -662,6 +494,7 @@ Partial Class frmPrueba3
         'ChangeFontSizeItem1
         '
         Me.ChangeFontSizeItem1.Edit = Me.RepositoryItemRichEditFontSizeEdit1
+        Me.ChangeFontSizeItem1.Enabled = False
         Me.ChangeFontSizeItem1.Id = 16
         Me.ChangeFontSizeItem1.Name = "ChangeFontSizeItem1"
         '
@@ -669,285 +502,394 @@ Partial Class frmPrueba3
         '
         Me.RepositoryItemRichEditFontSizeEdit1.AutoHeight = False
         Me.RepositoryItemRichEditFontSizeEdit1.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.RepositoryItemRichEditFontSizeEdit1.Control = Me.rtbPrueba
+        Me.RepositoryItemRichEditFontSizeEdit1.Control = Nothing
         Me.RepositoryItemRichEditFontSizeEdit1.Name = "RepositoryItemRichEditFontSizeEdit1"
         '
         'FontSizeIncreaseItem1
         '
+        Me.FontSizeIncreaseItem1.Caption = "Agrandar Fuente"
+        Me.FontSizeIncreaseItem1.Enabled = False
         Me.FontSizeIncreaseItem1.Id = 17
         Me.FontSizeIncreaseItem1.Name = "FontSizeIncreaseItem1"
         '
         'FontSizeDecreaseItem1
         '
+        Me.FontSizeDecreaseItem1.Caption = "Encoger Fuente"
+        Me.FontSizeDecreaseItem1.Enabled = False
         Me.FontSizeDecreaseItem1.Id = 18
         Me.FontSizeDecreaseItem1.Name = "FontSizeDecreaseItem1"
         '
         'ToggleFontBoldItem1
         '
+        Me.ToggleFontBoldItem1.Caption = "Negrita"
+        Me.ToggleFontBoldItem1.Enabled = False
         Me.ToggleFontBoldItem1.Id = 19
         Me.ToggleFontBoldItem1.Name = "ToggleFontBoldItem1"
         '
         'ToggleFontItalicItem1
         '
+        Me.ToggleFontItalicItem1.Caption = "Cursiva"
+        Me.ToggleFontItalicItem1.Enabled = False
         Me.ToggleFontItalicItem1.Id = 20
         Me.ToggleFontItalicItem1.Name = "ToggleFontItalicItem1"
         '
         'ToggleFontUnderlineItem1
         '
+        Me.ToggleFontUnderlineItem1.Caption = "Subrayado"
+        Me.ToggleFontUnderlineItem1.Enabled = False
         Me.ToggleFontUnderlineItem1.Id = 21
         Me.ToggleFontUnderlineItem1.Name = "ToggleFontUnderlineItem1"
         '
         'ToggleFontDoubleUnderlineItem1
         '
+        Me.ToggleFontDoubleUnderlineItem1.Caption = "Subrayado Doble"
+        Me.ToggleFontDoubleUnderlineItem1.Enabled = False
         Me.ToggleFontDoubleUnderlineItem1.Id = 22
         Me.ToggleFontDoubleUnderlineItem1.Name = "ToggleFontDoubleUnderlineItem1"
         '
         'ToggleFontStrikeoutItem1
         '
+        Me.ToggleFontStrikeoutItem1.Caption = "Tachado"
+        Me.ToggleFontStrikeoutItem1.Enabled = False
         Me.ToggleFontStrikeoutItem1.Id = 23
         Me.ToggleFontStrikeoutItem1.Name = "ToggleFontStrikeoutItem1"
         '
         'ToggleFontDoubleStrikeoutItem1
         '
+        Me.ToggleFontDoubleStrikeoutItem1.Caption = "Doble Tachado"
+        Me.ToggleFontDoubleStrikeoutItem1.Enabled = False
         Me.ToggleFontDoubleStrikeoutItem1.Id = 24
         Me.ToggleFontDoubleStrikeoutItem1.Name = "ToggleFontDoubleStrikeoutItem1"
         '
         'ToggleFontSuperscriptItem1
         '
+        Me.ToggleFontSuperscriptItem1.Caption = "Superíndice"
+        Me.ToggleFontSuperscriptItem1.Enabled = False
         Me.ToggleFontSuperscriptItem1.Id = 25
         Me.ToggleFontSuperscriptItem1.Name = "ToggleFontSuperscriptItem1"
         '
         'ToggleFontSubscriptItem1
         '
+        Me.ToggleFontSubscriptItem1.Caption = "Subíndice"
+        Me.ToggleFontSubscriptItem1.Enabled = False
         Me.ToggleFontSubscriptItem1.Id = 26
         Me.ToggleFontSubscriptItem1.Name = "ToggleFontSubscriptItem1"
         '
         'ChangeFontColorItem1
         '
+        Me.ChangeFontColorItem1.Caption = "Color de fuente"
+        Me.ChangeFontColorItem1.Enabled = False
         Me.ChangeFontColorItem1.Id = 27
         Me.ChangeFontColorItem1.Name = "ChangeFontColorItem1"
         '
         'ChangeFontHighlightColorItem1
         '
+        Me.ChangeFontHighlightColorItem1.Caption = "Color de resaltado del texto"
+        Me.ChangeFontHighlightColorItem1.Enabled = False
         Me.ChangeFontHighlightColorItem1.Id = 28
         Me.ChangeFontHighlightColorItem1.Name = "ChangeFontHighlightColorItem1"
         '
         'ChangeTextCaseItem1
         '
+        Me.ChangeTextCaseItem1.Caption = "Cambiar Mayúsculas/Minúsculas"
+        Me.ChangeTextCaseItem1.Enabled = False
         Me.ChangeTextCaseItem1.Id = 33
         Me.ChangeTextCaseItem1.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.MakeTextUpperCaseItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.MakeTextLowerCaseItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.CapitalizeEachWordCaseItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.ToggleTextCaseItem1)})
         Me.ChangeTextCaseItem1.Name = "ChangeTextCaseItem1"
         '
         'MakeTextUpperCaseItem1
         '
+        Me.MakeTextUpperCaseItem1.Caption = "MUYÚSCULAS"
+        Me.MakeTextUpperCaseItem1.Enabled = False
         Me.MakeTextUpperCaseItem1.Id = 29
         Me.MakeTextUpperCaseItem1.Name = "MakeTextUpperCaseItem1"
         '
         'MakeTextLowerCaseItem1
         '
+        Me.MakeTextLowerCaseItem1.Caption = "minúsculas"
+        Me.MakeTextLowerCaseItem1.Enabled = False
         Me.MakeTextLowerCaseItem1.Id = 30
         Me.MakeTextLowerCaseItem1.Name = "MakeTextLowerCaseItem1"
         '
         'CapitalizeEachWordCaseItem1
         '
+        Me.CapitalizeEachWordCaseItem1.Caption = "Capitalizar Cada Palabra"
+        Me.CapitalizeEachWordCaseItem1.Enabled = False
         Me.CapitalizeEachWordCaseItem1.Id = 31
         Me.CapitalizeEachWordCaseItem1.Name = "CapitalizeEachWordCaseItem1"
         '
         'ToggleTextCaseItem1
         '
+        Me.ToggleTextCaseItem1.Caption = "cONMUTAR mAYÚSCULAS"
+        Me.ToggleTextCaseItem1.Enabled = False
         Me.ToggleTextCaseItem1.Id = 32
         Me.ToggleTextCaseItem1.Name = "ToggleTextCaseItem1"
         '
         'ClearFormattingItem1
         '
+        Me.ClearFormattingItem1.Caption = "Eliminar Formateo"
+        Me.ClearFormattingItem1.Enabled = False
         Me.ClearFormattingItem1.Id = 34
         Me.ClearFormattingItem1.Name = "ClearFormattingItem1"
         '
         'ShowFontFormItem1
         '
+        Me.ShowFontFormItem1.Caption = "Fuente"
+        Me.ShowFontFormItem1.Enabled = False
         Me.ShowFontFormItem1.Id = 35
         Me.ShowFontFormItem1.Name = "ShowFontFormItem1"
         '
         'ToggleBulletedListItem1
         '
+        Me.ToggleBulletedListItem1.Caption = "Viñetas"
+        Me.ToggleBulletedListItem1.Enabled = False
         Me.ToggleBulletedListItem1.Id = 36
         Me.ToggleBulletedListItem1.Name = "ToggleBulletedListItem1"
         '
         'ToggleNumberingListItem1
         '
+        Me.ToggleNumberingListItem1.Caption = "Numeración"
+        Me.ToggleNumberingListItem1.Enabled = False
         Me.ToggleNumberingListItem1.Id = 37
         Me.ToggleNumberingListItem1.Name = "ToggleNumberingListItem1"
         '
         'ToggleMultiLevelListItem1
         '
+        Me.ToggleMultiLevelListItem1.Caption = "Lista Multinivel"
+        Me.ToggleMultiLevelListItem1.Enabled = False
         Me.ToggleMultiLevelListItem1.Id = 38
         Me.ToggleMultiLevelListItem1.Name = "ToggleMultiLevelListItem1"
         '
         'DecreaseIndentItem1
         '
+        Me.DecreaseIndentItem1.Caption = "Disminuir Sangría"
+        Me.DecreaseIndentItem1.Enabled = False
         Me.DecreaseIndentItem1.Id = 39
         Me.DecreaseIndentItem1.Name = "DecreaseIndentItem1"
         '
         'IncreaseIndentItem1
         '
+        Me.IncreaseIndentItem1.Caption = "Aumentar Sangría"
+        Me.IncreaseIndentItem1.Enabled = False
         Me.IncreaseIndentItem1.Id = 40
         Me.IncreaseIndentItem1.Name = "IncreaseIndentItem1"
         '
         'RtlToggleBulletedListItem1
         '
+        Me.RtlToggleBulletedListItem1.Caption = "Viñetas"
+        Me.RtlToggleBulletedListItem1.Enabled = False
         Me.RtlToggleBulletedListItem1.Id = 41
         Me.RtlToggleBulletedListItem1.Name = "RtlToggleBulletedListItem1"
         '
         'RtlToggleNumberingListItem1
         '
+        Me.RtlToggleNumberingListItem1.Caption = "Numeración"
+        Me.RtlToggleNumberingListItem1.Enabled = False
         Me.RtlToggleNumberingListItem1.Id = 42
         Me.RtlToggleNumberingListItem1.Name = "RtlToggleNumberingListItem1"
         '
         'RtlToggleMultiLevelListItem1
         '
+        Me.RtlToggleMultiLevelListItem1.Caption = "Lista Multinivel"
+        Me.RtlToggleMultiLevelListItem1.Enabled = False
         Me.RtlToggleMultiLevelListItem1.Id = 43
         Me.RtlToggleMultiLevelListItem1.Name = "RtlToggleMultiLevelListItem1"
         '
         'RtlDecreaseIndentItem1
         '
+        Me.RtlDecreaseIndentItem1.Caption = "Disminuir Sangría"
+        Me.RtlDecreaseIndentItem1.Enabled = False
         Me.RtlDecreaseIndentItem1.Id = 44
         Me.RtlDecreaseIndentItem1.Name = "RtlDecreaseIndentItem1"
         '
         'RtlIncreaseIndentItem1
         '
+        Me.RtlIncreaseIndentItem1.Caption = "Aumentar Sangría"
+        Me.RtlIncreaseIndentItem1.Enabled = False
         Me.RtlIncreaseIndentItem1.Id = 45
         Me.RtlIncreaseIndentItem1.Name = "RtlIncreaseIndentItem1"
         '
         'ToggleParagraphLeftToRightItem1
         '
+        Me.ToggleParagraphLeftToRightItem1.Caption = "Left-to-Right Text Direction"
+        Me.ToggleParagraphLeftToRightItem1.Enabled = False
         Me.ToggleParagraphLeftToRightItem1.Id = 46
         Me.ToggleParagraphLeftToRightItem1.Name = "ToggleParagraphLeftToRightItem1"
         '
         'ToggleParagraphRightToLeftItem1
         '
+        Me.ToggleParagraphRightToLeftItem1.Caption = "Right-to-Left Text Direction"
+        Me.ToggleParagraphRightToLeftItem1.Enabled = False
         Me.ToggleParagraphRightToLeftItem1.Id = 47
         Me.ToggleParagraphRightToLeftItem1.Name = "ToggleParagraphRightToLeftItem1"
         '
         'ToggleParagraphAlignmentLeftItem1
         '
+        Me.ToggleParagraphAlignmentLeftItem1.Caption = "Alinear texto a la izquierda"
+        Me.ToggleParagraphAlignmentLeftItem1.Enabled = False
         Me.ToggleParagraphAlignmentLeftItem1.Id = 48
         Me.ToggleParagraphAlignmentLeftItem1.Name = "ToggleParagraphAlignmentLeftItem1"
         '
         'ToggleParagraphAlignmentCenterItem1
         '
+        Me.ToggleParagraphAlignmentCenterItem1.Caption = "Centrar"
+        Me.ToggleParagraphAlignmentCenterItem1.Enabled = False
         Me.ToggleParagraphAlignmentCenterItem1.Id = 49
         Me.ToggleParagraphAlignmentCenterItem1.Name = "ToggleParagraphAlignmentCenterItem1"
         '
         'ToggleParagraphAlignmentRightItem1
         '
+        Me.ToggleParagraphAlignmentRightItem1.Caption = "Alinear texto a la derecha"
+        Me.ToggleParagraphAlignmentRightItem1.Enabled = False
         Me.ToggleParagraphAlignmentRightItem1.Id = 50
         Me.ToggleParagraphAlignmentRightItem1.Name = "ToggleParagraphAlignmentRightItem1"
         '
         'ToggleParagraphAlignmentJustifyItem1
         '
+        Me.ToggleParagraphAlignmentJustifyItem1.Caption = "Justificar"
+        Me.ToggleParagraphAlignmentJustifyItem1.Enabled = False
         Me.ToggleParagraphAlignmentJustifyItem1.Id = 51
         Me.ToggleParagraphAlignmentJustifyItem1.Name = "ToggleParagraphAlignmentJustifyItem1"
         '
         'ToggleParagraphAlignmentArabicJustifyGroupItem1
         '
+        Me.ToggleParagraphAlignmentArabicJustifyGroupItem1.Caption = "Justificar"
+        Me.ToggleParagraphAlignmentArabicJustifyGroupItem1.Enabled = False
         Me.ToggleParagraphAlignmentArabicJustifyGroupItem1.Id = 56
-        Me.ToggleParagraphAlignmentArabicJustifyGroupItem1.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.KeyTip, Me.ToggleParagraphAlignmentArabicJustifyItem1, "", False, True, True, 0, Nothing, DevExpress.XtraBars.BarItemPaintStyle.Standard, "AJ", ""), New DevExpress.XtraBars.LinkPersistInfo(Me.ToggleParagraphAlignmentJustifyLowItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.ToggleParagraphAlignmentJustifyMediumItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.ToggleParagraphAlignmentJustifyHighItem1)})
+        Me.ToggleParagraphAlignmentArabicJustifyGroupItem1.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.KeyTip, Me.ToggleParagraphAlignmentArabicJustifyItem1, "", False, True, True, 0, Nothing, DevExpress.XtraBars.BarItemPaintStyle.Standard, "", ""), New DevExpress.XtraBars.LinkPersistInfo(Me.ToggleParagraphAlignmentJustifyLowItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.ToggleParagraphAlignmentJustifyMediumItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.ToggleParagraphAlignmentJustifyHighItem1)})
         Me.ToggleParagraphAlignmentArabicJustifyGroupItem1.Name = "ToggleParagraphAlignmentArabicJustifyGroupItem1"
         '
         'ToggleParagraphAlignmentArabicJustifyItem1
         '
+        Me.ToggleParagraphAlignmentArabicJustifyItem1.Caption = "Justificar"
+        Me.ToggleParagraphAlignmentArabicJustifyItem1.Enabled = False
         Me.ToggleParagraphAlignmentArabicJustifyItem1.Id = 52
         Me.ToggleParagraphAlignmentArabicJustifyItem1.Name = "ToggleParagraphAlignmentArabicJustifyItem1"
         '
         'ToggleParagraphAlignmentJustifyLowItem1
         '
+        Me.ToggleParagraphAlignmentJustifyLowItem1.Caption = "Justify Low"
+        Me.ToggleParagraphAlignmentJustifyLowItem1.Enabled = False
         Me.ToggleParagraphAlignmentJustifyLowItem1.Id = 53
         Me.ToggleParagraphAlignmentJustifyLowItem1.Name = "ToggleParagraphAlignmentJustifyLowItem1"
         '
         'ToggleParagraphAlignmentJustifyMediumItem1
         '
+        Me.ToggleParagraphAlignmentJustifyMediumItem1.Caption = "Justify Medium"
+        Me.ToggleParagraphAlignmentJustifyMediumItem1.Enabled = False
         Me.ToggleParagraphAlignmentJustifyMediumItem1.Id = 54
         Me.ToggleParagraphAlignmentJustifyMediumItem1.Name = "ToggleParagraphAlignmentJustifyMediumItem1"
         '
         'ToggleParagraphAlignmentJustifyHighItem1
         '
+        Me.ToggleParagraphAlignmentJustifyHighItem1.Caption = "Justify High"
+        Me.ToggleParagraphAlignmentJustifyHighItem1.Enabled = False
         Me.ToggleParagraphAlignmentJustifyHighItem1.Id = 55
         Me.ToggleParagraphAlignmentJustifyHighItem1.Name = "ToggleParagraphAlignmentJustifyHighItem1"
         '
         'ToggleParagraphAlignmentDistributeItem1
         '
+        Me.ToggleParagraphAlignmentDistributeItem1.Caption = "Distributed"
+        Me.ToggleParagraphAlignmentDistributeItem1.Enabled = False
         Me.ToggleParagraphAlignmentDistributeItem1.Id = 57
         Me.ToggleParagraphAlignmentDistributeItem1.Name = "ToggleParagraphAlignmentDistributeItem1"
         '
         'ToggleParagraphAlignmentThaiDistributeItem1
         '
+        Me.ToggleParagraphAlignmentThaiDistributeItem1.Caption = "Thai Distributed"
+        Me.ToggleParagraphAlignmentThaiDistributeItem1.Enabled = False
         Me.ToggleParagraphAlignmentThaiDistributeItem1.Id = 58
         Me.ToggleParagraphAlignmentThaiDistributeItem1.Name = "ToggleParagraphAlignmentThaiDistributeItem1"
         '
         'ToggleShowWhitespaceItem1
         '
+        Me.ToggleShowWhitespaceItem1.Caption = "Ocultar/Mostrar ¶"
+        Me.ToggleShowWhitespaceItem1.Enabled = False
         Me.ToggleShowWhitespaceItem1.Id = 59
         Me.ToggleShowWhitespaceItem1.Name = "ToggleShowWhitespaceItem1"
         '
         'ChangeParagraphLineSpacingItem1
         '
+        Me.ChangeParagraphLineSpacingItem1.Caption = "Espaciado de Líneas"
+        Me.ChangeParagraphLineSpacingItem1.Enabled = False
         Me.ChangeParagraphLineSpacingItem1.Id = 68
-        Me.ChangeParagraphLineSpacingItem1.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.SetSingleParagraphSpacingItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.SetSesquialteralParagraphSpacingItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.SetDoubleParagraphSpacingItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.ShowLineSpacingFormItem1), New DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.KeyTip, Me.AddSpacingBeforeParagraphItem1, "", False, True, True, 0, Nothing, DevExpress.XtraBars.BarItemPaintStyle.Standard, "B", ""), New DevExpress.XtraBars.LinkPersistInfo(Me.RemoveSpacingBeforeParagraphItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.AddSpacingAfterParagraphItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.RemoveSpacingAfterParagraphItem1)})
+        Me.ChangeParagraphLineSpacingItem1.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.SetSingleParagraphSpacingItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.SetSesquialteralParagraphSpacingItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.SetDoubleParagraphSpacingItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.ShowLineSpacingFormItem1), New DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.KeyTip, Me.AddSpacingBeforeParagraphItem1, "", False, True, True, 0, Nothing, DevExpress.XtraBars.BarItemPaintStyle.Standard, "", ""), New DevExpress.XtraBars.LinkPersistInfo(Me.RemoveSpacingBeforeParagraphItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.AddSpacingAfterParagraphItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.RemoveSpacingAfterParagraphItem1)})
         Me.ChangeParagraphLineSpacingItem1.Name = "ChangeParagraphLineSpacingItem1"
         '
         'SetSingleParagraphSpacingItem1
         '
+        Me.SetSingleParagraphSpacingItem1.Caption = "1.0"
+        Me.SetSingleParagraphSpacingItem1.Enabled = False
         Me.SetSingleParagraphSpacingItem1.Id = 60
         Me.SetSingleParagraphSpacingItem1.Name = "SetSingleParagraphSpacingItem1"
         '
         'SetSesquialteralParagraphSpacingItem1
         '
+        Me.SetSesquialteralParagraphSpacingItem1.Caption = "1.5"
+        Me.SetSesquialteralParagraphSpacingItem1.Enabled = False
         Me.SetSesquialteralParagraphSpacingItem1.Id = 61
         Me.SetSesquialteralParagraphSpacingItem1.Name = "SetSesquialteralParagraphSpacingItem1"
         '
         'SetDoubleParagraphSpacingItem1
         '
+        Me.SetDoubleParagraphSpacingItem1.Caption = "2.0"
+        Me.SetDoubleParagraphSpacingItem1.Enabled = False
         Me.SetDoubleParagraphSpacingItem1.Id = 62
         Me.SetDoubleParagraphSpacingItem1.Name = "SetDoubleParagraphSpacingItem1"
         '
         'ShowLineSpacingFormItem1
         '
+        Me.ShowLineSpacingFormItem1.Caption = "Opciones de Espaciado de Líneas..."
+        Me.ShowLineSpacingFormItem1.Enabled = False
         Me.ShowLineSpacingFormItem1.Id = 63
         Me.ShowLineSpacingFormItem1.Name = "ShowLineSpacingFormItem1"
         '
         'AddSpacingBeforeParagraphItem1
         '
+        Me.AddSpacingBeforeParagraphItem1.Caption = "&Añadir Espacio Antes del Párrafo"
+        Me.AddSpacingBeforeParagraphItem1.Enabled = False
         Me.AddSpacingBeforeParagraphItem1.Id = 64
         Me.AddSpacingBeforeParagraphItem1.Name = "AddSpacingBeforeParagraphItem1"
         '
         'RemoveSpacingBeforeParagraphItem1
         '
+        Me.RemoveSpacingBeforeParagraphItem1.Caption = "Quitar Espacios Antes del Párrafo"
+        Me.RemoveSpacingBeforeParagraphItem1.Enabled = False
         Me.RemoveSpacingBeforeParagraphItem1.Id = 65
         Me.RemoveSpacingBeforeParagraphItem1.Name = "RemoveSpacingBeforeParagraphItem1"
         '
         'AddSpacingAfterParagraphItem1
         '
+        Me.AddSpacingAfterParagraphItem1.Caption = "&Añadir Espacio Después del Párrafo"
+        Me.AddSpacingAfterParagraphItem1.Enabled = False
         Me.AddSpacingAfterParagraphItem1.Id = 66
         Me.AddSpacingAfterParagraphItem1.Name = "AddSpacingAfterParagraphItem1"
         '
         'RemoveSpacingAfterParagraphItem1
         '
+        Me.RemoveSpacingAfterParagraphItem1.Caption = "Quitar Espacios Después del Párrafo"
+        Me.RemoveSpacingAfterParagraphItem1.Enabled = False
         Me.RemoveSpacingAfterParagraphItem1.Id = 67
         Me.RemoveSpacingAfterParagraphItem1.Name = "RemoveSpacingAfterParagraphItem1"
         '
         'ChangeParagraphBackColorItem1
         '
+        Me.ChangeParagraphBackColorItem1.Caption = "Sombreado"
+        Me.ChangeParagraphBackColorItem1.Enabled = False
         Me.ChangeParagraphBackColorItem1.Id = 69
         Me.ChangeParagraphBackColorItem1.Name = "ChangeParagraphBackColorItem1"
         '
         'ShowParagraphFormItem1
         '
+        Me.ShowParagraphFormItem1.Caption = "Párrafo"
+        Me.ShowParagraphFormItem1.Enabled = False
         Me.ShowParagraphFormItem1.Id = 70
         Me.ShowParagraphFormItem1.Name = "ShowParagraphFormItem1"
         '
         'ChangeStyleItem1
         '
         Me.ChangeStyleItem1.Edit = Me.RepositoryItemRichEditStyleEdit1
+        Me.ChangeStyleItem1.Enabled = False
         Me.ChangeStyleItem1.Id = 71
         Me.ChangeStyleItem1.Name = "ChangeStyleItem1"
         '
@@ -955,472 +897,649 @@ Partial Class frmPrueba3
         '
         Me.RepositoryItemRichEditStyleEdit1.AutoHeight = False
         Me.RepositoryItemRichEditStyleEdit1.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.RepositoryItemRichEditStyleEdit1.Control = Me.rtbPrueba
+        Me.RepositoryItemRichEditStyleEdit1.Control = Nothing
         Me.RepositoryItemRichEditStyleEdit1.Name = "RepositoryItemRichEditStyleEdit1"
         '
         'ShowEditStyleFormItem1
         '
+        Me.ShowEditStyleFormItem1.Caption = "Modificar Estilos"
+        Me.ShowEditStyleFormItem1.Enabled = False
         Me.ShowEditStyleFormItem1.Id = 72
         Me.ShowEditStyleFormItem1.Name = "ShowEditStyleFormItem1"
         '
         'FindItem1
         '
+        Me.FindItem1.Caption = "Buscar"
+        Me.FindItem1.Enabled = False
         Me.FindItem1.Id = 73
         Me.FindItem1.Name = "FindItem1"
         '
         'ReplaceItem1
         '
+        Me.ReplaceItem1.Caption = "Reemplazar"
+        Me.ReplaceItem1.Enabled = False
         Me.ReplaceItem1.Id = 74
         Me.ReplaceItem1.Name = "ReplaceItem1"
         '
         'InsertPageBreakItem21
         '
+        Me.InsertPageBreakItem21.Caption = "Salto de página"
+        Me.InsertPageBreakItem21.Enabled = False
         Me.InsertPageBreakItem21.Id = 75
         Me.InsertPageBreakItem21.Name = "InsertPageBreakItem21"
         '
         'InsertTableItem1
         '
+        Me.InsertTableItem1.Caption = "Tabla"
+        Me.InsertTableItem1.Enabled = False
         Me.InsertTableItem1.Id = 76
         Me.InsertTableItem1.Name = "InsertTableItem1"
         '
         'InsertFloatingPictureItem1
         '
+        Me.InsertFloatingPictureItem1.Caption = "Insertar imagen desde fichero"
+        Me.InsertFloatingPictureItem1.Enabled = False
         Me.InsertFloatingPictureItem1.Id = 77
         Me.InsertFloatingPictureItem1.Name = "InsertFloatingPictureItem1"
         '
         'InsertBookmarkItem1
         '
+        Me.InsertBookmarkItem1.Caption = "Marcador"
+        Me.InsertBookmarkItem1.Enabled = False
         Me.InsertBookmarkItem1.Id = 78
         Me.InsertBookmarkItem1.Name = "InsertBookmarkItem1"
         '
         'InsertHyperlinkItem1
         '
+        Me.InsertHyperlinkItem1.Caption = "Insertar Hipervínculo"
+        Me.InsertHyperlinkItem1.Enabled = False
         Me.InsertHyperlinkItem1.Id = 79
         Me.InsertHyperlinkItem1.Name = "InsertHyperlinkItem1"
         '
         'EditPageHeaderItem1
         '
+        Me.EditPageHeaderItem1.Caption = "Cabecera"
+        Me.EditPageHeaderItem1.Enabled = False
         Me.EditPageHeaderItem1.Id = 80
         Me.EditPageHeaderItem1.Name = "EditPageHeaderItem1"
         '
         'EditPageFooterItem1
         '
+        Me.EditPageFooterItem1.Caption = "Pie"
+        Me.EditPageFooterItem1.Enabled = False
         Me.EditPageFooterItem1.Id = 81
         Me.EditPageFooterItem1.Name = "EditPageFooterItem1"
         '
         'InsertPageNumberItem1
         '
+        Me.InsertPageNumberItem1.Caption = "Insertar Número de Página"
+        Me.InsertPageNumberItem1.Enabled = False
         Me.InsertPageNumberItem1.Id = 82
         Me.InsertPageNumberItem1.Name = "InsertPageNumberItem1"
         '
         'InsertPageCountItem1
         '
+        Me.InsertPageCountItem1.Caption = "Insertar Recuento de Páginas Totales"
+        Me.InsertPageCountItem1.Enabled = False
         Me.InsertPageCountItem1.Id = 83
         Me.InsertPageCountItem1.Name = "InsertPageCountItem1"
         '
         'InsertTextBoxItem1
         '
+        Me.InsertTextBoxItem1.Caption = "Cuadro de Texto"
+        Me.InsertTextBoxItem1.Enabled = False
         Me.InsertTextBoxItem1.Id = 84
         Me.InsertTextBoxItem1.Name = "InsertTextBoxItem1"
         '
         'InsertSymbolItem1
         '
+        Me.InsertSymbolItem1.Caption = "Insertar símbolo"
+        Me.InsertSymbolItem1.Enabled = False
         Me.InsertSymbolItem1.Id = 85
         Me.InsertSymbolItem1.Name = "InsertSymbolItem1"
         '
         'ChangeSectionPageMarginsItem1
         '
+        Me.ChangeSectionPageMarginsItem1.Caption = "Márgenes"
+        Me.ChangeSectionPageMarginsItem1.Enabled = False
         Me.ChangeSectionPageMarginsItem1.Id = 91
         Me.ChangeSectionPageMarginsItem1.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.SetNormalSectionPageMarginsItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.SetNarrowSectionPageMarginsItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.SetModerateSectionPageMarginsItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.SetWideSectionPageMarginsItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.ShowPageMarginsSetupFormItem1)})
         Me.ChangeSectionPageMarginsItem1.Name = "ChangeSectionPageMarginsItem1"
         '
         'SetNormalSectionPageMarginsItem1
         '
+        Me.SetNormalSectionPageMarginsItem1.Caption = "Normal" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Top:" & Global.Microsoft.VisualBasic.ChrW(9) & "     0.79""" & Global.Microsoft.VisualBasic.ChrW(9) & "Bottom:" & Global.Microsoft.VisualBasic.ChrW(9) & "     0.79""" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Left:" & Global.Microsoft.VisualBasic.ChrW(9) & "     1.18""" & Global.Microsoft.VisualBasic.ChrW(9) & "Right:" & Global.Microsoft.VisualBasic.ChrW(9) & Global.Microsoft.VisualBasic.ChrW(9) & "     0.59"""
+        Me.SetNormalSectionPageMarginsItem1.Enabled = False
         Me.SetNormalSectionPageMarginsItem1.Id = 86
         Me.SetNormalSectionPageMarginsItem1.Name = "SetNormalSectionPageMarginsItem1"
         '
         'SetNarrowSectionPageMarginsItem1
         '
+        Me.SetNarrowSectionPageMarginsItem1.Caption = "Estrecho" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Top:" & Global.Microsoft.VisualBasic.ChrW(9) & "      0.5""" & Global.Microsoft.VisualBasic.ChrW(9) & "Bottom:" & Global.Microsoft.VisualBasic.ChrW(9) & "      0.5""" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Left:" & Global.Microsoft.VisualBasic.ChrW(9) & "      0.5""" & Global.Microsoft.VisualBasic.ChrW(9) & "Right:" & Global.Microsoft.VisualBasic.ChrW(9) & Global.Microsoft.VisualBasic.ChrW(9) & "      0.5""" &
+    ""
+        Me.SetNarrowSectionPageMarginsItem1.Enabled = False
         Me.SetNarrowSectionPageMarginsItem1.Id = 87
         Me.SetNarrowSectionPageMarginsItem1.Name = "SetNarrowSectionPageMarginsItem1"
         '
         'SetModerateSectionPageMarginsItem1
         '
+        Me.SetModerateSectionPageMarginsItem1.Caption = "Moderado" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Top:" & Global.Microsoft.VisualBasic.ChrW(9) & "        1""" & Global.Microsoft.VisualBasic.ChrW(9) & "Bottom:" & Global.Microsoft.VisualBasic.ChrW(9) & "        1""" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Left:" & Global.Microsoft.VisualBasic.ChrW(9) & "     0.75""" & Global.Microsoft.VisualBasic.ChrW(9) & "Right:" & Global.Microsoft.VisualBasic.ChrW(9) & Global.Microsoft.VisualBasic.ChrW(9) & "     0.75""" &
+    ""
+        Me.SetModerateSectionPageMarginsItem1.Enabled = False
         Me.SetModerateSectionPageMarginsItem1.Id = 88
         Me.SetModerateSectionPageMarginsItem1.Name = "SetModerateSectionPageMarginsItem1"
         '
         'SetWideSectionPageMarginsItem1
         '
+        Me.SetWideSectionPageMarginsItem1.Caption = "Ancho" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Top:" & Global.Microsoft.VisualBasic.ChrW(9) & "        1""" & Global.Microsoft.VisualBasic.ChrW(9) & "Bottom:" & Global.Microsoft.VisualBasic.ChrW(9) & "        1""" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Left:" & Global.Microsoft.VisualBasic.ChrW(9) & "        2""" & Global.Microsoft.VisualBasic.ChrW(9) & "Right:" & Global.Microsoft.VisualBasic.ChrW(9) & Global.Microsoft.VisualBasic.ChrW(9) & "        2"""
+        Me.SetWideSectionPageMarginsItem1.Enabled = False
         Me.SetWideSectionPageMarginsItem1.Id = 89
         Me.SetWideSectionPageMarginsItem1.Name = "SetWideSectionPageMarginsItem1"
         '
         'ShowPageMarginsSetupFormItem1
         '
+        Me.ShowPageMarginsSetupFormItem1.Caption = "Márgenes Personalizados"
+        Me.ShowPageMarginsSetupFormItem1.Enabled = False
         Me.ShowPageMarginsSetupFormItem1.Id = 90
         Me.ShowPageMarginsSetupFormItem1.Name = "ShowPageMarginsSetupFormItem1"
         '
         'ChangeSectionPageOrientationItem1
         '
+        Me.ChangeSectionPageOrientationItem1.Caption = "Orientación de la Página"
+        Me.ChangeSectionPageOrientationItem1.Enabled = False
         Me.ChangeSectionPageOrientationItem1.Id = 94
         Me.ChangeSectionPageOrientationItem1.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.SetPortraitPageOrientationItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.SetLandscapePageOrientationItem1)})
         Me.ChangeSectionPageOrientationItem1.Name = "ChangeSectionPageOrientationItem1"
         '
         'SetPortraitPageOrientationItem1
         '
+        Me.SetPortraitPageOrientationItem1.Caption = "Retrato"
+        Me.SetPortraitPageOrientationItem1.Enabled = False
         Me.SetPortraitPageOrientationItem1.Id = 92
         Me.SetPortraitPageOrientationItem1.Name = "SetPortraitPageOrientationItem1"
         '
         'SetLandscapePageOrientationItem1
         '
+        Me.SetLandscapePageOrientationItem1.Caption = "Apaisado"
+        Me.SetLandscapePageOrientationItem1.Enabled = False
         Me.SetLandscapePageOrientationItem1.Id = 93
         Me.SetLandscapePageOrientationItem1.Name = "SetLandscapePageOrientationItem1"
         '
         'ChangeSectionPaperKindItem1
         '
+        Me.ChangeSectionPaperKindItem1.Caption = "Tamaño"
+        Me.ChangeSectionPaperKindItem1.Enabled = False
         Me.ChangeSectionPaperKindItem1.Id = 95
         Me.ChangeSectionPaperKindItem1.Name = "ChangeSectionPaperKindItem1"
         '
         'ChangeSectionColumnsItem1
         '
+        Me.ChangeSectionColumnsItem1.Caption = "Columnas"
+        Me.ChangeSectionColumnsItem1.Enabled = False
         Me.ChangeSectionColumnsItem1.Id = 100
         Me.ChangeSectionColumnsItem1.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.SetSectionOneColumnItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.SetSectionTwoColumnsItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.SetSectionThreeColumnsItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.ShowColumnsSetupFormItem1)})
         Me.ChangeSectionColumnsItem1.Name = "ChangeSectionColumnsItem1"
         '
         'SetSectionOneColumnItem1
         '
+        Me.SetSectionOneColumnItem1.Caption = "Una"
+        Me.SetSectionOneColumnItem1.Enabled = False
         Me.SetSectionOneColumnItem1.Id = 96
         Me.SetSectionOneColumnItem1.Name = "SetSectionOneColumnItem1"
         '
         'SetSectionTwoColumnsItem1
         '
+        Me.SetSectionTwoColumnsItem1.Caption = "Dos"
+        Me.SetSectionTwoColumnsItem1.Enabled = False
         Me.SetSectionTwoColumnsItem1.Id = 97
         Me.SetSectionTwoColumnsItem1.Name = "SetSectionTwoColumnsItem1"
         '
         'SetSectionThreeColumnsItem1
         '
+        Me.SetSectionThreeColumnsItem1.Caption = "Tres"
+        Me.SetSectionThreeColumnsItem1.Enabled = False
         Me.SetSectionThreeColumnsItem1.Id = 98
         Me.SetSectionThreeColumnsItem1.Name = "SetSectionThreeColumnsItem1"
         '
         'ShowColumnsSetupFormItem1
         '
+        Me.ShowColumnsSetupFormItem1.Caption = "Más Columnas"
+        Me.ShowColumnsSetupFormItem1.Enabled = False
         Me.ShowColumnsSetupFormItem1.Id = 99
         Me.ShowColumnsSetupFormItem1.Name = "ShowColumnsSetupFormItem1"
         '
         'InsertBreakItem1
         '
+        Me.InsertBreakItem1.Caption = "Saltos"
+        Me.InsertBreakItem1.Enabled = False
         Me.InsertBreakItem1.Id = 107
-        Me.InsertBreakItem1.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.KeyTip, Me.InsertPageBreakItem1, "", False, True, True, 0, Nothing, DevExpress.XtraBars.BarItemPaintStyle.Standard, "B", ""), New DevExpress.XtraBars.LinkPersistInfo(Me.InsertColumnBreakItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.InsertSectionBreakNextPageItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.InsertSectionBreakContinuousItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.InsertSectionBreakEvenPageItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.InsertSectionBreakOddPageItem1)})
+        Me.InsertBreakItem1.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.KeyTip, Me.InsertPageBreakItem1, "", False, True, True, 0, Nothing, DevExpress.XtraBars.BarItemPaintStyle.Standard, "", ""), New DevExpress.XtraBars.LinkPersistInfo(Me.InsertColumnBreakItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.InsertSectionBreakNextPageItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.InsertSectionBreakContinuousItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.InsertSectionBreakEvenPageItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.InsertSectionBreakOddPageItem1)})
         Me.InsertBreakItem1.Name = "InsertBreakItem1"
         '
         'InsertPageBreakItem1
         '
+        Me.InsertPageBreakItem1.Caption = "Salto de página"
+        Me.InsertPageBreakItem1.Enabled = False
         Me.InsertPageBreakItem1.Id = 101
         Me.InsertPageBreakItem1.Name = "InsertPageBreakItem1"
         '
         'InsertColumnBreakItem1
         '
+        Me.InsertColumnBreakItem1.Caption = "InsertColumnBreak"
+        Me.InsertColumnBreakItem1.Enabled = False
         Me.InsertColumnBreakItem1.Id = 102
         Me.InsertColumnBreakItem1.Name = "InsertColumnBreakItem1"
         '
         'InsertSectionBreakNextPageItem1
         '
+        Me.InsertSectionBreakNextPageItem1.Caption = "Sección (Próxima Página)"
+        Me.InsertSectionBreakNextPageItem1.Enabled = False
         Me.InsertSectionBreakNextPageItem1.Id = 103
         Me.InsertSectionBreakNextPageItem1.Name = "InsertSectionBreakNextPageItem1"
         '
         'InsertSectionBreakContinuousItem1
         '
+        Me.InsertSectionBreakContinuousItem1.Caption = "Sección (Continuo)"
+        Me.InsertSectionBreakContinuousItem1.Enabled = False
         Me.InsertSectionBreakContinuousItem1.Id = 104
         Me.InsertSectionBreakContinuousItem1.Name = "InsertSectionBreakContinuousItem1"
         '
         'InsertSectionBreakEvenPageItem1
         '
+        Me.InsertSectionBreakEvenPageItem1.Caption = "Sección (Página Par)"
+        Me.InsertSectionBreakEvenPageItem1.Enabled = False
         Me.InsertSectionBreakEvenPageItem1.Id = 105
         Me.InsertSectionBreakEvenPageItem1.Name = "InsertSectionBreakEvenPageItem1"
         '
         'InsertSectionBreakOddPageItem1
         '
+        Me.InsertSectionBreakOddPageItem1.Caption = "Sección (Página Impar)"
+        Me.InsertSectionBreakOddPageItem1.Enabled = False
         Me.InsertSectionBreakOddPageItem1.Id = 106
         Me.InsertSectionBreakOddPageItem1.Name = "InsertSectionBreakOddPageItem1"
         '
         'ChangeSectionLineNumberingItem1
         '
+        Me.ChangeSectionLineNumberingItem1.Caption = "Números de Línea"
+        Me.ChangeSectionLineNumberingItem1.Enabled = False
         Me.ChangeSectionLineNumberingItem1.Id = 114
         Me.ChangeSectionLineNumberingItem1.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.SetSectionLineNumberingNoneItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.SetSectionLineNumberingContinuousItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.SetSectionLineNumberingRestartNewPageItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.SetSectionLineNumberingRestartNewSectionItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.ToggleParagraphSuppressLineNumbersItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.ShowLineNumberingFormItem1)})
         Me.ChangeSectionLineNumberingItem1.Name = "ChangeSectionLineNumberingItem1"
         '
         'SetSectionLineNumberingNoneItem1
         '
+        Me.SetSectionLineNumberingNoneItem1.Caption = "Ninguno"
+        Me.SetSectionLineNumberingNoneItem1.Enabled = False
         Me.SetSectionLineNumberingNoneItem1.Id = 108
         Me.SetSectionLineNumberingNoneItem1.Name = "SetSectionLineNumberingNoneItem1"
         '
         'SetSectionLineNumberingContinuousItem1
         '
+        Me.SetSectionLineNumberingContinuousItem1.Caption = "Continuo"
+        Me.SetSectionLineNumberingContinuousItem1.Enabled = False
         Me.SetSectionLineNumberingContinuousItem1.Id = 109
         Me.SetSectionLineNumberingContinuousItem1.Name = "SetSectionLineNumberingContinuousItem1"
         '
         'SetSectionLineNumberingRestartNewPageItem1
         '
+        Me.SetSectionLineNumberingRestartNewPageItem1.Caption = "Reiniciar Cada Página"
+        Me.SetSectionLineNumberingRestartNewPageItem1.Enabled = False
         Me.SetSectionLineNumberingRestartNewPageItem1.Id = 110
         Me.SetSectionLineNumberingRestartNewPageItem1.Name = "SetSectionLineNumberingRestartNewPageItem1"
         '
         'SetSectionLineNumberingRestartNewSectionItem1
         '
+        Me.SetSectionLineNumberingRestartNewSectionItem1.Caption = "Reiniciar Cada Sección"
+        Me.SetSectionLineNumberingRestartNewSectionItem1.Enabled = False
         Me.SetSectionLineNumberingRestartNewSectionItem1.Id = 111
         Me.SetSectionLineNumberingRestartNewSectionItem1.Name = "SetSectionLineNumberingRestartNewSectionItem1"
         '
         'ToggleParagraphSuppressLineNumbersItem1
         '
+        Me.ToggleParagraphSuppressLineNumbersItem1.Caption = "Suprimir Números de Línea para Párrafo Actual"
+        Me.ToggleParagraphSuppressLineNumbersItem1.Enabled = False
         Me.ToggleParagraphSuppressLineNumbersItem1.Id = 112
         Me.ToggleParagraphSuppressLineNumbersItem1.Name = "ToggleParagraphSuppressLineNumbersItem1"
         '
         'ShowLineNumberingFormItem1
         '
+        Me.ShowLineNumberingFormItem1.Caption = "Opciones de Números de Línea"
+        Me.ShowLineNumberingFormItem1.Enabled = False
         Me.ShowLineNumberingFormItem1.Id = 113
         Me.ShowLineNumberingFormItem1.Name = "ShowLineNumberingFormItem1"
         '
         'ChangeHyphenationOptionsItem1
         '
+        Me.ChangeHyphenationOptionsItem1.Caption = "Hyphenation"
+        Me.ChangeHyphenationOptionsItem1.Enabled = False
         Me.ChangeHyphenationOptionsItem1.Id = 118
         Me.ChangeHyphenationOptionsItem1.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.SetHyphenateDocumentNoneItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.SetHyphenateDocumentAutomaticItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.ShowHyphenationOptionsFormItem1)})
         Me.ChangeHyphenationOptionsItem1.Name = "ChangeHyphenationOptionsItem1"
         '
         'SetHyphenateDocumentNoneItem1
         '
+        Me.SetHyphenateDocumentNoneItem1.Caption = "Ninguno"
+        Me.SetHyphenateDocumentNoneItem1.Enabled = False
         Me.SetHyphenateDocumentNoneItem1.Id = 115
         Me.SetHyphenateDocumentNoneItem1.Name = "SetHyphenateDocumentNoneItem1"
         '
         'SetHyphenateDocumentAutomaticItem1
         '
+        Me.SetHyphenateDocumentAutomaticItem1.Caption = "Automática"
+        Me.SetHyphenateDocumentAutomaticItem1.Enabled = False
         Me.SetHyphenateDocumentAutomaticItem1.Id = 116
         Me.SetHyphenateDocumentAutomaticItem1.Name = "SetHyphenateDocumentAutomaticItem1"
         '
         'ShowHyphenationOptionsFormItem1
         '
+        Me.ShowHyphenationOptionsFormItem1.Caption = "Hyphenation Options..."
+        Me.ShowHyphenationOptionsFormItem1.Enabled = False
         Me.ShowHyphenationOptionsFormItem1.Id = 117
         Me.ShowHyphenationOptionsFormItem1.Name = "ShowHyphenationOptionsFormItem1"
         '
         'ChangePageColorItem1
         '
+        Me.ChangePageColorItem1.Caption = "Color de Página"
+        Me.ChangePageColorItem1.Enabled = False
         Me.ChangePageColorItem1.Id = 119
         Me.ChangePageColorItem1.Name = "ChangePageColorItem1"
         '
         'InsertTableOfContentsItem1
         '
+        Me.InsertTableOfContentsItem1.Caption = "Tabla de Contenido"
+        Me.InsertTableOfContentsItem1.Enabled = False
         Me.InsertTableOfContentsItem1.Id = 120
         Me.InsertTableOfContentsItem1.Name = "InsertTableOfContentsItem1"
         '
         'UpdateTableOfContentsItem1
         '
+        Me.UpdateTableOfContentsItem1.Caption = "Actualizar Tabla"
+        Me.UpdateTableOfContentsItem1.Enabled = False
         Me.UpdateTableOfContentsItem1.Id = 121
         Me.UpdateTableOfContentsItem1.Name = "UpdateTableOfContentsItem1"
         '
         'AddParagraphsToTableOfContentItem1
         '
+        Me.AddParagraphsToTableOfContentItem1.Caption = "Añadir Texto"
+        Me.AddParagraphsToTableOfContentItem1.Enabled = False
         Me.AddParagraphsToTableOfContentItem1.Id = 132
         Me.AddParagraphsToTableOfContentItem1.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.SetParagraphHeadingLevelItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.SetParagraphHeadingLevelItem2), New DevExpress.XtraBars.LinkPersistInfo(Me.SetParagraphHeadingLevelItem3), New DevExpress.XtraBars.LinkPersistInfo(Me.SetParagraphHeadingLevelItem4), New DevExpress.XtraBars.LinkPersistInfo(Me.SetParagraphHeadingLevelItem5), New DevExpress.XtraBars.LinkPersistInfo(Me.SetParagraphHeadingLevelItem6), New DevExpress.XtraBars.LinkPersistInfo(Me.SetParagraphHeadingLevelItem7), New DevExpress.XtraBars.LinkPersistInfo(Me.SetParagraphHeadingLevelItem8), New DevExpress.XtraBars.LinkPersistInfo(Me.SetParagraphHeadingLevelItem9), New DevExpress.XtraBars.LinkPersistInfo(Me.SetParagraphHeadingLevelItem10)})
         Me.AddParagraphsToTableOfContentItem1.Name = "AddParagraphsToTableOfContentItem1"
         '
         'SetParagraphHeadingLevelItem1
         '
+        Me.SetParagraphHeadingLevelItem1.Caption = "No Mostrar en Tabla de Contenido"
+        Me.SetParagraphHeadingLevelItem1.Enabled = False
         Me.SetParagraphHeadingLevelItem1.Id = 122
         Me.SetParagraphHeadingLevelItem1.Name = "SetParagraphHeadingLevelItem1"
         Me.SetParagraphHeadingLevelItem1.OutlineLevel = 0
         '
         'SetParagraphHeadingLevelItem2
         '
+        Me.SetParagraphHeadingLevelItem2.Caption = "Nivel 1"
+        Me.SetParagraphHeadingLevelItem2.Enabled = False
         Me.SetParagraphHeadingLevelItem2.Id = 123
         Me.SetParagraphHeadingLevelItem2.Name = "SetParagraphHeadingLevelItem2"
         Me.SetParagraphHeadingLevelItem2.OutlineLevel = 1
         '
         'SetParagraphHeadingLevelItem3
         '
+        Me.SetParagraphHeadingLevelItem3.Caption = "Nivel 2"
+        Me.SetParagraphHeadingLevelItem3.Enabled = False
         Me.SetParagraphHeadingLevelItem3.Id = 124
         Me.SetParagraphHeadingLevelItem3.Name = "SetParagraphHeadingLevelItem3"
         Me.SetParagraphHeadingLevelItem3.OutlineLevel = 2
         '
         'SetParagraphHeadingLevelItem4
         '
+        Me.SetParagraphHeadingLevelItem4.Caption = "Nivel 3"
+        Me.SetParagraphHeadingLevelItem4.Enabled = False
         Me.SetParagraphHeadingLevelItem4.Id = 125
         Me.SetParagraphHeadingLevelItem4.Name = "SetParagraphHeadingLevelItem4"
         Me.SetParagraphHeadingLevelItem4.OutlineLevel = 3
         '
         'SetParagraphHeadingLevelItem5
         '
+        Me.SetParagraphHeadingLevelItem5.Caption = "Nivel 4"
+        Me.SetParagraphHeadingLevelItem5.Enabled = False
         Me.SetParagraphHeadingLevelItem5.Id = 126
         Me.SetParagraphHeadingLevelItem5.Name = "SetParagraphHeadingLevelItem5"
         Me.SetParagraphHeadingLevelItem5.OutlineLevel = 4
         '
         'SetParagraphHeadingLevelItem6
         '
+        Me.SetParagraphHeadingLevelItem6.Caption = "Nivel 5"
+        Me.SetParagraphHeadingLevelItem6.Enabled = False
         Me.SetParagraphHeadingLevelItem6.Id = 127
         Me.SetParagraphHeadingLevelItem6.Name = "SetParagraphHeadingLevelItem6"
         Me.SetParagraphHeadingLevelItem6.OutlineLevel = 5
         '
         'SetParagraphHeadingLevelItem7
         '
+        Me.SetParagraphHeadingLevelItem7.Caption = "Nivel 6"
+        Me.SetParagraphHeadingLevelItem7.Enabled = False
         Me.SetParagraphHeadingLevelItem7.Id = 128
         Me.SetParagraphHeadingLevelItem7.Name = "SetParagraphHeadingLevelItem7"
         Me.SetParagraphHeadingLevelItem7.OutlineLevel = 6
         '
         'SetParagraphHeadingLevelItem8
         '
+        Me.SetParagraphHeadingLevelItem8.Caption = "Nivel 7"
+        Me.SetParagraphHeadingLevelItem8.Enabled = False
         Me.SetParagraphHeadingLevelItem8.Id = 129
         Me.SetParagraphHeadingLevelItem8.Name = "SetParagraphHeadingLevelItem8"
         Me.SetParagraphHeadingLevelItem8.OutlineLevel = 7
         '
         'SetParagraphHeadingLevelItem9
         '
+        Me.SetParagraphHeadingLevelItem9.Caption = "Nivel 8"
+        Me.SetParagraphHeadingLevelItem9.Enabled = False
         Me.SetParagraphHeadingLevelItem9.Id = 130
         Me.SetParagraphHeadingLevelItem9.Name = "SetParagraphHeadingLevelItem9"
         Me.SetParagraphHeadingLevelItem9.OutlineLevel = 8
         '
         'SetParagraphHeadingLevelItem10
         '
+        Me.SetParagraphHeadingLevelItem10.Caption = "Nivel 9"
+        Me.SetParagraphHeadingLevelItem10.Enabled = False
         Me.SetParagraphHeadingLevelItem10.Id = 131
         Me.SetParagraphHeadingLevelItem10.Name = "SetParagraphHeadingLevelItem10"
         Me.SetParagraphHeadingLevelItem10.OutlineLevel = 9
         '
         'InsertCaptionPlaceholderItem1
         '
+        Me.InsertCaptionPlaceholderItem1.Caption = "Insertar Título"
+        Me.InsertCaptionPlaceholderItem1.Enabled = False
         Me.InsertCaptionPlaceholderItem1.Id = 136
         Me.InsertCaptionPlaceholderItem1.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.InsertFiguresCaptionItems1), New DevExpress.XtraBars.LinkPersistInfo(Me.InsertTablesCaptionItems1), New DevExpress.XtraBars.LinkPersistInfo(Me.InsertEquationsCaptionItems1)})
         Me.InsertCaptionPlaceholderItem1.Name = "InsertCaptionPlaceholderItem1"
         '
         'InsertFiguresCaptionItems1
         '
+        Me.InsertFiguresCaptionItems1.Caption = "Título de Figura"
+        Me.InsertFiguresCaptionItems1.Enabled = False
         Me.InsertFiguresCaptionItems1.Id = 133
         Me.InsertFiguresCaptionItems1.Name = "InsertFiguresCaptionItems1"
         '
         'InsertTablesCaptionItems1
         '
+        Me.InsertTablesCaptionItems1.Caption = "Título de Tablas"
+        Me.InsertTablesCaptionItems1.Enabled = False
         Me.InsertTablesCaptionItems1.Id = 134
         Me.InsertTablesCaptionItems1.Name = "InsertTablesCaptionItems1"
         '
         'InsertEquationsCaptionItems1
         '
+        Me.InsertEquationsCaptionItems1.Caption = "Título de Ecuación"
+        Me.InsertEquationsCaptionItems1.Enabled = False
         Me.InsertEquationsCaptionItems1.Id = 135
         Me.InsertEquationsCaptionItems1.Name = "InsertEquationsCaptionItems1"
         '
         'InsertTableOfFiguresPlaceholderItem1
         '
+        Me.InsertTableOfFiguresPlaceholderItem1.Caption = "Insertar Tabla de Figuras"
+        Me.InsertTableOfFiguresPlaceholderItem1.Enabled = False
         Me.InsertTableOfFiguresPlaceholderItem1.Id = 140
         Me.InsertTableOfFiguresPlaceholderItem1.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.InsertTableOfFiguresItems1), New DevExpress.XtraBars.LinkPersistInfo(Me.InsertTableOfTablesItems1), New DevExpress.XtraBars.LinkPersistInfo(Me.InsertTableOfEquationsItems1)})
         Me.InsertTableOfFiguresPlaceholderItem1.Name = "InsertTableOfFiguresPlaceholderItem1"
         '
         'InsertTableOfFiguresItems1
         '
+        Me.InsertTableOfFiguresItems1.Caption = "Tabla de Figuras"
+        Me.InsertTableOfFiguresItems1.Enabled = False
         Me.InsertTableOfFiguresItems1.Id = 137
         Me.InsertTableOfFiguresItems1.Name = "InsertTableOfFiguresItems1"
         '
         'InsertTableOfTablesItems1
         '
+        Me.InsertTableOfTablesItems1.Caption = "Tabla de Tablas"
+        Me.InsertTableOfTablesItems1.Enabled = False
         Me.InsertTableOfTablesItems1.Id = 138
         Me.InsertTableOfTablesItems1.Name = "InsertTableOfTablesItems1"
         '
         'InsertTableOfEquationsItems1
         '
+        Me.InsertTableOfEquationsItems1.Caption = "Tabla de Ecuaciones"
+        Me.InsertTableOfEquationsItems1.Enabled = False
         Me.InsertTableOfEquationsItems1.Id = 139
         Me.InsertTableOfEquationsItems1.Name = "InsertTableOfEquationsItems1"
         '
         'UpdateTableOfFiguresItem1
         '
+        Me.UpdateTableOfFiguresItem1.Caption = "Actualizar tabla"
+        Me.UpdateTableOfFiguresItem1.Enabled = False
         Me.UpdateTableOfFiguresItem1.Id = 141
         Me.UpdateTableOfFiguresItem1.Name = "UpdateTableOfFiguresItem1"
         '
         'InsertMergeFieldItem1
         '
+        Me.InsertMergeFieldItem1.Caption = "Insertar Campo Fusionado"
+        Me.InsertMergeFieldItem1.Enabled = False
         Me.InsertMergeFieldItem1.Id = 142
         Me.InsertMergeFieldItem1.Name = "InsertMergeFieldItem1"
         '
         'ShowAllFieldCodesItem1
         '
+        Me.ShowAllFieldCodesItem1.Caption = "Mostrar Todos los Códigos de Campos"
+        Me.ShowAllFieldCodesItem1.Enabled = False
         Me.ShowAllFieldCodesItem1.Id = 143
         Me.ShowAllFieldCodesItem1.Name = "ShowAllFieldCodesItem1"
         '
         'ShowAllFieldResultsItem1
         '
+        Me.ShowAllFieldResultsItem1.Caption = "Mostrar Todos los Resultados de Campos"
+        Me.ShowAllFieldResultsItem1.Enabled = False
         Me.ShowAllFieldResultsItem1.Id = 144
         Me.ShowAllFieldResultsItem1.Name = "ShowAllFieldResultsItem1"
         '
         'ToggleViewMergedDataItem1
         '
+        Me.ToggleViewMergedDataItem1.Caption = "Visualizar Datos Fusionados"
+        Me.ToggleViewMergedDataItem1.Enabled = False
         Me.ToggleViewMergedDataItem1.Id = 145
         Me.ToggleViewMergedDataItem1.Name = "ToggleViewMergedDataItem1"
         '
         'CheckSpellingItem1
         '
+        Me.CheckSpellingItem1.Caption = "Comprobar ortografía"
+        Me.CheckSpellingItem1.Enabled = False
         Me.CheckSpellingItem1.Id = 146
         Me.CheckSpellingItem1.Name = "CheckSpellingItem1"
         '
         'ChangeLanguageItem1
         '
+        Me.ChangeLanguageItem1.Caption = "Idioma"
+        Me.ChangeLanguageItem1.Enabled = False
         Me.ChangeLanguageItem1.Id = 147
         Me.ChangeLanguageItem1.Name = "ChangeLanguageItem1"
         '
         'ProtectDocumentItem1
         '
+        Me.ProtectDocumentItem1.Caption = "Proteger Documento"
+        Me.ProtectDocumentItem1.Enabled = False
         Me.ProtectDocumentItem1.Id = 148
         Me.ProtectDocumentItem1.Name = "ProtectDocumentItem1"
         '
         'ChangeRangeEditingPermissionsItem1
         '
+        Me.ChangeRangeEditingPermissionsItem1.Caption = "Permisos de Edición de Rangos"
+        Me.ChangeRangeEditingPermissionsItem1.Enabled = False
         Me.ChangeRangeEditingPermissionsItem1.Id = 149
         Me.ChangeRangeEditingPermissionsItem1.Name = "ChangeRangeEditingPermissionsItem1"
         '
         'UnprotectDocumentItem1
         '
+        Me.UnprotectDocumentItem1.Caption = "Desproteger Documento"
+        Me.UnprotectDocumentItem1.Enabled = False
         Me.UnprotectDocumentItem1.Id = 150
         Me.UnprotectDocumentItem1.Name = "UnprotectDocumentItem1"
         '
         'NewCommentItem1
         '
+        Me.NewCommentItem1.Caption = "Nuevo comentario"
+        Me.NewCommentItem1.Enabled = False
         Me.NewCommentItem1.Id = 151
         Me.NewCommentItem1.Name = "NewCommentItem1"
         '
         'DeleteCommentsItem1
         '
+        Me.DeleteCommentsItem1.Caption = "Eliminar comentario"
+        Me.DeleteCommentsItem1.Enabled = False
         Me.DeleteCommentsItem1.Id = 155
         Me.DeleteCommentsItem1.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.DeleteOneCommentItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.DeleteAllCommentsShownItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.DeleteAllCommentsItem1)})
         Me.DeleteCommentsItem1.Name = "DeleteCommentsItem1"
         '
         'DeleteOneCommentItem1
         '
+        Me.DeleteOneCommentItem1.Caption = "Eliminar comentario"
+        Me.DeleteOneCommentItem1.Enabled = False
         Me.DeleteOneCommentItem1.Id = 152
         Me.DeleteOneCommentItem1.Name = "DeleteOneCommentItem1"
         '
         'DeleteAllCommentsShownItem1
         '
+        Me.DeleteAllCommentsShownItem1.Caption = "Eliminar todos los comentarios que se muestra"
+        Me.DeleteAllCommentsShownItem1.Enabled = False
         Me.DeleteAllCommentsShownItem1.Id = 153
         Me.DeleteAllCommentsShownItem1.Name = "DeleteAllCommentsShownItem1"
         '
         'DeleteAllCommentsItem1
         '
+        Me.DeleteAllCommentsItem1.Caption = "Eliminar todos los comentarios"
+        Me.DeleteAllCommentsItem1.Enabled = False
         Me.DeleteAllCommentsItem1.Id = 154
         Me.DeleteAllCommentsItem1.Name = "DeleteAllCommentsItem1"
         '
         'PreviousCommentItem1
         '
+        Me.PreviousCommentItem1.Caption = "Anterior"
+        Me.PreviousCommentItem1.Enabled = False
         Me.PreviousCommentItem1.Id = 156
         Me.PreviousCommentItem1.Name = "PreviousCommentItem1"
         '
         'NextCommentItem1
         '
+        Me.NextCommentItem1.Caption = "Siguiente"
+        Me.NextCommentItem1.Enabled = False
         Me.NextCommentItem1.Id = 157
         Me.NextCommentItem1.Name = "NextCommentItem1"
         '
         'ToggleTrackChangesBarItem1
         '
+        Me.ToggleTrackChangesBarItem1.Caption = "Track Changes"
         ToolTipTitleItem1.Text = "Track Changes"
         ToolTipItem1.Text = "Keep track of changes made to this document."
         SuperToolTip1.Items.Add(ToolTipTitleItem1)
         SuperToolTip1.Items.Add(ToolTipItem1)
         Me.ToggleTrackChangesBarItem1.DropDownSuperTip = SuperToolTip1
+        Me.ToggleTrackChangesBarItem1.Enabled = False
         Me.ToggleTrackChangesBarItem1.Id = 158
         Me.ToggleTrackChangesBarItem1.Name = "ToggleTrackChangesBarItem1"
         '
         'ChangeDisplayForReviewModeItem1
         '
         Me.ChangeDisplayForReviewModeItem1.Edit = Me.DisplayForReviewModeComboBox1
+        Me.ChangeDisplayForReviewModeItem1.Enabled = False
         Me.ChangeDisplayForReviewModeItem1.Id = 159
         Me.ChangeDisplayForReviewModeItem1.Name = "ChangeDisplayForReviewModeItem1"
         '
@@ -1434,11 +1553,13 @@ Partial Class frmPrueba3
         'ShowMarkupSubItem1
         '
         Me.ShowMarkupSubItem1.ActAsDropDown = True
+        Me.ShowMarkupSubItem1.Caption = "Show Markup"
         ToolTipTitleItem2.Text = "Show Markup"
         ToolTipItem2.Text = "Choose what types of markup to show in your document."
         SuperToolTip2.Items.Add(ToolTipTitleItem2)
         SuperToolTip2.Items.Add(ToolTipItem2)
         Me.ShowMarkupSubItem1.DropDownSuperTip = SuperToolTip2
+        Me.ShowMarkupSubItem1.Enabled = False
         Me.ShowMarkupSubItem1.Id = 160
         Me.ShowMarkupSubItem1.Name = "ShowMarkupSubItem1"
         Me.ShowMarkupSubItem1.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText
@@ -1446,154 +1567,208 @@ Partial Class frmPrueba3
         '
         'ReviewingPaneItem1
         '
+        Me.ReviewingPaneItem1.Caption = "Panel de revisión"
+        Me.ReviewingPaneItem1.Enabled = False
         Me.ReviewingPaneItem1.Id = 161
         Me.ReviewingPaneItem1.Name = "ReviewingPaneItem1"
         '
         'AcceptAndMoveToNextSubItem1
         '
+        Me.AcceptAndMoveToNextSubItem1.Caption = "Accept"
         ToolTipTitleItem3.Text = "Accept"
         ToolTipItem3.Text = "Click for additional options, such as accepting all the changes at once."
         SuperToolTip3.Items.Add(ToolTipTitleItem3)
         SuperToolTip3.Items.Add(ToolTipItem3)
         Me.AcceptAndMoveToNextSubItem1.DropDownSuperTip = SuperToolTip3
+        Me.AcceptAndMoveToNextSubItem1.Enabled = False
         Me.AcceptAndMoveToNextSubItem1.Id = 162
         Me.AcceptAndMoveToNextSubItem1.Name = "AcceptAndMoveToNextSubItem1"
         '
         'RejectAndMoveToNextSubItem1
         '
+        Me.RejectAndMoveToNextSubItem1.Caption = "Reject"
         ToolTipTitleItem4.Text = "Reject"
         ToolTipItem4.Text = "Click for additional options, such as rejecting all the changes at once."
         SuperToolTip4.Items.Add(ToolTipTitleItem4)
         SuperToolTip4.Items.Add(ToolTipItem4)
         Me.RejectAndMoveToNextSubItem1.DropDownSuperTip = SuperToolTip4
+        Me.RejectAndMoveToNextSubItem1.Enabled = False
         Me.RejectAndMoveToNextSubItem1.Id = 163
         Me.RejectAndMoveToNextSubItem1.Name = "RejectAndMoveToNextSubItem1"
         '
         'PreviousChangeItem1
         '
+        Me.PreviousChangeItem1.Caption = "Anterior"
+        Me.PreviousChangeItem1.Enabled = False
         Me.PreviousChangeItem1.Id = 164
         Me.PreviousChangeItem1.Name = "PreviousChangeItem1"
         '
         'NextChangeItem1
         '
+        Me.NextChangeItem1.Caption = "Siguiente"
+        Me.NextChangeItem1.Enabled = False
         Me.NextChangeItem1.Id = 165
         Me.NextChangeItem1.Name = "NextChangeItem1"
         '
         'SwitchToSimpleViewItem1
         '
+        Me.SwitchToSimpleViewItem1.Caption = "Vista Simple"
+        Me.SwitchToSimpleViewItem1.Enabled = False
         Me.SwitchToSimpleViewItem1.Id = 166
         Me.SwitchToSimpleViewItem1.Name = "SwitchToSimpleViewItem1"
         '
         'SwitchToDraftViewItem1
         '
+        Me.SwitchToDraftViewItem1.Caption = "Vista Borrador"
+        Me.SwitchToDraftViewItem1.Enabled = False
         Me.SwitchToDraftViewItem1.Id = 167
         Me.SwitchToDraftViewItem1.Name = "SwitchToDraftViewItem1"
         '
         'SwitchToPrintLayoutViewItem1
         '
+        Me.SwitchToPrintLayoutViewItem1.Caption = "Distribución de Impresión"
+        Me.SwitchToPrintLayoutViewItem1.Enabled = False
         Me.SwitchToPrintLayoutViewItem1.Id = 168
         Me.SwitchToPrintLayoutViewItem1.Name = "SwitchToPrintLayoutViewItem1"
         '
         'ToggleShowHorizontalRulerItem1
         '
+        Me.ToggleShowHorizontalRulerItem1.Caption = "Regla Horizontal"
+        Me.ToggleShowHorizontalRulerItem1.Enabled = False
         Me.ToggleShowHorizontalRulerItem1.Id = 169
         Me.ToggleShowHorizontalRulerItem1.Name = "ToggleShowHorizontalRulerItem1"
         '
         'ToggleShowVerticalRulerItem1
         '
+        Me.ToggleShowVerticalRulerItem1.Caption = "Regla Vertical"
+        Me.ToggleShowVerticalRulerItem1.Enabled = False
         Me.ToggleShowVerticalRulerItem1.Id = 170
         Me.ToggleShowVerticalRulerItem1.Name = "ToggleShowVerticalRulerItem1"
         '
         'ZoomOutItem1
         '
+        Me.ZoomOutItem1.Caption = "Alejar"
+        Me.ZoomOutItem1.Enabled = False
         Me.ZoomOutItem1.Id = 171
         Me.ZoomOutItem1.Name = "ZoomOutItem1"
         '
         'ZoomInItem1
         '
+        Me.ZoomInItem1.Caption = "Acercar"
+        Me.ZoomInItem1.Enabled = False
         Me.ZoomInItem1.Id = 172
         Me.ZoomInItem1.Name = "ZoomInItem1"
         '
         'GoToPageHeaderItem1
         '
+        Me.GoToPageHeaderItem1.Caption = "Ir a la Cabecera"
+        Me.GoToPageHeaderItem1.Enabled = False
         Me.GoToPageHeaderItem1.Id = 173
         Me.GoToPageHeaderItem1.Name = "GoToPageHeaderItem1"
         '
         'GoToPageFooterItem1
         '
+        Me.GoToPageFooterItem1.Caption = "Ir al Pie"
+        Me.GoToPageFooterItem1.Enabled = False
         Me.GoToPageFooterItem1.Id = 174
         Me.GoToPageFooterItem1.Name = "GoToPageFooterItem1"
         '
         'GoToNextHeaderFooterItem1
         '
+        Me.GoToNextHeaderFooterItem1.Caption = "Mostrar próximo"
+        Me.GoToNextHeaderFooterItem1.Enabled = False
         Me.GoToNextHeaderFooterItem1.Id = 175
         Me.GoToNextHeaderFooterItem1.Name = "GoToNextHeaderFooterItem1"
         '
         'GoToPreviousHeaderFooterItem1
         '
+        Me.GoToPreviousHeaderFooterItem1.Caption = "Mostrar previo"
+        Me.GoToPreviousHeaderFooterItem1.Enabled = False
         Me.GoToPreviousHeaderFooterItem1.Id = 176
         Me.GoToPreviousHeaderFooterItem1.Name = "GoToPreviousHeaderFooterItem1"
         '
         'ToggleLinkToPreviousItem1
         '
+        Me.ToggleLinkToPreviousItem1.Caption = "Enlazar al Anterior"
+        Me.ToggleLinkToPreviousItem1.Enabled = False
         Me.ToggleLinkToPreviousItem1.Id = 177
         Me.ToggleLinkToPreviousItem1.Name = "ToggleLinkToPreviousItem1"
         '
         'ToggleDifferentFirstPageItem1
         '
+        Me.ToggleDifferentFirstPageItem1.Caption = "Primera Página Diferente"
+        Me.ToggleDifferentFirstPageItem1.Enabled = False
         Me.ToggleDifferentFirstPageItem1.Id = 178
         Me.ToggleDifferentFirstPageItem1.Name = "ToggleDifferentFirstPageItem1"
         '
         'ToggleDifferentOddAndEvenPagesItem1
         '
+        Me.ToggleDifferentOddAndEvenPagesItem1.Caption = "Páginas Pares e Impares Diferentes"
+        Me.ToggleDifferentOddAndEvenPagesItem1.Enabled = False
         Me.ToggleDifferentOddAndEvenPagesItem1.Id = 179
         Me.ToggleDifferentOddAndEvenPagesItem1.Name = "ToggleDifferentOddAndEvenPagesItem1"
         '
         'ClosePageHeaderFooterItem1
         '
+        Me.ClosePageHeaderFooterItem1.Caption = "Cerrar Cabecera y Pie"
+        Me.ClosePageHeaderFooterItem1.Enabled = False
         Me.ClosePageHeaderFooterItem1.Id = 180
         Me.ClosePageHeaderFooterItem1.Name = "ClosePageHeaderFooterItem1"
         '
         'ToggleFirstRowItem1
         '
+        Me.ToggleFirstRowItem1.Caption = "Fila de Cabecera"
         Me.ToggleFirstRowItem1.CheckBoxVisibility = DevExpress.XtraBars.CheckBoxVisibility.BeforeText
+        Me.ToggleFirstRowItem1.Enabled = False
         Me.ToggleFirstRowItem1.Id = 181
         Me.ToggleFirstRowItem1.Name = "ToggleFirstRowItem1"
         '
         'ToggleLastRowItem1
         '
+        Me.ToggleLastRowItem1.Caption = "Total Fila"
         Me.ToggleLastRowItem1.CheckBoxVisibility = DevExpress.XtraBars.CheckBoxVisibility.BeforeText
+        Me.ToggleLastRowItem1.Enabled = False
         Me.ToggleLastRowItem1.Id = 182
         Me.ToggleLastRowItem1.Name = "ToggleLastRowItem1"
         '
         'ToggleBandedRowsItem1
         '
+        Me.ToggleBandedRowsItem1.Caption = "Filas Agrupadas"
         Me.ToggleBandedRowsItem1.CheckBoxVisibility = DevExpress.XtraBars.CheckBoxVisibility.BeforeText
+        Me.ToggleBandedRowsItem1.Enabled = False
         Me.ToggleBandedRowsItem1.Id = 183
         Me.ToggleBandedRowsItem1.Name = "ToggleBandedRowsItem1"
         '
         'ToggleFirstColumnItem1
         '
+        Me.ToggleFirstColumnItem1.Caption = "Primera Columna"
         Me.ToggleFirstColumnItem1.CheckBoxVisibility = DevExpress.XtraBars.CheckBoxVisibility.BeforeText
+        Me.ToggleFirstColumnItem1.Enabled = False
         Me.ToggleFirstColumnItem1.Id = 184
         Me.ToggleFirstColumnItem1.Name = "ToggleFirstColumnItem1"
         '
         'ToggleLastColumnItem1
         '
+        Me.ToggleLastColumnItem1.Caption = "Última Columna"
         Me.ToggleLastColumnItem1.CheckBoxVisibility = DevExpress.XtraBars.CheckBoxVisibility.BeforeText
+        Me.ToggleLastColumnItem1.Enabled = False
         Me.ToggleLastColumnItem1.Id = 185
         Me.ToggleLastColumnItem1.Name = "ToggleLastColumnItem1"
         '
         'ToggleBandedColumnsItem1
         '
+        Me.ToggleBandedColumnsItem1.Caption = "Columna de Banda"
         Me.ToggleBandedColumnsItem1.CheckBoxVisibility = DevExpress.XtraBars.CheckBoxVisibility.BeforeText
+        Me.ToggleBandedColumnsItem1.Enabled = False
         Me.ToggleBandedColumnsItem1.Id = 186
         Me.ToggleBandedColumnsItem1.Name = "ToggleBandedColumnsItem1"
         '
         'GalleryChangeTableStyleItem1
         '
+        Me.GalleryChangeTableStyleItem1.Caption = "Estilos rápidos"
         Me.GalleryChangeTableStyleItem1.CurrentItem = Nothing
         Me.GalleryChangeTableStyleItem1.DeleteItemLink = Nothing
+        Me.GalleryChangeTableStyleItem1.Enabled = False
         '
         '
         '
@@ -1610,6 +1785,7 @@ Partial Class frmPrueba3
         '
         Me.ChangeTableBorderLineStyleItem1.Edit = Me.RepositoryItemBorderLineStyle1
         Me.ChangeTableBorderLineStyleItem1.EditWidth = 130
+        Me.ChangeTableBorderLineStyleItem1.Enabled = False
         Me.ChangeTableBorderLineStyleItem1.Id = 188
         Me.ChangeTableBorderLineStyleItem1.Name = "ChangeTableBorderLineStyleItem1"
         '
@@ -1617,14 +1793,14 @@ Partial Class frmPrueba3
         '
         Me.RepositoryItemBorderLineStyle1.AutoHeight = False
         Me.RepositoryItemBorderLineStyle1.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.RepositoryItemBorderLineStyle1.Control = Me.rtbPrueba
+        Me.RepositoryItemBorderLineStyle1.Control = Nothing
         Me.RepositoryItemBorderLineStyle1.Name = "RepositoryItemBorderLineStyle1"
         '
         'ChangeTableBorderLineWeightItem1
         '
         Me.ChangeTableBorderLineWeightItem1.Edit = Me.RepositoryItemBorderLineWeight1
-        Me.ChangeTableBorderLineWeightItem1.EditValue = 20
         Me.ChangeTableBorderLineWeightItem1.EditWidth = 130
+        Me.ChangeTableBorderLineWeightItem1.Enabled = False
         Me.ChangeTableBorderLineWeightItem1.Id = 189
         Me.ChangeTableBorderLineWeightItem1.Name = "ChangeTableBorderLineWeightItem1"
         '
@@ -1632,267 +1808,367 @@ Partial Class frmPrueba3
         '
         Me.RepositoryItemBorderLineWeight1.AutoHeight = False
         Me.RepositoryItemBorderLineWeight1.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.RepositoryItemBorderLineWeight1.Control = Me.rtbPrueba
+        Me.RepositoryItemBorderLineWeight1.Control = Nothing
         Me.RepositoryItemBorderLineWeight1.Name = "RepositoryItemBorderLineWeight1"
         '
         'ChangeTableBorderColorItem1
         '
+        Me.ChangeTableBorderColorItem1.Caption = "Color de Pluma"
+        Me.ChangeTableBorderColorItem1.Enabled = False
         Me.ChangeTableBorderColorItem1.Id = 190
         Me.ChangeTableBorderColorItem1.Name = "ChangeTableBorderColorItem1"
         '
         'ChangeTableBordersItem1
         '
+        Me.ChangeTableBordersItem1.Caption = "Bordes"
+        Me.ChangeTableBordersItem1.Enabled = False
         Me.ChangeTableBordersItem1.Id = 202
-        Me.ChangeTableBordersItem1.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.ToggleTableCellsBottomBorderItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.ToggleTableCellsTopBorderItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.ToggleTableCellsLeftBorderItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.ToggleTableCellsRightBorderItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.ResetTableCellsAllBordersItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.ToggleTableCellsAllBordersItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.ToggleTableCellsOutsideBorderItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.ToggleTableCellsInsideBorderItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.ToggleTableCellsInsideHorizontalBorderItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.ToggleTableCellsInsideVerticalBorderItem1), New DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.KeyTip, Me.ToggleShowTableGridLinesItem1, "", False, True, True, 0, Nothing, DevExpress.XtraBars.BarItemPaintStyle.Standard, "TG", "")})
+        Me.ChangeTableBordersItem1.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.ToggleTableCellsBottomBorderItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.ToggleTableCellsTopBorderItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.ToggleTableCellsLeftBorderItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.ToggleTableCellsRightBorderItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.ResetTableCellsAllBordersItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.ToggleTableCellsAllBordersItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.ToggleTableCellsOutsideBorderItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.ToggleTableCellsInsideBorderItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.ToggleTableCellsInsideHorizontalBorderItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.ToggleTableCellsInsideVerticalBorderItem1), New DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.KeyTip, Me.ToggleShowTableGridLinesItem1, "", False, True, True, 0, Nothing, DevExpress.XtraBars.BarItemPaintStyle.Standard, "", "")})
         Me.ChangeTableBordersItem1.Name = "ChangeTableBordersItem1"
         '
         'ToggleTableCellsBottomBorderItem1
         '
+        Me.ToggleTableCellsBottomBorderItem1.Caption = "Borde Inferior"
+        Me.ToggleTableCellsBottomBorderItem1.Enabled = False
         Me.ToggleTableCellsBottomBorderItem1.Id = 191
         Me.ToggleTableCellsBottomBorderItem1.Name = "ToggleTableCellsBottomBorderItem1"
         '
         'ToggleTableCellsTopBorderItem1
         '
+        Me.ToggleTableCellsTopBorderItem1.Caption = "Borde Superior"
+        Me.ToggleTableCellsTopBorderItem1.Enabled = False
         Me.ToggleTableCellsTopBorderItem1.Id = 192
         Me.ToggleTableCellsTopBorderItem1.Name = "ToggleTableCellsTopBorderItem1"
         '
         'ToggleTableCellsLeftBorderItem1
         '
+        Me.ToggleTableCellsLeftBorderItem1.Caption = "Borde Izquierda"
+        Me.ToggleTableCellsLeftBorderItem1.Enabled = False
         Me.ToggleTableCellsLeftBorderItem1.Id = 193
         Me.ToggleTableCellsLeftBorderItem1.Name = "ToggleTableCellsLeftBorderItem1"
         '
         'ToggleTableCellsRightBorderItem1
         '
+        Me.ToggleTableCellsRightBorderItem1.Caption = "Borde Derecha"
+        Me.ToggleTableCellsRightBorderItem1.Enabled = False
         Me.ToggleTableCellsRightBorderItem1.Id = 194
         Me.ToggleTableCellsRightBorderItem1.Name = "ToggleTableCellsRightBorderItem1"
         '
         'ResetTableCellsAllBordersItem1
         '
+        Me.ResetTableCellsAllBordersItem1.Caption = "Sin Bordes"
+        Me.ResetTableCellsAllBordersItem1.Enabled = False
         Me.ResetTableCellsAllBordersItem1.Id = 195
         Me.ResetTableCellsAllBordersItem1.Name = "ResetTableCellsAllBordersItem1"
         '
         'ToggleTableCellsAllBordersItem1
         '
+        Me.ToggleTableCellsAllBordersItem1.Caption = "Todos los Bordes"
+        Me.ToggleTableCellsAllBordersItem1.Enabled = False
         Me.ToggleTableCellsAllBordersItem1.Id = 196
         Me.ToggleTableCellsAllBordersItem1.Name = "ToggleTableCellsAllBordersItem1"
         '
         'ToggleTableCellsOutsideBorderItem1
         '
+        Me.ToggleTableCellsOutsideBorderItem1.Caption = "Borde Exterior"
+        Me.ToggleTableCellsOutsideBorderItem1.Enabled = False
         Me.ToggleTableCellsOutsideBorderItem1.Id = 197
         Me.ToggleTableCellsOutsideBorderItem1.Name = "ToggleTableCellsOutsideBorderItem1"
         '
         'ToggleTableCellsInsideBorderItem1
         '
+        Me.ToggleTableCellsInsideBorderItem1.Caption = "Borde Interior"
+        Me.ToggleTableCellsInsideBorderItem1.Enabled = False
         Me.ToggleTableCellsInsideBorderItem1.Id = 198
         Me.ToggleTableCellsInsideBorderItem1.Name = "ToggleTableCellsInsideBorderItem1"
         '
         'ToggleTableCellsInsideHorizontalBorderItem1
         '
+        Me.ToggleTableCellsInsideHorizontalBorderItem1.Caption = "Borde Interior Horizontal"
+        Me.ToggleTableCellsInsideHorizontalBorderItem1.Enabled = False
         Me.ToggleTableCellsInsideHorizontalBorderItem1.Id = 199
         Me.ToggleTableCellsInsideHorizontalBorderItem1.Name = "ToggleTableCellsInsideHorizontalBorderItem1"
         '
         'ToggleTableCellsInsideVerticalBorderItem1
         '
+        Me.ToggleTableCellsInsideVerticalBorderItem1.Caption = "Borde Interior Vertical"
+        Me.ToggleTableCellsInsideVerticalBorderItem1.Enabled = False
         Me.ToggleTableCellsInsideVerticalBorderItem1.Id = 200
         Me.ToggleTableCellsInsideVerticalBorderItem1.Name = "ToggleTableCellsInsideVerticalBorderItem1"
         '
         'ToggleShowTableGridLinesItem1
         '
+        Me.ToggleShowTableGridLinesItem1.Caption = "Visualizar Cuadrículas"
+        Me.ToggleShowTableGridLinesItem1.Enabled = False
         Me.ToggleShowTableGridLinesItem1.Id = 201
         Me.ToggleShowTableGridLinesItem1.Name = "ToggleShowTableGridLinesItem1"
         '
         'ChangeTableCellsShadingItem1
         '
+        Me.ChangeTableCellsShadingItem1.Caption = "Sombreado"
+        Me.ChangeTableCellsShadingItem1.Enabled = False
         Me.ChangeTableCellsShadingItem1.Id = 203
         Me.ChangeTableCellsShadingItem1.Name = "ChangeTableCellsShadingItem1"
         '
         'ShowBorderShadingFormItem1
         '
+        Me.ShowBorderShadingFormItem1.Caption = "Borders and Shading"
+        Me.ShowBorderShadingFormItem1.Enabled = False
         Me.ShowBorderShadingFormItem1.Id = 204
         Me.ShowBorderShadingFormItem1.Name = "ShowBorderShadingFormItem1"
         '
         'SelectTableElementsItem1
         '
+        Me.SelectTableElementsItem1.Caption = "Seleccionar"
+        Me.SelectTableElementsItem1.Enabled = False
         Me.SelectTableElementsItem1.Id = 209
         Me.SelectTableElementsItem1.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.SelectTableCellItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.SelectTableColumnItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.SelectTableRowItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.SelectTableItem1)})
         Me.SelectTableElementsItem1.Name = "SelectTableElementsItem1"
         '
         'SelectTableCellItem1
         '
+        Me.SelectTableCellItem1.Caption = "Seleccionar Celda de la Tabla"
+        Me.SelectTableCellItem1.Enabled = False
         Me.SelectTableCellItem1.Id = 205
         Me.SelectTableCellItem1.Name = "SelectTableCellItem1"
         '
         'SelectTableColumnItem1
         '
+        Me.SelectTableColumnItem1.Caption = "Seleccionar Columnas de la Tabla"
+        Me.SelectTableColumnItem1.Enabled = False
         Me.SelectTableColumnItem1.Id = 206
         Me.SelectTableColumnItem1.Name = "SelectTableColumnItem1"
         '
         'SelectTableRowItem1
         '
+        Me.SelectTableRowItem1.Caption = "Seleccionar Fila de la Tabla"
+        Me.SelectTableRowItem1.Enabled = False
         Me.SelectTableRowItem1.Id = 207
         Me.SelectTableRowItem1.Name = "SelectTableRowItem1"
         '
         'SelectTableItem1
         '
+        Me.SelectTableItem1.Caption = "Seleccionar Tabla"
+        Me.SelectTableItem1.Enabled = False
         Me.SelectTableItem1.Id = 208
         Me.SelectTableItem1.Name = "SelectTableItem1"
         '
         'ShowTablePropertiesFormItem1
         '
+        Me.ShowTablePropertiesFormItem1.Caption = "Propiedades"
+        Me.ShowTablePropertiesFormItem1.Enabled = False
         Me.ShowTablePropertiesFormItem1.Id = 210
         Me.ShowTablePropertiesFormItem1.Name = "ShowTablePropertiesFormItem1"
         '
         'DeleteTableElementsItem1
         '
+        Me.DeleteTableElementsItem1.Caption = "Eliminar"
+        Me.DeleteTableElementsItem1.Enabled = False
         Me.DeleteTableElementsItem1.Id = 215
         Me.DeleteTableElementsItem1.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.ShowDeleteTableCellsFormItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.DeleteTableColumnsItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.DeleteTableRowsItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.DeleteTableItem1)})
         Me.DeleteTableElementsItem1.Name = "DeleteTableElementsItem1"
         '
         'ShowDeleteTableCellsFormItem1
         '
+        Me.ShowDeleteTableCellsFormItem1.Caption = "Eliminar Celdas"
+        Me.ShowDeleteTableCellsFormItem1.Enabled = False
         Me.ShowDeleteTableCellsFormItem1.Id = 211
         Me.ShowDeleteTableCellsFormItem1.Name = "ShowDeleteTableCellsFormItem1"
         '
         'DeleteTableColumnsItem1
         '
+        Me.DeleteTableColumnsItem1.Caption = "Eliminar Columnas"
+        Me.DeleteTableColumnsItem1.Enabled = False
         Me.DeleteTableColumnsItem1.Id = 212
         Me.DeleteTableColumnsItem1.Name = "DeleteTableColumnsItem1"
         '
         'DeleteTableRowsItem1
         '
+        Me.DeleteTableRowsItem1.Caption = "Eliminar Filas"
+        Me.DeleteTableRowsItem1.Enabled = False
         Me.DeleteTableRowsItem1.Id = 213
         Me.DeleteTableRowsItem1.Name = "DeleteTableRowsItem1"
         '
         'DeleteTableItem1
         '
+        Me.DeleteTableItem1.Caption = "Eliminar Tabla"
+        Me.DeleteTableItem1.Enabled = False
         Me.DeleteTableItem1.Id = 214
         Me.DeleteTableItem1.Name = "DeleteTableItem1"
         '
         'InsertTableRowAboveItem1
         '
+        Me.InsertTableRowAboveItem1.Caption = "Insertar Filas Encima"
+        Me.InsertTableRowAboveItem1.Enabled = False
         Me.InsertTableRowAboveItem1.Id = 216
         Me.InsertTableRowAboveItem1.Name = "InsertTableRowAboveItem1"
         '
         'InsertTableRowBelowItem1
         '
+        Me.InsertTableRowBelowItem1.Caption = "Insertar Filas Abajo"
+        Me.InsertTableRowBelowItem1.Enabled = False
         Me.InsertTableRowBelowItem1.Id = 217
         Me.InsertTableRowBelowItem1.Name = "InsertTableRowBelowItem1"
         '
         'InsertTableColumnToLeftItem1
         '
+        Me.InsertTableColumnToLeftItem1.Caption = "Insertar Columnas a la Izquierda"
+        Me.InsertTableColumnToLeftItem1.Enabled = False
         Me.InsertTableColumnToLeftItem1.Id = 218
         Me.InsertTableColumnToLeftItem1.Name = "InsertTableColumnToLeftItem1"
         '
         'InsertTableColumnToRightItem1
         '
+        Me.InsertTableColumnToRightItem1.Caption = "Insertar Columnas a la Derecha"
+        Me.InsertTableColumnToRightItem1.Enabled = False
         Me.InsertTableColumnToRightItem1.Id = 219
         Me.InsertTableColumnToRightItem1.Name = "InsertTableColumnToRightItem1"
         '
         'ShowInsertTableCellsFormItem1
         '
+        Me.ShowInsertTableCellsFormItem1.Caption = "Insertar Celdas"
+        Me.ShowInsertTableCellsFormItem1.Enabled = False
         Me.ShowInsertTableCellsFormItem1.Id = 220
         Me.ShowInsertTableCellsFormItem1.Name = "ShowInsertTableCellsFormItem1"
         '
         'MergeTableCellsItem1
         '
+        Me.MergeTableCellsItem1.Caption = "Fusionar Celdas"
+        Me.MergeTableCellsItem1.Enabled = False
         Me.MergeTableCellsItem1.Id = 221
         Me.MergeTableCellsItem1.Name = "MergeTableCellsItem1"
         '
         'ShowSplitTableCellsForm1
         '
+        Me.ShowSplitTableCellsForm1.Caption = "Partir las Celdas"
+        Me.ShowSplitTableCellsForm1.Enabled = False
         Me.ShowSplitTableCellsForm1.Id = 222
         Me.ShowSplitTableCellsForm1.Name = "ShowSplitTableCellsForm1"
         '
         'SplitTableItem1
         '
+        Me.SplitTableItem1.Caption = "Partir la Tabla"
+        Me.SplitTableItem1.Enabled = False
         Me.SplitTableItem1.Id = 223
         Me.SplitTableItem1.Name = "SplitTableItem1"
         '
         'ToggleTableAutoFitItem1
         '
+        Me.ToggleTableAutoFitItem1.Caption = "Ajustar"
+        Me.ToggleTableAutoFitItem1.Enabled = False
         Me.ToggleTableAutoFitItem1.Id = 227
         Me.ToggleTableAutoFitItem1.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.ToggleTableAutoFitContentsItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.ToggleTableAutoFitWindowItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.ToggleTableFixedColumnWidthItem1)})
         Me.ToggleTableAutoFitItem1.Name = "ToggleTableAutoFitItem1"
         '
         'ToggleTableAutoFitContentsItem1
         '
+        Me.ToggleTableAutoFitContentsItem1.Caption = "Ajustar Contenido"
+        Me.ToggleTableAutoFitContentsItem1.Enabled = False
         Me.ToggleTableAutoFitContentsItem1.Id = 224
         Me.ToggleTableAutoFitContentsItem1.Name = "ToggleTableAutoFitContentsItem1"
         '
         'ToggleTableAutoFitWindowItem1
         '
+        Me.ToggleTableAutoFitWindowItem1.Caption = "Ajustar Ventana"
+        Me.ToggleTableAutoFitWindowItem1.Enabled = False
         Me.ToggleTableAutoFitWindowItem1.Id = 225
         Me.ToggleTableAutoFitWindowItem1.Name = "ToggleTableAutoFitWindowItem1"
         '
         'ToggleTableFixedColumnWidthItem1
         '
+        Me.ToggleTableFixedColumnWidthItem1.Caption = "Columna de Anchura Fija"
+        Me.ToggleTableFixedColumnWidthItem1.Enabled = False
         Me.ToggleTableFixedColumnWidthItem1.Id = 226
         Me.ToggleTableFixedColumnWidthItem1.Name = "ToggleTableFixedColumnWidthItem1"
         '
         'ToggleTableCellsTopLeftAlignmentItem1
         '
+        Me.ToggleTableCellsTopLeftAlignmentItem1.Caption = "Alinear Superior Izquierda"
+        Me.ToggleTableCellsTopLeftAlignmentItem1.Enabled = False
         Me.ToggleTableCellsTopLeftAlignmentItem1.Id = 228
         Me.ToggleTableCellsTopLeftAlignmentItem1.Name = "ToggleTableCellsTopLeftAlignmentItem1"
         '
         'ToggleTableCellsMiddleLeftAlignmentItem1
         '
+        Me.ToggleTableCellsMiddleLeftAlignmentItem1.Caption = "Alinear Centro Izquierda"
+        Me.ToggleTableCellsMiddleLeftAlignmentItem1.Enabled = False
         Me.ToggleTableCellsMiddleLeftAlignmentItem1.Id = 229
         Me.ToggleTableCellsMiddleLeftAlignmentItem1.Name = "ToggleTableCellsMiddleLeftAlignmentItem1"
         '
         'ToggleTableCellsBottomLeftAlignmentItem1
         '
+        Me.ToggleTableCellsBottomLeftAlignmentItem1.Caption = "Alinear Inferior Izquierda"
+        Me.ToggleTableCellsBottomLeftAlignmentItem1.Enabled = False
         Me.ToggleTableCellsBottomLeftAlignmentItem1.Id = 230
         Me.ToggleTableCellsBottomLeftAlignmentItem1.Name = "ToggleTableCellsBottomLeftAlignmentItem1"
         '
         'ToggleTableCellsTopCenterAlignmentItem1
         '
+        Me.ToggleTableCellsTopCenterAlignmentItem1.Caption = "Alinear Centro Superior"
+        Me.ToggleTableCellsTopCenterAlignmentItem1.Enabled = False
         Me.ToggleTableCellsTopCenterAlignmentItem1.Id = 231
         Me.ToggleTableCellsTopCenterAlignmentItem1.Name = "ToggleTableCellsTopCenterAlignmentItem1"
         '
         'ToggleTableCellsMiddleCenterAlignmentItem1
         '
+        Me.ToggleTableCellsMiddleCenterAlignmentItem1.Caption = "Alinear al Centro"
+        Me.ToggleTableCellsMiddleCenterAlignmentItem1.Enabled = False
         Me.ToggleTableCellsMiddleCenterAlignmentItem1.Id = 232
         Me.ToggleTableCellsMiddleCenterAlignmentItem1.Name = "ToggleTableCellsMiddleCenterAlignmentItem1"
         '
         'ToggleTableCellsBottomCenterAlignmentItem1
         '
+        Me.ToggleTableCellsBottomCenterAlignmentItem1.Caption = "Alinear Inferior Centrado"
+        Me.ToggleTableCellsBottomCenterAlignmentItem1.Enabled = False
         Me.ToggleTableCellsBottomCenterAlignmentItem1.Id = 233
         Me.ToggleTableCellsBottomCenterAlignmentItem1.Name = "ToggleTableCellsBottomCenterAlignmentItem1"
         '
         'ToggleTableCellsTopRightAlignmentItem1
         '
+        Me.ToggleTableCellsTopRightAlignmentItem1.Caption = "Alinear Superior Derecha"
+        Me.ToggleTableCellsTopRightAlignmentItem1.Enabled = False
         Me.ToggleTableCellsTopRightAlignmentItem1.Id = 234
         Me.ToggleTableCellsTopRightAlignmentItem1.Name = "ToggleTableCellsTopRightAlignmentItem1"
         '
         'ToggleTableCellsMiddleRightAlignmentItem1
         '
+        Me.ToggleTableCellsMiddleRightAlignmentItem1.Caption = "Alinear Centro Derecha"
+        Me.ToggleTableCellsMiddleRightAlignmentItem1.Enabled = False
         Me.ToggleTableCellsMiddleRightAlignmentItem1.Id = 235
         Me.ToggleTableCellsMiddleRightAlignmentItem1.Name = "ToggleTableCellsMiddleRightAlignmentItem1"
         '
         'ToggleTableCellsBottomRightAlignmentItem1
         '
+        Me.ToggleTableCellsBottomRightAlignmentItem1.Caption = "Alinear Inferior Derecha"
+        Me.ToggleTableCellsBottomRightAlignmentItem1.Enabled = False
         Me.ToggleTableCellsBottomRightAlignmentItem1.Id = 236
         Me.ToggleTableCellsBottomRightAlignmentItem1.Name = "ToggleTableCellsBottomRightAlignmentItem1"
         '
         'ShowTableOptionsFormItem1
         '
+        Me.ShowTableOptionsFormItem1.Caption = "Márgenes de Celda"
+        Me.ShowTableOptionsFormItem1.Enabled = False
         Me.ShowTableOptionsFormItem1.Id = 237
         Me.ShowTableOptionsFormItem1.Name = "ShowTableOptionsFormItem1"
         '
         'ChangeFloatingObjectFillColorItem1
         '
+        Me.ChangeFloatingObjectFillColorItem1.Caption = "Rellenar Figura"
+        Me.ChangeFloatingObjectFillColorItem1.Enabled = False
         Me.ChangeFloatingObjectFillColorItem1.Id = 238
         Me.ChangeFloatingObjectFillColorItem1.Name = "ChangeFloatingObjectFillColorItem1"
         '
         'ChangeFloatingObjectOutlineColorItem1
         '
+        Me.ChangeFloatingObjectOutlineColorItem1.Caption = "Contorno de Figura"
+        Me.ChangeFloatingObjectOutlineColorItem1.Enabled = False
         Me.ChangeFloatingObjectOutlineColorItem1.Id = 239
         Me.ChangeFloatingObjectOutlineColorItem1.Name = "ChangeFloatingObjectOutlineColorItem1"
         '
         'ChangeFloatingObjectOutlineWeightItem1
         '
         Me.ChangeFloatingObjectOutlineWeightItem1.Edit = Me.RepositoryItemFloatingObjectOutlineWeight1
-        Me.ChangeFloatingObjectOutlineWeightItem1.EditValue = 20
+        Me.ChangeFloatingObjectOutlineWeightItem1.Enabled = False
         Me.ChangeFloatingObjectOutlineWeightItem1.Id = 240
         Me.ChangeFloatingObjectOutlineWeightItem1.Name = "ChangeFloatingObjectOutlineWeightItem1"
         '
@@ -1900,171 +2176,194 @@ Partial Class frmPrueba3
         '
         Me.RepositoryItemFloatingObjectOutlineWeight1.AutoHeight = False
         Me.RepositoryItemFloatingObjectOutlineWeight1.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.RepositoryItemFloatingObjectOutlineWeight1.Control = Me.rtbPrueba
+        Me.RepositoryItemFloatingObjectOutlineWeight1.Control = Nothing
         Me.RepositoryItemFloatingObjectOutlineWeight1.Name = "RepositoryItemFloatingObjectOutlineWeight1"
         '
         'ChangeFloatingObjectTextWrapTypeItem1
         '
+        Me.ChangeFloatingObjectTextWrapTypeItem1.Caption = "Doblar Texto"
+        Me.ChangeFloatingObjectTextWrapTypeItem1.Enabled = False
         Me.ChangeFloatingObjectTextWrapTypeItem1.Id = 241
         Me.ChangeFloatingObjectTextWrapTypeItem1.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.SetFloatingObjectInlineTextWrapTypeItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.SetFloatingObjectSquareTextWrapTypeItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.SetFloatingObjectTightTextWrapTypeItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.SetFloatingObjectThroughTextWrapTypeItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.SetFloatingObjectTopAndBottomTextWrapTypeItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.SetFloatingObjectBehindTextWrapTypeItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.SetFloatingObjectInFrontOfTextWrapTypeItem1)})
         Me.ChangeFloatingObjectTextWrapTypeItem1.Name = "ChangeFloatingObjectTextWrapTypeItem1"
         '
         'SetFloatingObjectInlineTextWrapTypeItem1
         '
+        Me.SetFloatingObjectInlineTextWrapTypeItem1.Caption = "In Line with Text"
+        Me.SetFloatingObjectInlineTextWrapTypeItem1.Enabled = False
         Me.SetFloatingObjectInlineTextWrapTypeItem1.Id = 242
         Me.SetFloatingObjectInlineTextWrapTypeItem1.Name = "SetFloatingObjectInlineTextWrapTypeItem1"
         '
         'SetFloatingObjectSquareTextWrapTypeItem1
         '
+        Me.SetFloatingObjectSquareTextWrapTypeItem1.Caption = "Cuadrado"
+        Me.SetFloatingObjectSquareTextWrapTypeItem1.Enabled = False
         Me.SetFloatingObjectSquareTextWrapTypeItem1.Id = 243
         Me.SetFloatingObjectSquareTextWrapTypeItem1.Name = "SetFloatingObjectSquareTextWrapTypeItem1"
         '
         'SetFloatingObjectTightTextWrapTypeItem1
         '
+        Me.SetFloatingObjectTightTextWrapTypeItem1.Caption = "Justo"
+        Me.SetFloatingObjectTightTextWrapTypeItem1.Enabled = False
         Me.SetFloatingObjectTightTextWrapTypeItem1.Id = 244
         Me.SetFloatingObjectTightTextWrapTypeItem1.Name = "SetFloatingObjectTightTextWrapTypeItem1"
         '
         'SetFloatingObjectThroughTextWrapTypeItem1
         '
+        Me.SetFloatingObjectThroughTextWrapTypeItem1.Caption = "A Través"
+        Me.SetFloatingObjectThroughTextWrapTypeItem1.Enabled = False
         Me.SetFloatingObjectThroughTextWrapTypeItem1.Id = 245
         Me.SetFloatingObjectThroughTextWrapTypeItem1.Name = "SetFloatingObjectThroughTextWrapTypeItem1"
         '
         'SetFloatingObjectTopAndBottomTextWrapTypeItem1
         '
+        Me.SetFloatingObjectTopAndBottomTextWrapTypeItem1.Caption = "Arriba y Abajo"
+        Me.SetFloatingObjectTopAndBottomTextWrapTypeItem1.Enabled = False
         Me.SetFloatingObjectTopAndBottomTextWrapTypeItem1.Id = 246
         Me.SetFloatingObjectTopAndBottomTextWrapTypeItem1.Name = "SetFloatingObjectTopAndBottomTextWrapTypeItem1"
         '
         'SetFloatingObjectBehindTextWrapTypeItem1
         '
+        Me.SetFloatingObjectBehindTextWrapTypeItem1.Caption = "Detrás del Texto"
+        Me.SetFloatingObjectBehindTextWrapTypeItem1.Enabled = False
         Me.SetFloatingObjectBehindTextWrapTypeItem1.Id = 247
         Me.SetFloatingObjectBehindTextWrapTypeItem1.Name = "SetFloatingObjectBehindTextWrapTypeItem1"
         '
         'SetFloatingObjectInFrontOfTextWrapTypeItem1
         '
+        Me.SetFloatingObjectInFrontOfTextWrapTypeItem1.Caption = "Por Delante del Texto"
+        Me.SetFloatingObjectInFrontOfTextWrapTypeItem1.Enabled = False
         Me.SetFloatingObjectInFrontOfTextWrapTypeItem1.Id = 248
         Me.SetFloatingObjectInFrontOfTextWrapTypeItem1.Name = "SetFloatingObjectInFrontOfTextWrapTypeItem1"
         '
         'ChangeFloatingObjectAlignmentItem1
         '
+        Me.ChangeFloatingObjectAlignmentItem1.Caption = "Posición"
+        Me.ChangeFloatingObjectAlignmentItem1.Enabled = False
         Me.ChangeFloatingObjectAlignmentItem1.Id = 249
         Me.ChangeFloatingObjectAlignmentItem1.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.SetFloatingObjectTopLeftAlignmentItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.SetFloatingObjectTopCenterAlignmentItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.SetFloatingObjectTopRightAlignmentItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.SetFloatingObjectMiddleLeftAlignmentItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.SetFloatingObjectMiddleCenterAlignmentItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.SetFloatingObjectMiddleRightAlignmentItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.SetFloatingObjectBottomLeftAlignmentItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.SetFloatingObjectBottomCenterAlignmentItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.SetFloatingObjectBottomRightAlignmentItem1)})
         Me.ChangeFloatingObjectAlignmentItem1.Name = "ChangeFloatingObjectAlignmentItem1"
         '
         'SetFloatingObjectTopLeftAlignmentItem1
         '
+        Me.SetFloatingObjectTopLeftAlignmentItem1.Caption = "Superior Izquierda"
+        Me.SetFloatingObjectTopLeftAlignmentItem1.Enabled = False
         Me.SetFloatingObjectTopLeftAlignmentItem1.Id = 250
         Me.SetFloatingObjectTopLeftAlignmentItem1.Name = "SetFloatingObjectTopLeftAlignmentItem1"
         '
         'SetFloatingObjectTopCenterAlignmentItem1
         '
+        Me.SetFloatingObjectTopCenterAlignmentItem1.Caption = "Superior Centrado"
+        Me.SetFloatingObjectTopCenterAlignmentItem1.Enabled = False
         Me.SetFloatingObjectTopCenterAlignmentItem1.Id = 251
         Me.SetFloatingObjectTopCenterAlignmentItem1.Name = "SetFloatingObjectTopCenterAlignmentItem1"
         '
         'SetFloatingObjectTopRightAlignmentItem1
         '
+        Me.SetFloatingObjectTopRightAlignmentItem1.Caption = "Superior Derecha"
+        Me.SetFloatingObjectTopRightAlignmentItem1.Enabled = False
         Me.SetFloatingObjectTopRightAlignmentItem1.Id = 252
         Me.SetFloatingObjectTopRightAlignmentItem1.Name = "SetFloatingObjectTopRightAlignmentItem1"
         '
         'SetFloatingObjectMiddleLeftAlignmentItem1
         '
+        Me.SetFloatingObjectMiddleLeftAlignmentItem1.Caption = "Medio Izquierda"
+        Me.SetFloatingObjectMiddleLeftAlignmentItem1.Enabled = False
         Me.SetFloatingObjectMiddleLeftAlignmentItem1.Id = 253
         Me.SetFloatingObjectMiddleLeftAlignmentItem1.Name = "SetFloatingObjectMiddleLeftAlignmentItem1"
         '
         'SetFloatingObjectMiddleCenterAlignmentItem1
         '
+        Me.SetFloatingObjectMiddleCenterAlignmentItem1.Caption = "Medio Centrado"
+        Me.SetFloatingObjectMiddleCenterAlignmentItem1.Enabled = False
         Me.SetFloatingObjectMiddleCenterAlignmentItem1.Id = 254
         Me.SetFloatingObjectMiddleCenterAlignmentItem1.Name = "SetFloatingObjectMiddleCenterAlignmentItem1"
         '
         'SetFloatingObjectMiddleRightAlignmentItem1
         '
+        Me.SetFloatingObjectMiddleRightAlignmentItem1.Caption = "Medio Derecha"
+        Me.SetFloatingObjectMiddleRightAlignmentItem1.Enabled = False
         Me.SetFloatingObjectMiddleRightAlignmentItem1.Id = 255
         Me.SetFloatingObjectMiddleRightAlignmentItem1.Name = "SetFloatingObjectMiddleRightAlignmentItem1"
         '
         'SetFloatingObjectBottomLeftAlignmentItem1
         '
+        Me.SetFloatingObjectBottomLeftAlignmentItem1.Caption = "Inferior Izquierda"
+        Me.SetFloatingObjectBottomLeftAlignmentItem1.Enabled = False
         Me.SetFloatingObjectBottomLeftAlignmentItem1.Id = 256
         Me.SetFloatingObjectBottomLeftAlignmentItem1.Name = "SetFloatingObjectBottomLeftAlignmentItem1"
         '
         'SetFloatingObjectBottomCenterAlignmentItem1
         '
+        Me.SetFloatingObjectBottomCenterAlignmentItem1.Caption = "Inferior Centrado"
+        Me.SetFloatingObjectBottomCenterAlignmentItem1.Enabled = False
         Me.SetFloatingObjectBottomCenterAlignmentItem1.Id = 257
         Me.SetFloatingObjectBottomCenterAlignmentItem1.Name = "SetFloatingObjectBottomCenterAlignmentItem1"
         '
         'SetFloatingObjectBottomRightAlignmentItem1
         '
+        Me.SetFloatingObjectBottomRightAlignmentItem1.Caption = "Inferior Derecha"
+        Me.SetFloatingObjectBottomRightAlignmentItem1.Enabled = False
         Me.SetFloatingObjectBottomRightAlignmentItem1.Id = 258
         Me.SetFloatingObjectBottomRightAlignmentItem1.Name = "SetFloatingObjectBottomRightAlignmentItem1"
         '
         'FloatingObjectBringForwardSubItem1
         '
+        Me.FloatingObjectBringForwardSubItem1.Caption = "Traer al Frente"
+        Me.FloatingObjectBringForwardSubItem1.Enabled = False
         Me.FloatingObjectBringForwardSubItem1.Id = 259
         Me.FloatingObjectBringForwardSubItem1.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.FloatingObjectBringForwardItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.FloatingObjectBringToFrontItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.FloatingObjectBringInFrontOfTextItem1)})
         Me.FloatingObjectBringForwardSubItem1.Name = "FloatingObjectBringForwardSubItem1"
         '
         'FloatingObjectBringForwardItem1
         '
+        Me.FloatingObjectBringForwardItem1.Caption = "Traer al Frente"
+        Me.FloatingObjectBringForwardItem1.Enabled = False
         Me.FloatingObjectBringForwardItem1.Id = 260
         Me.FloatingObjectBringForwardItem1.Name = "FloatingObjectBringForwardItem1"
         '
         'FloatingObjectBringToFrontItem1
         '
+        Me.FloatingObjectBringToFrontItem1.Caption = "Traer al frente"
+        Me.FloatingObjectBringToFrontItem1.Enabled = False
         Me.FloatingObjectBringToFrontItem1.Id = 261
         Me.FloatingObjectBringToFrontItem1.Name = "FloatingObjectBringToFrontItem1"
         '
         'FloatingObjectBringInFrontOfTextItem1
         '
+        Me.FloatingObjectBringInFrontOfTextItem1.Caption = "Traer el Frente del Texto"
+        Me.FloatingObjectBringInFrontOfTextItem1.Enabled = False
         Me.FloatingObjectBringInFrontOfTextItem1.Id = 262
         Me.FloatingObjectBringInFrontOfTextItem1.Name = "FloatingObjectBringInFrontOfTextItem1"
         '
         'FloatingObjectSendBackwardSubItem1
         '
+        Me.FloatingObjectSendBackwardSubItem1.Caption = "Enviar al Fondo"
+        Me.FloatingObjectSendBackwardSubItem1.Enabled = False
         Me.FloatingObjectSendBackwardSubItem1.Id = 263
         Me.FloatingObjectSendBackwardSubItem1.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.FloatingObjectSendBackwardItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.FloatingObjectSendToBackItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.FloatingObjectSendBehindTextItem1)})
         Me.FloatingObjectSendBackwardSubItem1.Name = "FloatingObjectSendBackwardSubItem1"
         '
         'FloatingObjectSendBackwardItem1
         '
+        Me.FloatingObjectSendBackwardItem1.Caption = "Enviar Al Fondo"
+        Me.FloatingObjectSendBackwardItem1.Enabled = False
         Me.FloatingObjectSendBackwardItem1.Id = 264
         Me.FloatingObjectSendBackwardItem1.Name = "FloatingObjectSendBackwardItem1"
         '
         'FloatingObjectSendToBackItem1
         '
+        Me.FloatingObjectSendToBackItem1.Caption = "Enviar al fondo"
+        Me.FloatingObjectSendToBackItem1.Enabled = False
         Me.FloatingObjectSendToBackItem1.Id = 265
         Me.FloatingObjectSendToBackItem1.Name = "FloatingObjectSendToBackItem1"
         '
         'FloatingObjectSendBehindTextItem1
         '
+        Me.FloatingObjectSendBehindTextItem1.Caption = "Enviar Detrás del Texto"
+        Me.FloatingObjectSendBehindTextItem1.Enabled = False
         Me.FloatingObjectSendBehindTextItem1.Id = 266
         Me.FloatingObjectSendBehindTextItem1.Name = "FloatingObjectSendBehindTextItem1"
-        '
-        'rtbResultado
-        '
-        Me.rtbResultado.AcceptsEscape = False
-        Me.rtbResultado.ActiveViewType = DevExpress.XtraRichEdit.RichEditViewType.Simple
-        Me.rtbResultado.LayoutUnit = DevExpress.XtraRichEdit.DocumentLayoutUnit.Pixel
-        Me.rtbResultado.Location = New System.Drawing.Point(595, 126)
-        Me.rtbResultado.MenuManager = Me.BarManager1
-        Me.rtbResultado.Name = "rtbResultado"
-        Me.rtbResultado.Options.HorizontalScrollbar.Visibility = DevExpress.XtraRichEdit.RichEditScrollbarVisibility.Hidden
-        Me.rtbResultado.Options.Printing.PrintPreviewFormKind = DevExpress.XtraRichEdit.PrintPreviewFormKind.Bars
-        Me.rtbResultado.Size = New System.Drawing.Size(531, 92)
-        Me.rtbResultado.TabIndex = 77
-        '
-        'Button3
-        '
-        Me.Button3.Location = New System.Drawing.Point(133, 267)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(75, 23)
-        Me.Button3.TabIndex = 78
-        Me.Button3.Text = "Button3"
-        Me.Button3.UseVisualStyleBackColor = True
-        '
-        'txtPrueba
-        '
-        Me.txtPrueba.Location = New System.Drawing.Point(244, 11)
-        Me.txtPrueba.Name = "txtPrueba"
-        Me.txtPrueba.Size = New System.Drawing.Size(345, 100)
-        Me.txtPrueba.TabIndex = 79
         '
         'RichEditBarController1
         '
@@ -2335,7 +2634,6 @@ Partial Class frmPrueba3
         Me.RichEditBarController1.BarItems.Add(Me.FloatingObjectSendToBackItem1)
         Me.RichEditBarController1.BarItems.Add(Me.FloatingObjectSendBehindTextItem1)
         Me.RichEditBarController1.BarItems.Add(Me.FloatingObjectSendBackwardSubItem1)
-        Me.RichEditBarController1.Control = Me.rtbPrueba
         '
         'ImageList1
         '
@@ -2343,86 +2641,23 @@ Partial Class frmPrueba3
         Me.ImageList1.ImageSize = New System.Drawing.Size(16, 16)
         Me.ImageList1.TransparentColor = System.Drawing.Color.Transparent
         '
-        'RichEditBarController2
-        '
-        Me.RichEditBarController2.Control = Me.rtbResultado
-        '
-        'MemoEdit1
-        '
-        Me.MemoEdit1.Location = New System.Drawing.Point(244, 125)
-        Me.MemoEdit1.Name = "MemoEdit1"
-        Me.MemoEdit1.Size = New System.Drawing.Size(345, 93)
-        Me.MemoEdit1.TabIndex = 89
-        '
         'ACPrueba
         '
         Me.ACPrueba.AutoFormDelay = 4000
         Me.ACPrueba.ShowPinButton = False
         Me.ACPrueba.ShowToolTips = False
         '
-        'PictureEdit1
-        '
-        Me.PictureEdit1.Location = New System.Drawing.Point(59, 10)
-        Me.PictureEdit1.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.PictureEdit1.MenuManager = Me.BarManager1
-        Me.PictureEdit1.Name = "PictureEdit1"
-        Me.PictureEdit1.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.[Auto]
-        Me.PictureEdit1.Size = New System.Drawing.Size(86, 78)
-        Me.PictureEdit1.TabIndex = 94
-        '
-        'gcJson
-        '
-        Me.gcJson.Location = New System.Drawing.Point(244, 232)
-        Me.gcJson.MainView = Me.GridView1
-        Me.gcJson.MenuManager = Me.BarManager1
-        Me.gcJson.Name = "gcJson"
-        Me.gcJson.Size = New System.Drawing.Size(882, 200)
-        Me.gcJson.TabIndex = 99
-        Me.gcJson.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
-        '
-        'GridView1
-        '
-        Me.GridView1.GridControl = Me.gcJson
-        Me.GridView1.Name = "GridView1"
-        '
         'frmPrueba3
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1143, 566)
-        Me.Controls.Add(Me.gcJson)
-        Me.Controls.Add(Me.PictureEdit1)
-        Me.Controls.Add(Me.MemoEdit1)
-        Me.Controls.Add(Me.Button3)
-        Me.Controls.Add(Me.rtbResultado)
-        Me.Controls.Add(Me.rtbPrueba)
-        Me.Controls.Add(Me.Button1)
-        Me.Controls.Add(Me.LabelControl4)
-        Me.Controls.Add(Me.LabelControl5)
-        Me.Controls.Add(Me.LabelControl6)
-        Me.Controls.Add(Me.txtDe)
-        Me.Controls.Add(Me.txtD)
-        Me.Controls.Add(Me.txtF)
-        Me.Controls.Add(Me.LabelControl3)
-        Me.Controls.Add(Me.LabelControl1)
-        Me.Controls.Add(Me.LabelControl2)
-        Me.Controls.Add(Me.txtDecimal)
-        Me.Controls.Add(Me.txtDoble)
-        Me.Controls.Add(Me.txtFlotante)
-        Me.Controls.Add(Me.Button2)
-        Me.Controls.Add(Me.txtPrueba)
         Me.Controls.Add(Me.barDockControlLeft)
         Me.Controls.Add(Me.barDockControlRight)
         Me.Controls.Add(Me.barDockControlBottom)
         Me.Controls.Add(Me.barDockControlTop)
         Me.Name = "frmPrueba3"
         Me.Text = "frmPrueba3"
-        CType(Me.txtFlotante.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtDoble.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtDecimal.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtF.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtD.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtDe.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.BarManager1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemFontEdit1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemRichEditFontSizeEdit1, System.ComponentModel.ISupportInitialize).EndInit()
@@ -2431,37 +2666,14 @@ Partial Class frmPrueba3
         CType(Me.RepositoryItemBorderLineStyle1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemBorderLineWeight1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemFloatingObjectOutlineWeight1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtPrueba.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RichEditBarController1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RichEditBarController2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.MemoEdit1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureEdit1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.gcJson, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents Button2 As Button
     Friend WithEvents Timer1 As Timer
     Friend WithEvents CachedrptAgenda1 As CachedrptAgenda
-    Friend WithEvents txtFlotante As DevExpress.XtraEditors.TextEdit
-    Friend WithEvents txtDoble As DevExpress.XtraEditors.TextEdit
-    Friend WithEvents txtDecimal As DevExpress.XtraEditors.TextEdit
-    Friend WithEvents LabelControl2 As DevExpress.XtraEditors.LabelControl
-    Friend WithEvents LabelControl1 As DevExpress.XtraEditors.LabelControl
-    Friend WithEvents LabelControl3 As DevExpress.XtraEditors.LabelControl
-    Friend WithEvents txtF As DevExpress.XtraEditors.TextEdit
-    Friend WithEvents txtD As DevExpress.XtraEditors.TextEdit
-    Friend WithEvents txtDe As DevExpress.XtraEditors.TextEdit
-    Friend WithEvents LabelControl4 As DevExpress.XtraEditors.LabelControl
-    Friend WithEvents LabelControl5 As DevExpress.XtraEditors.LabelControl
-    Friend WithEvents LabelControl6 As DevExpress.XtraEditors.LabelControl
-    Friend WithEvents Button1 As Button
-    Friend WithEvents rtbPrueba As DevExpress.XtraRichEdit.RichEditControl
-    Friend WithEvents rtbResultado As DevExpress.XtraRichEdit.RichEditControl
-    Friend WithEvents Button3 As Button
-    Friend WithEvents txtPrueba As DevExpress.XtraEditors.MemoEdit
     Friend WithEvents BarManager1 As DevExpress.XtraBars.BarManager
     Friend WithEvents UndoItem1 As DevExpress.XtraRichEdit.UI.UndoItem
     Friend WithEvents RedoItem1 As DevExpress.XtraRichEdit.UI.RedoItem
@@ -2744,9 +2956,5 @@ Partial Class frmPrueba3
     Friend WithEvents RichEditBarController1 As DevExpress.XtraRichEdit.UI.RichEditBarController
     Friend WithEvents ImageList1 As ImageList
     Friend WithEvents RichEditBarController2 As DevExpress.XtraRichEdit.UI.RichEditBarController
-    Friend WithEvents MemoEdit1 As DevExpress.XtraEditors.MemoEdit
     Friend WithEvents ACPrueba As DevExpress.XtraBars.Alerter.AlertControl
-    Friend WithEvents PictureEdit1 As DevExpress.XtraEditors.PictureEdit
-    Friend WithEvents gcJson As DevExpress.XtraGrid.GridControl
-    Friend WithEvents GridView1 As DevExpress.XtraGrid.Views.Grid.GridView
 End Class
