@@ -11,6 +11,8 @@ Public Class frmCups
             Dim _Cups As New Cups
             _Cups.Id = txtCodigo.Text
             _Cups.Nombre = txtNombre.Text
+            _Cups.codigoServicio = Val(cboServicio.GetColumnValue("ID"))
+            MsgBox(Val(cboServicio.GetColumnValue("ID")))
             If chkEstado.Checked = True Then
                 _Cups.Estado = "A"
             Else
@@ -79,6 +81,15 @@ Public Class frmCups
         'TODO: esta línea de código carga datos en la tabla 'DSCups1.DTCups' Puede moverla o quitarla según sea necesario.
         'Me.DTCupsTableAdapter.Fill(Me.DSCups1.DTCups)
         GVConsultar.OptionsFind.AlwaysVisible = False
+
+        ' Cargar Codigos servicios
+        Dim _DCodigoservicios = New DCodigoServicios
+        _ds = _DCodigoservicios.ListarCombo
+        cboServicio.Properties.DataSource = _ds.Tables(0)
+        cboServicio.Properties.DisplayMember = _ds.Tables(0).Columns(1).Caption
+        cboServicio.Properties.ValueMember = _ds.Tables(0).Columns(0).Caption
+        cboServicio.ItemIndex = -1
+
         bbiGuardar.Enabled = False
     End Sub
 

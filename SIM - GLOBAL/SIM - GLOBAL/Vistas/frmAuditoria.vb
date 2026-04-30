@@ -204,10 +204,6 @@
         ListarGrillaOrdenes("2018")
     End Sub
 
-    Private Sub tsm2017_Click(sender As Object, e As EventArgs) Handles tsm2017.Click
-        ListarGrillaOrdenes("2017")
-    End Sub
-
     Private Sub GVConsultar_RowClick(sender As Object, e As DevExpress.XtraGrid.Views.Grid.RowClickEventArgs) Handles GVEstudios.RowClick
         If e.RowHandle >= 0 Then
             _ClickGrillaDetalleOrden = GVEstudios.GetRowCellValue(e.RowHandle.ToString, "ID").ToString()
@@ -307,5 +303,9 @@
 
     Private Sub tsm2024_Click(sender As Object, e As EventArgs) Handles tsm2024.Click
         ListarGrillaOrdenes("2024")
+    End Sub
+
+    Private Sub tsm2025_Click(sender As Object, e As EventArgs) Handles tsm2025.Click
+        ListarGrillaOrdenes("2025")
     End Sub
 End Class

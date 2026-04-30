@@ -68,8 +68,7 @@ Namespace Controles
                         & "ROW_NUMBER() OVER (ORDER BY o.id) AS consecutivo, " _
                         & "o.id FROM ordenes o " _
                         & "INNER JOIN detalle_orden ON o.id = detalle_orden.id_orden " _
-                        & "INNER JOIN cups ON detalle_orden.codigo_cups = cups.codigo_cups " _
-                        & "INNER JOIN endoscopias ON o.id = endoscopias.id_orden WHERE o.id = '" & idOrden & "'")
+                        & "INNER JOIN cups ON detalle_orden.codigo_cups = cups.codigo_cups WHERE o.id = '" & idOrden & "'")
                 _conn = ConexionODBC.Open()
                 Dim comando = New OdbcCommand(query, _conn)
                 _adapter = New OdbcDataAdapter(comando)
