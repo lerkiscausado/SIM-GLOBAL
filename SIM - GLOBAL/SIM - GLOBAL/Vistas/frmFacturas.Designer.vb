@@ -109,6 +109,7 @@ Partial Class frmFacturas
         Me.colDFCopago = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colDFNeto = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.xtpFacturaServicios = New DevExpress.XtraTab.XtraTabPage()
+        Me.TextEdit1 = New DevExpress.XtraEditors.TextEdit()
         Me.btnAgregarTodo = New DevExpress.XtraEditors.SimpleButton()
         Me.btnEliminarTodo = New DevExpress.XtraEditors.SimpleButton()
         Me.btnAgregarOrden = New DevExpress.XtraEditors.SimpleButton()
@@ -419,6 +420,7 @@ Partial Class frmFacturas
         CType(Me.GCDetalleFactura, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GVDetalleFactura, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.xtpFacturaServicios.SuspendLayout()
+        CType(Me.TextEdit1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SeparatorControl3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtNit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtTelefono.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -1176,6 +1178,7 @@ Partial Class frmFacturas
         '
         'xtpFacturaServicios
         '
+        Me.xtpFacturaServicios.Controls.Add(Me.TextEdit1)
         Me.xtpFacturaServicios.Controls.Add(Me.btnAgregarTodo)
         Me.xtpFacturaServicios.Controls.Add(Me.btnEliminarTodo)
         Me.xtpFacturaServicios.Controls.Add(Me.btnAgregarOrden)
@@ -1201,6 +1204,17 @@ Partial Class frmFacturas
         Me.xtpFacturaServicios.Name = "xtpFacturaServicios"
         Me.xtpFacturaServicios.Size = New System.Drawing.Size(1262, 545)
         Me.xtpFacturaServicios.Text = "Facturar Servicios"
+        '
+        'TextEdit1
+        '
+        Me.TextEdit1.Location = New System.Drawing.Point(394, 105)
+        Me.TextEdit1.MenuManager = Me.BarManager1
+        Me.TextEdit1.Name = "TextEdit1"
+        Me.TextEdit1.Properties.Appearance.BackColor = System.Drawing.Color.LemonChiffon
+        Me.TextEdit1.Properties.Appearance.Options.UseBackColor = True
+        Me.TextEdit1.Properties.ReadOnly = True
+        Me.TextEdit1.Size = New System.Drawing.Size(377, 20)
+        Me.TextEdit1.TabIndex = 235
         '
         'btnAgregarTodo
         '
@@ -4365,6 +4379,7 @@ Partial Class frmFacturas
         CType(Me.GVDetalleFactura, System.ComponentModel.ISupportInitialize).EndInit()
         Me.xtpFacturaServicios.ResumeLayout(False)
         Me.xtpFacturaServicios.PerformLayout()
+        CType(Me.TextEdit1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.SeparatorControl3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtNit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtTelefono.Properties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -4845,4 +4860,5 @@ Partial Class frmFacturas
     Friend WithEvents rtbJSON As RichTextBox
     Friend WithEvents btnGenerarJSON As Button
     Friend WithEvents bbiExportarExcel As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents TextEdit1 As DevExpress.XtraEditors.TextEdit
 End Class
