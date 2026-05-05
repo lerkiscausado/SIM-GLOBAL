@@ -2150,7 +2150,7 @@ Public Class frmInicio
     End Sub
 
     Private Sub bbiSoporteTecnico_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles bbiSoporteTecnico.ItemClick
-        Dim _frmOpen As New SIM___GLOBAL.frmRipsJson
+        Dim _frmOpen As New SIM___GLOBAL.frmPrueba3
         _frmOpen.ShowDialog()
     End Sub
 
