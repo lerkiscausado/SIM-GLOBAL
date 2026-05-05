@@ -2,6 +2,7 @@
 Imports SIM___GLOBAL.Controles
 Imports SIM___GLOBAL.Modelo
 Imports SIM___GLOBAL.Utilidades
+'Imports SIM___GLOBAL.GeneradorJSON
 Imports System.IO
 Imports Newtonsoft.Json
 Imports System.Text.RegularExpressions
@@ -37,6 +38,7 @@ Public Class frmFacturas
     Dim _DetalleCuentaCliente As New SIM___GLOBAL.Modelo.DetalleCuentaCliente
     Dim _DDetalleCuentaCliente As New SIM___GLOBAL.Controles.DDetalleCuentaCliente
     Dim _DDetalleordenservicio As New DDetalleOrdenServicio
+    Dim _DGenerarJSON As New GeneradorJSON
     Dim ImprimirFrm As New SIM___GLOBAL.frmImprimir
 
     Public Licencia As String
@@ -1540,122 +1542,122 @@ Public Class frmFacturas
     End Sub
 
     Private Sub bbiGenerarRips_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles bbiGenerarRips.ItemClick
-        ' Crear la lista de usuarios
-        Dim listaUsuarios As New List(Of Object)
-        'Dim Procedimientos As New List(Of Object)
+        ' Crear la lista de usuarios --------------------------------------
+        'Dim listaUsuarios As New List(Of Object)
+        'Dim Procedimientos As New List(Of Object) ---------------------------------
 
         If _ClickGrillaFacturas <> "" Then
 
             xtpJSON.PageVisible = True
 
-            _ds = New DataSet
-            _ds = _DRipsJSON.Usuarios(_ClickGrillaFacturas)
+            '_ds = New DataSet
+            '_ds = _DRipsJSON.Usuarios(_ClickGrillaFacturas)
 
-            'Dim idOrdenUsuario As String = _ds.Tables(0).Rows(0)(0).ToString
+            'Dim idOrdenUsuario As String = _ds.Tables(0).Rows(0)(0).ToString ----------------------------------
 
-            For i As Integer = 0 To _ds.Tables(0).Rows.Count - 1
+            'For i As Integer = 0 To _ds.Tables(0).Rows.Count - 1
 
-                Dim tipoEstudio As String = _ds.Tables(0).Rows(i)(12).ToString
+            'Dim tipoEstudio As String = _ds.Tables(0).Rows(i)(12).ToString
 
-                If tipoEstudio = "P" Then
-                    _dsP = New DataSet
-                    _dsP = _DRipsJSON.Procedimientos(_ds.Tables(0).Rows(i)(0).ToString)
+            'If tipoEstudio = "P" Then
+            '_dsP = New DataSet
+            '_dsP = _DRipsJSON.Procedimientos(_ds.Tables(0).Rows(i)(0).ToString)
 
-                    listaUsuarios.Add(New With {
-                    .tipoDocumentoIdentificacion = _ds.Tables(0).Rows(i)(1).ToString,
-                    .numDocumentoIdentificacion = _ds.Tables(0).Rows(i)(2).ToString,
-                    .tipoUsuario = _ds.Tables(0).Rows(i)(3).ToString,
-                    .fechaNacimiento = Format(_ds.Tables(0).Rows(i)(4), "yyyy-MM-dd"),
-                    .codSexo = _ds.Tables(0).Rows(i)(5).ToString(),
-                    .codPaisResidencia = "170",
-                    .codMunicipioResidencia = _ds.Tables(0).Rows(i)(7).ToString(),
-                    .codZonaTerritorialResidencia = _ds.Tables(0).Rows(i)(8).ToString(),
-                    .incapacidad = "NO",
-                    .consecutivo = _ds.Tables(0).Rows(i)(10),
-                    .codPaisOrigen = "170",
-                    .servicios = New With {
-                        .procedimientos = New Object() {
-                            New With {
-                            .codPrestador = "130010244901",
-                            .fechaInicioAtencion = Format(_dsP.Tables(0).Rows(0)(1), "yyyy-MM-dd HH:mm"),
-                            .idMIPRES = CType(Nothing, String),
-                            .numAutorizacion = _dsP.Tables(0).Rows(0)(3).ToString(),
-                            .codProcedimiento = _dsP.Tables(0).Rows(0)(4).ToString(),
-                            .viaIngresoServicioSalud = "02",
-                            .modalidadGrupoServicioTecSal = "01",
-                            .grupoServicios = "02",
-                            .codServicio = CInt(_dsP.Tables(0).Rows(0)(8)),
-                            .finalidadTecnologiaSalud = "15",
-                            .tipoDocumentoIdentificacion = "CC",
-                            .numDocumentoIdentificacion = "73106055",
-                            .codDiagnosticoPrincipal = _dsP.Tables(0).Rows(0)(12).ToString(),
-                            .codDiagnosticoRelacionado = CType(Nothing, String),
-                            .codComplicacion = CType(Nothing, String),
-                            .vrServicio = _dsP.Tables(0).Rows(0)(15),
-                            .conceptoRecaudo = "05",
-                            .valorPagoModerador = _dsP.Tables(0).Rows(0)(17),
-                            .numFEVPagoModerador = CType(Nothing, String),
-                            .consecutivo = _dsP.Tables(0).Rows(0)(19)
-                            }
-                       }
-                    }
-                })
-                Else
-                    _dsC = New DataSet
-                    _dsC = _DRipsJSON.Consultas(_ds.Tables(0).Rows(i)(0).ToString)
+            'listaUsuarios.Add(New With {
+            '.tipoDocumentoIdentificacion = _ds.Tables(0).Rows(i)(1).ToString,
+            '.numDocumentoIdentificacion = _ds.Tables(0).Rows(i)(2).ToString,
+            '.tipoUsuario = _ds.Tables(0).Rows(i)(3).ToString,
+            '.fechaNacimiento = Format(_ds.Tables(0).Rows(i)(4), "yyyy-MM-dd"),
+            '.codSexo = _ds.Tables(0).Rows(i)(5).ToString(),
+            '.codPaisResidencia = "170",
+            '.codMunicipioResidencia = _ds.Tables(0).Rows(i)(7).ToString(),
+            '.codZonaTerritorialResidencia = _ds.Tables(0).Rows(i)(8).ToString(),
+            '.incapacidad = "NO",
+            '.consecutivo = _ds.Tables(0).Rows(i)(10),
+            '.codPaisOrigen = "170",
+            '.servicios = New With {
+            '.procedimientos = New Object() {
+            '               New With {
+            '.codPrestador = "130010244901",
+            '.fechaInicioAtencion = Format(_dsP.Tables(0).Rows(0)(1), "yyyy-MM-dd HH:mm"),
+            '.idMIPRES = CType(Nothing, String),
+            '.numAutorizacion = _dsP.Tables(0).Rows(0)(3).ToString(),
+            '.codProcedimiento = _dsP.Tables(0).Rows(0)(4).ToString(),
+            '.viaIngresoServicioSalud = "02",
+            '.modalidadGrupoServicioTecSal = "01",
+            '.grupoServicios = "02",
+            '.codServicio = CInt(_dsP.Tables(0).Rows(0)(8)),
+            '.finalidadTecnologiaSalud = "15",
+            '.tipoDocumentoIdentificacion = "CC",
+            '.numDocumentoIdentificacion = "73106055",
+            '.codDiagnosticoPrincipal = _dsP.Tables(0).Rows(0)(12).ToString(),
+            '.codDiagnosticoRelacionado = CType(Nothing, String),
+            '.codComplicacion = CType(Nothing, String),
+            '.vrServicio = _dsP.Tables(0).Rows(0)(15),
+            '.conceptoRecaudo = "05",
+            '.valorPagoModerador = _dsP.Tables(0).Rows(0)(17),
+            '.numFEVPagoModerador = CType(Nothing, String),
+            '.consecutivo = _dsP.Tables(0).Rows(0)(19)
+            '                }
+            '           }
+            '        }
+            '    })
+            'Else
+            '   _dsC = New DataSet
+            '  _dsC = _DRipsJSON.Consultas(_ds.Tables(0).Rows(i)(0).ToString)
 
-                    listaUsuarios.Add(New With {
-                    .tipoDocumentoIdentificacion = _ds.Tables(0).Rows(i)(1).ToString,
-                    .numDocumentoIdentificacion = _ds.Tables(0).Rows(i)(2).ToString,
-                    .tipoUsuario = _ds.Tables(0).Rows(i)(3).ToString,
-                    .fechaNacimiento = Format(_ds.Tables(0).Rows(i)(4), "yyyy-MM-dd"),
-                    .codSexo = _ds.Tables(0).Rows(i)(5).ToString(),
-                    .codPaisResidencia = "170",
-                    .codMunicipioResidencia = _ds.Tables(0).Rows(i)(7).ToString(),
-                    .codZonaTerritorialResidencia = _ds.Tables(0).Rows(i)(8).ToString(),
-                    .incapacidad = "NO",
-                    .consecutivo = _ds.Tables(0).Rows(i)(10),
-                    .codPaisOrigen = "170",
-                    .servicios = New With {
-                        .consultas = New Object() {
-                            New With {
-                            .codPrestador = "130010244901",
-                            .fechaInicioAtencion = Format(_dsC.Tables(0).Rows(0)(1), "yyyy-MM-dd HH:mm"),
-                            .numAutorizacion = _dsC.Tables(0).Rows(0)(2).ToString(),
-                            .codConsulta = _dsC.Tables(0).Rows(0)(3).ToString(),
-                            .modalidadGrupoServicioTecSal = "01",
-                            .grupoServicios = "01",
-                            .codServicio = CInt(_dsC.Tables(0).Rows(0)(6)),
-                            .finalidadTecnologiaSalud = "15",
-                            .causaMotivoAtencion = "38",
-                            .codDiagnosticoPrincipal = _dsC.Tables(0).Rows(0)(9).ToString(),
-                            .codDiagnosticoRelacionado1 = CType(Nothing, String),
-                            .codDiagnosticoRelacionado2 = CType(Nothing, String),
-                            .codDiagnosticoRelacionado3 = CType(Nothing, String),
-                            .tipoDiagnosticoPrincipal = "01",
-                            .tipoDocumentoIdentificacion = "CC",
-                            .numDocumentoIdentificacion = "73106055",
-                            .vrServicio = _dsC.Tables(0).Rows(0)(16),
-                            .conceptoRecaudo = "05",
-                            .valorPagoModerador = _dsC.Tables(0).Rows(0)(18),
-                            .numFEVPagoModerador = CType(Nothing, String),
-                            .consecutivo = _dsC.Tables(0).Rows(0)(20)
-                            }
-                       }
-                    }
-                })
-                End If
-            Next
+            '  listaUsuarios.Add(New With {
+            ' .tipoDocumentoIdentificacion = _ds.Tables(0).Rows(i)(1).ToString,
+            '.numDocumentoIdentificacion = _ds.Tables(0).Rows(i)(2).ToString,
+            '.tipoUsuario = _ds.Tables(0).Rows(i)(3).ToString,
+            '.fechaNacimiento = Format(_ds.Tables(0).Rows(i)(4), "yyyy-MM-dd"),
+            '.codSexo = _ds.Tables(0).Rows(i)(5).ToString(),
+            '.codPaisResidencia = "170",
+            '.codMunicipioResidencia = _ds.Tables(0).Rows(i)(7).ToString(),
+            '.codZonaTerritorialResidencia = _ds.Tables(0).Rows(i)(8).ToString(),
+            '.incapacidad = "NO",
+            '.consecutivo = _ds.Tables(0).Rows(i)(10),
+            '.codPaisOrigen = "170",
+            '.servicios = New With {
+            '.consultas = New Object() {
+            '               New With {
+            '.codPrestador = "130010244901",
+            '.fechaInicioAtencion = Format(_dsC.Tables(0).Rows(0)(1), "yyyy-MM-dd HH:mm"),
+            '.numAutorizacion = _dsC.Tables(0).Rows(0)(2).ToString(),
+            '.codConsulta = _dsC.Tables(0).Rows(0)(3).ToString(),
+            '.modalidadGrupoServicioTecSal = "01",
+            '.grupoServicios = "01",
+            '.codServicio = CInt(_dsC.Tables(0).Rows(0)(6)),
+            '.finalidadTecnologiaSalud = "15",
+            '.causaMotivoAtencion = "38",
+            '.codDiagnosticoPrincipal = _dsC.Tables(0).Rows(0)(9).ToString(),
+            '.codDiagnosticoRelacionado1 = CType(Nothing, String),
+            '.codDiagnosticoRelacionado2 = CType(Nothing, String),
+            '.codDiagnosticoRelacionado3 = CType(Nothing, String),
+            '.tipoDiagnosticoPrincipal = "01",
+            '.tipoDocumentoIdentificacion = "CC",
+            '.numDocumentoIdentificacion = "73106055",
+            '.vrServicio = _dsC.Tables(0).Rows(0)(16),
+            '.conceptoRecaudo = "05",
+            '.valorPagoModerador = _dsC.Tables(0).Rows(0)(18),
+            '.numFEVPagoModerador = CType(Nothing, String),
+            '.consecutivo = _dsC.Tables(0).Rows(0)(20)
+            '               }
+            '           }
+            '       }
+            '    })
+            'End If
+            '   Next
             ' Armar el JSON final con la factura
-            Dim factura = New With {
-                .numDocumentoIdObligado = "900329923",
-                .numFactura = _ClickFactura,
-                .tipoNota = CType(Nothing, String),
-                .numNota = CType(Nothing, String),
-                .usuarios = listaUsuarios.ToArray()
-            }
+            'Dim factura = New With {
+            '.numDocumentoIdObligado = "900329923",
+            '.numFactura = _ClickFactura,
+            '.tipoNota = CType(Nothing, String),
+            '.numNota = CType(Nothing, String),
+            '.usuarios = listaUsuarios.ToArray()
+            '}
 
-            json = JsonConvert.SerializeObject(factura, Formatting.Indented)
+            json = _DGenerarJSON.GenerarJSON(_ClickGrillaFacturas, "130010244901", _ClickFactura)
 
             rtbJSON.Text = json
 
