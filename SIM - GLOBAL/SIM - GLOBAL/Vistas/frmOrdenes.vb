@@ -86,8 +86,8 @@ Public Class frmOrdenes
     End Sub
     Private Sub ActualizarGrilla()
         _ds = New DataSet
-        _ds = _DOrdenes.ListarOrdenes2
-        GCConsultarOrdenes.DataSource = _ds.Tables(0)
+        '_ds = _DOrdenes.ListarOrdenes2
+        'GCConsultarOrdenes.DataSource = _ds.Tables(0)
     End Sub
     Private Sub NuevaOrden()
         If _ClickIdAgenda <> "" Then
@@ -489,8 +489,8 @@ Public Class frmOrdenes
             'llenamos GridCONTROL Agendados
             LoadingHelper.ActualizarMensaje("Cargando agendados...", "Cargando agendados...")
             _ds = New DataSet
-            _ds = _DAgenda.ListarAgendaHoy
-            GCAgendados.DataSource = _ds.Tables(0)
+            '_ds = _DAgenda.ListarAgendaHoy
+            'GCAgendados.DataSource = _ds.Tables(0)
 
             ' Cargar Tipo Afiliado
             LoadingHelper.ActualizarMensaje("Cargando tipo afiliado...", "Cargando tipo afiliados...")
