@@ -275,7 +275,7 @@ Namespace Utilidades
 #Region "Funciones de Impresion"
         Public Sub ImprimirHistoria(ByVal IDDetalleOrden As String, ByVal IDEmpleado As String)
             'Declaramos las variables a utilizar
-            Dim _ds As DataSet
+            'Dim _ds As DataSet
 
             'traemos los datos de historia a imprimir
             Dim _dImpresionHistoria As New SIM___GLOBAL.Controles.DImpresionHistoria
@@ -286,7 +286,7 @@ Namespace Utilidades
         End Sub
         Public Sub ImprimirDetalleHistoria(ByVal Filtro As String, ByVal IDEmpleado As String, ByVal Tabla As String)
             'Declaramos las variables a utilizar
-            Dim _ds As DataSet
+            'Dim _ds As DataSet
 
             'traemos los datos de historia a imprimir
             Dim _dImpresiondetalleHistoria As New SIM___GLOBAL.Controles.DImpresionDetalleHistoria

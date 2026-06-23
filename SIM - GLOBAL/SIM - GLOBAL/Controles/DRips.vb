@@ -68,8 +68,6 @@ Namespace Controles
                 comando.ExecuteNonQuery()
                 ConexionODBC.Close(_conn)
 
-
-
             Catch ex As Exception
                 MessageBox.Show(ex.Message)
                 Return Nothing

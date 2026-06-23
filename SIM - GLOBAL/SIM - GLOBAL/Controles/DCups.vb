@@ -31,10 +31,9 @@ Namespace Controles
             Try
                 Dim query As String
                 If Existe(_cups.Id) = True Then
-                    query = "UPDATE cups SET nombre_cups='" &
-                        _cups.Nombre & "', estado='" & _cups.Estado & "' where codigo_cups='" & _cups.Id & "'"
+                    query = "UPDATE cups SET nombre_cups='" & _cups.Nombre & "', idcodigoservicio='" & _cups.codigoServicio & "', estado='" & _cups.Estado & "' where codigo_cups='" & _cups.Id & "'"
                 Else
-                    query = "insert into cups values('" & _cups.Id & "','" & _cups.Nombre & "','" & _cups.Estado & "')"
+                    query = "insert into cups values('" & _cups.Id & "','" & _cups.Nombre & "','" & _cups.codigoServicio & "','" & _cups.Estado & "')"
                 End If
                 _conn = ConexionODBC.Open()
                 Dim comando = New OdbcCommand(query, _conn)

@@ -3,11 +3,11 @@ Imports DevExpress.XtraScheduler
 Imports SIM___GLOBAL.Controles
 Imports SIM___GLOBAL.My.Modelo
 Imports DevExpress.XtraPrinting
-Imports System.Net.Mail
-Imports System.Net
-Imports System.Web.UI.Design
-Imports System.Text
-Imports System.IO
+'Imports System.Net.Mail
+'Imports System.Net
+'Imports System.Web.UI.Design
+'Imports System.Text
+'Imports System.IO
 Public Class frmAgenda
     Dim _idAgenda As String
     Dim _ClickGrilla As String

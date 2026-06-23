@@ -286,10 +286,6 @@ Public Class frmConsultarEndoscopia
         Recargar("2018")
     End Sub
 
-    Private Sub tsm2017_Click(sender As Object, e As EventArgs) Handles tsm2017.Click
-        Recargar("2017")
-    End Sub
-
     Private Sub tsmActual_Click(sender As Object, e As EventArgs) Handles tsmActual.Click
         Recargar(Year(Now))
     End Sub
@@ -308,5 +304,9 @@ Public Class frmConsultarEndoscopia
 
     Private Sub tsm2024_Click(sender As Object, e As EventArgs) Handles tsm2024.Click
         Recargar("2024")
+    End Sub
+
+    Private Sub tsm2025_Click(sender As Object, e As EventArgs) Handles tsm2025.Click
+        Recargar("2025")
     End Sub
 End Class

@@ -11,7 +11,7 @@ Namespace Controles
         ReadOnly _funciones As New SIM___GLOBAL.Utilidades.Funciones
         Public Sub GuardarImpresionDetalleHistoria(ByVal Filtro As String, ByVal Empleado As String, ByVal Tabla As String)
             Try
-                Dim query As String
+                Dim query As String = ""
                 'Guardar detalle Historia
                 Select Case Tabla
                     Case "L"

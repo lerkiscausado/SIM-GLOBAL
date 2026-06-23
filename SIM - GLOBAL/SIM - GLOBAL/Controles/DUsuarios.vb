@@ -198,8 +198,8 @@ Namespace Controles
         End Sub
         Public Sub GuardarFoto(ByVal _usuarios As Usuarios)
             Try
-                Dim query As String
-                Dim Imag As Byte()
+                Dim query As String = ""
+                Dim Imag As Byte() = Nothing
                 'Imag = _funciones.Imagen_Bytes(_usuarios.Foto)
 
                 query = "INSERT INTO usuarios VALUES('" & _usuarios.ID & "','" & _usuarios.CodigotipoIdentificacion & "','" & _usuarios.Identificacion & "','" & _usuarios.PrimerNombre & "','" & _usuarios.SegundoNombre & "','" & _usuarios.PrimerApellido & "','" & _usuarios.SegundoApellido & "'," _

@@ -51,7 +51,7 @@ Namespace Controles
         End Function
         Public Sub Guardar(ByVal _DetalleTarifaProductos As DetalleTarifaProductos)
             Try
-                Dim query As String
+                Dim query As String = ""
                 If Existe(_DetalleTarifaProductos.Id) = True Then
                     'query = "UPDATE detalle_tarifa_productos SET codigo_cups='" & _DetalleTarifa.CodigoCups & "', " _
                     '       & "valor='" & _DetalleTarifa.Valor & "', tipo_atencion='" & _DetalleTarifa.TipoAtencion & "', " _

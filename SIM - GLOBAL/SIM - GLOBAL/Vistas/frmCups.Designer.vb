@@ -42,22 +42,25 @@ Partial Class frmCups
         Me.colID = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colNOMBRE = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colESTADO = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.cboServicio = New DevExpress.XtraEditors.LookUpEdit()
+        Me.LabelControl3 = New DevExpress.XtraEditors.LabelControl()
         CType(Me.chkEstado.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BarManager1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtCodigo.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtNombre.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GCConsultar, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GVConsultar, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.cboServicio.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'chkEstado
         '
-        Me.chkEstado.Location = New System.Drawing.Point(513, 45)
+        Me.chkEstado.Location = New System.Drawing.Point(543, 43)
         Me.chkEstado.MenuManager = Me.BarManager1
         Me.chkEstado.Name = "chkEstado"
         Me.chkEstado.Properties.Caption = "Activo"
         Me.chkEstado.Properties.GlyphAlignment = DevExpress.Utils.HorzAlignment.Far
-        Me.chkEstado.Size = New System.Drawing.Size(75, 20)
+        Me.chkEstado.Size = New System.Drawing.Size(68, 20)
         Me.chkEstado.TabIndex = 4
         '
         'BarManager1
@@ -122,15 +125,15 @@ Partial Class frmCups
         Me.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top
         Me.barDockControlTop.Location = New System.Drawing.Point(0, 0)
         Me.barDockControlTop.Manager = Me.BarManager1
-        Me.barDockControlTop.Size = New System.Drawing.Size(600, 24)
+        Me.barDockControlTop.Size = New System.Drawing.Size(623, 24)
         '
         'barDockControlBottom
         '
         Me.barDockControlBottom.CausesValidation = False
         Me.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.barDockControlBottom.Location = New System.Drawing.Point(0, 375)
+        Me.barDockControlBottom.Location = New System.Drawing.Point(0, 407)
         Me.barDockControlBottom.Manager = Me.BarManager1
-        Me.barDockControlBottom.Size = New System.Drawing.Size(600, 0)
+        Me.barDockControlBottom.Size = New System.Drawing.Size(623, 0)
         '
         'barDockControlLeft
         '
@@ -138,15 +141,15 @@ Partial Class frmCups
         Me.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left
         Me.barDockControlLeft.Location = New System.Drawing.Point(0, 24)
         Me.barDockControlLeft.Manager = Me.BarManager1
-        Me.barDockControlLeft.Size = New System.Drawing.Size(0, 351)
+        Me.barDockControlLeft.Size = New System.Drawing.Size(0, 383)
         '
         'barDockControlRight
         '
         Me.barDockControlRight.CausesValidation = False
         Me.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right
-        Me.barDockControlRight.Location = New System.Drawing.Point(600, 24)
+        Me.barDockControlRight.Location = New System.Drawing.Point(623, 24)
         Me.barDockControlRight.Manager = Me.BarManager1
-        Me.barDockControlRight.Size = New System.Drawing.Size(0, 351)
+        Me.barDockControlRight.Size = New System.Drawing.Size(0, 383)
         '
         'txtCodigo
         '
@@ -157,25 +160,25 @@ Partial Class frmCups
         Me.txtCodigo.Properties.Appearance.Options.UseBackColor = True
         Me.txtCodigo.Properties.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtCodigo.Properties.MaxLength = 10
-        Me.txtCodigo.Size = New System.Drawing.Size(446, 20)
+        Me.txtCodigo.Size = New System.Drawing.Size(476, 20)
         Me.txtCodigo.TabIndex = 1
         '
         'LabelControl2
         '
-        Me.LabelControl2.Location = New System.Drawing.Point(12, 73)
+        Me.LabelControl2.Location = New System.Drawing.Point(12, 100)
         Me.LabelControl2.Name = "LabelControl2"
-        Me.LabelControl2.Size = New System.Drawing.Size(37, 13)
+        Me.LabelControl2.Size = New System.Drawing.Size(41, 13)
         Me.LabelControl2.TabIndex = 2
-        Me.LabelControl2.Text = "Nombre"
+        Me.LabelControl2.Text = "Nombre:"
         '
         'txtNombre
         '
         Me.txtNombre.EnterMoveNextControl = True
-        Me.txtNombre.Location = New System.Drawing.Point(61, 70)
+        Me.txtNombre.Location = New System.Drawing.Point(61, 97)
         Me.txtNombre.MenuManager = Me.BarManager1
         Me.txtNombre.Name = "txtNombre"
         Me.txtNombre.Properties.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.txtNombre.Size = New System.Drawing.Size(527, 20)
+        Me.txtNombre.Size = New System.Drawing.Size(551, 20)
         Me.txtNombre.TabIndex = 3
         '
         'LabelControl1
@@ -188,11 +191,11 @@ Partial Class frmCups
         '
         'GCConsultar
         '
-        Me.GCConsultar.Location = New System.Drawing.Point(12, 96)
+        Me.GCConsultar.Location = New System.Drawing.Point(12, 123)
         Me.GCConsultar.MainView = Me.GVConsultar
         Me.GCConsultar.MenuManager = Me.BarManager1
         Me.GCConsultar.Name = "GCConsultar"
-        Me.GCConsultar.Size = New System.Drawing.Size(576, 268)
+        Me.GCConsultar.Size = New System.Drawing.Size(600, 268)
         Me.GCConsultar.TabIndex = 12
         Me.GCConsultar.UseEmbeddedNavigator = True
         Me.GCConsultar.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GVConsultar})
@@ -238,11 +241,34 @@ Partial Class frmCups
         Me.colESTADO.VisibleIndex = 2
         Me.colESTADO.Width = 59
         '
+        'cboServicio
+        '
+        Me.cboServicio.Location = New System.Drawing.Point(61, 69)
+        Me.cboServicio.MenuManager = Me.BarManager1
+        Me.cboServicio.Name = "cboServicio"
+        Me.cboServicio.Properties.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFitResizePopup
+        Me.cboServicio.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.cboServicio.Properties.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ID", "ID"), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("CODIGO", "CODIGO"), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("NOMBRE", "NOMBRE")})
+        Me.cboServicio.Properties.NullText = ""
+        Me.cboServicio.Properties.PopupWidth = 600
+        Me.cboServicio.Size = New System.Drawing.Size(476, 20)
+        Me.cboServicio.TabIndex = 17
+        '
+        'LabelControl3
+        '
+        Me.LabelControl3.Location = New System.Drawing.Point(12, 72)
+        Me.LabelControl3.Name = "LabelControl3"
+        Me.LabelControl3.Size = New System.Drawing.Size(41, 13)
+        Me.LabelControl3.TabIndex = 18
+        Me.LabelControl3.Text = "Servicio:"
+        '
         'frmCups
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(600, 375)
+        Me.ClientSize = New System.Drawing.Size(623, 407)
+        Me.Controls.Add(Me.LabelControl3)
+        Me.Controls.Add(Me.cboServicio)
         Me.Controls.Add(Me.GCConsultar)
         Me.Controls.Add(Me.chkEstado)
         Me.Controls.Add(Me.txtNombre)
@@ -265,6 +291,7 @@ Partial Class frmCups
         CType(Me.txtNombre.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GCConsultar, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GVConsultar, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.cboServicio.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -290,4 +317,6 @@ Partial Class frmCups
     Friend WithEvents colID As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colNOMBRE As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colESTADO As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents LabelControl3 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents cboServicio As DevExpress.XtraEditors.LookUpEdit
 End Class
