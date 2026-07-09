@@ -38,7 +38,8 @@ Public Class GeneradorJSON
                     CASE WHEN usuarios.zona = 'R' THEN '01' WHEN usuarios.zona = 'U' THEN '02' ELSE NULL END AS codZonaTerritorialResidencia, 
                     'NO' AS incapacidad, 
                     ROW_NUMBER() OVER (ORDER BY usuarios.id) AS consecutivo, 
-                    '170' AS codPaisOrigen, 
+                    '170' AS codPaisOrigen,
+                    NULL AS registroSIRAS,
                     detalle_factura.tipo 
                 FROM facturas f 
                 INNER JOIN detalle_factura ON f.id = detalle_factura.id_factura 
@@ -73,7 +74,7 @@ Public Class GeneradorJSON
                 usuario("incapacidad") = dr1("incapacidad").ToString()
                 usuario("consecutivo") = CInt(dr1("consecutivo"))
                 usuario("codPaisOrigen") = dr1("codPaisOrigen").ToString()
-
+                usuario("registroSIRAS") = Nothing
                 usuariosDict.Add(numDoc, usuario)
                 procedimientosDict.Add(numDoc, New JArray())
                 consultasDict.Add(numDoc, New JArray())
@@ -95,14 +96,21 @@ Public Class GeneradorJSON
                         Cups.codigo_servicio AS codServicio, 
                         '15' AS finalidadTecnologiaSalud, 
                         'CC' AS tipoDocumentoIdentificacion, 
-                        '45632147' AS numDocumentoIdentificacion, 
-                        detalle_orden.diagnostico1 AS codDiagnosticoPrincipal, 
+                        '73106055' AS numDocumentoIdentificacion, 
+                        detalle_orden.diagnostico1 AS codDiagnosticoPrincipal,
+                        NULL AS codDiagnosticoPrincipalCIE11,
+                        NULL AS nomCodDiagnosticoPrincipalCIE11,
                         NULL AS codDiagnosticoRelacionado, 
-                        NULL AS codComplicacion, 
+                        NULL AS codDiagnosticoRelacionadoCIE11,
+                        NULL AS nomCodDiagnosticoRelacionadoCIE11,
+                        NULL AS codComplicacion,
+                        NULL AS codComplicacionCIE11,
+                        NULL AS nomComplicacionCIE11,
                         detalle_orden.valor AS valorServicio, 
                         '05' AS conceptoRecaudo, 
                         detalle_orden.copago AS valorPagoModerador, 
                         NULL AS numFEVPagoModerador, 
+                        NULL AS codigoVIDA,
                         ROW_NUMBER() OVER (ORDER BY o.id) AS consecutivo, 
                         o.id 
                     FROM ordenes o 
@@ -130,12 +138,19 @@ Public Class GeneradorJSON
                     proc("tipoDocumentoIdentificacion") = dr2("tipoDocumentoIdentificacion").ToString()
                     proc("numDocumentoIdentificacion") = dr2("numDocumentoIdentificacion").ToString()
                     proc("codDiagnosticoPrincipal") = dr2("codDiagnosticoPrincipal").ToString()
+                    proc("codDiagnosticoPrincipalCIE11") = Nothing
+                    proc("nomCodDiagnosticoPrincipalCIE11") = Nothing
                     proc("codDiagnosticoRelacionado") = Nothing
+                    proc("codDiagnosticoRelacionadoCIE11") = Nothing
+                    proc("nomCodDiagnosticoRelacionadoCIE11") = Nothing
                     proc("codComplicacion") = Nothing
-                    proc("vrServicio") = CDec(dr2("valorServicio"))
+                    proc("codComplicacionCIE11") = Nothing
+                    proc("nomComplicacionCIE11") = Nothing
+                    proc("vrServicio") = CInt(dr2("valorServicio"))
                     proc("conceptoRecaudo") = dr2("conceptoRecaudo").ToString()
-                    proc("valorPagoModerador") = CDec(dr2("valorPagoModerador"))
+                    proc("valorPagoModerador") = CInt((dr2("valorPagoModerador")))
                     proc("numFEVPagoModerador") = Nothing
+                    proc("codigoVIDA") = Nothing
                     proc("consecutivo") = CInt(dr2("consecutivo"))
                     procedimientosDict(numDoc).Add(proc)
 
@@ -151,16 +166,25 @@ Public Class GeneradorJSON
                     cons("finalidadTecnologiaSalud") = dr2("finalidadTecnologiaSalud").ToString()
                     cons("causaMotivoAtencion") = "38"
                     cons("codDiagnosticoPrincipal") = dr2("codDiagnosticoPrincipal").ToString()
+                    cons("codDiagnosticoPrincipalCIE11") = Nothing
+                    cons("nomCodDiagnosticoPrincipalCIE11") = Nothing
                     cons("codDiagnosticoRelacionado1") = Nothing
+                    cons("codDiagnosticoRelacionado1CIE11") = Nothing
+                    cons("nomCodDiagnosticoRelacionado1CIE11") = Nothing
                     cons("codDiagnosticoRelacionado2") = Nothing
+                    cons("codDiagnosticoRelacionado2CIE11") = Nothing
+                    cons("nomCodDiagnosticoRelacionado2CIE11") = Nothing
                     cons("codDiagnosticoRelacionado3") = Nothing
+                    cons("codDiagnosticoRelacionado3CIE11") = Nothing
+                    cons("nomCodDiagnosticoRelacionado3CIE11") = Nothing
                     cons("tipoDiagnosticoPrincipal") = "01"
                     cons("tipoDocumentoIdentificacion") = dr2("tipoDocumentoIdentificacion").ToString()
                     cons("numDocumentoIdentificacion") = dr2("numDocumentoIdentificacion").ToString()
-                    cons("vrServicio") = CDec(dr2("valorServicio"))
+                    cons("vrServicio") = CInt(dr2("valorServicio"))
                     cons("conceptoRecaudo") = dr2("conceptoRecaudo").ToString()
-                    cons("valorPagoModerador") = CDec(dr2("valorPagoModerador"))
+                    cons("valorPagoModerador") = CInt(dr2("valorPagoModerador"))
                     cons("numFEVPagoModerador") = Nothing
+                    cons("codigoVIDA") = Nothing
                     cons("consecutivo") = CInt(dr2("consecutivo"))
                     consultasDict(numDoc).Add(cons)
                 End If
