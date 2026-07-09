@@ -1657,7 +1657,7 @@ Public Class frmFacturas
             '.usuarios = listaUsuarios.ToArray()
             '}
 
-            json = _DGenerarJSON.GenerarJSON(_ClickGrillaFacturas, "130010244901", _ClickFactura)
+            json = _DGenerarJSON.GenerarJSON(_ClickGrillaFacturas, "900329923", _ClickFactura)
 
             rtbJSON.Text = json
 

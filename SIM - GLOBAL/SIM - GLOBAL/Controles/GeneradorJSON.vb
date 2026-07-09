@@ -96,7 +96,7 @@ Public Class GeneradorJSON
                         Cups.codigo_servicio AS codServicio, 
                         '15' AS finalidadTecnologiaSalud, 
                         'CC' AS tipoDocumentoIdentificacion, 
-                        '45632147' AS numDocumentoIdentificacion, 
+                        '73106055' AS numDocumentoIdentificacion, 
                         detalle_orden.diagnostico1 AS codDiagnosticoPrincipal,
                         NULL AS codDiagnosticoPrincipalCIE11,
                         NULL AS nomCodDiagnosticoPrincipalCIE11,
@@ -146,9 +146,9 @@ Public Class GeneradorJSON
                     proc("codComplicacion") = Nothing
                     proc("codComplicacionCIE11") = Nothing
                     proc("nomComplicacionCIE11") = Nothing
-                    proc("vrServicio") = CDec(dr2("valorServicio"))
+                    proc("vrServicio") = CInt(dr2("valorServicio"))
                     proc("conceptoRecaudo") = dr2("conceptoRecaudo").ToString()
-                    proc("valorPagoModerador") = CDec(dr2("valorPagoModerador"))
+                    proc("valorPagoModerador") = CInt((dr2("valorPagoModerador")))
                     proc("numFEVPagoModerador") = Nothing
                     proc("codigoVIDA") = Nothing
                     proc("consecutivo") = CInt(dr2("consecutivo"))
@@ -180,9 +180,9 @@ Public Class GeneradorJSON
                     cons("tipoDiagnosticoPrincipal") = "01"
                     cons("tipoDocumentoIdentificacion") = dr2("tipoDocumentoIdentificacion").ToString()
                     cons("numDocumentoIdentificacion") = dr2("numDocumentoIdentificacion").ToString()
-                    cons("vrServicio") = CDec(dr2("valorServicio"))
+                    cons("vrServicio") = CInt(dr2("valorServicio"))
                     cons("conceptoRecaudo") = dr2("conceptoRecaudo").ToString()
-                    cons("valorPagoModerador") = CDec(dr2("valorPagoModerador"))
+                    cons("valorPagoModerador") = CInt(dr2("valorPagoModerador"))
                     cons("numFEVPagoModerador") = Nothing
                     cons("codigoVIDA") = Nothing
                     cons("consecutivo") = CInt(dr2("consecutivo"))
