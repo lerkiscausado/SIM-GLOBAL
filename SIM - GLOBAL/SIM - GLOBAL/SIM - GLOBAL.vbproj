@@ -287,6 +287,7 @@
     <Compile Include="Controles\DProcedimientosTerapeuticos.vb" />
     <Compile Include="Controles\DProductos.vb" />
     <Compile Include="Controles\DProveedores.vb" />
+    <Compile Include="Controles\DRDA.vb" />
     <Compile Include="Controles\DRegistroAnestesia.vb" />
     <Compile Include="Controles\DRegistroAnestesiaMedicamentos.vb" />
     <Compile Include="Controles\DRegistros.vb" />
@@ -393,6 +394,7 @@
     <Compile Include="Modelo\Citologia.vb" />
     <Compile Include="Modelo\Clientes.vb" />
     <Compile Include="Modelo\Compras.vb" />
+    <Compile Include="Modelo\ConfigInteropApi.vb" />
     <Compile Include="Modelo\ConfiguracionCorreo.vb" />
     <Compile Include="Modelo\ConsentimientoInformadoPlantillas.vb" />
     <Compile Include="Modelo\Contratos.vb" />
@@ -482,6 +484,7 @@
     <Compile Include="Modelo\TipoEstudio.vb" />
     <Compile Include="Modelo\TipoIdentificacion.vb" />
     <Compile Include="Modelo\TipoUsuario.vb" />
+    <Compile Include="Modelo\TokenResponse.vb" />
     <Compile Include="Modelo\TomaMuestra.vb" />
     <Compile Include="Modelo\UnidadMedida.vb" />
     <Compile Include="Modelo\Users.vb" />
@@ -916,6 +919,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Utilidades\Funciones.vb" />
+    <Compile Include="Utilidades\InteropAuthService.vb" />
     <Compile Include="Vistas\Binarios.Designer.vb">
       <DependentUpon>Binarios.vb</DependentUpon>
     </Compile>
@@ -1352,6 +1356,12 @@
       <DependentUpon>frmPruebaPrivilegios.vb</DependentUpon>
     </Compile>
     <Compile Include="Vistas\frmPruebaPrivilegios.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\frmRDA.Designer.vb">
+      <DependentUpon>frmRDA.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\frmRDA.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Vistas\frmReciboCaja.Designer.vb">
@@ -1978,6 +1988,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Vistas\frmPruebaPrivilegios.resx">
       <DependentUpon>frmPruebaPrivilegios.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\frmRDA.resx">
+      <DependentUpon>frmRDA.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vistas\frmReciboCaja.resx">
       <DependentUpon>frmReciboCaja.vb</DependentUpon>

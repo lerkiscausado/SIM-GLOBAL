@@ -2553,4 +2553,11 @@ Public Class frmInicio
             MessageBox.Show("Debe Seleccionar una Orden", "Vista Previa", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End If
     End Sub
+
+    Private Sub bbiRDA_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles bbiRDA.ItemClick
+        Dim _frmOpen As New SIM___GLOBAL.frmRDA
+        '_frmOpen.Licencia = LicenciaG
+        '_frmOpen.IdEmpleado = IdEmpleadoG
+        _frmOpen.ShowDialog()
+    End Sub
 End Class
