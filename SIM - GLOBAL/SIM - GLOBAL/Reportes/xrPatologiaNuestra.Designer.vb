@@ -20,9 +20,9 @@ Partial Public Class xrPatologiaNuestra
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(xrPatologiaNuestra))
-        Dim ShapeRectangle3 As DevExpress.XtraPrinting.Shape.ShapeRectangle = New DevExpress.XtraPrinting.Shape.ShapeRectangle()
-        Dim ShapeRectangle2 As DevExpress.XtraPrinting.Shape.ShapeRectangle = New DevExpress.XtraPrinting.Shape.ShapeRectangle()
         Dim ShapeRectangle1 As DevExpress.XtraPrinting.Shape.ShapeRectangle = New DevExpress.XtraPrinting.Shape.ShapeRectangle()
+        Dim ShapeRectangle2 As DevExpress.XtraPrinting.Shape.ShapeRectangle = New DevExpress.XtraPrinting.Shape.ShapeRectangle()
+        Dim ShapeRectangle3 As DevExpress.XtraPrinting.Shape.ShapeRectangle = New DevExpress.XtraPrinting.Shape.ShapeRectangle()
         Me.TopMargin = New DevExpress.XtraReports.UI.TopMarginBand()
         Me.BottomMargin = New DevExpress.XtraReports.UI.BottomMarginBand()
         Me.Detail = New DevExpress.XtraReports.UI.DetailBand()
@@ -34,14 +34,12 @@ Partial Public Class xrPatologiaNuestra
         Me.lblNombreEntidad = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrPictureBox1 = New DevExpress.XtraReports.UI.XRPictureBox()
         Me.PageHeader = New DevExpress.XtraReports.UI.PageHeaderBand()
-        Me.XrShape3 = New DevExpress.XtraReports.UI.XRShape()
         Me.lblSolicitado = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel30 = New DevExpress.XtraReports.UI.XRLabel()
         Me.lblTipoMuestra = New DevExpress.XtraReports.UI.XRLabel()
         Me.lblEntidad = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel26 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel25 = New DevExpress.XtraReports.UI.XRLabel()
-        Me.XrShape2 = New DevExpress.XtraReports.UI.XRShape()
         Me.XrLabel24 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrPanel2 = New DevExpress.XtraReports.UI.XRPanel()
         Me.XrPageInfo1 = New DevExpress.XtraReports.UI.XRPageInfo()
@@ -52,6 +50,9 @@ Partial Public Class xrPatologiaNuestra
         Me.XrLabel20 = New DevExpress.XtraReports.UI.XRLabel()
         Me.lblConsecutivo = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel18 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.lblInforme = New DevExpress.XtraReports.UI.XRLabel()
+        Me.lblDescripcionMacroscopica = New DevExpress.XtraReports.UI.XRLabel()
+        Me.XrLine1 = New DevExpress.XtraReports.UI.XRLine()
         Me.XrPanel1 = New DevExpress.XtraReports.UI.XRPanel()
         Me.lblDireccion = New DevExpress.XtraReports.UI.XRLabel()
         Me.lblSexo = New DevExpress.XtraReports.UI.XRLabel()
@@ -66,9 +67,8 @@ Partial Public Class xrPatologiaNuestra
         Me.XrLabel7 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel6 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrShape1 = New DevExpress.XtraReports.UI.XRShape()
-        Me.lblInforme = New DevExpress.XtraReports.UI.XRLabel()
-        Me.lblDescripcionMacroscopica = New DevExpress.XtraReports.UI.XRLabel()
-        Me.XrLine1 = New DevExpress.XtraReports.UI.XRLine()
+        Me.XrShape2 = New DevExpress.XtraReports.UI.XRShape()
+        Me.XrShape3 = New DevExpress.XtraReports.UI.XRShape()
         Me.ReportFooter = New DevExpress.XtraReports.UI.ReportFooterBand()
         Me.lblMedico = New DevExpress.XtraReports.UI.XRLabel()
         Me.lblEspecialidad = New DevExpress.XtraReports.UI.XRLabel()
@@ -95,17 +95,17 @@ Partial Public Class xrPatologiaNuestra
         'Detail
         '
         Me.Detail.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrLabel33, Me.xrDiagnostico})
-        Me.Detail.HeightF = 73.95039!
+        Me.Detail.HeightF = 105.1525!
         Me.Detail.Name = "Detail"
         '
         'XrLabel33
         '
         Me.XrLabel33.Font = New System.Drawing.Font("Calibri", 8.0!, System.Drawing.FontStyle.Italic)
-        Me.XrLabel33.LocationFloat = New DevExpress.Utils.PointFloat(0.00008637051!, 29.11405!)
+        Me.XrLabel33.LocationFloat = New DevExpress.Utils.PointFloat(0!, 28.11407!)
         Me.XrLabel33.Multiline = True
         Me.XrLabel33.Name = "XrLabel33"
         Me.XrLabel33.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
-        Me.XrLabel33.SizeF = New System.Drawing.SizeF(740.9435!, 43.75471!)
+        Me.XrLabel33.SizeF = New System.Drawing.SizeF(740.9435!, 77.03844!)
         Me.XrLabel33.StylePriority.UseFont = False
         Me.XrLabel33.StylePriority.UseTextAlignment = False
         Me.XrLabel33.Text = resources.GetString("XrLabel33.Text")
@@ -183,18 +183,6 @@ Partial Public Class xrPatologiaNuestra
         Me.PageHeader.HeightF = 167.9246!
         Me.PageHeader.Name = "PageHeader"
         '
-        'XrShape3
-        '
-        Me.XrShape3.BorderColor = System.Drawing.Color.Gainsboro
-        Me.XrShape3.ForeColor = System.Drawing.Color.Gainsboro
-        Me.XrShape3.LocationFloat = New DevExpress.Utils.PointFloat(2.0!, 73.43392!)
-        Me.XrShape3.Name = "XrShape3"
-        ShapeRectangle3.Fillet = 10
-        Me.XrShape3.Shape = ShapeRectangle3
-        Me.XrShape3.SizeF = New System.Drawing.SizeF(741.0!, 56.56611!)
-        Me.XrShape3.StylePriority.UseBorderColor = False
-        Me.XrShape3.StylePriority.UseForeColor = False
-        '
         'lblSolicitado
         '
         Me.lblSolicitado.Font = New System.Drawing.Font("Calibri", 9.75!)
@@ -266,18 +254,6 @@ Partial Public Class xrPatologiaNuestra
         Me.XrLabel25.StylePriority.UseBorders = False
         Me.XrLabel25.StylePriority.UseFont = False
         Me.XrLabel25.Text = "Espécimen:"
-        '
-        'XrShape2
-        '
-        Me.XrShape2.BorderColor = System.Drawing.Color.Gainsboro
-        Me.XrShape2.ForeColor = System.Drawing.Color.Gainsboro
-        Me.XrShape2.LocationFloat = New DevExpress.Utils.PointFloat(582.6793!, 17.62265!)
-        Me.XrShape2.Name = "XrShape2"
-        ShapeRectangle2.Fillet = 10
-        Me.XrShape2.Shape = ShapeRectangle2
-        Me.XrShape2.SizeF = New System.Drawing.SizeF(162.2642!, 50.81137!)
-        Me.XrShape2.StylePriority.UseBorderColor = False
-        Me.XrShape2.StylePriority.UseForeColor = False
         '
         'XrLabel24
         '
@@ -416,6 +392,43 @@ Partial Public Class xrPatologiaNuestra
         Me.XrLabel18.StylePriority.UseBorders = False
         Me.XrLabel18.StylePriority.UseFont = False
         Me.XrLabel18.Text = "Estudio No:"
+        '
+        'lblInforme
+        '
+        Me.lblInforme.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Bold)
+        Me.lblInforme.LocationFloat = New DevExpress.Utils.PointFloat(1.999995!, 144.9246!)
+        Me.lblInforme.Multiline = True
+        Me.lblInforme.Name = "lblInforme"
+        Me.lblInforme.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
+        Me.lblInforme.SizeF = New System.Drawing.SizeF(738.9435!, 23.0!)
+        Me.lblInforme.StylePriority.UseFont = False
+        Me.lblInforme.StylePriority.UseTextAlignment = False
+        Me.lblInforme.Text = "INFORME ANATOMOPATOLOGICO No. [CONSECUTIVO]"
+        Me.lblInforme.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter
+        '
+        'lblDescripcionMacroscopica
+        '
+        Me.lblDescripcionMacroscopica.Font = New System.Drawing.Font("Calibri", 9.75!)
+        Me.lblDescripcionMacroscopica.LocationFloat = New DevExpress.Utils.PointFloat(143.4906!, 110.0!)
+        Me.lblDescripcionMacroscopica.Multiline = True
+        Me.lblDescripcionMacroscopica.Name = "lblDescripcionMacroscopica"
+        Me.lblDescripcionMacroscopica.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
+        Me.lblDescripcionMacroscopica.SizeF = New System.Drawing.SizeF(579.5094!, 17.0!)
+        Me.lblDescripcionMacroscopica.StylePriority.UseFont = False
+        Me.lblDescripcionMacroscopica.Text = "lblDescripcionMacroscopica"
+        '
+        'XrLine1
+        '
+        Me.XrLine1.BorderColor = System.Drawing.Color.Maroon
+        Me.XrLine1.BorderWidth = 4.0!
+        Me.XrLine1.ForeColor = System.Drawing.Color.Maroon
+        Me.XrLine1.LineWidth = 4.0!
+        Me.XrLine1.LocationFloat = New DevExpress.Utils.PointFloat(10.0!, 130.0!)
+        Me.XrLine1.Name = "XrLine1"
+        Me.XrLine1.SizeF = New System.Drawing.SizeF(713.0001!, 14.92458!)
+        Me.XrLine1.StylePriority.UseBorderColor = False
+        Me.XrLine1.StylePriority.UseBorderWidth = False
+        Me.XrLine1.StylePriority.UseForeColor = False
         '
         'XrPanel1
         '
@@ -596,42 +609,29 @@ Partial Public Class xrPatologiaNuestra
         Me.XrShape1.StylePriority.UseBorderColor = False
         Me.XrShape1.StylePriority.UseForeColor = False
         '
-        'lblInforme
+        'XrShape2
         '
-        Me.lblInforme.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Bold)
-        Me.lblInforme.LocationFloat = New DevExpress.Utils.PointFloat(1.999995!, 144.9246!)
-        Me.lblInforme.Multiline = True
-        Me.lblInforme.Name = "lblInforme"
-        Me.lblInforme.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
-        Me.lblInforme.SizeF = New System.Drawing.SizeF(738.9435!, 23.0!)
-        Me.lblInforme.StylePriority.UseFont = False
-        Me.lblInforme.StylePriority.UseTextAlignment = False
-        Me.lblInforme.Text = "INFORME ANATOMOPATOLOGICO No. [CONSECUTIVO]"
-        Me.lblInforme.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter
+        Me.XrShape2.BorderColor = System.Drawing.Color.Gainsboro
+        Me.XrShape2.ForeColor = System.Drawing.Color.Gainsboro
+        Me.XrShape2.LocationFloat = New DevExpress.Utils.PointFloat(582.6793!, 17.62265!)
+        Me.XrShape2.Name = "XrShape2"
+        ShapeRectangle2.Fillet = 10
+        Me.XrShape2.Shape = ShapeRectangle2
+        Me.XrShape2.SizeF = New System.Drawing.SizeF(162.2642!, 50.81137!)
+        Me.XrShape2.StylePriority.UseBorderColor = False
+        Me.XrShape2.StylePriority.UseForeColor = False
         '
-        'lblDescripcionMacroscopica
+        'XrShape3
         '
-        Me.lblDescripcionMacroscopica.Font = New System.Drawing.Font("Calibri", 9.75!)
-        Me.lblDescripcionMacroscopica.LocationFloat = New DevExpress.Utils.PointFloat(143.4906!, 110.0!)
-        Me.lblDescripcionMacroscopica.Multiline = True
-        Me.lblDescripcionMacroscopica.Name = "lblDescripcionMacroscopica"
-        Me.lblDescripcionMacroscopica.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
-        Me.lblDescripcionMacroscopica.SizeF = New System.Drawing.SizeF(579.5094!, 17.0!)
-        Me.lblDescripcionMacroscopica.StylePriority.UseFont = False
-        Me.lblDescripcionMacroscopica.Text = "lblDescripcionMacroscopica"
-        '
-        'XrLine1
-        '
-        Me.XrLine1.BorderColor = System.Drawing.Color.Maroon
-        Me.XrLine1.BorderWidth = 4.0!
-        Me.XrLine1.ForeColor = System.Drawing.Color.Maroon
-        Me.XrLine1.LineWidth = 4.0!
-        Me.XrLine1.LocationFloat = New DevExpress.Utils.PointFloat(10.0!, 130.0!)
-        Me.XrLine1.Name = "XrLine1"
-        Me.XrLine1.SizeF = New System.Drawing.SizeF(713.0001!, 14.92458!)
-        Me.XrLine1.StylePriority.UseBorderColor = False
-        Me.XrLine1.StylePriority.UseBorderWidth = False
-        Me.XrLine1.StylePriority.UseForeColor = False
+        Me.XrShape3.BorderColor = System.Drawing.Color.Gainsboro
+        Me.XrShape3.ForeColor = System.Drawing.Color.Gainsboro
+        Me.XrShape3.LocationFloat = New DevExpress.Utils.PointFloat(2.0!, 73.43392!)
+        Me.XrShape3.Name = "XrShape3"
+        ShapeRectangle3.Fillet = 10
+        Me.XrShape3.Shape = ShapeRectangle3
+        Me.XrShape3.SizeF = New System.Drawing.SizeF(741.0!, 56.56611!)
+        Me.XrShape3.StylePriority.UseBorderColor = False
+        Me.XrShape3.StylePriority.UseForeColor = False
         '
         'ReportFooter
         '
