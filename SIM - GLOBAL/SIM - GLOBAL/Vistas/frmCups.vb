@@ -83,12 +83,12 @@ Public Class frmCups
         GVConsultar.OptionsFind.AlwaysVisible = False
 
         ' Cargar Codigos servicios
-        Dim _DCodigoservicios = New DCodigoServicios
-        _ds = _DCodigoservicios.ListarCombo
-        cboServicio.Properties.DataSource = _ds.Tables(0)
-        cboServicio.Properties.DisplayMember = _ds.Tables(0).Columns(1).Caption
-        cboServicio.Properties.ValueMember = _ds.Tables(0).Columns(0).Caption
-        cboServicio.ItemIndex = -1
+        'Dim _DCodigoservicios = New DCodigoServicios
+        '_ds = _DCodigoservicios.ListarCombo
+        'cboServicio.Properties.DataSource = _ds.Tables(0)
+        'cboServicio.Properties.DisplayMember = _ds.Tables(0).Columns(1).Caption
+        'cboServicio.Properties.ValueMember = _ds.Tables(0).Columns(0).Caption
+        'cboServicio.ItemIndex = -1
 
         bbiGuardar.Enabled = False
     End Sub

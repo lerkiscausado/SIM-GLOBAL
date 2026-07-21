@@ -157,7 +157,7 @@ Public Class GeneradorJSON
                 ElseIf tipoServicio = "C" Then
                     Dim cons As New JObject()
                     cons("codPrestador") = dr2("codPrestador").ToString()
-                    cons("fechaInicioAtencion") = FormatearFechaHora(dr2("fechaInicioAtencion"))
+                    cons("fechaInicioAtencion") = Newtonsoft.Json.Linq.JToken.FromObject(FormatearFechaHora(dr2("fechaInicioAtencion")))
                     cons("numAutorizacion") = dr2("autorizacion").ToString()
                     cons("codConsulta") = dr2("codProcedimiento").ToString()
                     cons("modalidadGrupoServicioTecSal") = dr2("modalidadGrupoServicioTecSal").ToString()

@@ -127,6 +127,7 @@ Partial Class frmInicio
         Me.BarButtonItem3 = New DevExpress.XtraBars.BarButtonItem()
         Me.BarButtonItem4 = New DevExpress.XtraBars.BarButtonItem()
         Me.bbiAnestesia = New DevExpress.XtraBars.BarButtonItem()
+        Me.bbiRDA = New DevExpress.XtraBars.BarButtonItem()
         Me.rpArchivo = New DevExpress.XtraBars.Ribbon.RibbonPage()
         Me.rpgAdmisiones = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.rpgEstudios = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
@@ -159,9 +160,9 @@ Partial Class frmInicio
         'RibbonControl
         '
         Me.RibbonControl.ExpandCollapseItem.Id = 0
-        Me.RibbonControl.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.RibbonControl.ExpandCollapseItem, Me.RibbonControl.SearchEditItem, Me.bbiNuevo, Me.bbiEditar, Me.bbiConsultar, Me.bbiHistoria, Me.bbiListadoOrdenes, Me.bbiFactura, Me.bbiRips, Me.bbiImprimir, Me.bbtSalir, Me.bbiUsuarios, Me.bbiEntidades, Me.bbiEspecialidades, Me.bbiCups, Me.bbiExamenes, Me.bbiMedicamentos, Me.bbiDiagnosticos, Me.bbiEncabezadoPie, Me.bbiLogo, Me.bbiFirma, Me.bbiUsers, Me.bbiSeguridad, Me.srgAspecto, Me.bbiAdjuntos, Me.bbiCancelar, Me.BarMdiChildrenListItem1, Me.bbiProgramacionProcedimiento, Me.bbiImagenes, Me.bbiCargos, Me.bbiEmpleados, Me.BarEditItem1, Me.lblUsers, Me.bbiEvolucionPaciente, Me.bbiHistoriasAnteriores, Me.bbiTipoPatologia, Me.bbiEstudiosPredeterminados, Me.bbiSoporteTecnico, Me.bbiAcercaDe, Me.bbiAyudaProducto, Me.bbiTutoriales, Me.bbiContratos, Me.bbiTarifas, Me.bbiDetalleTarifa, Me.bbiAgenda, Me.bbiPrivilegios, Me.bbiEndoscopia, Me.bbiEquiposApoyo, Me.bbiHistoriaGrupal, Me.bbiCitologia, Me.bbiPatologia, Me.bbiSubEntidades, Me.bbiProcedimientosTerapeuticos, Me.bbiVistaPrevia, Me.bbiReporteEstudios, Me.bbiEstudiosFotos, Me.bbiOtrosEstudios, Me.bbiPlantillas, Me.bbiCerrarSesion, Me.bbiCaja, Me.bbiOrtodoncia, Me.bbiPlantillaConsentimiento, Me.bbiAuditoria, Me.BarButtonItem1, Me.bbiOrdenCompra, Me.bbiCompras, Me.bbiNotaCredito, Me.bbiNotaDebito, Me.bbiInventario, Me.bbiCotizaciones, Me.BarButtonItem8, Me.bbiTarifaProductos, Me.bbiProveedores, Me.bbiClientes, Me.bbiProductos, Me.BarButtonItem12, Me.bbiConsultarMovimientos, Me.bbiEnviarCorreo, Me.bbiTomaMuestra, Me.bbiAuditoriaOrdenes, Me.bbiEspecimenes, Me.bbiRelacionPatologias, Me.bbiUnidadMedida, Me.bbiInformes, Me.BarButtonItem2, Me.bbiEntregaResultados, Me.bbiImprimirMenu, Me.bbiImprimirEstudios, Me.bbiImprimirEstudiosFoto, Me.bbiIncapacidades, Me.bbiResolucionFactura, Me.BarButtonItem3, Me.BarButtonItem4, Me.bsiOrdenesMedicas, Me.bbiReporteLaboratorios, Me.bbiReporteEstudiosDiagnosticos, Me.bbiReporteProcedimientos, Me.bbiReporteMedicamentos, Me.bbiAnestesia, Me.bbiRegistroAnestesia, Me.bsiImpresionOrdenesMedicas, Me.bbiImpresionLaboratorios, Me.bbiImpresionEstudiosDiagnosticos, Me.bbiImpresionProcedimientos, Me.bbiImpresionMedicamentos, Me.bbiImpresionAnestesia, Me.bbiExportarPDF})
+        Me.RibbonControl.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.RibbonControl.ExpandCollapseItem, Me.RibbonControl.SearchEditItem, Me.bbiNuevo, Me.bbiEditar, Me.bbiConsultar, Me.bbiHistoria, Me.bbiListadoOrdenes, Me.bbiFactura, Me.bbiRips, Me.bbiImprimir, Me.bbtSalir, Me.bbiUsuarios, Me.bbiEntidades, Me.bbiEspecialidades, Me.bbiCups, Me.bbiExamenes, Me.bbiMedicamentos, Me.bbiDiagnosticos, Me.bbiEncabezadoPie, Me.bbiLogo, Me.bbiFirma, Me.bbiUsers, Me.bbiSeguridad, Me.srgAspecto, Me.bbiAdjuntos, Me.bbiCancelar, Me.BarMdiChildrenListItem1, Me.bbiProgramacionProcedimiento, Me.bbiImagenes, Me.bbiCargos, Me.bbiEmpleados, Me.BarEditItem1, Me.lblUsers, Me.bbiEvolucionPaciente, Me.bbiHistoriasAnteriores, Me.bbiTipoPatologia, Me.bbiEstudiosPredeterminados, Me.bbiSoporteTecnico, Me.bbiAcercaDe, Me.bbiAyudaProducto, Me.bbiTutoriales, Me.bbiContratos, Me.bbiTarifas, Me.bbiDetalleTarifa, Me.bbiAgenda, Me.bbiPrivilegios, Me.bbiEndoscopia, Me.bbiEquiposApoyo, Me.bbiHistoriaGrupal, Me.bbiCitologia, Me.bbiPatologia, Me.bbiSubEntidades, Me.bbiProcedimientosTerapeuticos, Me.bbiVistaPrevia, Me.bbiReporteEstudios, Me.bbiEstudiosFotos, Me.bbiOtrosEstudios, Me.bbiPlantillas, Me.bbiCerrarSesion, Me.bbiCaja, Me.bbiOrtodoncia, Me.bbiPlantillaConsentimiento, Me.bbiAuditoria, Me.BarButtonItem1, Me.bbiOrdenCompra, Me.bbiCompras, Me.bbiNotaCredito, Me.bbiNotaDebito, Me.bbiInventario, Me.bbiCotizaciones, Me.BarButtonItem8, Me.bbiTarifaProductos, Me.bbiProveedores, Me.bbiClientes, Me.bbiProductos, Me.BarButtonItem12, Me.bbiConsultarMovimientos, Me.bbiEnviarCorreo, Me.bbiTomaMuestra, Me.bbiAuditoriaOrdenes, Me.bbiEspecimenes, Me.bbiRelacionPatologias, Me.bbiUnidadMedida, Me.bbiInformes, Me.BarButtonItem2, Me.bbiEntregaResultados, Me.bbiImprimirMenu, Me.bbiImprimirEstudios, Me.bbiImprimirEstudiosFoto, Me.bbiIncapacidades, Me.bbiResolucionFactura, Me.BarButtonItem3, Me.BarButtonItem4, Me.bsiOrdenesMedicas, Me.bbiReporteLaboratorios, Me.bbiReporteEstudiosDiagnosticos, Me.bbiReporteProcedimientos, Me.bbiReporteMedicamentos, Me.bbiAnestesia, Me.bbiRegistroAnestesia, Me.bsiImpresionOrdenesMedicas, Me.bbiImpresionLaboratorios, Me.bbiImpresionEstudiosDiagnosticos, Me.bbiImpresionProcedimientos, Me.bbiImpresionMedicamentos, Me.bbiImpresionAnestesia, Me.bbiExportarPDF, Me.bbiRDA})
         Me.RibbonControl.Location = New System.Drawing.Point(0, 0)
-        Me.RibbonControl.MaxItemId = 113
+        Me.RibbonControl.MaxItemId = 114
         Me.RibbonControl.Name = "RibbonControl"
         Me.RibbonControl.Pages.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPage() {Me.rpArchivo, Me.rpAdministracion, Me.rpContable, Me.rpConfiguracion, Me.rpAyuda})
         Me.RibbonControl.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemTextEdit1})
@@ -1087,6 +1088,15 @@ Partial Class frmInicio
             Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
         Me.bbiAnestesia.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
         '
+        'bbiRDA
+        '
+        Me.bbiRDA.AllowHtmlText = DevExpress.Utils.DefaultBoolean.[True]
+        Me.bbiRDA.Caption = "Interoperabilidad"
+        Me.bbiRDA.Id = 113
+        Me.bbiRDA.Name = "bbiRDA"
+        Me.bbiRDA.RibbonStyle = CType(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) _
+            Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
+        '
         'rpArchivo
         '
         Me.rpArchivo.Appearance.Image = CType(resources.GetObject("rpArchivo.Appearance.Image"), System.Drawing.Image)
@@ -1264,6 +1274,7 @@ Partial Class frmInicio
         Me.rpgSistema.ItemLinks.Add(Me.bbiSeguridad)
         Me.rpgSistema.ItemLinks.Add(Me.bbiPrivilegios)
         Me.rpgSistema.ItemLinks.Add(Me.bbiAuditoria)
+        Me.rpgSistema.ItemLinks.Add(Me.bbiRDA)
         Me.rpgSistema.Name = "rpgSistema"
         Me.rpgSistema.Text = "Sistema"
         '
@@ -1457,4 +1468,5 @@ Partial Class frmInicio
     Friend WithEvents bbiImpresionMedicamentos As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents bbiImpresionAnestesia As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents bbiExportarPDF As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents bbiRDA As DevExpress.XtraBars.BarButtonItem
 End Class
