@@ -70,12 +70,22 @@ Public Class frmRDA
             }
 
             ' Ejecutar tu método de persistencia (Aquí lo adaptas a tu capa de datos, ej: Entity Framework, Dapper o ADO.NET)
-            If _dRDA.Guardar(configAGuardar) Then
-                MessageBox.Show("La configuración de la API RDA de MinSalud ha sido almacenada correctamente en SIM.",
+            If txtID.Text <> "" Then
+                If _dRDA.Actualizar(configAGuardar) Then
+                    MessageBox.Show("La configuración de la API RDA de MinSalud ha sido almacenada correctamente en SIM.",
                                  "Configuración Guardada", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                Me.Close() ' O refrescar el estado del formulario
+                    Me.Close() ' O refrescar el estado del formulario
+                Else
+                    Throw New Exception("No se pudo insertar el registro en la base de datos.")
+                End If
             Else
-                Throw New Exception("No se pudo insertar el registro en la base de datos.")
+                If _dRDA.Guardar(configAGuardar) Then
+                    MessageBox.Show("La configuración de la API RDA de MinSalud ha sido almacenada correctamente en SIM.",
+                                         "Configuración Guardada", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    Me.Close() ' O refrescar el estado del formulario
+                Else
+                    Throw New Exception("No se pudo insertar el registro en la base de datos.")
+                End If
             End If
 
         Catch ex As Exception
@@ -111,6 +121,24 @@ Public Class frmRDA
     End Sub
 
     Private Sub frmRDA_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Dim _dRDA As New DRDA
+        Dim configAGuardar As New ConfigInteropApi
+        configAGuardar = _dRDA.Cargar()
+        If configAGuardar.Ambiente = "SANDBOX" Then
+            rbSandbox.Checked = True
+        Else
+            rbProduction.Checked = True
+        End If
+        txtID.Text = configAGuardar.Id
+        txtTenantID.Text = configAGuardar.TenantId
+        txtClientID.Text = configAGuardar.ClientId
+        txtClientSecret.Text = configAGuardar.ClientSecret
+        txtSubscriptionKey.Text = configAGuardar.SubscriptionKey
+        txtURLAuth.Text = configAGuardar.UrlAuthServer
+        txtURLBaseApi.Text = configAGuardar.UrlBaseApi
+    End Sub
 
+    Private Sub spCancelar_Click(sender As Object, e As EventArgs) Handles spCancelar.Click
+        Me.Close()
     End Sub
 End Class

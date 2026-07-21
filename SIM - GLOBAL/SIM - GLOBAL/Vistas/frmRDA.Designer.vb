@@ -46,6 +46,7 @@ Partial Class frmRDA
         Me.txtClientSecret = New DevExpress.XtraEditors.TextEdit()
         Me.LabelControl2 = New DevExpress.XtraEditors.LabelControl()
         Me.XtraTabPage2 = New DevExpress.XtraTab.XtraTabPage()
+        Me.txtID = New DevExpress.XtraEditors.TextEdit()
         CType(Me.XtraTabControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.XtraTabControl1.SuspendLayout()
         Me.xtConexion.SuspendLayout()
@@ -59,6 +60,7 @@ Partial Class frmRDA
         CType(Me.txtTenantID.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtClientID.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtClientSecret.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtID.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'XtraTabControl1
@@ -73,6 +75,7 @@ Partial Class frmRDA
         '
         'xtConexion
         '
+        Me.xtConexion.Controls.Add(Me.txtID)
         Me.xtConexion.Controls.Add(Me.lblEstadoServicio)
         Me.xtConexion.Controls.Add(Me.spCancelar)
         Me.xtConexion.Controls.Add(Me.spGuardar)
@@ -307,8 +310,18 @@ Partial Class frmRDA
         'XtraTabPage2
         '
         Me.XtraTabPage2.Name = "XtraTabPage2"
-        Me.XtraTabPage2.Size = New System.Drawing.Size(580, 352)
+        Me.XtraTabPage2.Size = New System.Drawing.Size(580, 373)
         Me.XtraTabPage2.Text = "Especialistas"
+        '
+        'txtID
+        '
+        Me.txtID.Location = New System.Drawing.Point(247, 339)
+        Me.txtID.Name = "txtID"
+        Me.txtID.Properties.Appearance.BackColor = System.Drawing.Color.White
+        Me.txtID.Properties.Appearance.Options.UseBackColor = True
+        Me.txtID.Size = New System.Drawing.Size(59, 20)
+        Me.txtID.TabIndex = 23
+        Me.txtID.Visible = False
         '
         'frmRDA
         '
@@ -335,6 +348,7 @@ Partial Class frmRDA
         CType(Me.txtTenantID.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtClientID.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtClientSecret.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtID.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -365,4 +379,5 @@ Partial Class frmRDA
     Friend WithEvents lblEstadoServicio As DevExpress.XtraEditors.LabelControl
     Friend WithEvents rbProduction As RadioButton
     Friend WithEvents rbSandbox As RadioButton
+    Friend WithEvents txtID As DevExpress.XtraEditors.TextEdit
 End Class

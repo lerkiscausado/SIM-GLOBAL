@@ -32,11 +32,12 @@ Namespace Controles
                 If Existe(_Especialista.IdEspecialista) = True Then
                     query = "UPDATE especialistas SET nombre='" & _Especialista.Nombre & "', " _
                             & "especialidad='" & _Especialista.Especialidad & "', " _
+                            & "identificacion='" & _Especialista.Identificacion & "', " _
                             & "registro_medico='" & _Especialista.RegistroMedico & "', " _
                             & "estado='" & _Especialista.Estado & "' where id_especialista='" & _Especialista.IdEspecialista & "'"
                 Else
                     query = "insert into especialistas values('" & _Especialista.Id & "', " _
-                            & "'" & _Especialista.IdEspecialista & "','" & _Especialista.Nombre & "', '" & _Especialista.Especialidad & "'," _
+                            & "'" & _Especialista.IdEspecialista & "','" & _Especialista.IdTipoIdentificacion & "','" & _Especialista.Identificacion & "','" & _Especialista.Nombre & "', '" & _Especialista.Especialidad & "'," _
                             & "'" & _Especialista.RegistroMedico & "','" & _Especialista.Estado & "')"
                 End If
 
@@ -53,8 +54,8 @@ Namespace Controles
                 'Dim query As String
 
                 Dim sql As String = "insert into especialistas " _
-                                    & "(ID,ID_ESPECIALISTA,NOMBRE,ESPECIALIDAD,REGISTRO_MEDICO,ESTADO,FIRMA) " _
-                                    & "values(?,?,?,?,?,?,?)"
+                                    & "(ID,ID_ESPECIALISTA,ID_TIPO_IDENTIFICACION, IDENTIFICACION, NOMBRE,ESPECIALIDAD,REGISTRO_MEDICO,ESTADO,FIRMA) " _
+                                    & "values(?,?,?,?,?,?,?,?,?)"
 
                 _conn = ConexionODBC.Open()
 
@@ -68,12 +69,14 @@ Namespace Controles
                 'End If
                 Comando.Parameters.AddWithValue(1, Val(_Especialista.Id))
                 Comando.Parameters.AddWithValue(2, _Especialista.IdEspecialista)
-                Comando.Parameters.AddWithValue(3, _Especialista.Nombre)
-                Comando.Parameters.AddWithValue(4, _Especialista.Especialidad)
-                Comando.Parameters.AddWithValue(5, _Especialista.RegistroMedico)
-                Comando.Parameters.AddWithValue(6, _Especialista.Estado)
+                Comando.Parameters.AddWithValue(3, _Especialista.IdTipoIdentificacion)
+                Comando.Parameters.AddWithValue(4, _Especialista.Identificacion)
+                Comando.Parameters.AddWithValue(5, _Especialista.Nombre)
+                Comando.Parameters.AddWithValue(6, _Especialista.Especialidad)
+                Comando.Parameters.AddWithValue(7, _Especialista.RegistroMedico)
+                Comando.Parameters.AddWithValue(8, _Especialista.Estado)
                 'If Firma Is Nothing Then
-                Comando.Parameters.AddWithValue(7, DBNull.Value)
+                Comando.Parameters.AddWithValue(9, DBNull.Value)
                 'Else
                 'Comando.Parameters.AddWithValue(7, Firma)
                 'End If

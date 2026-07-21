@@ -3,6 +3,8 @@
         Private _id As Integer
         Private _idEspecialista As Integer
         Private _nombre As String
+        Private _idTipoIdentificacion As String
+        Private _identificacion As String
         Private _especialidad As String
         Private _registroMedico As String
         Private _estado As String
@@ -68,6 +70,24 @@
             End Get
             Set(value As String)
                 _estado = value
+            End Set
+        End Property
+
+        Public Property Identificacion As String
+            Get
+                Return _identificacion
+            End Get
+            Set(value As String)
+                _identificacion = value
+            End Set
+        End Property
+
+        Public Property IdTipoIdentificacion As String
+            Get
+                Return _idTipoIdentificacion
+            End Get
+            Set(value As String)
+                _idTipoIdentificacion = value
             End Set
         End Property
     End Class
