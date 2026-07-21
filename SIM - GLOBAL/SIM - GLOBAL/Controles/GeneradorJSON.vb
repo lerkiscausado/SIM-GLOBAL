@@ -105,7 +105,7 @@ Public Class GeneradorJSON
                         NULL AS nomCodDiagnosticoRelacionadoCIE11,
                         NULL AS codComplicacion,
                         NULL AS codComplicacionCIE11,
-                        NULL AS nomComplicacionCIE11,
+                        NULL AS nomCodComplicacionCIE11,
                         detalle_orden.valor AS valorServicio, 
                         '05' AS conceptoRecaudo, 
                         detalle_orden.copago AS valorPagoModerador, 
@@ -145,7 +145,7 @@ Public Class GeneradorJSON
                     proc("nomCodDiagnosticoRelacionadoCIE11") = Nothing
                     proc("codComplicacion") = Nothing
                     proc("codComplicacionCIE11") = Nothing
-                    proc("nomComplicacionCIE11") = Nothing
+                    proc("nomCodComplicacionCIE11") = Nothing
                     proc("vrServicio") = CInt(dr2("valorServicio"))
                     proc("conceptoRecaudo") = dr2("conceptoRecaudo").ToString()
                     proc("valorPagoModerador") = CInt((dr2("valorPagoModerador")))
@@ -157,7 +157,7 @@ Public Class GeneradorJSON
                 ElseIf tipoServicio = "C" Then
                     Dim cons As New JObject()
                     cons("codPrestador") = dr2("codPrestador").ToString()
-                    cons("fechaInicioAtencion") = FormatearFechaHora(dr2("fechaInicioAtencion"))
+                    cons("fechaInicioAtencion") = Newtonsoft.Json.Linq.JToken.FromObject(FormatearFechaHora(dr2("fechaInicioAtencion")))
                     cons("numAutorizacion") = dr2("autorizacion").ToString()
                     cons("codConsulta") = dr2("codProcedimiento").ToString()
                     cons("modalidadGrupoServicioTecSal") = dr2("modalidadGrupoServicioTecSal").ToString()
