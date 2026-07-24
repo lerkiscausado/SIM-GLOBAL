@@ -10,34 +10,70 @@ Public Class frmEmpleados
     Dim _dEspecialidades = New DEspecialidades
     Dim _Especialista = New SIM___GLOBAL.Modelo.Especialista
     Dim _DEspecialista = New SIM___GLOBAL.Controles.DEspecialista
+    '------------------------------------------------------------------------------
     Private Sub Guardar()
-        _Empleados.Id = Val(txtID.Text)
-        _Empleados.NombreEmpleado = txtNombre.Text
+        Try
+            ' ── 1. MEJORA: Función separada para mapear el modelo ────────
+            ' Antes: los campos se asignaban directamente en Guardar()
+            ' Ahora: se centraliza en una función reutilizable
+            MapearEmpleado()
+
+            ' ── 2. Guardar empleado ──────────────────────────────────────
+            _dEmpleados.Guardar(_Empleados)
+
+            ' ── 3. MEJORA: Se evalúa el cargo una sola vez ───────────────
+            ' Antes: cboCargo.GetColumnValue("CARGO") se llamaba dos veces
+            Dim esEspecialista As Boolean = (cboCargo.GetColumnValue("CARGO").ToString().Trim().ToUpper() = "ESPECIALISTA")
+
+            If esEspecialista Then
+                ' ── 4. MEJORA: Función separada para mapear el especialista
+                ' Antes: los campos se repetían en el If y en el Else
+                MapearEspecialista()
+
+                ' ── 5. MEJORA: Se determina si es nuevo o edición por Id ─
+                ' Antes: se comparaba txtID.Text = "" lo cual es frágil
+                Dim esNuevo As Boolean = String.IsNullOrEmpty(txtID.Text.Trim())
+
+                If esNuevo Then
+                    ' Nuevo especialista: Id en 0 porque la BD lo genera
+                    _Especialista.id = 0
+                    _DEspecialista.guardar2(_Especialista)
+                Else
+                    ' Especialista existente: actualizar por idespecialista
+                    _DEspecialista.actualizar(_Especialista)
+                End If
+            End If
+
+        Catch ex As Exception
+            MessageBox.Show("Error al guardar: " & ex.Message)
+        End Try
+    End Sub
+
+    ' ── Mapear datos del formulario al modelo Empleado ───────────────
+    Private Sub MapearEmpleado()
+        _Empleados.Id = If(String.IsNullOrEmpty(txtID.Text.Trim()), 0, Val(txtID.Text))
+        _Empleados.NombreEmpleado = txtNombre.Text.Trim()
         _Empleados.IdCargo = cboCargo.GetColumnValue("ID")
         _Empleados.IdEspecialidad = cboEspecialidad.GetColumnValue("ID")
-        _Empleados.RegistroMedico = txtRegistroMedico.Text
-        If chkEstado.Checked = True Then
-            _Empleados.Estado = "A"
-        Else
-            _Empleados.Estado = "I"
+        _Empleados.RegistroMedico = txtRegistroMedico.Text.Trim()
 
-        End If
-        _dEmpleados.Guardar(_Empleados)
-
-        If cboCargo.GetColumnValue("CARGO") = "ESPECIALISTA" Then
-            If txtID.Text = "" Then
-                _Especialista.id = Val("")
-                _Especialista.idespecialista = Val(_dEmpleados.ultimoregistroempleado)
-                _Especialista.idtipoidentificacion = "CC"
-                _Especialista.identificacion = txtIdentificacion.Text
-                _Especialista.nombre = txtNombre.Text
-                _Especialista.especialidad = cboEspecialidad.GetColumnValue("ESPECIALIDAD")
-                _Especialista.registromedico = txtRegistroMedico.Text
-                _Especialista.estado = "A"
-                _DEspecialista.guardar2(_Especialista)
-            End If
-        End If
+        ' MEJORA: Expresión ternaria en lugar de If/Else para el estado
+        _Empleados.Estado = If(chkEstado.Checked, "A", "I")
     End Sub
+
+    ' ── Mapear datos del formulario al modelo Especialista ───────────
+    Private Sub MapearEspecialista()
+        ' MEJORA: Los campos comunes al Insert y Update se asignan
+        ' en un solo lugar, eliminando la duplicación de código
+        _Especialista.idespecialista = Val(_dEmpleados.ultimoregistroempleado)
+        _Especialista.idtipoidentificacion = "CC"
+        _Especialista.identificacion = txtIdentificacion.Text.Trim()
+        _Especialista.nombre = txtNombre.Text.Trim()
+        _Especialista.especialidad = cboEspecialidad.GetColumnValue("ESPECIALIDAD").ToString()
+        _Especialista.registromedico = txtRegistroMedico.Text.Trim()
+        _Especialista.estado = "A"
+    End Sub
+    '------------------------------------------------------------------------------
     Private Sub ActivarGuardar()
         If txtNombre.Text <> "" Then
             bbiGuardar.Enabled = True
@@ -110,6 +146,7 @@ Public Class frmEmpleados
                     txtID.Text = _ClickGrilla
                     txtNombre.Text = _Empleados.NombreEmpleado
                     cboCargo.ItemIndex = cboCargo.Properties.GetDataSourceRowIndex("ID", _Empleados.IdCargo)
+                    txtIdentificacion.Text = _DEspecialista.traeridentificacion(_ClickGrilla)
                     cboEspecialidad.ItemIndex = cboEspecialidad.Properties.GetDataSourceRowIndex("ID", _Empleados.IdEspecialidad)
                     txtRegistroMedico.Text = _Empleados.RegistroMedico
                     If _Empleados.Estado = "I" Then

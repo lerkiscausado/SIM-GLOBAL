@@ -108,6 +108,68 @@ Namespace Controles
             End Try
             Return Nothing
         End Function
+        Public Function TraerIdentificacion(ByVal filtro As String) As String
+            Try
+                Dim query As String = "SELECT identificacion FROM especialistas WHERE id_especialista = ?"
+                _conn = ConexionODBC.Open()
+                Dim comando As New OdbcCommand(query, _conn)
+                comando.Parameters.AddWithValue("?", filtro)
+
+                Dim reader As OdbcDataReader = comando.ExecuteReader()
+
+                If reader.Read() Then
+                    Dim identificacion As String = reader("identificacion").ToString()
+                    ConexionODBC.Close(_conn)
+                    Return identificacion
+                Else
+                    ConexionODBC.Close(_conn)
+                    Return String.Empty
+                End If
+
+            Catch ex As Exception
+                MessageBox.Show("Error al traer identificación: " & ex.Message)
+                ConexionODBC.Close(_conn)
+                Return String.Empty
+            End Try
+        End Function
+        Public Sub Actualizar(ByVal _Especialista As SIM___GLOBAL.Modelo.Especialista)
+            Try
+                Dim sql As String = "UPDATE especialistas SET " &
+                                    "ID_TIPO_IDENTIFICACION = ?, " &
+                                    "IDENTIFICACION = ?, " &
+                                    "NOMBRE = ?, " &
+                                    "ESPECIALIDAD = ?, " &
+                                    "REGISTRO_MEDICO = ?, " &
+                                    "ESTADO = ?, " &
+                                    "FIRMA = ? " &
+                                    "WHERE ID_ESPECIALISTA = ?"
+
+                _conn = ConexionODBC.Open()
+                Dim comando As New OdbcCommand(sql, _conn)
+
+                comando.Parameters.AddWithValue("?", _Especialista.IdTipoIdentificacion)
+                comando.Parameters.AddWithValue("?", _Especialista.Identificacion)
+                comando.Parameters.AddWithValue("?", _Especialista.Nombre)
+                comando.Parameters.AddWithValue("?", _Especialista.Especialidad)
+                comando.Parameters.AddWithValue("?", _Especialista.RegistroMedico)
+                comando.Parameters.AddWithValue("?", _Especialista.Estado)
+                comando.Parameters.AddWithValue("?", DBNull.Value)           ' FIRMA
+                comando.Parameters.AddWithValue("?", _Especialista.IdEspecialista) ' WHERE
+
+                Dim filasAfectadas As Integer = comando.ExecuteNonQuery()
+                ConexionODBC.Close(_conn)
+
+                If filasAfectadas > 0 Then
+                    MessageBox.Show("✅ Especialista actualizado correctamente.")
+                Else
+                    MessageBox.Show("⚠️ No se encontró el especialista para actualizar.")
+                End If
+
+            Catch ex As Exception
+                ConexionODBC.Close(_conn)
+                MessageBox.Show("Error al actualizar: " & ex.ToString())
+            End Try
+        End Sub
     End Class
 End Namespace
 

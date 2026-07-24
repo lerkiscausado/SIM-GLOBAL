@@ -2,6 +2,7 @@
 Imports System.Data.Common
 Imports System.Data.Odbc
 Imports SIM___GLOBAL.Modelo
+Imports System.Net.Http
 Namespace Controles
     Public Class DRDA
         Shared _conn As New OdbcConnection
@@ -116,5 +117,144 @@ Namespace Controles
                 Return False
             End Try
         End Function
+        '------------------------------------------------------------------------------------
+        Public Async Function TraerToken(ByVal configId As Integer) As Task(Of String)
+            Try
+                ' ── 1. Verificar si hay token vigente ────────────────────
+                Dim sql As String = "SELECT access_token FROM interop_token_cache " &
+                                    "WHERE config_id = ? " &
+                                    "AND fecha_expiracion > NOW() " &
+                                    "ORDER BY fecha_captura DESC LIMIT 1"
+
+                _conn = ConexionODBC.Open()
+                Dim comando As New OdbcCommand(sql, _conn)
+                comando.Parameters.AddWithValue("?", configId)
+
+                Dim reader As OdbcDataReader = comando.ExecuteReader()
+
+                If reader.Read() Then
+                    Dim tokenVigente As String = reader("access_token").ToString()
+                    ConexionODBC.Close(_conn)
+                    Return tokenVigente
+                End If
+
+                reader.Close()
+                ConexionODBC.Close(_conn)
+
+                ' ── 2. Token expirado: traer configuración de la BD ──────
+                Dim sqlConfig As String = "SELECT ambiente, tenant_id, client_id, client_secret, " &
+                                          "url_auth_server, url_base_api, subscription_key " &
+                                          "FROM config_interop_api WHERE id = ? AND estado = 1 LIMIT 1"
+
+                _conn = ConexionODBC.Open()
+                Dim comandoConfig As New OdbcCommand(sqlConfig, _conn)
+                comandoConfig.Parameters.AddWithValue("?", configId)
+
+                Dim readerConfig As OdbcDataReader = comandoConfig.ExecuteReader()
+
+                If Not readerConfig.Read() Then
+                    ConexionODBC.Close(_conn)
+                    MessageBox.Show("⚠️ No se encontró configuración activa para autenticar.")
+                    Return String.Empty
+                End If
+
+                Dim configTemporal As New ConfigInteropApi With {
+                    .Ambiente = If(readerConfig("ambiente").ToString() = "SANDBOX", 1, 0),
+                    .TenantId = readerConfig("tenant_id").ToString(),
+                    .ClientId = readerConfig("client_id").ToString(),
+                    .ClientSecret = readerConfig("client_secret").ToString(),
+                    .UrlAuthServer = readerConfig("url_auth_server").ToString(),
+                    .UrlBaseApi = readerConfig("url_base_api").ToString()
+                }
+
+                readerConfig.Close()
+                ConexionODBC.Close(_conn)
+
+                ' ── 3. Solicitar nuevo token a la API ────────────────────
+                Dim nuevoToken As String = Await SolicitarNuevoToken(configTemporal, configId)
+                Return nuevoToken
+
+            Catch ex As Exception
+                ConexionODBC.Close(_conn)
+                MessageBox.Show("Error TraerToken: " & ex.Message)
+                Return String.Empty
+            End Try
+        End Function
+
+        ' ── Solicitar nuevo token y guardarlo en cache ────────────────────
+        Private Async Function SolicitarNuevoToken(config As ConfigInteropApi,
+                                                   configId As Integer) As Task(Of String)
+            Try
+                Dim client As New HttpClient()
+
+                Dim parametros As New Dictionary(Of String, String) From {
+                    {"grant_type", "Client_Credentials"},
+                    {"client_id", config.ClientId},
+                    {"client_secret", config.ClientSecret},
+                    {"username", config.TenantId},
+                    {"password", config.ClientSecret}
+                }
+
+                Dim content = New FormUrlEncodedContent(parametros)
+                Dim response = Await client.PostAsync(config.UrlAuthServer & "/oauth/token", content)
+                Dim body = Await response.Content.ReadAsStringAsync()
+
+                If Not response.IsSuccessStatusCode Then
+                    MessageBox.Show("Error al autenticar: " & body)
+                    Return String.Empty
+                End If
+
+                ' ── 4. Parsear respuesta ──────────────────────────────────
+                Dim resultado = Newtonsoft.Json.Linq.JObject.Parse(body)
+                Dim accessToken As String = resultado("access_token").ToString()
+                Dim tokenType As String = resultado("token_type").ToString()
+                Dim expiresIn As Integer = CInt(resultado("expires_in").ToString())
+
+                ' ── 5. Guardar nuevo token en cache ───────────────────────
+                GuardarTokenCache(configId, accessToken, tokenType, expiresIn)
+
+                Return accessToken
+
+            Catch ex As Exception
+                MessageBox.Show("Error SolicitarNuevoToken: " & ex.Message)
+                Return String.Empty
+            End Try
+        End Function
+
+        ' ── Guardar token en la tabla interop_token_cache ─────────────────
+        Private Sub GuardarTokenCache(configId As Integer,
+                                       accessToken As String,
+                                       tokenType As String,
+                                       expiresIn As Integer)
+            Try
+                ' Eliminar token anterior del mismo config_id
+                Dim sqlDelete As String = "DELETE FROM interop_token_cache WHERE config_id = ?"
+                _conn = ConexionODBC.Open()
+                Dim comandoDelete As New OdbcCommand(sqlDelete, _conn)
+                comandoDelete.Parameters.AddWithValue("?", configId)
+                comandoDelete.ExecuteNonQuery()
+                ConexionODBC.Close(_conn)
+
+                ' Insertar nuevo token
+                Dim sqlInsert As String = "INSERT INTO interop_token_cache " &
+                                          "(config_id, access_token, token_type, expires_in, fecha_expiracion) " &
+                                          "VALUES (?, ?, ?, ?, DATE_ADD(NOW(), INTERVAL ? SECOND))"
+
+                _conn = ConexionODBC.Open()
+                Dim comandoInsert As New OdbcCommand(sqlInsert, _conn)
+                comandoInsert.Parameters.AddWithValue("?", configId)
+                comandoInsert.Parameters.AddWithValue("?", accessToken)
+                comandoInsert.Parameters.AddWithValue("?", tokenType)
+                comandoInsert.Parameters.AddWithValue("?", expiresIn)
+                comandoInsert.Parameters.AddWithValue("?", expiresIn)
+                comandoInsert.ExecuteNonQuery()
+                ConexionODBC.Close(_conn)
+
+            Catch ex As Exception
+                ConexionODBC.Close(_conn)
+                MessageBox.Show("Error GuardarTokenCache: " & ex.Message)
+            End Try
+        End Sub
+        '------------------------------------------------------------------------------------
     End Class
 End Namespace
