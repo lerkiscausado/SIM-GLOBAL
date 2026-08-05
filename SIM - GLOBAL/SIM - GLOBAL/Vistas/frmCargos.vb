@@ -9,10 +9,15 @@ Public Class frmCargos
     Dim _dCargos As New DCargos
     Dim _Cargos As New Cargos
 
-    Private Sub Guardar()
+    Private Function Guardar() As Boolean
         Try
-            _Cargos.Id = Val(txtID.Text)
-            _Cargos.NombreCargo = txtNombre.Text
+            Dim idIngresado As Integer
+            If Not Integer.TryParse(txtID.Text, idIngresado) Then
+                MessageBox.Show("El campo ID debe ser un número válido", "Registro de Cargos", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                Return False
+            End If
+            _Cargos.Id = idIngresado
+            _Cargos.NombreCargo = txtNombre.Text.Trim()
             If chkEstado.Checked = True Then
                 _Cargos.Estado = "A"
             Else
@@ -20,16 +25,20 @@ Public Class frmCargos
             End If
             _dCargos.Guardar(_Cargos)
             bbiGuardar.Enabled = False
+            Return True
         Catch ex As Exception
-
+            MessageBox.Show("No se pudo guardar el cargo: " & ex.Message, "Registro de Cargos", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Return False
         End Try
-    End Sub
+    End Function
     Private Sub LimpiarCampos()
         txtID.Text = ""
         txtNombre.Text = ""
         chkEstado.Checked = False
+        txtID.Enabled = True
         txtNombre.Enabled = True
         bbiGuardar.Enabled = False
+        txtID.Text = 0
     End Sub
     Private Sub EditarCampos()
         If _ClickGrilla <> "" Then
@@ -59,6 +68,7 @@ Public Class frmCargos
     End Sub
 
     Private Sub frmCargos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        txtID.Text = 0
         ActualizarGrilla()
 
         GVConsultar.OptionsFind.AlwaysVisible = False
@@ -79,9 +89,10 @@ Public Class frmCargos
             MessageBox.Show("El Campo Nombre es Obligatorio", "Registro de Cargos", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
         Else
-            Guardar()
-            LimpiarCampos()
-            ActualizarGrilla()
+            If Guardar() Then
+                LimpiarCampos()
+                ActualizarGrilla()
+            End If
         End If
     End Sub
 
@@ -90,12 +101,6 @@ Public Class frmCargos
             GVConsultar.OptionsFind.AlwaysVisible = False
         Else
             GVConsultar.OptionsFind.AlwaysVisible = True
-        End If
-    End Sub
-    Private Sub GVConsultar_RowClick(ByVal sender As System.Object, ByVal e As DevExpress.XtraGrid.Views.Grid.RowClickEventArgs)
-        If e.RowHandle >= 0 Then
-            _ClickGrilla = GVConsultar.GetRowCellValue(e.RowHandle.ToString, "ID").ToString()
-            _Fila = e.RowHandle.ToString
         End If
     End Sub
 

@@ -27,7 +27,6 @@ Partial Class frmCargos
         Me.bbtNuevo = New DevExpress.XtraBars.BarButtonItem()
         Me.bbiAbrir = New DevExpress.XtraBars.BarButtonItem()
         Me.bbiGuardar = New DevExpress.XtraBars.BarButtonItem()
-        Me.bbiEliminar = New DevExpress.XtraBars.BarButtonItem()
         Me.bbiConsultar = New DevExpress.XtraBars.BarButtonItem()
         Me.bbiImprimir = New DevExpress.XtraBars.BarButtonItem()
         Me.barDockControlTop = New DevExpress.XtraBars.BarDockControl()
@@ -35,6 +34,7 @@ Partial Class frmCargos
         Me.barDockControlLeft = New DevExpress.XtraBars.BarDockControl()
         Me.barDockControlRight = New DevExpress.XtraBars.BarDockControl()
         Me.bbiEditar = New DevExpress.XtraBars.BarButtonItem()
+        Me.bbiEliminar = New DevExpress.XtraBars.BarButtonItem()
         Me.GCConsultar = New DevExpress.XtraGrid.GridControl()
         Me.GVConsultar = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.colID = New DevExpress.XtraGrid.Columns.GridColumn()
@@ -104,14 +104,6 @@ Partial Class frmCargos
         Me.bbiGuardar.ImageOptions.Image = CType(resources.GetObject("bbiGuardar.ImageOptions.Image"), System.Drawing.Image)
         Me.bbiGuardar.Name = "bbiGuardar"
         '
-        'bbiEliminar
-        '
-        Me.bbiEliminar.Caption = "Eliminar "
-        Me.bbiEliminar.Enabled = False
-        Me.bbiEliminar.Id = 5
-        Me.bbiEliminar.ImageOptions.Image = CType(resources.GetObject("bbiEliminar.ImageOptions.Image"), System.Drawing.Image)
-        Me.bbiEliminar.Name = "bbiEliminar"
-        '
         'bbiConsultar
         '
         Me.bbiConsultar.Caption = "Consultar"
@@ -139,7 +131,7 @@ Partial Class frmCargos
         '
         Me.barDockControlBottom.CausesValidation = False
         Me.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.barDockControlBottom.Location = New System.Drawing.Point(0, 258)
+        Me.barDockControlBottom.Location = New System.Drawing.Point(0, 262)
         Me.barDockControlBottom.Manager = Me.BarManager1
         Me.barDockControlBottom.Size = New System.Drawing.Size(496, 0)
         '
@@ -149,7 +141,7 @@ Partial Class frmCargos
         Me.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left
         Me.barDockControlLeft.Location = New System.Drawing.Point(0, 24)
         Me.barDockControlLeft.Manager = Me.BarManager1
-        Me.barDockControlLeft.Size = New System.Drawing.Size(0, 234)
+        Me.barDockControlLeft.Size = New System.Drawing.Size(0, 238)
         '
         'barDockControlRight
         '
@@ -157,7 +149,7 @@ Partial Class frmCargos
         Me.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right
         Me.barDockControlRight.Location = New System.Drawing.Point(496, 24)
         Me.barDockControlRight.Manager = Me.BarManager1
-        Me.barDockControlRight.Size = New System.Drawing.Size(0, 234)
+        Me.barDockControlRight.Size = New System.Drawing.Size(0, 238)
         '
         'bbiEditar
         '
@@ -165,6 +157,14 @@ Partial Class frmCargos
         Me.bbiEditar.Id = 1
         Me.bbiEditar.ImageOptions.Image = CType(resources.GetObject("bbiEditar.ImageOptions.Image"), System.Drawing.Image)
         Me.bbiEditar.Name = "bbiEditar"
+        '
+        'bbiEliminar
+        '
+        Me.bbiEliminar.Caption = "Eliminar "
+        Me.bbiEliminar.Enabled = False
+        Me.bbiEliminar.Id = 5
+        Me.bbiEliminar.ImageOptions.Image = CType(resources.GetObject("bbiEliminar.ImageOptions.Image"), System.Drawing.Image)
+        Me.bbiEliminar.Name = "bbiEliminar"
         '
         'GCConsultar
         '
@@ -258,7 +258,7 @@ Partial Class frmCargos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(496, 258)
+        Me.ClientSize = New System.Drawing.Size(496, 262)
         Me.Controls.Add(Me.chkEstado)
         Me.Controls.Add(Me.GCConsultar)
         Me.Controls.Add(Me.txtNombre)

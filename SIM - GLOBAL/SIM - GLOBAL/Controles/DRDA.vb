@@ -74,6 +74,52 @@ Namespace Controles
                 End If
             End Try
         End Function
+        Public Sub GuardarTokenCache(configId As Integer,
+                               accessToken As String,
+                               tokenType As String,
+                               expiresIn As Integer)
+            Try
+                Dim sql As String = "UPDATE interop_token_cache SET " &
+                            "access_token = ?, " &
+                            "token_type = ?, " &
+                            "expires_in = ?, " &
+                            "fecha_expiracion = DATE_ADD(NOW(), INTERVAL ? SECOND), " &
+                            "fecha_captura = NOW() " &
+                            "WHERE config_id = ?"
+
+                Using conn As OdbcConnection = ConexionODBC.Open()
+                    Dim comando As New OdbcCommand(sql, conn)
+                    comando.Parameters.AddWithValue("?", accessToken)
+                    comando.Parameters.AddWithValue("?", "Bearer")
+                    comando.Parameters.AddWithValue("?", expiresIn)
+                    comando.Parameters.AddWithValue("?", expiresIn)  ' para el DATE_ADD
+                    comando.Parameters.AddWithValue("?", 1)   ' para el WHERE
+
+                    Dim filasAfectadas As Integer = comando.ExecuteNonQuery()
+
+                    ' ── Si no existe el registro, lo insertamos ───────────────
+                    If filasAfectadas = 0 Then
+                        Dim sqlInsert As String = "INSERT INTO interop_token_cache " &
+                                         "(config_id, access_token, token_type, expires_in, fecha_expiracion) " &
+                                         "VALUES (?, ?, ?, ?, DATE_ADD(NOW(), INTERVAL ? SECOND))"
+
+                        Dim comandoInsert As New OdbcCommand(sqlInsert, conn)
+                        comandoInsert.Parameters.AddWithValue("?", configId)
+                        comandoInsert.Parameters.AddWithValue("?", accessToken)
+                        comandoInsert.Parameters.AddWithValue("?", tokenType)
+                        comandoInsert.Parameters.AddWithValue("?", expiresIn)
+                        comandoInsert.Parameters.AddWithValue("?", expiresIn)
+                        comandoInsert.ExecuteNonQuery()
+                    End If
+                End Using ' ── El Using cierra la conexión automáticamente ───────
+
+            Catch ex As Exception
+                MessageBox.Show("Error al guardar token: " & ex.Message,
+                        "Error",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error)
+            End Try
+        End Sub
         Public Shared Function Actualizar(config As ConfigInteropApi) As Boolean
             Try
                 Dim query As String = String.Format(
@@ -222,39 +268,7 @@ Namespace Controles
         End Function
 
         ' ── Guardar token en la tabla interop_token_cache ─────────────────
-        Private Sub GuardarTokenCache(configId As Integer,
-                                       accessToken As String,
-                                       tokenType As String,
-                                       expiresIn As Integer)
-            Try
-                ' Eliminar token anterior del mismo config_id
-                Dim sqlDelete As String = "DELETE FROM interop_token_cache WHERE config_id = ?"
-                _conn = ConexionODBC.Open()
-                Dim comandoDelete As New OdbcCommand(sqlDelete, _conn)
-                comandoDelete.Parameters.AddWithValue("?", configId)
-                comandoDelete.ExecuteNonQuery()
-                ConexionODBC.Close(_conn)
 
-                ' Insertar nuevo token
-                Dim sqlInsert As String = "INSERT INTO interop_token_cache " &
-                                          "(config_id, access_token, token_type, expires_in, fecha_expiracion) " &
-                                          "VALUES (?, ?, ?, ?, DATE_ADD(NOW(), INTERVAL ? SECOND))"
-
-                _conn = ConexionODBC.Open()
-                Dim comandoInsert As New OdbcCommand(sqlInsert, _conn)
-                comandoInsert.Parameters.AddWithValue("?", configId)
-                comandoInsert.Parameters.AddWithValue("?", accessToken)
-                comandoInsert.Parameters.AddWithValue("?", tokenType)
-                comandoInsert.Parameters.AddWithValue("?", expiresIn)
-                comandoInsert.Parameters.AddWithValue("?", expiresIn)
-                comandoInsert.ExecuteNonQuery()
-                ConexionODBC.Close(_conn)
-
-            Catch ex As Exception
-                ConexionODBC.Close(_conn)
-                MessageBox.Show("Error GuardarTokenCache: " & ex.Message)
-            End Try
-        End Sub
         '------------------------------------------------------------------------------------
     End Class
 End Namespace

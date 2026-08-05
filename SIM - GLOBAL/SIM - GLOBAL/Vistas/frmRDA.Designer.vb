@@ -22,6 +22,7 @@ Partial Class frmRDA
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmRDA))
         Me.XtraTabControl1 = New DevExpress.XtraTab.XtraTabControl()
         Me.xtConexion = New DevExpress.XtraTab.XtraTabPage()
+        Me.txtID = New DevExpress.XtraEditors.TextEdit()
         Me.lblEstadoServicio = New DevExpress.XtraEditors.LabelControl()
         Me.spCancelar = New DevExpress.XtraEditors.SimpleButton()
         Me.spGuardar = New DevExpress.XtraEditors.SimpleButton()
@@ -45,11 +46,10 @@ Partial Class frmRDA
         Me.txtClientID = New DevExpress.XtraEditors.TextEdit()
         Me.txtClientSecret = New DevExpress.XtraEditors.TextEdit()
         Me.LabelControl2 = New DevExpress.XtraEditors.LabelControl()
-        Me.XtraTabPage2 = New DevExpress.XtraTab.XtraTabPage()
-        Me.txtID = New DevExpress.XtraEditors.TextEdit()
         CType(Me.XtraTabControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.XtraTabControl1.SuspendLayout()
         Me.xtConexion.SuspendLayout()
+        CType(Me.txtID.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GroupControl2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupControl2.SuspendLayout()
         CType(Me.txtSubscriptionKey.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -60,7 +60,6 @@ Partial Class frmRDA
         CType(Me.txtTenantID.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtClientID.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtClientSecret.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtID.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'XtraTabControl1
@@ -71,7 +70,7 @@ Partial Class frmRDA
         Me.XtraTabControl1.SelectedTabPage = Me.xtConexion
         Me.XtraTabControl1.Size = New System.Drawing.Size(582, 398)
         Me.XtraTabControl1.TabIndex = 0
-        Me.XtraTabControl1.TabPages.AddRange(New DevExpress.XtraTab.XtraTabPage() {Me.xtConexion, Me.XtraTabPage2})
+        Me.XtraTabControl1.TabPages.AddRange(New DevExpress.XtraTab.XtraTabPage() {Me.xtConexion})
         '
         'xtConexion
         '
@@ -85,6 +84,16 @@ Partial Class frmRDA
         Me.xtConexion.Name = "xtConexion"
         Me.xtConexion.Size = New System.Drawing.Size(580, 373)
         Me.xtConexion.Text = "Configuracion de Conexion"
+        '
+        'txtID
+        '
+        Me.txtID.Location = New System.Drawing.Point(247, 339)
+        Me.txtID.Name = "txtID"
+        Me.txtID.Properties.Appearance.BackColor = System.Drawing.Color.White
+        Me.txtID.Properties.Appearance.Options.UseBackColor = True
+        Me.txtID.Size = New System.Drawing.Size(59, 20)
+        Me.txtID.TabIndex = 23
+        Me.txtID.Visible = False
         '
         'lblEstadoServicio
         '
@@ -307,22 +316,6 @@ Partial Class frmRDA
         Me.LabelControl2.TabIndex = 13
         Me.LabelControl2.Text = "Client ID: "
         '
-        'XtraTabPage2
-        '
-        Me.XtraTabPage2.Name = "XtraTabPage2"
-        Me.XtraTabPage2.Size = New System.Drawing.Size(580, 373)
-        Me.XtraTabPage2.Text = "Especialistas"
-        '
-        'txtID
-        '
-        Me.txtID.Location = New System.Drawing.Point(247, 339)
-        Me.txtID.Name = "txtID"
-        Me.txtID.Properties.Appearance.BackColor = System.Drawing.Color.White
-        Me.txtID.Properties.Appearance.Options.UseBackColor = True
-        Me.txtID.Size = New System.Drawing.Size(59, 20)
-        Me.txtID.TabIndex = 23
-        Me.txtID.Visible = False
-        '
         'frmRDA
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -330,12 +323,16 @@ Partial Class frmRDA
         Me.ClientSize = New System.Drawing.Size(582, 398)
         Me.Controls.Add(Me.XtraTabControl1)
         Me.IconOptions.Image = CType(resources.GetObject("frmRDA.IconOptions.Image"), System.Drawing.Image)
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
         Me.Name = "frmRDA"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "CONFIGURACIÓN DE CONECTIVIDAD E INTEROPERABILIDAD - RDA COLOMBIA (MINSALUD)"
         CType(Me.XtraTabControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.XtraTabControl1.ResumeLayout(False)
         Me.xtConexion.ResumeLayout(False)
         Me.xtConexion.PerformLayout()
+        CType(Me.txtID.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GroupControl2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupControl2.ResumeLayout(False)
         Me.GroupControl2.PerformLayout()
@@ -348,14 +345,12 @@ Partial Class frmRDA
         CType(Me.txtTenantID.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtClientID.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtClientSecret.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtID.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
 
     Friend WithEvents XtraTabControl1 As DevExpress.XtraTab.XtraTabControl
     Friend WithEvents xtConexion As DevExpress.XtraTab.XtraTabPage
-    Friend WithEvents XtraTabPage2 As DevExpress.XtraTab.XtraTabPage
     Friend WithEvents spVerClientSecret As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents LabelControl3 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents txtClientSecret As DevExpress.XtraEditors.TextEdit

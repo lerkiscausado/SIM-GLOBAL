@@ -5,6 +5,7 @@ Imports SIM___GLOBAL.Controles
 Public Class frmRDA
 
     Private Async Sub spConectar_Click(sender As Object, e As EventArgs) Handles spConectar.Click
+        Dim _dRDA As New DRDA
         ' 1. Cambiar el estado visual a "Cargando" para evitar bloqueos
         spConectar.Enabled = False
         lblEstadoServicio.Text = "⏳ Validando credenciales con MinSalud..."
@@ -27,8 +28,31 @@ Public Class frmRDA
             If tokenResponse IsNot Nothing AndAlso Not String.IsNullOrEmpty(tokenResponse.AccessToken) Then
                 lblEstadoServicio.Text = "🟢 Conectado exitosamente al Sandbox de MinSalud"
                 lblEstadoServicio.ForeColor = Color.Green
-                MessageBox.Show("¡Conexión Exitosa! El servidor de MinSalud autorizó el acceso.",
-                                "Interoperabilidad RDA", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                ' MessageBox.Show("¡Conexión Exitosa! El servidor de MinSalud autorizó el acceso.",
+                '"Interoperabilidad RDA", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                ' GUARDAR PROVISIONALMENTE el TOKEN
+                Dim respuesta As DialogResult = MessageBox.Show(
+                                "✅ Conexión Exitosa. El servidor de MinSalud autorizó el acceso." & Environment.NewLine & Environment.NewLine &
+                                "¿Desea guardar el token generado?", "Interoperabilidad RDA",
+                                MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+
+
+                If respuesta = DialogResult.Yes Then
+                    ' ── Guardar el token ─────────────────────────────────────
+
+                    _dRDA.GuardarTokenCache(1, tokenResponse.AccessToken, "Bearer", tokenResponse.ExpiresIn)
+                    MessageBox.Show("✅ Token guardado correctamente.",
+                                    "Interoperabilidad RDA",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Information)
+                Else
+                    ' ── No guardar el token ───────────────────────────────────
+                    MessageBox.Show("⚠️ El token no fue guardado.",
+                                    "Interoperabilidad RDA",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Warning)
+                End If
+
             Else
                 Throw New Exception("El servidor no retornó un token de acceso válido.")
             End If
