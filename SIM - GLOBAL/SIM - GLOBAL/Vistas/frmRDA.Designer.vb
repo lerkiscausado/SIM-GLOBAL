@@ -22,6 +22,7 @@ Partial Class frmRDA
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmRDA))
         Me.XtraTabControl1 = New DevExpress.XtraTab.XtraTabControl()
         Me.xtConexion = New DevExpress.XtraTab.XtraTabPage()
+        Me.txtID = New DevExpress.XtraEditors.TextEdit()
         Me.lblEstadoServicio = New DevExpress.XtraEditors.LabelControl()
         Me.spCancelar = New DevExpress.XtraEditors.SimpleButton()
         Me.spGuardar = New DevExpress.XtraEditors.SimpleButton()
@@ -49,6 +50,7 @@ Partial Class frmRDA
         CType(Me.XtraTabControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.XtraTabControl1.SuspendLayout()
         Me.xtConexion.SuspendLayout()
+        CType(Me.txtID.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GroupControl2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupControl2.SuspendLayout()
         CType(Me.txtSubscriptionKey.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -73,6 +75,7 @@ Partial Class frmRDA
         '
         'xtConexion
         '
+        Me.xtConexion.Controls.Add(Me.txtID)
         Me.xtConexion.Controls.Add(Me.lblEstadoServicio)
         Me.xtConexion.Controls.Add(Me.spCancelar)
         Me.xtConexion.Controls.Add(Me.spGuardar)
@@ -82,6 +85,16 @@ Partial Class frmRDA
         Me.xtConexion.Name = "xtConexion"
         Me.xtConexion.Size = New System.Drawing.Size(580, 373)
         Me.xtConexion.Text = "Configuracion de Conexion"
+        '
+        'txtID
+        '
+        Me.txtID.Location = New System.Drawing.Point(413, 3)
+        Me.txtID.Name = "txtID"
+        Me.txtID.Properties.Appearance.BackColor = System.Drawing.Color.White
+        Me.txtID.Properties.Appearance.Options.UseBackColor = True
+        Me.txtID.Size = New System.Drawing.Size(98, 20)
+        Me.txtID.TabIndex = 17
+        Me.txtID.Visible = False
         '
         'lblEstadoServicio
         '
@@ -307,7 +320,7 @@ Partial Class frmRDA
         'XtraTabPage2
         '
         Me.XtraTabPage2.Name = "XtraTabPage2"
-        Me.XtraTabPage2.Size = New System.Drawing.Size(580, 352)
+        Me.XtraTabPage2.Size = New System.Drawing.Size(580, 373)
         Me.XtraTabPage2.Text = "Especialistas"
         '
         'frmRDA
@@ -323,6 +336,7 @@ Partial Class frmRDA
         Me.XtraTabControl1.ResumeLayout(False)
         Me.xtConexion.ResumeLayout(False)
         Me.xtConexion.PerformLayout()
+        CType(Me.txtID.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GroupControl2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupControl2.ResumeLayout(False)
         Me.GroupControl2.PerformLayout()
@@ -365,4 +379,5 @@ Partial Class frmRDA
     Friend WithEvents lblEstadoServicio As DevExpress.XtraEditors.LabelControl
     Friend WithEvents rbProduction As RadioButton
     Friend WithEvents rbSandbox As RadioButton
+    Friend WithEvents txtID As DevExpress.XtraEditors.TextEdit
 End Class

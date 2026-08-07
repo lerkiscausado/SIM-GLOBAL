@@ -37,11 +37,12 @@ Namespace Controles
                 _DetalleOrden.CodigoCups = _ds.Tables(0).Rows(0)(16).ToString()
                 _DetalleOrden.IdTipoEstudio = _ds.Tables(0).Rows(0)(17).ToString()
                 _DetalleOrden.Valor = _ds.Tables(0).Rows(0)(18).ToString()
-                _DetalleOrden.Copago = _ds.Tables(0).Rows(0)(19).ToString()
-                _DetalleOrden.Neto = _ds.Tables(0).Rows(0)(20).ToString()
-                _DetalleOrden.Tipo = _ds.Tables(0).Rows(0)(21).ToString()
-                _DetalleOrden.Estado = _ds.Tables(0).Rows(0)(22).ToString()
-                _DetalleOrden.IdRelacion = _ds.Tables(0).Rows(0)(23).ToString()
+                _DetalleOrden.IdConceptoRecaudo = _ds.Tables(0).Rows(0)(19).ToString()
+                _DetalleOrden.Copago = _ds.Tables(0).Rows(0)(20).ToString()
+                _DetalleOrden.Neto = _ds.Tables(0).Rows(0)(21).ToString()
+                _DetalleOrden.Tipo = _ds.Tables(0).Rows(0)(22).ToString()
+                _DetalleOrden.Estado = _ds.Tables(0).Rows(0)(23).ToString()
+                _DetalleOrden.IdRelacion = _ds.Tables(0).Rows(0)(24).ToString()
                 Return _DetalleOrden
             Catch ex As Exception
                 MessageBox.Show(ex.Message)
@@ -110,7 +111,7 @@ Namespace Controles
                             & "codigo_procedimiento ='" & _DetalleOrden.CodigoProcedimiento & "', " _
                             & "codigo_cups ='" & _DetalleOrden.CodigoCups & "', " _
                             & "id_tipo_estudio ='" & _DetalleOrden.IdTipoEstudio & "', " _
-                            & "valor='" & _DetalleOrden.Valor & "', copago='" & _DetalleOrden.Copago & "', " _
+                            & "valor='" & _DetalleOrden.Valor & "', idconceptorecaudo='" & _DetalleOrden.IdConceptoRecaudo & "', copago='" & _DetalleOrden.Copago & "', " _
                             & "neto='" & _DetalleOrden.Neto & "', tipo='" & _DetalleOrden.Tipo & "', estado='" & _DetalleOrden.Estado & "' WHERE id='" & _DetalleOrden.Id & "'"
                 Else
                     query = "INSERT INTO detalle_orden VALUES('" & Val(_DetalleOrden.Id) & "','" & _DetalleOrden.IdOrden & "','" & _DetalleOrden.IdCausa & "', " _
@@ -120,7 +121,7 @@ Namespace Controles
                             & "'" & _DetalleOrden.IdTipoDiagnostico & "','" & _DetalleOrden.Diagnostico1 & "', " _
                             & "'" & _DetalleOrden.Diagnostico2 & "','" & _DetalleOrden.Diagnostico3 & "', " _
                             & "'" & _DetalleOrden.Diagnostico4 & "','" & _DetalleOrden.IdFormaRealizacion & "', " _
-                            & "'" & _DetalleOrden.CodigoProcedimiento & "','" & _DetalleOrden.CodigoCups & "','" & _DetalleOrden.IdTipoEstudio & "','" & _DetalleOrden.Valor & "', " _
+                            & "'" & _DetalleOrden.CodigoProcedimiento & "','" & _DetalleOrden.CodigoCups & "','" & _DetalleOrden.IdTipoEstudio & "','" & _DetalleOrden.Valor & "', '" & _DetalleOrden.IdConceptoRecaudo & "', " _
                             & "'" & _DetalleOrden.Copago & "','" & _DetalleOrden.Neto & "','" & _DetalleOrden.Tipo & "','" & _DetalleOrden.Estado & "','" & _DetalleOrden.IdRelacion & "')"
                 End If
                 _conn = ConexionODBC.Open()
@@ -141,7 +142,7 @@ Namespace Controles
                             & "'" & _DetalleOrden.IdTipoDiagnostico & "','" & _DetalleOrden.Diagnostico1 & "', " _
                             & "'" & _DetalleOrden.Diagnostico2 & "','" & _DetalleOrden.Diagnostico3 & "', " _
                             & "'" & _DetalleOrden.Diagnostico4 & "','" & _DetalleOrden.IdFormaRealizacion & "', " _
-                            & "'" & _DetalleOrden.CodigoProcedimiento & "','" & _DetalleOrden.CodigoCups & "','" & _DetalleOrden.IdTipoEstudio & "','" & _DetalleOrden.Valor & "', " _
+                            & "'" & _DetalleOrden.CodigoProcedimiento & "','" & _DetalleOrden.CodigoCups & "','" & _DetalleOrden.IdTipoEstudio & "','" & _DetalleOrden.Valor & "','" & _DetalleOrden.IdConceptoRecaudo & "', " _
                             & "'" & _DetalleOrden.Copago & "','" & _DetalleOrden.Neto & "','" & _DetalleOrden.Tipo & "','" & _DetalleOrden.Estado & "','" & _DetalleOrden.IdRelacion & "')"
                 _conn = ConexionODBC.Open()
                 Dim comando = New OdbcCommand(query, _conn)

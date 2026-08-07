@@ -28,11 +28,23 @@ Public Class frmEmpleados
             If txtID.Text = "" Then
                 _Especialista.id = Val("")
                 _Especialista.idespecialista = Val(_dEmpleados.ultimoregistroempleado)
+                _Especialista.idtipoidentificacion = "CC"
+                _Especialista.identificacion = txtIdentificacion.Text
                 _Especialista.nombre = txtNombre.Text
                 _Especialista.especialidad = cboEspecialidad.GetColumnValue("ESPECIALIDAD")
                 _Especialista.registromedico = txtRegistroMedico.Text
                 _Especialista.estado = "A"
                 _DEspecialista.guardar2(_Especialista)
+            Else
+                _Especialista.id = Val("")
+                _Especialista.idespecialista = Val(txtID.Text)
+                '_Especialista.idtipoidentificacion = "CC"
+                _Especialista.identificacion = txtIdentificacion.Text
+                _Especialista.nombre = txtNombre.Text
+                _Especialista.especialidad = cboEspecialidad.GetColumnValue("ESPECIALIDAD")
+                _Especialista.registromedico = txtRegistroMedico.Text
+                _Especialista.estado = "A"
+                _DEspecialista.actualizar(_Especialista)
             End If
         End If
     End Sub
@@ -66,6 +78,7 @@ Public Class frmEmpleados
         txtID.Text = ""
         txtNombre.Text = ""
         txtRegistroMedico.Text = ""
+        txtIdentificacion.Text = ""
         cboCargo.EditValue = Nothing
         cboEspecialidad.EditValue = Nothing
         chkEstado.Checked = True
@@ -107,6 +120,7 @@ Public Class frmEmpleados
                     txtID.Text = _ClickGrilla
                     txtNombre.Text = _Empleados.NombreEmpleado
                     cboCargo.ItemIndex = cboCargo.Properties.GetDataSourceRowIndex("ID", _Empleados.IdCargo)
+                    txtIdentificacion.Text = _DEspecialista.traeridentificacion(txtID.Text)
                     cboEspecialidad.ItemIndex = cboEspecialidad.Properties.GetDataSourceRowIndex("ID", _Empleados.IdEspecialidad)
                     txtRegistroMedico.Text = _Empleados.RegistroMedico
                     If _Empleados.Estado = "I" Then
@@ -131,33 +145,39 @@ Public Class frmEmpleados
     End Sub
 
     Private Sub cboCargo_EditValueChanged(sender As Object, e As EventArgs) Handles cboCargo.EditValueChanged
-        'cboEspecialidad.Properties.ValueMember = Nothing
+        Try
+            Dim valorSeleccionado As String = cboCargo.Text.Trim().ToUpper()
 
-        If cboCargo.GetColumnValue("CARGO") = "ESPECIALISTA" Then
-            cboEspecialidad.Enabled = True
-            txtRegistroMedico.Enabled = True
-            'llenamos campo Especialidad
-            _ds = New DataSet()
-            _ds = _dEspecialidades.ListarEspecialista()
-            cboEspecialidad.Properties.DataSource = _ds.Tables(0)
-            cboEspecialidad.Properties.DisplayMember = _ds.Tables(0).Columns(1).Caption
-            cboEspecialidad.Properties.ValueMember = _ds.Tables(0).Columns(0).Caption
-            'cboEspecialidad.ItemIndex = -1
-        Else
-            'cboEspecialidad.ItemIndex = cboEspecialidad.Properties.GetDataSourceRowIndex("ESPECIALIDAD", "EMPLEADO")
-            cboEspecialidad.Enabled = False
-            txtRegistroMedico.Enabled = False
-            txtRegistroMedico.Text = ""
-            'llenamos campo Especialidad
-            _ds = New DataSet()
-            _ds = _dEspecialidades.ListarEmpleado()
-            cboEspecialidad.Properties.DataSource = _ds.Tables(0)
-            cboEspecialidad.Properties.DisplayMember = _ds.Tables(0).Columns(1).Caption
-            cboEspecialidad.Properties.ValueMember = _ds.Tables(0).Columns(0).Caption
-            cboEspecialidad.ItemIndex = 0
-
-        End If
-        ActivarGuardar()
+            If valorSeleccionado = "ESPECIALISTA" Then
+                txtIdentificacion.Enabled = True
+                cboEspecialidad.Enabled = True
+                txtRegistroMedico.Enabled = True
+                txtIdentificacion.Focus()
+                'llenamos campo Especialidad
+                _ds = New DataSet()
+                _ds = _dEspecialidades.ListarEspecialista()
+                cboEspecialidad.Properties.DataSource = _ds.Tables(0)
+                cboEspecialidad.Properties.DisplayMember = _ds.Tables(0).Columns(1).Caption
+                cboEspecialidad.Properties.ValueMember = _ds.Tables(0).Columns(0).Caption
+                'cboEspecialidad.ItemIndex = -1
+            Else
+                txtIdentificacion.Enabled = False
+                cboEspecialidad.Enabled = False
+                txtRegistroMedico.Enabled = False
+                txtIdentificacion.Text = ""
+                txtRegistroMedico.Text = ""
+                'llenamos campo Especialidad
+                _ds = New DataSet()
+                _ds = _dEspecialidades.ListarEmpleado()
+                cboEspecialidad.Properties.DataSource = _ds.Tables(0)
+                cboEspecialidad.Properties.DisplayMember = _ds.Tables(0).Columns(1).Caption
+                cboEspecialidad.Properties.ValueMember = _ds.Tables(0).Columns(0).Caption
+                cboEspecialidad.ItemIndex = 0
+            End If
+            ActivarGuardar()
+        Catch ex As Exception
+            MessageBox.Show("Error: " & ex.Message)
+        End Try
     End Sub
 
     Private Sub cboEspecialidad_EditValueChanged(sender As Object, e As EventArgs) Handles cboEspecialidad.EditValueChanged
@@ -177,5 +197,9 @@ Public Class frmEmpleados
             _ClickGrilla = GVConsultar.GetRowCellValue(e.RowHandle.ToString, "ID").ToString()
             _Fila = e.RowHandle.ToString
         End If
+    End Sub
+
+    Private Sub LabelControl7_Click(sender As Object, e As EventArgs) Handles LabelControl7.Click
+
     End Sub
 End Class

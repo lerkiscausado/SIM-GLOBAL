@@ -94,9 +94,7 @@ Partial Class frmOrdenes
         Me.LabelControl6 = New DevExpress.XtraEditors.LabelControl()
         Me.LabelControl17 = New DevExpress.XtraEditors.LabelControl()
         Me.cboAmbitoProcedimiento = New DevExpress.XtraEditors.LookUpEdit()
-        Me.LabelControl8 = New DevExpress.XtraEditors.LabelControl()
         Me.LabelControl9 = New DevExpress.XtraEditors.LabelControl()
-        Me.cboTipoAfiliado = New DevExpress.XtraEditors.LookUpEdit()
         Me.cboTipoUsuario = New DevExpress.XtraEditors.LookUpEdit()
         Me.txtNumeroOrden = New DevExpress.XtraEditors.TextEdit()
         Me.txtAutorizacion = New DevExpress.XtraEditors.TextEdit()
@@ -191,6 +189,7 @@ Partial Class frmOrdenes
         Me.cboEspecimen = New DevExpress.XtraEditors.LookUpEdit()
         Me.dtFechaEntrega = New DevExpress.XtraEditors.DateEdit()
         Me.lblFechaEntrega = New DevExpress.XtraEditors.LabelControl()
+        Me.cboConceptoRecaudo = New DevExpress.XtraEditors.LookUpEdit()
         CType(Me.BarManager1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GCConsultar, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.cmsGrid.SuspendLayout()
@@ -202,7 +201,6 @@ Partial Class frmOrdenes
         CType(Me.dtFechaIngreso.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtComentarios.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cboAmbitoProcedimiento.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cboTipoAfiliado.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cboTipoUsuario.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtNumeroOrden.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtAutorizacion.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -244,6 +242,7 @@ Partial Class frmOrdenes
         CType(Me.cboEspecimen.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dtFechaEntrega.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dtFechaEntrega.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.cboConceptoRecaudo.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'colFoto
@@ -410,7 +409,7 @@ Partial Class frmOrdenes
         Me.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top
         Me.barDockControlTop.Location = New System.Drawing.Point(0, 0)
         Me.barDockControlTop.Manager = Me.BarManager1
-        Me.barDockControlTop.Size = New System.Drawing.Size(1068, 25)
+        Me.barDockControlTop.Size = New System.Drawing.Size(1068, 24)
         '
         'barDockControlBottom
         '
@@ -424,17 +423,17 @@ Partial Class frmOrdenes
         '
         Me.barDockControlLeft.CausesValidation = False
         Me.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left
-        Me.barDockControlLeft.Location = New System.Drawing.Point(0, 25)
+        Me.barDockControlLeft.Location = New System.Drawing.Point(0, 24)
         Me.barDockControlLeft.Manager = Me.BarManager1
-        Me.barDockControlLeft.Size = New System.Drawing.Size(0, 599)
+        Me.barDockControlLeft.Size = New System.Drawing.Size(0, 600)
         '
         'barDockControlRight
         '
         Me.barDockControlRight.CausesValidation = False
         Me.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right
-        Me.barDockControlRight.Location = New System.Drawing.Point(1068, 25)
+        Me.barDockControlRight.Location = New System.Drawing.Point(1068, 24)
         Me.barDockControlRight.Manager = Me.BarManager1
-        Me.barDockControlRight.Size = New System.Drawing.Size(0, 599)
+        Me.barDockControlRight.Size = New System.Drawing.Size(0, 600)
         '
         'GCConsultar
         '
@@ -454,24 +453,24 @@ Partial Class frmOrdenes
         Me.cmsGrid.ImageScalingSize = New System.Drawing.Size(18, 18)
         Me.cmsGrid.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsmActualizarVista, Me.ToolStripSeparator1, Me.tsmTodoslosRegistros})
         Me.cmsGrid.Name = "cmsGrid"
-        Me.cmsGrid.Size = New System.Drawing.Size(251, 58)
+        Me.cmsGrid.Size = New System.Drawing.Size(221, 58)
         '
         'tsmActualizarVista
         '
         Me.tsmActualizarVista.Image = CType(resources.GetObject("tsmActualizarVista.Image"), System.Drawing.Image)
         Me.tsmActualizarVista.Name = "tsmActualizarVista"
-        Me.tsmActualizarVista.Size = New System.Drawing.Size(250, 24)
+        Me.tsmActualizarVista.Size = New System.Drawing.Size(220, 24)
         Me.tsmActualizarVista.Text = "Actualizar Listado"
         '
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(247, 6)
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(217, 6)
         '
         'tsmTodoslosRegistros
         '
         Me.tsmTodoslosRegistros.Name = "tsmTodoslosRegistros"
-        Me.tsmTodoslosRegistros.Size = New System.Drawing.Size(250, 24)
+        Me.tsmTodoslosRegistros.Size = New System.Drawing.Size(220, 24)
         Me.tsmTodoslosRegistros.Text = "Mostrar Todos los Registros"
         '
         'GVConsultar
@@ -673,7 +672,7 @@ Partial Class frmOrdenes
         Me.txtConsecutivo.Properties.Appearance.Options.UseFont = True
         Me.txtConsecutivo.Properties.Appearance.Options.UseForeColor = True
         Me.txtConsecutivo.Properties.ReadOnly = True
-        Me.txtConsecutivo.Size = New System.Drawing.Size(87, 24)
+        Me.txtConsecutivo.Size = New System.Drawing.Size(87, 20)
         Me.txtConsecutivo.TabIndex = 110
         '
         'LabelControl1
@@ -706,17 +705,17 @@ Partial Class frmOrdenes
         '
         'txtComentarios
         '
-        Me.txtComentarios.Location = New System.Drawing.Point(140, 315)
+        Me.txtComentarios.Location = New System.Drawing.Point(144, 291)
         Me.txtComentarios.MenuManager = Me.BarManager1
         Me.txtComentarios.Name = "txtComentarios"
         Me.txtComentarios.Properties.Appearance.BackColor = System.Drawing.Color.White
         Me.txtComentarios.Properties.Appearance.Options.UseBackColor = True
-        Me.txtComentarios.Size = New System.Drawing.Size(179, 66)
+        Me.txtComentarios.Size = New System.Drawing.Size(179, 90)
         Me.txtComentarios.TabIndex = 4
         '
         'LabelControl6
         '
-        Me.LabelControl6.Location = New System.Drawing.Point(11, 315)
+        Me.LabelControl6.Location = New System.Drawing.Point(15, 291)
         Me.LabelControl6.Name = "LabelControl6"
         Me.LabelControl6.Size = New System.Drawing.Size(60, 13)
         Me.LabelControl6.TabIndex = 114
@@ -724,7 +723,7 @@ Partial Class frmOrdenes
         '
         'LabelControl17
         '
-        Me.LabelControl17.Location = New System.Drawing.Point(11, 262)
+        Me.LabelControl17.Location = New System.Drawing.Point(15, 238)
         Me.LabelControl17.Name = "LabelControl17"
         Me.LabelControl17.Size = New System.Drawing.Size(120, 13)
         Me.LabelControl17.TabIndex = 120
@@ -732,7 +731,7 @@ Partial Class frmOrdenes
         '
         'cboAmbitoProcedimiento
         '
-        Me.cboAmbitoProcedimiento.Location = New System.Drawing.Point(140, 258)
+        Me.cboAmbitoProcedimiento.Location = New System.Drawing.Point(144, 234)
         Me.cboAmbitoProcedimiento.MenuManager = Me.BarManager1
         Me.cboAmbitoProcedimiento.Name = "cboAmbitoProcedimiento"
         Me.cboAmbitoProcedimiento.Properties.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFitResizePopup
@@ -745,40 +744,17 @@ Partial Class frmOrdenes
         Me.cboAmbitoProcedimiento.Size = New System.Drawing.Size(179, 20)
         Me.cboAmbitoProcedimiento.TabIndex = 2
         '
-        'LabelControl8
-        '
-        Me.LabelControl8.Location = New System.Drawing.Point(11, 210)
-        Me.LabelControl8.Name = "LabelControl8"
-        Me.LabelControl8.Size = New System.Drawing.Size(58, 13)
-        Me.LabelControl8.TabIndex = 117
-        Me.LabelControl8.Text = "Tipo Afiliado"
-        '
         'LabelControl9
         '
-        Me.LabelControl9.Location = New System.Drawing.Point(11, 236)
+        Me.LabelControl9.Location = New System.Drawing.Point(15, 212)
         Me.LabelControl9.Name = "LabelControl9"
         Me.LabelControl9.Size = New System.Drawing.Size(107, 13)
         Me.LabelControl9.TabIndex = 118
         Me.LabelControl9.Text = "Regimen, Tipo Usuario"
         '
-        'cboTipoAfiliado
-        '
-        Me.cboTipoAfiliado.Location = New System.Drawing.Point(140, 206)
-        Me.cboTipoAfiliado.MenuManager = Me.BarManager1
-        Me.cboTipoAfiliado.Name = "cboTipoAfiliado"
-        Me.cboTipoAfiliado.Properties.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFitResizePopup
-        Me.cboTipoAfiliado.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.cboTipoAfiliado.Properties.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ID", "ID", 20, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.[Default], DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("TIPO", "TIPO")})
-        Me.cboTipoAfiliado.Properties.NullText = ""
-        Me.cboTipoAfiliado.Properties.PopupWidth = 600
-        Me.cboTipoAfiliado.Properties.SearchMode = DevExpress.XtraEditors.Controls.SearchMode.AutoComplete
-        Me.cboTipoAfiliado.Properties.ShowHeader = False
-        Me.cboTipoAfiliado.Size = New System.Drawing.Size(179, 20)
-        Me.cboTipoAfiliado.TabIndex = 0
-        '
         'cboTipoUsuario
         '
-        Me.cboTipoUsuario.Location = New System.Drawing.Point(140, 232)
+        Me.cboTipoUsuario.Location = New System.Drawing.Point(144, 208)
         Me.cboTipoUsuario.MenuManager = Me.BarManager1
         Me.cboTipoUsuario.Name = "cboTipoUsuario"
         Me.cboTipoUsuario.Properties.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFitResizePopup
@@ -914,7 +890,7 @@ Partial Class frmOrdenes
         '
         'cboFinalidad
         '
-        Me.cboFinalidad.Location = New System.Drawing.Point(140, 287)
+        Me.cboFinalidad.Location = New System.Drawing.Point(144, 263)
         Me.cboFinalidad.MenuManager = Me.BarManager1
         Me.cboFinalidad.Name = "cboFinalidad"
         Me.cboFinalidad.Properties.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFitResizePopup
@@ -929,7 +905,7 @@ Partial Class frmOrdenes
         '
         'LabelControl22
         '
-        Me.LabelControl22.Location = New System.Drawing.Point(11, 291)
+        Me.LabelControl22.Location = New System.Drawing.Point(15, 267)
         Me.LabelControl22.Name = "LabelControl22"
         Me.LabelControl22.Size = New System.Drawing.Size(42, 13)
         Me.LabelControl22.TabIndex = 136
@@ -1059,7 +1035,7 @@ Partial Class frmOrdenes
         '
         'txtNeto
         '
-        Me.txtNeto.Location = New System.Drawing.Point(811, 212)
+        Me.txtNeto.Location = New System.Drawing.Point(742, 212)
         Me.txtNeto.MenuManager = Me.BarManager1
         Me.txtNeto.Name = "txtNeto"
         Me.txtNeto.Properties.Appearance.BackColor = System.Drawing.Color.LemonChiffon
@@ -1074,7 +1050,7 @@ Partial Class frmOrdenes
         '
         'LabelControl12
         '
-        Me.LabelControl12.Location = New System.Drawing.Point(782, 216)
+        Me.LabelControl12.Location = New System.Drawing.Point(713, 216)
         Me.LabelControl12.Name = "LabelControl12"
         Me.LabelControl12.Size = New System.Drawing.Size(23, 13)
         Me.LabelControl12.TabIndex = 149
@@ -1082,7 +1058,7 @@ Partial Class frmOrdenes
         '
         'txtCopago
         '
-        Me.txtCopago.Location = New System.Drawing.Point(643, 212)
+        Me.txtCopago.Location = New System.Drawing.Point(612, 212)
         Me.txtCopago.MenuManager = Me.BarManager1
         Me.txtCopago.Name = "txtCopago"
         Me.txtCopago.Properties.Appearance.BackColor = System.Drawing.Color.White
@@ -1093,12 +1069,12 @@ Partial Class frmOrdenes
         Me.txtCopago.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.txtCopago.Properties.Mask.EditMask = "C0"
         Me.txtCopago.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric
-        Me.txtCopago.Size = New System.Drawing.Size(125, 20)
+        Me.txtCopago.Size = New System.Drawing.Size(95, 20)
         Me.txtCopago.TabIndex = 15
         '
         'LabelControl20
         '
-        Me.LabelControl20.Location = New System.Drawing.Point(599, 216)
+        Me.LabelControl20.Location = New System.Drawing.Point(568, 216)
         Me.LabelControl20.Name = "LabelControl20"
         Me.LabelControl20.Size = New System.Drawing.Size(37, 13)
         Me.LabelControl20.TabIndex = 148
@@ -1118,7 +1094,7 @@ Partial Class frmOrdenes
         Me.txtValor.Properties.Mask.BeepOnError = True
         Me.txtValor.Properties.Mask.EditMask = "c0"
         Me.txtValor.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric
-        Me.txtValor.Size = New System.Drawing.Size(125, 20)
+        Me.txtValor.Size = New System.Drawing.Size(97, 20)
         Me.txtValor.TabIndex = 14
         '
         'LabelControl21
@@ -1771,11 +1747,27 @@ Partial Class frmOrdenes
         Me.lblFechaEntrega.TabIndex = 188
         Me.lblFechaEntrega.Text = "Fecha Entrega"
         '
+        'cboConceptoRecaudo
+        '
+        Me.cboConceptoRecaudo.Location = New System.Drawing.Point(884, 212)
+        Me.cboConceptoRecaudo.MenuManager = Me.BarManager1
+        Me.cboConceptoRecaudo.Name = "cboConceptoRecaudo"
+        Me.cboConceptoRecaudo.Properties.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFitResizePopup
+        Me.cboConceptoRecaudo.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.cboConceptoRecaudo.Properties.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ID", "ID", 20, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.[Default], DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("CODIGO", "CODIGO"), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("DESCRIPCION", "DESCRIPCION")})
+        Me.cboConceptoRecaudo.Properties.NullText = ""
+        Me.cboConceptoRecaudo.Properties.PopupWidth = 600
+        Me.cboConceptoRecaudo.Properties.SearchMode = DevExpress.XtraEditors.Controls.SearchMode.AutoComplete
+        Me.cboConceptoRecaudo.Properties.ShowHeader = False
+        Me.cboConceptoRecaudo.Size = New System.Drawing.Size(105, 20)
+        Me.cboConceptoRecaudo.TabIndex = 193
+        '
         'frmOrdenes
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1068, 624)
+        Me.Controls.Add(Me.cboConceptoRecaudo)
         Me.Controls.Add(Me.dtFechaEntrega)
         Me.Controls.Add(Me.lblFechaEntrega)
         Me.Controls.Add(Me.cboEspecimen)
@@ -1820,9 +1812,7 @@ Partial Class frmOrdenes
         Me.Controls.Add(Me.LabelControl13)
         Me.Controls.Add(Me.LabelControl17)
         Me.Controls.Add(Me.cboAmbitoProcedimiento)
-        Me.Controls.Add(Me.LabelControl8)
         Me.Controls.Add(Me.LabelControl9)
-        Me.Controls.Add(Me.cboTipoAfiliado)
         Me.Controls.Add(Me.cboTipoUsuario)
         Me.Controls.Add(Me.txtComentarios)
         Me.Controls.Add(Me.LabelControl6)
@@ -1852,7 +1842,6 @@ Partial Class frmOrdenes
         CType(Me.dtFechaIngreso.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtComentarios.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cboAmbitoProcedimiento.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cboTipoAfiliado.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cboTipoUsuario.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtNumeroOrden.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtAutorizacion.Properties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1894,6 +1883,7 @@ Partial Class frmOrdenes
         CType(Me.cboEspecimen.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dtFechaEntrega.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dtFechaEntrega.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.cboConceptoRecaudo.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1937,9 +1927,7 @@ Partial Class frmOrdenes
     Friend WithEvents LabelControl6 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents LabelControl17 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents cboAmbitoProcedimiento As DevExpress.XtraEditors.LookUpEdit
-    Friend WithEvents LabelControl8 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents LabelControl9 As DevExpress.XtraEditors.LabelControl
-    Friend WithEvents cboTipoAfiliado As DevExpress.XtraEditors.LookUpEdit
     Friend WithEvents cboTipoUsuario As DevExpress.XtraEditors.LookUpEdit
     Friend WithEvents txtNumeroOrden As DevExpress.XtraEditors.TextEdit
     Friend WithEvents txtAutorizacion As DevExpress.XtraEditors.TextEdit
@@ -2043,4 +2031,5 @@ Partial Class frmOrdenes
     Friend WithEvents tsmActualizarVista As ToolStripMenuItem
     Friend WithEvents ToolStripSeparator1 As ToolStripSeparator
     Friend WithEvents tsmTodoslosRegistros As ToolStripMenuItem
+    Friend WithEvents cboConceptoRecaudo As DevExpress.XtraEditors.LookUpEdit
 End Class

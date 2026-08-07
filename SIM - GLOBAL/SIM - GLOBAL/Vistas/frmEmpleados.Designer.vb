@@ -56,6 +56,8 @@ Partial Class frmEmpleados
         Me.peFoto = New DevExpress.XtraEditors.PictureEdit()
         Me.LabelControl6 = New DevExpress.XtraEditors.LabelControl()
         Me.peFirma = New DevExpress.XtraEditors.PictureEdit()
+        Me.LabelControl7 = New DevExpress.XtraEditors.LabelControl()
+        Me.txtIdentificacion = New DevExpress.XtraEditors.TextEdit()
         CType(Me.BarManager1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtRegistroMedico.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cboEspecialidad.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -68,6 +70,7 @@ Partial Class frmEmpleados
         CType(Me.SeparatorControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.peFoto.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.peFirma.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtIdentificacion.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'LabelControl2
@@ -140,15 +143,15 @@ Partial Class frmEmpleados
         Me.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top
         Me.barDockControlTop.Location = New System.Drawing.Point(0, 0)
         Me.barDockControlTop.Manager = Me.BarManager1
-        Me.barDockControlTop.Size = New System.Drawing.Size(621, 24)
+        Me.barDockControlTop.Size = New System.Drawing.Size(624, 24)
         '
         'barDockControlBottom
         '
         Me.barDockControlBottom.CausesValidation = False
         Me.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.barDockControlBottom.Location = New System.Drawing.Point(0, 514)
+        Me.barDockControlBottom.Location = New System.Drawing.Point(0, 566)
         Me.barDockControlBottom.Manager = Me.BarManager1
-        Me.barDockControlBottom.Size = New System.Drawing.Size(621, 0)
+        Me.barDockControlBottom.Size = New System.Drawing.Size(624, 0)
         '
         'barDockControlLeft
         '
@@ -156,15 +159,15 @@ Partial Class frmEmpleados
         Me.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left
         Me.barDockControlLeft.Location = New System.Drawing.Point(0, 24)
         Me.barDockControlLeft.Manager = Me.BarManager1
-        Me.barDockControlLeft.Size = New System.Drawing.Size(0, 490)
+        Me.barDockControlLeft.Size = New System.Drawing.Size(0, 542)
         '
         'barDockControlRight
         '
         Me.barDockControlRight.CausesValidation = False
         Me.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right
-        Me.barDockControlRight.Location = New System.Drawing.Point(621, 24)
+        Me.barDockControlRight.Location = New System.Drawing.Point(624, 24)
         Me.barDockControlRight.Manager = Me.BarManager1
-        Me.barDockControlRight.Size = New System.Drawing.Size(0, 490)
+        Me.barDockControlRight.Size = New System.Drawing.Size(0, 542)
         '
         'bbiEditar
         '
@@ -183,17 +186,17 @@ Partial Class frmEmpleados
         'txtRegistroMedico
         '
         Me.txtRegistroMedico.EnterMoveNextControl = True
-        Me.txtRegistroMedico.Location = New System.Drawing.Point(101, 116)
+        Me.txtRegistroMedico.Location = New System.Drawing.Point(101, 144)
         Me.txtRegistroMedico.MenuManager = Me.BarManager1
         Me.txtRegistroMedico.Name = "txtRegistroMedico"
         Me.txtRegistroMedico.Properties.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtRegistroMedico.Properties.MaxLength = 50
-        Me.txtRegistroMedico.Size = New System.Drawing.Size(296, 20)
+        Me.txtRegistroMedico.Size = New System.Drawing.Size(377, 20)
         Me.txtRegistroMedico.TabIndex = 9
         '
         'LabelControl5
         '
-        Me.LabelControl5.Location = New System.Drawing.Point(15, 119)
+        Me.LabelControl5.Location = New System.Drawing.Point(15, 147)
         Me.LabelControl5.Name = "LabelControl5"
         Me.LabelControl5.Size = New System.Drawing.Size(76, 13)
         Me.LabelControl5.TabIndex = 8
@@ -201,7 +204,7 @@ Partial Class frmEmpleados
         '
         'LabelControl4
         '
-        Me.LabelControl4.Location = New System.Drawing.Point(16, 94)
+        Me.LabelControl4.Location = New System.Drawing.Point(16, 121)
         Me.LabelControl4.Name = "LabelControl4"
         Me.LabelControl4.Size = New System.Drawing.Size(58, 13)
         Me.LabelControl4.TabIndex = 6
@@ -209,7 +212,7 @@ Partial Class frmEmpleados
         '
         'cboEspecialidad
         '
-        Me.cboEspecialidad.Location = New System.Drawing.Point(101, 91)
+        Me.cboEspecialidad.Location = New System.Drawing.Point(101, 118)
         Me.cboEspecialidad.MenuManager = Me.BarManager1
         Me.cboEspecialidad.Name = "cboEspecialidad"
         Me.cboEspecialidad.Properties.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFitResizePopup
@@ -247,7 +250,7 @@ Partial Class frmEmpleados
         '
         'chkEstado
         '
-        Me.chkEstado.Location = New System.Drawing.Point(403, 196)
+        Me.chkEstado.Location = New System.Drawing.Point(403, 234)
         Me.chkEstado.MenuManager = Me.BarManager1
         Me.chkEstado.Name = "chkEstado"
         Me.chkEstado.Properties.Caption = "Activo"
@@ -289,7 +292,7 @@ Partial Class frmEmpleados
         '
         'GCConsultar
         '
-        Me.GCConsultar.Location = New System.Drawing.Point(16, 249)
+        Me.GCConsultar.Location = New System.Drawing.Point(15, 293)
         Me.GCConsultar.MainView = Me.GVConsultar
         Me.GCConsultar.MenuManager = Me.BarManager1
         Me.GCConsultar.Name = "GCConsultar"
@@ -355,7 +358,7 @@ Partial Class frmEmpleados
         '
         'SeparatorControl1
         '
-        Me.SeparatorControl1.Location = New System.Drawing.Point(16, 216)
+        Me.SeparatorControl1.Location = New System.Drawing.Point(15, 260)
         Me.SeparatorControl1.Name = "SeparatorControl1"
         Me.SeparatorControl1.Size = New System.Drawing.Size(593, 26)
         Me.SeparatorControl1.TabIndex = 140
@@ -372,7 +375,7 @@ Partial Class frmEmpleados
         '
         'LabelControl6
         '
-        Me.LabelControl6.Location = New System.Drawing.Point(15, 141)
+        Me.LabelControl6.Location = New System.Drawing.Point(16, 237)
         Me.LabelControl6.Name = "LabelControl6"
         Me.LabelControl6.Size = New System.Drawing.Size(29, 13)
         Me.LabelControl6.TabIndex = 147
@@ -381,18 +384,40 @@ Partial Class frmEmpleados
         'peFirma
         '
         Me.peFirma.EditValue = CType(resources.GetObject("peFirma.EditValue"), Object)
-        Me.peFirma.Location = New System.Drawing.Point(101, 142)
+        Me.peFirma.Location = New System.Drawing.Point(101, 180)
         Me.peFirma.Name = "peFirma"
         Me.peFirma.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.[Auto]
         Me.peFirma.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Stretch
         Me.peFirma.Size = New System.Drawing.Size(296, 74)
         Me.peFirma.TabIndex = 148
         '
+        'LabelControl7
+        '
+        Me.LabelControl7.Location = New System.Drawing.Point(16, 95)
+        Me.LabelControl7.Name = "LabelControl7"
+        Me.LabelControl7.Size = New System.Drawing.Size(64, 13)
+        Me.LabelControl7.TabIndex = 153
+        Me.LabelControl7.Text = "Identificacion"
+        '
+        'txtIdentificacion
+        '
+        Me.txtIdentificacion.Enabled = False
+        Me.txtIdentificacion.EnterMoveNextControl = True
+        Me.txtIdentificacion.Location = New System.Drawing.Point(101, 92)
+        Me.txtIdentificacion.MenuManager = Me.BarManager1
+        Me.txtIdentificacion.Name = "txtIdentificacion"
+        Me.txtIdentificacion.Properties.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.txtIdentificacion.Properties.MaxLength = 50
+        Me.txtIdentificacion.Size = New System.Drawing.Size(377, 20)
+        Me.txtIdentificacion.TabIndex = 154
+        '
         'frmEmpleados
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(621, 514)
+        Me.ClientSize = New System.Drawing.Size(624, 566)
+        Me.Controls.Add(Me.txtIdentificacion)
+        Me.Controls.Add(Me.LabelControl7)
         Me.Controls.Add(Me.peFirma)
         Me.Controls.Add(Me.LabelControl6)
         Me.Controls.Add(Me.peFoto)
@@ -431,6 +456,7 @@ Partial Class frmEmpleados
         CType(Me.SeparatorControl1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.peFoto.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.peFirma.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtIdentificacion.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -471,4 +497,6 @@ Partial Class frmEmpleados
     Friend WithEvents peFoto As DevExpress.XtraEditors.PictureEdit
     Friend WithEvents LabelControl6 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents peFirma As DevExpress.XtraEditors.PictureEdit
+    Friend WithEvents LabelControl7 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents txtIdentificacion As DevExpress.XtraEditors.TextEdit
 End Class

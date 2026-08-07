@@ -19,6 +19,7 @@
         Private _CodigoCups As String
         Private _IdTipoEstudio As String
         Private _Valor As Integer
+        Private _idConceptoRecaudo As Integer
         Private _Copago As Integer
         Private _Neto As Integer
         Private _Tipo As String
@@ -239,6 +240,15 @@
             End Get
             Set(value As String)
                 _IdRelacion = value
+            End Set
+        End Property
+
+        Public Property IdConceptoRecaudo As Integer
+            Get
+                Return _idConceptoRecaudo
+            End Get
+            Set(value As Integer)
+                _idConceptoRecaudo = value
             End Set
         End Property
     End Class

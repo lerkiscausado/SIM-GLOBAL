@@ -3,7 +3,6 @@ Imports SIM___GLOBAL.Utilidades
 Imports SIM___GLOBAL.Controles
 
 Public Class frmRDA
-
     Private Async Sub spConectar_Click(sender As Object, e As EventArgs) Handles spConectar.Click
         ' 1. Cambiar el estado visual a "Cargando" para evitar bloqueos
         spConectar.Enabled = False
@@ -47,41 +46,51 @@ Public Class frmRDA
 
     Private Sub spGuardar_Click(sender As Object, e As EventArgs) Handles spGuardar.Click
         Dim _dRDA As New DRDA
-        Try
-            ' Validaciones mínimas obligatorias antes de escribir en la BD
-            If String.IsNullOrWhiteSpace(txtTenantID.Text) OrElse String.IsNullOrWhiteSpace(txtClientID.Text) Then
-                MessageBox.Show("Por favor complete los campos obligatorios de identificación.",
-                                "Validación de Datos", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-                Exit Sub
-            End If
+        ' Crear objeto de configuración con los datos limpios de la pantalla
+        Dim configAGuardar As New ConfigInteropApi With {
+                    .Ambiente = If(rbSandbox.Checked, "SANDBOX", "PRODUCCION"),
+                    .TenantId = txtTenantID.Text.Trim(),
+                    .ClientId = txtClientID.Text.Trim(),' RECOMENDACIÓN: Implementa una función propia 'EncriptarCadena' para proteger el Secret en tu BD
+                    .ClientSecret = txtClientSecret.Text.Trim(),
+                    .SubscriptionKey = txtSubscriptionKey.Text.Trim(),
+                    .UrlAuthServer = txtURLAuth.Text.Trim(),
+                    .UrlBaseApi = txtURLBaseApi.Text.Trim(),
+                    .Estado = True,
+                    .FechaRegistro = DateTime.Now,
+                    .FechaActualizacion = DateTime.Now
+                }
 
-            ' Crear objeto de configuración con los datos limpios de la pantalla
-            Dim configAGuardar As New ConfigInteropApi With {
-                .Ambiente = If(rbSandbox.Checked, "SANDBOX", "PRODUCCION"),
-                .TenantId = txtTenantID.Text.Trim(),
-                .ClientId = txtClientID.Text.Trim(),' RECOMENDACIÓN: Implementa una función propia 'EncriptarCadena' para proteger el Secret en tu BD
-                .ClientSecret = txtClientSecret.Text.Trim(),
-                .SubscriptionKey = txtSubscriptionKey.Text.Trim(),
-                .UrlAuthServer = txtURLAuth.Text.Trim(),
-                .UrlBaseApi = txtURLBaseApi.Text.Trim(),
-                .Estado = True,
-                .FechaRegistro = DateTime.Now,
-                .FechaActualizacion = DateTime.Now
-            }
-
-            ' Ejecutar tu método de persistencia (Aquí lo adaptas a tu capa de datos, ej: Entity Framework, Dapper o ADO.NET)
-            If _dRDA.Guardar(configAGuardar) Then
+        If txtID.Text <> "" Then
+            'Dim configAGuardar As New ConfigInteropApi
+            If _dRDA.Actualizar(configAGuardar) Then
                 MessageBox.Show("La configuración de la API RDA de MinSalud ha sido almacenada correctamente en SIM.",
-                                 "Configuración Guardada", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                             "Configuración Guardada", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 Me.Close() ' O refrescar el estado del formulario
-            Else
-                Throw New Exception("No se pudo insertar el registro en la base de datos.")
             End If
+        Else
 
-        Catch ex As Exception
-            MessageBox.Show($"Error al guardar los datos: {ex.Message}", "Error de Base de Datos",
+            Try
+                ' Validaciones mínimas obligatorias antes de escribir en la BD
+                If String.IsNullOrWhiteSpace(txtTenantID.Text) OrElse String.IsNullOrWhiteSpace(txtClientID.Text) Then
+                    MessageBox.Show("Por favor complete los campos obligatorios de identificación.",
+                                "Validación de Datos", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                    Exit Sub
+                End If
+
+                ' Ejecutar tu método de persistencia (Aquí lo adaptas a tu capa de datos, ej: Entity Framework, Dapper o ADO.NET)
+                If _dRDA.Guardar(configAGuardar) Then
+                    MessageBox.Show("La configuración de la API RDA de MinSalud ha sido almacenada correctamente en SIM.",
+                                 "Configuración Guardada", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    Me.Close() ' O refrescar el estado del formulario
+                Else
+                    Throw New Exception("No se pudo insertar el registro en la base de datos.")
+                End If
+
+            Catch ex As Exception
+                MessageBox.Show($"Error al guardar los datos: {ex.Message}", "Error de Base de Datos",
                             MessageBoxButtons.OK, MessageBoxIcon.Error)
-        End Try
+            End Try
+        End If
     End Sub
 
     Private Sub spVerClientSecret_Click(sender As Object, e As EventArgs) Handles spVerClientSecret.Click
@@ -111,6 +120,24 @@ Public Class frmRDA
     End Sub
 
     Private Sub frmRDA_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Dim _dRDA As New DRDA
+        Dim configAGuardar As New ConfigInteropApi
+        configAGuardar = _dRDA.Cargar()
+        txtID.Text = configAGuardar.Id
+        txtTenantID.Text = configAGuardar.TenantId
+        txtClientID.Text = configAGuardar.ClientId
+        txtClientSecret.Text = configAGuardar.ClientSecret
+        If configAGuardar.Ambiente = "SANDBOX" Then
+            rbSandbox.Checked = True
+        Else
+            rbProduction.Checked = True
+        End If
+        txtSubscriptionKey.Text = configAGuardar.SubscriptionKey
+        txtURLAuth.Text = configAGuardar.UrlAuthServer
+        txtURLBaseApi.Text = configAGuardar.UrlBaseApi
+    End Sub
 
+    Private Sub spCancelar_Click(sender As Object, e As EventArgs) Handles spCancelar.Click
+        Me.Close()
     End Sub
 End Class

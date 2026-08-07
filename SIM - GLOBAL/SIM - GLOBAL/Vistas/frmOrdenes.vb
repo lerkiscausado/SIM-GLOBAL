@@ -174,7 +174,8 @@ Public Class frmOrdenes
             _Ordenes.FechaOrden = dtFechaOrden.Text
             _Ordenes.Hora = DateTime.Now
             _Ordenes.Idfactura = "P"
-            _Ordenes.IdTipoAfiliado = cboTipoAfiliado.GetColumnValue("ID")
+            '_Ordenes.IdTipoAfiliado = cboTipoAfiliado.GetColumnValue("ID")
+            _Ordenes.IdTipoAfiliado = 1
             _Ordenes.IdTipoUsuario = cboTipoUsuario.GetColumnValue("ID")
 
             Select Case Licencia
@@ -310,6 +311,8 @@ Public Class frmOrdenes
             _DetalleOrden.CodigoCups = txtCodigoCups.Text
             _DetalleOrden.IdTipoEstudio = _idTipoEstudio 'cboProcedimiento.EditValue
             _DetalleOrden.Valor = Val(txtValor.EditValue)
+            _DetalleOrden.IdConceptoRecaudo = cboConceptoRecaudo.GetColumnValue("ID")
+            MsgBox(cboConceptoRecaudo.GetColumnValue("ID"))
             _DetalleOrden.Copago = Val(txtCopago.EditValue)
             _DetalleOrden.Neto = Val(txtNeto.EditValue)
             _DetalleOrden.Tipo = _TipoAtencion
@@ -429,7 +432,7 @@ Public Class frmOrdenes
             txtNumeroEstudio.Text = _Ordenes.Consecutivo
         End If
 
-        cboTipoAfiliado.ItemIndex = cboTipoAfiliado.Properties.GetDataSourceRowIndex("ID", _Ordenes.IdTipoAfiliado)
+        'cboTipoAfiliado.ItemIndex = cboTipoAfiliado.Properties.GetDataSourceRowIndex("ID", _Ordenes.IdTipoAfiliado)
         cboTipoUsuario.ItemIndex = cboTipoUsuario.Properties.GetDataSourceRowIndex("ID", _Ordenes.IdTipoUsuario)
         dtFechaOrden.Text = _Ordenes.FechaOrden
 
@@ -487,13 +490,21 @@ Public Class frmOrdenes
         _ds = _DAgenda.ListarAgendaHoy
         GCAgendados.DataSource = _ds.Tables(0)
 
-        ' Cargar Tipo Afiliado
-        Dim _Dtipoafiliado = New DTipoAfiliado
-        _ds = _Dtipoafiliado.Listar
-        cboTipoAfiliado.Properties.DataSource = _ds.Tables(0)
-        cboTipoAfiliado.Properties.DisplayMember = _ds.Tables(0).Columns(1).Caption
-        cboTipoAfiliado.Properties.ValueMember = _ds.Tables(0).Columns(0).Caption
-        cboTipoAfiliado.ItemIndex = 0
+        'Cargar Tipo Afiliado
+        'Dim _Dtipoafiliado = New DTipoAfiliado
+        '_ds = _Dtipoafiliado.Listar
+        'cboTipoAfiliado.Properties.DataSource = _ds.Tables(0)
+        'cboTipoAfiliado.Properties.DisplayMember = _ds.Tables(0).Columns(1).Caption
+        'cboTipoAfiliado.Properties.ValueMember = _ds.Tables(0).Columns(0).Caption
+        'cboTipoAfiliado.ItemIndex = 0
+
+        'Cargar Concepto Recaudo
+        Dim _DConceptoRecaudo = New DConceptoRecaudos
+        _ds = _DConceptoRecaudo.Listar
+        cboConceptoRecaudo.Properties.DataSource = _ds.Tables(0)
+        cboConceptoRecaudo.Properties.DisplayMember = _ds.Tables(0).Columns(2).Caption
+        cboConceptoRecaudo.Properties.ValueMember = _ds.Tables(0).Columns(0).Caption
+        cboConceptoRecaudo.ItemIndex = 0
 
         ' Cargar Tipo Usuario
         Dim _DtipoUsuario = New DTipoUsuario
@@ -654,7 +665,7 @@ Public Class frmOrdenes
         ActivarGuardar()
     End Sub
 
-    Private Sub cboTipoAfiliado_EditValueChanged(sender As Object, e As EventArgs) Handles cboTipoAfiliado.EditValueChanged
+    Private Sub cboTipoAfiliado_EditValueChanged(sender As Object, e As EventArgs)
         ActivarGuardar()
     End Sub
 

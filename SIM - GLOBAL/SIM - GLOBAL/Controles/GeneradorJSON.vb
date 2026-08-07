@@ -93,7 +93,7 @@ Public Class GeneradorJSON
                         '02' AS viaIngresoServicioSalud, 
                         '01' AS modalidadGrupoServicioTecSal, 
                         '02' AS grupoServicios, 
-                        Cups.codigo_servicio AS codServicio, 
+                        cups.codigo_servicio AS codServicio, 
                         '15' AS finalidadTecnologiaSalud, 
                         'CC' AS tipoDocumentoIdentificacion, 
                         '73106055' AS numDocumentoIdentificacion, 
@@ -107,7 +107,7 @@ Public Class GeneradorJSON
                         NULL AS codComplicacionCIE11,
                         NULL AS nomCodComplicacionCIE11,
                         detalle_orden.valor AS valorServicio, 
-                        '05' AS conceptoRecaudo, 
+                        conceptorecaudos.codigo AS conceptoRecaudo, 
                         detalle_orden.copago AS valorPagoModerador, 
                         NULL AS numFEVPagoModerador, 
                         NULL AS codigoVIDA,
@@ -115,6 +115,7 @@ Public Class GeneradorJSON
                         o.id 
                     FROM ordenes o 
                     INNER JOIN detalle_orden ON o.id = detalle_orden.id_orden 
+                    INNER JOIN conceptorecaudos ON detalle_orden.idconceptorecaudo = conceptorecaudos.id
                     INNER JOIN cups ON detalle_orden.codigo_cups = cups.codigo_cups 
                     WHERE o.id = ?"
 
@@ -162,7 +163,7 @@ Public Class GeneradorJSON
                     cons("codConsulta") = dr2("codProcedimiento").ToString()
                     cons("modalidadGrupoServicioTecSal") = dr2("modalidadGrupoServicioTecSal").ToString()
                     cons("grupoServicios") = dr2("grupoServicios").ToString()
-                    cons("codServicio") = CInt(dr2("codServicio"))
+                    cons("codServicio") = Newtonsoft.Json.Linq.JToken.FromObject(If(IsNumeric(dr2("codServicio")), CInt(dr2("codServicio")), 0))
                     cons("finalidadTecnologiaSalud") = dr2("finalidadTecnologiaSalud").ToString()
                     cons("causaMotivoAtencion") = "38"
                     cons("codDiagnosticoPrincipal") = dr2("codDiagnosticoPrincipal").ToString()

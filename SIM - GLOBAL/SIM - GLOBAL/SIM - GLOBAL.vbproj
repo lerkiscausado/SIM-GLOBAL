@@ -212,6 +212,7 @@
     <Compile Include="Controles\DClientes.vb" />
     <Compile Include="Controles\DCodigoServicios.vb" />
     <Compile Include="Controles\DCompras.vb" />
+    <Compile Include="Controles\DConceptoRecaudos.vb" />
     <Compile Include="Controles\DConfiguracionCorreo.vb" />
     <Compile Include="Controles\DConsentimientoInformadoPlantillas.vb" />
     <Compile Include="Controles\DContratos.vb" />
