@@ -37,6 +37,18 @@
         ''' </summary>
         Public Property UrlBaseApi As String
 
+        ''' <summary>
+        ''' Código de habilitación del prestador de servicios de salud (REPS),
+        ''' requerido como identificador de la Organization en el Bundle RDA.
+        ''' </summary>
+        Public Property CodigoPrestadorReps As String
+
+        ''' <summary>
+        ''' NIT (Número de Identificación Tributaria) del prestador,
+        ''' requerido como identificador tributario de la Organization en el Bundle RDA.
+        ''' </summary>
+        Public Property NitPrestador As String
+
         Public Property Estado As Boolean = True
         Public Property FechaRegistro As DateTime = DateTime.Now
         Public Property FechaActualizacion As DateTime = DateTime.Now

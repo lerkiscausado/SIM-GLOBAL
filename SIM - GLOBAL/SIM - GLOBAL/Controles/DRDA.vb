@@ -30,6 +30,16 @@ Namespace Controles
                 .UrlBaseApi = _ds.Tables(0).Rows(0)(7).ToString()
           }
 
+                ' Columnas agregadas para el envío del Bundle RDA-Paciente (código REPS y NIT del prestador).
+                ' Lectura defensiva por nombre para no romper instalaciones que aún no tengan la migración aplicada.
+                Dim tabla As DataTable = _ds.Tables(0)
+                If tabla.Columns.Contains("codigo_prestador_reps") Then
+                    configTemporal.CodigoPrestadorReps = _ds.Tables(0).Rows(0)("codigo_prestador_reps").ToString()
+                End If
+                If tabla.Columns.Contains("nit_prestador") Then
+                    configTemporal.NitPrestador = _ds.Tables(0).Rows(0)("nit_prestador").ToString()
+                End If
+
                 Return configTemporal
             Catch ex As Exception
                 MessageBox.Show(ex.Message)
@@ -43,8 +53,8 @@ Namespace Controles
                 conn = ConexionODBC.Open()
 
                 Dim query As String = "INSERT INTO config_interop_api " &
-            "(id, ambiente, tenant_id, client_id, client_secret, subscription_key, url_auth_server, url_base_api, estado, fecha_registro,fecha_actualizacion) " &
-            "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?,?,?)"
+            "(id, ambiente, tenant_id, client_id, client_secret, subscription_key, url_auth_server, url_base_api, codigo_prestador_reps, nit_prestador, estado, fecha_registro,fecha_actualizacion) " &
+            "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,?)"
 
                 Using comando As New OdbcCommand(query, conn)
                     comando.Parameters.AddWithValue("?", _ConfigInteropApi.Id)
@@ -55,6 +65,8 @@ Namespace Controles
                     comando.Parameters.AddWithValue("?", _ConfigInteropApi.SubscriptionKey)
                     comando.Parameters.AddWithValue("?", _ConfigInteropApi.UrlAuthServer)
                     comando.Parameters.AddWithValue("?", _ConfigInteropApi.UrlBaseApi)
+                    comando.Parameters.AddWithValue("?", _ConfigInteropApi.CodigoPrestadorReps)
+                    comando.Parameters.AddWithValue("?", _ConfigInteropApi.NitPrestador)
                     comando.Parameters.AddWithValue("?", 1)
                     comando.Parameters.AddWithValue("?", _ConfigInteropApi.FechaRegistro)
                     comando.Parameters.AddWithValue("?", _ConfigInteropApi.FechaActualizacion)
@@ -130,7 +142,9 @@ Namespace Controles
             "client_secret = ?, " &
             "subscription_key = ?, " &
             "url_auth_server = ?, " &
-            "url_base_api = ? " &
+            "url_base_api = ?, " &
+            "codigo_prestador_reps = ?, " &
+            "nit_prestador = ? " &
             "WHERE id = ?")
 
                 _conn = ConexionODBC.Open()
@@ -144,6 +158,8 @@ Namespace Controles
                 comando.Parameters.AddWithValue("?", config.SubscriptionKey)
                 comando.Parameters.AddWithValue("?", config.UrlAuthServer)
                 comando.Parameters.AddWithValue("?", config.UrlBaseApi)
+                comando.Parameters.AddWithValue("?", config.CodigoPrestadorReps)
+                comando.Parameters.AddWithValue("?", config.NitPrestador)
                 comando.Parameters.AddWithValue("?", 1)  ' <-- asegúrate que ConfigInteropApi tenga la propiedad Id
 
                 Dim filasAfectadas As Integer = comando.ExecuteNonQuery()
@@ -228,38 +244,25 @@ Namespace Controles
         End Function
 
         ' ── Solicitar nuevo token y guardarlo en cache ────────────────────
+        ' NOTA: Delega en SIM___GLOBAL.Utilidades.InteropAuthService, que implementa el flujo
+        ' OAuth2 real de MinSalud (Azure AD - login.microsoftonline.com, grant_type=client_credentials
+        ' + scope). Antes había aquí una segunda implementación (username/password contra
+        ' UrlAuthServer & "/oauth/token") que no correspondía al Postman/documentación oficial;
+        ' se unifica para evitar dos caminos distintos de autenticación con MinSalud.
         Private Async Function SolicitarNuevoToken(config As ConfigInteropApi,
                                                    configId As Integer) As Task(Of String)
             Try
-                Dim client As New HttpClient()
+                Dim tokenInfo As TokenResponse = Await SIM___GLOBAL.Utilidades.InteropAuthService.SolicitarTokenAsync(config)
 
-                Dim parametros As New Dictionary(Of String, String) From {
-                    {"grant_type", "Client_Credentials"},
-                    {"client_id", config.ClientId},
-                    {"client_secret", config.ClientSecret},
-                    {"username", config.TenantId},
-                    {"password", config.ClientSecret}
-                }
-
-                Dim content = New FormUrlEncodedContent(parametros)
-                Dim response = Await client.PostAsync(config.UrlAuthServer & "/oauth/token", content)
-                Dim body = Await response.Content.ReadAsStringAsync()
-
-                If Not response.IsSuccessStatusCode Then
-                    MessageBox.Show("Error al autenticar: " & body)
+                If tokenInfo Is Nothing OrElse String.IsNullOrEmpty(tokenInfo.AccessToken) Then
+                    MessageBox.Show("El servidor de MinSalud no retornó un token de acceso válido.")
                     Return String.Empty
                 End If
 
-                ' ── 4. Parsear respuesta ──────────────────────────────────
-                Dim resultado = Newtonsoft.Json.Linq.JObject.Parse(body)
-                Dim accessToken As String = resultado("access_token").ToString()
-                Dim tokenType As String = resultado("token_type").ToString()
-                Dim expiresIn As Integer = CInt(resultado("expires_in").ToString())
+                ' ── Guardar nuevo token en cache ───────────────────────
+                GuardarTokenCache(configId, tokenInfo.AccessToken, tokenInfo.TokenType, tokenInfo.ExpiresIn)
 
-                ' ── 5. Guardar nuevo token en cache ───────────────────────
-                GuardarTokenCache(configId, accessToken, tokenType, expiresIn)
-
-                Return accessToken
+                Return tokenInfo.AccessToken
 
             Catch ex As Exception
                 MessageBox.Show("Error SolicitarNuevoToken: " & ex.Message)

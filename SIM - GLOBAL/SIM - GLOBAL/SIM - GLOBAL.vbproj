@@ -288,6 +288,7 @@
     <Compile Include="Controles\DProductos.vb" />
     <Compile Include="Controles\DProveedores.vb" />
     <Compile Include="Controles\DRDA.vb" />
+    <Compile Include="Controles\DRDAPaciente.vb" />
     <Compile Include="Controles\DRegistroAnestesia.vb" />
     <Compile Include="Controles\DRegistroAnestesiaMedicamentos.vb" />
     <Compile Include="Controles\DRegistros.vb" />
@@ -920,6 +921,8 @@
     </Compile>
     <Compile Include="Utilidades\Funciones.vb" />
     <Compile Include="Utilidades\InteropAuthService.vb" />
+    <Compile Include="Utilidades\RDABundleBuilder.vb" />
+    <Compile Include="Utilidades\RDATextParser.vb" />
     <Compile Include="Vistas\Binarios.Designer.vb">
       <DependentUpon>Binarios.vb</DependentUpon>
     </Compile>
@@ -2057,6 +2060,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Sql\rda_paciente_migracion.sql" />
     <None Include="DataSet1.xsc">
       <DependentUpon>DataSet1.xsd</DependentUpon>
     </None>
