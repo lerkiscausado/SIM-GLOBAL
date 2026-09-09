@@ -298,8 +298,8 @@ Public Class frmUsuarios
         Dim _DSesiones As New SIM___GLOBAL.Controles.DSesiones
 
         If _ClickGrilla = "" Then
-                MessageBox.Show("No ha seleccionado el paciente", "Registro de Usuarios", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            Else
+            MessageBox.Show("No ha seleccionado el paciente", "Registro de Usuarios", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        Else
 
 
             If MessageBox.Show("Desea Editar el Registro ?", "Editar Registros ",
@@ -308,36 +308,36 @@ Public Class frmUsuarios
 
                 txtCodigo.Enabled = False
                 _usuarios = _dUsuarios.Cargar(_ClickGrilla)
-                    txtCodigo.Text = _ClickGrilla
-                    txtNumeroIdentificacion.Text = _usuarios.Identificacion
-                    txtPrimerNombre.Text = _usuarios.PrimerNombre
-                    txtSegundoNombre.Text = _usuarios.SegundoNombre
-                    txtPrimerApellido.Text = _usuarios.PrimerApellido
-                    txtSegundoApellido.Text = _usuarios.SegundoApellido
-                    txtCiudadNacimiento.Text = _usuarios.CiudadNacimiento
+                txtCodigo.Text = _ClickGrilla
+                txtNumeroIdentificacion.Text = _usuarios.Identificacion
+                txtPrimerNombre.Text = _usuarios.PrimerNombre
+                txtSegundoNombre.Text = _usuarios.SegundoNombre
+                txtPrimerApellido.Text = _usuarios.PrimerApellido
+                txtSegundoApellido.Text = _usuarios.SegundoApellido
+                txtCiudadNacimiento.Text = _usuarios.CiudadNacimiento
 
                 If Not String.IsNullOrWhiteSpace(_usuarios.CodigoPaisNacimiento) Then
-                        cboPais.EditValue = _usuarios.CodigoPaisNacimiento
-                    Else
-                        cboPais.EditValue = "170" ' Colombia por defecto si aún no se ha capturado
-                    End If
-                    SeleccionarItemComboPorCodigo(cboEtnia, _usuarios.CodigoEtnia)
-                    SeleccionarItemComboPorCodigo(cboDiscapacidad, _usuarios.CodigoDiscapacidad)
-                    SeleccionarItemComboPorCodigo(cboIdentidadGenero, _usuarios.CodigoIdentidadGenero)
-                    txtDireccion.Text = _usuarios.Direccion
-                    txtTelefono.Text = _usuarios.Telefono
-                    txtCorreoElectronico.Text = _usuarios.CorreoElectronico
-                    cboSexo.Text = _usuarios.Sexo
-                    dtFechaNacimiento.Text = _usuarios.FechaNacimiento
-                    'calcular edad
-                    txtEdad.Text = Year(Date.Now) - Year(dtFechaNacimiento.Text)
-                    cboEstadoCivil.Text = _usuarios.EstadoCivil
-                    cboTipoIdentificacion.ItemIndex = cboTipoIdentificacion.Properties.GetDataSourceRowIndex("CODIGO", _usuarios.CodigotipoIdentificacion)
-                    cboDepartamentos.ItemIndex = cboDepartamentos.Properties.GetDataSourceRowIndex("CODIGO", Mid(_usuarios.CodigoMunicipio, 1, 2))
-                    cboMunicipios.ItemIndex = cboMunicipios.Properties.GetDataSourceRowIndex("CODIGO", Mid(_usuarios.CodigoMunicipio, 3, 3))
-                    'Lamar funcion image bytes
+                    cboPais.EditValue = _usuarios.CodigoPaisNacimiento
+                Else
+                    cboPais.EditValue = "170" ' Colombia por defecto si aún no se ha capturado
+                End If
+                SeleccionarItemComboPorCodigo(cboEtnia, _usuarios.CodigoEtnia)
+                SeleccionarItemComboPorCodigo(cboDiscapacidad, _usuarios.CodigoDiscapacidad)
+                SeleccionarItemComboPorCodigo(cboIdentidadGenero, _usuarios.CodigoIdentidadGenero)
+                txtDireccion.Text = _usuarios.Direccion
+                txtTelefono.Text = _usuarios.Telefono
+                txtCorreoElectronico.Text = _usuarios.CorreoElectronico
+                cboSexo.Text = _usuarios.Sexo
+                dtFechaNacimiento.Text = _usuarios.FechaNacimiento
+                'calcular edad
+                txtEdad.Text = Year(Date.Now) - Year(dtFechaNacimiento.Text)
+                cboEstadoCivil.Text = _usuarios.EstadoCivil
+                cboTipoIdentificacion.ItemIndex = cboTipoIdentificacion.Properties.GetDataSourceRowIndex("CODIGO", _usuarios.CodigotipoIdentificacion)
+                cboDepartamentos.ItemIndex = cboDepartamentos.Properties.GetDataSourceRowIndex("CODIGO", Mid(_usuarios.CodigoMunicipio, 1, 2))
+                cboMunicipios.ItemIndex = cboMunicipios.Properties.GetDataSourceRowIndex("CODIGO", Mid(_usuarios.CodigoMunicipio, 3, 3))
+                'Lamar funcion image bytes
 
-                    Dim img2 As Image
+                Dim img2 As Image
 
                 Try
                     img2 = _funciones.Bytes_Imagen(_usuarios.Foto)
