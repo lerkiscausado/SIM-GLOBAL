@@ -149,12 +149,7 @@ Namespace Controles
                     .Nombre = "Jaime Jose Bonfante"
                 }
 
-                ' 3. Armar Bundle (sin antecedentes: es un envío de prueba de conectividad)
-                Dim bundleJson As String = RDABundleBuilder.ConstruirBundlePaciente(
-                    paciente, especialista, configPrueba, antecedentesPersonales:="", antecedentesFamiliares:="",
-                    nombreOrganizacion:="Gastrocaribe")
-
-                ' 4. Verificar/renovar token vigente
+                ' 3. Verificar/renovar token vigente
                 Dim dRDA As New DRDA
                 Dim token As String = Await dRDA.TraerToken(configId)
                 If String.IsNullOrWhiteSpace(token) Then
@@ -162,20 +157,82 @@ Namespace Controles
                     Return "❌ No fue posible obtener un token de MinSalud. Revisa TenantId / ClientId / ClientSecret en 'Interoperabilidad RDA'."
                 End If
 
-                ' 5. Enviar
+                ' 4. Consulta previa obligatoria al MPI (Índice Maestro de Pacientes) - ver
+                ' Guía RDA / Manual de Operaciones IHCE: "El Gestor RDA rechaza Bundles sin VIDA".
+                ' Por ahora se muestra la respuesta cruda del MPI para poder mapear correctamente
+                ' el identificador VIDA una vez veamos su formato real.
+                Dim respuestaMpi = Await ConsultarPacienteExactoHttp(paciente, especialista, configPrueba, token)
+
+                ' 5. Armar Bundle (sin antecedentes: es un envío de prueba de conectividad)
+                Dim bundleJson As String = RDABundleBuilder.ConstruirBundlePaciente(
+                    paciente, especialista, configPrueba, antecedentesPersonales:="", antecedentesFamiliares:="",
+                    nombreOrganizacion:="Gastrocaribe")
+
+                ' 6. Enviar RDA
                 Dim resultado = Await EnviarBundleHttp(bundleJson, configPrueba, token)
                 RegistrarIntento(0, resultado.Exitoso, resultado.Cuerpo, resultado.CodigoHttp, "RDA-PACIENTE-PRUEBA")
 
+                Dim mensajeMpi As String = $"— Consulta MPI ($consultar-paciente-exacto) — HTTP {If(respuestaMpi.CodigoHttp.HasValue, respuestaMpi.CodigoHttp.Value.ToString(), "N/A")}:" &
+                    Environment.NewLine & respuestaMpi.Cuerpo & Environment.NewLine & Environment.NewLine
+
                 If resultado.Exitoso Then
-                    Return $"✅ MinSalud aceptó el RDA de prueba (HTTP {resultado.CodigoHttp})." & Environment.NewLine & Environment.NewLine &
-                           "Respuesta del API:" & Environment.NewLine & resultado.Cuerpo
+                    Return mensajeMpi & $"✅ MinSalud aceptó el RDA de prueba (HTTP {resultado.CodigoHttp})." & Environment.NewLine & Environment.NewLine &
+                           "— Respuesta del envío RDA —" & Environment.NewLine & resultado.Cuerpo
                 Else
-                    Return $"🔴 MinSalud rechazó el RDA de prueba (HTTP {If(resultado.CodigoHttp.HasValue, resultado.CodigoHttp.Value.ToString(), "N/A")})." & Environment.NewLine & Environment.NewLine &
-                           "Respuesta del API:" & Environment.NewLine & resultado.Cuerpo
+                    Return mensajeMpi & $"🔴 MinSalud rechazó el RDA de prueba (HTTP {If(resultado.CodigoHttp.HasValue, resultado.CodigoHttp.Value.ToString(), "N/A")})." & Environment.NewLine & Environment.NewLine &
+                           "— Respuesta del envío RDA —" & Environment.NewLine & resultado.Cuerpo
                 End If
 
             Catch ex As Exception
                 Return "❌ Error al enviar el RDA de prueba: " & ex.Message
+            End Try
+        End Function
+
+        ''' <summary>
+        ''' Consulta previa obligatoria al MPI antes de armar el Bundle RDA (ver comentario en
+        ''' EnviarRDAPruebaAsync). Envía tipo/número de identificación del paciente y el
+        ''' identificador del profesional que hace la consulta ("humanuser").
+        ''' Devuelve la respuesta cruda (aún no se interpreta su contenido).
+        ''' </summary>
+        Private Shared Async Function ConsultarPacienteExactoHttp(paciente As Usuarios, especialista As Especialista, config As ConfigInteropApi, token As String) As Task(Of (Exitoso As Boolean, CodigoHttp As Integer?, Cuerpo As String))
+            Dim urlConsulta As String = config.UrlBaseApi.TrimEnd("/"c) & "/Patient/$consultar-paciente-exacto"
+
+            Dim humanUser As String = If(especialista IsNot Nothing AndAlso Not String.IsNullOrWhiteSpace(especialista.Identificacion),
+                                          especialista.IdTipoIdentificacion & "-" & especialista.Identificacion,
+                                          "CC-0")
+
+            Dim parametros As New Newtonsoft.Json.Linq.JObject From {
+                {"resourceType", "Parameters"},
+                {"parameter", New Newtonsoft.Json.Linq.JArray From {
+                    New Newtonsoft.Json.Linq.JObject From {
+                        {"name", "identifier"},
+                        {"part", New Newtonsoft.Json.Linq.JArray From {
+                            New Newtonsoft.Json.Linq.JObject From {{"name", "type"}, {"valueString", paciente.CodigotipoIdentificacion}},
+                            New Newtonsoft.Json.Linq.JObject From {{"name", "value"}, {"valueString", paciente.Identificacion}}
+                        }}
+                    },
+                    New Newtonsoft.Json.Linq.JObject From {
+                        {"name", "humanuser"},
+                        {"valueString", humanUser}
+                    }
+                }}
+            }
+
+            Try
+                Using client As New HttpClient()
+                    Dim request As New HttpRequestMessage(HttpMethod.Post, urlConsulta)
+                    request.Headers.Add("Authorization", "Bearer " & token)
+                    If Not String.IsNullOrWhiteSpace(config.SubscriptionKey) Then
+                        request.Headers.Add("Ocp-Apim-Subscription-Key", config.SubscriptionKey)
+                    End If
+                    request.Content = New StringContent(parametros.ToString(), Encoding.UTF8, "application/json")
+
+                    Dim response As HttpResponseMessage = Await client.SendAsync(request)
+                    Dim cuerpoRespuesta As String = Await response.Content.ReadAsStringAsync()
+                    Return (response.IsSuccessStatusCode, CInt(response.StatusCode), cuerpoRespuesta)
+                End Using
+            Catch ex As Exception
+                Return (False, Nothing, "Excepción consultando el MPI: " & ex.Message)
             End Try
         End Function
 
