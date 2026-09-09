@@ -99,8 +99,11 @@ Namespace Utilidades
 
             ' ── Composition ────────────────────────────────────────────────────────
             Dim autores As New JArray()
-            Dim autorReferencia As String = If(idPractitioner IsNot Nothing, idPractitioner, idOrganizacion)
-            autores.Add(New JObject From {{"reference", "#" & autorReferencia}})
+            ' Composition.author en RDA-Paciente debe ser el PACIENTE mismo (es un autoreporte),
+            ' no la Organization ni el Practitioner. Ver guía oficial vulcano.ihcecol.gov.co/RDA-paciente:
+            ' "Composition.author: en este caso, el paciente mismo puede figurar como autor,
+            ' modelado como un recurso Patient o, en algunos casos, RelatedPerson."
+            autores.Add(New JObject From {{"reference", "#" & idPaciente}})
 
             Dim composition As New JObject From {
                 {"resourceType", "Composition"},
@@ -127,6 +130,26 @@ Namespace Utilidades
                     }
                 }},
                 {"custodian", New JObject From {{"reference", "#" & idOrganizacion}}},
+                {"event", New JObject From {
+                    {"code", New JArray From {
+                        New JObject From {
+                            {"id", "eventCodeModality"},
+                            {"coding", New JArray From {
+                                New JObject From {{"system", BASE_RDA & "/CodeSystem/ColombianTechModality"}, {"code", "01"}, {"display", "Intramural"}}
+                            }}
+                        },
+                        New JObject From {
+                            {"id", "eventCodeServiceGroup"},
+                            {"coding", New JArray From {
+                                New JObject From {{"system", BASE_RDA & "/CodeSystem/GrupoServicios"}, {"code", "01"}, {"display", "Consulta externa"}}
+                            }}
+                        }
+                    }},
+                    {"period", New JObject From {
+                        {"start", DateTime.Now.AddMinutes(-5).ToString("yyyy-MM-ddTHH:mm:sszzz")},
+                        {"end", DateTime.Now.ToString("yyyy-MM-ddTHH:mm:sszzz")}
+                    }}
+                }},
                 {"section", secciones}
             }
 
@@ -168,7 +191,8 @@ Namespace Utilidades
                 seccion("entry") = entradas
             Else
                 ' Sin información reportada por el paciente en esta categoría: se documenta
-                ' explícitamente con emptyReason en vez de omitir la sección (según la guía RDA).
+                ' explícitamente con emptyReason (según la guía RDA). La restricción cmp-1 del
+                ' perfil exige ADEMÁS un "text" narrativo: emptyReason por sí solo no basta.
                 seccion("emptyReason") = New JObject From {
                     {"coding", New JArray From {
                         New JObject From {
@@ -177,6 +201,10 @@ Namespace Utilidades
                             {"display", "Unavailable"}
                         }
                     }}
+                }
+                seccion("text") = New JObject From {
+                    {"status", "generated"},
+                    {"div", "<div xmlns='http://www.w3.org/1999/xhtml'>No existen elementos conocidos para esta lista y/o el paciente no declara información</div>"}
                 }
             End If
             Return seccion
@@ -204,11 +232,32 @@ Namespace Utilidades
                 {"family", (paciente.PrimerApellido & " " & paciente.SegundoApellido).Trim()},
                 {"given", given}
             }
+            ' El registro nacional (EVOL) valida el apellido paterno/materno por separado, no el
+            ' campo "family" combinado; sin esta extensión, MinSalud rechaza el Bundle con
+            ' err-000 "El apellido... no coincide como primer apellido" aunque "family" sea correcto.
+            If Not String.IsNullOrWhiteSpace(paciente.PrimerApellido) Then
+                Dim extensionesApellido As New JArray From {
+                    New JObject From {{"url", BASE_RDA & "/StructureDefinition/ExtensionFathersFamilyName"}, {"valueString", paciente.PrimerApellido}}
+                }
+                If Not String.IsNullOrWhiteSpace(paciente.SegundoApellido) Then
+                    extensionesApellido.Add(New JObject From {{"url", BASE_RDA & "/StructureDefinition/ExtensionMothersFamilyName"}, {"valueString", paciente.SegundoApellido}})
+                End If
+                nombre("_family") = New JObject From {{"extension", extensionesApellido}}
+            End If
 
             Dim direccion As New JObject From {
+                {"id", "HomeAddress-0"},
                 {"use", "home"},
                 {"type", "physical"},
-                {"country", "Colombia"}
+                {"country", "Colombia"},
+                {"_country", New JObject From {
+                    {"extension", New JArray From {
+                        New JObject From {
+                            {"url", BASE_RDA & "/StructureDefinition/ExtensionCountryCode"},
+                            {"valueCoding", New JObject From {{"system", BASE_RDA & "/CodeSystem/ISO31661"}, {"code", "170"}}}
+                        }
+                    }}
+                }}
             }
             If Not String.IsNullOrWhiteSpace(paciente.CodigoMunicipio) Then
                 direccion("_city") = New JObject From {
@@ -235,12 +284,35 @@ Namespace Utilidades
                 }
             End If
 
+            ' ── Extensiones obligatorias del perfil PatientRDA (mínimo 3: Nationality, Ethnicity,
+            ' Disability). El SIM actualmente NO captura etnia ni discapacidad del paciente, así que
+            ' se usa un valor por defecto explícito ("Otras etnias" / "Sin discapacidad") en vez de
+            ' dejarlas vacías, ya que el validador de MinSalud las exige. Esto es un placeholder
+            ' razonable, NO un dato clínico verificado: para producción real se recomienda capturar
+            ' estos campos en el formulario de pacientes (ver análisis de brechas entregado aparte).
+            Dim extensionesPaciente As New JArray From {
+                New JObject From {
+                    {"url", BASE_RDA & "/StructureDefinition/ExtensionPatientNationality"},
+                    {"valueCoding", New JObject From {{"system", BASE_RDA & "/CodeSystem/ISO31661"}, {"code", "170"}, {"display", "Colombia"}}}
+                },
+                New JObject From {
+                    {"url", BASE_RDA & "/StructureDefinition/ExtensionPatientEthnicity"},
+                    {"valueCoding", New JObject From {{"system", BASE_RDA & "/CodeSystem/ColombianEthnicGroup"}, {"code", "6"}, {"display", "Otras etnias"}}}
+                },
+                New JObject From {
+                    {"url", BASE_RDA & "/StructureDefinition/ExtensionPatientDisability"},
+                    {"valueCoding", New JObject From {{"system", BASE_RDA & "/CodeSystem/ColombianDisabilityClassification"}, {"code", "08"}, {"display", "Sin discapacidad"}}}
+                }
+            }
+
             Dim patient As New JObject From {
                 {"resourceType", "Patient"},
                 {"id", idPaciente},
                 {"meta", New JObject From {{"profile", New JArray From {BASE_RDA & "/StructureDefinition/PatientRDA"}}}},
+                {"extension", extensionesPaciente},
                 {"identifier", New JArray From {
                     New JObject From {
+                        {"id", "NationalPersonIdentifier-0"},
                         {"type", New JObject From {
                             {"coding", New JArray From {
                                 New JObject From {{"system", "http://terminology.hl7.org/CodeSystem/v2-0203"}, {"code", "PN"}, {"display", "Person number"}},
@@ -258,6 +330,24 @@ Namespace Utilidades
                 {"gender", generoFhir},
                 {"birthDate", If(paciente.FechaNacimiento = Date.MinValue, Nothing, paciente.FechaNacimiento.ToString("yyyy-MM-dd"))}
             }
+
+            ' Extensión obligatoria de género biológico dentro de Patient.gender (_gender), separada
+            ' del campo "gender" administrativo de FHIR.
+            Dim codigoGeneroBiologico As String = If(generoFhir = "male", "01", If(generoFhir = "female", "02", Nothing))
+            If codigoGeneroBiologico IsNot Nothing Then
+                patient("_gender") = New JObject From {
+                    {"extension", New JArray From {
+                        New JObject From {
+                            {"url", BASE_RDA & "/StructureDefinition/ExtensionBiologicalGender"},
+                            {"valueCoding", New JObject From {
+                                {"system", BASE_RDA & "/CodeSystem/ColombianGenderGroup"},
+                                {"code", codigoGeneroBiologico},
+                                {"display", If(codigoGeneroBiologico = "01", "Hombre", "Mujer")}
+                            }}
+                        }
+                    }}
+                }
+            End If
 
             Return patient
         End Function

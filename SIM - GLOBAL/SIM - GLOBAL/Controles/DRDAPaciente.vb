@@ -115,7 +115,9 @@ Namespace Controles
                 ' Código de Prestador 1300102098, sede 01), independientemente de si ya quedó
                 ' guardado en la pantalla de Interoperabilidad RDA.
                 Const CODIGO_REPS_GASTROCARIBE As String = "1300102098"
-                Const NIT_GASTROCARIBE As String = "9002709163" ' NIT 900270916 + dígito de verificación 3
+                Const NIT_GASTROCARIBE As String = "900270916" ' Sin dígito de verificación: $consultar-organizacion
+                ' solo encontró la organización cuando el NIT se envió SIN el DV (confirmado en Postman;
+                ' con "9002709163" el sistema no encontraba ninguna organización relacionada).
                 Dim configPrueba As New ConfigInteropApi With {
                     .Id = config.Id,
                     .Ambiente = config.Ambiente,
@@ -135,10 +137,10 @@ Namespace Controles
                 Dim paciente As New Usuarios With {
                     .CodigotipoIdentificacion = "CC",
                     .Identificacion = "9146310",
-                    .PrimerNombre = "Lerkis",
-                    .SegundoNombre = "Eliecer",
-                    .PrimerApellido = "Causado",
-                    .SegundoApellido = "Espitia",
+                    .PrimerNombre = "LERKIS",
+                    .SegundoNombre = "ELIECER",
+                    .PrimerApellido = "CAUSADO",
+                    .SegundoApellido = "ESPITIA",
                     .Sexo = "M",
                     .FechaNacimiento = New Date(1980, 8, 25),
                     .CodigoMunicipio = "13001", ' Cartagena, Bolívar (DIVIPOLA)
