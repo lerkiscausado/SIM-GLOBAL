@@ -110,10 +110,12 @@ Namespace Controles
                 Dim configId As Integer = If(config.Id > 0, config.Id, 1)
 
                 ' El código de habilitación REPS de Gastrocaribe se fija aquí para este botón de
-                ' prueba específico (dato provisto por el usuario), independientemente de si ya
-                ' quedó guardado en la pantalla de Interoperabilidad RDA. El NIT sí se toma de la
-                ' configuración guardada, si existe.
-                Const CODIGO_REPS_GASTROCARIBE As String = "1305200894"
+                ' prueba específico (confirmado en prestadores.minsalud.gov.co/habilitacion
+                ' buscando por NIT 900270916-3: "SERVICIOS MEDICOS ESPECIALIZADOS GASTROCARIBE SAS",
+                ' Código de Prestador 1300102098, sede 01), independientemente de si ya quedó
+                ' guardado en la pantalla de Interoperabilidad RDA.
+                Const CODIGO_REPS_GASTROCARIBE As String = "1300102098"
+                Const NIT_GASTROCARIBE As String = "9002709163" ' NIT 900270916 + dígito de verificación 3
                 Dim configPrueba As New ConfigInteropApi With {
                     .Id = config.Id,
                     .Ambiente = config.Ambiente,
@@ -124,7 +126,7 @@ Namespace Controles
                     .UrlAuthServer = config.UrlAuthServer,
                     .UrlBaseApi = config.UrlBaseApi,
                     .CodigoPrestadorReps = CODIGO_REPS_GASTROCARIBE,
-                    .NitPrestador = config.NitPrestador
+                    .NitPrestador = NIT_GASTROCARIBE
                 }
 
                 ' 2. Datos fijos de prueba
