@@ -102,11 +102,18 @@ Namespace Utilidades
 
             ' ── Composition ────────────────────────────────────────────────────────
             Dim autores As New JArray()
-            ' Composition.author en RDA-Paciente debe ser el PACIENTE mismo (es un autoreporte),
-            ' no la Organization ni el Practitioner. Ver guía oficial vulcano.ihcecol.gov.co/RDA-paciente:
+            ' Composition.author en RDA-Paciente debe incluir al PACIENTE mismo (es un
+            ' autoreporte). Ver guía oficial vulcano.ihcecol.gov.co/RDA-paciente:
             ' "Composition.author: en este caso, el paciente mismo puede figurar como autor,
             ' modelado como un recurso Patient o, en algunos casos, RelatedPerson."
+            ' Se agrega también al profesional de salud (si existe) como coautor: FHIR permite
+            ' varios autores (Composition.author es 1..*), y esto evita el error BUNDLE-005
+            ' ("recurso sin referencias") que se produce si el Practitioner queda incluido en
+            ' el Bundle sin que nada lo referencie.
             autores.Add(New JObject From {{"reference", "#" & idPaciente}})
+            If idPractitioner IsNot Nothing Then
+                autores.Add(New JObject From {{"reference", "#" & idPractitioner}})
+            End If
 
             Dim composition As New JObject From {
                 {"resourceType", "Composition"},
