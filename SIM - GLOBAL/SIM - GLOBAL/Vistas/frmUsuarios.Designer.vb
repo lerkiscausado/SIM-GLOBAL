@@ -46,7 +46,6 @@ Partial Class frmUsuarios
         Me.LabelControl13 = New DevExpress.XtraEditors.LabelControl()
         Me.txtDireccion = New DevExpress.XtraEditors.TextEdit()
         Me.LabelControl12 = New DevExpress.XtraEditors.LabelControl()
-        Me.txtPaisNacimiento = New DevExpress.XtraEditors.TextEdit()
         Me.LabelControl11 = New DevExpress.XtraEditors.LabelControl()
         Me.txtCiudadNacimiento = New DevExpress.XtraEditors.TextEdit()
         Me.LabelControl10 = New DevExpress.XtraEditors.LabelControl()
@@ -81,6 +80,13 @@ Partial Class frmUsuarios
         Me.txtEdad = New DevExpress.XtraEditors.TextEdit()
         Me.lblCodigoResultado = New DevExpress.XtraEditors.LabelControl()
         Me.txtCodigoResultado = New DevExpress.XtraEditors.TextEdit()
+        Me.cboIdentidadGenero = New DevExpress.XtraEditors.ComboBoxEdit()
+        Me.LabelControl6 = New DevExpress.XtraEditors.LabelControl()
+        Me.cboDiscapacidad = New DevExpress.XtraEditors.ComboBoxEdit()
+        Me.LabelControl18 = New DevExpress.XtraEditors.LabelControl()
+        Me.cboEtnia = New DevExpress.XtraEditors.ComboBoxEdit()
+        Me.LabelControl19 = New DevExpress.XtraEditors.LabelControl()
+        Me.cboPais = New DevExpress.XtraEditors.LookUpEdit()
         CType(Me.BarManager1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtCodigo.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cboMunicipios.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -89,7 +95,6 @@ Partial Class frmUsuarios
         CType(Me.txtCorreoElectronico.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtTelefono.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtDireccion.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtPaisNacimiento.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtCiudadNacimiento.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dtFechaNacimiento.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dtFechaNacimiento.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -106,6 +111,10 @@ Partial Class frmUsuarios
         CType(Me.GVConsultar, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtEdad.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtCodigoResultado.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.cboIdentidadGenero.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.cboDiscapacidad.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.cboEtnia.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.cboPais.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'BarManager1
@@ -171,7 +180,7 @@ Partial Class frmUsuarios
         Me.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top
         Me.barDockControlTop.Location = New System.Drawing.Point(0, 0)
         Me.barDockControlTop.Manager = Me.BarManager1
-        Me.barDockControlTop.Size = New System.Drawing.Size(1047, 25)
+        Me.barDockControlTop.Size = New System.Drawing.Size(1047, 24)
         '
         'barDockControlBottom
         '
@@ -185,17 +194,17 @@ Partial Class frmUsuarios
         '
         Me.barDockControlLeft.CausesValidation = False
         Me.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left
-        Me.barDockControlLeft.Location = New System.Drawing.Point(0, 25)
+        Me.barDockControlLeft.Location = New System.Drawing.Point(0, 24)
         Me.barDockControlLeft.Manager = Me.BarManager1
-        Me.barDockControlLeft.Size = New System.Drawing.Size(0, 475)
+        Me.barDockControlLeft.Size = New System.Drawing.Size(0, 476)
         '
         'barDockControlRight
         '
         Me.barDockControlRight.CausesValidation = False
         Me.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right
-        Me.barDockControlRight.Location = New System.Drawing.Point(1047, 25)
+        Me.barDockControlRight.Location = New System.Drawing.Point(1047, 24)
         Me.barDockControlRight.Manager = Me.BarManager1
-        Me.barDockControlRight.Size = New System.Drawing.Size(0, 475)
+        Me.barDockControlRight.Size = New System.Drawing.Size(0, 476)
         '
         'txtCodigo
         '
@@ -221,7 +230,7 @@ Partial Class frmUsuarios
         '
         'LabelControl17
         '
-        Me.LabelControl17.Location = New System.Drawing.Point(771, 158)
+        Me.LabelControl17.Location = New System.Drawing.Point(771, 162)
         Me.LabelControl17.Name = "LabelControl17"
         Me.LabelControl17.Size = New System.Drawing.Size(47, 13)
         Me.LabelControl17.TabIndex = 30
@@ -229,7 +238,7 @@ Partial Class frmUsuarios
         '
         'cboMunicipios
         '
-        Me.cboMunicipios.Location = New System.Drawing.Point(824, 155)
+        Me.cboMunicipios.Location = New System.Drawing.Point(824, 159)
         Me.cboMunicipios.MenuManager = Me.BarManager1
         Me.cboMunicipios.Name = "cboMunicipios"
         Me.cboMunicipios.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
@@ -240,7 +249,7 @@ Partial Class frmUsuarios
         '
         'LabelControl16
         '
-        Me.LabelControl16.Location = New System.Drawing.Point(512, 159)
+        Me.LabelControl16.Location = New System.Drawing.Point(512, 163)
         Me.LabelControl16.Name = "LabelControl16"
         Me.LabelControl16.Size = New System.Drawing.Size(69, 13)
         Me.LabelControl16.TabIndex = 28
@@ -248,7 +257,7 @@ Partial Class frmUsuarios
         '
         'cboDepartamentos
         '
-        Me.cboDepartamentos.Location = New System.Drawing.Point(594, 156)
+        Me.cboDepartamentos.Location = New System.Drawing.Point(594, 160)
         Me.cboDepartamentos.MenuManager = Me.BarManager1
         Me.cboDepartamentos.Name = "cboDepartamentos"
         Me.cboDepartamentos.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
@@ -265,7 +274,7 @@ Partial Class frmUsuarios
         Me.cboEstadoCivil.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.cboEstadoCivil.Properties.Items.AddRange(New Object() {"CASADO", "SOLTERO", "DIVORCIADO", "VIUDO", "UNION LIBRE"})
         Me.cboEstadoCivil.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
-        Me.cboEstadoCivil.Size = New System.Drawing.Size(170, 20)
+        Me.cboEstadoCivil.Size = New System.Drawing.Size(260, 20)
         Me.cboEstadoCivil.TabIndex = 8
         '
         'LabelControl15
@@ -327,18 +336,9 @@ Partial Class frmUsuarios
         Me.LabelControl12.TabIndex = 22
         Me.LabelControl12.Text = "Direccion"
         '
-        'txtPaisNacimiento
-        '
-        Me.txtPaisNacimiento.EnterMoveNextControl = True
-        Me.txtPaisNacimiento.Location = New System.Drawing.Point(594, 130)
-        Me.txtPaisNacimiento.MenuManager = Me.BarManager1
-        Me.txtPaisNacimiento.Name = "txtPaisNacimiento"
-        Me.txtPaisNacimiento.Size = New System.Drawing.Size(185, 20)
-        Me.txtPaisNacimiento.TabIndex = 12
-        '
         'LabelControl11
         '
-        Me.LabelControl11.Location = New System.Drawing.Point(512, 133)
+        Me.LabelControl11.Location = New System.Drawing.Point(512, 188)
         Me.LabelControl11.Name = "LabelControl11"
         Me.LabelControl11.Size = New System.Drawing.Size(74, 13)
         Me.LabelControl11.TabIndex = 20
@@ -347,15 +347,15 @@ Partial Class frmUsuarios
         'txtCiudadNacimiento
         '
         Me.txtCiudadNacimiento.EnterMoveNextControl = True
-        Me.txtCiudadNacimiento.Location = New System.Drawing.Point(824, 130)
+        Me.txtCiudadNacimiento.Location = New System.Drawing.Point(594, 132)
         Me.txtCiudadNacimiento.MenuManager = Me.BarManager1
         Me.txtCiudadNacimiento.Name = "txtCiudadNacimiento"
-        Me.txtCiudadNacimiento.Size = New System.Drawing.Size(211, 20)
+        Me.txtCiudadNacimiento.Size = New System.Drawing.Size(441, 20)
         Me.txtCiudadNacimiento.TabIndex = 13
         '
         'LabelControl10
         '
-        Me.LabelControl10.Location = New System.Drawing.Point(785, 133)
+        Me.LabelControl10.Location = New System.Drawing.Point(512, 137)
         Me.LabelControl10.Name = "LabelControl10"
         Me.LabelControl10.Size = New System.Drawing.Size(33, 13)
         Me.LabelControl10.TabIndex = 18
@@ -382,7 +382,7 @@ Partial Class frmUsuarios
         '
         'cboSexo
         '
-        Me.cboSexo.Location = New System.Drawing.Point(307, 181)
+        Me.cboSexo.Location = New System.Drawing.Point(307, 207)
         Me.cboSexo.MenuManager = Me.BarManager1
         Me.cboSexo.Name = "cboSexo"
         Me.cboSexo.Properties.AutoComplete = False
@@ -394,7 +394,7 @@ Partial Class frmUsuarios
         '
         'LabelControl8
         '
-        Me.LabelControl8.Location = New System.Drawing.Point(277, 184)
+        Me.LabelControl8.Location = New System.Drawing.Point(277, 210)
         Me.LabelControl8.Name = "LabelControl8"
         Me.LabelControl8.Size = New System.Drawing.Size(24, 13)
         Me.LabelControl8.TabIndex = 14
@@ -473,7 +473,7 @@ Partial Class frmUsuarios
         '
         'LabelControl2
         '
-        Me.LabelControl2.Location = New System.Drawing.Point(12, 112)
+        Me.LabelControl2.Location = New System.Drawing.Point(12, 108)
         Me.LabelControl2.Name = "LabelControl2"
         Me.LabelControl2.Size = New System.Drawing.Size(42, 13)
         Me.LabelControl2.TabIndex = 6
@@ -503,11 +503,11 @@ Partial Class frmUsuarios
         'GCConsultar
         '
         Me.GCConsultar.ContextMenuStrip = Me.cmsGrid
-        Me.GCConsultar.Location = New System.Drawing.Point(12, 219)
+        Me.GCConsultar.Location = New System.Drawing.Point(12, 285)
         Me.GCConsultar.MainView = Me.GVConsultar
         Me.GCConsultar.MenuManager = Me.BarManager1
         Me.GCConsultar.Name = "GCConsultar"
-        Me.GCConsultar.Size = New System.Drawing.Size(1023, 247)
+        Me.GCConsultar.Size = New System.Drawing.Size(1023, 181)
         Me.GCConsultar.TabIndex = 35
         Me.GCConsultar.UseEmbeddedNavigator = True
         Me.GCConsultar.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GVConsultar})
@@ -517,24 +517,24 @@ Partial Class frmUsuarios
         Me.cmsGrid.ImageScalingSize = New System.Drawing.Size(18, 18)
         Me.cmsGrid.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsmActualizarVista, Me.ToolStripSeparator1, Me.tsmTodoslosRegistros})
         Me.cmsGrid.Name = "cmsGrid"
-        Me.cmsGrid.Size = New System.Drawing.Size(251, 58)
+        Me.cmsGrid.Size = New System.Drawing.Size(221, 58)
         '
         'tsmActualizarVista
         '
         Me.tsmActualizarVista.Image = CType(resources.GetObject("tsmActualizarVista.Image"), System.Drawing.Image)
         Me.tsmActualizarVista.Name = "tsmActualizarVista"
-        Me.tsmActualizarVista.Size = New System.Drawing.Size(250, 24)
+        Me.tsmActualizarVista.Size = New System.Drawing.Size(220, 24)
         Me.tsmActualizarVista.Text = "Actualizar Listado"
         '
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(247, 6)
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(217, 6)
         '
         'tsmTodoslosRegistros
         '
         Me.tsmTodoslosRegistros.Name = "tsmTodoslosRegistros"
-        Me.tsmTodoslosRegistros.Size = New System.Drawing.Size(250, 24)
+        Me.tsmTodoslosRegistros.Size = New System.Drawing.Size(220, 24)
         Me.tsmTodoslosRegistros.Text = "Mostrar Todos los Registros"
         '
         'GVConsultar
@@ -646,11 +646,89 @@ Partial Class frmUsuarios
         Me.txtCodigoResultado.TabIndex = 48
         Me.txtCodigoResultado.Visible = False
         '
+        'cboIdentidadGenero
+        '
+        Me.cboIdentidadGenero.Location = New System.Drawing.Point(101, 207)
+        Me.cboIdentidadGenero.MenuManager = Me.BarManager1
+        Me.cboIdentidadGenero.Name = "cboIdentidadGenero"
+        Me.cboIdentidadGenero.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.cboIdentidadGenero.Properties.Items.AddRange(New Object() {"CASADO", "SOLTERO", "DIVORCIADO", "VIUDO", "UNION LIBRE"})
+        Me.cboIdentidadGenero.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
+        Me.cboIdentidadGenero.Size = New System.Drawing.Size(170, 20)
+        Me.cboIdentidadGenero.TabIndex = 53
+        '
+        'LabelControl6
+        '
+        Me.LabelControl6.Location = New System.Drawing.Point(12, 210)
+        Me.LabelControl6.Name = "LabelControl6"
+        Me.LabelControl6.Size = New System.Drawing.Size(68, 13)
+        Me.LabelControl6.TabIndex = 54
+        Me.LabelControl6.Text = "Ident. Genero"
+        Me.LabelControl6.ToolTip = "Identidad de Genero"
+        '
+        'cboDiscapacidad
+        '
+        Me.cboDiscapacidad.Location = New System.Drawing.Point(101, 233)
+        Me.cboDiscapacidad.MenuManager = Me.BarManager1
+        Me.cboDiscapacidad.Name = "cboDiscapacidad"
+        Me.cboDiscapacidad.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.cboDiscapacidad.Properties.Items.AddRange(New Object() {"CASADO", "SOLTERO", "DIVORCIADO", "VIUDO", "UNION LIBRE"})
+        Me.cboDiscapacidad.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
+        Me.cboDiscapacidad.Size = New System.Drawing.Size(260, 20)
+        Me.cboDiscapacidad.TabIndex = 55
+        '
+        'LabelControl18
+        '
+        Me.LabelControl18.Location = New System.Drawing.Point(12, 236)
+        Me.LabelControl18.Name = "LabelControl18"
+        Me.LabelControl18.Size = New System.Drawing.Size(62, 13)
+        Me.LabelControl18.TabIndex = 56
+        Me.LabelControl18.Text = "Discapacidad"
+        Me.LabelControl18.ToolTip = "Discapacidad"
+        '
+        'cboEtnia
+        '
+        Me.cboEtnia.Location = New System.Drawing.Point(101, 259)
+        Me.cboEtnia.MenuManager = Me.BarManager1
+        Me.cboEtnia.Name = "cboEtnia"
+        Me.cboEtnia.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.cboEtnia.Properties.Items.AddRange(New Object() {"CASADO", "SOLTERO", "DIVORCIADO", "VIUDO", "UNION LIBRE"})
+        Me.cboEtnia.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
+        Me.cboEtnia.Size = New System.Drawing.Size(260, 20)
+        Me.cboEtnia.TabIndex = 57
+        '
+        'LabelControl19
+        '
+        Me.LabelControl19.Location = New System.Drawing.Point(12, 262)
+        Me.LabelControl19.Name = "LabelControl19"
+        Me.LabelControl19.Size = New System.Drawing.Size(24, 13)
+        Me.LabelControl19.TabIndex = 58
+        Me.LabelControl19.Text = "Etnia"
+        Me.LabelControl19.ToolTip = "Etnia"
+        '
+        'cboPais
+        '
+        Me.cboPais.Location = New System.Drawing.Point(594, 186)
+        Me.cboPais.MenuManager = Me.BarManager1
+        Me.cboPais.Name = "cboPais"
+        Me.cboPais.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.cboPais.Properties.NullText = ""
+        Me.cboPais.Properties.PopupSizeable = False
+        Me.cboPais.Size = New System.Drawing.Size(441, 20)
+        Me.cboPais.TabIndex = 59
+        '
         'frmUsuarios
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1047, 500)
+        Me.Controls.Add(Me.cboPais)
+        Me.Controls.Add(Me.cboEtnia)
+        Me.Controls.Add(Me.LabelControl19)
+        Me.Controls.Add(Me.cboDiscapacidad)
+        Me.Controls.Add(Me.LabelControl18)
+        Me.Controls.Add(Me.cboIdentidadGenero)
+        Me.Controls.Add(Me.LabelControl6)
         Me.Controls.Add(Me.lblCodigoResultado)
         Me.Controls.Add(Me.txtCodigoResultado)
         Me.Controls.Add(Me.txtEdad)
@@ -669,7 +747,6 @@ Partial Class frmUsuarios
         Me.Controls.Add(Me.cboEstadoCivil)
         Me.Controls.Add(Me.txtCiudadNacimiento)
         Me.Controls.Add(Me.LabelControl10)
-        Me.Controls.Add(Me.txtPaisNacimiento)
         Me.Controls.Add(Me.LabelControl11)
         Me.Controls.Add(Me.txtTelefono)
         Me.Controls.Add(Me.LabelControl15)
@@ -707,7 +784,6 @@ Partial Class frmUsuarios
         CType(Me.txtCorreoElectronico.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtTelefono.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtDireccion.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtPaisNacimiento.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtCiudadNacimiento.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dtFechaNacimiento.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dtFechaNacimiento.Properties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -724,6 +800,10 @@ Partial Class frmUsuarios
         CType(Me.GVConsultar, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtEdad.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtCodigoResultado.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.cboIdentidadGenero.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.cboDiscapacidad.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.cboEtnia.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.cboPais.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -749,7 +829,6 @@ Partial Class frmUsuarios
     Friend WithEvents LabelControl13 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents txtDireccion As DevExpress.XtraEditors.TextEdit
     Friend WithEvents LabelControl12 As DevExpress.XtraEditors.LabelControl
-    Friend WithEvents txtPaisNacimiento As DevExpress.XtraEditors.TextEdit
     Friend WithEvents LabelControl11 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents txtCiudadNacimiento As DevExpress.XtraEditors.TextEdit
     Friend WithEvents LabelControl10 As DevExpress.XtraEditors.LabelControl
@@ -788,4 +867,11 @@ Partial Class frmUsuarios
     Friend WithEvents tsmActualizarVista As ToolStripMenuItem
     Friend WithEvents ToolStripSeparator1 As ToolStripSeparator
     Friend WithEvents tsmTodoslosRegistros As ToolStripMenuItem
+    Friend WithEvents cboPais As DevExpress.XtraEditors.LookUpEdit
+    Friend WithEvents cboEtnia As DevExpress.XtraEditors.ComboBoxEdit
+    Friend WithEvents LabelControl19 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents cboDiscapacidad As DevExpress.XtraEditors.ComboBoxEdit
+    Friend WithEvents LabelControl18 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents cboIdentidadGenero As DevExpress.XtraEditors.ComboBoxEdit
+    Friend WithEvents LabelControl6 As DevExpress.XtraEditors.LabelControl
 End Class

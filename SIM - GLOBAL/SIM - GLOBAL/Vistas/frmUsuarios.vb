@@ -348,7 +348,7 @@ Public Class frmUsuarios
         ActivarGuardar()
     End Sub
 
-    Private Sub txtPaisNacimiento_EditValueChanged(sender As Object, e As EventArgs) Handles txtPaisNacimiento.EditValueChanged
+    Private Sub txtPaisNacimiento_EditValueChanged(sender As Object, e As EventArgs) 
         ActivarGuardar()
     End Sub
 
