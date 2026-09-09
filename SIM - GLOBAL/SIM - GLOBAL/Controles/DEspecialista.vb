@@ -83,6 +83,24 @@ Namespace Controles
                 Comando.ExecuteNonQuery()
 
                 ConexionODBC.Close(_conn)
+
+                ' Nombre estructurado para RDA (RETHUS exige apellido paterno/materno por
+                ' separado). UPDATE aparte y defensivo por si la migración correspondiente
+                ' (Sql/rda_especialistas_nombre_estructurado.sql) aún no se ha corrido.
+                Try
+                    Dim sqlRda As String = "UPDATE especialistas SET primer_nombre = ?, segundo_nombre = ?, primer_apellido = ?, segundo_apellido = ? WHERE id_especialista = ?"
+                    _conn = ConexionODBC.Open()
+                    Dim comandoRda As New OdbcCommand(sqlRda, _conn)
+                    comandoRda.Parameters.AddWithValue("?", _Especialista.PrimerNombre)
+                    comandoRda.Parameters.AddWithValue("?", _Especialista.SegundoNombre)
+                    comandoRda.Parameters.AddWithValue("?", _Especialista.PrimerApellido)
+                    comandoRda.Parameters.AddWithValue("?", _Especialista.SegundoApellido)
+                    comandoRda.Parameters.AddWithValue("?", _Especialista.IdEspecialista)
+                    comandoRda.ExecuteNonQuery()
+                    ConexionODBC.Close(_conn)
+                Catch
+                    ' Columnas RDA aún no existen en esta base: se ignora, no bloquea el registro.
+                End Try
             Catch ex As Exception
                 MessageBox.Show(ex.ToString())
             End Try
@@ -108,6 +126,35 @@ Namespace Controles
             End Try
             Return Nothing
         End Function
+        ''' <summary>
+        ''' Trae el nombre estructurado (para RDA/RETHUS) de un especialista. Lectura
+        ''' defensiva: si las columnas aún no existen (migración no corrida), retorna
+        ''' todo vacío en vez de lanzar excepción.
+        ''' </summary>
+        Public Function TraerNombreEstructurado(ByVal filtro As String) As (PrimerNombre As String, SegundoNombre As String, PrimerApellido As String, SegundoApellido As String)
+            Try
+                Dim query As String = "SELECT primer_nombre, segundo_nombre, primer_apellido, segundo_apellido FROM especialistas WHERE id_especialista = ?"
+                _conn = ConexionODBC.Open()
+                Dim comando As New OdbcCommand(query, _conn)
+                comando.Parameters.AddWithValue("?", filtro)
+                Dim reader As OdbcDataReader = comando.ExecuteReader()
+                If reader.Read() Then
+                    Dim resultado = (
+                        If(IsDBNull(reader("primer_nombre")), "", reader("primer_nombre").ToString()),
+                        If(IsDBNull(reader("segundo_nombre")), "", reader("segundo_nombre").ToString()),
+                        If(IsDBNull(reader("primer_apellido")), "", reader("primer_apellido").ToString()),
+                        If(IsDBNull(reader("segundo_apellido")), "", reader("segundo_apellido").ToString())
+                    )
+                    ConexionODBC.Close(_conn)
+                    Return resultado
+                End If
+                ConexionODBC.Close(_conn)
+            Catch
+                ' Columnas RDA aún no existen en esta base: se retorna vacío.
+            End Try
+            Return ("", "", "", "")
+        End Function
+
         Public Function TraerIdentificacion(ByVal filtro As String) As String
             Try
                 Dim query As String = "SELECT identificacion FROM especialistas WHERE id_especialista = ?"
@@ -158,6 +205,22 @@ Namespace Controles
 
                 Dim filasAfectadas As Integer = comando.ExecuteNonQuery()
                 ConexionODBC.Close(_conn)
+
+                ' Nombre estructurado para RDA: UPDATE aparte y defensivo (ver nota en Guardar2).
+                Try
+                    Dim sqlRda As String = "UPDATE especialistas SET primer_nombre = ?, segundo_nombre = ?, primer_apellido = ?, segundo_apellido = ? WHERE id_especialista = ?"
+                    _conn = ConexionODBC.Open()
+                    Dim comandoRda As New OdbcCommand(sqlRda, _conn)
+                    comandoRda.Parameters.AddWithValue("?", _Especialista.PrimerNombre)
+                    comandoRda.Parameters.AddWithValue("?", _Especialista.SegundoNombre)
+                    comandoRda.Parameters.AddWithValue("?", _Especialista.PrimerApellido)
+                    comandoRda.Parameters.AddWithValue("?", _Especialista.SegundoApellido)
+                    comandoRda.Parameters.AddWithValue("?", _Especialista.IdEspecialista)
+                    comandoRda.ExecuteNonQuery()
+                    ConexionODBC.Close(_conn)
+                Catch
+                    ' Columnas RDA aún no existen en esta base: se ignora.
+                End Try
 
                 If filasAfectadas > 0 Then
                     MessageBox.Show("✅ Especialista actualizado correctamente.")

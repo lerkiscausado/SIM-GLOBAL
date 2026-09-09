@@ -10,6 +10,71 @@ Public Class frmEmpleados
     Dim _dEspecialidades = New DEspecialidades
     Dim _Especialista = New SIM___GLOBAL.Modelo.Especialista
     Dim _DEspecialista = New SIM___GLOBAL.Controles.DEspecialista
+
+    ' Apellidos por separado (paterno/materno), requeridos por RETHUS para el RDA
+    ' (ver StructureDefinition-PractitionerRDA). Se agregan por código, no en el
+    ' Designer, para no arriesgar el layout visual del formulario.
+    Private WithEvents txtPrimerApellido As DevExpress.XtraEditors.TextEdit
+    Private WithEvents txtSegundoApellido As DevExpress.XtraEditors.TextEdit
+
+    Private Sub AgregarCamposApellidoRDA()
+        If txtPrimerApellido IsNot Nothing Then Exit Sub ' Evitar duplicar si Load se dispara más de una vez
+
+        ' 1. Hacer espacio: correr hacia abajo lo que va después del campo de firma
+        ' (peFirma termina en y=254; chkEstado/SeparatorControl1 arrancan justo ahí).
+        Const desplazamiento As Integer = 80
+        chkEstado.Location = New Point(chkEstado.Location.X, chkEstado.Location.Y + desplazamiento)
+        SeparatorControl1.Location = New Point(SeparatorControl1.Location.X, SeparatorControl1.Location.Y + desplazamiento)
+        GCConsultar.Location = New Point(GCConsultar.Location.X, GCConsultar.Location.Y + desplazamiento)
+        Me.ClientSize = New Size(Me.ClientSize.Width, Me.ClientSize.Height + desplazamiento)
+
+        ' 2. Etiquetas + campos, en el espacio liberado justo debajo de la firma (que
+        ' termina en y=254), antes de donde ahora quedó chkEstado (234+80=314).
+        Dim lblPrimerApellido As New DevExpress.XtraEditors.LabelControl()
+        lblPrimerApellido.Text = "Primer Apellido"
+        lblPrimerApellido.Location = New Point(16, 260)
+
+        Dim lblSegundoApellido As New DevExpress.XtraEditors.LabelControl()
+        lblSegundoApellido.Text = "Segundo Apellido"
+        lblSegundoApellido.Location = New Point(16, 286)
+
+        txtPrimerApellido = New DevExpress.XtraEditors.TextEdit()
+        txtPrimerApellido.Location = New Point(101, 257)
+        txtPrimerApellido.Size = New Size(290, 20)
+
+        txtSegundoApellido = New DevExpress.XtraEditors.TextEdit()
+        txtSegundoApellido.Location = New Point(101, 283)
+        txtSegundoApellido.Size = New Size(290, 20)
+
+        Me.Controls.Add(lblPrimerApellido)
+        Me.Controls.Add(txtPrimerApellido)
+        Me.Controls.Add(lblSegundoApellido)
+        Me.Controls.Add(txtSegundoApellido)
+    End Sub
+
+    ''' <summary>
+    ''' Fuerza el texto de un TextEdit a mayúsculas mientras el usuario escribe (evita
+    ''' advertencias de MinSalud por diferencias de mayúsculas al validar contra RETHUS).
+    ''' </summary>
+    Private Sub ForzarMayusculas(editor As DevExpress.XtraEditors.TextEdit)
+        Dim mayusculas As String = editor.Text.ToUpper()
+        If editor.Text <> mayusculas Then
+            Dim posicionCursor As Integer = editor.SelectionStart
+            editor.Text = mayusculas
+            editor.SelectionStart = posicionCursor
+        End If
+    End Sub
+
+    Private Sub txtPrimerApellido_EditValueChanged(sender As Object, e As EventArgs) Handles txtPrimerApellido.EditValueChanged
+        ForzarMayusculas(txtPrimerApellido)
+        ActivarGuardar()
+    End Sub
+
+    Private Sub txtSegundoApellido_EditValueChanged(sender As Object, e As EventArgs) Handles txtSegundoApellido.EditValueChanged
+        ForzarMayusculas(txtSegundoApellido)
+        ActivarGuardar()
+    End Sub
+
     '------------------------------------------------------------------------------
     Private Sub Guardar()
         Try
@@ -72,6 +137,15 @@ Public Class frmEmpleados
         _Especialista.especialidad = cboEspecialidad.GetColumnValue("ESPECIALIDAD").ToString()
         _Especialista.registromedico = txtRegistroMedico.Text.Trim()
         _Especialista.estado = "A"
+
+        ' Nombre estructurado para RDA/RETHUS: txtNombre se sigue usando tal cual para
+        ' "nombres" (primer/segundo nombre combinados en un solo campo, como siempre),
+        ' y se agregan los 2 campos nuevos de apellido paterno/materno por separado.
+        Dim partesNombre = txtNombre.Text.Trim().ToUpper().Split(New Char() {" "c}, 2, StringSplitOptions.RemoveEmptyEntries)
+        _Especialista.PrimerNombre = If(partesNombre.Length > 0, partesNombre(0), "")
+        _Especialista.SegundoNombre = If(partesNombre.Length > 1, partesNombre(1), "")
+        _Especialista.PrimerApellido = txtPrimerApellido.Text.Trim().ToUpper()
+        _Especialista.SegundoApellido = txtSegundoApellido.Text.Trim().ToUpper()
     End Sub
     '------------------------------------------------------------------------------
     Private Sub ActivarGuardar()
@@ -85,6 +159,7 @@ Public Class frmEmpleados
         GCConsultar.DataSource = _ds.Tables(0)
     End Sub
     Private Sub frmEmpleados_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        AgregarCamposApellidoRDA()
         peFirma.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Zoom
         ActualizarGrilla()
 
@@ -103,6 +178,8 @@ Public Class frmEmpleados
     Private Sub LimpiarCampos()
         txtID.Text = ""
         txtNombre.Text = ""
+        txtPrimerApellido.Text = ""
+        txtSegundoApellido.Text = ""
         txtIdentificacion.Text = ""
         txtRegistroMedico.Text = ""
         cboCargo.EditValue = Nothing
@@ -147,6 +224,9 @@ Public Class frmEmpleados
                     txtNombre.Text = _Empleados.NombreEmpleado
                     cboCargo.ItemIndex = cboCargo.Properties.GetDataSourceRowIndex("ID", _Empleados.IdCargo)
                     txtIdentificacion.Text = _DEspecialista.traeridentificacion(_ClickGrilla)
+                    Dim nombreEstructurado = _DEspecialista.TraerNombreEstructurado(_ClickGrilla)
+                    txtPrimerApellido.Text = nombreEstructurado.PrimerApellido
+                    txtSegundoApellido.Text = nombreEstructurado.SegundoApellido
                     cboEspecialidad.ItemIndex = cboEspecialidad.Properties.GetDataSourceRowIndex("ID", _Empleados.IdEspecialidad)
                     txtRegistroMedico.Text = _Empleados.RegistroMedico
                     If _Empleados.Estado = "I" Then
@@ -167,6 +247,7 @@ Public Class frmEmpleados
     End Sub
 
     Private Sub txtNombre_EditValueChanged(sender As Object, e As EventArgs) Handles txtNombre.EditValueChanged
+        ForzarMayusculas(txtNombre)
         bbiGuardar.Enabled = True
     End Sub
 
