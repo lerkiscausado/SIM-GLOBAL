@@ -285,25 +285,38 @@ Namespace Utilidades
             End If
 
             ' ── Extensiones obligatorias del perfil PatientRDA (mínimo 3: Nationality, Ethnicity,
-            ' Disability). El SIM actualmente NO captura etnia ni discapacidad del paciente, así que
-            ' se usa un valor por defecto explícito ("Otras etnias" / "Sin discapacidad") en vez de
-            ' dejarlas vacías, ya que el validador de MinSalud las exige. Esto es un placeholder
-            ' razonable, NO un dato clínico verificado: para producción real se recomienda capturar
-            ' estos campos en el formulario de pacientes (ver análisis de brechas entregado aparte).
+            ' Disability). Se usa el dato real capturado en frmUsuarios (cboPais/cboEtnia/
+            ' cboDiscapacidad) si existe; si el paciente aún no tiene esos campos diligenciados
+            ' (registros creados antes de esta migración), se cae a un valor por defecto
+            ' explícito para que MinSalud no rechace el Bundle por campo obligatorio faltante.
+            ' "display" es obligatorio (min=1) en estas 3 extensiones según el perfil oficial.
+            Dim codigoNacionalidad As String = If(Not String.IsNullOrWhiteSpace(paciente.CodigoPaisNacimiento), paciente.CodigoPaisNacimiento, "170")
+            Dim codigoEtnia As String = If(Not String.IsNullOrWhiteSpace(paciente.CodigoEtnia), paciente.CodigoEtnia, "6")
+            Dim codigoDiscapacidad As String = If(Not String.IsNullOrWhiteSpace(paciente.CodigoDiscapacidad), paciente.CodigoDiscapacidad, "08")
+
             Dim extensionesPaciente As New JArray From {
                 New JObject From {
                     {"url", BASE_RDA & "/StructureDefinition/ExtensionPatientNationality"},
-                    {"valueCoding", New JObject From {{"system", BASE_RDA & "/CodeSystem/ISO31661"}, {"code", "170"}, {"display", "Colombia"}}}
+                    {"valueCoding", New JObject From {{"system", BASE_RDA & "/CodeSystem/ISO31661"}, {"code", codigoNacionalidad}, {"display", DisplayNacionalidad(codigoNacionalidad)}}}
                 },
                 New JObject From {
                     {"url", BASE_RDA & "/StructureDefinition/ExtensionPatientEthnicity"},
-                    {"valueCoding", New JObject From {{"system", BASE_RDA & "/CodeSystem/ColombianEthnicGroup"}, {"code", "6"}, {"display", "Otras etnias"}}}
+                    {"valueCoding", New JObject From {{"system", BASE_RDA & "/CodeSystem/ColombianEthnicGroup"}, {"code", codigoEtnia}, {"display", DisplayEtnia(codigoEtnia)}}}
                 },
                 New JObject From {
                     {"url", BASE_RDA & "/StructureDefinition/ExtensionPatientDisability"},
-                    {"valueCoding", New JObject From {{"system", BASE_RDA & "/CodeSystem/ColombianDisabilityClassification"}, {"code", "08"}, {"display", "Sin discapacidad"}}}
+                    {"valueCoding", New JObject From {{"system", BASE_RDA & "/CodeSystem/ColombianDisabilityClassification"}, {"code", codigoDiscapacidad}, {"display", DisplayDiscapacidad(codigoDiscapacidad)}}}
                 }
             }
+
+            ' Identidad de género: opcional (no exigido por el validador), se incluye solo si el
+            ' paciente la tiene capturada.
+            If Not String.IsNullOrWhiteSpace(paciente.CodigoIdentidadGenero) Then
+                extensionesPaciente.Add(New JObject From {
+                    {"url", BASE_RDA & "/StructureDefinition/ExtensionPatientGenderIdentity"},
+                    {"valueCoding", New JObject From {{"system", BASE_RDA & "/CodeSystem/ColombianGenderIdentity"}, {"code", paciente.CodigoIdentidadGenero}, {"display", DisplayIdentidadGenero(paciente.CodigoIdentidadGenero)}}}
+                })
+            End If
 
             Dim patient As New JObject From {
                 {"resourceType", "Patient"},
@@ -512,6 +525,86 @@ Namespace Utilidades
                     New JObject From {{"code", New JObject From {{"text", textoLibre}}}}
                 }}
             }
+        End Function
+
+        ' ── Mapas código→texto (tablas oficiales confirmadas contra vulcano.ihcecol.gov.co) ──
+        ' "display" es obligatorio en estas extensiones; estas funciones evitan mandarlo vacío
+        ' o inventado. Si el código no está en la tabla, se usa el propio código como texto
+        ' (mejor que fallar el envío, pero indica un código no reconocido).
+
+        Private Function DisplayEtnia(codigo As String) As String
+            Select Case codigo.Trim()
+                Case "1" : Return "Indígena"
+                Case "2" : Return "ROM (Gitano)"
+                Case "3" : Return "Raizal (Archipiélago San Andrés y Providencia)"
+                Case "4" : Return "Palenquero de San Basilio"
+                Case "5" : Return "Negro(a) o mulato(a) o afrocolombiano(a) o afrodescendiente"
+                Case "6" : Return "Otras etnias"
+                Case "99" : Return "Ninguna de las anteriores"
+                Case Else : Return codigo
+            End Select
+        End Function
+
+        Private Function DisplayDiscapacidad(codigo As String) As String
+            Select Case codigo.Trim()
+                Case "01" : Return "Discapacidad física"
+                Case "02" : Return "Discapacidad visual"
+                Case "03" : Return "Discapacidad auditiva"
+                Case "04" : Return "Discapacidad intelectual"
+                Case "05" : Return "Discapacidad sicosocial"
+                Case "06" : Return "Sordoceguera"
+                Case "07" : Return "Discapacidad múltiple"
+                Case "08" : Return "Sin discapacidad"
+                Case Else : Return codigo
+            End Select
+        End Function
+
+        Private Function DisplayIdentidadGenero(codigo As String) As String
+            Select Case codigo.Trim()
+                Case "01" : Return "Masculino"
+                Case "02" : Return "Femenino"
+                Case "03" : Return "Transgénero"
+                Case "04" : Return "Neutro"
+                Case "05" : Return "No lo declara"
+                Case Else : Return codigo
+            End Select
+        End Function
+
+        Private Function DisplayNacionalidad(codigoIso As String) As String
+            ' Cubre la lista de países del combo de frmUsuarios; para códigos fuera de esa lista
+            ' corta se usa el propio código como texto (no bloquea el envío).
+            Select Case codigoIso.Trim()
+                Case "170" : Return "Colombia"
+                Case "862" : Return "Venezuela"
+                Case "218" : Return "Ecuador"
+                Case "604" : Return "Perú"
+                Case "076" : Return "Brasil"
+                Case "032" : Return "Argentina"
+                Case "152" : Return "Chile"
+                Case "068" : Return "Bolivia"
+                Case "600" : Return "Paraguay"
+                Case "858" : Return "Uruguay"
+                Case "591" : Return "Panamá"
+                Case "188" : Return "Costa Rica"
+                Case "340" : Return "Honduras"
+                Case "222" : Return "El Salvador"
+                Case "320" : Return "Guatemala"
+                Case "558" : Return "Nicaragua"
+                Case "192" : Return "Cuba"
+                Case "214" : Return "República Dominicana"
+                Case "484" : Return "México"
+                Case "840" : Return "Estados Unidos"
+                Case "124" : Return "Canadá"
+                Case "724" : Return "España"
+                Case "380" : Return "Italia"
+                Case "250" : Return "Francia"
+                Case "276" : Return "Alemania"
+                Case "826" : Return "Reino Unido"
+                Case "620" : Return "Portugal"
+                Case "156" : Return "China"
+                Case "356" : Return "India"
+                Case Else : Return "Colombia" ' Valor por defecto seguro (mayoría de pacientes)
+            End Select
         End Function
 
         ' ───────────────────────────── Utilidades ─────────────────────────────

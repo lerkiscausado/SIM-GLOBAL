@@ -652,7 +652,7 @@ Partial Class frmUsuarios
         Me.cboIdentidadGenero.MenuManager = Me.BarManager1
         Me.cboIdentidadGenero.Name = "cboIdentidadGenero"
         Me.cboIdentidadGenero.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.cboIdentidadGenero.Properties.Items.AddRange(New Object() {"CASADO", "SOLTERO", "DIVORCIADO", "VIUDO", "UNION LIBRE"})
+        Me.cboIdentidadGenero.Properties.Items.AddRange(New Object() {"01 - Masculino", "02 - Femenino", "03 - Transgénero", "04 - Neutro", "05 - No lo declara"})
         Me.cboIdentidadGenero.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
         Me.cboIdentidadGenero.Size = New System.Drawing.Size(170, 20)
         Me.cboIdentidadGenero.TabIndex = 53
@@ -672,7 +672,7 @@ Partial Class frmUsuarios
         Me.cboDiscapacidad.MenuManager = Me.BarManager1
         Me.cboDiscapacidad.Name = "cboDiscapacidad"
         Me.cboDiscapacidad.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.cboDiscapacidad.Properties.Items.AddRange(New Object() {"CASADO", "SOLTERO", "DIVORCIADO", "VIUDO", "UNION LIBRE"})
+        Me.cboDiscapacidad.Properties.Items.AddRange(New Object() {"01 - Discapacidad física", "02 - Discapacidad visual", "03 - Discapacidad auditiva", "04 - Discapacidad intelectual", "05 - Discapacidad sicosocial", "06 - Sordoceguera", "07 - Discapacidad múltiple", "08 - Sin discapacidad"})
         Me.cboDiscapacidad.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
         Me.cboDiscapacidad.Size = New System.Drawing.Size(260, 20)
         Me.cboDiscapacidad.TabIndex = 55
@@ -692,7 +692,7 @@ Partial Class frmUsuarios
         Me.cboEtnia.MenuManager = Me.BarManager1
         Me.cboEtnia.Name = "cboEtnia"
         Me.cboEtnia.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.cboEtnia.Properties.Items.AddRange(New Object() {"CASADO", "SOLTERO", "DIVORCIADO", "VIUDO", "UNION LIBRE"})
+        Me.cboEtnia.Properties.Items.AddRange(New Object() {"1 - Indígena", "2 - ROM (Gitano)", "3 - Raizal (Archipiélago San Andrés y Providencia)", "4 - Palenquero de San Basilio", "5 - Negro(a) o mulato(a) o afrocolombiano(a) o afrodescendiente", "6 - Otras etnias", "99 - Ninguna de las anteriores"})
         Me.cboEtnia.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
         Me.cboEtnia.Size = New System.Drawing.Size(260, 20)
         Me.cboEtnia.TabIndex = 57

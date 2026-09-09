@@ -39,6 +39,23 @@ Namespace Controles
                 _usuarios.CodigoTipoUsuario = _ds.Tables(0).Rows(0)(17).ToString()
                 _usuarios.Carnet = _ds.Tables(0).Rows(0)(18).ToString()
                 _usuarios.Foto = _ds.Tables(0).Rows(0)(19)
+
+                ' Campos RDA-Paciente: lectura defensiva por nombre (no rompe si la migración
+                ' Sql/rda_usuarios_campos_obligatorios.sql aún no se ha corrido en esta base).
+                Dim tabla As DataTable = _ds.Tables(0)
+                If tabla.Columns.Contains("codigo_pais_nacimiento") Then
+                    _usuarios.CodigoPaisNacimiento = _ds.Tables(0).Rows(0)("codigo_pais_nacimiento").ToString()
+                End If
+                If tabla.Columns.Contains("codigo_etnia") Then
+                    _usuarios.CodigoEtnia = _ds.Tables(0).Rows(0)("codigo_etnia").ToString()
+                End If
+                If tabla.Columns.Contains("codigo_discapacidad") Then
+                    _usuarios.CodigoDiscapacidad = _ds.Tables(0).Rows(0)("codigo_discapacidad").ToString()
+                End If
+                If tabla.Columns.Contains("codigo_identidad_genero") Then
+                    _usuarios.CodigoIdentidadGenero = _ds.Tables(0).Rows(0)("codigo_identidad_genero").ToString()
+                End If
+
                 Return _usuarios
             Catch ex As Exception
                 MessageBox.Show(ex.Message)
@@ -180,15 +197,74 @@ Namespace Controles
                     comando.ExecuteNonQuery()
                     ConexionODBC.Close(_conn)
 
+                    ' Campos RDA-Paciente: UPDATE aparte y defensivo (columnas pueden no existir
+                    ' aún en esta base, si la migración correspondiente no se ha corrido).
+                    Try
+                        query = "UPDATE usuarios SET codigo_pais_nacimiento = ?, codigo_etnia = ?, codigo_discapacidad = ?, codigo_identidad_genero = ? WHERE id = ?"
+                        _conn = ConexionODBC.Open()
+                        comando = New OdbcCommand(query, _conn)
+                        comando.Parameters.AddWithValue("?", _usuarios.CodigoPaisNacimiento)
+                        comando.Parameters.AddWithValue("?", _usuarios.CodigoEtnia)
+                        comando.Parameters.AddWithValue("?", _usuarios.CodigoDiscapacidad)
+                        comando.Parameters.AddWithValue("?", _usuarios.CodigoIdentidadGenero)
+                        comando.Parameters.AddWithValue("?", _usuarios.ID)
+                        comando.ExecuteNonQuery()
+                        ConexionODBC.Close(_conn)
+                    Catch
+                        ' Columnas RDA aún no existen en esta base: se ignora, no bloquea el guardado.
+                    End Try
+
                 Else
-                    query = "INSERT INTO usuarios VALUES('" & _usuarios.ID & "','" & _usuarios.CodigotipoIdentificacion & "','" & _usuarios.Identificacion & "','" & _usuarios.PrimerNombre & "','" & _usuarios.SegundoNombre & "','" & _usuarios.PrimerApellido & "','" & _usuarios.SegundoApellido & "'," _
-                        & "'" & _usuarios.Sexo & "','" & Format(_usuarios.FechaNacimiento, "yyyy/MM/dd") & "','" & _usuarios.CiudadNacimiento & "','" & _usuarios.PaisNacimiento & "','" & _usuarios.Direccion & "','" & _usuarios.Telefono & "','" & _usuarios.CorreoElectronico & "','" & _usuarios.EstadoCivil & "','U'," _
-                        & "'" & _usuarios.CodigoMunicipio & "','1','0000',?);"
+                    ' Antes: INSERT posicional sin nombres de columna (VALUES(...)) - se rompería
+                    ' en cuanto la tabla tuviera columnas nuevas. Se cambia a columnas explícitas
+                    ' (las 20 originales, que siempre existen) + un UPDATE aparte y defensivo para
+                    ' los campos RDA, por si la migración correspondiente aún no se ha corrido.
+                    query = "INSERT INTO usuarios " &
+                        "(id, id_tipo_identificacion, identificacion, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, " &
+                        "sexo, fecha_nacimiento, ciudad_nacimiento, pais_nacimiento, direccion, telefono, correo_electronico, estado_civil, " &
+                        "zona, codigo_municipio, codigo_tipo_usuario, carnet, foto) " &
+                        "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
                     _conn = ConexionODBC.Open()
                     Dim comando = New OdbcCommand(query, _conn)
-                    comando.Parameters.AddWithValue(1, Imag)
+                    comando.Parameters.AddWithValue("?", _usuarios.ID)
+                    comando.Parameters.AddWithValue("?", _usuarios.CodigotipoIdentificacion)
+                    comando.Parameters.AddWithValue("?", _usuarios.Identificacion)
+                    comando.Parameters.AddWithValue("?", _usuarios.PrimerNombre)
+                    comando.Parameters.AddWithValue("?", _usuarios.SegundoNombre)
+                    comando.Parameters.AddWithValue("?", _usuarios.PrimerApellido)
+                    comando.Parameters.AddWithValue("?", _usuarios.SegundoApellido)
+                    comando.Parameters.AddWithValue("?", _usuarios.Sexo)
+                    comando.Parameters.AddWithValue("?", Format(_usuarios.FechaNacimiento, "yyyy/MM/dd"))
+                    comando.Parameters.AddWithValue("?", _usuarios.CiudadNacimiento)
+                    comando.Parameters.AddWithValue("?", _usuarios.PaisNacimiento)
+                    comando.Parameters.AddWithValue("?", _usuarios.Direccion)
+                    comando.Parameters.AddWithValue("?", _usuarios.Telefono)
+                    comando.Parameters.AddWithValue("?", _usuarios.CorreoElectronico)
+                    comando.Parameters.AddWithValue("?", _usuarios.EstadoCivil)
+                    comando.Parameters.AddWithValue("?", "U")
+                    comando.Parameters.AddWithValue("?", _usuarios.CodigoMunicipio)
+                    comando.Parameters.AddWithValue("?", 1)
+                    comando.Parameters.AddWithValue("?", "0000")
+                    comando.Parameters.AddWithValue("?", Imag)
                     comando.ExecuteNonQuery()
                     ConexionODBC.Close(_conn)
+
+                    ' Campos RDA-Paciente: UPDATE aparte y defensivo (ver nota arriba).
+                    Try
+                        Dim queryRda As String = "UPDATE usuarios SET codigo_pais_nacimiento = ?, codigo_etnia = ?, codigo_discapacidad = ?, codigo_identidad_genero = ? WHERE id_tipo_identificacion = ? AND identificacion = ?"
+                        _conn = ConexionODBC.Open()
+                        Dim comandoRda As New OdbcCommand(queryRda, _conn)
+                        comandoRda.Parameters.AddWithValue("?", _usuarios.CodigoPaisNacimiento)
+                        comandoRda.Parameters.AddWithValue("?", _usuarios.CodigoEtnia)
+                        comandoRda.Parameters.AddWithValue("?", _usuarios.CodigoDiscapacidad)
+                        comandoRda.Parameters.AddWithValue("?", _usuarios.CodigoIdentidadGenero)
+                        comandoRda.Parameters.AddWithValue("?", _usuarios.CodigotipoIdentificacion)
+                        comandoRda.Parameters.AddWithValue("?", _usuarios.Identificacion)
+                        comandoRda.ExecuteNonQuery()
+                        ConexionODBC.Close(_conn)
+                    Catch
+                        ' Columnas RDA aún no existen en esta base: se ignora, no bloquea el registro.
+                    End Try
                 End If
 
             Catch ex As Exception
@@ -201,12 +277,35 @@ Namespace Controles
                 Dim Imag As Byte()
                 'Imag = _funciones.Imagen_Bytes(_usuarios.Foto)
 
-                query = "INSERT INTO usuarios VALUES('" & _usuarios.ID & "','" & _usuarios.CodigotipoIdentificacion & "','" & _usuarios.Identificacion & "','" & _usuarios.PrimerNombre & "','" & _usuarios.SegundoNombre & "','" & _usuarios.PrimerApellido & "','" & _usuarios.SegundoApellido & "'," _
-                        & "'" & _usuarios.Sexo & "','" & Format(_usuarios.FechaNacimiento, "yyyy/MM/dd") & "','" & _usuarios.CiudadNacimiento & "','" & _usuarios.PaisNacimiento & "','" & _usuarios.Direccion & "','" & _usuarios.Telefono & "','" & _usuarios.CorreoElectronico & "','" & _usuarios.EstadoCivil & "','U'," _
-                        & "'" & _usuarios.CodigoMunicipio & "','1','0000',?);"
+                ' Convertido a columnas explícitas (ver nota en Guardar()) para no romperse
+                ' cuando la tabla usuarios tenga columnas nuevas (RDA-Paciente).
+                query = "INSERT INTO usuarios " &
+                    "(id, id_tipo_identificacion, identificacion, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, " &
+                    "sexo, fecha_nacimiento, ciudad_nacimiento, pais_nacimiento, direccion, telefono, correo_electronico, estado_civil, " &
+                    "zona, codigo_municipio, codigo_tipo_usuario, carnet, foto) " &
+                    "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
                 _conn = ConexionODBC.Open()
                 Dim comando = New OdbcCommand(query, _conn)
-                comando.Parameters.AddWithValue(1, Imag)
+                comando.Parameters.AddWithValue("?", _usuarios.ID)
+                comando.Parameters.AddWithValue("?", _usuarios.CodigotipoIdentificacion)
+                comando.Parameters.AddWithValue("?", _usuarios.Identificacion)
+                comando.Parameters.AddWithValue("?", _usuarios.PrimerNombre)
+                comando.Parameters.AddWithValue("?", _usuarios.SegundoNombre)
+                comando.Parameters.AddWithValue("?", _usuarios.PrimerApellido)
+                comando.Parameters.AddWithValue("?", _usuarios.SegundoApellido)
+                comando.Parameters.AddWithValue("?", _usuarios.Sexo)
+                comando.Parameters.AddWithValue("?", Format(_usuarios.FechaNacimiento, "yyyy/MM/dd"))
+                comando.Parameters.AddWithValue("?", _usuarios.CiudadNacimiento)
+                comando.Parameters.AddWithValue("?", _usuarios.PaisNacimiento)
+                comando.Parameters.AddWithValue("?", _usuarios.Direccion)
+                comando.Parameters.AddWithValue("?", _usuarios.Telefono)
+                comando.Parameters.AddWithValue("?", _usuarios.CorreoElectronico)
+                comando.Parameters.AddWithValue("?", _usuarios.EstadoCivil)
+                comando.Parameters.AddWithValue("?", "U")
+                comando.Parameters.AddWithValue("?", _usuarios.CodigoMunicipio)
+                comando.Parameters.AddWithValue("?", 1)
+                comando.Parameters.AddWithValue("?", "0000")
+                comando.Parameters.AddWithValue("?", Imag)
                 comando.ExecuteNonQuery()
                 ConexionODBC.Close(_conn)
             Catch ex As Exception

@@ -22,6 +22,30 @@ Public Class frmUsuarios
                 "^([\w-]+\.)*?[\w-]+@[\w-]+\.([\w-]+\.)*?[\w]+$")
     End Function
 
+    ''' <summary>
+    ''' Los combos de Etnia/Discapacidad/Identidad de Género muestran "CODIGO - Descripción"
+    ''' (ver Properties.Items en el Designer). Estas dos funciones convierten entre el código
+    ''' guardado en base de datos y el texto mostrado en el combo.
+    ''' </summary>
+    Private Function ObtenerCodigoDeCombo(combo As DevExpress.XtraEditors.ComboBoxEdit) As String
+        If combo.SelectedIndex < 0 OrElse String.IsNullOrEmpty(combo.Text) Then Return ""
+        Dim partes = combo.Text.Split(New String() {" - "}, 2, StringSplitOptions.None)
+        Return If(partes.Length > 0, partes(0).Trim(), "")
+    End Function
+
+    Private Sub SeleccionarItemComboPorCodigo(combo As DevExpress.XtraEditors.ComboBoxEdit, codigo As String)
+        combo.SelectedIndex = -1
+        If String.IsNullOrWhiteSpace(codigo) Then Exit Sub
+        For i As Integer = 0 To combo.Properties.Items.Count - 1
+            Dim item As String = combo.Properties.Items(i).ToString()
+            Dim codigoItem As String = item.Split(New String() {" - "}, 2, StringSplitOptions.None)(0).Trim()
+            If codigoItem = codigo.Trim() Then
+                combo.SelectedIndex = i
+                Exit Sub
+            End If
+        Next
+    End Sub
+
     Private Sub ActualizarGrilla()
         'LLENAR GRILLA  
         _ds = New DataSet
@@ -72,6 +96,10 @@ Public Class frmUsuarios
         _usuarios.EstadoCivil = cboEstadoCivil.Text
         _usuarios.CodigoMunicipio = cboDepartamentos.GetColumnValue("CODIGO") & cboMunicipios.GetColumnValue("CODIGO")
         _usuarios.Foto = _funciones.Imagen_Bytes(peFoto.EditValue)
+        _usuarios.CodigoPaisNacimiento = If(cboPais.EditValue IsNot Nothing, cboPais.EditValue.ToString(), "")
+        _usuarios.CodigoEtnia = ObtenerCodigoDeCombo(cboEtnia)
+        _usuarios.CodigoDiscapacidad = ObtenerCodigoDeCombo(cboDiscapacidad)
+        _usuarios.CodigoIdentidadGenero = ObtenerCodigoDeCombo(cboIdentidadGenero)
         _dUsuarios.Guardar(_usuarios)
     End Sub
     Private Sub GuardarClientes()
@@ -101,6 +129,10 @@ Public Class frmUsuarios
         txtEdad.Text = ""
         txtCiudadNacimiento.Text = ""
         txtPaisNacimiento.Text = ""
+        cboPais.EditValue = "170" ' Colombia por defecto
+        cboEtnia.SelectedIndex = -1
+        cboDiscapacidad.SelectedIndex = -1
+        cboIdentidadGenero.SelectedIndex = -1
         txtDireccion.Text = ""
         txtTelefono.Text = ""
         txtCorreoElectronico.Text = ""
@@ -169,6 +201,56 @@ Public Class frmUsuarios
         End Select
 
         '----------------------------------
+        'llenamos campo Pais Nacimiento (código ISO 3166-1 numérico, requerido por RDA-Paciente:
+        ' https://fhir.minsalud.gov.co/rda/CodeSystem/ISO31661). Lista de los países más comunes
+        ' en la práctica; se puede ampliar si se atienden pacientes de otras nacionalidades.
+        Dim dtPaises As New DataTable()
+        dtPaises.Columns.Add("CODIGO", GetType(String))
+        dtPaises.Columns.Add("NOMBRE", GetType(String))
+        Dim paises As (String, String)() = {
+            ("170", "Colombia"),
+            ("862", "Venezuela"),
+            ("218", "Ecuador"),
+            ("604", "Perú"),
+            ("076", "Brasil"),
+            ("032", "Argentina"),
+            ("152", "Chile"),
+            ("068", "Bolivia"),
+            ("600", "Paraguay"),
+            ("858", "Uruguay"),
+            ("591", "Panamá"),
+            ("188", "Costa Rica"),
+            ("340", "Honduras"),
+            ("222", "El Salvador"),
+            ("320", "Guatemala"),
+            ("558", "Nicaragua"),
+            ("192", "Cuba"),
+            ("214", "República Dominicana"),
+            ("484", "México"),
+            ("840", "Estados Unidos"),
+            ("124", "Canadá"),
+            ("724", "España"),
+            ("380", "Italia"),
+            ("250", "Francia"),
+            ("276", "Alemania"),
+            ("826", "Reino Unido"),
+            ("620", "Portugal"),
+            ("156", "China"),
+            ("356", "India"),
+            ("999", "Otro país no listado")
+        }
+        For Each p In paises
+            dtPaises.Rows.Add(p.Item1, p.Item2)
+        Next
+        cboPais.Properties.DataSource = dtPaises
+        cboPais.Properties.DisplayMember = "NOMBRE"
+        cboPais.Properties.ValueMember = "CODIGO"
+        cboPais.Properties.Columns.Clear()
+        cboPais.Properties.Columns.Add(New DevExpress.XtraEditors.Controls.LookUpColumnInfo("CODIGO", "Código"))
+        cboPais.Properties.Columns.Add(New DevExpress.XtraEditors.Controls.LookUpColumnInfo("NOMBRE", "País"))
+        cboPais.EditValue = "170" ' Colombia por defecto
+
+        '----------------------------------
 
         'llenamos campo Municipios
         'Select Case Licencia
@@ -218,6 +300,14 @@ Public Class frmUsuarios
                     txtSegundoApellido.Text = _usuarios.SegundoApellido
                     txtCiudadNacimiento.Text = _usuarios.CiudadNacimiento
                     txtPaisNacimiento.Text = _usuarios.PaisNacimiento
+                    If Not String.IsNullOrWhiteSpace(_usuarios.CodigoPaisNacimiento) Then
+                        cboPais.EditValue = _usuarios.CodigoPaisNacimiento
+                    Else
+                        cboPais.EditValue = "170" ' Colombia por defecto si aún no se ha capturado
+                    End If
+                    SeleccionarItemComboPorCodigo(cboEtnia, _usuarios.CodigoEtnia)
+                    SeleccionarItemComboPorCodigo(cboDiscapacidad, _usuarios.CodigoDiscapacidad)
+                    SeleccionarItemComboPorCodigo(cboIdentidadGenero, _usuarios.CodigoIdentidadGenero)
                     txtDireccion.Text = _usuarios.Direccion
                     txtTelefono.Text = _usuarios.Telefono
                     txtCorreoElectronico.Text = _usuarios.CorreoElectronico
@@ -348,7 +438,23 @@ Public Class frmUsuarios
         ActivarGuardar()
     End Sub
 
-    Private Sub txtPaisNacimiento_EditValueChanged(sender As Object, e As EventArgs) 
+    Private Sub txtPaisNacimiento_EditValueChanged(sender As Object, e As EventArgs)
+        ActivarGuardar()
+    End Sub
+
+    Private Sub cboPais_EditValueChanged(sender As Object, e As EventArgs) Handles cboPais.EditValueChanged
+        ActivarGuardar()
+    End Sub
+
+    Private Sub cboEtnia_EditValueChanged(sender As Object, e As EventArgs) Handles cboEtnia.EditValueChanged
+        ActivarGuardar()
+    End Sub
+
+    Private Sub cboDiscapacidad_EditValueChanged(sender As Object, e As EventArgs) Handles cboDiscapacidad.EditValueChanged
+        ActivarGuardar()
+    End Sub
+
+    Private Sub cboIdentidadGenero_EditValueChanged(sender As Object, e As EventArgs) Handles cboIdentidadGenero.EditValueChanged
         ActivarGuardar()
     End Sub
 
