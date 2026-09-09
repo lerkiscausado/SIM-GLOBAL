@@ -46,6 +46,22 @@ Public Class frmUsuarios
         Next
     End Sub
 
+    ''' <summary>
+    ''' Fuerza el texto de un TextEdit a mayúsculas mientras el usuario escribe. Se usa en los
+    ''' campos de nombre/apellido: además de ser la convención habitual en estos formularios,
+    ''' evita las advertencias de MinSalud por diferencias de mayúsculas/minúsculas al validar
+    ''' contra el registro nacional EVOL (ver ExtensionFathersFamilyName/MothersFamilyName).
+    ''' Compara antes de reasignar para no disparar el evento en bucle infinito.
+    ''' </summary>
+    Private Sub ForzarMayusculas(editor As DevExpress.XtraEditors.TextEdit)
+        Dim mayusculas As String = editor.Text.ToUpper()
+        If editor.Text <> mayusculas Then
+            Dim posicionCursor As Integer = editor.SelectionStart
+            editor.Text = mayusculas
+            editor.SelectionStart = posicionCursor
+        End If
+    End Sub
+
     Private Sub ActualizarGrilla()
         'LLENAR GRILLA  
         _ds = New DataSet
@@ -82,10 +98,10 @@ Public Class frmUsuarios
         _usuarios.ID = Val(txtCodigo.Text)
         _usuarios.CodigotipoIdentificacion = cboTipoIdentificacion.GetColumnValue("CODIGO")
         _usuarios.Identificacion = txtNumeroIdentificacion.Text
-        _usuarios.PrimerNombre = txtPrimerNombre.Text
-        _usuarios.SegundoNombre = txtSegundoNombre.Text
-        _usuarios.PrimerApellido = txtPrimerApellido.Text
-        _usuarios.SegundoApellido = txtSegundoApellido.Text
+        _usuarios.PrimerNombre = txtPrimerNombre.Text.ToUpper()
+        _usuarios.SegundoNombre = txtSegundoNombre.Text.ToUpper()
+        _usuarios.PrimerApellido = txtPrimerApellido.Text.ToUpper()
+        _usuarios.SegundoApellido = txtSegundoApellido.Text.ToUpper()
         _usuarios.Sexo = cboSexo.Text
         _usuarios.FechaNacimiento = dtFechaNacimiento.Text
         _usuarios.CiudadNacimiento = txtCiudadNacimiento.Text
@@ -411,18 +427,22 @@ Public Class frmUsuarios
     End Sub
 
     Private Sub txtPrimerNombre_EditValueChanged(sender As Object, e As EventArgs) Handles txtPrimerNombre.EditValueChanged
+        ForzarMayusculas(txtPrimerNombre)
         ActivarGuardar()
     End Sub
 
     Private Sub txtSegundoNombre_EditValueChanged(sender As Object, e As EventArgs) Handles txtSegundoNombre.EditValueChanged
+        ForzarMayusculas(txtSegundoNombre)
         ActivarGuardar()
     End Sub
 
     Private Sub txtPrimerApellido_EditValueChanged(sender As Object, e As EventArgs) Handles txtPrimerApellido.EditValueChanged
+        ForzarMayusculas(txtPrimerApellido)
         ActivarGuardar()
     End Sub
 
     Private Sub txtSegundoApellido_EditValueChanged(sender As Object, e As EventArgs) Handles txtSegundoApellido.EditValueChanged
+        ForzarMayusculas(txtSegundoApellido)
         ActivarGuardar()
     End Sub
 
