@@ -16,7 +16,7 @@ Namespace Controles
                 ' leían la columna 0). Se reemplaza por columnas explícitas por NOMBRE, que es
                 ' seguro sin importar el orden físico real de columnas en la tabla.
                 Dim query As String = "SELECT id, id_licencia, id_tipo_identificacion, identificacion, nombre, " &
-                    "direccion, ciudad, telefono, celular, fax, email, pagina_web, logo, estado " &
+                    "direccion, ciudad, telefono, celular, fax, email, paginaweb, logo, estado " &
                     "FROM empresa WHERE id_licencia = ?"
                 _conn = ConexionODBC.Open()
                 Dim comando As New OdbcCommand(query, _conn)
@@ -36,7 +36,7 @@ Namespace Controles
                     _empresa.Celular = reader("celular").ToString()
                     _empresa.Fax = reader("fax").ToString()
                     _empresa.Email = reader("email").ToString()
-                    _empresa.PaginaWeb = reader("pagina_web").ToString()
+                    _empresa.PaginaWeb = reader("paginaweb").ToString()
                     If Not IsDBNull(reader("logo")) Then _empresa.Logo = CType(reader("logo"), Byte())
                     _empresa.Estado = reader("estado").ToString()
                 End If
@@ -102,7 +102,7 @@ Namespace Controles
                             & "celular='" & _empresa.Celular & "',	" _
                             & "fax='" & _empresa.Fax & "',	" _
                             & "email='" & _empresa.Email & "', " _
-                            & "pagina_web='" & _empresa.PaginaWeb & "' " _
+                            & "paginaweb='" & _empresa.PaginaWeb & "' " _
                             & "WHERE id_licencia='" & _empresa.IdLicencia & "'"
                     _conn = ConexionODBC.Open()
                     Dim comando = New OdbcCommand(query, _conn)
@@ -136,7 +136,7 @@ Namespace Controles
                     ' orden que la declaración de la tabla) - fragil ante cualquier cambio de
                     ' esquema y no incluía codigo_prestador. Se cambia a columnas explícitas.
                     query = "INSERT INTO empresa (id, id_licencia, id_tipo_identificacion, identificacion, nombre, " &
-                            "direccion, ciudad, telefono, celular, fax, email, pagina_web, logo, estado) " &
+                            "direccion, ciudad, telefono, celular, fax, email, paginaweb, logo, estado) " &
                             "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
                     _conn = ConexionODBC.Open()
                     Dim comando = New OdbcCommand(query, _conn)
