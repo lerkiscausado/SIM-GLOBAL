@@ -89,7 +89,7 @@ Public Class frmUsuarios
         _usuarios.Sexo = cboSexo.Text
         _usuarios.FechaNacimiento = dtFechaNacimiento.Text
         _usuarios.CiudadNacimiento = txtCiudadNacimiento.Text
-        _usuarios.PaisNacimiento = txtPaisNacimiento.Text
+        _usuarios.PaisNacimiento = ""
         _usuarios.Direccion = txtDireccion.Text
         _usuarios.Telefono = txtTelefono.Text
         _usuarios.CorreoElectronico = txtCorreoElectronico.Text
@@ -128,7 +128,7 @@ Public Class frmUsuarios
         dtFechaNacimiento.Text = ""
         txtEdad.Text = ""
         txtCiudadNacimiento.Text = ""
-        txtPaisNacimiento.Text = ""
+
         cboPais.EditValue = "170" ' Colombia por defecto
         cboEtnia.SelectedIndex = -1
         cboDiscapacidad.SelectedIndex = -1
@@ -299,8 +299,8 @@ Public Class frmUsuarios
                     txtPrimerApellido.Text = _usuarios.PrimerApellido
                     txtSegundoApellido.Text = _usuarios.SegundoApellido
                     txtCiudadNacimiento.Text = _usuarios.CiudadNacimiento
-                    txtPaisNacimiento.Text = _usuarios.PaisNacimiento
-                    If Not String.IsNullOrWhiteSpace(_usuarios.CodigoPaisNacimiento) Then
+
+                If Not String.IsNullOrWhiteSpace(_usuarios.CodigoPaisNacimiento) Then
                         cboPais.EditValue = _usuarios.CodigoPaisNacimiento
                     Else
                         cboPais.EditValue = "170" ' Colombia por defecto si aún no se ha capturado
