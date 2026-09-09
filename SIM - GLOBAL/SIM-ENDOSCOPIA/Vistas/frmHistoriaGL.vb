@@ -1027,28 +1027,6 @@ Public Class frmHistoriaGL
             _dsActualizarGrilla = Nothing
             bbiGuardar.Enabled = False
             ppCargar.Visible = False
-
-            ' ── Interoperabilidad RDA: envío automático del RDA-Paciente a MinSalud ──
-            ' Se dispara en segundo plano al guardar la historia clínica/orden; nunca debe
-            ' bloquear ni interrumpir el flujo clínico. Una notificación flotante (frmToastRDA)
-            ' muestra el progreso sin estorbar; se cierra sola al terminar.
-            Try
-                Dim idOrdenRDA As Integer = Val(lblConsecutivoOrden.Text)
-                Dim idUsuarioRDA As Integer = 0
-                If _dsDatosUsuario IsNot Nothing AndAlso _dsDatosUsuario.Tables.Count > 0 AndAlso _dsDatosUsuario.Tables(0).Rows.Count > 0 Then
-                    idUsuarioRDA = Val(_dsDatosUsuario.Tables(0).Rows(0)(0).ToString())
-                End If
-                Dim idEspecialistaRDA As Integer = Val(_HistoriaClinica.IdEspecialista)
-
-                If idOrdenRDA > 0 AndAlso idUsuarioRDA > 0 Then
-                    Dim toast As New SIM___GLOBAL.frmToastRDA()
-                    toast.Show()
-                    SIM___GLOBAL.Controles.DRDAPaciente.EnviarEnSegundoPlano(idOrdenRDA, idUsuarioRDA, idEspecialistaRDA,
-                        Sub(mensaje) toast.ActualizarEstado(mensaje))
-                End If
-            Catch
-                ' El envío RDA es complementario al guardado clínico: cualquier fallo aquí se ignora.
-            End Try
         End If
     End Sub
 #Region "PROCESO NUEVA HISTORIA"

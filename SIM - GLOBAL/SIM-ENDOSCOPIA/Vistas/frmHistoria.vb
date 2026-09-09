@@ -958,6 +958,27 @@ Public Class frmHistoria
                             _dordenes.ActualizarEstado(lblConsecutivoOrden.Text, "ATENDIDO")
                         End If
 
+                        ' ── Interoperabilidad RDA: envío automático del RDA-Paciente a MinSalud ──
+                        ' Se dispara SOLO cuando el médico confirma la firma de la historia (este
+                        ' bloque, dentro del DialogResult.OK de "¿Desea Firmar la Historia?"), no en
+                        ' cada guardado intermedio. En segundo plano, no bloquea el flujo clínico.
+                        ' Una notificación flotante (frmToastRDA) muestra el progreso sin estorbar.
+                        Try
+                            Dim idOrdenRDA As Integer = Val(lblConsecutivoOrden.Text)
+                            Dim idUsuarioRDA As Integer = Val(_IDUsuario)
+                            Dim idEspecialistaRDA As Integer = Val(IdEmpleado)
+
+                            If idOrdenRDA > 0 AndAlso idUsuarioRDA > 0 Then
+                                Dim toast As New SIM___GLOBAL.frmToastRDA()
+                                toast.Show()
+                                SIM___GLOBAL.Controles.DRDAPaciente.EnviarEnSegundoPlano(idOrdenRDA, idUsuarioRDA, idEspecialistaRDA,
+                                    Sub(mensaje) toast.ActualizarEstado(mensaje))
+                            End If
+                        Catch
+                            ' El envío RDA es complementario a la firma de la historia: cualquier
+                            ' fallo aquí se ignora, nunca debe bloquear el flujo clínico.
+                        End Try
+
                         'If MessageBox.Show("Desea imprimir la historia", "Imprimir Historia", MessageBoxButtons.YesNo, MessageBoxIcon.Information) = DialogResult.Yes Then
                         'Dim _frmOrdenesMedicas As New SIM___GLOBAL.frmOrdenesMedicas
                         '_frmOrdenesMedicas.IdOrden = lblConsecutivoOrden.Text
