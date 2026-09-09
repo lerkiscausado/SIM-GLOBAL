@@ -20,7 +20,7 @@ Public Class frmToastRDA
         Me.Size = New System.Drawing.Size(340, 90)
         Me.Text = "Interoperabilidad RDA"
 
-        lblTitulo.Text = "Enviando RDA-Paciente a MinSalud..."
+        lblTitulo.Text = "Interoperabilidad RDA"
         lblTitulo.Location = New System.Drawing.Point(12, 10)
         lblTitulo.Font = New System.Drawing.Font(lblTitulo.Font, System.Drawing.FontStyle.Bold)
 
@@ -43,6 +43,9 @@ Public Class frmToastRDA
     Public Sub ActualizarEstado(mensaje As String)
         If Me.IsDisposed Then Exit Sub
         lblEstado.Text = mensaje
+        lblEstado.Refresh() ' Fuerza el repintado inmediato (evita que el cierre por timer
+                             ' "adelante" al repintado del mensaje final en pantallas lentas)
+        Me.Refresh()
 
         ' Si el mensaje indica que ya terminó (éxito, error o aviso), programar el cierre
         ' automático en unos segundos para no dejar la notificación pegada en pantalla.
