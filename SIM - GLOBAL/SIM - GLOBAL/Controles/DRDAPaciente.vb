@@ -24,9 +24,16 @@ Namespace Controles
         ''' registra en la tabla rda_envios y NO se propaga como excepción ni bloquea al usuario:
         ''' el guardado de la historia clínica siempre debe tener prioridad sobre el envío RDA.
         ''' </summary>
-        Public Shared Async Sub EnviarEnSegundoPlano(idOrden As Integer, idUsuario As Integer, idEspecialista As Integer)
+        ''' <param name="onProgreso">
+        ''' Opcional: se llama con un mensaje corto en cada paso ("Consultando MPI...",
+        ''' "Enviando a MinSalud...", etc.) para que la interfaz pueda mostrar el avance.
+        ''' Como este método se invoca desde un manejador de evento de UI (WinForms captura
+        ''' el SynchronizationContext), el callback se ejecuta de vuelta en el hilo de la
+        ''' interfaz — es seguro actualizar controles directamente desde él.
+        ''' </param>
+        Public Shared Async Sub EnviarEnSegundoPlano(idOrden As Integer, idUsuario As Integer, idEspecialista As Integer, Optional onProgreso As Action(Of String) = Nothing)
             Try
-                Await EnviarRDAPacienteAsync(idOrden, idUsuario, idEspecialista)
+                Await EnviarRDAPacienteAsync(idOrden, idUsuario, idEspecialista, onProgreso)
             Catch
                 ' Silenciado a propósito: el detalle del error ya quedó registrado dentro de
                 ' EnviarRDAPacienteAsync (tabla rda_envios). No se debe interrumpir al usuario
@@ -38,22 +45,26 @@ Namespace Controles
         ''' Ejecuta el envío de forma síncrona/awaitable. Devuelve True si MinSalud aceptó el
         ''' documento (2xx). Registra el intento (éxito o falla) en rda_envios si la tabla existe.
         ''' </summary>
-        Public Shared Async Function EnviarRDAPacienteAsync(idOrden As Integer, idUsuario As Integer, idEspecialista As Integer) As Task(Of Boolean)
+        Public Shared Async Function EnviarRDAPacienteAsync(idOrden As Integer, idUsuario As Integer, idEspecialista As Integer, Optional onProgreso As Action(Of String) = Nothing) As Task(Of Boolean)
             Dim configId As Integer = 1
             Try
+                onProgreso?.Invoke("Cargando configuración de interoperabilidad...")
                 ' 1. Configuración de interoperabilidad
                 Dim _DRda As New DRDA
                 Dim config As ConfigInteropApi = _DRda.Cargar()
                 If config Is Nothing Then
                     RegistrarIntento(idOrden, False, "Sin configuración de interoperabilidad RDA (Controles/DRDA -> config_interop_api vacío).")
+                    onProgreso?.Invoke("❌ No hay configuración de interoperabilidad RDA")
                     Return False
                 End If
                 configId = If(config.Id > 0, config.Id, 1)
 
                 ' 2. Datos del paciente
+                onProgreso?.Invoke("Cargando datos del paciente...")
                 Dim paciente As Usuarios = DUsuarios.Cargar(idUsuario.ToString())
                 If paciente Is Nothing Then
                     RegistrarIntento(idOrden, False, $"No se encontró el paciente id_usuario={idUsuario}.")
+                    onProgreso?.Invoke("❌ No se encontró el paciente")
                     Return False
                 End If
 
@@ -61,10 +72,12 @@ Namespace Controles
                 Dim especialista As Especialista = CargarEspecialista(idEspecialista)
 
                 ' 4. Token vigente (cacheado o nuevo) - se necesita ya para la consulta al MPI
+                onProgreso?.Invoke("Obteniendo token de MinSalud...")
                 Dim dRDA As New DRDA
                 Dim token As String = Await dRDA.TraerToken(configId)
                 If String.IsNullOrWhiteSpace(token) Then
                     RegistrarIntento(idOrden, False, "No fue posible obtener un token de MinSalud (revisar credenciales en Interoperabilidad RDA).")
+                    onProgreso?.Invoke("❌ No fue posible obtener el token de MinSalud")
                     Return False
                 End If
 
@@ -74,12 +87,15 @@ Namespace Controles
                 ' no disponible); se deja constancia en rda_envios para poder revisarlo después,
                 ' y se intenta el envío igual, ya que el propio $enviar-rda-paciente es la
                 ' validación definitiva.
+                onProgreso?.Invoke("Consultando MPI (Índice Maestro de Pacientes)...")
                 Dim respuestaMpi = Await ConsultarPacienteExactoHttp(paciente, especialista, config, token)
                 If Not respuestaMpi.Exitoso Then
                     RegistrarIntento(idOrden, False, "Aviso: la consulta previa al MPI no fue exitosa (se intenta el envío igual). " & respuestaMpi.Cuerpo, respuestaMpi.CodigoHttp, "RDA-PACIENTE-MPI")
+                    onProgreso?.Invoke("⚠️ El MPI no respondió como se esperaba (se continúa igual)")
                 End If
 
                 ' 6. Antecedentes declarados por el paciente (texto libre)
+                onProgreso?.Invoke("Cargando antecedentes del paciente...")
                 Dim dAntecedentes As New DAntecedentes
                 Dim dsAntecedentes As DataSet = dAntecedentes.CargarAntecedentes(idOrden.ToString())
                 Dim antecedentesFamiliares As String = ""
@@ -90,16 +106,20 @@ Namespace Controles
                 End If
 
                 ' 7. Armar el Bundle FHIR
+                onProgreso?.Invoke("Armando el documento RDA...")
                 Dim bundleJson As String = RDABundleBuilder.ConstruirBundlePaciente(
                     paciente, especialista, config, antecedentesPersonales, antecedentesFamiliares)
 
                 ' 8. Envío
+                onProgreso?.Invoke("Enviando a MinSalud...")
                 Dim resultado = Await EnviarBundleHttp(bundleJson, config, token)
                 RegistrarIntento(idOrden, resultado.Exitoso, resultado.Cuerpo, resultado.CodigoHttp)
+                onProgreso?.Invoke(If(resultado.Exitoso, "✅ RDA enviado correctamente", $"❌ MinSalud rechazó el RDA (HTTP {If(resultado.CodigoHttp.HasValue, resultado.CodigoHttp.Value.ToString(), "N/A")})"))
                 Return resultado.Exitoso
 
             Catch ex As Exception
                 RegistrarIntento(idOrden, False, "Excepción: " & ex.Message)
+                onProgreso?.Invoke("❌ Error inesperado: " & ex.Message)
                 Return False
             End Try
         End Function
@@ -314,6 +334,36 @@ Namespace Controles
         End Function
 
         ' ── Auditoría de envíos (best-effort: si la tabla rda_envios no existe aún, no falla) ──
+        ''' <summary>
+        ''' Trae el historial de envíos de RDA (tabla rda_envios), más recientes primero, con
+        ''' el nombre del paciente si se puede resolver a través de la orden. Usado por la
+        ''' pantalla de historial (Vistas/frmHistorialRDA.vb).
+        ''' </summary>
+        Public Shared Function ListarEnvios(Optional maximoRegistros As Integer = 300) As DataTable
+            Dim tabla As New DataTable()
+            Try
+                Dim query As String = "SELECT r.fecha_envio, r.tipo_documento, r.exitoso, r.codigo_http, r.id_orden, " &
+                    "CONCAT_WS(' ', u.primer_nombre, u.primer_apellido) AS paciente, r.detalle " &
+                    "FROM rda_envios r " &
+                    "LEFT JOIN ordenes o ON o.id = r.id_orden " &
+                    "LEFT JOIN usuarios u ON u.id = o.id_usuario " &
+                    "ORDER BY r.fecha_envio DESC " &
+                    "LIMIT " & maximoRegistros
+                Using conn As OdbcConnection = ConexionODBC.Open()
+                    Using comando As New OdbcCommand(query, conn)
+                        Using adaptador As New OdbcDataAdapter(comando)
+                            adaptador.Fill(tabla)
+                        End Using
+                    End Using
+                End Using
+            Catch ex As Exception
+                ' Si la tabla/columnas no existen aún (migración no corrida) o falla la consulta,
+                ' se retorna una tabla vacía en vez de lanzar la excepción hacia la pantalla.
+                If Not tabla.Columns.Contains("Error") Then tabla.Columns.Add("Error", GetType(String))
+            End Try
+            Return tabla
+        End Function
+
         Private Shared Sub RegistrarIntento(idOrden As Integer, exitoso As Boolean, detalle As String, Optional codigoHttp As Integer? = Nothing, Optional tipoDocumento As String = "RDA-PACIENTE")
             Try
                 Dim query As String = "INSERT INTO rda_envios (id_orden, tipo_documento, exitoso, codigo_http, detalle, fecha_envio) " &

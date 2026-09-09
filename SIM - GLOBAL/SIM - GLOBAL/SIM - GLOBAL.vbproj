@@ -1364,6 +1364,8 @@
     <Compile Include="Vistas\frmRDA.Designer.vb">
       <DependentUpon>frmRDA.vb</DependentUpon>
     </Compile>
+    <Compile Include="Vistas\frmHistorialRDA.vb" />
+    <Compile Include="Vistas\frmToastRDA.vb" />
     <Compile Include="Vistas\frmRDA.vb">
       <SubType>Form</SubType>
     </Compile>
