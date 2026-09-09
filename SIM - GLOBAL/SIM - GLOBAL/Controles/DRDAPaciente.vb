@@ -237,8 +237,12 @@ Namespace Controles
         Private Shared Async Function ConsultarPacienteExactoHttp(paciente As Usuarios, especialista As Especialista, config As ConfigInteropApi, token As String) As Task(Of (Exitoso As Boolean, CodigoHttp As Integer?, Cuerpo As String))
             Dim urlConsulta As String = config.UrlBaseApi.TrimEnd("/"c) & "/Patient/$consultar-paciente-exacto"
 
+            ' Si el tipo de identificación del especialista viene vacío en la base de datos
+            ' (dato faltante para ese registro), se asume "CC" en vez de dejarlo vacío — un
+            ' humanuser "-73113445" (sin tipo) es rechazado por MinSalud con err-000.
+            Dim tipoIdEspecialista As String = If(especialista IsNot Nothing AndAlso Not String.IsNullOrWhiteSpace(especialista.IdTipoIdentificacion), especialista.IdTipoIdentificacion, "CC")
             Dim humanUser As String = If(especialista IsNot Nothing AndAlso Not String.IsNullOrWhiteSpace(especialista.Identificacion),
-                                          especialista.IdTipoIdentificacion & "-" & especialista.Identificacion,
+                                          tipoIdEspecialista & "-" & especialista.Identificacion,
                                           "CC-0")
 
             Dim parametros As New Newtonsoft.Json.Linq.JObject From {

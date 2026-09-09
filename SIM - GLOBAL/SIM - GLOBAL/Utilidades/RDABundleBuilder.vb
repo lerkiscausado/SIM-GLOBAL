@@ -43,8 +43,11 @@ Namespace Utilidades
             ' ── Identificadores de referencia internos del Bundle ─────────────────────
             Dim idPaciente As String = SanitizarId(paciente.CodigotipoIdentificacion & "-" & paciente.Identificacion)
             Dim idOrganizacion As String = SanitizarId(config.CodigoPrestadorReps)
+            ' Si el tipo de identificación del especialista viene vacío en la base de datos
+            ' (dato faltante para ese registro), se asume "CC" en vez de dejarlo vacío.
+            Dim tipoIdEspecialista As String = If(especialista IsNot Nothing AndAlso Not String.IsNullOrWhiteSpace(especialista.IdTipoIdentificacion), especialista.IdTipoIdentificacion, "CC")
             Dim idPractitioner As String = If(especialista IsNot Nothing AndAlso Not String.IsNullOrWhiteSpace(especialista.Identificacion),
-                                               SanitizarId(especialista.IdTipoIdentificacion & "-" & especialista.Identificacion),
+                                               SanitizarId(tipoIdEspecialista & "-" & especialista.Identificacion),
                                                Nothing)
 
             ' ── Clasificar antecedentes (best-effort, ver RDATextParser) ──────────────
@@ -406,6 +409,10 @@ Namespace Utilidades
         End Function
 
         Private Function ConstruirPractitioner(idPractitioner As String, especialista As Especialista) As JObject
+            ' Si el tipo de identificación viene vacío en la base de datos (dato faltante para
+            ' ese registro), se asume "CC" en vez de dejarlo vacío en el identifier del recurso.
+            Dim tipoIdEspecialista As String = If(Not String.IsNullOrWhiteSpace(especialista.IdTipoIdentificacion), especialista.IdTipoIdentificacion, "CC")
+
             ' Nombre estructurado si está disponible (requerido para que coincida con el registro
             ' oficial de RETHUS, igual que ocurre con el Patient contra EVOL); si no hay datos
             ' estructurados, se hace mejor esfuerzo usando "text" con el nombre completo.
@@ -449,7 +456,7 @@ Namespace Utilidades
                         {"type", New JObject From {
                             {"coding", New JArray From {
                                 New JObject From {{"system", "http://terminology.hl7.org/CodeSystem/v2-0203"}, {"code", "PN"}, {"display", "Person number"}},
-                                New JObject From {{"system", BASE_RDA & "/CodeSystem/ColombianPersonIdentifier"}, {"code", especialista.IdTipoIdentificacion}}
+                                New JObject From {{"system", BASE_RDA & "/CodeSystem/ColombianPersonIdentifier"}, {"code", tipoIdEspecialista}}
                             }}
                         }},
                         {"value", especialista.Identificacion}
