@@ -291,7 +291,7 @@ Namespace Utilidades
             ' explícito para que MinSalud no rechace el Bundle por campo obligatorio faltante.
             ' "display" es obligatorio (min=1) en estas 3 extensiones según el perfil oficial.
             Dim codigoNacionalidad As String = If(Not String.IsNullOrWhiteSpace(paciente.CodigoPaisNacimiento), paciente.CodigoPaisNacimiento, "170")
-            Dim codigoEtnia As String = If(Not String.IsNullOrWhiteSpace(paciente.CodigoEtnia), paciente.CodigoEtnia, "6")
+            Dim codigoEtnia As String = If(Not String.IsNullOrWhiteSpace(paciente.CodigoEtnia), paciente.CodigoEtnia, "99")
             Dim codigoDiscapacidad As String = If(Not String.IsNullOrWhiteSpace(paciente.CodigoDiscapacidad), paciente.CodigoDiscapacidad, "08")
 
             Dim extensionesPaciente As New JArray From {

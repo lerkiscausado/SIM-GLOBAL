@@ -130,8 +130,8 @@ Public Class frmUsuarios
         txtCiudadNacimiento.Text = ""
 
         cboPais.EditValue = "170" ' Colombia por defecto
-        cboEtnia.SelectedIndex = -1
-        cboDiscapacidad.SelectedIndex = -1
+        SeleccionarItemComboPorCodigo(cboEtnia, "99")   ' Ninguna de las anteriores (valor por defecto)
+        SeleccionarItemComboPorCodigo(cboDiscapacidad, "08")  ' Sin discapacidad (valor por defecto)
         cboIdentidadGenero.SelectedIndex = -1
         txtDireccion.Text = ""
         txtTelefono.Text = ""
