@@ -303,6 +303,39 @@ Namespace Utilidades
         End Function
 
         Private Function ConstruirPractitioner(idPractitioner As String, especialista As Especialista) As JObject
+            ' Nombre estructurado si está disponible (requerido para que coincida con el registro
+            ' oficial de RETHUS, igual que ocurre con el Patient contra EVOL); si no hay datos
+            ' estructurados, se hace mejor esfuerzo usando "text" con el nombre completo.
+            Dim nameNode As JObject
+            If Not String.IsNullOrWhiteSpace(especialista.PrimerNombre) AndAlso Not String.IsNullOrWhiteSpace(especialista.PrimerApellido) Then
+                Dim givenPractitioner As New JArray()
+                For Each n In {especialista.PrimerNombre, especialista.SegundoNombre}.Where(Function(x) Not String.IsNullOrWhiteSpace(x))
+                    givenPractitioner.Add(n)
+                Next
+
+                Dim apellidos As String = especialista.PrimerApellido
+                If Not String.IsNullOrWhiteSpace(especialista.SegundoApellido) Then
+                    apellidos &= " " & especialista.SegundoApellido
+                End If
+
+                nameNode = New JObject From {
+                    {"use", "official"},
+                    {"family", apellidos},
+                    {"_family", New JObject From {
+                        {"extension", New JArray From {
+                            New JObject From {{"url", BASE_RDA & "/StructureDefinition/ExtensionFathersFamilyName"}, {"valueString", especialista.PrimerApellido}},
+                            New JObject From {{"url", BASE_RDA & "/StructureDefinition/ExtensionMothersFamilyName"}, {"valueString", especialista.SegundoApellido}}
+                        }}
+                    }},
+                    {"given", givenPractitioner}
+                }
+            Else
+                nameNode = New JObject From {
+                    {"use", "official"},
+                    {"text", especialista.Nombre}
+                }
+            End If
+
             Return New JObject From {
                 {"resourceType", "Practitioner"},
                 {"id", idPractitioner},
@@ -319,12 +352,7 @@ Namespace Utilidades
                         {"value", especialista.Identificacion}
                     }
                 }},
-                {"name", New JArray From {
-                    New JObject From {
-                        {"use", "official"},
-                        {"text", especialista.Nombre}
-                    }
-                }}
+                {"name", New JArray From {nameNode}}
             }
         End Function
 

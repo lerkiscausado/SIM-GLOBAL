@@ -148,7 +148,11 @@ Namespace Controles
                 Dim especialista As New Especialista With {
                     .IdTipoIdentificacion = "CC",
                     .Identificacion = "73106055",
-                    .Nombre = "Jaime Jose Bonfante"
+                    .Nombre = "Jaime Jose Bonfante",
+                    .PrimerNombre = "Jaime",
+                    .SegundoNombre = "Jose",
+                    .PrimerApellido = "Bonfante",
+                    .SegundoApellido = "Molinares"
                 }
 
                 ' 3. Verificar/renovar token vigente

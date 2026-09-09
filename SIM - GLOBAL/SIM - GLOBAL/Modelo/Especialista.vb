@@ -37,6 +37,13 @@
             End Set
         End Property
 
+        ' Nombre estructurado para PractitionerRDA (RETHUS exige coincidencia con nombre/apellidos
+        ' por separado, no un solo campo de texto libre). Ver Sql/rda_estructuracion_datos_migracion.sql
+        Public Property PrimerNombre As String
+        Public Property SegundoNombre As String
+        Public Property PrimerApellido As String
+        Public Property SegundoApellido As String
+
         Public Property Especialidad As String
             Get
                 Return _especialidad
