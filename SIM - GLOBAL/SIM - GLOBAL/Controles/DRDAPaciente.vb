@@ -271,7 +271,8 @@ Namespace Controles
         Private Shared Function CargarEspecialista(idEspecialista As Integer) As Especialista
             If idEspecialista <= 0 Then Return Nothing
             Try
-                Dim query As String = "SELECT id_tipo_identificacion, identificacion, nombre, especialidad, registro_medico " &
+                Dim query As String = "SELECT id_tipo_identificacion, identificacion, nombre, especialidad, registro_medico, " &
+                                       "primer_nombre, segundo_nombre, primer_apellido, segundo_apellido " &
                                        "FROM especialistas WHERE id_especialista = ?"
                 Using conn As OdbcConnection = ConexionODBC.Open()
                     Using comando As New OdbcCommand(query, conn)
@@ -284,7 +285,11 @@ Namespace Controles
                                     .Identificacion = reader("identificacion").ToString(),
                                     .Nombre = reader("nombre").ToString(),
                                     .Especialidad = reader("especialidad").ToString(),
-                                    .RegistroMedico = reader("registro_medico").ToString()
+                                    .RegistroMedico = reader("registro_medico").ToString(),
+                                    .PrimerNombre = If(IsDBNull(reader("primer_nombre")), Nothing, reader("primer_nombre").ToString()),
+                                    .SegundoNombre = If(IsDBNull(reader("segundo_nombre")), Nothing, reader("segundo_nombre").ToString()),
+                                    .PrimerApellido = If(IsDBNull(reader("primer_apellido")), Nothing, reader("primer_apellido").ToString()),
+                                    .SegundoApellido = If(IsDBNull(reader("segundo_apellido")), Nothing, reader("segundo_apellido").ToString())
                                 }
                             End If
                         End Using
