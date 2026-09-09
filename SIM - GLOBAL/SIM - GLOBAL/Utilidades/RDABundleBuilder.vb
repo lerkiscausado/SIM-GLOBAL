@@ -102,28 +102,25 @@ Namespace Utilidades
 
             ' ── Composition ────────────────────────────────────────────────────────
             ' Composition.author en RDA-Paciente debe ser EXACTAMENTE el paciente (cardinalidad
-            ' 1..1, confirmado por error real: "Instance count for Composition.author is 2,
-            ' which is not within the specified cardinality of 1..1"). Ver guía oficial
-            ' vulcano.ihcecol.gov.co/RDA-paciente: "el paciente mismo puede figurar como autor".
+            ' 1..1, confirmado por error real). Ver guía oficial vulcano.ihcecol.gov.co/RDA-paciente:
+            ' "el paciente mismo puede figurar como autor".
             Dim autores As New JArray()
             autores.Add(New JObject From {{"reference", "#" & idPaciente}})
 
-            ' El profesional de salud (si existe) se agrega como un SEGUNDO attester (con modo
-            ' "professional", separado del attester "legal" de la Organization) en vez de
-            ' coautor: Composition.attester SÍ admite varios (0..*). Esto evita el error
-            ' BUNDLE-005 ("recurso sin referencias") sin violar la cardinalidad de author.
+            ' Composition.attester es cardinalidad 0..1 (máximo uno, confirmado por error real:
+            ' "Instance count for Composition.attester is 2, which is not within the specified
+            ' cardinality of 0..1") y su "mode" es un valor FIJO "legal" (no admite otros valores,
+            ' confirmado por: "Value is not exactly equal to fixed value 'legal'"). Por lo tanto,
+            ' en RDA-Paciente NO existe ningún lugar válido dentro del Composition para
+            ' referenciar al profesional de salud (Practitioner) - ni como autor ni como
+            ' attester - lo cual tiene sentido: este documento es específicamente el autoreporte
+            ' del paciente. El Practitioner por eso NO se incluye en el Bundle (ver más abajo).
             Dim attesters As New JArray From {
                 New JObject From {
                     {"mode", "legal"},
                     {"party", New JObject From {{"reference", "#" & idOrganizacion}}}
                 }
             }
-            If idPractitioner IsNot Nothing Then
-                attesters.Add(New JObject From {
-                    {"mode", "professional"},
-                    {"party", New JObject From {{"reference", "#" & idPractitioner}}}
-                })
-            End If
 
             Dim composition As New JObject From {
                 {"resourceType", "Composition"},
@@ -169,13 +166,13 @@ Namespace Utilidades
             }
 
             ' ── Bundle final ───────────────────────────────────────────────────────
+            ' El Practitioner NO se incluye: en RDA-Paciente no hay ningún campo del Composition
+            ' que pueda referenciarlo (ver nota arriba sobre author/attester), y un recurso sin
+            ' referencias es rechazado por MinSalud (BUNDLE-005).
             Dim entradas As New JArray()
             entradas.Add(EnvolverRecurso(composition))
             entradas.Add(EnvolverRecurso(ConstruirPatient(idPaciente, paciente)))
             entradas.Add(EnvolverRecurso(ConstruirOrganization(idOrganizacion, config, nombreOrganizacion)))
-            If idPractitioner IsNot Nothing Then
-                entradas.Add(EnvolverRecurso(ConstruirPractitioner(idPractitioner, especialista)))
-            End If
             For Each r In recursosCondition : entradas.Add(r) : Next
             For Each r In recursosAllergy : entradas.Add(r) : Next
             For Each r In recursosMedication : entradas.Add(r) : Next
