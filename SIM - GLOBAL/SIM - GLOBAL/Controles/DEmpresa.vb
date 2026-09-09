@@ -11,28 +11,53 @@ Namespace Controles
         ReadOnly _funciones As Funciones
         Public Shared Function Cargar(ByVal filtro As String) As Empresa
             Try
-                Dim query As String = String.Format("SELECT * FROM empresa WHERE id_licencia='" & filtro & "'")
+                ' Antes: "SELECT *" + lectura por índice posicional (con varios índices mal
+                ' copiados: IdTipoIdentificacion/Identificacion/Ciudad/Celular/Fax/Estado todos
+                ' leían la columna 0). Se reemplaza por columnas explícitas por NOMBRE, que es
+                ' seguro sin importar el orden físico real de columnas en la tabla.
+                Dim query As String = "SELECT id, id_licencia, id_tipo_identificacion, identificacion, nombre, " &
+                    "direccion, ciudad, telefono, celular, fax, email, pagina_web, logo, estado " &
+                    "FROM empresa WHERE id_licencia = ?"
                 _conn = ConexionODBC.Open()
-                Dim comando = New OdbcCommand(query, _conn)
-                _adapter = New OdbcDataAdapter(comando)
-                _ds = New DataSet()
-                _adapter.Fill(_ds)
+                Dim comando As New OdbcCommand(query, _conn)
+                comando.Parameters.AddWithValue("?", filtro)
+                Dim reader As OdbcDataReader = comando.ExecuteReader()
+
+                Dim _empresa As New Empresa
+                If reader.Read() Then
+                    _empresa.Id = reader("id").ToString()
+                    _empresa.IdLicencia = reader("id_licencia").ToString()
+                    _empresa.IdTipoIdentificacion = reader("id_tipo_identificacion").ToString()
+                    _empresa.Identificacion = reader("identificacion").ToString()
+                    _empresa.Nombre = reader("nombre").ToString()
+                    _empresa.Direccion = reader("direccion").ToString()
+                    _empresa.Ciudad = reader("ciudad").ToString()
+                    _empresa.Telefono = reader("telefono").ToString()
+                    _empresa.Celular = reader("celular").ToString()
+                    _empresa.Fax = reader("fax").ToString()
+                    _empresa.Email = reader("email").ToString()
+                    _empresa.PaginaWeb = reader("pagina_web").ToString()
+                    If Not IsDBNull(reader("logo")) Then _empresa.Logo = CType(reader("logo"), Byte())
+                    _empresa.Estado = reader("estado").ToString()
+                End If
+                reader.Close()
+
+                ' Código REPS: lectura defensiva por si la columna aún no existe en esta base de
+                ' datos (ver Sql/rda_empresa_codigo_prestador.sql). No rompe Cargar() si falta.
+                Try
+                    Dim queryReps As String = "SELECT codigo_prestador FROM empresa WHERE id_licencia = ?"
+                    Dim comandoReps As New OdbcCommand(queryReps, _conn)
+                    comandoReps.Parameters.AddWithValue("?", filtro)
+                    Dim readerReps As OdbcDataReader = comandoReps.ExecuteReader()
+                    If readerReps.Read() AndAlso Not IsDBNull(readerReps("codigo_prestador")) Then
+                        _empresa.CodigoPrestador = readerReps("codigo_prestador").ToString()
+                    End If
+                    readerReps.Close()
+                Catch
+                    ' Columna codigo_prestador no existe todavía en esta instalación: se ignora.
+                End Try
+
                 ConexionODBC.Close(_conn)
-                Dim _empresa = New Empresa
-                _empresa.Id = _ds.Tables(0).Rows(0)(0).ToString()
-                _empresa.IdLicencia = _ds.Tables(0).Rows(0)(0).ToString()
-                _empresa.IdTipoIdentificacion = _ds.Tables(0).Rows(0)(0).ToString()
-                _empresa.Identificacion = _ds.Tables(0).Rows(0)(0).ToString()
-                _empresa.Nombre = _ds.Tables(0).Rows(0)(3).ToString()
-                _empresa.Direccion = _ds.Tables(0).Rows(0)(11).ToString()
-                _empresa.Ciudad = _ds.Tables(0).Rows(0)(0).ToString()
-                _empresa.Telefono = _ds.Tables(0).Rows(0)(12).ToString()
-                _empresa.Celular = _ds.Tables(0).Rows(0)(0).ToString()
-                _empresa.Fax = _ds.Tables(0).Rows(0)(0).ToString()
-                _empresa.Email = _ds.Tables(0).Rows(0)(13).ToString()
-                _empresa.PaginaWeb = _ds.Tables(0).Rows(0)(13).ToString()
-                _empresa.Logo = _ds.Tables(0).Rows(0)(19)
-                _empresa.Estado = _ds.Tables(0).Rows(0)(13).ToString()
                 Return _empresa
             Catch ex As Exception
                 MessageBox.Show(ex.Message)
@@ -93,14 +118,56 @@ Namespace Controles
                     comando.ExecuteNonQuery()
                     ConexionODBC.Close(_conn)
 
+                    ' Código REPS: UPDATE aparte y defensivo (columna puede no existir aún).
+                    Try
+                        query = "UPDATE empresa SET codigo_prestador = ? WHERE id_licencia = ?"
+                        _conn = ConexionODBC.Open()
+                        comando = New OdbcCommand(query, _conn)
+                        comando.Parameters.AddWithValue("?", _empresa.CodigoPrestador)
+                        comando.Parameters.AddWithValue("?", _empresa.IdLicencia)
+                        comando.ExecuteNonQuery()
+                        ConexionODBC.Close(_conn)
+                    Catch
+                        ' Columna codigo_prestador no existe todavía en esta instalación: se ignora.
+                    End Try
+
                 Else
-                    query = "INSERT INTO empresa VALUES('" & _empresa.Id & "','" & _empresa.IdLicencia & "','" & _empresa.IdTipoIdentificacion & "','" & _empresa.Identificacion & "','" & _empresa.Nombre & "','" & _empresa.Direccion & "','" & _empresa.Ciudad & "','" & _empresa.Telefono & "', " _
-                        & "'" & _empresa.Celular & "','" & _empresa.Fax & "','" & _empresa.Email & "','" & _empresa.PaginaWeb & "',?,'" & _empresa.Estado & "');"
+                    ' Antes: INSERT posicional sin nombres de columna (VALUES(...) en el mismo
+                    ' orden que la declaración de la tabla) - fragil ante cualquier cambio de
+                    ' esquema y no incluía codigo_prestador. Se cambia a columnas explícitas.
+                    query = "INSERT INTO empresa (id, id_licencia, id_tipo_identificacion, identificacion, nombre, " &
+                            "direccion, ciudad, telefono, celular, fax, email, pagina_web, logo, estado) " &
+                            "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
                     _conn = ConexionODBC.Open()
                     Dim comando = New OdbcCommand(query, _conn)
-                    comando.Parameters.AddWithValue(1, Imag)
+                    comando.Parameters.AddWithValue("?", _empresa.Id)
+                    comando.Parameters.AddWithValue("?", _empresa.IdLicencia)
+                    comando.Parameters.AddWithValue("?", _empresa.IdTipoIdentificacion)
+                    comando.Parameters.AddWithValue("?", _empresa.Identificacion)
+                    comando.Parameters.AddWithValue("?", _empresa.Nombre)
+                    comando.Parameters.AddWithValue("?", _empresa.Direccion)
+                    comando.Parameters.AddWithValue("?", _empresa.Ciudad)
+                    comando.Parameters.AddWithValue("?", _empresa.Telefono)
+                    comando.Parameters.AddWithValue("?", _empresa.Celular)
+                    comando.Parameters.AddWithValue("?", _empresa.Fax)
+                    comando.Parameters.AddWithValue("?", _empresa.Email)
+                    comando.Parameters.AddWithValue("?", _empresa.PaginaWeb)
+                    comando.Parameters.AddWithValue("?", Imag)
+                    comando.Parameters.AddWithValue("?", _empresa.Estado)
                     comando.ExecuteNonQuery()
                     ConexionODBC.Close(_conn)
+
+                    Try
+                        query = "UPDATE empresa SET codigo_prestador = ? WHERE id_licencia = ?"
+                        _conn = ConexionODBC.Open()
+                        comando = New OdbcCommand(query, _conn)
+                        comando.Parameters.AddWithValue("?", _empresa.CodigoPrestador)
+                        comando.Parameters.AddWithValue("?", _empresa.IdLicencia)
+                        comando.ExecuteNonQuery()
+                        ConexionODBC.Close(_conn)
+                    Catch
+                        ' Columna codigo_prestador no existe todavía en esta instalación: se ignora.
+                    End Try
                 End If
 
             Catch ex As Exception
