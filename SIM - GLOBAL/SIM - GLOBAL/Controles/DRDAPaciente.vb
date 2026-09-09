@@ -48,7 +48,6 @@ Namespace Controles
         Public Shared Async Function EnviarRDAPacienteAsync(idOrden As Integer, idUsuario As Integer, idEspecialista As Integer, Optional onProgreso As Action(Of String) = Nothing) As Task(Of Boolean)
             Dim configId As Integer = 1
             Try
-                onProgreso?.Invoke("Cargando configuración de interoperabilidad...")
                 ' 1. Configuración de interoperabilidad
                 Dim _DRda As New DRDA
                 Dim config As ConfigInteropApi = _DRda.Cargar()
@@ -60,7 +59,7 @@ Namespace Controles
                 configId = If(config.Id > 0, config.Id, 1)
 
                 ' 2. Datos del paciente
-                onProgreso?.Invoke("Cargando datos del paciente...")
+                onProgreso?.Invoke("Validando paciente...")
                 Dim paciente As Usuarios = DUsuarios.Cargar(idUsuario.ToString())
                 If paciente Is Nothing Then
                     RegistrarIntento(idOrden, False, $"No se encontró el paciente id_usuario={idUsuario}.")
@@ -69,10 +68,10 @@ Namespace Controles
                 End If
 
                 ' 3. Datos del especialista (Practitioner) - opcional, si no existe se envía solo con Organization como autor
+                onProgreso?.Invoke("Validando especialista...")
                 Dim especialista As Especialista = CargarEspecialista(idEspecialista)
 
                 ' 4. Token vigente (cacheado o nuevo) - se necesita ya para la consulta al MPI
-                onProgreso?.Invoke("Obteniendo token de MinSalud...")
                 Dim dRDA As New DRDA
                 Dim token As String = Await dRDA.TraerToken(configId)
                 If String.IsNullOrWhiteSpace(token) Then
@@ -86,16 +85,13 @@ Namespace Controles
                 ' No se aborta el envío si esta consulta falla (el MPI puede estar temporalmente
                 ' no disponible); se deja constancia en rda_envios para poder revisarlo después,
                 ' y se intenta el envío igual, ya que el propio $enviar-rda-paciente es la
-                ' validación definitiva.
-                onProgreso?.Invoke("Consultando MPI (Índice Maestro de Pacientes)...")
+                ' validación definitiva. Sigue bajo el mensaje "Validando paciente..." para la UI.
                 Dim respuestaMpi = Await ConsultarPacienteExactoHttp(paciente, especialista, config, token)
                 If Not respuestaMpi.Exitoso Then
                     RegistrarIntento(idOrden, False, "Aviso: la consulta previa al MPI no fue exitosa (se intenta el envío igual). " & respuestaMpi.Cuerpo, respuestaMpi.CodigoHttp, "RDA-PACIENTE-MPI")
-                    onProgreso?.Invoke("⚠️ El MPI no respondió como se esperaba (se continúa igual)")
                 End If
 
                 ' 6. Antecedentes declarados por el paciente (texto libre)
-                onProgreso?.Invoke("Cargando antecedentes del paciente...")
                 Dim dAntecedentes As New DAntecedentes
                 Dim dsAntecedentes As DataSet = dAntecedentes.CargarAntecedentes(idOrden.ToString())
                 Dim antecedentesFamiliares As String = ""
@@ -105,16 +101,14 @@ Namespace Controles
                     antecedentesPersonales = dsAntecedentes.Tables(0).Rows(0)("antecedentes_personales").ToString()
                 End If
 
-                ' 7. Armar el Bundle FHIR
-                onProgreso?.Invoke("Armando el documento RDA...")
+                ' 7. Armar el Bundle FHIR + 8. Envío
+                onProgreso?.Invoke("Enviando RDA...")
                 Dim bundleJson As String = RDABundleBuilder.ConstruirBundlePaciente(
                     paciente, especialista, config, antecedentesPersonales, antecedentesFamiliares)
 
-                ' 8. Envío
-                onProgreso?.Invoke("Enviando a MinSalud...")
                 Dim resultado = Await EnviarBundleHttp(bundleJson, config, token)
                 RegistrarIntento(idOrden, resultado.Exitoso, resultado.Cuerpo, resultado.CodigoHttp)
-                onProgreso?.Invoke(If(resultado.Exitoso, "✅ RDA enviado correctamente", $"❌ MinSalud rechazó el RDA (HTTP {If(resultado.CodigoHttp.HasValue, resultado.CodigoHttp.Value.ToString(), "N/A")})"))
+                onProgreso?.Invoke(If(resultado.Exitoso, "✅ Envío exitoso", $"❌ MinSalud rechazó el RDA (HTTP {If(resultado.CodigoHttp.HasValue, resultado.CodigoHttp.Value.ToString(), "N/A")})"))
                 Return resultado.Exitoso
 
             Catch ex As Exception

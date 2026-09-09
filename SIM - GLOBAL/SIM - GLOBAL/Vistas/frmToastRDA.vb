@@ -36,7 +36,7 @@ Public Class frmToastRDA
         Dim area As System.Drawing.Rectangle = System.Windows.Forms.Screen.PrimaryScreen.WorkingArea
         Me.Location = New System.Drawing.Point(area.Right - Me.Width - 16, area.Bottom - Me.Height - 16)
 
-        timerCierre.Interval = 4000 ' 4 segundos
+        timerCierre.Interval = 3000 ' 3 segundos
     End Sub
 
     ''' <summary>Actualiza el mensaje visible. Seguro de llamar desde el hilo de UI.</summary>
