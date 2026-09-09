@@ -60,7 +60,26 @@ Namespace Controles
                 ' 3. Datos del especialista (Practitioner) - opcional, si no existe se envía solo con Organization como autor
                 Dim especialista As Especialista = CargarEspecialista(idEspecialista)
 
-                ' 4. Antecedentes declarados por el paciente (texto libre)
+                ' 4. Token vigente (cacheado o nuevo) - se necesita ya para la consulta al MPI
+                Dim dRDA As New DRDA
+                Dim token As String = Await dRDA.TraerToken(configId)
+                If String.IsNullOrWhiteSpace(token) Then
+                    RegistrarIntento(idOrden, False, "No fue posible obtener un token de MinSalud (revisar credenciales en Interoperabilidad RDA).")
+                    Return False
+                End If
+
+                ' 5. Consulta previa obligatoria al MPI (Índice Maestro de Pacientes) - ver
+                ' Guía RDA / Manual de Operaciones IHCE: "El Gestor RDA rechaza Bundles sin VIDA".
+                ' No se aborta el envío si esta consulta falla (el MPI puede estar temporalmente
+                ' no disponible); se deja constancia en rda_envios para poder revisarlo después,
+                ' y se intenta el envío igual, ya que el propio $enviar-rda-paciente es la
+                ' validación definitiva.
+                Dim respuestaMpi = Await ConsultarPacienteExactoHttp(paciente, especialista, config, token)
+                If Not respuestaMpi.Exitoso Then
+                    RegistrarIntento(idOrden, False, "Aviso: la consulta previa al MPI no fue exitosa (se intenta el envío igual). " & respuestaMpi.Cuerpo, respuestaMpi.CodigoHttp, "RDA-PACIENTE-MPI")
+                End If
+
+                ' 6. Antecedentes declarados por el paciente (texto libre)
                 Dim dAntecedentes As New DAntecedentes
                 Dim dsAntecedentes As DataSet = dAntecedentes.CargarAntecedentes(idOrden.ToString())
                 Dim antecedentesFamiliares As String = ""
@@ -70,18 +89,11 @@ Namespace Controles
                     antecedentesPersonales = dsAntecedentes.Tables(0).Rows(0)("antecedentes_personales").ToString()
                 End If
 
-                ' 5. Armar el Bundle FHIR
+                ' 7. Armar el Bundle FHIR
                 Dim bundleJson As String = RDABundleBuilder.ConstruirBundlePaciente(
                     paciente, especialista, config, antecedentesPersonales, antecedentesFamiliares)
 
-                ' 6. Token vigente (cacheado o nuevo) + 7. Envío
-                Dim dRDA As New DRDA
-                Dim token As String = Await dRDA.TraerToken(configId)
-                If String.IsNullOrWhiteSpace(token) Then
-                    RegistrarIntento(idOrden, False, "No fue posible obtener un token de MinSalud (revisar credenciales en Interoperabilidad RDA).")
-                    Return False
-                End If
-
+                ' 8. Envío
                 Dim resultado = Await EnviarBundleHttp(bundleJson, config, token)
                 RegistrarIntento(idOrden, resultado.Exitoso, resultado.Cuerpo, resultado.CodigoHttp)
                 Return resultado.Exitoso
