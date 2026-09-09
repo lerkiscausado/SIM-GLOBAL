@@ -93,9 +93,12 @@
         End Function
 
         ''' <summary>
-        ''' Detecta un parentesco básico dentro del texto (Padres, Hermanos, Abuelos) según el
-        ''' CodeSystem ParentescoAntecedente de MinSalud. Si no se reconoce ninguno, retorna
-        ''' Nothing y el llamador debe usar el código genérico "99 - Otro / No especificado".
+        ''' Detecta un parentesco básico dentro del texto según el CodeSystem oficial
+        ''' ParentescoAntecedente de MinSalud (confirmado en vulcano.ihcecol.gov.co): solo
+        ''' existen 4 valores válidos: 01=Padres, 02=Hermanos, 03=Tíos, 04=Abuelos. NO existe
+        ''' un código "Otro/No especificado" en este CodeSystem — si no se reconoce ninguno,
+        ''' retorna Nothing y el llamador debe usar "01 - Padres" como respaldo (el único valor
+        ''' razonable posible, ya que el campo es obligatorio y no hay opción "desconocido").
         ''' </summary>
         Public Function DetectarParentesco(texto As String) As (Codigo As String, Display As String)?
             Dim t = texto.ToLowerInvariant()
@@ -103,10 +106,10 @@
                 Return ("01", "Padres")
             ElseIf t.Contains("hermano") OrElse t.Contains("hermana") Then
                 Return ("02", "Hermanos")
-            ElseIf t.Contains("abuelo") OrElse t.Contains("abuela") Then
-                Return ("03", "Abuelos")
             ElseIf t.Contains("tio") OrElse t.Contains("tía") OrElse t.Contains("tia") Then
-                Return ("04", "Tíos")
+                Return ("03", "Tíos")
+            ElseIf t.Contains("abuelo") OrElse t.Contains("abuela") Then
+                Return ("04", "Abuelos")
             End If
             Return Nothing
         End Function

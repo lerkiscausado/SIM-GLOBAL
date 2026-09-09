@@ -101,18 +101,28 @@ Namespace Utilidades
             }
 
             ' ── Composition ────────────────────────────────────────────────────────
+            ' Composition.author en RDA-Paciente debe ser EXACTAMENTE el paciente (cardinalidad
+            ' 1..1, confirmado por error real: "Instance count for Composition.author is 2,
+            ' which is not within the specified cardinality of 1..1"). Ver guía oficial
+            ' vulcano.ihcecol.gov.co/RDA-paciente: "el paciente mismo puede figurar como autor".
             Dim autores As New JArray()
-            ' Composition.author en RDA-Paciente debe incluir al PACIENTE mismo (es un
-            ' autoreporte). Ver guía oficial vulcano.ihcecol.gov.co/RDA-paciente:
-            ' "Composition.author: en este caso, el paciente mismo puede figurar como autor,
-            ' modelado como un recurso Patient o, en algunos casos, RelatedPerson."
-            ' Se agrega también al profesional de salud (si existe) como coautor: FHIR permite
-            ' varios autores (Composition.author es 1..*), y esto evita el error BUNDLE-005
-            ' ("recurso sin referencias") que se produce si el Practitioner queda incluido en
-            ' el Bundle sin que nada lo referencie.
             autores.Add(New JObject From {{"reference", "#" & idPaciente}})
+
+            ' El profesional de salud (si existe) se agrega como un SEGUNDO attester (con modo
+            ' "professional", separado del attester "legal" de la Organization) en vez de
+            ' coautor: Composition.attester SÍ admite varios (0..*). Esto evita el error
+            ' BUNDLE-005 ("recurso sin referencias") sin violar la cardinalidad de author.
+            Dim attesters As New JArray From {
+                New JObject From {
+                    {"mode", "legal"},
+                    {"party", New JObject From {{"reference", "#" & idOrganizacion}}}
+                }
+            }
             If idPractitioner IsNot Nothing Then
-                autores.Add(New JObject From {{"reference", "#" & idPractitioner}})
+                attesters.Add(New JObject From {
+                    {"mode", "professional"},
+                    {"party", New JObject From {{"reference", "#" & idPractitioner}}}
+                })
             End If
 
             Dim composition As New JObject From {
@@ -133,12 +143,7 @@ Namespace Utilidades
                 {"author", autores},
                 {"title", "Resumen Digital de Atención en Salud - RDA de antecedentes manifestados por el paciente"},
                 {"confidentiality", "N"},
-                {"attester", New JArray From {
-                    New JObject From {
-                        {"mode", "legal"},
-                        {"party", New JObject From {{"reference", "#" & idOrganizacion}}}
-                    }
-                }},
+                {"attester", attesters},
                 {"custodian", New JObject From {{"reference", "#" & idOrganizacion}}},
                 {"event", New JObject From {
                     {"code", New JArray From {
@@ -203,12 +208,14 @@ Namespace Utilidades
                 ' Sin información reportada por el paciente en esta categoría: se documenta
                 ' explícitamente con emptyReason (según la guía RDA). La restricción cmp-1 del
                 ' perfil exige ADEMÁS un "text" narrativo: emptyReason por sí solo no basta.
+                ' code/display son valores FIJOS exigidos por el perfil: "nilknown"/"Nil Known"
+                ' (confirmado por error real: "Value is not exactly equal to fixed value").
                 seccion("emptyReason") = New JObject From {
                     {"coding", New JArray From {
                         New JObject From {
                             {"system", "http://terminology.hl7.org/CodeSystem/list-empty-reason"},
-                            {"code", "unavailable"},
-                            {"display", "Unavailable"}
+                            {"code", "nilknown"},
+                            {"display", "Nil Known"}
                         }
                     }}
                 }
@@ -280,8 +287,8 @@ Namespace Utilidades
                 }
             End If
             If Not String.IsNullOrWhiteSpace(paciente.Zona) Then
-                Dim codZona As String = If(paciente.Zona.Trim().ToUpperInvariant() = "R", "01", "02")
-                Dim displayZona As String = If(codZona = "01", "Rural", "Urbana")
+                Dim codZona As String = If(paciente.Zona.Trim().ToUpperInvariant() = "R", "02", "01")
+                Dim displayZona As String = If(codZona = "02", "Rural", "Urbana")
                 direccion("extension") = New JArray From {
                     New JObject From {
                         {"url", BASE_RDA & "/StructureDefinition/ExtensionResidenceZone"},
@@ -521,8 +528,12 @@ Namespace Utilidades
 
         Private Function ConstruirFamilyMemberHistory(idRecurso As String, idPaciente As String, textoLibre As String) As JObject
             Dim parentesco = RDATextParser.DetectarParentesco(textoLibre)
-            Dim codigoParentesco As String = If(parentesco.HasValue, parentesco.Value.Codigo, "99")
-            Dim displayParentesco As String = If(parentesco.HasValue, parentesco.Value.Display, "Otro / No especificado")
+            ' El CodeSystem ParentescoAntecedente solo tiene 4 valores válidos (01 Padres,
+            ' 02 Hermanos, 03 Tíos, 04 Abuelos) - NO existe un código "Otro/No especificado".
+            ' Si no se detecta el parentesco en el texto libre, "01 - Padres" se usa como
+            ' respaldo razonable (mejor esfuerzo, ver RDATextParser.DetectarParentesco).
+            Dim codigoParentesco As String = If(parentesco.HasValue, parentesco.Value.Codigo, "01")
+            Dim displayParentesco As String = If(parentesco.HasValue, parentesco.Value.Display, "Padres")
 
             Return New JObject From {
                 {"resourceType", "FamilyMemberHistory"},
