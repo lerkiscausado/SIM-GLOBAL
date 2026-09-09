@@ -129,16 +129,18 @@ Namespace Controles
                     .NitPrestador = NIT_GASTROCARIBE
                 }
 
-                ' 2. Datos fijos de prueba
+                ' 2. Datos fijos de prueba (ajustados para coincidir EXACTO con el registro oficial
+                ' que devuelve el MPI vía $consultar-paciente-exacto: nombre "LERKIS" no "Lerki",
+                ' y fecha de nacimiento 1980-08-25, no 1980-08-28 como se había puesto inicialmente)
                 Dim paciente As New Usuarios With {
                     .CodigotipoIdentificacion = "CC",
                     .Identificacion = "9146310",
-                    .PrimerNombre = "Lerki",
+                    .PrimerNombre = "Lerkis",
                     .SegundoNombre = "Eliecer",
                     .PrimerApellido = "Causado",
                     .SegundoApellido = "Espitia",
                     .Sexo = "M",
-                    .FechaNacimiento = New Date(1980, 8, 28),
+                    .FechaNacimiento = New Date(1980, 8, 25),
                     .CodigoMunicipio = "13001", ' Cartagena, Bolívar (DIVIPOLA)
                     .Zona = "U" ' Urbana
                 }
