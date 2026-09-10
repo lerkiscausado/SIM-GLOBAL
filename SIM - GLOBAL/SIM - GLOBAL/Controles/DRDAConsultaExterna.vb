@@ -69,8 +69,8 @@ Namespace Controles
                 }
 
                 ' 3. Token vigente
-                Dim dRDA As New DRDA
-                Dim token As String = Await dRDA.TraerToken(configId)
+                Dim _dRDA As New DRDA
+                Dim token As String = Await _dRDA.TraerToken(configId)
                 If String.IsNullOrWhiteSpace(token) Then
                     Return "❌ No fue posible obtener un token de MinSalud. Revisa las credenciales en 'Interoperabilidad RDA'."
                 End If
