@@ -288,6 +288,7 @@
     <Compile Include="Controles\DProductos.vb" />
     <Compile Include="Controles\DProveedores.vb" />
     <Compile Include="Controles\DRDA.vb" />
+    <Compile Include="Controles\DRDAConsultaExterna.vb" />
     <Compile Include="Controles\DRDAPaciente.vb" />
     <Compile Include="Controles\DRegistroAnestesia.vb" />
     <Compile Include="Controles\DRegistroAnestesiaMedicamentos.vb" />
@@ -921,6 +922,7 @@
     </Compile>
     <Compile Include="Utilidades\Funciones.vb" />
     <Compile Include="Utilidades\InteropAuthService.vb" />
+    <Compile Include="Utilidades\RDAConsultaExternaBuilder.vb" />
     <Compile Include="Utilidades\RDABundleBuilder.vb" />
     <Compile Include="Utilidades\RDATextParser.vb" />
     <Compile Include="Vistas\Binarios.Designer.vb">

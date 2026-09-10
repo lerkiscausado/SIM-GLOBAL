@@ -15,13 +15,17 @@ Public Class frmRDA
     ' del API de MinSalud en un MessageBox.
     Private WithEvents spEnviarRDAPrueba As DevExpress.XtraEditors.SimpleButton
 
+    ' Botón de prueba para RDA-Consulta Externa: paciente Fabián Suárez / Dra. Yovelis Martínez /
+    ' Gastrocaribe, sin código CUPS de procedimiento (limitación conocida del catálogo CUPS del sandbox).
+    Private WithEvents spEnviarRDAConsultaPrueba As DevExpress.XtraEditors.SimpleButton
+
     Private Sub AgregarCamposPrestadorReps()
         If txtCodigoPrestadorReps IsNot Nothing Then Exit Sub ' Evitar duplicar si el Load se dispara más de una vez
 
-        ' 1. Hacer espacio dentro del panel (2 campos nuevos + botón de prueba) y correr hacia
+        ' 1. Hacer espacio dentro del panel (2 campos nuevos + 2 botones de prueba) y correr hacia
         '    abajo lo que va después de él, conservando el margen original (6px) entre el panel
         '    y el estado del servicio.
-        Const desplazamiento As Integer = 170
+        Const desplazamiento As Integer = 215
         GroupControl2.Size = New Size(GroupControl2.Size.Width, GroupControl2.Size.Height + desplazamiento)
         lblEstadoServicio.Location = New Point(lblEstadoServicio.Location.X, lblEstadoServicio.Location.Y + desplazamiento)
         spConectar.Location = New Point(spConectar.Location.X, spConectar.Location.Y + desplazamiento)
@@ -55,12 +59,19 @@ Public Class frmRDA
         GroupControl2.Controls.Add(lblNitPrestador)
         GroupControl2.Controls.Add(txtNitPrestador)
 
-        ' 3. Botón "Enviar RDA de Prueba"
+        ' 3. Botón "Enviar RDA de Prueba" (RDA-Paciente)
         spEnviarRDAPrueba = New DevExpress.XtraEditors.SimpleButton()
         spEnviarRDAPrueba.Text = "Enviar RDA de Prueba (Lerki Causado)"
         spEnviarRDAPrueba.Location = New Point(106, 270)
         spEnviarRDAPrueba.Size = New Size(300, 30)
         GroupControl2.Controls.Add(spEnviarRDAPrueba)
+
+        ' 4. Botón "Enviar RDA Consulta Externa de Prueba"
+        spEnviarRDAConsultaPrueba = New DevExpress.XtraEditors.SimpleButton()
+        spEnviarRDAConsultaPrueba.Text = "Enviar RDA Consulta Externa de Prueba (Fabián Suárez)"
+        spEnviarRDAConsultaPrueba.Location = New Point(106, 310)
+        spEnviarRDAConsultaPrueba.Size = New Size(395, 30)
+        GroupControl2.Controls.Add(spEnviarRDAConsultaPrueba)
     End Sub
 
     Private Async Sub spEnviarRDAPrueba_Click(sender As Object, e As EventArgs) Handles spEnviarRDAPrueba.Click
@@ -73,6 +84,19 @@ Public Class frmRDA
         Finally
             Cursor = Cursors.Default
             spEnviarRDAPrueba.Enabled = True
+        End Try
+    End Sub
+
+    Private Async Sub spEnviarRDAConsultaPrueba_Click(sender As Object, e As EventArgs) Handles spEnviarRDAConsultaPrueba.Click
+        spEnviarRDAConsultaPrueba.Enabled = False
+        Cursor = Cursors.WaitCursor
+        Try
+            Dim resultado As String = Await DRDAConsultaExterna.EnviarRDAConsultaPruebaAsync()
+            MessageBox.Show(resultado, "Resultado envío RDA Consulta Externa de Prueba", MessageBoxButtons.OK,
+                             If(resultado.StartsWith("✅"), MessageBoxIcon.Information, MessageBoxIcon.Error))
+        Finally
+            Cursor = Cursors.Default
+            spEnviarRDAConsultaPrueba.Enabled = True
         End Try
     End Sub
 
