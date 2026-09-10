@@ -8,6 +8,11 @@
 Public Class frmToastRDA
     Inherits System.Windows.Forms.Form
 
+    ' Lleva la cuenta de cuántas notificaciones están abiertas a la vez, para apilarlas
+    ' verticalmente en vez de que se encimen unas sobre otras (ej. RDA-Paciente y
+    ' RDA-Consulta Externa se envían juntos al firmar la historia).
+    Private Shared _toastsAbiertos As New List(Of frmToastRDA)
+
     Private WithEvents lblTitulo As New DevExpress.XtraEditors.LabelControl()
     Private WithEvents lblEstado As New DevExpress.XtraEditors.LabelControl()
     Private WithEvents timerCierre As New System.Windows.Forms.Timer()
@@ -34,7 +39,9 @@ Public Class frmToastRDA
         Me.Controls.Add(lblEstado)
 
         Dim area As System.Drawing.Rectangle = System.Windows.Forms.Screen.PrimaryScreen.WorkingArea
-        Me.Location = New System.Drawing.Point(area.Right - Me.Width - 16, area.Bottom - Me.Height - 16)
+        Dim desplazamientoVertical As Integer = _toastsAbiertos.Count * (Me.Height + 8)
+        Me.Location = New System.Drawing.Point(area.Right - Me.Width - 16, area.Bottom - Me.Height - 16 - desplazamientoVertical)
+        _toastsAbiertos.Add(Me)
 
         timerCierre.Interval = 3000 ' 3 segundos
     End Sub
@@ -57,5 +64,10 @@ Public Class frmToastRDA
     Private Sub timerCierre_Tick(sender As Object, e As EventArgs) Handles timerCierre.Tick
         timerCierre.Stop()
         Me.Close()
+    End Sub
+
+    Protected Overrides Sub OnFormClosed(e As FormClosedEventArgs)
+        _toastsAbiertos.Remove(Me)
+        MyBase.OnFormClosed(e)
     End Sub
 End Class

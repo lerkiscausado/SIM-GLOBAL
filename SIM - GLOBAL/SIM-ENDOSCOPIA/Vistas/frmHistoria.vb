@@ -969,10 +969,19 @@ Public Class frmHistoria
                             Dim idEspecialistaRDA As Integer = Val(IdEmpleado)
 
                             If idOrdenRDA > 0 AndAlso idUsuarioRDA > 0 Then
-                                Dim toast As New SIM___GLOBAL.frmToastRDA()
-                                toast.Show()
+                                Dim toastPaciente As New SIM___GLOBAL.frmToastRDA()
+                                toastPaciente.Show()
                                 SIM___GLOBAL.Controles.DRDAPaciente.EnviarEnSegundoPlano(idOrdenRDA, idUsuarioRDA, idEspecialistaRDA,
-                                    Sub(mensaje) toast.ActualizarEstado(mensaje))
+                                    Sub(mensaje) toastPaciente.ActualizarEstado(mensaje))
+
+                                ' RDA-Consulta Externa: documento distinto y complementario al de
+                                ' arriba (ver análisis: RDA-Paciente = lo que el paciente declara de
+                                ' sí mismo; RDA-Consulta Externa = lo que pasó clínicamente en este
+                                ' encuentro). Se envía también al firmar, con su propia notificación.
+                                Dim toastConsulta As New SIM___GLOBAL.frmToastRDA()
+                                toastConsulta.Show()
+                                SIM___GLOBAL.Controles.DRDAConsultaExterna.EnviarEnSegundoPlano(idOrdenRDA, idUsuarioRDA, idEspecialistaRDA,
+                                    Sub(mensaje) toastConsulta.ActualizarEstado(mensaje))
                             End If
                         Catch
                             ' El envío RDA es complementario a la firma de la historia: cualquier

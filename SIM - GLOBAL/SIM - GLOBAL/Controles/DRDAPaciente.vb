@@ -298,7 +298,7 @@ Namespace Controles
         End Function
 
         ' ── Carga liviana del especialista (Practitioner) por id ──────────────────
-        Private Shared Function CargarEspecialista(idEspecialista As Integer) As Especialista
+        Public Shared Function CargarEspecialista(idEspecialista As Integer) As Especialista
             If idEspecialista <= 0 Then Return Nothing
             Try
                 Dim query As String = "SELECT id_tipo_identificacion, identificacion, nombre, especialidad, registro_medico, " &
@@ -362,7 +362,7 @@ Namespace Controles
             Return tabla
         End Function
 
-        Private Shared Sub RegistrarIntento(idOrden As Integer, exitoso As Boolean, detalle As String, Optional codigoHttp As Integer? = Nothing, Optional tipoDocumento As String = "RDA-PACIENTE")
+        Public Shared Sub RegistrarIntento(idOrden As Integer, exitoso As Boolean, detalle As String, Optional codigoHttp As Integer? = Nothing, Optional tipoDocumento As String = "RDA-PACIENTE")
             Try
                 Dim query As String = "INSERT INTO rda_envios (id_orden, tipo_documento, exitoso, codigo_http, detalle, fecha_envio) " &
                                        "VALUES (?, ?, ?, ?, ?, NOW())"
