@@ -10,6 +10,18 @@ Public Class frmHistorialRDA
 
     Private WithEvents grilla As New System.Windows.Forms.DataGridView()
     Private WithEvents btnActualizar As New DevExpress.XtraEditors.SimpleButton()
+    Friend WithEvents GCConsultar As DevExpress.XtraGrid.GridControl
+    Friend WithEvents GVConsultar As DevExpress.XtraGrid.Views.Grid.GridView
+    Friend WithEvents colTI As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colIDENTIFICACION As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colNOMBRE As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colSEXO As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colTELEFONO As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colCorreoElectronico As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridControl1 As DevExpress.XtraGrid.GridControl
+    Friend WithEvents GridView1 As DevExpress.XtraGrid.Views.Grid.GridView
+    Friend WithEvents GCCosultarRDA As DevExpress.XtraGrid.GridControl
+    Friend WithEvents GVConsultarRDA As DevExpress.XtraGrid.Views.Grid.GridView
     Private lblResumen As New DevExpress.XtraEditors.LabelControl()
 
     Public Sub New()
@@ -25,14 +37,7 @@ Public Class frmHistorialRDA
         lblResumen.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None
         lblResumen.Size = New System.Drawing.Size(400, 16)
 
-        grilla.Location = New System.Drawing.Point(12, 48)
-        grilla.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
-        grilla.Size = New System.Drawing.Size(Me.ClientSize.Width - 24, Me.ClientSize.Height - 60)
-        grilla.ReadOnly = True
-        grilla.AllowUserToAddRows = False
-        grilla.AllowUserToDeleteRows = False
-        grilla.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
-        grilla.SelectionMode = DataGridViewSelectionMode.FullRowSelect
+
 
         Me.Controls.Add(btnActualizar)
         Me.Controls.Add(lblResumen)
@@ -82,5 +87,38 @@ Public Class frmHistorialRDA
             Next
             lblResumen.Text = $"{total} envíos mostrados · {exitosos} exitosos · {total - exitosos} con error/aviso"
         End If
+    End Sub
+
+    Private Sub InitializeComponent()
+        Me.GCCosultarRDA = New DevExpress.XtraGrid.GridControl()
+        Me.GVConsultarRDA = New DevExpress.XtraGrid.Views.Grid.GridView()
+        CType(Me.GCCosultarRDA, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.GVConsultarRDA, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.SuspendLayout()
+        '
+        'GCCosultarRDA
+        '
+        Me.GCCosultarRDA.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.GCCosultarRDA.Location = New System.Drawing.Point(0, 0)
+        Me.GCCosultarRDA.MainView = Me.GVConsultarRDA
+        Me.GCCosultarRDA.Name = "GCCosultarRDA"
+        Me.GCCosultarRDA.Size = New System.Drawing.Size(931, 395)
+        Me.GCCosultarRDA.TabIndex = 0
+        Me.GCCosultarRDA.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GVConsultarRDA})
+        '
+        'GVConsultarRDA
+        '
+        Me.GVConsultarRDA.GridControl = Me.GCCosultarRDA
+        Me.GVConsultarRDA.Name = "GVConsultarRDA"
+        '
+        'frmHistorialRDA
+        '
+        Me.ClientSize = New System.Drawing.Size(931, 395)
+        Me.Controls.Add(Me.GCCosultarRDA)
+        Me.Name = "frmHistorialRDA"
+        CType(Me.GCCosultarRDA, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GVConsultarRDA, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.ResumeLayout(False)
+
     End Sub
 End Class

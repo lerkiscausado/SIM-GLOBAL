@@ -979,6 +979,12 @@
     <Compile Include="Vistas\frmCapturaImagenes.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Vistas\frmCargadosRDA.Designer.vb">
+      <DependentUpon>frmCargadosRDA.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\frmCargadosRDA.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Vistas\frmCargos.Designer.vb">
       <DependentUpon>frmCargos.vb</DependentUpon>
     </Compile>
@@ -1366,8 +1372,12 @@
     <Compile Include="Vistas\frmRDA.Designer.vb">
       <DependentUpon>frmRDA.vb</DependentUpon>
     </Compile>
-    <Compile Include="Vistas\frmHistorialRDA.vb" />
-    <Compile Include="Vistas\frmToastRDA.vb" />
+    <Compile Include="Vistas\frmHistorialRDA.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\frmToastRDA.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Vistas\frmRDA.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -1807,6 +1817,9 @@
     <EmbeddedResource Include="Vistas\frmCapturaImagenes.resx">
       <DependentUpon>frmCapturaImagenes.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\frmCargadosRDA.resx">
+      <DependentUpon>frmCargadosRDA.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Vistas\frmCargos.resx">
       <DependentUpon>frmCargos.vb</DependentUpon>
     </EmbeddedResource>
@@ -1887,6 +1900,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Vistas\frmAnestesia.resx">
       <DependentUpon>frmAnestesia.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\frmHistorialRDA.resx">
+      <DependentUpon>frmHistorialRDA.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vistas\frmHistoriasAnteriores.resx">
       <DependentUpon>frmHistoriasAnteriores.vb</DependentUpon>
