@@ -10,15 +10,6 @@ Public Class frmHistorialRDA
 
     Private WithEvents grilla As New System.Windows.Forms.DataGridView()
     Private WithEvents btnActualizar As New DevExpress.XtraEditors.SimpleButton()
-
-    Friend WithEvents colTI As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents colIDENTIFICACION As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents colNOMBRE As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents colSEXO As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents colTELEFONO As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents colCorreoElectronico As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents GCCosultarRDA As DevExpress.XtraGrid.GridControl
-    Friend WithEvents GVConsultarRDA As DevExpress.XtraGrid.Views.Grid.GridView
     Private lblResumen As New DevExpress.XtraEditors.LabelControl()
 
     Public Sub New()
@@ -34,7 +25,16 @@ Public Class frmHistorialRDA
         lblResumen.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None
         lblResumen.Size = New System.Drawing.Size(400, 16)
 
-
+        ' IMPORTANTE: sin este bloque la grilla queda con tamaño 0 (invisible) - se había
+        ' borrado por accidente al abrir el formulario en el diseñador de Visual Studio.
+        grilla.Location = New System.Drawing.Point(12, 48)
+        grilla.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
+        grilla.Size = New System.Drawing.Size(Me.ClientSize.Width - 24, Me.ClientSize.Height - 60)
+        grilla.ReadOnly = True
+        grilla.AllowUserToAddRows = False
+        grilla.AllowUserToDeleteRows = False
+        grilla.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
+        grilla.SelectionMode = DataGridViewSelectionMode.FullRowSelect
 
         Me.Controls.Add(btnActualizar)
         Me.Controls.Add(lblResumen)
@@ -71,6 +71,10 @@ Public Class frmHistorialRDA
         End If
         If tabla.Columns.Contains("codigo_http") Then grilla.Columns("codigo_http").HeaderText = "HTTP"
         If tabla.Columns.Contains("id_orden") Then grilla.Columns("id_orden").HeaderText = "Orden"
+        If tabla.Columns.Contains("composition_id") Then
+            grilla.Columns("composition_id").HeaderText = "Id Composition (MinSalud)"
+            grilla.Columns("composition_id").DisplayIndex = grilla.Columns("id_orden").DisplayIndex + 1
+        End If
         If tabla.Columns.Contains("paciente") Then grilla.Columns("paciente").HeaderText = "Paciente"
         If tabla.Columns.Contains("detalle") Then grilla.Columns("detalle").HeaderText = "Detalle / Respuesta"
 
@@ -84,30 +88,5 @@ Public Class frmHistorialRDA
             Next
             lblResumen.Text = $"{total} envíos mostrados · {exitosos} exitosos · {total - exitosos} con error/aviso"
         End If
-    End Sub
-
-    Private Sub InitializeComponent()
-        Me.GCCosultarRDA = New DevExpress.XtraGrid.GridControl()
-        Me.GVConsultarRDA = New DevExpress.XtraGrid.Views.Grid.GridView()
-        CType(Me.GCCosultarRDA, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GVConsultarRDA, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.SuspendLayout()
-        '
-        'GCCosultarRDA
-        '
-
-        '
-        'GVConsultarRDA
-
-        '
-        'frmHistorialRDA
-        '
-
-        Me.Controls.Add(Me.GCCosultarRDA)
-        Me.Name = "frmHistorialRDA"
-        CType(Me.GCCosultarRDA, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GVConsultarRDA, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.ResumeLayout(False)
-
     End Sub
 End Class

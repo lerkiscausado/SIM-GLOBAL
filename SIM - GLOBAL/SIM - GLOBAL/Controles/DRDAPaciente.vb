@@ -340,23 +340,45 @@ Namespace Controles
         Public Shared Function ListarEnvios(Optional maximoRegistros As Integer = 300) As DataTable
             Dim tabla As New DataTable()
             Try
-                Dim query As String = "SELECT r.fecha_envio, r.tipo_documento, r.exitoso, r.codigo_http, r.id_orden, " &
+                ' Se intenta primero CON composition_id; si la migración
+                ' Sql/rda_envios_composition_id.sql aún no se ha corrido en esta base, se cae
+                ' de vuelta a la consulta sin esa columna en vez de fallar por completo.
+                Dim query As String = "SELECT r.fecha_envio, r.tipo_documento, r.exitoso, r.codigo_http, r.id_orden, r.composition_id, " &
                     "CONCAT_WS(' ', u.primer_nombre, u.primer_apellido) AS paciente, r.detalle " &
                     "FROM rda_envios r " &
                     "LEFT JOIN ordenes o ON o.id = r.id_orden " &
                     "LEFT JOIN usuarios u ON u.id = o.id_usuario " &
                     "ORDER BY r.fecha_envio DESC " &
                     "LIMIT " & maximoRegistros
-                Using conn As OdbcConnection = ConexionODBC.Open()
-                    Using comando As New OdbcCommand(query, conn)
-                        Using adaptador As New OdbcDataAdapter(comando)
-                            adaptador.Fill(tabla)
+                Try
+                    Using conn As OdbcConnection = ConexionODBC.Open()
+                        Using comando As New OdbcCommand(query, conn)
+                            Using adaptador As New OdbcDataAdapter(comando)
+                                adaptador.Fill(tabla)
+                            End Using
                         End Using
                     End Using
-                End Using
+                Catch
+                    tabla.Clear()
+                    tabla.Columns.Clear()
+                    Dim querySinCompositionId As String = "SELECT r.fecha_envio, r.tipo_documento, r.exitoso, r.codigo_http, r.id_orden, " &
+                        "CONCAT_WS(' ', u.primer_nombre, u.primer_apellido) AS paciente, r.detalle " &
+                        "FROM rda_envios r " &
+                        "LEFT JOIN ordenes o ON o.id = r.id_orden " &
+                        "LEFT JOIN usuarios u ON u.id = o.id_usuario " &
+                        "ORDER BY r.fecha_envio DESC " &
+                        "LIMIT " & maximoRegistros
+                    Using conn As OdbcConnection = ConexionODBC.Open()
+                        Using comando As New OdbcCommand(querySinCompositionId, conn)
+                            Using adaptador As New OdbcDataAdapter(comando)
+                                adaptador.Fill(tabla)
+                            End Using
+                        End Using
+                    End Using
+                End Try
             Catch ex As Exception
-                ' Si la tabla/columnas no existen aún (migración no corrida) o falla la consulta,
-                ' se retorna una tabla vacía en vez de lanzar la excepción hacia la pantalla.
+                ' Si la tabla no existe aún (migración base no corrida) o falla la consulta por
+                ' completo, se retorna una tabla vacía en vez de lanzar la excepción a la pantalla.
                 If Not tabla.Columns.Contains("Error") Then tabla.Columns.Add("Error", GetType(String))
             End Try
             Return tabla
@@ -366,6 +388,7 @@ Namespace Controles
             Try
                 Dim query As String = "INSERT INTO rda_envios (id_orden, tipo_documento, exitoso, codigo_http, detalle, fecha_envio) " &
                                        "VALUES (?, ?, ?, ?, ?, NOW())"
+                Dim idInsertado As Long = 0
                 Using conn As OdbcConnection = ConexionODBC.Open()
                     Using comando As New OdbcCommand(query, conn)
                         comando.Parameters.AddWithValue("?", idOrden)
@@ -376,11 +399,65 @@ Namespace Controles
                         comando.Parameters.AddWithValue("?", If(detalle IsNot Nothing AndAlso detalle.Length > 4000, detalle.Substring(0, 4000), detalle))
                         comando.ExecuteNonQuery()
                     End Using
+
+                    ' Id autogenerado de la fila que se acaba de insertar (para el UPDATE de abajo).
+                    Try
+                        Using comandoId As New OdbcCommand("SELECT LAST_INSERT_ID()", conn)
+                            idInsertado = Convert.ToInt64(comandoId.ExecuteScalar())
+                        End Using
+                    Catch
+                    End Try
                 End Using
+
+                ' Si el envío fue exitoso, MinSalud devuelve el Bundle con el recurso Composition
+                ' ya creado (con su id asignado por el servidor). Se extrae y se guarda aparte
+                ' (columna composition_id) para poder consultarlo después vía
+                ' GET /Composition/{id}/$document sin tener que parsear el JSON completo cada vez.
+                If exitoso AndAlso idInsertado > 0 Then
+                    Dim compositionId As String = ExtraerCompositionId(detalle)
+                    If Not String.IsNullOrWhiteSpace(compositionId) Then
+                        Try
+                            Dim queryUpdate As String = "UPDATE rda_envios SET composition_id = ? WHERE id = ?"
+                            Using conn As OdbcConnection = ConexionODBC.Open()
+                                Using comando As New OdbcCommand(queryUpdate, conn)
+                                    comando.Parameters.AddWithValue("?", compositionId)
+                                    comando.Parameters.AddWithValue("?", idInsertado)
+                                    comando.ExecuteNonQuery()
+                                End Using
+                            End Using
+                        Catch
+                            ' Columna composition_id aún no existe en esta base (falta correr
+                            ' Sql/rda_envios_composition_id.sql): se ignora, no bloquea el envío.
+                        End Try
+                    End If
+                End If
             Catch
                 ' La tabla de auditoría es complementaria; su ausencia no debe romper el envío del RDA.
             End Try
         End Sub
+
+        ''' <summary>
+        ''' Busca dentro de la respuesta JSON de MinSalud (Bundle tipo transaction-response) el
+        ''' recurso Composition y devuelve su "id" asignado por el servidor. Devuelve cadena
+        ''' vacía si no se encuentra o si el JSON no se puede interpretar.
+        ''' </summary>
+        Private Shared Function ExtraerCompositionId(respuestaJson As String) As String
+            Try
+                If String.IsNullOrWhiteSpace(respuestaJson) Then Return ""
+                Dim bundle = Newtonsoft.Json.Linq.JObject.Parse(respuestaJson)
+                Dim entradas = TryCast(bundle("entry"), Newtonsoft.Json.Linq.JArray)
+                If entradas Is Nothing Then Return ""
+                For Each entrada In entradas
+                    Dim recurso = entrada("resource")
+                    If recurso IsNot Nothing AndAlso recurso("resourceType")?.ToString() = "Composition" Then
+                        Return If(recurso("id")?.ToString(), "")
+                    End If
+                Next
+            Catch
+                ' Respuesta no era JSON válido (ej. HTML de error, timeout, etc.): se ignora.
+            End Try
+            Return ""
+        End Function
 
     End Class
 
