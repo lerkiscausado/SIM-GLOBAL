@@ -30,12 +30,12 @@ Public Class frmToastRDA
         lblTitulo.Font = New System.Drawing.Font(lblTitulo.Font, System.Drawing.FontStyle.Bold)
 
         lblEstado.Text = "Iniciando..."
-        lblEstado.Location = New System.Drawing.Point(12, 34)
+        lblEstado.Location = New System.Drawing.Point(12, 10)
         lblEstado.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None
         lblEstado.Size = New System.Drawing.Size(310, 40)
         lblEstado.Appearance.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap
 
-        Me.Controls.Add(lblTitulo)
+        'Me.Controls.Add(lblTitulo)
         Me.Controls.Add(lblEstado)
 
         Dim area As System.Drawing.Rectangle = System.Windows.Forms.Screen.PrimaryScreen.WorkingArea
