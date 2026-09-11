@@ -10,16 +10,13 @@ Public Class frmHistorialRDA
 
     Private WithEvents grilla As New System.Windows.Forms.DataGridView()
     Private WithEvents btnActualizar As New DevExpress.XtraEditors.SimpleButton()
-    Friend WithEvents GCConsultar As DevExpress.XtraGrid.GridControl
-    Friend WithEvents GVConsultar As DevExpress.XtraGrid.Views.Grid.GridView
+
     Friend WithEvents colTI As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colIDENTIFICACION As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colNOMBRE As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colSEXO As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colTELEFONO As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colCorreoElectronico As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents GridControl1 As DevExpress.XtraGrid.GridControl
-    Friend WithEvents GridView1 As DevExpress.XtraGrid.Views.Grid.GridView
     Friend WithEvents GCCosultarRDA As DevExpress.XtraGrid.GridControl
     Friend WithEvents GVConsultarRDA As DevExpress.XtraGrid.Views.Grid.GridView
     Private lblResumen As New DevExpress.XtraEditors.LabelControl()
@@ -98,22 +95,14 @@ Public Class frmHistorialRDA
         '
         'GCCosultarRDA
         '
-        Me.GCCosultarRDA.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.GCCosultarRDA.Location = New System.Drawing.Point(0, 0)
-        Me.GCCosultarRDA.MainView = Me.GVConsultarRDA
-        Me.GCCosultarRDA.Name = "GCCosultarRDA"
-        Me.GCCosultarRDA.Size = New System.Drawing.Size(931, 395)
-        Me.GCCosultarRDA.TabIndex = 0
-        Me.GCCosultarRDA.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GVConsultarRDA})
+
         '
         'GVConsultarRDA
-        '
-        Me.GVConsultarRDA.GridControl = Me.GCCosultarRDA
-        Me.GVConsultarRDA.Name = "GVConsultarRDA"
+
         '
         'frmHistorialRDA
         '
-        Me.ClientSize = New System.Drawing.Size(931, 395)
+
         Me.Controls.Add(Me.GCCosultarRDA)
         Me.Name = "frmHistorialRDA"
         CType(Me.GCCosultarRDA, System.ComponentModel.ISupportInitialize).EndInit()
