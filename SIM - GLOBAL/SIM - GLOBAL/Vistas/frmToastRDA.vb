@@ -71,7 +71,7 @@ Public Class frmToastRDA
 
     Private Sub timerCierre_Tick(sender As Object, e As EventArgs) Handles timerCierre.Tick
         timerCierre.Stop()
-        Me.Close()
+        If Not Me.IsDisposed Then Me.Close()
     End Sub
 
     Protected Overrides Sub OnFormClosed(e As FormClosedEventArgs)

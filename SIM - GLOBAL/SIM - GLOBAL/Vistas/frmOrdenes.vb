@@ -287,6 +287,11 @@ Public Class frmOrdenes
             bbiGuardar.Enabled = False
 
             toastGuardado.ActualizarEstado("✅ Guardado")
+            ' Se cierra de inmediato (sin esperar el temporizador de 3 segundos): este método
+            ' es seguido poco después por un diálogo modal (frmMensaje.ShowDialog() con el
+            ' número de la orden generada) - si el temporizador de la notificación sigue
+            ' pendiente cuando se abre ese diálogo modal, puede interferir visualmente con él.
+            toastGuardado.Close()
 
         Catch ex As Exception
             MessageBox.Show(ex.Message & " Guardar Ordenes")
