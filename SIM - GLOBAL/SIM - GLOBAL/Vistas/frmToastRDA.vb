@@ -13,17 +13,22 @@ Public Class frmToastRDA
     ' RDA-Consulta Externa se envían juntos al firmar la historia).
     Private Shared _toastsAbiertos As New List(Of frmToastRDA)
 
-    Private WithEvents lblTitulo As New DevExpress.XtraEditors.LabelControl()
+    ' Un solo label maneja todo el mensaje (título del documento + estado juntos), en vez de
+    ' 2 labels separados - más simple.
     Private WithEvents lblEstado As New DevExpress.XtraEditors.LabelControl()
     Private WithEvents timerCierre As New System.Windows.Forms.Timer()
 
-    ''' <param name="tituloDocumento">
+    ''' <summary>
     ''' Nombre del documento que identifica esta notificación (ej. "RDA-Paciente",
-    ''' "RDA-Consulta Externa"). Se muestra en negrita arriba del mensaje de estado, para
-    ''' distinguir cuál ventanita es cuál cuando se disparan varias juntas (como pasa al
-    ''' firmar la historia, que envía RDA-Paciente y RDA-Consulta Externa a la vez).
-    ''' </param>
+    ''' "RDA-Consulta Externa"). Se antepone a cada mensaje de estado, para distinguir cuál
+    ''' ventanita es cuál cuando se disparan varias juntas (como pasa al firmar la historia,
+    ''' que envía RDA-Paciente y RDA-Consulta Externa a la vez).
+    ''' </summary>
+    Private ReadOnly _tituloDocumento As String
+
     Public Sub New(Optional tituloDocumento As String = "Interoperabilidad RDA")
+        _tituloDocumento = tituloDocumento
+
         Me.FormBorderStyle = FormBorderStyle.FixedToolWindow
         Me.ShowInTaskbar = False
         Me.TopMost = True
@@ -31,17 +36,12 @@ Public Class frmToastRDA
         Me.Size = New System.Drawing.Size(340, 90)
         Me.Text = tituloDocumento
 
-        lblTitulo.Text = tituloDocumento
-        lblTitulo.Location = New System.Drawing.Point(12, 10)
-        lblTitulo.Font = New System.Drawing.Font(lblTitulo.Font, System.Drawing.FontStyle.Bold)
-
-        lblEstado.Text = "Iniciando..."
-        lblEstado.Location = New System.Drawing.Point(12, 32)
+        lblEstado.Text = $"{_tituloDocumento}: Iniciando..."
+        lblEstado.Location = New System.Drawing.Point(12, 10)
         lblEstado.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None
-        lblEstado.Size = New System.Drawing.Size(310, 40)
+        lblEstado.Size = New System.Drawing.Size(310, 62)
         lblEstado.Appearance.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap
 
-        Me.Controls.Add(lblTitulo)
         Me.Controls.Add(lblEstado)
 
         Dim area As System.Drawing.Rectangle = System.Windows.Forms.Screen.PrimaryScreen.WorkingArea
@@ -55,7 +55,7 @@ Public Class frmToastRDA
     ''' <summary>Actualiza el mensaje visible. Seguro de llamar desde el hilo de UI.</summary>
     Public Sub ActualizarEstado(mensaje As String)
         If Me.IsDisposed Then Exit Sub
-        lblEstado.Text = mensaje
+        lblEstado.Text = $"{_tituloDocumento}: {mensaje}"
         lblEstado.Refresh() ' Fuerza el repintado inmediato (evita que el cierre por timer
                              ' "adelante" al repintado del mensaje final en pantallas lentas)
         Me.Refresh()
