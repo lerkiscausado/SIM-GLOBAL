@@ -676,6 +676,10 @@ Public Class frmHistoria
     End Sub
     Private Sub NuevaHistoria()
 
+        Dim toastCarga As New SIM___GLOBAL.frmToastRDA("Historia Clínica")
+        toastCarga.Show()
+        toastCarga.ActualizarEstado("Cargando historia...")
+
         lblHistoriaClinica.Text = "Historia Clinica" & " - " & _ClickTipoEstudio
         'llenamos los combos
         'LlenarCombos()
@@ -807,6 +811,8 @@ Public Class frmHistoria
 
         'desactivamos el boton GUARDAR
         bbiGuardar.Enabled = False
+
+        toastCarga.ActualizarEstado("✅ Cargado")
     End Sub
     Private Sub GuardarHistoria()
         '_HistoriaClinica.Id = Val(lblConsecutivo.Text)
@@ -943,12 +949,18 @@ Public Class frmHistoria
                 MessageBox.Show("Diagnostico CIE10 es obligatorio", "Registro de Historia", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Else
                 If MessageBox.Show("Desea Firmar la Historia?, Si continua no se podran hacer cambios en la historia. ¿Desea Continuar?", "Firmar Historia", MessageBoxButtons.OKCancel, MessageBoxIcon.Information) = DialogResult.OK Then
+                    Dim toastGuardado As New SIM___GLOBAL.frmToastRDA("Historia Clínica")
+                    toastGuardado.Show()
+                    toastGuardado.ActualizarEstado("Guardando historia...")
+
                     GuardarHistoria()
 
                     '*********************** Guardar Antecedentes ****************************
                     If xtpAntecedentes.PageVisible = True Then
                         GuardarAntecedentes()
                     End If
+
+                    toastGuardado.ActualizarEstado("✅ Guardado")
 
                     If _DhistoriaClinica.existe(lblConsecutivoOrden.Text) = True Then
                         'Actualizar estado de detalle orden
