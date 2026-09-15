@@ -37,10 +37,11 @@ Public Class frmToastRDA
         Me.Text = tituloDocumento
 
         lblEstado.Text = $"{_tituloDocumento}: Iniciando..."
-        lblEstado.Location = New System.Drawing.Point(12, 10)
+        lblEstado.Location = New System.Drawing.Point(12, 6)
         lblEstado.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None
-        lblEstado.Size = New System.Drawing.Size(310, 62)
+        lblEstado.Size = New System.Drawing.Size(310, 78)
         lblEstado.Appearance.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap
+        lblEstado.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center
 
         Me.Controls.Add(lblEstado)
 
