@@ -231,6 +231,10 @@ Public Class frmOrdenes
     End Sub
     Private Sub GuardarOrdenes()
         Try
+            Dim toastGuardado As New SIM___GLOBAL.frmToastRDA("Órdenes")
+            toastGuardado.Show()
+            toastGuardado.ActualizarEstado("Guardando orden...")
+
             _Ordenes.Id = Val(txtConsecutivo.Text)
             _Ordenes.IdUsuario = _IdUsuario
             _Ordenes.IdContrato = cboContrato.GetColumnValue("ID")
@@ -281,6 +285,8 @@ Public Class frmOrdenes
             _Ordenes.Saldo = colDOCopago.SummaryItem.SummaryValue
             _DOrdenes.Guardar(_Ordenes)
             bbiGuardar.Enabled = False
+
+            toastGuardado.ActualizarEstado("✅ Guardado")
 
         Catch ex As Exception
             MessageBox.Show(ex.Message & " Guardar Ordenes")
@@ -1077,6 +1083,11 @@ Public Class frmOrdenes
         _frmOpen.Licencia = Licencia
         _frmOpen.IdEmpleado = IDEmpleado
         _frmOpen.ShowDialog()
+
+        Dim toastConsulta As New SIM___GLOBAL.frmToastRDA("Órdenes")
+        toastConsulta.Show()
+        toastConsulta.ActualizarEstado("Consultando pacientes...")
+
         'LLENAR GRID VIEW 
         '_ds = New DataSet
         '_ds = _dUsuarios.Listar()
@@ -1085,6 +1096,8 @@ Public Class frmOrdenes
         _ds = New DataSet
         _ds = _dUsuarios.ListarUltimosRegistros()
         GCConsultar.DataSource = _ds.Tables(0)
+
+        toastConsulta.ActualizarEstado("✅ Consultado")
     End Sub
 
     Private Sub GVAgendados_RowClick(sender As Object, e As DevExpress.XtraGrid.Views.Grid.RowClickEventArgs) Handles GVAgendados.RowClick
