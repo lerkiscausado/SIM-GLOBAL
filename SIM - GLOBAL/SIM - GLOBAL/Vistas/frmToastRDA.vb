@@ -33,7 +33,8 @@ Public Class frmToastRDA
         Me.ShowInTaskbar = False
         Me.TopMost = True
         Me.StartPosition = FormStartPosition.Manual
-        Me.Size = New System.Drawing.Size(340, 90)
+        Me.ClientSize = New System.Drawing.Size(340, 90) ' ClientSize (no Size): así el área
+        ' de 90px es el contenido real, sin contar la barra de título que Windows agrega aparte.
         Me.Text = tituloDocumento
 
         lblEstado.Text = $"{_tituloDocumento}: Iniciando..."
