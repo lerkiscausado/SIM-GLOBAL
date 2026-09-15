@@ -142,7 +142,7 @@ Namespace Utilidades
                 {"confidentiality", "N"},
                 {"attester", attesters},
                 {"custodian", New JObject From {{"reference", "#" & idOrganizacion}}},
-                {"event", New JObject From {
+                {"event", New JArray From {New JObject From {
                     {"code", New JArray From {
                         New JObject From {
                             {"id", "eventCodeModality"},
@@ -161,7 +161,7 @@ Namespace Utilidades
                         {"start", DateTime.Now.AddMinutes(-5).ToString("yyyy-MM-ddTHH:mm:sszzz")},
                         {"end", DateTime.Now.ToString("yyyy-MM-ddTHH:mm:sszzz")}
                     }}
-                }},
+                }}},
                 {"section", secciones}
             }
 

@@ -240,7 +240,7 @@ Namespace Utilidades
                 {"confidentiality", "N"},
                 {"attester", New JArray From {New JObject From {{"mode", "legal"}, {"party", New JObject From {{"reference", "#" & idOrganizacion}}}}}},
                 {"custodian", New JObject From {{"reference", "#" & idOrganizacion}}},
-                {"event", New JObject From {{"period", New JObject From {{"start", inicio.ToString("yyyy-MM-ddTHH:mm:sszzz")}, {"end", fin.ToString("yyyy-MM-ddTHH:mm:sszzz")}}}}},
+                {"event", New JArray From {New JObject From {{"period", New JObject From {{"start", inicio.ToString("yyyy-MM-ddTHH:mm:sszzz")}, {"end", fin.ToString("yyyy-MM-ddTHH:mm:sszzz")}}}}}},
                 {"section", secciones}
             }
 
