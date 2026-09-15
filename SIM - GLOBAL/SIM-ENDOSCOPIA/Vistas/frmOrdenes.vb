@@ -61,6 +61,10 @@ Public Class frmOrdenes
     End Sub
     Private Sub GuardarOrdenes()
         Try
+            Dim toastGuardado As New SIM___GLOBAL.frmToastRDA("Órdenes")
+            toastGuardado.Show()
+            toastGuardado.ActualizarEstado("Guardando orden...")
+
             _ordenes.Id = Val(txtConsecutivo.Text)
             _ordenes.IdUsuario = _IdUsuario
             _ordenes.IdContrato = cboContrato.GetColumnValue("ID")
@@ -85,6 +89,8 @@ Public Class frmOrdenes
             _ordenes.Estado = "PENDIENTE"
             _dOrdenes.Guardar(_ordenes)
             bbiGuardar.Enabled = False
+
+            toastGuardado.ActualizarEstado("✅ Guardado")
 
         Catch ex As Exception
             MessageBox.Show(ex.Message & " Guardar Ordenes")
@@ -383,6 +389,10 @@ Public Class frmOrdenes
         Dim _frmOpen As New SIM___GLOBAL.frmUsuarios
         _frmOpen.ShowDialog()
         'LLENAR GRID VIEW 
+        Dim toastConsulta As New SIM___GLOBAL.frmToastRDA("Órdenes")
+        toastConsulta.Show()
+        toastConsulta.ActualizarEstado("Consultando pacientes...")
+
         _ds = New DataSet
         _ds = _dUsuarios.Listar()
         GCConsultar.DataSource = _ds.Tables(0)
@@ -391,6 +401,8 @@ Public Class frmOrdenes
         'GVConsultar.Columns(2).BestFit()
         'GVConsultar.Columns(3).BestFit()
         '----------------------------------
+
+        toastConsulta.ActualizarEstado("✅ Consultado")
     End Sub
 
     Private Sub cboContrato_EditValueChanged(sender As Object, e As EventArgs) Handles cboContrato.EditValueChanged
