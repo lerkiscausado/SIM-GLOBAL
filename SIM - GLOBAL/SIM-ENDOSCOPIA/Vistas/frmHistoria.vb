@@ -969,7 +969,7 @@ Public Class frmHistoria
                             Dim idEspecialistaRDA As Integer = Val(IdEmpleado)
 
                             If idOrdenRDA > 0 AndAlso idUsuarioRDA > 0 Then
-                                Dim toastPaciente As New SIM___GLOBAL.frmToastRDA()
+                                Dim toastPaciente As New SIM___GLOBAL.frmToastRDA("RDA-Paciente")
                                 toastPaciente.Show()
                                 SIM___GLOBAL.Controles.DRDAPaciente.EnviarEnSegundoPlano(idOrdenRDA, idUsuarioRDA, idEspecialistaRDA,
                                     Sub(mensaje) toastPaciente.ActualizarEstado(mensaje))
@@ -978,7 +978,7 @@ Public Class frmHistoria
                                 ' arriba (ver análisis: RDA-Paciente = lo que el paciente declara de
                                 ' sí mismo; RDA-Consulta Externa = lo que pasó clínicamente en este
                                 ' encuentro). Se envía también al firmar, con su propia notificación.
-                                Dim toastConsulta As New SIM___GLOBAL.frmToastRDA()
+                                Dim toastConsulta As New SIM___GLOBAL.frmToastRDA("RDA-Consulta Externa")
                                 toastConsulta.Show()
                                 SIM___GLOBAL.Controles.DRDAConsultaExterna.EnviarEnSegundoPlano(idOrdenRDA, idUsuarioRDA, idEspecialistaRDA,
                                     Sub(mensaje) toastConsulta.ActualizarEstado(mensaje))

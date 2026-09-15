@@ -17,25 +17,31 @@ Public Class frmToastRDA
     Private WithEvents lblEstado As New DevExpress.XtraEditors.LabelControl()
     Private WithEvents timerCierre As New System.Windows.Forms.Timer()
 
-    Public Sub New()
+    ''' <param name="tituloDocumento">
+    ''' Nombre del documento que identifica esta notificación (ej. "RDA-Paciente",
+    ''' "RDA-Consulta Externa"). Se muestra en negrita arriba del mensaje de estado, para
+    ''' distinguir cuál ventanita es cuál cuando se disparan varias juntas (como pasa al
+    ''' firmar la historia, que envía RDA-Paciente y RDA-Consulta Externa a la vez).
+    ''' </param>
+    Public Sub New(Optional tituloDocumento As String = "Interoperabilidad RDA")
         Me.FormBorderStyle = FormBorderStyle.FixedToolWindow
         Me.ShowInTaskbar = False
         Me.TopMost = True
         Me.StartPosition = FormStartPosition.Manual
         Me.Size = New System.Drawing.Size(340, 90)
-        Me.Text = "Interoperabilidad RDA"
+        Me.Text = tituloDocumento
 
-        lblTitulo.Text = "Interoperabilidad RDA"
+        lblTitulo.Text = tituloDocumento
         lblTitulo.Location = New System.Drawing.Point(12, 10)
         lblTitulo.Font = New System.Drawing.Font(lblTitulo.Font, System.Drawing.FontStyle.Bold)
 
         lblEstado.Text = "Iniciando..."
-        lblEstado.Location = New System.Drawing.Point(12, 10)
+        lblEstado.Location = New System.Drawing.Point(12, 32)
         lblEstado.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None
         lblEstado.Size = New System.Drawing.Size(310, 40)
         lblEstado.Appearance.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap
 
-        'Me.Controls.Add(lblTitulo)
+        Me.Controls.Add(lblTitulo)
         Me.Controls.Add(lblEstado)
 
         Dim area As System.Drawing.Rectangle = System.Windows.Forms.Screen.PrimaryScreen.WorkingArea
