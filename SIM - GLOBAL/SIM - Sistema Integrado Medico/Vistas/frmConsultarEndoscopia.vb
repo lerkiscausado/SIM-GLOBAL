@@ -309,4 +309,8 @@ Public Class frmConsultarEndoscopia
     Private Sub tsm2024_Click(sender As Object, e As EventArgs) Handles tsm2024.Click
         Recargar("2024")
     End Sub
+
+    Private Sub tsm2025_Click(sender As Object, e As EventArgs) Handles tsm2025.Click
+        Recargar("2025")
+    End Sub
 End Class

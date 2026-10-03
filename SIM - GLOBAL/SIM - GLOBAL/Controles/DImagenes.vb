@@ -57,15 +57,16 @@ Namespace Controles
             Try
                 Dim query As String
                 If Existe(_Imagenes.Id) = True Then
-                    'Actualizar Imagenes
+                    ' Actualizar Imagenes
                     query = "UPDATE imagenes SET ruta='" & _Imagenes.Ruta & "', texto='" & _Imagenes.Texto & "', " _
-                        & "estado='" & _Imagenes.Estado & "' WHERE id='" & _Imagenes.Id & "'"
+                & "estado='" & _Imagenes.Estado & "' WHERE id=" & _Imagenes.Id  ' <-- sin comillas
                 Else
-                    'Guardar Imagenes
-                    query = "INSERT INTO imagenes VALUES('" & _Imagenes.Id & "','" & _Imagenes.IdOrden & "', " _
-                        & "'" & _Imagenes.IdDetalleOrden & "','" & _Imagenes.Id & _Imagenes.Ruta & "', '" & _Imagenes.Texto & "', " _
-                        & "'" & _Imagenes.Estado & "','')"
+                    ' Guardar Imagenes
+                    query = "INSERT INTO imagenes VALUES(0, " & _Imagenes.IdOrden & ", " _
+                & _Imagenes.IdDetalleOrden & ", '" & _Imagenes.Ruta & "', '" & _Imagenes.Texto & "', " _
+                & "'" & _Imagenes.Estado & "', '')"
                 End If
+
                 _conn = ConexionODBC.Open()
                 Dim comando = New OdbcCommand(query, _conn)
                 comando.ExecuteNonQuery()

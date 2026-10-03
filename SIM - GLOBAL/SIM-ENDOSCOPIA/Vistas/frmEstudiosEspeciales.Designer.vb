@@ -669,7 +669,6 @@ Partial Class frmEstudiosEspeciales
         Me.cboPlantillas.Properties.ShowHeader = False
         Me.cboPlantillas.Size = New System.Drawing.Size(253, 20)
         Me.cboPlantillas.TabIndex = 115
-        Me.cboPlantillas.Visible = False
         '
         'lblPlantilla
         '
@@ -678,7 +677,6 @@ Partial Class frmEstudiosEspeciales
         Me.lblPlantilla.Size = New System.Drawing.Size(40, 13)
         Me.lblPlantilla.TabIndex = 114
         Me.lblPlantilla.Text = "Plantilla:"
-        Me.lblPlantilla.Visible = False
         '
         'txtInforme
         '

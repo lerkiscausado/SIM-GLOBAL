@@ -32,7 +32,7 @@
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x86</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <DefineDebug>true</DefineDebug>
@@ -315,6 +315,9 @@
     <Compile Include="Controles\DProcedimientosTerapeuticos.vb" />
     <Compile Include="Controles\DProductos.vb" />
     <Compile Include="Controles\DProveedores.vb" />
+    <Compile Include="Controles\DRDA.vb" />
+    <Compile Include="Controles\DRDAConsultaExterna.vb" />
+    <Compile Include="Controles\DRDAPaciente.vb" />
     <Compile Include="Controles\DRegistroAnestesia.vb" />
     <Compile Include="Controles\DRegistroAnestesiaMedicamentos.vb" />
     <Compile Include="Controles\DRegistros.vb" />
@@ -422,6 +425,7 @@
     <Compile Include="Modelo\Citologia.vb" />
     <Compile Include="Modelo\Clientes.vb" />
     <Compile Include="Modelo\Compras.vb" />
+    <Compile Include="Modelo\ConfigInteropApi.vb" />
     <Compile Include="Modelo\ConfiguracionCorreo.vb" />
     <Compile Include="Modelo\ConsentimientoInformadoPlantillas.vb" />
     <Compile Include="Modelo\Contratos.vb" />
@@ -512,6 +516,7 @@
     <Compile Include="Modelo\TipoEstudio.vb" />
     <Compile Include="Modelo\TipoIdentificacion.vb" />
     <Compile Include="Modelo\TipoUsuario.vb" />
+    <Compile Include="Modelo\TokenResponse.vb" />
     <Compile Include="Modelo\TomaMuestra.vb" />
     <Compile Include="Modelo\UnidadMedida.vb" />
     <Compile Include="Modelo\Users.vb" />
@@ -530,6 +535,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Reportes\Ejemplo.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Ejemplo.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Reportes\rptAnestesiaGL.vb">
       <AutoGen>True</AutoGen>
@@ -553,12 +564,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rptCitologia_kelly.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Reportes\Ejemplo.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Ejemplo.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Reportes\rptCierreCaja.vb">
@@ -909,6 +914,12 @@
       <DependentUpon>rptVistaOptometria.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Reportes\subImagenes.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>subImagenes.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Reportes\xrbase64.Designer.vb">
       <DependentUpon>xrbase64.vb</DependentUpon>
     </Compile>
@@ -942,6 +953,10 @@
     <Compile Include="Utilidades\Funciones.vb" />
     <Compile Include="Utilidades\LoadingHelper.vb" />
     <Compile Include="Utilidades\RedisCacheService.vb" />
+    <Compile Include="Utilidades\InteropAuthService.vb" />
+    <Compile Include="Utilidades\RDAConsultaExternaBuilder.vb" />
+    <Compile Include="Utilidades\RDABundleBuilder.vb" />
+    <Compile Include="Utilidades\RDATextParser.vb" />
     <Compile Include="Vistas\Binarios.Designer.vb">
       <DependentUpon>Binarios.vb</DependentUpon>
     </Compile>
@@ -1000,6 +1015,12 @@
       <DependentUpon>frmCargando.vb</DependentUpon>
     </Compile>
     <Compile Include="Vistas\frmCargando.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\frmCargadosRDA.Designer.vb">
+      <DependentUpon>frmCargadosRDA.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\frmCargadosRDA.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Vistas\frmCargos.Designer.vb">
@@ -1386,6 +1407,18 @@
     <Compile Include="Vistas\frmPruebaPrivilegios.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Vistas\frmRDA.Designer.vb">
+      <DependentUpon>frmRDA.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\frmHistorialRDA.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\frmToastRDA.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\frmRDA.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Vistas\frmReciboCaja.Designer.vb">
       <DependentUpon>frmReciboCaja.vb</DependentUpon>
     </Compile>
@@ -1530,6 +1563,10 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\Ejemplo.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Ejemplo.vb</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reportes\rptAnestesiaGL.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptAnestesiaGL.vb</LastGenOutput>
@@ -1545,10 +1582,6 @@
     <EmbeddedResource Include="Reportes\rptCitologia_kelly.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptCitologia_kelly.vb</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Reportes\Ejemplo.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>Ejemplo.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\rptCierreCaja.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -1782,6 +1815,10 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptVistaOptometria.vb</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\subImagenes.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>subImagenes.vb</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reportes\xrbase64.resx">
       <DependentUpon>xrbase64.vb</DependentUpon>
     </EmbeddedResource>
@@ -1826,6 +1863,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Vistas\frmCargando.resx">
       <DependentUpon>frmCargando.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\frmCargadosRDA.resx">
+      <DependentUpon>frmCargadosRDA.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vistas\frmCargos.resx">
       <DependentUpon>frmCargos.vb</DependentUpon>
@@ -1907,6 +1947,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Vistas\frmAnestesia.resx">
       <DependentUpon>frmAnestesia.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\frmHistorialRDA.resx">
+      <DependentUpon>frmHistorialRDA.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vistas\frmHistoriasAnteriores.resx">
       <DependentUpon>frmHistoriasAnteriores.vb</DependentUpon>
@@ -2016,6 +2059,9 @@
     <EmbeddedResource Include="Vistas\frmPruebaPrivilegios.resx">
       <DependentUpon>frmPruebaPrivilegios.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\frmRDA.resx">
+      <DependentUpon>frmRDA.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Vistas\frmReciboCaja.resx">
       <DependentUpon>frmReciboCaja.vb</DependentUpon>
     </EmbeddedResource>
@@ -2084,6 +2130,11 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Sql\rda_paciente_migracion.sql" />
+    <None Include="Sql\rda_usuarios_campos_obligatorios.sql" />
+    <None Include="Sql\rda_especialistas_nombre_estructurado.sql" />
+    <None Include="Sql\rda_empresa_codigo_prestador.sql" />
+    <None Include="Sql\rda_envios_composition_id.sql" />
     <None Include="DataSet1.xsc">
       <DependentUpon>DataSet1.xsd</DependentUpon>
     </None>

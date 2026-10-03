@@ -92,10 +92,8 @@ Namespace Controles
         Public Function ListarCombo() As DataSet
             Try
                 Dim query As String =
-                                    String.Format("SELECT contratos.ID, contratos.NOMBRE AS CONTRATO, 
-                                    entidades.NOMBRE_ENTIDAD AS ENTIDAD, licencias.CLIENTE AS EMPRESA, contratos.id_licencia as LICENCIA FROM contratos INNER JOIN entidades 
-                                    ON (contratos.CODIGO_ENTIDAD = entidades.CODIGO_ENTIDAD) INNER JOIN licencias ON (contratos.`ID_LICENCIA`=licencias.`ID`)
-                                    WHERE (contratos.ESTADO ='A')")
+                                    String.Format("SELECT c.ID, c.NOMBRE AS CONTRATO, e.NOMBRE_ENTIDAD    AS ENTIDAD, l.CLIENTE AS EMPRESA, c.ID_LICENCIA AS LICENCIA FROM contratos c
+                                                    INNER JOIN entidades e ON c.CODIGO_ENTIDAD = e.CODIGO_ENTIDAD  INNER JOIN licencias l ON c.ID_LICENCIA    = l.ID WHERE c.ESTADO = 'A';")
                 _conn = ConexionODBC.Open()
                 Dim comando = New OdbcCommand(query, _conn)
                 _adapter = New OdbcDataAdapter(comando)

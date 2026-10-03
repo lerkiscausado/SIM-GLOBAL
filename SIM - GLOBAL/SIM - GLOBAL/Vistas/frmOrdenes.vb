@@ -53,6 +53,7 @@ Public Class frmOrdenes
     Dim IdCuentaCliente As String
     Dim ValorRecibo As Double
     Dim IdCliente As String
+    Private _combosInicializados As Boolean = False
 #End Region
 #Region "Procedimientos personalizados"
     Private Sub GuardarCuentaCliente()
@@ -68,7 +69,73 @@ Public Class frmOrdenes
         _DCuentasClientes.Guardar(_CuentasClientes)
     End Sub
 
+    Private Sub CargarCombos()
+        ' Si ya fueron cargados, no volver a cargar
+        If _combosInicializados Then Return
 
+        Try
+            ' Cargar Tipo Afiliado
+            Dim _Dtipoafiliado = New DTipoAfiliado
+            _ds = _Dtipoafiliado.Listar
+            CargarCombo(cboTipoAfiliado, _ds.Tables(0), 0)
+
+            ' Cargar Tipo Usuario
+            Dim _DtipoUsuario = New DTipoUsuario
+            _ds = _DtipoUsuario.Listar
+            CargarCombo(cboTipoUsuario, _ds.Tables(0), 0)
+
+            ' Cargar Ambito Procedimiento
+            Dim _DAmbitoProcedimiento = New SIM___GLOBAL.DAmbitoProcedimiento
+            _ds = _DAmbitoProcedimiento.Listar
+            CargarCombo(cboAmbitoProcedimiento, _ds.Tables(0), 0)
+
+            ' Cargar Finalidad
+            Dim _DFinalidad = New SIM___GLOBAL.Controles.DFinalidadConsulta
+            _ds = _DFinalidad.Listar
+            CargarCombo(cboFinalidad, _ds.Tables(0), 9)
+
+            ' Cargar Tipo Estudio
+            Dim _DTipoEstudio = New DTipoEstudio
+            _ds = _DTipoEstudio.Listar
+            CargarCombo(cboTipoEstudio, _ds.Tables(0), 0)
+
+            ' Cargar Contratos
+            Dim _DContratos = New DContratos
+            _ds = _DContratos.ListarCombo
+            CargarCombo(cboContrato, _ds.Tables(0), -1)
+
+            ' Cargar Especialista
+            Dim _Dempleados = New DEmpleados
+            _ds = _Dempleados.ListarEspecialista
+            CargarCombo(cboMedico, _ds.Tables(0), -1)
+
+            ' Cargar Sedes
+            Dim _DSedes = New DSedes
+            _ds = _DSedes.ListarCombo
+            CargarCombo(cboSede, _ds.Tables(0), 0)
+
+            ' Cargar Especímenes
+            _ds = _DEspecimenes.Listar()
+            CargarCombo(cboEspecimen, _ds.Tables(0), 0)
+
+            ' Marcar como inicializados
+            _combosInicializados = True
+
+        Catch ex As Exception
+            MessageBox.Show("Error al cargar los combos: " & ex.Message,
+                        "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
+    ' Método auxiliar para evitar repetir código en cada combo
+    Private Sub CargarCombo(ByVal combo As DevExpress.XtraEditors.LookUpEdit,
+                        ByVal tabla As DataTable,
+                        ByVal itemIndex As Integer)
+        combo.Properties.DataSource = tabla
+        combo.Properties.DisplayMember = tabla.Columns(1).Caption
+        combo.Properties.ValueMember = tabla.Columns(0).Caption
+        combo.ItemIndex = itemIndex
+    End Sub
     Private Sub ActivarGuardar()
         If TVDatosUsuarios.RowCount <> 0 Then
             bbiGuardar.Enabled = True
@@ -90,6 +157,9 @@ Public Class frmOrdenes
         'GCConsultarOrdenes.DataSource = _ds.Tables(0)
     End Sub
     Private Sub NuevaOrden()
+        ' CARGAMOS LA INFORMACION de los combos
+        CargarCombos()
+        '--------------------------------------
         If _ClickIdAgenda <> "" Then
             IdAgenda = _ClickIdAgenda
         End If
@@ -161,6 +231,10 @@ Public Class frmOrdenes
     End Sub
     Private Sub GuardarOrdenes()
         Try
+            Dim toastGuardado As New SIM___GLOBAL.frmToastRDA("Órdenes")
+            toastGuardado.Show()
+            toastGuardado.ActualizarEstado("Guardando orden...")
+
             _Ordenes.Id = Val(txtConsecutivo.Text)
             _Ordenes.IdUsuario = _IdUsuario
             _Ordenes.IdContrato = cboContrato.GetColumnValue("ID")
@@ -211,6 +285,13 @@ Public Class frmOrdenes
             _Ordenes.Saldo = colDOCopago.SummaryItem.SummaryValue
             _DOrdenes.Guardar(_Ordenes)
             bbiGuardar.Enabled = False
+
+            toastGuardado.ActualizarEstado("✅ Guardado")
+            ' Se cierra de inmediato (sin esperar el temporizador de 3 segundos): este método
+            ' es seguido poco después por un diálogo modal (frmMensaje.ShowDialog() con el
+            ' número de la orden generada) - si el temporizador de la notificación sigue
+            ' pendiente cuando se abre ese diálogo modal, puede interferir visualmente con él.
+            toastGuardado.Close()
 
         Catch ex As Exception
             MessageBox.Show(ex.Message & " Guardar Ordenes")
@@ -1118,6 +1199,11 @@ Public Class frmOrdenes
         _frmOpen.Licencia = Licencia
         _frmOpen.IdEmpleado = IDEmpleado
         _frmOpen.ShowDialog()
+
+        Dim toastConsulta As New SIM___GLOBAL.frmToastRDA("Órdenes")
+        toastConsulta.Show()
+        toastConsulta.ActualizarEstado("Consultando pacientes...")
+
         'LLENAR GRID VIEW 
         '_ds = New DataSet
         '_ds = _dUsuarios.Listar()
@@ -1126,6 +1212,8 @@ Public Class frmOrdenes
         _ds = New DataSet
         _ds = _dUsuarios.ListarUltimosRegistros()
         GCConsultar.DataSource = _ds.Tables(0)
+
+        toastConsulta.ActualizarEstado("✅ Consultado")
     End Sub
 
     Private Sub GVAgendados_RowClick(sender As Object, e As DevExpress.XtraGrid.Views.Grid.RowClickEventArgs) Handles GVAgendados.RowClick

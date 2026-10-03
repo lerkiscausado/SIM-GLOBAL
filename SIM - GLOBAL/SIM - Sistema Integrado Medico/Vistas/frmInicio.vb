@@ -2579,4 +2579,18 @@ Public Class frmInicio
         _frmOpen.Licencia = LicenciaG
         _frmOpen.ShowDialog()
     End Sub
+
+    Private Sub bbiRDA_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles bbiRDA.ItemClick
+        Dim _frmOpen As New SIM___GLOBAL.frmRDA
+        '_frmOpen.Licencia = LicenciaG
+        '_frmOpen.IdEmpleado = IdEmpleadoG
+        _frmOpen.ShowDialog()
+    End Sub
+
+    Private Sub bbiHistorialRDA_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles bbiHistorialRDA.ItemClick
+        Dim _frmOpen As New SIM___GLOBAL.frmHistorialRDA
+        '_frmOpen.Licencia = LicenciaG
+        '_frmOpen.IdEmpleado = IdEmpleadoG
+        _frmOpen.ShowDialog()
+    End Sub
 End Class

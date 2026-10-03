@@ -200,6 +200,12 @@
                 _Foto = value
             End Set
         End Property
+
+        ' Campos requeridos por el perfil PatientRDA (interoperabilidad RDA-Paciente).
+        Public Property CodigoPaisNacimiento As String
+        Public Property CodigoEtnia As String
+        Public Property CodigoDiscapacidad As String
+        Public Property CodigoIdentidadGenero As String
     End Class
 End Namespace
 

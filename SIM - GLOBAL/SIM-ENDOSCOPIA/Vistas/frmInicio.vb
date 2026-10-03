@@ -10,6 +10,26 @@ Public Class frmInicio
     ReadOnly _funciones As New Funciones
     ' Dim _frmConsultar As New frmConsultar
 
+    ' Botón "Historial RDA" agregado por código al grupo de Reportes del ribbon (sin tocar
+    ' el Designer, para no arriesgar el layout del menú principal).
+    Private WithEvents bbiHistorialRDA As DevExpress.XtraBars.BarButtonItem
+
+    Private Sub AgregarBotonHistorialRDA()
+        If bbiHistorialRDA IsNot Nothing Then Exit Sub ' Evitar duplicar si Load se dispara más de una vez
+
+        bbiHistorialRDA = New DevExpress.XtraBars.BarButtonItem()
+        bbiHistorialRDA.Caption = "Historial RDA"
+        bbiHistorialRDA.Name = "bbiHistorialRDA"
+        bbiHistorialRDA.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText
+
+        RibbonControl.Items.Add(bbiHistorialRDA)
+        rpgReportes.ItemLinks.Add(bbiHistorialRDA)
+    End Sub
+
+    Private Sub bbiHistorialRDA_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles bbiHistorialRDA.ItemClick
+        Dim _frmOpen As New SIM___GLOBAL.frmHistorialRDA()
+        _frmOpen.Show()
+    End Sub
 
     '-----------------------
     Dim conectar = New ConexionODBC
@@ -202,6 +222,7 @@ Public Class frmInicio
     End Sub
 
     Private Sub frmInicio_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        AgregarBotonHistorialRDA()
         'Selecciona el SKIN predeterminado
         DevExpress.LookAndFeel.UserLookAndFeel.Default.SetSkinStyle("Office 2013")
         'INICIAR CONEXION BASE DE DATOS

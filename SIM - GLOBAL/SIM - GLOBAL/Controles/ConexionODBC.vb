@@ -7,15 +7,13 @@ Namespace My.Controles
 
         Public Shared Function Open() As OdbcConnection
             Try
-                BdAdos = New OdbcConnection(Cadena)
-                BdAdos.Open()
-                Return BdAdos
+                Dim nuevaConexion As New OdbcConnection(Cadena) ' Nueva instancia siempre
+                nuevaConexion.Open()
+                Return nuevaConexion
             Catch ex As Exception
-                Close(BdAdos)
                 MessageBox.Show(ex.Message)
                 Return Nothing
             End Try
-            Return BdAdos
         End Function
 
         Public Shared Sub Close(ByVal BdAdos As OdbcConnection)

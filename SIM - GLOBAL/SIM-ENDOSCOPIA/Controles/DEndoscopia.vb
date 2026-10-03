@@ -84,7 +84,7 @@ Namespace Controles
                         & "id_empleado='" & _Endoscopia.IdEmpleado & "', codigo_diagnostico='" & _Endoscopia.CodigoDiagnostico & "',toma_biopsia='" & _Endoscopia.TomaBiopsia & "', biopsia='" & _Endoscopia.Biopsia & "' WHERE id_detalle_orden='" & _Endoscopia.IdDetalleOrden & "'"
                 Else
                     'Guardar Historia
-                    query = "INSERT INTO endoscopias VALUES('','" & _Endoscopia.IdOrden & "','" & _Endoscopia.IdDetalleOrden & "','" & Format(_Endoscopia.FechaEstudio, "yyyy/MM/dd") & "'," _
+                    query = "INSERT INTO endoscopias VALUES(0,'" & _Endoscopia.IdOrden & "','" & _Endoscopia.IdDetalleOrden & "','" & Format(_Endoscopia.FechaEstudio, "yyyy/MM/dd") & "'," _
                         & "'" & Format(_Endoscopia.FechaSalida, "yyyy/MM/dd") & "', '" & Format(_Endoscopia.Hora, "hh:mm:ss") & "','" & _Endoscopia.MedicoSolicita & "'," _
                         & "'" & _Endoscopia.Indicacion & "', '" & _Endoscopia.Medicamentos & "','" & _Endoscopia.IdEquipo & "','" & _Endoscopia.IdProcedimientoTerapeutico & "', " _
                         & "'" & _Endoscopia.Anestesiologo & "', '" & _Endoscopia.Campo1 & "', '" & _Endoscopia.Campo2 & "','" & _Endoscopia.Campo3 & "','" & _Endoscopia.Campo4 & "', " _

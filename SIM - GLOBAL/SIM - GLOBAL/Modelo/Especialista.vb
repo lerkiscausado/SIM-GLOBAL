@@ -3,6 +3,8 @@
         Private _id As Integer
         Private _idEspecialista As Integer
         Private _nombre As String
+        Private _idTipoIdentificacion As String
+        Private _identificacion As String
         Private _especialidad As String
         Private _registroMedico As String
         Private _estado As String
@@ -34,6 +36,13 @@
                 _nombre = value
             End Set
         End Property
+
+        ' Nombre estructurado para PractitionerRDA (RETHUS exige coincidencia con nombre/apellidos
+        ' por separado, no un solo campo de texto libre). Ver Sql/rda_estructuracion_datos_migracion.sql
+        Public Property PrimerNombre As String
+        Public Property SegundoNombre As String
+        Public Property PrimerApellido As String
+        Public Property SegundoApellido As String
 
         Public Property Especialidad As String
             Get
@@ -68,6 +77,24 @@
             End Get
             Set(value As String)
                 _estado = value
+            End Set
+        End Property
+
+        Public Property Identificacion As String
+            Get
+                Return _identificacion
+            End Get
+            Set(value As String)
+                _identificacion = value
+            End Set
+        End Property
+
+        Public Property IdTipoIdentificacion As String
+            Get
+                Return _idTipoIdentificacion
+            End Get
+            Set(value As String)
+                _idTipoIdentificacion = value
             End Set
         End Property
     End Class

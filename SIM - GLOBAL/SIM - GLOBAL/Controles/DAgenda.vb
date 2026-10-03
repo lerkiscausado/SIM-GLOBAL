@@ -261,16 +261,10 @@ Namespace Controles
         Public Function ListarAgendaHoy() As DataSet
             Try
                 Dim query As String =
-                                    String.Format("SELECT `usuarios`.`ID` AS IDUSUARIO, " _
-                                                  & "`usuarios`.`ID_TIPO_IDENTIFICACION` AS TI, " _
-                                                  & "`usuarios`.`IDENTIFICACION`, " _
-                                                  & "CONCAT(usuarios.PRIMER_NOMBRE,' ', usuarios.SEGUNDO_NOMBRE,' ', usuarios.PRIMER_APELLIDO,' ', usuarios.SEGUNDO_APELLIDO) AS NOMBRE, " _
-                                                  & "`usuarios`.`SEXO`, " _
-                                                  & "`usuarios`.`TELEFONO`, " _
-                                                  & "`usuarios`.`CORREO_ELECTRONICO` AS EMAIL, " _
-                                                  & "`agenda`.`ID` AS IDAGENDA FROM `usuarios` " _
-                                                  & "INNER JOIN `agenda` ON (`usuarios`.`ID` = `agenda`.`ID_USUARIO`) " _
-                                                  & "WHERE (`agenda`.`FECHA` =CURDATE() And agenda.`ESTADO`='APARTADA');")
+                                    String.Format("SELECT u.ID AS IDUSUARIO, u.ID_TIPO_IDENTIFICACION    AS TI, u.IDENTIFICACION, " _
+                                                  & "CONCAT_WS(' ', u.PRIMER_NOMBRE,NULLIF(u.SEGUNDO_NOMBRE, ''), u.PRIMER_APELLIDO, NULLIF(u.SEGUNDO_APELLIDO, '')) AS NOMBRE, " _
+                                                  & "u.SEXO, u.TELEFONO, u.CORREO_ELECTRONICO AS EMAIL, a.ID AS IDAGENDA FROM agenda a INNER JOIN usuarios u ON a.ID_USUARIO = u.ID " _
+                                                  & "WHERE a.FECHA  = CURDATE() And a.ESTADO = 'APARTADA';")
                 _conn = ConexionODBC.Open()
                 Dim comando = New OdbcCommand(query, _conn)
                 _adapter = New OdbcDataAdapter(comando)

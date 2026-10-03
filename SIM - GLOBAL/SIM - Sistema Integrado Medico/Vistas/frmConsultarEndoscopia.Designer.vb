@@ -21,12 +21,12 @@ Partial Class frmConsultarEndoscopia
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmConsultarEndoscopia))
-        Dim GridFormatRule1 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
-        Dim FormatConditionRuleValue1 As DevExpress.XtraEditors.FormatConditionRuleValue = New DevExpress.XtraEditors.FormatConditionRuleValue()
-        Dim GridFormatRule2 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
-        Dim FormatConditionRuleValue2 As DevExpress.XtraEditors.FormatConditionRuleValue = New DevExpress.XtraEditors.FormatConditionRuleValue()
-        Dim GridFormatRule3 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
-        Dim FormatConditionRuleValue3 As DevExpress.XtraEditors.FormatConditionRuleValue = New DevExpress.XtraEditors.FormatConditionRuleValue()
+        Dim GridFormatRule4 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
+        Dim FormatConditionRuleValue4 As DevExpress.XtraEditors.FormatConditionRuleValue = New DevExpress.XtraEditors.FormatConditionRuleValue()
+        Dim GridFormatRule5 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
+        Dim FormatConditionRuleValue5 As DevExpress.XtraEditors.FormatConditionRuleValue = New DevExpress.XtraEditors.FormatConditionRuleValue()
+        Dim GridFormatRule6 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
+        Dim FormatConditionRuleValue6 As DevExpress.XtraEditors.FormatConditionRuleValue = New DevExpress.XtraEditors.FormatConditionRuleValue()
         Me.colESTADO = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colESTUDIO = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GCConsultar = New DevExpress.XtraGrid.GridControl()
@@ -34,6 +34,7 @@ Partial Class frmConsultarEndoscopia
         Me.tsmActualizarVista = New System.Windows.Forms.ToolStripMenuItem()
         Me.FiltrarPorAñoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.tsmActual = New System.Windows.Forms.ToolStripMenuItem()
+        Me.tsm2024 = New System.Windows.Forms.ToolStripMenuItem()
         Me.tsm2023 = New System.Windows.Forms.ToolStripMenuItem()
         Me.tsm2022 = New System.Windows.Forms.ToolStripMenuItem()
         Me.tsm2021 = New System.Windows.Forms.ToolStripMenuItem()
@@ -63,7 +64,7 @@ Partial Class frmConsultarEndoscopia
         Me.colCups = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colCOMENTARIOS = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.sfdRuta = New System.Windows.Forms.SaveFileDialog()
-        Me.tsm2024 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.tsm2025 = New System.Windows.Forms.ToolStripMenuItem()
         CType(Me.GCConsultar, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.cmsGrid.SuspendLayout()
         CType(Me.GVConsultar, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -111,7 +112,7 @@ Partial Class frmConsultarEndoscopia
         '
         'FiltrarPorAñoToolStripMenuItem
         '
-        Me.FiltrarPorAñoToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsmActual, Me.tsm2024, Me.tsm2023, Me.tsm2022, Me.tsm2021, Me.tsm2020, Me.tsm2019, Me.tsm2018, Me.tsm2017})
+        Me.FiltrarPorAñoToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsmActual, Me.tsm2025, Me.tsm2024, Me.tsm2023, Me.tsm2022, Me.tsm2021, Me.tsm2020, Me.tsm2019, Me.tsm2018, Me.tsm2017})
         Me.FiltrarPorAñoToolStripMenuItem.Image = CType(resources.GetObject("FiltrarPorAñoToolStripMenuItem.Image"), System.Drawing.Image)
         Me.FiltrarPorAñoToolStripMenuItem.Name = "FiltrarPorAñoToolStripMenuItem"
         Me.FiltrarPorAñoToolStripMenuItem.Size = New System.Drawing.Size(200, 24)
@@ -122,6 +123,12 @@ Partial Class frmConsultarEndoscopia
         Me.tsmActual.Name = "tsmActual"
         Me.tsmActual.Size = New System.Drawing.Size(180, 22)
         Me.tsmActual.Text = "Año Actual"
+        '
+        'tsm2024
+        '
+        Me.tsm2024.Name = "tsm2024"
+        Me.tsm2024.Size = New System.Drawing.Size(180, 22)
+        Me.tsm2024.Text = "2024"
         '
         'tsm2023
         '
@@ -206,38 +213,38 @@ Partial Class frmConsultarEndoscopia
         'GVConsultar
         '
         Me.GVConsultar.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colID, Me.colORDEN, Me.colFECHA_INGRESO, Me.colIDENTIFICACION, Me.colNOMBRE, Me.colSEXO, Me.colEDAD, Me.colTELEFONO, Me.colESPECIALISTA, Me.colCONTRATO, Me.colENTIDAD, Me.colESTUDIO, Me.colEMPRESA, Me.colESTADO, Me.colCups, Me.colCOMENTARIOS})
-        GridFormatRule1.ApplyToRow = True
-        GridFormatRule1.Column = Me.colESTADO
-        GridFormatRule1.Name = "Format0"
-        FormatConditionRuleValue1.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        FormatConditionRuleValue1.Appearance.Options.UseBackColor = True
-        FormatConditionRuleValue1.Condition = DevExpress.XtraEditors.FormatCondition.Equal
-        FormatConditionRuleValue1.Expression = "PENDIENTE"
-        FormatConditionRuleValue1.Value1 = "PENDIENTE"
-        GridFormatRule1.Rule = FormatConditionRuleValue1
-        GridFormatRule2.ApplyToRow = True
-        GridFormatRule2.Column = Me.colESTADO
-        GridFormatRule2.Name = "Format1"
-        FormatConditionRuleValue2.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
-        FormatConditionRuleValue2.Appearance.Options.UseBackColor = True
-        FormatConditionRuleValue2.Condition = DevExpress.XtraEditors.FormatCondition.Equal
-        FormatConditionRuleValue2.Expression = "CANCELADO"
-        FormatConditionRuleValue2.Value1 = "CANCELADO"
-        GridFormatRule2.Rule = FormatConditionRuleValue2
-        GridFormatRule3.ApplyToRow = True
-        GridFormatRule3.Column = Me.colESTUDIO
-        GridFormatRule3.Name = "Format2"
-        FormatConditionRuleValue3.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        FormatConditionRuleValue3.Appearance.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        FormatConditionRuleValue3.Appearance.Options.UseBackColor = True
-        FormatConditionRuleValue3.Condition = DevExpress.XtraEditors.FormatCondition.Equal
-        FormatConditionRuleValue3.Expression = "ANEXOS"
-        FormatConditionRuleValue3.Value1 = "ANEXOS"
-        FormatConditionRuleValue3.Value2 = ""
-        GridFormatRule3.Rule = FormatConditionRuleValue3
-        Me.GVConsultar.FormatRules.Add(GridFormatRule1)
-        Me.GVConsultar.FormatRules.Add(GridFormatRule2)
-        Me.GVConsultar.FormatRules.Add(GridFormatRule3)
+        GridFormatRule4.ApplyToRow = True
+        GridFormatRule4.Column = Me.colESTADO
+        GridFormatRule4.Name = "Format0"
+        FormatConditionRuleValue4.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        FormatConditionRuleValue4.Appearance.Options.UseBackColor = True
+        FormatConditionRuleValue4.Condition = DevExpress.XtraEditors.FormatCondition.Equal
+        FormatConditionRuleValue4.Expression = "PENDIENTE"
+        FormatConditionRuleValue4.Value1 = "PENDIENTE"
+        GridFormatRule4.Rule = FormatConditionRuleValue4
+        GridFormatRule5.ApplyToRow = True
+        GridFormatRule5.Column = Me.colESTADO
+        GridFormatRule5.Name = "Format1"
+        FormatConditionRuleValue5.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
+        FormatConditionRuleValue5.Appearance.Options.UseBackColor = True
+        FormatConditionRuleValue5.Condition = DevExpress.XtraEditors.FormatCondition.Equal
+        FormatConditionRuleValue5.Expression = "CANCELADO"
+        FormatConditionRuleValue5.Value1 = "CANCELADO"
+        GridFormatRule5.Rule = FormatConditionRuleValue5
+        GridFormatRule6.ApplyToRow = True
+        GridFormatRule6.Column = Me.colESTUDIO
+        GridFormatRule6.Name = "Format2"
+        FormatConditionRuleValue6.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        FormatConditionRuleValue6.Appearance.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        FormatConditionRuleValue6.Appearance.Options.UseBackColor = True
+        FormatConditionRuleValue6.Condition = DevExpress.XtraEditors.FormatCondition.Equal
+        FormatConditionRuleValue6.Expression = "ANEXOS"
+        FormatConditionRuleValue6.Value1 = "ANEXOS"
+        FormatConditionRuleValue6.Value2 = ""
+        GridFormatRule6.Rule = FormatConditionRuleValue6
+        Me.GVConsultar.FormatRules.Add(GridFormatRule4)
+        Me.GVConsultar.FormatRules.Add(GridFormatRule5)
+        Me.GVConsultar.FormatRules.Add(GridFormatRule6)
         Me.GVConsultar.GridControl = Me.GCConsultar
         Me.GVConsultar.HorzScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Always
         Me.GVConsultar.Name = "GVConsultar"
@@ -357,11 +364,11 @@ Partial Class frmConsultarEndoscopia
         Me.colCOMENTARIOS.Name = "colCOMENTARIOS"
         Me.colCOMENTARIOS.Width = 144
         '
-        'tsm2024
+        'tsm2025
         '
-        Me.tsm2024.Name = "tsm2024"
-        Me.tsm2024.Size = New System.Drawing.Size(180, 22)
-        Me.tsm2024.Text = "2024"
+        Me.tsm2025.Name = "tsm2025"
+        Me.tsm2025.Size = New System.Drawing.Size(180, 22)
+        Me.tsm2025.Text = "2025"
         '
         'frmConsultarEndoscopia
         '
@@ -417,4 +424,5 @@ Partial Class frmConsultarEndoscopia
     Friend WithEvents tsm2022 As ToolStripMenuItem
     Friend WithEvents tsm2023 As ToolStripMenuItem
     Friend WithEvents tsm2024 As ToolStripMenuItem
+    Friend WithEvents tsm2025 As ToolStripMenuItem
 End Class

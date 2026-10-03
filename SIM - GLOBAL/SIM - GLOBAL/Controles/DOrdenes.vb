@@ -1124,20 +1124,12 @@ Namespace Controles
         Public Function ListarOrdenes2() As DataSet
             Try
                 Dim query As String =
-                                    String.Format("SELECT `ordenes`.`ID` AS `ORDEN`, ordenes.CONSECUTIVO, " _
-                                            & "`ordenes`.`FECHA_INGRESO`, " _
-                                            & "CONCAT(`usuarios`.`ID_TIPO_IDENTIFICACION`,usuarios.`IDENTIFICACION`) AS IDENTIFICACION, " _
-                                            & "CONCAT(usuarios.PRIMER_NOMBRE,' ',usuarios.SEGUNDO_NOMBRE,' ',usuarios.PRIMER_APELLIDO,' ',usuarios.SEGUNDO_APELLIDO) AS NOMBRE, " _
-                                            & "`usuarios`.`SEXO`, " _
-                                            & "TIMESTAMPDIFF(YEAR,usuarios.FECHA_NACIMIENTO,CURDATE()) AS EDAD, " _
-                                            & "`empleados`.`NOMBRE_EMPLEADO` AS `ESPECIALISTA`, `contratos`.`NOMBRE` AS `CONTRATO`, " _
-                                            & "`entidades`.`NOMBRE_ENTIDAD` AS `ENTIDAD`, `licencias`.`CLIENTE` AS `EMPRESA`, " _
-                                            & "`ordenes`.`ESTADO`, ordenes.ID_USUARIO AS IDUSUARIO, ordenes.autorizacion as AUTORIZACION, ordenes.numero_orden as NUMERO_ORDEN   FROM `ordenes` " _
-                                            & "INNER JOIN `usuarios` ON (`ordenes`.`ID_USUARIO` = `usuarios`.`ID`) " _
-                                            & "INNER JOIN `empleados` ON (`ordenes`.`ID_EMPLEADO` = `empleados`.`ID`) " _
-                                            & "INNER JOIN `contratos` ON (`ordenes`.`ID_CONTRATO` = `contratos`.`ID`) " _
-                                            & "INNER JOIN `entidades` ON (`contratos`.`CODIGO_ENTIDAD` = `entidades`.`CODIGO_ENTIDAD`) " _
-                                            & "INNER JOIN `licencias` ON (`contratos`.`ID_LICENCIA` = `licencias`.`ID`) where ordenes.estado='PENDIENTE'")
+                                    String.Format("SELECT o.ID AS ORDEN, o.CONSECUTIVO, o.FECHA_INGRESO, CONCAT(u.ID_TIPO_IDENTIFICACION, u.IDENTIFICACION)  AS IDENTIFICACION, " _
+                                    & " CONCAT_WS(' ', u.PRIMER_NOMBRE, NULLIF(u.SEGUNDO_NOMBRE, ''), u.PRIMER_APELLIDO, NULLIF(u.SEGUNDO_APELLIDO, '')) AS NOMBRE, " _
+                                    & "u.SEXO, TIMESTAMPDIFF(YEAR, u.FECHA_NACIMIENTO, CURDATE()) AS EDAD, e.NOMBRE_EMPLEADO   AS ESPECIALISTA, c.NOMBRE AS CONTRATO, " _
+                                    & "en.NOMBRE_ENTIDAD   AS ENTIDAD, l.CLIENTE AS EMPRESA, o.ESTADO, o.ID_USUARIO AS IDUSUARIO, o.AUTORIZACION, o.NUMERO_ORDEN FROM ordenes o " _
+                                    & "INNER JOIN usuarios   u  ON o.ID_USUARIO     = u.ID INNER JOIN empleados  e  ON o.ID_EMPLEADO    = e.ID INNER JOIN contratos  c  ON o.ID_CONTRATO    = c.ID " _
+                                    & "INNER JOIN entidades  en ON c.CODIGO_ENTIDAD = en.CODIGO_ENTIDAD INNER JOIN licencias  l  ON c.ID_LICENCIA    = l.ID WHERE o.ESTADO = 'PENDIENTE';")
                 _conn = ConexionODBC.Open()
                 'If _conn.State.ToString = "Open" Then
                 ' _conn.Close()

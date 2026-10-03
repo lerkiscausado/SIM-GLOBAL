@@ -725,10 +725,10 @@ Public Class frmImprimir
     Public Sub ImprimirEjemplo()
         Try
 
-            Dim rptEjemplo As New Ejemplo
-            crv.ReportSource = rptEjemplo
-            crv.Refresh()
-            ShowDialog()
+            'Dim rptEjemplo As New rptImagenes
+            'crv.ReportSource = rptEjemplo
+            'crv.Refresh()
+            'ShowDialog()
         Catch ex As Exception
             MessageBox.Show(ex.Message)
         End Try
@@ -980,11 +980,13 @@ Public Class frmImprimir
                         rptEndoscopiaGL.SetParameterValue("fotos", Fotos)
                         crv.ReportSource = rptEndoscopiaGL
                     Case 4 'GASTROLAP
-                        Dim rptEndoscopiaGL As New rptImgEndoscopiaGL
-                        'Dim rptEndoscopiaGL As New rptImgEndoscopiaGC
+                        'Dim rptEndoscopiaGL As New rptImgEndoscopiaGL
+                        Dim rptEndoscopiaGL As New rptImgEndoscopiaGC
                         rptEndoscopiaGL.SetParameterValue("filtro", idDetalleOrden)
                         rptEndoscopiaGL.SetParameterValue("reporte", Reporte)
                         rptEndoscopiaGL.SetParameterValue("fotos", Fotos)
+                        ' Usamos el nombre del objeto "subImagenes" y el nombre técnico del parámetro
+                        rptEndoscopiaGL.SetParameterValue("id_detalle_orden", idDetalleOrden, "imagenes")
                         crv.ReportSource = rptEndoscopiaGL
 
                 End Select
@@ -997,12 +999,15 @@ Public Class frmImprimir
                         rptColonoscopiaGL.SetParameterValue("fotos", Fotos)
                         crv.ReportSource = rptColonoscopiaGL
                     Case 4 'GASTROLAP
-                        'Dim rptColonoscopiaGL As New rptImgColonoscopiaGC
-                        Dim rptColonoscopiaGL As New rptImgColonoscopiaGL
+                        Dim rptColonoscopiaGL As New rptImgColonoscopiaGC
+                        'Dim rptColonoscopiaGL As New rptImgColonoscopiaGL
                         rptColonoscopiaGL.SetParameterValue("filtro", idDetalleOrden)
                         rptColonoscopiaGL.SetParameterValue("reporte", Reporte)
                         rptColonoscopiaGL.SetParameterValue("fotos", Fotos)
+                        ' Usamos el nombre del objeto "subImagenes" y el nombre técnico del parámetro
+                        rptColonoscopiaGL.SetParameterValue("id_detalle_orden", idDetalleOrden, "imagenes")
                         crv.ReportSource = rptColonoscopiaGL
+
 
                 End Select
             Case "RECTOSCOPIA"
@@ -1014,11 +1019,13 @@ Public Class frmImprimir
                         rptRectoscopiaGL.SetParameterValue("fotos", Fotos)
                         crv.ReportSource = rptRectoscopiaGL
                     Case 4 'GASTROLAP
-                        'Dim rptRectoscopiaGL As New rptImgRectoscopiaGC
-                        Dim rptRectoscopiaGL As New rptImgRectoscopiaGL
+                        Dim rptRectoscopiaGL As New rptImgRectoscopiaGC
+                        'Dim rptRectoscopiaGL As New rptImgRectoscopiaGL
                         rptRectoscopiaGL.SetParameterValue("filtro", idDetalleOrden)
                         rptRectoscopiaGL.SetParameterValue("reporte", Reporte)
                         rptRectoscopiaGL.SetParameterValue("fotos", Fotos)
+                        ' Usamos el nombre del objeto "subImagenes" y el nombre técnico del parámetro
+                        rptRectoscopiaGL.SetParameterValue("id_detalle_orden", idDetalleOrden, "imagenes")
                         crv.ReportSource = rptRectoscopiaGL
 
                 End Select
@@ -1043,11 +1050,13 @@ Public Class frmImprimir
                         rptEstudiosEspecialesGL.SetParameterValue("fotos", Fotos)
                         crv.ReportSource = rptEstudiosEspecialesGL
                     Case 4 'GASTROLAP
-                        'Dim rptEstudiosEspecialesGL As New rptImgEstudiosEspecialesGC
-                        Dim rptEstudiosEspecialesGL As New rptImgEstudiosEspecialesGL
+                        Dim rptEstudiosEspecialesGL As New rptImgEstudiosEspecialesGC
+                        'Dim rptEstudiosEspecialesGL As New rptImgEstudiosEspecialesGL
                         rptEstudiosEspecialesGL.SetParameterValue("filtro", idDetalleOrden)
                         rptEstudiosEspecialesGL.SetParameterValue("reporte", Reporte)
                         rptEstudiosEspecialesGL.SetParameterValue("fotos", Fotos)
+                        ' Usamos el nombre del objeto "subImagenes" y el nombre técnico del parámetro
+                        rptEstudiosEspecialesGL.SetParameterValue("id_detalle_orden", idDetalleOrden, "imagenes")
                         crv.ReportSource = rptEstudiosEspecialesGL
 
                 End Select

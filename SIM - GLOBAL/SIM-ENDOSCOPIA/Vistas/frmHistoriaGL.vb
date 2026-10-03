@@ -264,7 +264,11 @@ Public Class frmHistoriaGL
         _HistoriaClinica.TannerLP = txtLP.Text
         _HistoriaClinica.Estado = "A"
         _HistoriaClinica.Temperatura = Val(txtTemperatura.Text)
-        _HistoriaClinica.IdEspecialista = Val("1")
+        ' Antes: hardcodeado a 1 (bug preexistente) - se usa el médico realmente
+        ' seleccionado al crear la orden (frmOrdenes.cboMedico), ya cargado en
+        ' _Ordenes.IdEmpleado desde _dordenes.Cargar(_ClickGrilla) más arriba en el flujo.
+        ' Este id coincide con especialistas.id_especialista de esa misma persona.
+        _HistoriaClinica.IdEspecialista = Val(_Ordenes.IdEmpleado)
 
         '*********** CAMPOS ANTECEDENTES  *********************************************
         _Antecedentes.IdOrden = Val(lblConsecutivoOrden.Text)
