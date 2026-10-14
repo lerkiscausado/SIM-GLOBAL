@@ -18,10 +18,14 @@
 --   * Si config_interop_api / interop_token_cache NO existen (caso del
 --     error de arriba), las crea completas, con columnas incluidas.
 --   * Si YA existen (ej. la base de datos real de Gastrocaribe), no hace
---     nada (CREATE TABLE IF NOT EXISTS) y el ADD COLUMN IF NOT EXISTS
+--     nada (CREATE TABLE IF NOT EXISTS), y el chequeo de columnas de abajo
 --     tampoco falla si codigo_prestador_reps/nit_prestador ya estaban.
---   * Requiere MySQL 8.0.29+ / MariaDB equivalente por el "IF NOT EXISTS"
---     en ADD COLUMN (confirmado: el error mostrado usa MySQL 8.0.46).
+--   * No usa "ADD COLUMN IF NOT EXISTS": aunque el estándar MySQL 8.0 lo
+--     soporta en teoría, el servidor real contra el que se probó esto
+--     (mysqld 8.0.46 de Ubuntu 24.04, vía ODBC/HeidiSQL) lo rechazó con
+--     error de sintaxis 1064. En su lugar se usa SQL dinámico con
+--     INFORMATION_SCHEMA, que funciona en cualquier versión de MySQL o
+--     MariaDB razonablemente reciente.
 --
 -- Ejecútala ANTES de (o en cualquier orden respecto a) rda_paciente_migracion.sql:
 -- ambas son idempotentes entre sí.
@@ -30,7 +34,7 @@
 CREATE TABLE IF NOT EXISTS config_interop_api (
     id                      INT AUTO_INCREMENT PRIMARY KEY,
     ambiente                VARCHAR(20)  NOT NULL DEFAULT 'SANDBOX'
-        COMMENT '''SANDBOX'' o ''PRODUCCION''',
+        COMMENT 'Valores: SANDBOX o PRODUCCION',
     tenant_id               VARCHAR(100) NULL
         COMMENT 'Tenant ID de Azure AD provisto por MinSalud',
     client_id               VARCHAR(100) NULL,
@@ -52,11 +56,29 @@ COMMENT='Credenciales/config de conexión a la API de interoperabilidad RDA de M
 
 -- Por si la tabla ya existía de antes (otra base de datos) sin estas 2
 -- columnas, pero sin haber corrido rda_paciente_migracion.sql todavía.
-ALTER TABLE config_interop_api
-    ADD COLUMN IF NOT EXISTS codigo_prestador_reps VARCHAR(50) NULL
-        COMMENT 'Código de habilitación del prestador (REPS) - requerido para RDA',
-    ADD COLUMN IF NOT EXISTS nit_prestador VARCHAR(30) NULL
-        COMMENT 'NIT del prestador SIN dígito de verificación';
+-- (SQL dinámico porque "ADD COLUMN IF NOT EXISTS" no corrió en el servidor
+-- real contra el que se probó esto; ver nota arriba.)
+SET @tiene_codigo_prestador_reps := (
+    SELECT COUNT(*) FROM INFORMATION_SCHEMA.COLUMNS
+    WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = 'config_interop_api' AND COLUMN_NAME = 'codigo_prestador_reps'
+);
+SET @sql_codigo_prestador_reps := IF(@tiene_codigo_prestador_reps = 0,
+    'ALTER TABLE config_interop_api ADD COLUMN codigo_prestador_reps VARCHAR(50) NULL COMMENT ''Codigo de habilitacion del prestador (REPS) - requerido para RDA''',
+    'SELECT 1');
+PREPARE stmt_codigo_prestador_reps FROM @sql_codigo_prestador_reps;
+EXECUTE stmt_codigo_prestador_reps;
+DEALLOCATE PREPARE stmt_codigo_prestador_reps;
+
+SET @tiene_nit_prestador := (
+    SELECT COUNT(*) FROM INFORMATION_SCHEMA.COLUMNS
+    WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = 'config_interop_api' AND COLUMN_NAME = 'nit_prestador'
+);
+SET @sql_nit_prestador := IF(@tiene_nit_prestador = 0,
+    'ALTER TABLE config_interop_api ADD COLUMN nit_prestador VARCHAR(30) NULL COMMENT ''NIT del prestador SIN digito de verificacion''',
+    'SELECT 1');
+PREPARE stmt_nit_prestador FROM @sql_nit_prestador;
+EXECUTE stmt_nit_prestador;
+DEALLOCATE PREPARE stmt_nit_prestador;
 
 
 CREATE TABLE IF NOT EXISTS interop_token_cache (
