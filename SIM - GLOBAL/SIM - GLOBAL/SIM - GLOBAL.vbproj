@@ -2130,6 +2130,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Sql\rda_config_interop_api_base.sql" />
     <None Include="Sql\rda_paciente_migracion.sql" />
     <None Include="Sql\rda_usuarios_campos_obligatorios.sql" />
     <None Include="Sql\rda_especialistas_nombre_estructurado.sql" />
