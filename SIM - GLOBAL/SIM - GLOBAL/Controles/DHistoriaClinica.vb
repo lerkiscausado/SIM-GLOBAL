@@ -5,6 +5,21 @@ Imports SIM___GLOBAL.My.Controles
 Imports System.Data.Common
 Imports System.Data.Odbc
 Namespace Controles
+
+    ''' <summary>
+    ''' Resolución 3100 de 2019 (inalterabilidad): se lanza cuando se intenta
+    ''' modificar el contenido original de una historia clínica que ya fue
+    ''' firmada. El único camino permitido a partir de ese momento es una
+    ''' adenda (DHistoriaClinica.GuardarAdenda), nunca un UPDATE sobre el
+    ''' contenido original.
+    ''' </summary>
+    Public Class HistoriaFirmadaException
+        Inherits Exception
+        Public Sub New(Optional mensaje As String = "Esta historia clínica ya fue firmada y no se puede modificar. Use una adenda para agregar información adicional.")
+            MyBase.New(mensaje)
+        End Sub
+    End Class
+
     Public Class DHistoriaClinica
         Shared _conn As New OdbcConnection
         Shared _ds As DataSet
@@ -52,12 +67,46 @@ Namespace Controles
                 _HistoriaClinica.IdEspecialista = _ds.Tables(0).Rows(0)(29).ToString()
                 _HistoriaClinica.Remision = _ds.Tables(0).Rows(0)(30).ToString()
                 _HistoriaClinica.EstudiosDiagnosticos = _ds.Tables(0).Rows(0)(31).ToString()
+                'Resolución 3100: estado de firma (columnas agregadas por
+                'Sql/resolucion3100_inalterabilidad_historia.sql, al final de la tabla)
+                If _ds.Tables(0).Columns.Count > 32 Then
+                    _HistoriaClinica.Firmada = (_ds.Tables(0).Rows(0)(32).ToString() = "1")
+                    If _ds.Tables(0).Rows(0)(33) IsNot DBNull.Value Then
+                        _HistoriaClinica.FechaFirma = CDate(_ds.Tables(0).Rows(0)(33))
+                    End If
+                    _HistoriaClinica.UsuarioFirma = _ds.Tables(0).Rows(0)(34).ToString()
+                End If
                 Return _HistoriaClinica
             Catch ex As Exception
                 MessageBox.Show(ex.Message)
                 Return Nothing
             End Try
         End Function
+
+        ''' <summary>
+        ''' Resolución 3100: True si la historia de esta orden ya fue firmada
+        ''' (y por lo tanto Guardar() rechazará cualquier intento de UPDATE).
+        ''' </summary>
+        Public Shared Function EstaFirmada(ByVal idOrden As String) As Boolean
+            Try
+                Dim query As String =
+                        String.Format("SELECT firmada FROM historia_clinica WHERE id_orden='" & idOrden & "'")
+                _conn = ConexionODBC.Open()
+                Dim comando = New OdbcCommand(query, _conn)
+                Dim reader As OdbcDataReader
+                reader = comando.ExecuteReader()
+                Dim resultado As Boolean = False
+                If reader.Read() Then
+                    resultado = (reader(0).ToString() = "1")
+                End If
+                ConexionODBC.Close(_conn)
+                Return resultado
+            Catch ex As Exception
+                MessageBox.Show(ex.Message)
+                Return False
+            End Try
+        End Function
+
         Public Function Existe(ByVal filtro As String) As Boolean
             Try
                 Dim query As String =
@@ -79,6 +128,14 @@ Namespace Controles
             Return Nothing
         End Function
         Public Sub Guardar(ByVal _HistoriaClinica As HistoriaClinica)
+            'Resolución 3100 (inalterabilidad): si la historia de esta orden ya fue
+            'firmada, se rechaza el guardado aquí mismo, antes de tocar la base de
+            'datos. El intento queda registrado en la bitácora aunque se bloquee.
+            If Existe(_HistoriaClinica.IdOrden) = True AndAlso EstaFirmada(_HistoriaClinica.IdOrden.ToString()) Then
+                RegistrarTrazabilidad(_HistoriaClinica.IdOrden, _HistoriaClinica.IdEspecialista, "INTENTO_BLOQUEADO",
+                                       "Intento de modificar una historia ya firmada (rechazado por la aplicación)")
+                Throw New HistoriaFirmadaException()
+            End If
             Try
                 Dim query As String
                 If Existe(_HistoriaClinica.IdOrden) = True Then
@@ -133,16 +190,108 @@ Namespace Controles
                             & "'" & _HistoriaClinica.TannerVT & "','" & _HistoriaClinica.TannerLP & "','" & _HistoriaClinica.Estado & "', " _
                             & "'" & _HistoriaClinica.Recomendaciones & "','" & _HistoriaClinica.Temperatura & "', '" & _HistoriaClinica.IdEspecialista & "', '" & _HistoriaClinica.Remision & "','" & _HistoriaClinica.EstudiosDiagnosticos & "')"
                 End If
+                Dim esCreacion As Boolean = Not Existe(_HistoriaClinica.IdOrden)
                 _conn = ConexionODBC.Open()
                 Dim comando = New OdbcCommand(query, _conn)
                 comando.Parameters.AddWithValue(1, CDec(_HistoriaClinica.Peso))
                 comando.Parameters.AddWithValue(2, CDec(_HistoriaClinica.Talla))
                 comando.ExecuteNonQuery()
                 ConexionODBC.Close(_conn)
+                RegistrarTrazabilidad(_HistoriaClinica.IdOrden, _HistoriaClinica.IdEspecialista,
+                                       If(esCreacion, "CREACION", "ACTUALIZACION"), Nothing)
             Catch ex As Exception
                 MessageBox.Show(ex.ToString())
             End Try
         End Sub
+
+        ''' <summary>
+        ''' Resolución 3100 (inalterabilidad): marca la historia como firmada de
+        ''' forma definitiva. A partir de aquí Guardar() rechaza cualquier UPDATE
+        ''' sobre el contenido original; solo se permiten adendas. fecha_firma la
+        ''' fija el servidor (NOW()), nunca el usuario, para poder demostrar
+        ''' oportunidad real. Es idempotente: si ya estaba firmada, no hace nada.
+        ''' </summary>
+        Public Shared Sub MarcarFirmada(ByVal idOrden As Object, ByVal idUsuario As Object)
+            Try
+                Dim query As String =
+                        "UPDATE historia_clinica SET firmada=1, fecha_firma=NOW(), usuario_firma=? " _
+                        & "WHERE id_orden='" & idOrden.ToString() & "' AND firmada=0"
+                _conn = ConexionODBC.Open()
+                Dim comando = New OdbcCommand(query, _conn)
+                comando.Parameters.AddWithValue(1, idUsuario.ToString())
+                Dim filasAfectadas As Integer = comando.ExecuteNonQuery()
+                ConexionODBC.Close(_conn)
+                If filasAfectadas > 0 Then
+                    RegistrarTrazabilidad(idOrden, idUsuario, "FIRMA", "Historia firmada; queda bloqueada para edición")
+                End If
+            Catch ex As Exception
+                MessageBox.Show(ex.ToString())
+            End Try
+        End Sub
+
+        ''' <summary>
+        ''' Bitácora de inalterabilidad. Se usa tanto para registrar guardados
+        ''' normales y la firma, como para dejar constancia de intentos de
+        ''' modificación bloqueados por ya estar firmada la historia.
+        ''' </summary>
+        Public Shared Sub RegistrarTrazabilidad(ByVal idOrden As Object, ByVal idUsuario As Object, ByVal accion As String, ByVal detalle As String)
+            Try
+                Dim query As String =
+                        "INSERT INTO historia_clinica_trazabilidad (id_orden, id_usuario, accion, detalle) VALUES (?,?,?,?)"
+                _conn = ConexionODBC.Open()
+                Dim comando = New OdbcCommand(query, _conn)
+                comando.Parameters.AddWithValue(1, idOrden.ToString())
+                comando.Parameters.AddWithValue(2, If(idUsuario Is Nothing, DBNull.Value, CObj(idUsuario.ToString())))
+                comando.Parameters.AddWithValue(3, accion)
+                comando.Parameters.AddWithValue(4, If(detalle Is Nothing, DBNull.Value, CObj(detalle)))
+                comando.ExecuteNonQuery()
+                ConexionODBC.Close(_conn)
+            Catch ex As Exception
+                'No bloqueamos el flujo clínico por un fallo al escribir la bitácora,
+                'pero sí lo dejamos visible para no ocultar un problema de auditoría.
+                MessageBox.Show("No se pudo registrar la trazabilidad: " & ex.Message)
+            End Try
+        End Sub
+
+        ''' <summary>
+        ''' Resolución 3100: única forma de agregar información a una historia ya
+        ''' firmada. Nunca modifica ni sobrescribe el contenido original.
+        ''' </summary>
+        Public Shared Sub GuardarAdenda(ByVal idOrden As Object, ByVal idHistoria As Object, ByVal idUsuario As Object, ByVal texto As String)
+            Try
+                Dim query As String =
+                        "INSERT INTO historia_clinica_adendas (id_orden, id_historia, id_usuario, texto) VALUES (?,?,?,?)"
+                _conn = ConexionODBC.Open()
+                Dim comando = New OdbcCommand(query, _conn)
+                comando.Parameters.AddWithValue(1, idOrden.ToString())
+                comando.Parameters.AddWithValue(2, idHistoria.ToString())
+                comando.Parameters.AddWithValue(3, idUsuario.ToString())
+                comando.Parameters.AddWithValue(4, texto)
+                comando.ExecuteNonQuery()
+                ConexionODBC.Close(_conn)
+                RegistrarTrazabilidad(idOrden, idUsuario, "ADENDA", texto)
+            Catch ex As Exception
+                MessageBox.Show(ex.ToString())
+            End Try
+        End Sub
+
+        Public Shared Function ListarAdendas(ByVal idOrden As String) As DataSet
+            Try
+                Dim query As String =
+                        String.Format("SELECT fecha_hora, id_usuario, texto FROM historia_clinica_adendas WHERE id_orden='" & idOrden & "' ORDER BY fecha_hora ASC")
+                _conn = ConexionODBC.Open()
+                Dim comando = New OdbcCommand(query, _conn)
+                _adapter = New OdbcDataAdapter(comando)
+                _ds = New DataSet()
+                _adapter.Fill(_ds)
+                ConexionODBC.Close(_conn)
+                Return _ds
+            Catch ex As Exception
+                MessageBox.Show(ex.Message)
+                Return Nothing
+            End Try
+        End Function
+
         Public Function ListarHistoriasAnteriores(ByVal filtro As String) As DataSet
             Try
                 Dim query As String =

@@ -2135,6 +2135,7 @@
     <None Include="Sql\rda_especialistas_nombre_estructurado.sql" />
     <None Include="Sql\rda_empresa_codigo_prestador.sql" />
     <None Include="Sql\rda_envios_composition_id.sql" />
+    <None Include="Sql\resolucion3100_inalterabilidad_historia.sql" />
     <None Include="DataSet1.xsc">
       <DependentUpon>DataSet1.xsd</DependentUpon>
     </None>

@@ -90,6 +90,15 @@ Public Class frmHistoria
     Public IdEmpleado As String
     Dim TipoEstudio As String
 
+    'Resolución 3100 (inalterabilidad): True mientras la historia cargada ya
+    'está firmada. Bloquea la edición de todos los campos; solo se permite
+    'agregar una adenda.
+    Dim _historiaFirmada As Boolean = False
+
+    'Aviso de "historia firmada" (agregado por código, no por el Diseñador,
+    'para no arriesgar el layout generado de este formulario).
+    Dim lblEstadoFirma As New DevExpress.XtraEditors.LabelControl
+
 #End Region
 #Region "PROCEDIMIENTOS Y FUNCIONES"
     Private Function IMC(ByVal peso As Double, ByVal talla As Double) As Double
@@ -111,10 +120,69 @@ Public Class frmHistoria
         End If
     End Function
     Private Sub ActivarGuardar()
+        'Resolución 3100: una historia firmada nunca vuelve a habilitar Guardar,
+        'sin importar qué dispare este evento.
+        If _historiaFirmada Then
+            bbiGuardar.Enabled = False
+            Exit Sub
+        End If
         If TVDatosUsuarios.RowCount <> 0 Then
             bbiGuardar.Enabled = True
         End If
     End Sub
+
+    ''' <summary>
+    ''' Resolución 3100 (inalterabilidad): cuando la historia ya fue firmada,
+    ''' bloquea en pantalla todos los campos editables de la historia clínica
+    ''' para que coincida con lo que ya exige DHistoriaClinica.Guardar() en la
+    ''' capa de datos. La única acción que queda disponible es agregar una
+    ''' adenda (bbiAdenda).
+    ''' </summary>
+    Private Sub AplicarBloqueoPorFirma(ByVal firmada As Boolean)
+        _historiaFirmada = firmada
+        bbiGuardar.Enabled = False
+        bbiAdenda.Enabled = firmada
+
+        For Each ctl As Control In ObtenerControlesRecursivo(Me)
+            If TypeOf ctl Is DevExpress.XtraEditors.BaseEdit Then
+                Dim edit = DirectCast(ctl, DevExpress.XtraEditors.BaseEdit)
+                edit.Properties.ReadOnly = firmada
+            ElseIf TypeOf ctl Is DevExpress.XtraGrid.GridControl Then
+                Dim grid = DirectCast(ctl, DevExpress.XtraGrid.GridControl)
+                For Each vista As DevExpress.XtraGrid.Views.Base.BaseView In grid.Views
+                    If TypeOf vista Is DevExpress.XtraGrid.Views.Grid.GridView Then
+                        DirectCast(vista, DevExpress.XtraGrid.Views.Grid.GridView).OptionsBehavior.Editable = Not firmada
+                    End If
+                Next
+            End If
+        Next
+
+        If firmada Then
+            lblEstadoFirma.Visible = True
+            Dim textoFirma As String = "🔒 Historia firmada"
+            If _HistoriaClinica.FechaFirma.HasValue Then
+                textoFirma &= " el " & _HistoriaClinica.FechaFirma.Value.ToString("yyyy/MM/dd HH:mm")
+            End If
+            textoFirma &= ". No se puede modificar; use ""Agregar Adenda"" para anexar información."
+            lblEstadoFirma.Text = textoFirma
+        Else
+            lblEstadoFirma.Visible = False
+        End If
+    End Sub
+
+    ''' <summary>
+    ''' Recorre recursivamente todos los controles del formulario (incluye los
+    ''' que están dentro de XtraTabControl/paneles) para aplicarles el bloqueo
+    ''' de solo-lectura.
+    ''' </summary>
+    Private Iterator Function ObtenerControlesRecursivo(ByVal padre As Control) As IEnumerable(Of Control)
+        For Each hijo As Control In padre.Controls
+            Yield hijo
+            For Each nieto As Control In ObtenerControlesRecursivo(hijo)
+                Yield nieto
+            Next
+        Next
+    End Function
     Private Sub GuardarRevisionSistemas()
         _HistoriaRXS.IdRXS = cboRevisionSistema.GetColumnValue("ID")
         _HistoriaRXS.IdOrden = Val(lblConsecutivoOrden.Text)
@@ -613,6 +681,9 @@ Public Class frmHistoria
     End Sub
     Private Sub LimpiarCampos()
         'limpiamos campos
+        'Resolución 3100: al pasar a la siguiente historia, el bloqueo por firma
+        'de la anterior no debe arrastrarse.
+        AplicarBloqueoPorFirma(False)
         TipoEstudio = ""
         lblConsecutivo.Text = ""
         lblConsecutivoOrden.Text = ""
@@ -758,6 +829,14 @@ Public Class frmHistoria
             txtFC.Text = _HistoriaClinica.FrecuenciaCardiaca
             txtFR.Text = _HistoriaClinica.FrecuenciaRespiratoria
             txtTemperatura.Text = _HistoriaClinica.Temperatura
+
+            'Resolución 3100 (inalterabilidad): si esta historia ya fue firmada,
+            'bloqueamos la edición de todo el formulario. Antes, el comentario de
+            'arriba ("traemos historias... para edicion") asumía que esto nunca
+            'pasaría, pero el código no lo garantizaba.
+            AplicarBloqueoPorFirma(_HistoriaClinica.Firmada)
+        Else
+            AplicarBloqueoPorFirma(False)
         End If
 
         ' Traemos Revision por sistemas de la historia clinica actual
@@ -859,6 +938,21 @@ Public Class frmHistoria
     End Sub
 
     Private Sub frmHistoria_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'Resolución 3100: aviso visible de "historia firmada", agregado por
+        'código para no tocar el Diseñador de este formulario.
+        lblEstadoFirma.Dock = DockStyle.Top
+        lblEstadoFirma.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None
+        lblEstadoFirma.Height = 26
+        lblEstadoFirma.Appearance.BackColor = Color.FromArgb(255, 235, 150)
+        lblEstadoFirma.Appearance.ForeColor = Color.FromArgb(120, 70, 0)
+        lblEstadoFirma.Appearance.Options.UseBackColor = True
+        lblEstadoFirma.Appearance.Options.UseForeColor = True
+        lblEstadoFirma.Appearance.Options.UseTextOptions = True
+        lblEstadoFirma.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        lblEstadoFirma.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center
+        lblEstadoFirma.Visible = False
+        Me.Controls.Add(lblEstadoFirma)
+
         GCDatosUsuarios.DataSource = Nothing
         'llenamos grilla de pacientes por atender
         ActualizarGrillaPacientesAtender()
@@ -918,6 +1012,22 @@ Public Class frmHistoria
     End Sub
 
     Private Sub bbiGuardar_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles bbiGuardar.ItemClick
+        'Resolución 3100: defensa adicional aunque el botón ya quede deshabilitado
+        'al bloquear el formulario (AplicarBloqueoPorFirma).
+        If _historiaFirmada Then
+            MessageBox.Show("Esta historia ya fue firmada y no se puede modificar. Use ""Agregar Adenda"" para anexar información.", "Historia Firmada", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Exit Sub
+        End If
+
+        Try
+            GuardarHistoria_ConBloqueoDeFirma()
+        Catch ex As SIM___GLOBAL.Controles.HistoriaFirmadaException
+            MessageBox.Show(ex.Message, "Historia Firmada", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            AplicarBloqueoPorFirma(True)
+        End Try
+    End Sub
+
+    Private Sub GuardarHistoria_ConBloqueoDeFirma()
         If chkProcesado.Checked = True Then
             If TVDatosUsuarios.RowCount = 0 Then
                 MessageBox.Show("No ha Seleccionado Paciente para Guardar Historia", "Registro de Historia", MessageBoxButtons.OK, MessageBoxIcon.Information)
@@ -951,6 +1061,12 @@ Public Class frmHistoria
                     End If
 
                     If _DhistoriaClinica.existe(lblConsecutivoOrden.Text) = True Then
+                        'Resolución 3100 (inalterabilidad): a partir de aquí la historia
+                        'queda bloqueada en la base de datos (DHistoriaClinica.Guardar
+                        'rechazará cualquier UPDATE posterior) y en pantalla.
+                        DHistoriaClinica.MarcarFirmada(lblConsecutivoOrden.Text, IdEmpleado)
+                        AplicarBloqueoPorFirma(True)
+
                         'Actualizar estado de detalle orden
                         Dim _DDetalleOrden As New SIM___GLOBAL.Controles.DDetalleOrden
                         _DDetalleOrden.ActualizarDiagnosticoyEstado(lblIdDetalleOrden.Text, GVDiagnosticos.GetRowCellValue(0, "CODIGO").ToString())
@@ -1002,6 +1118,28 @@ Public Class frmHistoria
             ActualizarGrillaPacientesAtender()
             bbiGuardar.Enabled = False
         End If
+    End Sub
+
+    ''' <summary>
+    ''' Resolución 3100 (inalterabilidad): única forma de agregar información a
+    ''' una historia ya firmada. No modifica ni un solo campo del contenido
+    ''' original; se guarda como un registro nuevo, aparte, con fecha y usuario.
+    ''' </summary>
+    Private Sub bbiAdenda_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles bbiAdenda.ItemClick
+        If Not _historiaFirmada Then
+            MessageBox.Show("Esta historia aún no está firmada; use Guardar/Firmar en vez de una adenda.", "Agregar Adenda", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Exit Sub
+        End If
+        If lblConsecutivoOrden.Text = "" Then
+            MessageBox.Show("No hay una historia seleccionada.", "Agregar Adenda", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Exit Sub
+        End If
+
+        Dim texto As String = InputBox("Escriba la adenda a agregar a esta historia clínica (no reemplaza el contenido original, queda registrada aparte con fecha y usuario):", "Agregar Adenda")
+        If texto.Trim() = "" Then Exit Sub
+
+        SIM___GLOBAL.Controles.DHistoriaClinica.GuardarAdenda(lblConsecutivoOrden.Text, _HistoriaClinica.Id, IdEmpleado, texto.Trim())
+        MessageBox.Show("Adenda registrada.", "Agregar Adenda", MessageBoxButtons.OK, MessageBoxIcon.Information)
     End Sub
 
     Private Sub bbiConsultar_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles bbiConsultar.ItemClick

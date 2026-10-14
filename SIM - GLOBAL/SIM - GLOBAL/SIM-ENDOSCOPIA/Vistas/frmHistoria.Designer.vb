@@ -59,6 +59,7 @@ Partial Class frmHistoria
         Me.bbiGuardar = New DevExpress.XtraBars.BarButtonItem()
         Me.bbiConsultar = New DevExpress.XtraBars.BarButtonItem()
         Me.bbiActualizar = New DevExpress.XtraBars.BarButtonItem()
+        Me.bbiAdenda = New DevExpress.XtraBars.BarButtonItem()
         Me.barDockControlTop = New DevExpress.XtraBars.BarDockControl()
         Me.BarDockControl8 = New DevExpress.XtraBars.BarDockControl()
         Me.BarDockControl9 = New DevExpress.XtraBars.BarDockControl()
@@ -555,8 +556,8 @@ Partial Class frmHistoria
         Me.BarManager1.DockControls.Add(Me.BarDockControl9)
         Me.BarManager1.DockControls.Add(Me.BarDockControl10)
         Me.BarManager1.Form = Me
-        Me.BarManager1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.bbiNuevo, Me.bbiGuardar, Me.bbiConsultar, Me.bbiActualizar, Me.BarButtonItem1})
-        Me.BarManager1.MaxItemId = 5
+        Me.BarManager1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.bbiNuevo, Me.bbiGuardar, Me.bbiConsultar, Me.bbiActualizar, Me.BarButtonItem1, Me.bbiAdenda})
+        Me.BarManager1.MaxItemId = 6
         '
         'Bar1
         '
@@ -564,7 +565,7 @@ Partial Class frmHistoria
         Me.Bar1.DockCol = 0
         Me.Bar1.DockRow = 0
         Me.Bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Top
-        Me.Bar1.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.bbiNuevo), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiGuardar), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiConsultar), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiActualizar)})
+        Me.Bar1.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.bbiNuevo), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiGuardar), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiConsultar), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiActualizar), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiAdenda)})
         Me.Bar1.Text = "Herramientas"
         '
         'bbiNuevo
@@ -595,6 +596,13 @@ Partial Class frmHistoria
         Me.bbiActualizar.Id = 3
         Me.bbiActualizar.ImageOptions.Image = CType(resources.GetObject("bbiActualizar.ImageOptions.Image"), System.Drawing.Image)
         Me.bbiActualizar.Name = "bbiActualizar"
+        '
+        'bbiAdenda
+        '
+        Me.bbiAdenda.Caption = "Agregar Adenda"
+        Me.bbiAdenda.Enabled = False
+        Me.bbiAdenda.Id = 5
+        Me.bbiAdenda.Name = "bbiAdenda"
         '
         'barDockControlTop
         '
@@ -2985,6 +2993,7 @@ Partial Class frmHistoria
     Friend WithEvents Bar2 As DevExpress.XtraBars.Bar
     Friend WithEvents bbiNuevo As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents bbiGuardar As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents bbiAdenda As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents bbiConsultar As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents SplitContainerControl1 As DevExpress.XtraEditors.SplitContainerControl
     Friend WithEvents GroupControl1 As DevExpress.XtraEditors.GroupControl
