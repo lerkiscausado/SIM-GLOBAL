@@ -172,7 +172,22 @@ Namespace Controles
                         & "where id_orden='" & _HistoriaClinica.IdOrden & "'"
                 Else
                     'Guardar Historia
-                    query = "INSERT INTO historia_clinica VALUES(0,'" & _HistoriaClinica.IdOrden & "','" & _HistoriaClinica.IdDetalleOrden & "','" & Format(_HistoriaClinica.FechaHistoria, "yyyy/MM/dd") & "'," _
+                    'Resolución 3100 / migración de columnas nuevas: se cambió de
+                    'INSERT INTO historia_clinica VALUES(...) posicional (sin lista de
+                    'columnas) a lista de columnas explícita. Con el INSERT posicional,
+                    'agregar firmada/fecha_firma/usuario_firma al final de la tabla
+                    '(Sql/resolucion3100_inalterabilidad_historia.sql) rompía este INSERT
+                    '("Column count doesn't match value count"), porque MySQL exige que
+                    'VALUES(...) sin columnas cubra TODAS las columnas de la tabla.
+                    'Con columnas explícitas, las 3 columnas nuevas quedan en sus
+                    'valores por defecto (firmada=0) sin tocar este INSERT.
+                    query = "INSERT INTO historia_clinica " _
+                            & "(id_orden, id_detalle_orden, fecha_historia, codigo_historia, responsables, motivo_consulta, " _
+                            & "consulta_control, enfermedad_actual, revisionxsistemas, examen_fisico, peso, talla, " _
+                            & "tension_arterial, frecuencia_cardiaca, frecuencia_respiratoria, diagnostico, plan_seguir, " _
+                            & "formulacion, laboratorios, otros_estudios, tanner_a, tanner_b, tanner_p, tanner_vt, tanner_lp, " _
+                            & "estado, recomendaciones, temperatura, id_especialista, remision, estudios_diagnosticos) " _
+                            & "VALUES ('" & _HistoriaClinica.IdOrden & "','" & _HistoriaClinica.IdDetalleOrden & "','" & Format(_HistoriaClinica.FechaHistoria, "yyyy/MM/dd") & "'," _
                             & "'" & _HistoriaClinica.CodigoHistoria & "','" & _HistoriaClinica.Responsables & "', " _
                             & "'" & _HistoriaClinica.MotivoConsulta & "', " _
                             & "'" & _HistoriaClinica.ConsultaControl & "', " _
