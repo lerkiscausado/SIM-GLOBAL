@@ -231,6 +231,7 @@ Public Class frmInicio
 
     Private Sub frmInicio_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         AgregarBotonHistorialRDA()
+        SIM___GLOBAL.Utilidades.EstiloSIM.Activar() ' Estilo visual común en todos los formularios
         'Selecciona el SKIN predeterminado
         DevExpress.LookAndFeel.UserLookAndFeel.Default.SetSkinStyle("Office 2013")
         'INICIAR CONEXION BASE DE DATOS

@@ -919,6 +919,7 @@
     <Compile Include="Reportes\xrPatologiaNuestra.vb">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Utilidades\EstiloSIM.vb" />
     <Compile Include="Utilidades\Funciones.vb" />
     <Compile Include="Utilidades\InteropAuthService.vb" />
     <Compile Include="Utilidades\RDAConsultaExternaBuilder.vb" />
