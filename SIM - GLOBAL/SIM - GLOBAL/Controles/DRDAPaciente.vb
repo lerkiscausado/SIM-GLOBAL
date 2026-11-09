@@ -332,6 +332,35 @@ Namespace Controles
             Return Nothing
         End Function
 
+        ''' <summary>
+        ''' Datos para reenviar un RDA desde el historial: paciente de la orden, especialista
+        ''' (el que firmó la historia; si no, el de la orden) y el tipo de detalle a reportar
+        ''' ('C' si la orden tiene historia clínica, si no 'P' procedimiento).
+        ''' </summary>
+        Public Shared Function DatosParaReenvio(idOrden As Integer) As (IdUsuario As Integer, IdEspecialista As Integer, TipoPreferido As String)?
+            Try
+                Dim query As String = "SELECT o.id_usuario, " &
+                    "COALESCE((SELECT hc.usuario_firma FROM historia_clinica hc WHERE hc.id_orden = o.id AND hc.usuario_firma IS NOT NULL LIMIT 1), o.id_empleado) AS id_especialista, " &
+                    "(SELECT COUNT(*) FROM historia_clinica hc2 WHERE hc2.id_orden = o.id) AS con_historia " &
+                    "FROM ordenes o WHERE o.id = ?"
+                Using conn As OdbcConnection = ConexionODBC.Open()
+                    Using comando As New OdbcCommand(query, conn)
+                        comando.Parameters.AddWithValue("?", idOrden)
+                        Using reader As OdbcDataReader = comando.ExecuteReader()
+                            If reader.Read() Then
+                                Dim idUsuario As Integer = If(IsDBNull(reader("id_usuario")), 0, Convert.ToInt32(reader("id_usuario")))
+                                Dim idEspecialista As Integer = If(IsDBNull(reader("id_especialista")), 0, Convert.ToInt32(reader("id_especialista")))
+                                Dim tipo As String = If(Convert.ToInt32(reader("con_historia")) > 0, "C", "P")
+                                If idUsuario > 0 AndAlso idEspecialista > 0 Then Return (idUsuario, idEspecialista, tipo)
+                            End If
+                        End Using
+                    End Using
+                End Using
+            Catch
+            End Try
+            Return Nothing
+        End Function
+
         ' ── Auditoría de envíos (best-effort: si la tabla rda_envios no existe aún, no falla) ──
         ''' <summary>
         ''' Trae el historial de envíos de RDA (tabla rda_envios), más recientes primero, con
