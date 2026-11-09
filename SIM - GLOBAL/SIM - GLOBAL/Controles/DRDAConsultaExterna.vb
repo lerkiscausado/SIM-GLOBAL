@@ -109,45 +109,84 @@ Namespace Controles
                 Dim cupsProcedimientoCodigo As String = If(esProcedimiento, detalle.Value.CupsCodigo, Nothing)
                 Dim cupsProcedimientoTexto As String = If(esProcedimiento, detalle.Value.CupsTexto, Nothing)
 
-                Dim bundleJson As String = RDAConsultaExternaBuilder.ConstruirBundleConsultaExterna(
-                    paciente:=paciente,
-                    especialista:=especialista,
-                    config:=config,
-                    nombreOrganizacion:=DRDA.NombrePrestador(),
-                    diagnosticoCie10Codigo:=detalle.Value.DiagnosticoCodigo,
-                    diagnosticoCie10Texto:=detalle.Value.DiagnosticoTexto,
-                    cupsConsultaCodigo:=cupsConsultaCodigo,
-                    cupsConsultaTexto:=cupsConsultaTexto,
-                    grupoServiciosCodigo:="01",
-                    grupoServiciosTexto:="Consulta externa",
-                    repsHealthcareServiceCodigo:=REPS_SERVICIO_CODIGO,
-                    repsHealthcareServiceTexto:=REPS_SERVICIO_TEXTO,
-                    cupsProcedimientoCodigo:=cupsProcedimientoCodigo,
-                    cupsProcedimientoTexto:=cupsProcedimientoTexto)
-
-                ' 7. Enviar
+                Dim diagnosticoTexto As String = detalle.Value.DiagnosticoTexto
                 Dim urlEnvio As String = config.UrlBaseApi.TrimEnd("/"c) & "/Composition/$enviar-rda-consulta"
-                Using client As New HttpClient()
-                    Dim request As New HttpRequestMessage(HttpMethod.Post, urlEnvio)
-                    request.Headers.Add("Authorization", "Bearer " & token)
-                    If Not String.IsNullOrWhiteSpace(config.SubscriptionKey) Then
-                        request.Headers.Add("Ocp-Apim-Subscription-Key", config.SubscriptionKey)
-                    End If
-                    request.Content = New StringContent(bundleJson, Encoding.UTF8, "application/json")
 
-                    Dim response As HttpResponseMessage = Await client.SendAsync(request)
-                    Dim cuerpo As String = Await response.Content.ReadAsStringAsync()
+                ' 7. Enviar. MinSalud exige que Condition.code.coding.display sea EXACTAMENTE el
+                '    texto oficial del CIE-10 (ej. K30X = "DISPEPSIA FUNCIONAL", no "DISPEPSIA");
+                '    si no, responde 400. Si el catálogo local difiere, se toma el display oficial
+                '    que indica la respuesta y se reintenta una sola vez.
+                For intento As Integer = 1 To 2
+                    Dim bundleJson As String = RDAConsultaExternaBuilder.ConstruirBundleConsultaExterna(
+                        paciente:=paciente,
+                        especialista:=especialista,
+                        config:=config,
+                        nombreOrganizacion:=DRDA.NombrePrestador(),
+                        diagnosticoCie10Codigo:=detalle.Value.DiagnosticoCodigo,
+                        diagnosticoCie10Texto:=diagnosticoTexto,
+                        cupsConsultaCodigo:=cupsConsultaCodigo,
+                        cupsConsultaTexto:=cupsConsultaTexto,
+                        grupoServiciosCodigo:="01",
+                        grupoServiciosTexto:="Consulta externa",
+                        repsHealthcareServiceCodigo:=REPS_SERVICIO_CODIGO,
+                        repsHealthcareServiceTexto:=REPS_SERVICIO_TEXTO,
+                        cupsProcedimientoCodigo:=cupsProcedimientoCodigo,
+                        cupsProcedimientoTexto:=cupsProcedimientoTexto)
 
-                    DRDAPaciente.RegistrarIntento(idOrden, response.IsSuccessStatusCode, cuerpo, CInt(response.StatusCode), "RDA-CONSULTA-EXTERNA")
-                    onProgreso?.Invoke(If(response.IsSuccessStatusCode, "✅ Envío exitoso", $"❌ MinSalud rechazó el RDA (HTTP {CInt(response.StatusCode)})"))
-                    Return response.IsSuccessStatusCode
-                End Using
+                    Using client As New HttpClient()
+                        Dim request As New HttpRequestMessage(HttpMethod.Post, urlEnvio)
+                        request.Headers.Add("Authorization", "Bearer " & token)
+                        If Not String.IsNullOrWhiteSpace(config.SubscriptionKey) Then
+                            request.Headers.Add("Ocp-Apim-Subscription-Key", config.SubscriptionKey)
+                        End If
+                        request.Content = New StringContent(bundleJson, Encoding.UTF8, "application/json")
+
+                        Dim response As HttpResponseMessage = Await client.SendAsync(request)
+                        Dim cuerpo As String = Await response.Content.ReadAsStringAsync()
+
+                        If Not response.IsSuccessStatusCode AndAlso intento = 1 Then
+                            Dim oficial As String = DisplayOficialCie10(cuerpo, detalle.Value.DiagnosticoCodigo)
+                            If oficial IsNot Nothing AndAlso oficial <> diagnosticoTexto Then
+                                DRDAPaciente.RegistrarIntento(idOrden, False, cuerpo, CInt(response.StatusCode), "RDA-CONSULTA-EXTERNA")
+                                onProgreso?.Invoke("Corrigiendo descripción CIE-10 y reintentando...")
+                                diagnosticoTexto = oficial
+                                Continue For
+                            End If
+                        End If
+
+                        DRDAPaciente.RegistrarIntento(idOrden, response.IsSuccessStatusCode, cuerpo, CInt(response.StatusCode), "RDA-CONSULTA-EXTERNA")
+                        onProgreso?.Invoke(If(response.IsSuccessStatusCode, "✅ Envío exitoso", $"❌ MinSalud rechazó el RDA (HTTP {CInt(response.StatusCode)})"))
+                        Return response.IsSuccessStatusCode
+                    End Using
+                Next
+                Return False
 
             Catch ex As Exception
                 DRDAPaciente.RegistrarIntento(idOrden, False, "Excepción: " & ex.Message, Nothing, "RDA-CONSULTA-EXTERNA")
                 onProgreso?.Invoke("❌ Error inesperado: " & ex.Message)
                 Return False
             End Try
+        End Function
+
+        ''' <summary>
+        ''' Busca en el OperationOutcome de MinSalud el aviso "Code 'X' from system
+        ''' 'http://hl7.org/fhir/sid/icd-10' has incorrect display '...', should be '...'"
+        ''' y devuelve el display oficial para ese código (Nothing si no aparece).
+        ''' </summary>
+        Private Shared Function DisplayOficialCie10(respuestaJson As String, codigo As String) As String
+            If String.IsNullOrWhiteSpace(respuestaJson) OrElse String.IsNullOrWhiteSpace(codigo) Then Return Nothing
+            Try
+                Dim raiz = Newtonsoft.Json.Linq.JToken.Parse(respuestaJson)
+                Dim patron As New System.Text.RegularExpressions.Regex(
+                    "Code '" & System.Text.RegularExpressions.Regex.Escape(codigo.Trim()) &
+                    "' from system 'http://hl7\.org/fhir/sid/icd-10' has incorrect display '.*?', should be '(?<ok>.+?)'$")
+                For Each t In raiz.SelectTokens("$..text")
+                    Dim m = patron.Match(t.ToString())
+                    If m.Success Then Return m.Groups("ok").Value
+                Next
+            Catch
+            End Try
+            Return Nothing
         End Function
 
         ''' <summary>
