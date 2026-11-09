@@ -148,6 +148,8 @@ Partial Class frmHistoria
         For Each par In {Tuple.Create(LabelControl2, CType(dtFechaIngreso, Control)),
                          Tuple.Create(LabelControl7, CType(lblConsecutivoOrden, Control)),
                          Tuple.Create(LabelControl1, CType(txtNumeroHistoria, Control))}
+            ' 8.25 pt: en 8.75 "Codigo de Historia:" no cabe entre las casillas Orden y Código.
+            par.Item1.Appearance.Font = New Font("Segoe UI", 8.25!)
             par.Item1.Left = par.Item2.Left - par.Item1.Width - 6
         Next
 
