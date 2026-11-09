@@ -2571,7 +2571,15 @@ Public Class frmInicio
         bbiHistorialRDA = New DevExpress.XtraBars.BarButtonItem()
         bbiHistorialRDA.Caption = "Historial RDA"
         bbiHistorialRDA.Name = "bbiHistorialRDA"
-        bbiHistorialRDA.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText
+        bbiHistorialRDA.RibbonStyle = CType(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
+        Try
+            ' Ícono propio (Recursos/Iconos/rda_historial.svg), guardado en frmInicio.resx.
+            Dim recursos As New System.ComponentModel.ComponentResourceManager(GetType(frmInicio))
+            Dim icono = CType(recursos.GetObject("bbiHistorialRDA.ImageOptions.Image"), System.Drawing.Image)
+            bbiHistorialRDA.ImageOptions.Image = icono
+            bbiHistorialRDA.ImageOptions.LargeImage = icono
+        Catch
+        End Try
         RibbonControl.Items.Add(bbiHistorialRDA)
         rpgSistema.ItemLinks.Add(bbiHistorialRDA)
     End Sub

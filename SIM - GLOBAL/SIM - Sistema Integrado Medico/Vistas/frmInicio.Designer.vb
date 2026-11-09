@@ -1093,6 +1093,8 @@ Partial Class frmInicio
         Me.bbiRDA.AllowHtmlText = DevExpress.Utils.DefaultBoolean.[True]
         Me.bbiRDA.Caption = "Interoperabilidad"
         Me.bbiRDA.Id = 113
+        Me.bbiRDA.ImageOptions.Image = CType(resources.GetObject("bbiRDA.ImageOptions.Image"), System.Drawing.Image)
+        Me.bbiRDA.ImageOptions.LargeImage = CType(resources.GetObject("bbiRDA.ImageOptions.LargeImage"), System.Drawing.Image)
         Me.bbiRDA.Name = "bbiRDA"
         Me.bbiRDA.RibbonStyle = CType(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) _
             Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
