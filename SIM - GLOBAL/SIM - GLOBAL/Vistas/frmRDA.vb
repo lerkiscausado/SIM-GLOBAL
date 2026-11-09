@@ -4,74 +4,28 @@ Imports SIM___GLOBAL.Controles
 
 Public Class frmRDA
 
-    ' Campos "Código Prestador (REPS)" y "NIT Prestador", requeridos para armar la Organization
-    ' del Bundle RDA. Se agregan por código (no en el Designer) para no arriesgar el layout
-    ' visual generado por el diseñador de Visual Studio, que no está disponible en este entorno.
-    Private WithEvents txtCodigoPrestadorReps As DevExpress.XtraEditors.TextEdit
-    Private WithEvents txtNitPrestador As DevExpress.XtraEditors.TextEdit
+    ' Los campos del prestador (txtCodigoPrestadorReps, txtNitPrestador) y los botones de
+    ' prueba (spEnviarRDAPrueba, spEnviarRDAConsultaPrueba) están en el Designer: pestaña
+    ' "Configuración" y pestaña "Pruebas (sandbox)" respectivamente.
 
-    ' Botón de prueba: envía un RDA-Paciente con datos fijos (Lerki Causado / Jaime Bonfante /
-    ' Gastrocaribe) usando la configuración y el token ya guardados, y muestra la respuesta cruda
-    ' del API de MinSalud en un MessageBox.
-    Private WithEvents spEnviarRDAPrueba As DevExpress.XtraEditors.SimpleButton
+    ''' <summary>Muestra el estado de la conexión en la barra inferior.</summary>
+    Private Sub MostrarEstado(texto As String, colorTexto As Color)
+        lblEstadoServicio.Text = texto
+        lblEstadoServicio.Appearance.ForeColor = colorTexto
+    End Sub
 
-    ' Botón de prueba para RDA-Consulta Externa: paciente Fabián Suárez / Dra. Yovelis Martínez /
-    ' Gastrocaribe, sin código CUPS de procedimiento (limitación conocida del catálogo CUPS del sandbox).
-    Private WithEvents spEnviarRDAConsultaPrueba As DevExpress.XtraEditors.SimpleButton
+    ''' <summary>Los envíos de prueba solo se permiten en ambiente Sandbox.</summary>
+    Private Sub ActualizarPestanaPruebas()
+        xtPruebas.PageEnabled = rbSandbox.Checked
+    End Sub
 
-    Private Sub AgregarCamposPrestadorReps()
-        If txtCodigoPrestadorReps IsNot Nothing Then Exit Sub ' Evitar duplicar si el Load se dispara más de una vez
+    Private Sub rbAmbiente_CheckedChanged(sender As Object, e As EventArgs) Handles rbSandbox.CheckedChanged, rbProduction.CheckedChanged
+        ActualizarPestanaPruebas()
+    End Sub
 
-        ' 1. Hacer espacio dentro del panel (2 campos nuevos + 2 botones de prueba) y correr hacia
-        '    abajo lo que va después de él, conservando el margen original (6px) entre el panel
-        '    y el estado del servicio.
-        Const desplazamiento As Integer = 215
-        GroupControl2.Size = New Size(GroupControl2.Size.Width, GroupControl2.Size.Height + desplazamiento)
-        lblEstadoServicio.Location = New Point(lblEstadoServicio.Location.X, lblEstadoServicio.Location.Y + desplazamiento)
-        spConectar.Location = New Point(spConectar.Location.X, spConectar.Location.Y + desplazamiento)
-        spGuardar.Location = New Point(spGuardar.Location.X, spGuardar.Location.Y + desplazamiento)
-        spCancelar.Location = New Point(spCancelar.Location.X, spCancelar.Location.Y + desplazamiento)
-        Me.ClientSize = New Size(Me.ClientSize.Width, Me.ClientSize.Height + desplazamiento)
-
-        ' 2. Etiquetas + campos, siguiendo el mismo espaciado (52px) de las filas existentes.
-        Dim lblCodigoPrestador As New DevExpress.XtraEditors.LabelControl()
-        lblCodigoPrestador.Text = "Cód. Prestador (REPS):"
-        lblCodigoPrestador.Location = New Point(11, 178)
-
-        Dim lblNitPrestador As New DevExpress.XtraEditors.LabelControl()
-        lblNitPrestador.Text = "NIT Prestador:"
-        lblNitPrestador.Location = New Point(11, 230)
-
-        txtCodigoPrestadorReps = New DevExpress.XtraEditors.TextEdit()
-        txtCodigoPrestadorReps.Location = New Point(106, 175)
-        txtCodigoPrestadorReps.Size = New Size(395, 20)
-        txtCodigoPrestadorReps.Properties.Appearance.BackColor = Color.White
-        txtCodigoPrestadorReps.Properties.Appearance.Options.UseBackColor = True
-
-        txtNitPrestador = New DevExpress.XtraEditors.TextEdit()
-        txtNitPrestador.Location = New Point(106, 227)
-        txtNitPrestador.Size = New Size(395, 20)
-        txtNitPrestador.Properties.Appearance.BackColor = Color.White
-        txtNitPrestador.Properties.Appearance.Options.UseBackColor = True
-
-        GroupControl2.Controls.Add(lblCodigoPrestador)
-        GroupControl2.Controls.Add(txtCodigoPrestadorReps)
-        GroupControl2.Controls.Add(lblNitPrestador)
-        GroupControl2.Controls.Add(txtNitPrestador)
-
-        ' 3. Botón "Enviar RDA de Prueba" (RDA-Paciente)
-        spEnviarRDAPrueba = New DevExpress.XtraEditors.SimpleButton()
-        spEnviarRDAPrueba.Text = "Enviar RDA de Prueba (Lerki Causado)"
-        spEnviarRDAPrueba.Location = New Point(106, 270)
-        spEnviarRDAPrueba.Size = New Size(300, 30)
-        GroupControl2.Controls.Add(spEnviarRDAPrueba)
-
-        ' 4. Botón "Enviar RDA Consulta Externa de Prueba"
-        spEnviarRDAConsultaPrueba = New DevExpress.XtraEditors.SimpleButton()
-        spEnviarRDAConsultaPrueba.Text = "Enviar RDA Consulta Externa de Prueba (Fabián Suárez)"
-        spEnviarRDAConsultaPrueba.Location = New Point(106, 310)
-        spEnviarRDAConsultaPrueba.Size = New Size(395, 30)
-        GroupControl2.Controls.Add(spEnviarRDAConsultaPrueba)
+    Private Sub lnkHistorial_HyperlinkClick(sender As Object, e As DevExpress.Utils.HyperlinkClickEventArgs) Handles lnkHistorial.HyperlinkClick
+        Dim historial As New frmHistorialRDA()
+        historial.Show(Me)
     End Sub
 
     Private Async Sub spEnviarRDAPrueba_Click(sender As Object, e As EventArgs) Handles spEnviarRDAPrueba.Click
@@ -104,8 +58,7 @@ Public Class frmRDA
         Dim _dRDA As New DRDA
         ' 1. Cambiar el estado visual a "Cargando" para evitar bloqueos
         spConectar.Enabled = False
-        lblEstadoServicio.Text = "⏳ Validando credenciales con MinSalud..."
-        lblEstadoServicio.ForeColor = Color.Orange
+        MostrarEstado("⏳ Validando credenciales con MinSalud...", Color.DarkOrange)
 
         Try
             ' 2. Capturar temporalmente los datos ingresados en el formulario en tu modelo
@@ -122,8 +75,7 @@ Public Class frmRDA
 
             ' 4. Si no lanza excepción y devuelve un token, la prueba es exitosa
             If tokenResponse IsNot Nothing AndAlso Not String.IsNullOrEmpty(tokenResponse.AccessToken) Then
-                lblEstadoServicio.Text = "🟢 Conectado exitosamente al Sandbox de MinSalud"
-                lblEstadoServicio.ForeColor = Color.Green
+                MostrarEstado(If(rbSandbox.Checked, "🟢 Conectado al Sandbox de MinSalud", "🟢 Conectado a Producción de MinSalud"), Color.Green)
                 ' MessageBox.Show("¡Conexión Exitosa! El servidor de MinSalud autorizó el acceso.",
                 '"Interoperabilidad RDA", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 ' GUARDAR PROVISIONALMENTE el TOKEN
@@ -155,8 +107,7 @@ Public Class frmRDA
 
         Catch ex As Exception
             ' Manejo de errores controlados (credenciales incorrectas, caídas de red, etc.)
-            lblEstadoServicio.Text = "🔴 Error de autenticación / Sin conexión"
-            lblEstadoServicio.ForeColor = Color.Red
+            MostrarEstado("🔴 Error de autenticación / sin conexión", Color.Red)
             MessageBox.Show($"Fallo en la conexión: {ex.Message}", "Error de Interoperabilidad",
                             MessageBoxButtons.OK, MessageBoxIcon.Error)
         Finally
@@ -243,7 +194,7 @@ Public Class frmRDA
     End Sub
 
     Private Sub frmRDA_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        AgregarCamposPrestadorReps()
+        lblNombrePrestador.Text = DRDA.NombrePrestador()
 
         Dim _dRDA As New DRDA
         Dim configAGuardar As New ConfigInteropApi
@@ -262,6 +213,7 @@ Public Class frmRDA
         txtURLBaseApi.Text = configAGuardar.UrlBaseApi
         txtCodigoPrestadorReps.Text = configAGuardar.CodigoPrestadorReps
         txtNitPrestador.Text = configAGuardar.NitPrestador
+        ActualizarPestanaPruebas()
     End Sub
 
     Private Sub spCancelar_Click(sender As Object, e As EventArgs) Handles spCancelar.Click
