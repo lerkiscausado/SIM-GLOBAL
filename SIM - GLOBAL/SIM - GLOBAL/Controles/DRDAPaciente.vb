@@ -363,6 +363,40 @@ Namespace Controles
 
         ' ── Auditoría de envíos (best-effort: si la tabla rda_envios no existe aún, no falla) ──
         ''' <summary>
+        ''' Historial para la pantalla frmHistorialRDA: además de los datos del envío trae el
+        ''' nombre completo y documento del paciente, y si un envío fallido quedó corregido por
+        ''' un envío exitoso posterior del mismo documento y orden.
+        ''' </summary>
+        Public Shared Function ListarEnviosHistorial(Optional maximoRegistros As Integer = 1000) As DataTable
+            Dim tabla As New DataTable()
+            Dim columnas As String = "r.id, r.fecha_envio, r.tipo_documento, r.exitoso, r.codigo_http, r.id_orden, {0} AS composition_id, " &
+                "TRIM(CONCAT_WS(' ', u.primer_nombre, u.segundo_nombre, u.primer_apellido, u.segundo_apellido)) AS paciente, " &
+                "CONCAT_WS(' ', u.id_tipo_identificacion, u.identificacion) AS documento_paciente, r.detalle, " &
+                "(SELECT COUNT(*) FROM rda_envios r2 WHERE r2.id_orden = r.id_orden AND r2.tipo_documento = r.tipo_documento " &
+                "AND r2.exitoso = 1 AND r2.id > r.id) AS corregido_despues " &
+                "FROM rda_envios r " &
+                "LEFT JOIN ordenes o ON o.id = r.id_orden " &
+                "LEFT JOIN usuarios u ON u.id = o.id_usuario " &
+                "ORDER BY r.fecha_envio DESC, r.id DESC LIMIT " & maximoRegistros
+            For Each composicion As String In {"r.composition_id", "NULL"}
+                Try
+                    tabla = New DataTable()
+                    Using conn As OdbcConnection = ConexionODBC.Open()
+                        Using adaptador As New OdbcDataAdapter(New OdbcCommand("SELECT " & String.Format(columnas, composicion), conn))
+                            adaptador.Fill(tabla)
+                        End Using
+                    End Using
+                    Return tabla
+                Catch
+                    ' Sin la columna composition_id (migración no corrida) se reintenta con NULL.
+                End Try
+            Next
+            tabla = New DataTable()
+            tabla.Columns.Add("Error", GetType(String))
+            Return tabla
+        End Function
+
+        ''' <summary>
         ''' Trae el historial de envíos de RDA (tabla rda_envios), más recientes primero, con
         ''' el nombre del paciente si se puede resolver a través de la orden. Usado por la
         ''' pantalla de historial (Vistas/frmHistorialRDA.vb).
