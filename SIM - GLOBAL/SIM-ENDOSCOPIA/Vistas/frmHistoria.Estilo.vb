@@ -163,7 +163,7 @@ Partial Class frmHistoria
             Dim textoEstado As String
             If estado.Firmada Then
                 If estado.ErroresPendientes > 0 Then
-                    textoEstado = Html("✖ Firmada · envío a MinSalud con error (ver Historial RDA)", estiloRojo, True)
+                    textoEstado = Html("✖ Firmada · error al enviar a MinSalud", estiloRojo, True)
                 ElseIf estado.EnviosOk > 0 Then
                     textoEstado = Html("✔ Firmada y enviada a MinSalud", estiloVerde, True)
                 Else
@@ -176,7 +176,7 @@ Partial Class frmHistoria
                 Return
             End If
 
-            textoEstado = Html("● Borrador (sin firmar)", estiloNaranja, True)
+            textoEstado = Html("● Borrador", estiloNaranja, True)
 
             ' Mismos campos que valida bbiGuardar, más el diagnóstico que exige la firma.
             Dim faltaMotivo As Boolean = xtpMotivoConsulta.PageVisible AndAlso String.IsNullOrWhiteSpace(txtMotivoConsulta.Text)
@@ -188,12 +188,12 @@ Partial Class frmHistoria
             MarcarPestana(xtpDiagnostico, faltaDiagnostico)
 
             Dim faltantes As New List(Of String)
-            If faltaMotivo Then faltantes.Add("motivo de consulta")
+            If faltaMotivo Then faltantes.Add("motivo")
             If faltaAntecedentes Then faltantes.Add("antecedentes")
-            If faltaDiagnostico Then faltantes.Add("diagnóstico (guarde y agregue al menos uno)")
+            If faltaDiagnostico Then faltantes.Add("diagnóstico")
 
             If faltantes.Count > 0 Then
-                textoEstado &= "   " & Html("Falta para firmar: " & String.Join(", ", faltantes), estiloRojo, False)
+                textoEstado &= "   " & Html("Falta: " & String.Join(", ", faltantes), estiloRojo, False)
             Else
                 textoEstado &= "   " & Html("✔ Lista para firmar", estiloVerde, False)
             End If
