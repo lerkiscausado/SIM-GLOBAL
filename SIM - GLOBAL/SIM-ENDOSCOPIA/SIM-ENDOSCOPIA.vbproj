@@ -156,6 +156,9 @@
     <Compile Include="Vistas\frmHistoria.Designer.vb">
       <DependentUpon>frmHistoria.vb</DependentUpon>
     </Compile>
+    <Compile Include="Vistas\frmHistoria.Estilo.vb">
+      <DependentUpon>frmHistoria.vb</DependentUpon>
+    </Compile>
     <Compile Include="Vistas\frmHistoria.vb">
       <SubType>Form</SubType>
     </Compile>

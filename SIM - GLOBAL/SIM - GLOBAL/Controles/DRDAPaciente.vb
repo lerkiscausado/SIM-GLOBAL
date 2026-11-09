@@ -363,6 +363,39 @@ Namespace Controles
 
         ' ── Auditoría de envíos (best-effort: si la tabla rda_envios no existe aún, no falla) ──
         ''' <summary>
+        ''' Estado de la historia de una orden para el indicador de frmHistoria: si está firmada
+        ''' (Res. 3100), cuántos envíos RDA fueron aceptados y cuántos errores siguen sin
+        ''' corregir (un error se considera corregido si después hubo un envío exitoso del
+        ''' mismo documento).
+        ''' </summary>
+        Public Shared Function EstadoHistoriaRDA(idOrden As Integer) As (Firmada As Boolean, EnviosOk As Integer, ErroresPendientes As Integer)
+            If idOrden <= 0 Then Return (False, 0, 0)
+            Try
+                Dim query As String =
+                    "SELECT (SELECT IFNULL(MAX(hc.firmada), 0) FROM historia_clinica hc WHERE hc.id_orden = ?) AS firmada, " &
+                    "(SELECT COUNT(*) FROM rda_envios r WHERE r.id_orden = ? AND r.exitoso = 1) AS ok, " &
+                    "(SELECT COUNT(*) FROM rda_envios r WHERE r.id_orden = ? AND r.exitoso = 0 AND NOT EXISTS " &
+                    "(SELECT 1 FROM rda_envios r2 WHERE r2.id_orden = r.id_orden AND r2.tipo_documento = r.tipo_documento " &
+                    "AND r2.exitoso = 1 AND r2.id > r.id)) AS errores"
+                Using conn As OdbcConnection = ConexionODBC.Open()
+                    Using comando As New OdbcCommand(query, conn)
+                        For i As Integer = 1 To 3
+                            comando.Parameters.AddWithValue("?" & i, idOrden)
+                        Next
+                        Using reader As OdbcDataReader = comando.ExecuteReader()
+                            If reader.Read() Then
+                                Return (Convert.ToInt32(reader("firmada")) = 1, Convert.ToInt32(reader("ok")), Convert.ToInt32(reader("errores")))
+                            End If
+                        End Using
+                    End Using
+                End Using
+            Catch
+                ' Si falta alguna tabla (migración no corrida) simplemente no se muestra estado RDA.
+            End Try
+            Return (False, 0, 0)
+        End Function
+
+        ''' <summary>
         ''' Historial para la pantalla frmHistorialRDA: además de los datos del envío trae el
         ''' nombre completo y documento del paciente, y si un envío fallido quedó corregido por
         ''' un envío exitoso posterior del mismo documento y orden.

@@ -666,6 +666,7 @@ Public Class frmHistoria
         'Limpiamos grilla de Diagnosticos
         GCDiagnosticos.DataSource = Nothing
         bbiGuardar.Enabled = False
+        ActualizarIndicadoresHistoria() ' frmHistoria.Estilo.vb
     End Sub
     Private Sub ActualizarGrillaPacientesAtender()
         'llenamos grilla de pacientes por atender
@@ -807,6 +808,7 @@ Public Class frmHistoria
 
         'desactivamos el boton GUARDAR
         bbiGuardar.Enabled = False
+        ActualizarIndicadoresHistoria() ' frmHistoria.Estilo.vb
     End Sub
     ''' <summary>Guarda la historia. Devuelve False si fue rechazada por estar ya firmada (Resolución 3100).</summary>
     Private Function GuardarHistoria() As Boolean
@@ -894,6 +896,7 @@ Public Class frmHistoria
 
         End Select
 
+        AplicarEstiloVisual() ' frmHistoria.Estilo.vb
     End Sub
 
     Private Sub bbiNuevo_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles bbiNuevo.ItemClick
