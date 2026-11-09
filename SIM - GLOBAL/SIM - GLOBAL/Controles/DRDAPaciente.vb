@@ -368,8 +368,10 @@ Namespace Controles
         ''' corregir (un error se considera corregido si después hubo un envío exitoso del
         ''' mismo documento).
         ''' </summary>
-        Public Shared Function EstadoHistoriaRDA(idOrden As Integer) As (Firmada As Boolean, EnviosOk As Integer, ErroresPendientes As Integer)
-            If idOrden <= 0 Then Return (False, 0, 0)
+        Public Shared Function EstadoHistoriaRDA(idOrden As Integer) As EstadoHistoriaRDAInfo
+            ' Devuelve una clase (no una tupla): SIM-ENDOSCOPIA no referencia System.ValueTuple.
+            Dim resultado As New EstadoHistoriaRDAInfo()
+            If idOrden <= 0 Then Return resultado
             Try
                 Dim query As String =
                     "SELECT (SELECT IFNULL(MAX(hc.firmada), 0) FROM historia_clinica hc WHERE hc.id_orden = ?) AS firmada, " &
@@ -384,7 +386,9 @@ Namespace Controles
                         Next
                         Using reader As OdbcDataReader = comando.ExecuteReader()
                             If reader.Read() Then
-                                Return (Convert.ToInt32(reader("firmada")) = 1, Convert.ToInt32(reader("ok")), Convert.ToInt32(reader("errores")))
+                                resultado.Firmada = Convert.ToInt32(reader("firmada")) = 1
+                                resultado.EnviosOk = Convert.ToInt32(reader("ok"))
+                                resultado.ErroresPendientes = Convert.ToInt32(reader("errores"))
                             End If
                         End Using
                     End Using
@@ -392,8 +396,14 @@ Namespace Controles
             Catch
                 ' Si falta alguna tabla (migración no corrida) simplemente no se muestra estado RDA.
             End Try
-            Return (False, 0, 0)
+            Return resultado
         End Function
+
+        Public Class EstadoHistoriaRDAInfo
+            Public Property Firmada As Boolean
+            Public Property EnviosOk As Integer
+            Public Property ErroresPendientes As Integer
+        End Class
 
         ''' <summary>
         ''' Historial para la pantalla frmHistorialRDA: además de los datos del envío trae el
