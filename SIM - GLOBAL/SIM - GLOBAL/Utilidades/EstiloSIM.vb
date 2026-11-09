@@ -1,4 +1,5 @@
 ﻿Imports System.Drawing
+Imports System.Linq
 Imports System.Windows.Forms
 Imports DevExpress.XtraEditors
 Imports DevExpress.XtraGrid
@@ -12,7 +13,7 @@ Namespace Utilidades
     ''' automáticamente a TODOS los formularios que se abren — ventanas MDI y diálogos — sin
     ''' tocar sus Designer.
     '''
-    ''' Solo hace cambios "seguros" que no mueven controles ni ensanchan rótulos:
+    ''' Agrega la franja azul de encabezado (AgregarEncabezado) y además:
     '''  - Grillas: filas más altas y alternadas, selección azul suave, encabezados en negrilla.
     '''  - Títulos de grupos y pestaña activa en azul negrita.
     '''  - Campos de texto largo (MemoEdit) en Segoe UI 10.
@@ -45,6 +46,7 @@ Namespace Utilidades
                     If yaAplicados.Contains(id) Then Continue For
                     yaAplicados.Add(id)
                     If EsFormularioDelSIM(f) Then
+                        AgregarEncabezado(f)
                         Aplicar(f)
                         AddHandler f.FormClosed, Sub() yaAplicados.Remove(id)
                     End If
@@ -125,6 +127,109 @@ Namespace Utilidades
             ap.ForeColor = Azul
             ap.Options.UseForeColor = True
         End Sub
+
+        ' ── Encabezado azul (como frmHistoria / frmRDA / frmHistorialRDA) ─────────────────
+
+        Public Const AltoEncabezado As Integer = 54
+
+        ''' <summary>Formularios que ya tienen su propio encabezado o que no deben llevarlo.</summary>
+        Private ReadOnly SinEncabezado As New HashSet(Of String)(StringComparer.OrdinalIgnoreCase) From {
+            "frmInicio", "frmHistoria", "frmRDA", "frmHistorialRDA", "frmSesion", "SSPresentacion",
+            "frmBienvenida", "frmMensaje", "frmToastRDA", "frmAcercaDe", "frmPrint", "frmPDF", "frmVisorImagenes"}
+
+        ''' <summary>Línea de ayuda debajo del título, para las pantallas de uso diario.</summary>
+        Private ReadOnly Ayudas As New Dictionary(Of String, String)(StringComparer.OrdinalIgnoreCase) From {
+            {"frmOrdenes", "Registre la admisión del paciente: contrato, estudios a realizar y valores."},
+            {"frmAgenda", "Programe y consulte las citas del día por especialista."},
+            {"frmConsultar", "Busque órdenes y estudios por paciente, fecha o estado."},
+            {"frmConsultarEndoscopias", "Busque estudios de endoscopia por paciente, fecha o estado."},
+            {"frmEndoscopia", "Informe del procedimiento. Al firmar queda bloqueado para cambios."},
+            {"frmEndoscopiaGL", "Informe del procedimiento. Al firmar se envía el resumen (RDA) a MinSalud."},
+            {"frmEmpleados", "Personal de la IPS. Documento, nombres y apellidos completos son obligatorios para el RDA."},
+            {"frmUsuarios", "Datos del paciente. Documento, nombres, sexo y fecha de nacimiento son necesarios para el RDA."},
+            {"frmListadoOrdenes", "Órdenes atendidas pendientes de facturar."},
+            {"frmFacturas", "Genere la factura de las órdenes seleccionadas."},
+            {"frmRipsJson", "Genere los RIPS en formato JSON para radicar."},
+            {"frmContratos", "Contratos con entidades y sus tarifas."},
+            {"frmCups", "Catálogo de procedimientos (CUPS)."},
+            {"frmDiagnosticos", "Catálogo de diagnósticos (CIE-10)."},
+            {"frmIncapacidades", "Registre e imprima incapacidades del paciente."},
+            {"frmAnestesia", "Registro de anestesia del procedimiento."},
+            {"frmAuditoria", "Revise y audite las órdenes atendidas."},
+            {"frmUsers", "Usuarios que ingresan al SIM y su información de acceso."},
+            {"frmPrivilegios", "Permisos de cada usuario sobre las opciones del menú."}}
+
+        Private Function DebeLlevarEncabezado(f As Form) As Boolean
+            If f.IsMdiContainer OrElse f.FormBorderStyle = FormBorderStyle.None Then Return False
+            If SinEncabezado.Contains(f.GetType().Name) OrElse SinEncabezado.Contains(f.Name) Then Return False
+            If f.ClientSize.Height < 220 OrElse f.ClientSize.Width < 320 Then Return False
+            For Each c As Control In f.Controls
+                If c.Name IsNot Nothing AndAlso c.Name.StartsWith("pnlEncabezado", StringComparison.OrdinalIgnoreCase) Then Return False
+            Next
+            Return True
+        End Function
+
+        ''' <summary>
+        ''' Agrega la franja azul debajo de las barras de herramientas. El contenido que llena la
+        ''' ventana (Dock = Fill) se acomoda solo; los controles con posición fija se bajan el alto
+        ''' de la franja. En ventanas maximizadas / internas los anclados abajo se acortan; en
+        ''' diálogos se agranda la ventana.
+        ''' </summary>
+        Public Sub AgregarEncabezado(f As Form)
+            If Not DebeLlevarEncabezado(f) Then Return
+            f.SuspendLayout()
+            Try
+                Dim maximizada As Boolean = f.MdiParent IsNot Nothing OrElse f.WindowState = FormWindowState.Maximized
+
+                ' Controles con posición fija: bajarlos.
+                Dim relleno As Control = Nothing
+                For Each c As Control In f.Controls
+                    If c.Dock = DockStyle.Fill AndAlso relleno Is Nothing Then relleno = c
+                    If c.Dock <> DockStyle.None Then Continue For
+                    c.Top += AltoEncabezado
+                    If maximizada AndAlso (c.Anchor And AnchorStyles.Bottom) = AnchorStyles.Bottom Then
+                        c.Height = Math.Max(40, c.Height - AltoEncabezado)
+                    End If
+                Next
+                If Not maximizada Then f.Height += AltoEncabezado
+
+                ' Franja azul.
+                Dim titulo As String = TituloLegible(f.Text)
+                Dim ayuda As String = Nothing
+                Ayudas.TryGetValue(f.GetType().Name, ayuda)
+
+                Dim franja As New Panel With {.Name = "pnlEncabezadoSIM", .Dock = DockStyle.Top, .Height = AltoEncabezado, .BackColor = Azul}
+                Dim lblTitulo As New Label With {
+                    .AutoSize = True, .ForeColor = Color.White, .BackColor = Color.Transparent,
+                    .Font = New Font("Segoe UI", 13.0!, FontStyle.Bold), .Text = titulo,
+                    .Location = New Point(14, If(ayuda Is Nothing, 14, 6))}
+                franja.Controls.Add(lblTitulo)
+                If ayuda IsNot Nothing Then
+                    franja.Controls.Add(New Label With {
+                        .AutoSize = True, .ForeColor = AzulSuave, .BackColor = Color.Transparent,
+                        .Font = New Font("Segoe UI", 9.0!), .Text = ayuda, .Location = New Point(16, 32)})
+                End If
+                f.Controls.Add(franja)
+
+                ' Orden de acoplamiento: barras (afuera) → franja → contenido de relleno (adentro).
+                ' WinForms acopla desde el último índice hacia el 0.
+                f.Controls.SetChildIndex(franja, 0)
+                If relleno IsNot Nothing Then f.Controls.SetChildIndex(relleno, 0)
+            Finally
+                f.ResumeLayout(True)
+            End Try
+        End Sub
+
+        Private Function TituloLegible(texto As String) As String
+            Dim t As String = If(texto, "").Trim()
+            If t = "" Then Return "SIM"
+            ' Títulos en MAYÚSCULAS → "Oración".
+            If t = t.ToUpperInvariant() AndAlso t.Any(AddressOf Char.IsLetter) Then
+                t = t.ToLowerInvariant()
+                t = Char.ToUpperInvariant(t(0)) & t.Substring(1)
+            End If
+            Return t
+        End Function
 
         Private Iterator Function Descendientes(raiz As Control) As IEnumerable(Of Control)
             For Each hijo As Control In raiz.Controls
