@@ -35,9 +35,5 @@ Namespace My
             Me.MainForm = Global.SIM___Sistema_Integrado_Medico.frmSesion
         End Sub
         
-        <Global.System.Diagnostics.DebuggerStepThroughAttribute()>  _
-        Protected Overrides Sub OnCreateSplashScreen()
-            Me.SplashScreen = Global.SIM___Sistema_Integrado_Medico.SSPresentacion
-        End Sub
     End Class
 End Namespace

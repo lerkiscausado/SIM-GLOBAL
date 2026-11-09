@@ -72,6 +72,11 @@ Public Class frmSesion
         System.Diagnostics.Process.Start("https://ados-software.com/soporte/")
     End Sub
 
+    Private Sub frmSesion_Shown(sender As Object, e As EventArgs) Handles MyBase.Shown
+        My.MyApplication.CerrarPresentacion()
+        Me.Activate()
+    End Sub
+
     Private Sub frmSesion_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         'Selecciona el SKIN predeterminado
