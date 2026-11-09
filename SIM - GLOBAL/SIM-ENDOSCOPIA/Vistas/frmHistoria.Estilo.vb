@@ -143,6 +143,14 @@ Partial Class frmHistoria
             etiqueta.Appearance.Options.UseFont = True
             etiqueta.Appearance.Options.UseForeColor = True
         Next
+        ' Con la fuente nueva los rótulos de la fila superior son más anchos: se pegan a la
+        ' izquierda de su casilla para que no queden tapados ("Codigo de Historia:").
+        For Each par In {Tuple.Create(LabelControl2, CType(dtFechaIngreso, Control)),
+                         Tuple.Create(LabelControl7, CType(lblConsecutivoOrden, Control)),
+                         Tuple.Create(LabelControl1, CType(txtNumeroHistoria, Control))}
+            par.Item1.Left = par.Item2.Left - par.Item1.Width - 6
+        Next
+
         chkProcesado.Properties.Appearance.Font = New Font("Segoe UI", 9.5!, FontStyle.Bold)
         chkProcesado.Properties.Appearance.ForeColor = estiloAzul
         chkProcesado.Properties.Appearance.Options.UseFont = True
