@@ -808,7 +808,8 @@ Public Class frmHistoria
         'desactivamos el boton GUARDAR
         bbiGuardar.Enabled = False
     End Sub
-    Private Sub GuardarHistoria()
+    ''' <summary>Guarda la historia. Devuelve False si fue rechazada por estar ya firmada (Resolución 3100).</summary>
+    Private Function GuardarHistoria() As Boolean
         '_HistoriaClinica.Id = Val(lblConsecutivo.Text)
         'Asignamos el Numero de la Historia
         txtNumeroHistoria.Text = Funciones.CodigoUsuario(lblConsecutivoOrden.Text) & Mid(dtFechaIngreso.Text, 7, 4) & Mid(dtFechaIngreso.Text, 4, 2) & Mid(dtFechaIngreso.Text, 1, 2)
@@ -842,11 +843,18 @@ Public Class frmHistoria
         _HistoriaClinica.TannerVT = "-"
         _HistoriaClinica.Estado = "A"
         _HistoriaClinica.IdEspecialista = IdEmpleado
-        _DhistoriaClinica.Guardar(_HistoriaClinica)
+        Try
+            _DhistoriaClinica.Guardar(_HistoriaClinica)
+        Catch ex As HistoriaFirmadaException
+            ' Resolución 3100: la historia ya fue firmada; no se modifica (solo adendas).
+            MessageBox.Show(ex.Message, "Registro de Historia", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Return False
+        End Try
+        Return True
 
         '***************** Actualizamos el estado de la Orden a Atendido *****************
         '_dordenes.ActualizarEstado(Val(lblConsecutivoOrden.Text), "ATENDIDO")
-    End Sub
+    End Function
     Private Sub GuardarAntecedentes()
         Dim _Antecedentes As New Antecedentes
         Dim _DAntecedentes As New DAntecedentes
@@ -943,7 +951,7 @@ Public Class frmHistoria
                 MessageBox.Show("Diagnostico CIE10 es obligatorio", "Registro de Historia", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Else
                 If MessageBox.Show("Desea Firmar la Historia?, Si continua no se podran hacer cambios en la historia. ¿Desea Continuar?", "Firmar Historia", MessageBoxButtons.OKCancel, MessageBoxIcon.Information) = DialogResult.OK Then
-                    GuardarHistoria()
+                    If Not GuardarHistoria() Then Exit Sub
 
                     '*********************** Guardar Antecedentes ****************************
                     If xtpAntecedentes.PageVisible = True Then
@@ -957,6 +965,33 @@ Public Class frmHistoria
                         If _DDetalleOrden.DetalleOrdenPendiente(lblConsecutivoOrden.Text) = False Then
                             _dordenes.ActualizarEstado(lblConsecutivoOrden.Text, "ATENDIDO")
                         End If
+
+                        ' ── Resolución 3100: la historia queda firmada y bloqueada (solo adendas) ──
+                        DHistoriaClinica.MarcarFirmada(Val(lblConsecutivoOrden.Text), Val(IdEmpleado))
+
+                        ' ── Interoperabilidad RDA: al firmar se envían en segundo plano el RDA-Paciente
+                        ' y el RDA-Consulta Externa de este detalle_orden. Nunca bloquea el flujo
+                        ' clínico; el resultado se ve en las notificaciones y en "Historial RDA".
+                        Try
+                            Dim idOrdenRDA As Integer = Val(lblConsecutivoOrden.Text)
+                            Dim idUsuarioRDA As Integer = Val(_IDUsuario)
+                            Dim idEspecialistaRDA As Integer = Val(IdEmpleado)
+                            Dim idDetalleRDA As Integer = Val(lblIdDetalleOrden.Text)
+
+                            If idOrdenRDA > 0 AndAlso idUsuarioRDA > 0 Then
+                                Dim toastPaciente As New SIM___GLOBAL.frmToastRDA("RDA-Paciente")
+                                toastPaciente.Show()
+                                SIM___GLOBAL.Controles.DRDAPaciente.EnviarEnSegundoPlano(idOrdenRDA, idUsuarioRDA, idEspecialistaRDA,
+                                    Sub(mensaje) toastPaciente.ActualizarEstado(mensaje))
+
+                                Dim toastConsulta As New SIM___GLOBAL.frmToastRDA("RDA-Consulta Externa")
+                                toastConsulta.Show()
+                                SIM___GLOBAL.Controles.DRDAConsultaExterna.EnviarEnSegundoPlano(idOrdenRDA, idUsuarioRDA, idEspecialistaRDA,
+                                    Sub(mensaje) toastConsulta.ActualizarEstado(mensaje), idDetalleOrden:=idDetalleRDA, tipoPreferido:="C")
+                            End If
+                        Catch
+                            ' El envío RDA es complementario a la firma: nunca debe bloquear el flujo clínico.
+                        End Try
 
                         'If MessageBox.Show("Desea imprimir la historia", "Imprimir Historia", MessageBoxButtons.YesNo, MessageBoxIcon.Information) = DialogResult.Yes Then
                         'Dim _frmOrdenesMedicas As New SIM___GLOBAL.frmOrdenesMedicas
