@@ -10,32 +10,144 @@ Public Class frmEmpleados
     Dim _dEspecialidades = New DEspecialidades
     Dim _Especialista = New SIM___GLOBAL.Modelo.Especialista
     Dim _DEspecialista = New SIM___GLOBAL.Controles.DEspecialista
-    Private Sub Guardar()
-        _Empleados.Id = Val(txtID.Text)
-        _Empleados.NombreEmpleado = txtNombre.Text
-        _Empleados.IdCargo = cboCargo.GetColumnValue("ID")
-        _Empleados.IdEspecialidad = cboEspecialidad.GetColumnValue("ID")
-        _Empleados.RegistroMedico = txtRegistroMedico.Text
-        If chkEstado.Checked = True Then
-            _Empleados.Estado = "A"
-        Else
-            _Empleados.Estado = "I"
 
-        End If
-        _dEmpleados.Guardar(_Empleados)
+    ' Apellidos por separado (paterno/materno), requeridos por RETHUS para el RDA
+    ' (ver StructureDefinition-PractitionerRDA). Se agregan por código, no en el
+    ' Designer, para no arriesgar el layout visual del formulario.
+    Private WithEvents txtPrimerApellido As DevExpress.XtraEditors.TextEdit
+    Private WithEvents txtSegundoApellido As DevExpress.XtraEditors.TextEdit
 
-        If cboCargo.GetColumnValue("CARGO") = "ESPECIALISTA" Then
-            If txtID.Text = "" Then
-                _Especialista.id = Val("")
-                _Especialista.idespecialista = Val(_dEmpleados.ultimoregistroempleado)
-                _Especialista.nombre = txtNombre.Text
-                _Especialista.especialidad = cboEspecialidad.GetColumnValue("ESPECIALIDAD")
-                _Especialista.registromedico = txtRegistroMedico.Text
-                _Especialista.estado = "A"
-                _DEspecialista.guardar2(_Especialista)
-            End If
+    Private Sub AgregarCamposApellidoRDA()
+        If txtPrimerApellido IsNot Nothing Then Exit Sub ' Evitar duplicar si Load se dispara más de una vez
+
+        ' 1. Hacer espacio: correr hacia abajo lo que va después del campo de firma
+        ' (peFirma termina en y=254; chkEstado/SeparatorControl1 arrancan justo ahí).
+        Const desplazamiento As Integer = 80
+        chkEstado.Location = New Point(chkEstado.Location.X, chkEstado.Location.Y + desplazamiento)
+        SeparatorControl1.Location = New Point(SeparatorControl1.Location.X, SeparatorControl1.Location.Y + desplazamiento)
+        GCConsultar.Location = New Point(GCConsultar.Location.X, GCConsultar.Location.Y + desplazamiento)
+        Me.ClientSize = New Size(Me.ClientSize.Width, Me.ClientSize.Height + desplazamiento)
+
+        ' 2. Etiquetas + campos, en el espacio liberado justo debajo de la firma (que
+        ' termina en y=254), antes de donde ahora quedó chkEstado (234+80=314).
+        Dim lblPrimerApellido As New DevExpress.XtraEditors.LabelControl()
+        lblPrimerApellido.Text = "Primer Apellido"
+        lblPrimerApellido.Location = New Point(16, 260)
+
+        Dim lblSegundoApellido As New DevExpress.XtraEditors.LabelControl()
+        lblSegundoApellido.Text = "Segundo Apellido"
+        lblSegundoApellido.Location = New Point(16, 286)
+
+        txtPrimerApellido = New DevExpress.XtraEditors.TextEdit()
+        txtPrimerApellido.Location = New Point(101, 257)
+        txtPrimerApellido.Size = New Size(290, 20)
+
+        txtSegundoApellido = New DevExpress.XtraEditors.TextEdit()
+        txtSegundoApellido.Location = New Point(101, 283)
+        txtSegundoApellido.Size = New Size(290, 20)
+
+        Me.Controls.Add(lblPrimerApellido)
+        Me.Controls.Add(txtPrimerApellido)
+        Me.Controls.Add(lblSegundoApellido)
+        Me.Controls.Add(txtSegundoApellido)
+    End Sub
+
+    ''' <summary>
+    ''' Fuerza el texto de un TextEdit a mayúsculas mientras el usuario escribe (evita
+    ''' advertencias de MinSalud por diferencias de mayúsculas al validar contra RETHUS).
+    ''' </summary>
+    Private Sub ForzarMayusculas(editor As DevExpress.XtraEditors.TextEdit)
+        Dim mayusculas As String = editor.Text.ToUpper()
+        If editor.Text <> mayusculas Then
+            Dim posicionCursor As Integer = editor.SelectionStart
+            editor.Text = mayusculas
+            editor.SelectionStart = posicionCursor
         End If
     End Sub
+
+    Private Sub txtPrimerApellido_EditValueChanged(sender As Object, e As EventArgs) Handles txtPrimerApellido.EditValueChanged
+        ForzarMayusculas(txtPrimerApellido)
+        ActivarGuardar()
+    End Sub
+
+    Private Sub txtSegundoApellido_EditValueChanged(sender As Object, e As EventArgs) Handles txtSegundoApellido.EditValueChanged
+        ForzarMayusculas(txtSegundoApellido)
+        ActivarGuardar()
+    End Sub
+
+    '------------------------------------------------------------------------------
+    Private Sub Guardar()
+        Try
+            ' ── 1. MEJORA: Función separada para mapear el modelo ────────
+            ' Antes: los campos se asignaban directamente en Guardar()
+            ' Ahora: se centraliza en una función reutilizable
+            MapearEmpleado()
+
+            ' ── 2. Guardar empleado ──────────────────────────────────────
+            _dEmpleados.Guardar(_Empleados)
+
+            ' ── 3. MEJORA: Se evalúa el cargo una sola vez ───────────────
+            ' Antes: cboCargo.GetColumnValue("CARGO") se llamaba dos veces
+            Dim esEspecialista As Boolean = (cboCargo.GetColumnValue("CARGO").ToString().Trim().ToUpper() = "ESPECIALISTA")
+
+            If esEspecialista Then
+                ' ── 4. MEJORA: Función separada para mapear el especialista
+                ' Antes: los campos se repetían en el If y en el Else
+                MapearEspecialista()
+
+                ' ── 5. MEJORA: Se determina si es nuevo o edición por Id ─
+                ' Antes: se comparaba txtID.Text = "" lo cual es frágil
+                Dim esNuevo As Boolean = String.IsNullOrEmpty(txtID.Text.Trim())
+
+                If esNuevo Then
+                    ' Nuevo especialista: Id en 0 porque la BD lo genera
+                    _Especialista.id = 0
+                    _DEspecialista.guardar2(_Especialista)
+                Else
+                    ' Especialista existente: actualizar por idespecialista
+                    _DEspecialista.actualizar(_Especialista)
+                End If
+            End If
+
+        Catch ex As Exception
+            MessageBox.Show("Error al guardar: " & ex.Message)
+        End Try
+    End Sub
+
+    ' ── Mapear datos del formulario al modelo Empleado ───────────────
+    Private Sub MapearEmpleado()
+        _Empleados.Id = If(String.IsNullOrEmpty(txtID.Text.Trim()), 0, Val(txtID.Text))
+        _Empleados.NombreEmpleado = txtNombre.Text.Trim()
+        _Empleados.IdCargo = cboCargo.GetColumnValue("ID")
+        _Empleados.IdEspecialidad = cboEspecialidad.GetColumnValue("ID")
+        _Empleados.RegistroMedico = txtRegistroMedico.Text.Trim()
+
+        ' MEJORA: Expresión ternaria en lugar de If/Else para el estado
+        _Empleados.Estado = If(chkEstado.Checked, "A", "I")
+    End Sub
+
+    ' ── Mapear datos del formulario al modelo Especialista ───────────
+    Private Sub MapearEspecialista()
+        ' MEJORA: Los campos comunes al Insert y Update se asignan
+        ' en un solo lugar, eliminando la duplicación de código
+        _Especialista.idespecialista = Val(_dEmpleados.ultimoregistroempleado)
+        _Especialista.idtipoidentificacion = "CC"
+        _Especialista.identificacion = txtIdentificacion.Text.Trim()
+        _Especialista.nombre = txtNombre.Text.Trim()
+        _Especialista.especialidad = cboEspecialidad.GetColumnValue("ESPECIALIDAD").ToString()
+        _Especialista.registromedico = txtRegistroMedico.Text.Trim()
+        _Especialista.estado = "A"
+
+        ' Nombre estructurado para RDA/RETHUS: txtNombre se sigue usando tal cual para
+        ' "nombres" (primer/segundo nombre combinados en un solo campo, como siempre),
+        ' y se agregan los 2 campos nuevos de apellido paterno/materno por separado.
+        Dim partesNombre = txtNombre.Text.Trim().ToUpper().Split(New Char() {" "c}, 2, StringSplitOptions.RemoveEmptyEntries)
+        _Especialista.PrimerNombre = If(partesNombre.Length > 0, partesNombre(0), "")
+        _Especialista.SegundoNombre = If(partesNombre.Length > 1, partesNombre(1), "")
+        _Especialista.PrimerApellido = txtPrimerApellido.Text.Trim().ToUpper()
+        _Especialista.SegundoApellido = txtSegundoApellido.Text.Trim().ToUpper()
+    End Sub
+    '------------------------------------------------------------------------------
     Private Sub ActivarGuardar()
         If txtNombre.Text <> "" Then
             bbiGuardar.Enabled = True
@@ -47,6 +159,7 @@ Public Class frmEmpleados
         GCConsultar.DataSource = _ds.Tables(0)
     End Sub
     Private Sub frmEmpleados_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        AgregarCamposApellidoRDA()
         peFirma.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Zoom
         ActualizarGrilla()
 
@@ -65,6 +178,9 @@ Public Class frmEmpleados
     Private Sub LimpiarCampos()
         txtID.Text = ""
         txtNombre.Text = ""
+        txtPrimerApellido.Text = ""
+        txtSegundoApellido.Text = ""
+        txtIdentificacion.Text = ""
         txtRegistroMedico.Text = ""
         cboCargo.EditValue = Nothing
         cboEspecialidad.EditValue = Nothing
@@ -107,6 +223,10 @@ Public Class frmEmpleados
                     txtID.Text = _ClickGrilla
                     txtNombre.Text = _Empleados.NombreEmpleado
                     cboCargo.ItemIndex = cboCargo.Properties.GetDataSourceRowIndex("ID", _Empleados.IdCargo)
+                    txtIdentificacion.Text = _DEspecialista.traeridentificacion(_ClickGrilla)
+                    Dim nombreEstructurado = _DEspecialista.TraerNombreEstructurado(_ClickGrilla)
+                    txtPrimerApellido.Text = nombreEstructurado.PrimerApellido
+                    txtSegundoApellido.Text = nombreEstructurado.SegundoApellido
                     cboEspecialidad.ItemIndex = cboEspecialidad.Properties.GetDataSourceRowIndex("ID", _Empleados.IdEspecialidad)
                     txtRegistroMedico.Text = _Empleados.RegistroMedico
                     If _Empleados.Estado = "I" Then
@@ -127,37 +247,45 @@ Public Class frmEmpleados
     End Sub
 
     Private Sub txtNombre_EditValueChanged(sender As Object, e As EventArgs) Handles txtNombre.EditValueChanged
+        ForzarMayusculas(txtNombre)
         bbiGuardar.Enabled = True
     End Sub
 
     Private Sub cboCargo_EditValueChanged(sender As Object, e As EventArgs) Handles cboCargo.EditValueChanged
-        'cboEspecialidad.Properties.ValueMember = Nothing
+        Try
+            Dim valorSeleccionado As String = cboCargo.Text.Trim().ToUpper()
 
-        If cboCargo.GetColumnValue("CARGO") = "ESPECIALISTA" Then
-            cboEspecialidad.Enabled = True
-            txtRegistroMedico.Enabled = True
-            'llenamos campo Especialidad
-            _ds = New DataSet()
-            _ds = _dEspecialidades.ListarEspecialista()
-            cboEspecialidad.Properties.DataSource = _ds.Tables(0)
-            cboEspecialidad.Properties.DisplayMember = _ds.Tables(0).Columns(1).Caption
-            cboEspecialidad.Properties.ValueMember = _ds.Tables(0).Columns(0).Caption
-            'cboEspecialidad.ItemIndex = -1
-        Else
-            'cboEspecialidad.ItemIndex = cboEspecialidad.Properties.GetDataSourceRowIndex("ESPECIALIDAD", "EMPLEADO")
-            cboEspecialidad.Enabled = False
-            txtRegistroMedico.Enabled = False
-            txtRegistroMedico.Text = ""
-            'llenamos campo Especialidad
-            _ds = New DataSet()
-            _ds = _dEspecialidades.ListarEmpleado()
-            cboEspecialidad.Properties.DataSource = _ds.Tables(0)
-            cboEspecialidad.Properties.DisplayMember = _ds.Tables(0).Columns(1).Caption
-            cboEspecialidad.Properties.ValueMember = _ds.Tables(0).Columns(0).Caption
-            cboEspecialidad.ItemIndex = 0
+            If valorSeleccionado = "ESPECIALISTA" Then
+                txtIdentificacion.Enabled = True
+                cboEspecialidad.Enabled = True
+                txtRegistroMedico.Enabled = True
+                txtIdentificacion.Focus()
+                'llenamos campo Especialidad
+                _ds = New DataSet()
+                _ds = _dEspecialidades.ListarEspecialista()
+                cboEspecialidad.Properties.DataSource = _ds.Tables(0)
+                cboEspecialidad.Properties.DisplayMember = _ds.Tables(0).Columns(1).Caption
+                cboEspecialidad.Properties.ValueMember = _ds.Tables(0).Columns(0).Caption
+                'cboEspecialidad.ItemIndex = -1
+            Else
+                txtIdentificacion.Enabled = False
+                cboEspecialidad.Enabled = False
+                txtRegistroMedico.Enabled = False
+                txtIdentificacion.Text = ""
+                txtRegistroMedico.Text = ""
+                'llenamos campo Especialidad
+                _ds = New DataSet()
+                _ds = _dEspecialidades.ListarEmpleado()
+                cboEspecialidad.Properties.DataSource = _ds.Tables(0)
+                cboEspecialidad.Properties.DisplayMember = _ds.Tables(0).Columns(1).Caption
+                cboEspecialidad.Properties.ValueMember = _ds.Tables(0).Columns(0).Caption
+                cboEspecialidad.ItemIndex = 0
+            End If
+            ActivarGuardar()
+        Catch ex As Exception
+            MessageBox.Show("Error: " & ex.Message)
+        End Try
 
-        End If
-        ActivarGuardar()
     End Sub
 
     Private Sub cboEspecialidad_EditValueChanged(sender As Object, e As EventArgs) Handles cboEspecialidad.EditValueChanged
@@ -177,5 +305,9 @@ Public Class frmEmpleados
             _ClickGrilla = GVConsultar.GetRowCellValue(e.RowHandle.ToString, "ID").ToString()
             _Fila = e.RowHandle.ToString
         End If
+    End Sub
+
+    Private Sub txtIdentificacion_EditValueChanged(sender As Object, e As EventArgs) Handles txtIdentificacion.EditValueChanged
+        ActivarGuardar()
     End Sub
 End Class

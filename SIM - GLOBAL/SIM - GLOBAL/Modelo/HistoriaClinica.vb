@@ -32,6 +32,9 @@
         Private _Recomendaciones As String
         Private _Temperatura As String
         Private _IdEspecialista As String
+        Private _Firmada As Boolean
+        Private _FechaFirma As Date?
+        Private _UsuarioFirma As String
 
         Public Property Id As Integer
             Get
@@ -318,6 +321,41 @@
             End Get
             Set(value As String)
                 _EstudiosDiagnosticos = value
+            End Set
+        End Property
+
+        ''' <summary>
+        ''' Resolución 3100: True si la historia ya fue firmada. Mientras sea True,
+        ''' DHistoriaClinica.Guardar() rechaza cualquier UPDATE sobre el contenido
+        ''' original (solo se permiten adendas).
+        ''' </summary>
+        Public Property Firmada As Boolean
+            Get
+                Return _Firmada
+            End Get
+            Set(value As Boolean)
+                _Firmada = value
+            End Set
+        End Property
+
+        ''' <summary>
+        ''' Fecha/hora real (del servidor) en que se firmó. Nunca la fija el usuario.
+        ''' </summary>
+        Public Property FechaFirma As Date?
+            Get
+                Return _FechaFirma
+            End Get
+            Set(value As Date?)
+                _FechaFirma = value
+            End Set
+        End Property
+
+        Public Property UsuarioFirma As String
+            Get
+                Return _UsuarioFirma
+            End Get
+            Set(value As String)
+                _UsuarioFirma = value
             End Set
         End Property
     End Class

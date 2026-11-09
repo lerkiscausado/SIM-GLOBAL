@@ -757,6 +757,11 @@ Public Class frmEndoscopiaGL
                             _dOrdenes.ActualizarEstado(lblConsecutivoOrden.Text, "ATENDIDO")
                         End If
 
+                        ' Interoperabilidad RDA: al firmar el estudio se envían en segundo plano el
+                        ' RDA-Paciente y el RDA-Consulta Externa del procedimiento (este detalle_orden).
+                        ' Se toma antes de LimpiarCampos(), que borra los labels.
+                        EnviarRDA(Val(lblConsecutivoOrden.Text), Val(lblConsecutivo.Text), Val(lblIdDetalleOrden.Text))
+
                         'If MessageBox.Show("Desea imprimir el Estudio # " & txtConsecutivo.Text, "Imprimir Estudio", MessageBoxButtons.YesNo, MessageBoxIcon.Information) = DialogResult.Yes Then
                         ' ImprimirEstudio()
                         ' End If
@@ -794,6 +799,32 @@ Public Class frmEndoscopiaGL
                 MessageBox.Show("Se ha perdido la conexion al intentar guardar el Estudio, Favor Reintentar Guardar Nuevamente", "Estudios Endoscopia", MessageBoxButtons.OK, MessageBoxIcon.Information)
             End If
         End If
+    End Sub
+
+    ''' <summary>
+    ''' Interoperabilidad RDA: envía RDA-Paciente y RDA-Consulta Externa (procedimiento) a
+    ''' MinSalud en segundo plano. Nunca bloquea el flujo clínico; el resultado se ve en las
+    ''' notificaciones y en "Historial RDA".
+    ''' </summary>
+    Private Sub EnviarRDA(idOrdenRDA As Integer, idUsuarioRDA As Integer, idDetalleOrdenRDA As Integer)
+        Try
+            ' Médico de la orden (coincide con especialistas.id_especialista); si no viene, el usuario en sesión.
+            Dim idEspecialistaRDA As Integer = Val(_Ordenes.IdEmpleado)
+            If idEspecialistaRDA <= 0 Then idEspecialistaRDA = Val(IdEmpleado)
+            If idOrdenRDA > 0 AndAlso idUsuarioRDA > 0 Then
+                Dim toastPaciente As New SIM___GLOBAL.frmToastRDA("RDA-Paciente")
+                toastPaciente.Show()
+                SIM___GLOBAL.Controles.DRDAPaciente.EnviarEnSegundoPlano(idOrdenRDA, idUsuarioRDA, idEspecialistaRDA,
+                    Sub(mensaje) toastPaciente.ActualizarEstado(mensaje))
+
+                Dim toastConsulta As New SIM___GLOBAL.frmToastRDA("RDA-Procedimiento")
+                toastConsulta.Show()
+                SIM___GLOBAL.Controles.DRDAConsultaExterna.EnviarEnSegundoPlano(idOrdenRDA, idUsuarioRDA, idEspecialistaRDA,
+                    Sub(mensaje) toastConsulta.ActualizarEstado(mensaje), idDetalleOrden:=idDetalleOrdenRDA, tipoPreferido:="P")
+            End If
+        Catch
+            ' El envío RDA es complementario a la firma: nunca debe bloquear el flujo clínico.
+        End Try
     End Sub
 
     Private Sub cboDiagnosticos_EditValueChanged(sender As Object, e As EventArgs) Handles cboDiagnosticos.EditValueChanged

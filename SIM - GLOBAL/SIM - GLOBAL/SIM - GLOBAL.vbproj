@@ -292,6 +292,8 @@
     <Compile Include="Controles\DProductos.vb" />
     <Compile Include="Controles\DProveedores.vb" />
     <Compile Include="Controles\DRDA.vb" />
+    <Compile Include="Controles\DRDAConsultaExterna.vb" />
+    <Compile Include="Controles\DRDAPaciente.vb" />
     <Compile Include="Controles\DRegistroAnestesia.vb" />
     <Compile Include="Controles\DRegistroAnestesiaMedicamentos.vb" />
     <Compile Include="Controles\DRegistros.vb" />
@@ -919,6 +921,9 @@
     </Compile>
     <Compile Include="Utilidades\Funciones.vb" />
     <Compile Include="Utilidades\InteropAuthService.vb" />
+    <Compile Include="Utilidades\RDAConsultaExternaBuilder.vb" />
+    <Compile Include="Utilidades\RDABundleBuilder.vb" />
+    <Compile Include="Utilidades\RDATextParser.vb" />
     <Compile Include="Vistas\Binarios.Designer.vb">
       <DependentUpon>Binarios.vb</DependentUpon>
     </Compile>
@@ -1359,6 +1364,12 @@
     </Compile>
     <Compile Include="Vistas\frmRDA.Designer.vb">
       <DependentUpon>frmRDA.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\frmHistorialRDA.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\frmToastRDA.vb">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="Vistas\frmRDA.vb">
       <SubType>Form</SubType>
@@ -1990,6 +2001,9 @@
     <EmbeddedResource Include="Vistas\frmPruebaPrivilegios.resx">
       <DependentUpon>frmPruebaPrivilegios.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\frmHistorialRDA.resx">
+      <DependentUpon>frmHistorialRDA.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Vistas\frmRDA.resx">
       <DependentUpon>frmRDA.vb</DependentUpon>
     </EmbeddedResource>
@@ -2391,5 +2405,15 @@
     <Error Condition="!Exists('..\packages\Accord.3.8.0\build\Accord.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Accord.3.8.0\build\Accord.targets'))" />
     <Error Condition="!Exists('..\packages\Accord.Video.FFMPEG.3.8.0\build\Accord.Video.FFMPEG.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Accord.Video.FFMPEG.3.8.0\build\Accord.Video.FFMPEG.targets'))" />
   </Target>
+  <ItemGroup>
+    <None Include="Sql\rda_config_interop_api_base.sql" />
+    <None Include="Sql\rda_paciente_migracion.sql" />
+    <None Include="Sql\rda_usuarios_campos_obligatorios.sql" />
+    <None Include="Sql\rda_especialistas_nombre_estructurado.sql" />
+    <None Include="Sql\rda_empresa_codigo_prestador.sql" />
+    <None Include="Sql\rda_envios_composition_id.sql" />
+    <None Include="Sql\resolucion3100_inalterabilidad_historia.sql" />
+    <None Include="Sql\rda_migracion_consolidada_idempotente.sql" />
+  </ItemGroup>
   <Import Project="..\packages\Accord.Video.FFMPEG.3.8.0\build\Accord.Video.FFMPEG.targets" Condition="Exists('..\packages\Accord.Video.FFMPEG.3.8.0\build\Accord.Video.FFMPEG.targets')" />
 </Project>

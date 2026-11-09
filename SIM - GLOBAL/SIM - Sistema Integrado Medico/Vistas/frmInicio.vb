@@ -1586,6 +1586,7 @@ Public Class frmInicio
     End Sub
 
     Private Sub frmInicio_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        AgregarBotonHistorialRDA()
         'Selecciona el SKIN predeterminado
         DevExpress.LookAndFeel.UserLookAndFeel.Default.SetSkinStyle("Office 2013")
 
@@ -2558,6 +2559,25 @@ Public Class frmInicio
         Dim _frmOpen As New SIM___GLOBAL.frmRDA
         '_frmOpen.Licencia = LicenciaG
         '_frmOpen.IdEmpleado = IdEmpleadoG
+        _frmOpen.ShowDialog()
+    End Sub
+
+    ' Botón "Historial RDA" agregado por código junto a "Interoperabilidad" (grupo rpgSistema),
+    ' sin tocar el Designer del menú principal.
+    Private WithEvents bbiHistorialRDA As DevExpress.XtraBars.BarButtonItem
+
+    Private Sub AgregarBotonHistorialRDA()
+        If bbiHistorialRDA IsNot Nothing Then Exit Sub
+        bbiHistorialRDA = New DevExpress.XtraBars.BarButtonItem()
+        bbiHistorialRDA.Caption = "Historial RDA"
+        bbiHistorialRDA.Name = "bbiHistorialRDA"
+        bbiHistorialRDA.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText
+        RibbonControl.Items.Add(bbiHistorialRDA)
+        rpgSistema.ItemLinks.Add(bbiHistorialRDA)
+    End Sub
+
+    Private Sub bbiHistorialRDA_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles bbiHistorialRDA.ItemClick
+        Dim _frmOpen As New SIM___GLOBAL.frmHistorialRDA()
         _frmOpen.ShowDialog()
     End Sub
 End Class
