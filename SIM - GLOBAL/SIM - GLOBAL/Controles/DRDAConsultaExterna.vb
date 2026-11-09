@@ -159,11 +159,16 @@ Namespace Controles
             Try
                 ' Una orden puede tener varios detalles (consulta 'C' y procedimiento 'P'): se toma
                 ' el detalle exacto si se indica, si no el del tipo preferido.
+                ' Diagnóstico: detalle_orden.diagnostico1; si viene vacío (frmHistoriaGL guarda el
+                ' diagnóstico solo en historia_diagnosticos, no en el detalle) se toma el primer
+                ' diagnóstico registrado en la historia de esa orden.
+                Const DX_EXPR As String = "COALESCE(NULLIF(TRIM(detalle_orden.diagnostico1),''), " &
+                    "(SELECT hd.id_diagnostico FROM historia_diagnosticos hd WHERE hd.id_orden = detalle_orden.id_orden LIMIT 1))"
                 Dim query As String = "SELECT detalle_orden.tipo, detalle_orden.estado, detalle_orden.codigo_cups, cups.nombre_cups, " &
-                    "detalle_orden.diagnostico1, diagnosticos.nombre_diagnostico " &
+                    DX_EXPR & " AS diagnostico1, diagnosticos.nombre_diagnostico " &
                     "FROM detalle_orden " &
                     "LEFT JOIN cups ON detalle_orden.codigo_cups = cups.codigo_cups " &
-                    "LEFT JOIN diagnosticos ON detalle_orden.diagnostico1 = diagnosticos.codigo_diagnostico " &
+                    "LEFT JOIN diagnosticos ON diagnosticos.codigo_diagnostico = " & DX_EXPR & " " &
                     If(idDetalleOrden > 0,
                        "WHERE detalle_orden.id = ? LIMIT 1",
                        "WHERE detalle_orden.id_orden = ? ORDER BY (IFNULL(detalle_orden.tipo,'C') = ?) DESC, detalle_orden.id ASC LIMIT 1")
